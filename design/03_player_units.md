@@ -1,5 +1,7 @@
 # Player Units
 
+**语言 / Language:** **中文** | [English](03_player_units.en.md)
+
 ## 近战单位
 
 ### 1. 木盾兵 Wooden Shield Guard
