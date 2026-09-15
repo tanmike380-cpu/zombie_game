@@ -1,5 +1,7 @@
 # Resources
 
+**语言 / Language:** **中文** | [English](02_resources.en.md)
+
 ## 核心资源（6种）
 
 ### 1. Food / 粮食
