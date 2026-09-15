@@ -1,5 +1,7 @@
 # Blood Scent System
 
+**语言 / Language:** **中文** | [English](05_blood_scent_system.en.md)
+
 ## 目标
 
 使用一个简单、低成本、可扩展的隐藏数值来模拟“哪里死人越多，哪里越容易吸引尸群”。
