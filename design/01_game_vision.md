@@ -1,5 +1,7 @@
 # Game Vision
 
+**语言 / Language:** **中文** | [English](01_game_vision.en.md)
+
 ## 产品定位
 
 中国古代/中古代架空背景的 **Survival RTS + Zombie Horde + 1–2 人合作**。
