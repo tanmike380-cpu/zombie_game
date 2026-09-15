@@ -1,5 +1,7 @@
 # Zombie Units
 
+**语言 / Language:** **中文** | [English](04_zombies.en.md)
+
 ## 1. 普通僵尸 Walker
 定位：最基础炮灰。
 
