@@ -1,5 +1,7 @@
 # Zombie Game
 
+**语言 / Language:** **中文** | [English](README.en.md)
+
 一款以中国古代/中古代架空背景为基础的 **1–2 人合作 Survival RTS**。
 
 核心体验：
@@ -24,6 +26,12 @@
 - `design/05_blood_scent_system.md`：血腥值与聚怪机制
 - `design/06_infection_system.md`：士兵感染与建筑巢穴机制
 - `balance/initial_balance.yaml`：第一版可调数值草案
+
+## 双语规则
+
+- 所有设计文档维护中文与英文两个版本。
+- 每份文档顶部提供 `中文 | English` 切换链接。
+- YAML/JSON 等机器配置只维护一份，字段使用英文，说明文本同时提供中文和英文，避免两套数值不一致。
 
 ## 版本原则
 
