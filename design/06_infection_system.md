@@ -1,5 +1,7 @@
 # Infection & Nest System
 
+**语言 / Language:** **中文** | [English](06_infection_system.en.md)
+
 ## 士兵感染规则
 
 V1 不做复杂概率感染、不做潜伏期、不做感染进度条。
