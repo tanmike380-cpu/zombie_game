@@ -1,0 +1,141 @@
+meta:
+  status: prototype
+  note: "All values are placeholders for prototype testing. Do not treat as final balance."
+
+resources:
+  food:
+    category: base
+    role: recruitment_and_population
+  wood:
+    category: base
+    role: buildings_and_arrow_supply
+  stone:
+    category: base
+    role: defensive_buildings
+  iron:
+    category: base
+    role: advanced_military_and_gunpowder
+  arrows:
+    category: military
+    produced_from:
+      wood: true
+  gunpowder:
+    category: military
+    produced_from:
+      iron: true
+
+blood_scent:
+  zombie_death_radius_tiles: 2
+  normal_human_death_radius_tiles: 10
+  advanced_human_death_radius_tiles: 15
+  infected_building_level_1_radius_tiles: 20
+  infected_building_level_2_radius_tiles: 30
+  infected_building_level_3_radius_tiles: 40
+  decay_enabled: true
+  diffusion_enabled: true
+
+player_units:
+  wooden_shield_guard:
+    class: melee
+    ammo_type: none
+    role: expendable_tank
+    cost_focus: [food, wood]
+  iron_shield_guard:
+    class: melee
+    ammo_type: none
+    role: heavy_tank
+    cost_focus: [food, iron]
+  suicide_bomber:
+    class: melee_special
+    ammo_type: gunpowder
+    role: disposable_aoe
+    cost_focus: [food, gunpowder]
+  archer:
+    class: ranged
+    ammo_type: arrows
+    ammo_per_attack: 1
+    role: basic_ranged
+    cost_focus: [food, wood]
+  repeating_crossbowman:
+    class: ranged
+    ammo_type: arrows
+    ammo_per_attack: 1
+    role: high_rate_of_fire
+    cost_focus: [food, wood]
+  heavy_crossbowman:
+    class: ranged
+    ammo_type: arrows
+    ammo_per_attack: 1
+    role: high_single_target_damage
+    cost_focus: [food, wood, iron]
+  firearm_infantry:
+    class: ranged
+    ammo_type: gunpowder
+    ammo_per_attack: 1
+    role: advanced_ranged
+    cost_focus: [food, iron]
+  heavy_ballista:
+    class: siege
+    ammo_type: arrows
+    ammo_per_attack: 10
+    role: heavy_projectile
+    cost_focus: [wood, iron]
+  cannon:
+    class: siege
+    ammo_type: gunpowder
+    ammo_per_attack: 5
+    ammo_per_attack_test_range: [5, 10]
+    role: aoe_siege
+    cost_focus: [iron]
+
+zombies:
+  walker:
+    speed_tier: very_slow
+    hp_tier: low
+    damage_tier: low
+  runner:
+    speed_tier: fast
+    hp_tier: low_medium
+    damage_tier: medium
+  brute:
+    speed_tier: medium
+    hp_tier: high
+    damage_tier: high
+  zombie_hound:
+    speed_tier: very_fast
+    hp_tier: low
+    damage_tier: medium
+    can_vault_low_walls: true
+  spitter:
+    speed_tier: medium
+    hp_tier: low_medium
+    damage_tier: medium
+    ranged_attack: true
+  giant:
+    speed_tier: slow
+    hp_tier: very_high
+    damage_tier: very_high
+    anti_building: true
+  boss:
+    speed_tier: TBD
+    hp_tier: TBD
+    damage_tier: TBD
+    special_rule: "Boss should change battlefield rules, not only have more HP."
+
+infection:
+  human_killed_by_zombie:
+    immediate_spawn: true
+    spawned_zombie_type: walker
+    spawned_count: TBD
+    emits_blood_scent: true
+  infected_buildings:
+    level_1:
+      spawn_pool: [walker]
+      spawn_rate: low
+    level_2:
+      spawn_pool: [walker, runner]
+      spawn_rate: medium
+    level_3:
+      spawn_pool: [runner, brute]
+      spawn_rate: high
+      special_zombie_chance: TBD
