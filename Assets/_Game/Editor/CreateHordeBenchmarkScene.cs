@@ -40,23 +40,6 @@ namespace ZombieGame.EditorTools
             ground.transform.position = Vector3.zero;
             ground.transform.localScale = new Vector3(14f, 1f, 14f);
 
-            Renderer groundRenderer = ground.GetComponent<Renderer>();
-            Shader shader = Shader.Find("Universal Render Pipeline/Unlit");
-            if (shader == null)
-            {
-                shader = Shader.Find("Unlit/Color");
-            }
-
-            if (shader != null)
-            {
-                Material groundMaterial = new Material(shader)
-                {
-                    name = "BenchmarkGround_RuntimePreview",
-                    color = new Color(0.14f, 0.16f, 0.14f, 1f)
-                };
-                groundRenderer.sharedMaterial = groundMaterial;
-            }
-
             EditorSceneManager.MarkSceneDirty(scene);
             EditorSceneManager.SaveScene(scene, ScenePath);
             AssetDatabase.SaveAssets();
