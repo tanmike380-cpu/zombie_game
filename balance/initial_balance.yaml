@@ -5,6 +5,18 @@ meta:
   localization_rule_zh: "机器键保持英文；所有面向人的名称和说明同时提供 zh-CN 与 en。"
   localization_rule_en: "Machine keys stay in English; all human-facing names and descriptions provide both zh-CN and en."
 
+performance_targets:
+  normal_large_horde: "several_thousand"
+  extreme_active_zombies: 10000
+  note_zh: "不再以两万只同时活动僵尸作为常态目标；优先通过更强的僵尸属性、特殊兵种和突破能力制造压迫感。"
+  note_en: "20,000 simultaneously active zombies are no longer a normal target; pressure should also come from stronger stats, special units, and breakthrough capability."
+
+resource_model:
+  deposits_deplete: false
+  model_key: infinite_deposit_limited_throughput
+  description_zh: "资源点不会采干；玩家通过占领更多或更高级资源点提升单位时间产能。"
+  description_en: "Resource deposits do not deplete; players increase throughput by capturing more or higher-tier resource sites."
+
 resources:
   food:
     name_zh: "粮食"
@@ -51,19 +63,24 @@ resources:
     role_zh: "火铳、自爆兵和火炮的作战资源"
     role_en: "Combat supply for firearms, suicide bombers, and cannons"
 
-blood_scent:
-  name_zh: "血腥值"
-  name_en: "Blood Scent"
-  zombie_death_radius_tiles: 2
-  normal_human_death_radius_tiles: 10
-  advanced_human_death_radius_tiles: 15
-  infected_building_level_1_radius_tiles: 20
-  infected_building_level_2_radius_tiles: 30
-  infected_building_level_3_radius_tiles: 40
-  decay_enabled: true
-  diffusion_enabled: true
-  description_zh: "局部死亡与建筑感染产生吸引源，数值越高可吸引越远的僵尸。"
-  description_en: "Local deaths and infected buildings create attraction sources; higher values attract zombies from farther away."
+noise:
+  name_zh: "声音吸引"
+  name_en: "Noise Attraction"
+  implementation: low_resolution_grid
+  direct_target_overrides_noise: true
+  fast_decay: true
+  realistic_acoustics: false
+  melee_radius_tiles: 2
+  archer_radius_tiles: 4
+  repeating_crossbowman_radius_tiles: 6
+  heavy_crossbowman_radius_tiles: 7
+  heavy_ballista_radius_tiles: 10
+  firearm_infantry_radius_tiles: 15
+  building_collapse_radius_tiles: 15
+  suicide_bomber_radius_tiles: 20
+  cannon_radius_tiles: 30
+  description_zh: "声音产生在攻击者/武器位置；僵尸无直接目标时向有效声音区域移动，一旦发现玩家单位则切换为直接追击。"
+  description_en: "Noise originates at the attacker/weapon position; zombies without a direct target move toward active noise, while direct detection overrides noise navigation."
 
 player_units:
   wooden_shield_guard:
@@ -75,6 +92,7 @@ player_units:
     role_zh: "低成本消耗型前排"
     role_en: "Low-cost expendable frontline tank"
     cost_focus: [food, wood]
+    noise_radius_tiles: 2
   iron_shield_guard:
     name_zh: "铁盾兵"
     name_en: "Iron Shield Guard"
@@ -84,6 +102,7 @@ player_units:
     role_zh: "高耐久重装前排"
     role_en: "High-durability heavy frontline tank"
     cost_focus: [food, iron]
+    noise_radius_tiles: 2
   suicide_bomber:
     name_zh: "自爆兵"
     name_en: "Suicide Bomber"
@@ -93,6 +112,7 @@ player_units:
     role_zh: "一次性范围杀伤单位"
     role_en: "Disposable area-damage unit"
     cost_focus: [food, gunpowder]
+    noise_radius_tiles: 20
   archer:
     name_zh: "弓箭手"
     name_en: "Archer"
@@ -103,6 +123,7 @@ player_units:
     role_zh: "基础远程输出"
     role_en: "Basic ranged damage dealer"
     cost_focus: [food, wood]
+    noise_radius_tiles: 4
   repeating_crossbowman:
     name_zh: "连弩手"
     name_en: "Repeating Crossbowman"
@@ -113,6 +134,7 @@ player_units:
     role_zh: "高射速、高箭矢消耗远程单位"
     role_en: "High-rate-of-fire ranged unit with heavy arrow consumption"
     cost_focus: [food, wood]
+    noise_radius_tiles: 6
   heavy_crossbowman:
     name_zh: "重弩手"
     name_en: "Heavy Crossbowman"
@@ -123,6 +145,7 @@ player_units:
     role_zh: "低射速、高单体伤害远程单位"
     role_en: "Slow-firing ranged unit with high single-target damage"
     cost_focus: [food, wood, iron]
+    noise_radius_tiles: 7
   firearm_infantry:
     name_zh: "神机营"
     name_en: "Firearm Infantry / Shenji Battalion"
@@ -133,6 +156,7 @@ player_units:
     role_zh: "中后期高伤害火药远程主力"
     role_en: "High-damage mid/late-game gunpowder ranged unit"
     cost_focus: [food, iron]
+    noise_radius_tiles: 15
   heavy_ballista:
     name_zh: "重弩炮"
     name_en: "Heavy Ballista"
@@ -143,6 +167,7 @@ player_units:
     role_zh: "箭矢体系重型远程武器"
     role_en: "Heavy ranged weapon in the arrow-supply system"
     cost_focus: [wood, iron]
+    noise_radius_tiles: 10
   cannon:
     name_zh: "火炮"
     name_en: "Cannon"
@@ -154,32 +179,37 @@ player_units:
     role_zh: "高消耗范围重武器"
     role_en: "High-consumption area heavy weapon"
     cost_focus: [iron]
+    noise_radius_tiles: 30
 
 zombies:
   walker:
     name_zh: "普通僵尸"
     name_en: "Walker"
-    speed_tier: very_slow
+    speed_tier: slow
     hp_tier: low
     damage_tier: low
+    hearing_tier: normal
   runner:
     name_zh: "狂暴僵尸"
     name_en: "Runner"
     speed_tier: fast
     hp_tier: low_medium
     damage_tier: medium
+    hearing_tier: high
   brute:
     name_zh: "胖尸"
     name_en: "Brute"
     speed_tier: medium
     hp_tier: high
     damage_tier: high
+    hearing_tier: normal
   zombie_hound:
     name_zh: "尸犬"
     name_en: "Zombie Hound"
     speed_tier: very_fast
     hp_tier: low
     damage_tier: medium
+    hearing_tier: very_high
     can_vault_low_walls: true
   spitter:
     name_zh: "毒液僵尸"
@@ -187,6 +217,7 @@ zombies:
     speed_tier: medium
     hp_tier: low_medium
     damage_tier: medium
+    hearing_tier: normal
     ranged_attack: true
   giant:
     name_zh: "巨型僵尸"
@@ -194,13 +225,15 @@ zombies:
     speed_tier: slow
     hp_tier: very_high
     damage_tier: very_high
+    hearing_tier: low_normal
     anti_building: true
   boss:
     name_zh: "Boss 僵尸"
     name_en: "Boss Zombie"
-    speed_tier: TBD
-    hp_tier: TBD
-    damage_tier: TBD
+    speed_tier: "TBD"
+    hp_tier: "TBD"
+    damage_tier: "TBD"
+    hearing_tier: "TBD"
     special_rule_zh: "Boss 应改变战场规则，而不是单纯增加生命值。"
     special_rule_en: "Bosses should change battlefield rules rather than simply having more HP."
 
@@ -208,10 +241,10 @@ infection:
   human_killed_by_zombie:
     immediate_spawn: true
     spawned_zombie_type: walker
-    spawned_count: TBD
-    emits_blood_scent: true
-    description_zh: "人类单位被僵尸击杀后立即生成低级僵尸并产生血腥值。"
-    description_en: "When a human unit is killed by a zombie, low-tier zombies spawn immediately and Blood Scent is generated."
+    spawned_count: "TBD"
+    emits_noise: false
+    description_zh: "人类单位被僵尸击杀后立即生成低级僵尸；感染本身不再产生独立远距离吸引场。"
+    description_en: "When a human unit is killed by a zombie, low-tier zombies spawn immediately; infection itself does not create a separate long-range attraction field."
   infected_buildings:
     level_1:
       name_zh: "一级僵尸巢穴"
@@ -228,4 +261,4 @@ infection:
       name_en: "Level 3 Zombie Nest"
       spawn_pool: [runner, brute]
       spawn_rate: high
-      special_zombie_chance: TBD
+      special_zombie_chance: "TBD"
