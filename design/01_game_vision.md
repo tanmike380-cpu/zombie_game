@@ -12,8 +12,10 @@ It is neither a traditional PvP RTS nor a complex management simulation.
 2. Build the economy around food, wood, stone, and iron.
 3. Ranged armies depend on arrows and gunpowder, creating an ongoing cost of warfare.
 4. Armies can be recruited cheaply, but they lose combat effectiveness if the supply economy cannot keep up.
-5. Zombie waves escalate in scale and can eventually reach battles involving tens of thousands of units.
-6. Small mistakes can snowball rapidly through infected buildings and the Blood Scent attraction system.
+5. Zombie pressure comes from a combination of numbers, movement speed, durability, special units, and local breakthroughs rather than requiring 20,000 zombies at all times.
+6. The current extreme target is roughly 10,000 active zombies, with ordinary large battles expected to be smaller.
+7. Powerful ranged weapons generate Noise that attracts roaming zombies from farther away.
+8. Small mistakes can snowball through infection, zombie nests, and escalating local combat.
 
 ## Core Design Thesis
 
@@ -23,7 +25,8 @@ Traditional RTS games often make recruitment expensive while unit usage is effec
 
 - Recruiting ranged units mainly consumes food plus a small amount of equipment material.
 - The major long-term cost is the arrows and gunpowder consumed during combat.
-- Players must trade off army size, infrastructure, and military supply stockpiles.
+- Stronger weapons are not a pure upgrade: they consume more military supplies and usually generate more Noise.
+- Players must trade off army size, infrastructure, military supply stockpiles, and the risk of attracting additional hordes.
 
 ## Development Boundaries
 
@@ -38,6 +41,7 @@ V1 does not currently include:
 - Deep weather/season simulation
 - Cavalry as a major core system
 - Complex disease-spread simulation
+- Realistic acoustic simulation
 
 ## Co-op Direction
 
@@ -64,8 +68,10 @@ The preferred model is **Archon-lite**:
 2. 通过粮食、木材、石料、铁矿建立经济基础。
 3. 远程军队依赖箭矢和火药，形成持续作战成本。
 4. 玩家可以低成本扩军，但如果军需跟不上，军队会失去战斗力。
-5. 尸潮规模越来越大，最终形成万级单位的大规模防守。
-6. 小失误可能通过感染建筑和血腥值吸引机制迅速雪崩。
+5. 僵尸压迫感由数量、移动速度、生命值、特殊兵种和局部突破共同制造，而不是要求常态同时出现两万只僵尸。
+6. 当前极限目标约为 10,000 只活动僵尸，常规大型战斗规模应低于这个数字。
+7. 越强的远程武器通常会制造越大的声音，从更远处吸引游荡僵尸。
+8. 小失误可以通过感染、僵尸巢穴和持续升级的局部战斗迅速雪崩。
 
 ## 核心设计 Thesis
 
@@ -75,7 +81,8 @@ The preferred model is **Archon-lite**:
 
 - 招募远程兵主要消耗粮食及少量装备材料。
 - 真正高昂的是战斗过程中的箭矢与火药消耗。
-- 玩家必须在扩军、建设和军需储备之间做取舍。
+- 更高级武器不是纯粹的无脑升级：它们消耗更多军需，同时通常制造更大的 Noise。
+- 玩家必须在扩军、建设、军需储备和吸引额外尸群的风险之间做取舍。
 
 ## 开发边界
 
@@ -90,6 +97,7 @@ V1 暂不考虑：
 - 天气/季节深度模拟
 - 骑兵主体系
 - 复杂疾病传播数值
+- 真实声学传播模拟
 
 ## 合作模式方向
 
