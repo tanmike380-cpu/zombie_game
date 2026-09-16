@@ -12,6 +12,7 @@ English is the primary language. Each Markdown file contains the English version
 - `design/04_zombies.md`: zombie units / 僵尸兵种
 - `design/05_noise_system.md`: Noise attraction system / 声音吸引系统
 - `design/06_infection_system.md`: infection and nest system / 感染与尸巢系统
+- `design/07_defensive_buildings.md`: defensive buildings / 防御建筑
 - `balance/initial_balance.yaml`: prototype balance values / 原型数值配置
 - `docs/dev/TECHNICAL_PROTOTYPE_01.md`: first Unity benchmark / 第一轮 Unity 性能测试
 
@@ -25,6 +26,13 @@ Current horde performance target:
 
 - Normal large fights: several thousand zombies.
 - Extreme benchmark / late-game target: up to roughly **10,000 active zombies**, subject to profiling on low- and mid-range hardware.
+
+Important current combat rules:
+
+- Attack range and Noise attraction radius are separate values.
+- The Archer can outrun slow/medium zombies, but Runner, Exploder, and Zombie Hound can catch it.
+- Exploders punish tightly packed ranged formations; soldiers killed by their AOE can immediately trigger infection conversion.
+- Defensive buildings share the same Arrow / Gunpowder economy as the field army.
 
 ---
 
@@ -42,6 +50,7 @@ Current horde performance target:
 - `design/04_zombies.md`：僵尸兵种
 - `design/05_noise_system.md`：声音吸引系统
 - `design/06_infection_system.md`：感染与尸巢系统
+- `design/07_defensive_buildings.md`：防御建筑
 - `balance/initial_balance.yaml`：原型数值配置
 - `docs/dev/TECHNICAL_PROTOTYPE_01.md`：第一轮 Unity 性能测试
 
@@ -55,3 +64,10 @@ Current horde performance target:
 
 - 常规大型战斗：数千只僵尸。
 - 极端测试 / 后期目标：约 **10,000 只活动僵尸**，最终以低配和中配机器实际 Profiling 结果为准。
+
+当前重要战斗规则：
+
+- 攻击射程和 Noise 声音吸引半径是两套独立数值。
+- 弓箭手能跑过慢速/中速僵尸，但 Runner、爆裂尸、尸犬可以追上它。
+- 爆裂尸负责惩罚密集远程阵型；被其 AOE 炸死的我方士兵会立刻触发感染转化。
+- 防御建筑与野战军共享 Arrows / Gunpowder 军需库存。

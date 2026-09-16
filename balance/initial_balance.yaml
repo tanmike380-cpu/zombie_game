@@ -23,45 +23,37 @@ resources:
     name_en: "Food"
     category: base
     role_key: recruitment_and_population
-    role_zh: "人口发展与单位招募"
-    role_en: "Recruitment and population growth"
   wood:
     name_zh: "木材"
     name_en: "Wood"
     category: base
     role_key: buildings_and_arrow_supply
-    role_zh: "普通建筑与箭矢军需"
-    role_en: "Buildings and arrow supply"
   stone:
     name_zh: "石料"
     name_en: "Stone"
     category: base
     role_key: defensive_buildings
-    role_zh: "城墙、塔楼与防御建筑"
-    role_en: "Walls, towers, and defensive structures"
   iron:
     name_zh: "铁矿"
     name_en: "Iron"
     category: base
     role_key: advanced_military_and_gunpowder
-    role_zh: "高级军事装备与火药军需体系"
-    role_en: "Advanced military equipment and gunpowder supply"
   arrows:
     name_zh: "箭矢"
     name_en: "Arrows"
     category: military
     produced_from:
       wood: true
-    role_zh: "弓弩体系的持续作战资源"
-    role_en: "Sustained combat supply for bow and crossbow units"
   gunpowder:
     name_zh: "火药"
     name_en: "Gunpowder"
     category: military
     produced_from:
       iron: true
-    role_zh: "火铳、自爆兵和火炮的作战资源"
-    role_en: "Combat supply for firearms, suicide bombers, and cannons"
+
+combat_scale:
+  note_zh: "攻击射程与 Noise 吸引半径是两套完全独立的数值。"
+  note_en: "Attack range and Noise attraction radius are completely separate values."
 
 noise:
   name_zh: "声音吸引"
@@ -69,16 +61,21 @@ noise:
   implementation: low_resolution_grid
   direct_target_overrides_noise: true
   fast_decay: true
+  sustained_fire_accumulates: true
   realistic_acoustics: false
-  melee_radius_tiles: 2
-  archer_radius_tiles: 4
-  repeating_crossbowman_radius_tiles: 6
-  heavy_crossbowman_radius_tiles: 7
-  heavy_ballista_radius_tiles: 10
-  firearm_infantry_radius_tiles: 15
-  building_collapse_radius_tiles: 15
-  suicide_bomber_radius_tiles: 20
-  cannon_radius_tiles: 30
+  max_normal_radius_tiles: 10
+  melee_radius_tiles: 1
+  archer_radius_tiles: 2
+  repeating_crossbowman_radius_tiles: 2
+  heavy_crossbowman_radius_tiles: 3
+  heavy_ballista_radius_tiles: 4
+  firearm_infantry_radius_tiles: 6
+  player_suicide_bomber_radius_tiles: 8
+  zombie_exploder_radius_tiles: 8
+  cannon_radius_tiles: 10
+  arrow_tower_radius_tiles: 2
+  cannon_bastion_radius_tiles: 10
+  flame_bastion_radius_tiles: 6
   description_zh: "声音产生在攻击者/武器位置；僵尸无直接目标时向有效声音区域移动，一旦发现玩家单位则切换为直接追击。"
   description_en: "Noise originates at the attacker/weapon position; zombies without a direct target move toward active noise, while direct detection overrides noise navigation."
 
@@ -87,164 +84,193 @@ player_units:
     name_zh: "木盾兵"
     name_en: "Wooden Shield Guard"
     class: melee
+    move_speed_tiles_per_sec: 2.6
+    attack_range_tiles: 1
     ammo_type: none
+    noise_radius_tiles: 1
     role_key: expendable_tank
-    role_zh: "低成本消耗型前排"
-    role_en: "Low-cost expendable frontline tank"
     cost_focus: [food, wood]
-    noise_radius_tiles: 2
+
   iron_shield_guard:
     name_zh: "铁盾兵"
     name_en: "Iron Shield Guard"
     class: melee
+    move_speed_tiles_per_sec: 2.2
+    attack_range_tiles: 1
     ammo_type: none
+    noise_radius_tiles: 1
     role_key: heavy_tank
-    role_zh: "高耐久重装前排"
-    role_en: "High-durability heavy frontline tank"
     cost_focus: [food, iron]
-    noise_radius_tiles: 2
+
   suicide_bomber:
     name_zh: "自爆兵"
     name_en: "Suicide Bomber"
     class: melee_special
+    move_speed_tiles_per_sec: 3.5
+    attack_range_tiles: 0
     ammo_type: gunpowder
+    noise_radius_tiles: 8
     role_key: disposable_aoe
-    role_zh: "一次性范围杀伤单位"
-    role_en: "Disposable area-damage unit"
     cost_focus: [food, gunpowder]
-    noise_radius_tiles: 20
+
   archer:
     name_zh: "弓箭手"
     name_en: "Archer"
     class: ranged
+    move_speed_tiles_per_sec: 3.2
+    attack_range_tiles: 5
     ammo_type: arrows
     ammo_per_attack: 1
+    noise_radius_tiles: 2
     role_key: basic_ranged
-    role_zh: "基础远程输出"
-    role_en: "Basic ranged damage dealer"
     cost_focus: [food, wood]
-    noise_radius_tiles: 4
+
   repeating_crossbowman:
     name_zh: "连弩手"
     name_en: "Repeating Crossbowman"
     class: ranged
+    move_speed_tiles_per_sec: 3.0
+    attack_range_tiles: 4
     ammo_type: arrows
     ammo_per_attack: 1
-    role_key: high_rate_of_fire
-    role_zh: "高射速、高箭矢消耗远程单位"
-    role_en: "High-rate-of-fire ranged unit with heavy arrow consumption"
+    noise_radius_tiles: 2
+    sustained_noise_accumulation: true
+    role_key: close_range_burst
     cost_focus: [food, wood]
-    noise_radius_tiles: 6
+
   heavy_crossbowman:
     name_zh: "重弩手"
     name_en: "Heavy Crossbowman"
     class: ranged
+    move_speed_tiles_per_sec: 2.8
+    attack_range_tiles: 7
     ammo_type: arrows
     ammo_per_attack: 1
+    noise_radius_tiles: 3
     role_key: high_single_target_damage
-    role_zh: "低射速、高单体伤害远程单位"
-    role_en: "Slow-firing ranged unit with high single-target damage"
     cost_focus: [food, wood, iron]
-    noise_radius_tiles: 7
+
   firearm_infantry:
     name_zh: "神机营"
     name_en: "Firearm Infantry / Shenji Battalion"
     class: ranged
+    move_speed_tiles_per_sec: 2.8
+    attack_range_tiles: 7
     ammo_type: gunpowder
     ammo_per_attack: 1
+    noise_radius_tiles: 6
     role_key: advanced_ranged
-    role_zh: "中后期高伤害火药远程主力"
-    role_en: "High-damage mid/late-game gunpowder ranged unit"
     cost_focus: [food, iron]
-    noise_radius_tiles: 15
+
   heavy_ballista:
     name_zh: "重弩炮"
     name_en: "Heavy Ballista"
     class: siege
+    move_speed_tiles_per_sec: 1.5
+    attack_range_tiles: 10
     ammo_type: arrows
     ammo_per_attack: 10
+    noise_radius_tiles: 4
     role_key: heavy_projectile
-    role_zh: "箭矢体系重型远程武器"
-    role_en: "Heavy ranged weapon in the arrow-supply system"
     cost_focus: [wood, iron]
-    noise_radius_tiles: 10
+
   cannon:
     name_zh: "火炮"
     name_en: "Cannon"
     class: siege
+    move_speed_tiles_per_sec: 1.3
+    attack_range_tiles: 10
     ammo_type: gunpowder
     ammo_per_attack: 5
     ammo_per_attack_test_range: [5, 10]
+    noise_radius_tiles: 10
     role_key: aoe_siege
-    role_zh: "高消耗范围重武器"
-    role_en: "High-consumption area heavy weapon"
     cost_focus: [iron]
-    noise_radius_tiles: 30
 
 zombies:
   walker:
     name_zh: "普通僵尸"
     name_en: "Walker"
-    speed_tier: slow
+    move_speed_tiles_per_sec: 1.8
     hp_tier: low
     damage_tier: low
     hearing_tier: normal
+
   runner:
     name_zh: "狂暴僵尸"
     name_en: "Runner"
-    speed_tier: fast
+    move_speed_tiles_per_sec: 3.6
     hp_tier: low_medium
     damage_tier: medium
     hearing_tier: high
+    faster_than_archer: true
+
   brute:
     name_zh: "胖尸"
     name_en: "Brute"
-    speed_tier: medium
+    move_speed_tiles_per_sec: 2.2
     hp_tier: high
     damage_tier: high
     hearing_tier: normal
+
+  exploder:
+    name_zh: "爆裂尸"
+    name_en: "Exploder"
+    move_speed_tiles_per_sec: 3.4
+    hp_tier: low_medium
+    damage_tier: high_aoe
+    hearing_tier: high
+    faster_than_archer: true
+    contact_detonation: true
+    explosion_radius_tiles: 2
+    noise_radius_tiles: 8
+    killed_humans_trigger_infection: true
+    role_key: anti_clump_formation_breaker
+
   zombie_hound:
     name_zh: "尸犬"
     name_en: "Zombie Hound"
-    speed_tier: very_fast
+    move_speed_tiles_per_sec: 4.2
     hp_tier: low
     damage_tier: medium
     hearing_tier: very_high
+    faster_than_archer: true
     can_vault_low_walls: true
+
   spitter:
     name_zh: "毒液僵尸"
     name_en: "Spitter"
-    speed_tier: medium
+    move_speed_tiles_per_sec: 2.6
     hp_tier: low_medium
     damage_tier: medium
     hearing_tier: normal
     ranged_attack: true
+
   giant:
     name_zh: "巨型僵尸"
     name_en: "Giant"
-    speed_tier: slow
+    move_speed_tiles_per_sec: 1.5
     hp_tier: very_high
     damage_tier: very_high
     hearing_tier: low_normal
     anti_building: true
+
   boss:
     name_zh: "Boss 僵尸"
     name_en: "Boss Zombie"
-    speed_tier: "TBD"
+    move_speed_tiles_per_sec: "TBD"
     hp_tier: "TBD"
     damage_tier: "TBD"
     hearing_tier: "TBD"
-    special_rule_zh: "Boss 应改变战场规则，而不是单纯增加生命值。"
-    special_rule_en: "Bosses should change battlefield rules rather than simply having more HP."
 
 infection:
   human_killed_by_zombie:
     immediate_spawn: true
     spawned_zombie_type: walker
     spawned_count: "TBD"
+    includes_zombie_ability_kills: true
+    exploder_aoe_kills_trigger_infection: true
     emits_noise: false
-    description_zh: "人类单位被僵尸击杀后立即生成低级僵尸；感染本身不再产生独立远距离吸引场。"
-    description_en: "When a human unit is killed by a zombie, low-tier zombies spawn immediately; infection itself does not create a separate long-range attraction field."
   infected_buildings:
     level_1:
       name_zh: "一级僵尸巢穴"
@@ -259,6 +285,44 @@ infection:
     level_3:
       name_zh: "三级僵尸巢穴"
       name_en: "Level 3 Zombie Nest"
-      spawn_pool: [runner, brute]
+      spawn_pool: [runner, brute, exploder]
       spawn_rate: high
       special_zombie_chance: "TBD"
+
+defensive_buildings:
+  arrow_tower:
+    name_zh: "箭塔"
+    name_en: "Arrow Tower"
+    attack_range_tiles: 5
+    ammo_type: arrows
+    ammo_per_attack: 1
+    noise_radius_tiles: 2
+    attack_shape: single_target
+    role_key: basic_sustained_defense
+
+  cannon_bastion:
+    name_zh: "铁炮要塞"
+    name_en: "Cannon Bastion"
+    attack_range_tiles: 10
+    ammo_type: gunpowder
+    ammo_per_attack: 5
+    noise_radius_tiles: 10
+    attack_shape: aoe
+    role_key: long_range_heavy_aoe
+
+  flame_bastion:
+    name_zh: "喷火要塞"
+    name_en: "Flame Bastion"
+    attack_range_tiles: 4
+    ammo_type: gunpowder
+    ammo_per_attack: 10
+    noise_radius_tiles: 6
+    attack_shape: cone_aoe
+    sustained_noise_accumulation: true
+    role_key: close_range_extreme_aoe
+
+supply_rules:
+  defensive_buildings_use_shared_stockpile: true
+  manual_ammo_logistics_v1: false
+  description_zh: "防御建筑直接消耗全阵营共享箭矢/火药，不做弹药箱、口径和人工搬运。"
+  description_en: "Defensive buildings consume the faction-wide Arrow/Gunpowder stockpile directly; V1 has no ammo crates, calibers, or manual delivery logistics."
