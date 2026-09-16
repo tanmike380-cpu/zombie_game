@@ -33,6 +33,18 @@
 - Primarily produced from iron; the exact recipe is subject to balance testing.
 - A cannon shot should consume substantially more gunpowder than a firearm infantry shot.
 
+## Resource Deposit Model
+
+V1 uses **Infinite Deposit + Limited Throughput**.
+
+- Resource sites do not deplete over time.
+- A mine, forest site, or food site can keep producing until the match ends or the structure is destroyed/lost.
+- Expansion is still required because the starting area provides only limited throughput.
+- More dangerous parts of the map can contain richer resource sites with higher output.
+- The strategic question is therefore not "How much ore remains?" but "How much resource income per minute can I control and defend?"
+
+This keeps the economy stable enough for horde-defense gameplay while preserving the RTS incentive to expand and control territory.
+
 ## Non-stockpile Constraint
 
 ### Population
@@ -60,6 +72,7 @@ The goal is an RTS, not a complex production simulator.
 - Military supplies sustain warfare.
 - Ranged units themselves are relatively cheap, but prolonged combat requires stable military-supply production.
 - Players must choose between expanding the army and increasing supply production capacity.
+- The final-assault timer prevents infinite resource production from turning into unlimited waiting.
 
 ---
 
@@ -98,6 +111,18 @@ The goal is an RTS, not a complex production simulator.
 - 主要由铁矿转换得到；具体配方后续平衡。
 - 火炮单次射击消耗应显著高于火铳兵。
 
+## 资源点模型
+
+V1 采用 **Infinite Deposit + Limited Throughput / 资源点不枯竭、产能受限**。
+
+- 资源点不会随着时间被采干。
+- 矿场、森林资源区、粮食资源区只要没有被摧毁或失去控制，就可以持续生产到本局结束。
+- 出生区域只提供有限基础产能，因此玩家仍然必须向外扩张。
+- 更危险的地图区域可以出现更高等级、更高产量的资源点。
+- 玩家真正关心的不是“这座矿还剩多少”，而是“我每分钟控制了多少资源产能，而且守不守得住”。
+
+这样既保留尸潮防守游戏需要的稳定经济，又保留传统 RTS 的地图扩张和区域控制价值。
+
 ## 非库存型约束
 
 ### Population / 人口
@@ -120,3 +145,4 @@ The goal is an RTS, not a complex production simulator.
 - 军需资源负责“维持战争”。
 - 远程单位本体相对便宜，但持续作战需要稳定军需供给。
 - 玩家需要在“继续爆兵”和“提升军需产能”之间权衡。
+- 最终总攻倒计时负责限制无限囤积，避免玩家无期限挂机发展。
