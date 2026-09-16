@@ -102,9 +102,17 @@ namespace ZombieGame.Benchmark
             benchmarkMaterial = new Material(shader)
             {
                 name = "Runtime_HordeBenchmark_Material",
-                enableInstancing = true,
-                color = instanceColor
+                enableInstancing = true
             };
+
+            if (benchmarkMaterial.HasProperty("_BaseColor"))
+            {
+                benchmarkMaterial.SetColor("_BaseColor", instanceColor);
+            }
+            else if (benchmarkMaterial.HasProperty("_Color"))
+            {
+                benchmarkMaterial.SetColor("_Color", instanceColor);
+            }
 
             renderParams = new RenderParams(benchmarkMaterial)
             {
