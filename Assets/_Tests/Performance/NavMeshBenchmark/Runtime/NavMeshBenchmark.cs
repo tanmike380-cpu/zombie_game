@@ -92,7 +92,12 @@ namespace ZombieGame.PerformanceTests
                 crowd.update_counters(false);
             } while (crowd.ready_count < count && Time.realtimeSinceStartupAsDouble - request_start < 30);
             request_seconds = Time.realtimeSinceStartupAsDouble - request_start;
-            Debug.Log($"[NavMeshSuite] READY walls={walls} count={count} ready={crowd.ready_count} pending={crowd.pending_count} invalid={crowd.invalid_paths} setup_ms={crowd.setup_ms:F1} request_s={request_seconds:F2}");
+            if (crowd.ready_count != count || crowd.pending_count != 0 || crowd.invalid_paths != 0)
+            {
+                status = "FAILED: not all paths ready; agents remain stopped. See Player log.";
+                throw new InvalidOperationException("Simultaneous-start gate failed; refusing partial release");
+            }
+            Debug.Log($"[NavMeshSuite] READY_SYNC walls={walls} count={count} ready={crowd.ready_count} pending={crowd.pending_count} invalid={crowd.invalid_paths} setup_ms={crowd.setup_ms:F1} request_s={request_seconds:F2}");
             crowd.set_paused(false);
             moving = true;
             paused = false;

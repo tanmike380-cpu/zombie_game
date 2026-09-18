@@ -82,7 +82,13 @@ namespace ZombieGame.PerformanceTests
             agent.isStopped = true;
             // Spread goals in the exit region; remove arrivals from avoidance to avoid an impossible single-point pile-up.
             Vector3 goal = new Vector3(110 + index % 16 * .5f, 0, -110 + index / 16 % 400 * .55f);
-            if (!agent.SetDestination(goal)) throw new InvalidOperationException("SetDestination failed: " + index);
+            // Pure movement test: calculate with Unity's native API before releasing ANY unit.
+            // Setup cost is measured separately, not hidden as a realistic sound-response result.
+            var path = new NavMeshPath();
+            if (!NavMesh.CalculatePath(unit.transform.position, goal, NavMesh.AllAreas, path)
+                || path.status != NavMeshPathStatus.PathComplete || !agent.SetPath(path))
+                throw new InvalidOperationException("Native complete path unavailable: " + index);
+            agent.isStopped = true;
         }
 
         public void set_paused(bool paused)

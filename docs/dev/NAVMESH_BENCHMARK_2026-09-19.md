@@ -1,5 +1,10 @@
 # Unity NavMesh initial test — 2026-09-19
 
+Historical asynchronous-request run. The user correctly identified staggered
+starts. The fixture was then revised to prepare complete native paths with
+CalculatePath/SetPath and release all agents together. See the simultaneous-start
+follow-up below; do not apply the old request-queue conclusion to that newer mode.
+
 Implementation: `Assets/_Tests/Performance/NavMeshBenchmark`. Unity's native
 NavMeshBuilder and NavMeshAgent are used, not the previous custom BFS.
 
@@ -77,3 +82,37 @@ not guarantee a uniformly distributed horde or zero congestion.
 Raw run folder: `Application.persistentDataPath/NavMeshBenchmark/20260919-050102`.
 Build log: `/tmp/zombie-navmesh-build.log`; Player log: `/tmp/zombie-navmesh-player.log`.
 Only the compact measured report is tracked, not binaries or machine logs.
+
+## Follow-up: strictly simultaneous native-path release
+
+Run `20260919-050827` replaced asynchronous SetDestination requests with Unity's
+native synchronous CalculatePath + SetPath during setup. All agents remain stopped
+until a strict gate confirms every path is complete. There is no replacement
+pathfinding algorithm. All four cases logged ready == population, pending == 0,
+invalid == 0 before releasing movement in one frame. A failed gate aborts release.
+
+| Layout | Units | Setup incl. native paths | Readiness check | Average frame | p95 | p99 | Final arrived | Observation duration |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| Open | 5,000 | 160.987 ms | 0.294 s | 1.666 ms | 4.139 ms | 4.376 ms | 5,000 | 25.004 s |
+| Open | 10,000 | 222.001 ms | 0.015 s | 3.422 ms | 9.472 ms | 10.064 ms | 10,000 | 25.001 s |
+| Walls | 5,000 | 181.235 ms | 0.009 s | 6.008 ms | 6.538 ms | 6.803 ms | 5,000 | 46.204 s |
+| Walls | 10,000 | 288.925 ms | 0.016 s | 11.939 ms | 12.650 ms | 13.194 ms | 10,000 | 45.995 s |
+
+All final pending, invalid and geometry counters were zero. Open-map agents had
+all exited by the end of sampling, so those averages include retired agents;
+both wall samples ended with zero arrivals (all agents still active). Wall sample
+mean rates are approximately 166 FPS and 84 FPS respectively. GC0 collections
+were 126 / 43 / 25 / 12; instrumentation allocation has not been isolated.
+Spawn-strip row count changes with population, so the last-arrival times are not
+a controlled comparison of congestion alone.
+
+This fixes the observed request-order stagger for the pure movement test. It does
+NOT simulate sound propagation, hearing range, reaction time or noise priority.
+Synchronous preparation can cause a visible frame stall; its setup cost must not
+be hidden in a real-time sound-response feature. Simultaneous orders do not imply
+every agent can maintain speed through a congested corner. The main game still
+needs a separate noise-response test with explicit hearing rules.
+
+Follow-up logs: `/tmp/zombie-navmesh-sync-build.log` and
+`/tmp/zombie-navmesh-sync-player.log`. Runtime output is in the corresponding
+timestamped NavMeshBenchmark folder. Both builds succeeded.

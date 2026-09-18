@@ -25,9 +25,10 @@ The older MovementBenchmark/BFS scene is a separate historical baseline.
 
 ## Measurement
 
-Runtime setup (bake + spawn + requests) is timed separately. Agents remain stopped
-while waiting up to 30 real seconds for all paths to complete; ready/pending/invalid
-counts are logged. Movement then runs 5 seconds warmup + 20 seconds sampling.
+Runtime setup (bake + spawn + synchronous native CalculatePath/SetPath) is timed
+separately. Every agent remains stopped until ALL paths are complete. If that
+gate fails, the test throws an error and does not release a partial population.
+Ready/pending/invalid counts are logged. Movement then runs 5 seconds warmup + 20 seconds sampling.
 Each case continues until all agents exit or 90 real seconds of movement elapse.
 Report incomplete arrival as a timeout, never as a pass.
 
@@ -43,6 +44,10 @@ Runtime checks count each unit once if its centre enters a wall, leaves map boun
 or becomes NaN. This is not an exhaustive swept-volume collision test. Path validity
 is monitored separately from still-pending requests. Local avoidance may create
 real congestion and should not be silently disabled to improve FPS.
+
+This revised mode isolates simultaneous movement. It is NOT a sound-response
+simulation: preparation may block while native paths are calculated. The original
+asynchronous-request baseline and its long queues are documented separately.
 
 Results: `Application.persistentDataPath/NavMeshBenchmark/<timestamp>/results.csv`
 and `hardware.txt`; individual case rows are flushed as they finish.
