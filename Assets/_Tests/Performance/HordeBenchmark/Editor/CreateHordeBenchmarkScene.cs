@@ -4,13 +4,13 @@ using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using ZombieGame.Benchmark;
+using ZombieGame.PerformanceTests;
 
 namespace ZombieGame.EditorTools
 {
     public static class CreateHordeBenchmarkScene
     {
-        private const string SceneDirectory = "Assets/_Game/Scenes";
+        private const string SceneDirectory = "Assets/_Tests/Performance/HordeBenchmark/Scenes";
         private const string ScenePath = SceneDirectory + "/Tech_HordeBenchmark.unity";
 
         [MenuItem("Tools/Zombie Game/Create 10K Horde Benchmark Scene")]
@@ -26,11 +26,12 @@ namespace ZombieGame.EditorTools
             cameraObject.tag = "MainCamera";
             camera.clearFlags = CameraClearFlags.SolidColor;
             camera.backgroundColor = new Color(0.08f, 0.09f, 0.11f, 1f);
-            camera.fieldOfView = 55f;
+            camera.orthographic = true;
+            camera.orthographicSize = HordeRenderBenchmark.MAP_WORLD_SIZE * 0.56f;
             camera.nearClipPlane = 0.1f;
             camera.farClipPlane = 500f;
-            cameraObject.transform.position = new Vector3(0f, 105f, -95f);
-            cameraObject.transform.LookAt(Vector3.zero);
+            cameraObject.transform.position = new Vector3(0f, 200f, 0f);
+            cameraObject.transform.rotation = Quaternion.Euler(90f, 0f, 0f);
 
             GameObject benchmarkObject = new GameObject("HordeRenderBenchmark");
             benchmarkObject.AddComponent<HordeRenderBenchmark>();
@@ -38,7 +39,8 @@ namespace ZombieGame.EditorTools
             GameObject ground = GameObject.CreatePrimitive(PrimitiveType.Plane);
             ground.name = "Reference Ground";
             ground.transform.position = Vector3.zero;
-            ground.transform.localScale = new Vector3(14f, 1f, 14f);
+            float groundScale = HordeRenderBenchmark.MAP_WORLD_SIZE / 10f;
+            ground.transform.localScale = new Vector3(groundScale, 1f, groundScale);
 
             EditorSceneManager.MarkSceneDirty(scene);
             EditorSceneManager.SaveScene(scene, ScenePath);

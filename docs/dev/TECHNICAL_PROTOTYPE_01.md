@@ -1,5 +1,9 @@
 # Technical Prototype 01 — 10K Horde Render Benchmark
 
+Update (2026-09-18): the repository now has a complete Unity 6000.6.1f1 bootstrap.
+The one-time bootstrap instructions below are historical. Use the current
+[benchmark run instructions and results](BENCHMARK_2026-09-18.md).
+
 ## Objective
 
 Establish the rendering baseline for the project before adding gameplay systems.
@@ -30,6 +34,8 @@ The benchmark uses:
 - GPU instancing via `Graphics.RenderMeshInstanced`
 - no shadows
 - no 10,000 GameObjects
+- a fixed 256 x 256 tile map, with one tile equal to one Unity world unit
+- a full-map orthographic camera so all instances can contribute to render load
 
 The current extreme target is 10,000 active placeholders.
 
@@ -47,7 +53,7 @@ Recommended setup:
    - `Assets/`
    - `Packages/`
    - `ProjectSettings/`
-6. When merging `Assets/`, keep the existing `Assets/_Game/` directory from this repository.
+6. When merging `Assets/`, keep the existing `Assets/_Tests/` directory from this repository.
 7. In Unity Hub, use **Add project from disk** and select the root of this repository.
 8. Let Unity finish importing.
 9. Commit the generated Unity project bootstrap to Git after confirming it opens successfully.
@@ -61,7 +67,7 @@ After Unity finishes compiling the scripts:
 1. In the Unity menu, choose:
    `Tools > Zombie Game > Create 10K Horde Benchmark Scene`
 2. Unity creates:
-   `Assets/_Game/Scenes/Tech_HordeBenchmark.unity`
+   `Assets/_Tests/Performance/HordeBenchmark/Scenes/Tech_HordeBenchmark.unity`
 3. Open that scene if it is not already open.
 4. Press **Play**.
 
@@ -158,6 +164,8 @@ Each stage must repeat 1K / 5K / 10K profiling.
 - `Graphics.RenderMeshInstanced` GPU Instancing
 - 关闭阴影
 - 不创建 10,000 个 GameObject
+- 固定 256 x 256 格地图，每格对应一个 Unity 世界单位
+- 覆盖整张地图的正交相机，确保所有单位都可能产生渲染负载
 
 当前极限测试目标为 10,000 个活动占位单位。
 
@@ -175,7 +183,7 @@ Git 仓库里已经有 benchmark 脚本，但目前还没有完整的 Unity 自�
    - `Assets/`
    - `Packages/`
    - `ProjectSettings/`
-6. 合并 `Assets/` 时必须保留仓库已有的 `Assets/_Game/`。
+6. 合并 `Assets/` 时必须保留仓库已有的 `Assets/_Tests/`。
 7. Unity Hub 选择 **Add project from disk**，选择当前 Git 仓库根目录。
 8. 等待 Unity Import / Compile 完成。
 9. 确认工程能正常打开后，把 Unity 自动生成的工程骨架 Commit 到 Git。
@@ -189,7 +197,7 @@ Unity 编译完成后：
 1. 菜单点击：
    `Tools > Zombie Game > Create 10K Horde Benchmark Scene`
 2. Unity 会创建：
-   `Assets/_Game/Scenes/Tech_HordeBenchmark.unity`
+   `Assets/_Tests/Performance/HordeBenchmark/Scenes/Tech_HordeBenchmark.unity`
 3. 打开这个 Scene。
 4. 点击 **Play**。
 
