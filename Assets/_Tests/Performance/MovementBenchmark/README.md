@@ -9,7 +9,7 @@ Open `Scenes/Tech_MovementBenchmark.unity` and press Play, or use
 - Right click an empty map cell to change destination.
 - Space pauses; R resets; WASD/arrows pan; wheel zooms; F restores overview.
 - Toggle obstacles switches between open terrain and the fixed wall layout.
-- Run 6-case suite measures 1K/5K/10K in both layouts (5 s warmup + 20 s sample each).
+- Run 4-case suite measures 5K/10K in both layouts (5 s warmup + 20 s sample each).
 
 The map is 256 x 256 one-unit cells. Four-neighbour reverse BFS computes one shared
 shortest-path field per goal. Units follow cell centres at 12 units/s, simulated at

@@ -21,7 +21,7 @@ namespace ZombieGame.PerformanceTests
         private Matrix4x4[] wall_matrices;
         private readonly List<double> frame_samples = new List<double>(100000);
         private readonly List<string> results = new List<string>();
-        private readonly int[] counts = { 1000, 5000, 10000 };
+        private readonly int[] counts = { 5000, 10000 };
         private double previous_time;
         private double stage_start;
         private double simulation_ms;
@@ -160,11 +160,11 @@ namespace ZombieGame.PerformanceTests
 
         private void begin_stage()
         {
-            reset_simulation(counts[stage % 3], stage >= 3);
+            reset_simulation(counts[stage % counts.Length], stage >= counts.Length);
             frame_samples.Clear();
             simulation_ms = draw_ms = 0;
             stage_start = Time.realtimeSinceStartupAsDouble;
-            status = "Sampling stage " + (stage + 1) + "/6: 5s warmup + 20s sample";
+            status = "Sampling stage " + (stage + 1) + "/4: 5s warmup + 20s sample";
             Debug.Log("[MovementSuite] " + status);
         }
 
@@ -185,7 +185,7 @@ namespace ZombieGame.PerformanceTests
                 format_number(draw_ms / count), movement.arrived_count, movement.invalid_count);
             results.Add(row);
             Debug.Log("[MovementSuite] " + row);
-            if (++stage < 6) { begin_stage(); return; }
+            if (++stage < counts.Length * 2) { begin_stage(); return; }
             string folder = Path.Combine(Application.persistentDataPath, "MovementBenchmark");
             Directory.CreateDirectory(folder);
             File.WriteAllLines(Path.Combine(folder, "performance.csv"), results);
@@ -208,7 +208,7 @@ namespace ZombieGame.PerformanceTests
             GUI.Label(new Rect(25, 113, 620, 25), status);
             if (!is_running_suite)
             {
-                if (GUI.Button(new Rect(25, 140, 140, 25), "Run 6-case suite")) start_suite();
+                if (GUI.Button(new Rect(25, 140, 140, 25), "Run 4-case suite")) start_suite();
                 if (GUI.Button(new Rect(175, 140, 140, 25), "Toggle obstacles")) reset_simulation(10000, !has_obstacles);
             }
             Vector3 goal = Camera.main.WorldToScreenPoint(HordeNavigation.cell_position(navigation.target_cell));
