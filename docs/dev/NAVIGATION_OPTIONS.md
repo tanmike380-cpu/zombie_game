@@ -14,9 +14,10 @@ not the intended game navigation implementation.
   valid license and measured results. Do not substitute the old free package
   and claim it includes Pro's crowd features.
 
-No licensed third-party package has been purchased or imported. No performance
-comparison between these libraries has been run yet. The earlier BFS Player
-results must not be presented as NavMesh or A* results.
+No licensed third-party package has been purchased or imported. Unity native
+NavMesh was subsequently measured; see [NavMesh test report](NAVMESH_BENCHMARK_2026-09-19.md).
+A* has not been integrated or measured. The earlier BFS Player results must not
+be presented as NavMesh or A* results.
 
 ## Evaluation protocol
 
