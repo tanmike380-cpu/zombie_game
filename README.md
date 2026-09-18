@@ -4,6 +4,10 @@ A **1–2 player cooperative Survival RTS** set in a fictionalized ancient/medie
 
 ## Documentation
 
+The repository now includes a Unity 6000.6.1f1 project. Open the repository root
+in Unity and use `Tools > Zombie Game > Run 1K 5K 10K Benchmark` for the isolated
+render test. See [the verified local benchmark](docs/dev/BENCHMARK_2026-09-18.md).
+
 English is the primary language. Each Markdown file contains the English version first and the Chinese version below in the same file.
 
 - `design/01_game_vision.md`: game vision / 游戏愿景
@@ -15,6 +19,7 @@ English is the primary language. Each Markdown file contains the English version
 - `design/07_defensive_buildings.md`: defensive buildings / 防御建筑
 - `balance/initial_balance.yaml`: prototype balance values / 原型数值配置
 - `docs/dev/TECHNICAL_PROTOTYPE_01.md`: first Unity benchmark / 第一轮 Unity 性能测试
+- `docs/dev/RTS_DEVELOPMENT_PLAN.md`: development gates and next movement benchmark / 开发顺序与下一轮移动测试
 
 ## Design Principle
 
