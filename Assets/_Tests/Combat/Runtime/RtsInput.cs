@@ -1,4 +1,7 @@
 using UnityEngine;
+using System.Collections.Generic;
+using ZombieGame.Movement;
+using ZombieGame.Balance;
 
 namespace ZombieGame.CombatTests
 {
@@ -8,6 +11,8 @@ namespace ZombieGame.CombatTests
         private string pending = "Select";
         private Vector2 drag_start;
         private bool dragging;
+        private readonly FormationDestinations formation = new FormationDestinations();
+        private readonly List<Vector3> origins = new List<Vector3>(), destinations = new List<Vector3>();
         private float ui_scale => Mathf.Max(1, Screen.height / 800f);
         private bool over_hud => Input.mousePosition.y > Screen.height - 140 * ui_scale;
 
@@ -55,9 +60,16 @@ namespace ZombieGame.CombatTests
 
         public void issue_selected(CombatOrder order, Vector3 point, CombatActor target = null)
         {
-            int issued = 0;
+            int issued = 0, slot = 0;
+            bool group_move = order == CombatOrder.Move || order == CombatOrder.AttackMove || order == CombatOrder.Patrol;
+            if (group_move)
+            {
+                origins.Clear();
+                foreach (var actor in game.actors) if (actor.friendly && actor.alive && actor.selected) origins.Add(actor.transform.position);
+                if (!formation.build(point,origins,destinations)) { game.notice = "No valid formation area."; return; }
+            }
             foreach (var actor in game.actors)
-                if (actor.selected && game.issue_order(actor, order, point, target)) issued++;
+                if (actor.friendly && actor.alive && actor.selected && game.issue_order(actor, order, group_move ? destinations[slot++] : point, target)) issued++;
             game.notice = issued == 0 ? "No valid selected Shenji / destination." : order + " ordered for " + issued + " Shenji.";
         }
 
@@ -117,7 +129,7 @@ namespace ZombieGame.CombatTests
         {
             if (game == null) return;
             GUI.matrix = Matrix4x4.Scale(Vector3.one * ui_scale);
-            GUI.Box(new Rect(8, 8, 940, 125), "RTS COMBAT | 8 Shenji (3.5) vs 36 Runner (4.5) + 6 purple Exploder (4.25)");
+            GUI.Box(new Rect(8, 8, 940, 125), $"RTS COMBAT | 8 Shenji ({UnitBalance.human.move_speed}) vs 36 Runner ({UnitBalance.runner.move_speed}) + 6 purple Exploder ({UnitBalance.exploder.move_speed})");
             GUI.Label(new Rect(20, 32, 910, 22), "Left click/drag: select | Right click: move | A + left: attack | Q + left: patrol | S: stop | M + left: move");
             GUI.Label(new Rect(20, 55, 910, 22), $"Esc: cancel | R: reset | Wheel: zoom | Gun range {CombatSandbox.ATTACK_RANGE} / noise {CombatSandbox.NOISE_RADIUS} | Low wall: shoot over; high wall: blocked");
             GUI.Label(new Rect(20, 78, 910, 22), $"Mode: {pending} | Selected {selected_count()} | Shots {game.shots} | Hits {game.hits} | Heard {game.heard} | Bites {game.bites} | Blasts {game.blasts} | Dead {game.kills}/{CombatSandbox.ZOMBIE_COUNT}");

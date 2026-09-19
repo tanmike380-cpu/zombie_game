@@ -14,6 +14,13 @@ Eight rock obstacles and two impassable ponds are real NavMesh exclusions.
 Three staggered rock barriers lie between the starting army and the zombie field.
 Grass/rock/water are simple geometry, not authored terrain art or elevation tests.
 
+All unit stats are loaded from `balance/unit_balance.json`, shared with the small
+combat and navigation/noise fixtures. See `balance/README.md` for editing/build rules.
+Move/attack-move/patrol commands allocate compact native-NavMesh destination slots
+near the click, rather than preserving empty gaps between separated squads.
+Chasing zombies refresh moving targets from the shared interval and do not brake
+at stale intermediate goals. Obstacles and crowd avoidance can still reduce actual speed.
+
 ## Two measured cases
 
 1. Normal noise, 30 seconds: radius 14, propagation 5 tiles/s; only heard/seen

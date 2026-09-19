@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections.Generic;
+using ZombieGame.Movement;
 
 namespace ZombieGame.CombatStressTests
 {
@@ -13,6 +15,8 @@ namespace ZombieGame.CombatStressTests
         private Texture2D minimap;
         private readonly Color32[] map_pixels = new Color32[256 * 256];
         private float next_map_refresh;
+        private readonly FormationDestinations formation = new FormationDestinations();
+        private readonly List<Vector3> selected_origins = new List<Vector3>(400), destinations = new List<Vector3>(400);
         private readonly bool[,] control_groups = new bool[10, CombatStressSimulation.SOLDIERS];
         private int last_group = -1;
         private float last_group_time = -1;
@@ -113,13 +117,20 @@ namespace ZombieGame.CombatStressTests
 
         public int issue_selected(SoldierOrder order, Vector3 point, int target = -1)
         {
-            Vector3 center = selection_center(); int issued = 0;
+            int issued = 0, slot = 0;
+            bool group_move = order == SoldierOrder.Move || order == SoldierOrder.AttackMove || order == SoldierOrder.Patrol;
+            if (group_move)
+            {
+                selected_origins.Clear();
+                for (int i = 0; i < 400; i++)
+                    if (game.current.selected[i] && game.current.health[i] > 0) selected_origins.Add(game.current.positions[i]);
+                if (!formation.build(point,selected_origins,destinations))
+                { notice = "No reachable formation area near the click."; return 0; }
+            }
             for (int i = 0; i < 400; i++)
             {
                 if (!game.current.selected[i] || game.current.health[i] <= 0) continue;
-                Vector3 goal = point;
-                if (order == SoldierOrder.Move || order == SoldierOrder.AttackMove || order == SoldierOrder.Patrol)
-                    goal += game.current.positions[i] - center;
+                Vector3 goal = group_move ? destinations[slot++] : point;
                 if (game.current.issue_order(i,order,goal,target)) issued++;
             }
             notice = issued > 0 ? $"{order}: {issued} soldiers ordered." : "No valid order: select soldiers / choose reachable ground.";
