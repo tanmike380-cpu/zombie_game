@@ -13,3 +13,6 @@
   under `Assets/_Game`. Preserve the shared humanoid/musket test models across test scenes.
 - NavMesh owns routing/avoidance. Formation destination assignment must not preserve empty gaps
   between separated squads; regression-test regrouping as well as obstacle detours.
+- Formation commands fill radial bands from the mouse target outward, assigning nearer units
+  to inner bands before farther units. Match approach directions within each band to reduce
+  crossing. Do not revert to unit-index-priority assignment or stagger command start times.

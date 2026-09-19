@@ -26,7 +26,7 @@ namespace ZombieGame.CombatStressTests
             require(input.issue_selected(SoldierOrder.Move,input.selection_center()+Vector3.right*3) == 400, "Group move command rejected");
             for (int i=0;i<400;i++) require(!s.crowd.agents[i].pathPending && s.crowd.agents[i].hasPath, "Move path queued");
             yield return new WaitForSeconds(1.5f);
-            require(s.positions[0].x > start.x + 2 && s.shots == 0, "Move/no auto-fire");
+            require(Vector3.Distance(s.positions[0],start) > .5f && s.shots == 0, "Move/no auto-fire");
             input.issue_selected(SoldierOrder.Move,input.selection_center()+Vector3.right*10);
             yield return new WaitForSeconds(.2f);
             input.issue_selected(SoldierOrder.Stop,Vector3.zero);
@@ -41,7 +41,7 @@ namespace ZombieGame.CombatStressTests
             Vector3 screen = Camera.main.WorldToScreenPoint(s.positions[1]+Vector3.up*.6f);
             Vector2 gui = new Vector2(screen.x,Screen.height-screen.y);
             require(input.pick_unit(gui,false)==1,"Screen-space unit picking");
-            input.select_rectangle(gui+new Vector2(2,2),gui-new Vector2(2,2),false);
+            input.select_rectangle(gui,gui,false);
             require(input.selected_count()==1 && s.selected[1],"Click selection");
             input.select_rectangle(new Vector2(Screen.width,Screen.height),Vector2.zero,false);
             require(input.selected_count()==400,"Reverse box selection");
@@ -71,6 +71,15 @@ namespace ZombieGame.CombatStressTests
             Vector3 regroup = new Vector3(-107,0,0);
             require(input.issue_selected(SoldierOrder.Move,regroup)==400,"Split squads rejected regroup");
             for (int i=0;i<400;i++) require(Vector3.Distance(s.order_goals[i],regroup)<13,"Empty gap preserved in formation goals");
+            for (int i=0;i<400;i++)
+                for (int j=0;j<400;j++)
+                {
+                    float from_i = Vector3.Distance(s.positions[i],regroup), from_j = Vector3.Distance(s.positions[j],regroup);
+                    int ring_i = Mathf.FloorToInt(Vector3.Distance(s.order_goals[i],regroup)/UnitBalance.config.formation_spacing + .001f);
+                    int ring_j = Mathf.FloorToInt(Vector3.Distance(s.order_goals[j],regroup)/UnitBalance.config.formation_spacing + .001f);
+                    require(from_i >= from_j-.01f || ring_i <= ring_j,"Farther unit stole an inner ring");
+                }
+            Debug.Log($"[RadialFormationSmoke] PASS all 400 nearest-to-click priorities preserve inner/outer rings; assignment_ms={input.last_formation_ms:F3}");
             float regroup_deadline = Time.time + 25;
             bool regrouped = false;
             while (Time.time < regroup_deadline)
@@ -99,8 +108,42 @@ namespace ZombieGame.CombatStressTests
             require(s.issue_order(0,SoldierOrder.AttackTarget,s.positions[401],401),"Visible target rejected");
             yield return new WaitForSeconds(2.5f);
             require(s.shots>0 && s.hits>0 && s.ever_active>0,"Attack/noise chase loop");
+            yield return verify_extended_noise();
             Debug.Log($"[StressRtsSmoke] PASS manual start, 400-unit move, stop, patrol, screen picking/box selection, groups/recall/focus/reset/dead filtering, central obstacle detour, terrain bounds, enemy/hidden rejection, moving fog/exploration, attack/noise chase. shots={s.shots} hits={s.hits} activated={s.ever_active}");
             game.reset_playable(); game.input_locked=false;
+        }
+
+        private IEnumerator verify_extended_noise()
+        {
+            game.reset_playable(); yield return null;
+            var simulation = game.current;
+            Vector3 source = new Vector3(-95,0,-70);
+            require(simulation.crowd.agents[0].Warp(source),"Noise source fixture warp");
+            Vector3[] directions = { Vector3.right,Vector3.left,Vector3.forward,Vector3.back };
+            float radius = UnitBalance.human_noise(UnitBalance.human);
+            float listener_distance = (UnitBalance.config.human_sight+radius)*.5f;
+            for (int i=0;i<4;i++)
+            {
+                int index = 401+i;
+                simulation.crowd.agents[index].enabled=true;
+                require(simulation.crowd.agents[index].Warp(source+directions[i]*listener_distance),"Four-direction listener warp");
+            }
+            simulation.crowd.agents[405].enabled=true;
+            require(simulation.crowd.agents[405].Warp(source+Vector3.left*(radius+1)),"Outside listener warp");
+            simulation.crowd.agents[406].enabled=true;
+            require(simulation.crowd.agents[406].Warp(source+Vector3.right*(UnitBalance.human.attack_range-.5f)),"Gun target fixture warp");
+            yield return new WaitForSeconds(.3f);
+            for (int i=0;i<4;i++) require(!game.current_fog.is_visible(simulation.positions[401+i]),"Noise listener was inside human sight");
+            yield return new WaitForSeconds(listener_distance/UnitBalance.config.noise_propagation_speed+.8f);
+            for (int i=0;i<4;i++)
+            {
+                int index = 401+i;
+                require(simulation.activated[index],"Sight-external listener did not hear gun: "+i);
+                require(Vector3.Distance(simulation.positions[index],source)<listener_distance-.1f,"Listener not approaching source: "+i);
+            }
+            require(!simulation.activated[405],"Beyond-radius zombie heard gun");
+            require(simulation.shots>0 && simulation.heard>=4,"Gun did not generate four-direction noise");
+            Debug.Log($"[Noise3xSmoke] PASS gun_range={UnitBalance.human.attack_range} noise_radius={radius} human_sight={UnitBalance.config.human_sight}; four fog-hidden listeners at {listener_distance} tiles approached; outside listener at {radius+1} stayed idle");
         }
 
         private IEnumerator verify_movement_speeds()

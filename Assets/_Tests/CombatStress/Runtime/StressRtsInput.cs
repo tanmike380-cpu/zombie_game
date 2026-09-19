@@ -17,6 +17,7 @@ namespace ZombieGame.CombatStressTests
         private float next_map_refresh;
         private readonly FormationDestinations formation = new FormationDestinations();
         private readonly List<Vector3> selected_origins = new List<Vector3>(400), destinations = new List<Vector3>(400);
+        public double last_formation_ms => formation.last_assignment_ms;
         private readonly bool[,] control_groups = new bool[10, CombatStressSimulation.SOLDIERS];
         private int last_group = -1;
         private float last_group_time = -1;
