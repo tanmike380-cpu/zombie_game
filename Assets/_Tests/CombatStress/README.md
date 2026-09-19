@@ -10,7 +10,8 @@ The same capsule bodies and yellow muskets as the small Combat sandbox are drawn
 with GPU instancing. No replacement cube units or imported character art.
 F9 explicitly starts the scripted stationary defensive-line benchmark below;
 F10 returns to a fresh manual game. CLI `-combatBenchmark` starts the auto suite.
-Five rock obstacles and two impassable ponds are real NavMesh exclusions.
+Eight rock obstacles and two impassable ponds are real NavMesh exclusions.
+Three staggered rock barriers lie between the starting army and the zombie field.
 Grass/rock/water are simple geometry, not authored terrain art or elevation tests.
 
 ## Two measured cases
@@ -51,6 +52,10 @@ it does not mean that every later asynchronous request was audited for completio
 ## Viewing
 
 Left click/drag: select humans; Shift adds selection; Ctrl+A selects all humans.
+Backquote (`~` key beside 1) or F2: select all living humans.
+Ctrl+0–9: replace a control group; 0–9: recall; double-tap within .35s: recall and
+center the camera. Dead soldiers are skipped; restarting clears all groups.
+H toggles the diagnostic header (hidden by default). It never blocks box selection.
 Right click: move only. A then left click: attack a visible enemy or attack-move.
 Q then left click: patrol. M then left click: move. S: stop. Esc: cancel command.
 Minimap shows the full 256×256 bounds: left pans the camera, right orders movement.
@@ -67,7 +72,8 @@ CSV/hardware notes: `Application.persistentDataPath/CombatStress/<timestamp>/`.
 ## 中文
 
 默认可操作的独立测试：400火枪兵、9000快速僵尸、1000自爆僵尸，256×256地图，
-含草地、五组岩石障碍、两处不可通行水域。人类视野10、僵尸4；枪射程7、噪音14。
+含草地、八组岩石障碍、两处不可通行水域。三组新障碍在起点与敌军之间，必须绕行。
+人类视野10、僵尸4；枪射程7、噪音14。
 迷雾每秒更新10次，隐藏视野外敌人；视野外正在进攻的僵尸依旧计算寻路和战斗。
 自爆只有伤害和效果，不引怪。分别测正常声音触发与明确的全军进攻，不混淆两者。
 沿用小场景的人形胶囊和黄色火枪，不再用方块代替兵种。F9才进入固定阵线自动压测。

@@ -28,6 +28,7 @@ namespace ZombieGame.CombatStressTests
         private float frame_ms;
         private int gc_start;
         public bool input_locked;
+        private bool show_diagnostics;
         private StressRtsInput rts_input;
         public CombatStressSimulation current => simulation;
         public CombatFog current_fog => fog;
@@ -73,7 +74,7 @@ namespace ZombieGame.CombatStressTests
             simulation.player_visibility = fog.is_visible;
             advancing = true;
             Camera.main.orthographicSize = 28; Camera.main.transform.position = new Vector3(-81,200,0);
-            rts_input?.select_all();
+            rts_input?.clear_groups(); rts_input?.select_all();
             status = "PLAYABLE: left drag selects | Right move | A+left attack | Q patrol | S stop | M move";
         }
 
@@ -124,6 +125,7 @@ namespace ZombieGame.CombatStressTests
 
         private void Update()
         {
+            if (Input.GetKeyDown(KeyCode.H)) show_diagnostics = !show_diagnostics;
             double now = Time.realtimeSinceStartupAsDouble;
             double interval = (now - last_frame) * 1000; last_frame = now;
             frame_ms = Mathf.Lerp(frame_ms, (float)interval, .08f);
@@ -234,6 +236,7 @@ namespace ZombieGame.CombatStressTests
 
         private void OnGUI()
         {
+            if (!show_diagnostics) return;
             GUI.matrix = Matrix4x4.Scale(Vector3.one * Mathf.Max(1, Screen.height / 800f));
             GUI.Box(new Rect(8,8,1000,155), "COMBAT STRESS | 400 SHENJI vs 9,000 RUNNERS + 1,000 EXPLODERS | 256 x 256");
             GUI.Label(new Rect(20,32,970,22), input_locked ? "AUTO CHECK (~30s): controls unlock when done" : status);

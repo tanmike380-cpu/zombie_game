@@ -41,6 +41,24 @@ namespace ZombieGame.CombatStressTests
             require(input.selected_count()==1 && s.selected[1],"Click selection");
             input.select_rectangle(new Vector2(Screen.width,Screen.height),Vector2.zero,false);
             require(input.selected_count()==400,"Reverse box selection");
+            input.store_group(1);
+            for (int i=0;i<400;i++) s.selected[i] = i < 8;
+            input.store_group(2);
+            input.recall_group(1,false);
+            require(input.selected_count()==400,"Group 1 recall");
+            input.recall_group(2,true);
+            require(input.selected_count()==8 && s.selected[7] && !s.selected[8],"Group 2 recall");
+            require(Vector3.Distance(Camera.main.transform.position,new Vector3(input.selection_center().x,200,input.selection_center().z))<.01f,"Double-tap group camera focus");
+            s.health[7]=0; input.recall_group(2,false);
+            require(input.selected_count()==7,"Dead group member selected");
+            s.health[7]=100;
+            input.clear_groups(); input.recall_group(2,false);
+            require(input.selected_count()==0,"Stale groups after reset");
+            input.select_all();
+            var route = new UnityEngine.AI.NavMeshPath();
+            require(UnityEngine.AI.NavMesh.CalculatePath(new Vector3(-75,0,0),new Vector3(-25,0,0),UnityEngine.AI.NavMesh.AllAreas,route)
+                && route.status == UnityEngine.AI.NavMeshPathStatus.PathComplete && route.corners.Length>2,"Central obstacle detour missing");
+            require(!s.issue_order(0,SoldierOrder.Move,new Vector3(-62,0,0)),"Central rock accepted move");
 
             require(s.crowd.agents[0].Warp(new Vector3(-100,0,-55)),"Fog fixture warp A");
             yield return new WaitForSeconds(.3f);
@@ -57,7 +75,7 @@ namespace ZombieGame.CombatStressTests
             require(s.issue_order(0,SoldierOrder.AttackTarget,s.positions[401],401),"Visible target rejected");
             yield return new WaitForSeconds(2.5f);
             require(s.shots>0 && s.hits>0 && s.ever_active>0,"Attack/noise chase loop");
-            Debug.Log($"[StressRtsSmoke] PASS manual start, 400-unit move, stop, patrol, screen picking/box selection, terrain bounds, enemy/hidden rejection, moving fog/exploration, attack/noise chase. shots={s.shots} hits={s.hits} activated={s.ever_active}");
+            Debug.Log($"[StressRtsSmoke] PASS manual start, 400-unit move, stop, patrol, screen picking/box selection, groups/recall/focus/reset/dead filtering, central obstacle detour, terrain bounds, enemy/hidden rejection, moving fog/exploration, attack/noise chase. shots={s.shots} hits={s.hits} activated={s.ever_active}");
             game.reset_playable(); game.input_locked=false;
         }
 

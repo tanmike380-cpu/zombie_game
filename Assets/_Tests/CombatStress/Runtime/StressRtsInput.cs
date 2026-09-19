@@ -13,10 +13,57 @@ namespace ZombieGame.CombatStressTests
         private Texture2D minimap;
         private readonly Color32[] map_pixels = new Color32[256 * 256];
         private float next_map_refresh;
+        private readonly bool[,] control_groups = new bool[10, CombatStressSimulation.SOLDIERS];
+        private int last_group = -1;
+        private float last_group_time = -1;
         private float scale => Mathf.Max(1, Screen.height / 800f);
         private Rect map_rect => new Rect(Screen.width - 226 * scale, Screen.height - 246 * scale, 210 * scale, 210 * scale);
 
         public void cancel_command() { pending = "Select"; dragging = false; }
+        public void clear_groups()
+        {
+            System.Array.Clear(control_groups,0,control_groups.Length);
+            last_group = -1; last_group_time = -1;
+        }
+
+        public void store_group(int group)
+        {
+            if (group < 0 || group > 9) return;
+            for (int i = 0; i < CombatStressSimulation.SOLDIERS; i++)
+                control_groups[group,i] = game.current.selected[i] && game.current.health[i] > 0;
+            last_group = -1;
+            notice = $"Group {group} saved: {selected_count()} soldiers.";
+        }
+
+        public void recall_group(int group, bool focus)
+        {
+            if (group < 0 || group > 9) return;
+            for (int i = 0; i < CombatStressSimulation.SOLDIERS; i++)
+                game.current.selected[i] = control_groups[group,i] && game.current.health[i] > 0;
+            cancel_command();
+            if (focus && selected_count() > 0)
+            {
+                Vector3 center = selection_center();
+                Camera.main.transform.position = new Vector3(center.x,200,center.z);
+            }
+            notice = $"Group {group}: {selected_count()} soldiers" + (focus ? " / camera centered." : ".");
+        }
+
+        private void handle_group_keys()
+        {
+            if (Input.GetKeyDown(KeyCode.BackQuote) || Input.GetKeyDown(KeyCode.F2)) select_all();
+            bool control = Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl);
+            for (int group = 0; group <= 9; group++)
+            {
+                if (!Input.GetKeyDown((KeyCode)((int)KeyCode.Alpha0 + group))) continue;
+                if (control) store_group(group);
+                else
+                {
+                    recall_group(group,last_group == group && Time.unscaledTime-last_group_time <= .35f);
+                    last_group = group; last_group_time = Time.unscaledTime;
+                }
+            }
+        }
         public void select_all()
         {
             if (game.current == null) return;
@@ -46,6 +93,7 @@ namespace ZombieGame.CombatStressTests
             if (game == null || game.current == null) return;
             if (Time.unscaledTime >= next_map_refresh) { next_map_refresh = Time.unscaledTime + .15f; refresh_minimap(); }
             if (!game.can_control) { dragging = false; return; }
+            handle_group_keys();
             if (Input.GetKeyDown(KeyCode.Escape)) cancel_command();
             if (Input.GetKeyDown(KeyCode.A))
             {
@@ -127,7 +175,7 @@ namespace ZombieGame.CombatStressTests
             notice = $"{selected_count()} selected. Right-click moves; A + left-click attacks.";
         }
 
-        private void handle_mouse(Event input)
+        public void handle_mouse(Event input)
         {
             Vector2 mouse = input.mousePosition;
             if (input.type == EventType.MouseDown && map_rect.Contains(mouse))
@@ -138,8 +186,8 @@ namespace ZombieGame.CombatStressTests
                 else if (input.button == 0) Camera.main.transform.position = new Vector3(point.x,200,point.z);
                 dragging = false; input.Use(); return;
             }
-            bool over_hud = mouse.y < 170 * scale;
-            if (input.type == EventType.MouseDown && !over_hud)
+            // Diagnostic text is non-interactive: selection may start/end beneath it.
+            if (input.type == EventType.MouseDown)
             {
                 if (input.button == 1 && world_point(mouse,out var move))
                 { issue_selected(SoldierOrder.Move,move); cancel_command(); input.Use(); }
@@ -153,7 +201,7 @@ namespace ZombieGame.CombatStressTests
             else if (input.type == EventType.MouseUp && input.button == 0 && dragging)
             {
                 dragging = false;
-                if (!over_hud && !map_rect.Contains(mouse)) select_rectangle(drag_start,mouse,input.shift);
+                select_rectangle(drag_start,mouse,input.shift);
                 input.Use();
             }
         }

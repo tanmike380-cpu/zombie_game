@@ -45,6 +45,9 @@ namespace ZombieGame.CombatStressTests
                 new Bounds(new Vector3(85, 1.5f, -42), new Vector3(4, 3, 26))
                 ,new Bounds(new Vector3(36, .2f, -53), new Vector3(22, .4f, 16))
                 ,new Bounds(new Vector3(64, .2f, 8), new Vector3(24, .4f, 14))
+                ,new Bounds(new Vector3(-62, 1.5f, 0), new Vector3(3, 3, 22))
+                ,new Bounds(new Vector3(-40, 1.5f, 14), new Vector3(3, 3, 20))
+                ,new Bounds(new Vector3(-40, 1.5f, -18), new Vector3(3, 3, 16))
             };
             for (int i = 0; i < SOLDIERS; i++)
                 positions[i] = playable ? new Vector3(-90 + i % 20 * .9f, 0, -8.55f + i / 20 * .9f)
