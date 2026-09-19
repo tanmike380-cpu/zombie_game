@@ -90,7 +90,7 @@ namespace ZombieGame.CombatStressTests
                 advancing = sampling = false;
                 simulation?.Dispose(); simulation = null;
                 fog?.Dispose(); fog = null;
-                status = assault ? "Preparing full assault: not a sound event" : "Preparing normal 14-tile gun-noise case";
+                status = assault ? "Preparing full assault: not a sound event" : $"Preparing normal {UnitBalance.human_noise(UnitBalance.human)}-tile gun-noise case";
                 yield return null;
                 double setup_start = Time.realtimeSinceStartupAsDouble;
                 simulation = new CombatStressSimulation(assault);

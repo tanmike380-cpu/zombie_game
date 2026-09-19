@@ -57,8 +57,8 @@ resources:
       iron: true
 
 combat_scale:
-  note_zh: "有射程的攻击统一采用 Noise 半径=射程×2；我方自爆兵暂保留8格，僵尸自爆不产生吸引声音。"
-  note_en: "Positive-range attacks use Noise radius = range × 2; player suicide bomber noise retains 8 tiles; zombie explosions emit no attraction noise."
+  note_zh: "有射程的攻击统一采用 Noise 半径=射程×3；我方自爆兵暂保留8格，僵尸自爆不产生吸引声音。"
+  note_en: "Positive-range attacks use Noise radius = range × 3; player suicide bomber noise retains 8 tiles; zombie explosions emit no attraction noise."
 
 vision:
   note_zh: "视野、武器射程和声音半径分开；特殊僵尸视野暂不额外扩展。"

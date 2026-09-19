@@ -18,12 +18,15 @@ All unit stats are loaded from `balance/unit_balance.json`, shared with the smal
 combat and navigation/noise fixtures. See `balance/README.md` for editing/build rules.
 Move/attack-move/patrol commands allocate compact native-NavMesh destination slots
 near the click, rather than preserving empty gaps between separated squads.
+Closest soldiers receive inner radial bands; farther soldiers receive outer bands.
+Within each band, minimum-squared-distance matching reduces crossing. Commands are
+issued together, not delayed by a sound-like propagation wave.
 Chasing zombies refresh moving targets from the shared interval and do not brake
 at stale intermediate goals. Obstacles and crowd avoidance can still reduce actual speed.
 
 ## Two measured cases
 
-1. Normal noise, 30 seconds: radius 14, propagation 5 tiles/s; only heard/seen
+1. Normal noise, 30 seconds: radius 21, propagation 5 tiles/s; only heard/seen
    zombies activate. Most of the 10K population remains idle. This is not presented
    as 10K simultaneous combat.
 2. Full assault, at most 60 seconds or until all soldiers die: prepare native paths
@@ -39,7 +42,7 @@ it does not mean that every later asynchronous request was audited for completio
 
 ## Scope and limitations
 
-- Human sight 10; zombies acquire visible targets within 4; guns range 7, noise 14.
+- Human sight 10; zombies acquire visible targets within 4; guns range 7, noise 21.
 - 256×256 one-tile fog grid, updated at 10 Hz: black unexplored, dark explored but
   currently unseen. Enemy models/projectiles/blasts are hidden outside current sight.
   Circle visibility is cell-centre sampled, without terrain-height vision occlusion.
@@ -81,7 +84,7 @@ CSV/hardware notes: `Application.persistentDataPath/CombatStress/<timestamp>/`.
 
 默认可操作的独立测试：400火枪兵、9000快速僵尸、1000自爆僵尸，256×256地图，
 含草地、八组岩石障碍、两处不可通行水域。三组新障碍在起点与敌军之间，必须绕行。
-人类视野10、僵尸4；枪射程7、噪音14。
+人类视野10、僵尸4；枪射程7、噪音21。
 迷雾每秒更新10次，隐藏视野外敌人；视野外正在进攻的僵尸依旧计算寻路和战斗。
 自爆只有伤害和效果，不引怪。分别测正常声音触发与明确的全军进攻，不混淆两者。
 沿用小场景的人形胶囊和黄色火枪，不再用方块代替兵种。F9才进入固定阵线自动压测。

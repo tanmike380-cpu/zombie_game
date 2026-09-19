@@ -5,7 +5,7 @@ namespace ZombieGame.PerformanceTests
     /// <summary>One test pulse, ten one-tile bands. No raycasts, echoes or wall acoustics.</summary>
     public sealed class NoisePulseField
     {
-        public static float RADIUS => ZombieGame.Balance.UnitBalance.human_noise(ZombieGame.Balance.UnitBalance.get("archer"));
+        public static float RADIUS => ZombieGame.Balance.UnitBalance.config.noise_probe_radius;
         public static float PROPAGATION_SPEED => ZombieGame.Balance.UnitBalance.config.noise_propagation_speed;
         public static float PULSE_DURATION => ZombieGame.Balance.UnitBalance.config.noise_pulse_duration;
         public Vector3 source { get; private set; }
@@ -21,7 +21,8 @@ namespace ZombieGame.PerformanceTests
         {
             if (float.IsNaN(distance) || distance < 0 || distance > RADIUS) return 0;
             int band = Mathf.Max(1, Mathf.CeilToInt(distance));
-            return (11 - band) * 10;
+            int bands = Mathf.CeilToInt(RADIUS);
+            return Mathf.Max(1,Mathf.RoundToInt((bands+1-band)*100f/bands));
         }
 
         public int sample_percent(Vector3 position, double now)

@@ -18,7 +18,7 @@ namespace ZombieGame.Balance
     public sealed class BalanceConfig
     {
         public int version;
-        public float human_sight, zombie_sight, noise_range_multiplier, noise_propagation_speed, noise_pulse_duration;
+        public float human_sight, zombie_sight, noise_range_multiplier, noise_probe_radius, noise_propagation_speed, noise_pulse_duration;
         public float formation_spacing, chase_repath_seconds;
         public UnitStats[] units;
     }
@@ -49,7 +49,7 @@ namespace ZombieGame.Balance
         public static void validate(BalanceConfig values)
         {
             if (values == null || values.version != 1 || values.units == null || values.human_sight <= 0 || values.zombie_sight <= 0
-                || values.noise_range_multiplier <= 0 || values.noise_propagation_speed <= 0 || values.noise_pulse_duration <= 0
+                || values.noise_range_multiplier <= 0 || values.noise_probe_radius <= 0 || values.noise_propagation_speed <= 0 || values.noise_pulse_duration <= 0
                 || values.formation_spacing < .6f || values.chase_repath_seconds <= 0)
                 throw new InvalidOperationException("Invalid balance/unit_balance.json globals/schema");
             var ids = new HashSet<string>();
@@ -63,7 +63,7 @@ namespace ZombieGame.Balance
             }
             foreach (string required in new[] { "firearm_infantry", "runner", "exploder", "walker", "archer" })
                 if (!ids.Contains(required)) throw new InvalidOperationException("Required balance unit missing: " + required);
-            foreach (float number in new[] {values.human_sight,values.zombie_sight,values.noise_range_multiplier,values.noise_propagation_speed,values.noise_pulse_duration,values.formation_spacing,values.chase_repath_seconds})
+            foreach (float number in new[] {values.human_sight,values.zombie_sight,values.noise_range_multiplier,values.noise_probe_radius,values.noise_propagation_speed,values.noise_pulse_duration,values.formation_spacing,values.chase_repath_seconds})
                 if (float.IsNaN(number) || float.IsInfinity(number)) throw new InvalidOperationException("Non-finite balance global");
             var human_stats = Array.Find(values.units,unit => unit.id == "firearm_infantry");
             var runner_stats = Array.Find(values.units,unit => unit.id == "runner");

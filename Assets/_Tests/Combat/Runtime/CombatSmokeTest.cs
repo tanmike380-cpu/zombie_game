@@ -12,7 +12,7 @@ namespace ZombieGame.CombatTests
         private IEnumerator Start()
         {
             yield return null;
-            require(CombatSandbox.NOISE_RADIUS == CombatSandbox.ATTACK_RANGE * 2, "Noise/range ratio");
+            require(CombatSandbox.NOISE_RADIUS == CombatSandbox.ATTACK_RANGE * UnitBalance.config.noise_range_multiplier, "Noise/range ratio");
             require(game.can_see(new Vector3(-2, 0, -5), new Vector3(2, 0, -5)), "Low wall blocked shots");
             require(!game.can_see(new Vector3(-2, 0, 5), new Vector3(2, 0, 5)), "High wall leaked shots");
             var archer = game.actors[0];
@@ -43,7 +43,8 @@ namespace ZombieGame.CombatTests
             Vector3 source = new Vector3(-4, 0, 5);
             zombie.agent.Warp(new Vector3(5, 0, 5));
             zombie.agent.speed = 0; // Hold listener until pulse expires to isolate source memory.
-            var outside = game.actors[CombatSandbox.FRIENDLY_COUNT + 1]; outside.agent.Warp(new Vector3(11, 0, 5));
+            var outside = game.actors[CombatSandbox.FRIENDLY_COUNT + 1];
+            require(outside.agent.Warp(source + new Vector3(18,0,-15).normalized * (CombatSandbox.NOISE_RADIUS+1)),"Outside noise fixture warp");
             require(Vector3.Distance(source, zombie.transform.position) > CombatSandbox.ATTACK_RANGE, "Listener inside attack range");
             require(!game.can_see(source, zombie.transform.position), "Noise case not behind high wall");
             game.emit_noise(source, CombatSandbox.NOISE_RADIUS);
@@ -70,7 +71,7 @@ namespace ZombieGame.CombatTests
             require(!archer.alive && !archer.agent.enabled, "Friendly death failed");
             int melee_count = game.bites;
             yield return verify_explosions();
-            string message = $"PASS 8 Shenji/36 Runner/6 Exploder, move/no auto-fire, reverse within 100ms, patrol, stop drift <0.1, low/high wall LOS, noise 2x range, distant wall listener/outside rejection, noise memory, AI order rejection, gun/hits/kills, melee, death, AOE inside/outside, contact/fuse-kill/remote-death explosion visuals, no duplicate blast, silent explosions leave idle zombies unaware. {combat_counts} bites={melee_count}";
+            string message = $"PASS 8 Shenji/36 Runner/6 Exploder, move/no auto-fire, reverse within 100ms, patrol, stop drift <0.1, low/high wall LOS, noise follows shared range multiplier, distant wall listener/outside rejection, noise memory, AI order rejection, gun/hits/kills, melee, death, AOE inside/outside, contact/fuse-kill/remote-death explosion visuals, no duplicate blast, silent explosions leave idle zombies unaware. {combat_counts} bites={melee_count}";
             Debug.Log("[CombatSmoke] " + message);
             Directory.CreateDirectory(Path.Combine(Application.persistentDataPath, "CombatSandbox"));
             File.WriteAllText(Path.Combine(Application.persistentDataPath, "CombatSandbox/smoke.txt"), message);

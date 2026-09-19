@@ -46,17 +46,21 @@ namespace ZombieGame.EditorTools
         public static void validate_rules()
         {
             require(NoisePulseField.distance_percent(0) == 100, "Source is 100%");
-            for (int tile = 1; tile <= 10; tile++)
-                require(NoisePulseField.distance_percent(tile) == (11 - tile) * 10, "Wrong tile band: " + tile);
-            require(NoisePulseField.distance_percent(10.001f) == 0, "Outside boundary heard");
+            float radius = NoisePulseField.RADIUS;
+            int bands = Mathf.CeilToInt(radius);
+            for (int tile = 1; tile <= Mathf.FloorToInt(radius); tile++)
+                require(NoisePulseField.distance_percent(tile) == Mathf.Max(1,Mathf.RoundToInt((bands+1-tile)*100f/bands)), "Wrong tile band: " + tile);
+            require(NoisePulseField.distance_percent(radius+.001f) == 0, "Outside boundary heard");
             require(NoisePulseField.distance_percent(float.NaN) == 0, "NaN audible");
             var pulse = new NoisePulseField();
             pulse.emit(Vector3.zero, 0);
-            require(pulse.sample_percent(new Vector3(10, 0, 0), 1.99) == 0, "Far unit heard before wave");
-            require(pulse.sample_percent(new Vector3(10, 0, 0), 2) == 10, "Exact ten-tile boundary missing");
-            require(pulse.sample_percent(new Vector3(6, 0, 8), 2) == 10, "Diagonal boundary missing");
-            require(pulse.sample_percent(new Vector3(10.001f, 0, 0), 3) == 0, "Outside circle audible");
-            require(pulse.sample_percent(new Vector3(10, 0, 0), 3) == 0, "Pulse never expired");
+            double arrival = radius / NoisePulseField.PROPAGATION_SPEED;
+            int weakest = NoisePulseField.distance_percent(radius);
+            require(pulse.sample_percent(new Vector3(radius, 0, 0), arrival-.01) == 0, "Far unit heard before wave");
+            require(pulse.sample_percent(new Vector3(radius, 0, 0), arrival) == weakest && weakest>0, "Exact boundary missing");
+            require(pulse.sample_percent(new Vector3(radius*.6f, 0, radius*.8f), arrival+.01) == weakest, "Diagonal boundary missing");
+            require(pulse.sample_percent(new Vector3(radius+.001f, 0, 0), arrival+.1) == 0, "Outside circle audible");
+            require(pulse.sample_percent(new Vector3(radius, 0, 0), arrival+NoisePulseField.PULSE_DURATION+.1) == 0, "Pulse never expired");
             var memory = new NoiseInvestigation();
             Vector3 old_source = new Vector3(3, 0, 0);
             require(memory.hear(old_source, 10), "Weak valid sound rejected");

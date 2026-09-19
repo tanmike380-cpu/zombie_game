@@ -47,7 +47,7 @@ namespace ZombieGame.PerformanceTests
             wave_material = create_material(new Color(.15f, 1, .55f));
             boundary = create_ring("10 tile boundary", source_material);
             wave = create_ring("Expanding sound front", wave_material);
-            update_ring(boundary, 10);
+            update_ring(boundary, NoisePulseField.RADIUS);
             reset_test();
         }
 
@@ -93,7 +93,7 @@ namespace ZombieGame.PerformanceTests
             {
                 starts[i] = new Vector3(-104 + i % 100, 0, -50 + i / 100);
                 memories[i] = new NoiseInvestigation();
-                if (Vector3.Distance(starts[i], SOURCE) <= 10) expected++;
+                if (Vector3.Distance(starts[i], SOURCE) <= NoisePulseField.RADIUS) expected++;
             }
             var walls = new[] {
                 new Bounds(new Vector3(-2.5f, 1.5f, -1.5f), new Vector3(.5f, 3, 5)),
@@ -112,7 +112,7 @@ namespace ZombieGame.PerformanceTests
             emitted = saved = false;
             silence_positions = null;
             frame_samples.Clear();
-            result = "Pulse in 3 seconds; normal radius 10, NOT global attraction";
+            result = $"Pulse in 3 seconds; probe radius {NoisePulseField.RADIUS}, NOT global attraction";
             set_close_camera();
             Debug.Log($"[NoiseTest] START population={COUNT} expected_in_radius={expected} radius={NoisePulseField.RADIUS} speed={ZombieGame.Balance.UnitBalance.get("walker").move_speed} agent_radius=.25");
         }
@@ -161,7 +161,7 @@ namespace ZombieGame.PerformanceTests
                 double reaction = now - pulse.emitted_at;
                 if (first_trigger < 0) first_trigger = reaction;
                 last_trigger = reaction;
-                if (Vector3.Distance(starts[i], SOURCE) > 10) outside_triggered++;
+                if (Vector3.Distance(starts[i], SOURCE) > NoisePulseField.RADIUS) outside_triggered++;
                 if (!crowd.investigate_position(i, memories[i].remembered_position)) route_failures++;
             }
         }
