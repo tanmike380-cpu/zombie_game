@@ -52,6 +52,18 @@ namespace ZombieGame.CombatStressTests
             return x >= 0 && x < SIZE && z >= 0 && z < SIZE && visible[x + z * SIZE];
         }
 
+        public Color32 minimap_color(int index, bool reveal)
+        {
+            if (reveal || visible[index]) return new Color32(41,64,31,255);
+            return explored[index] ? new Color32(17,26,13,255) : new Color32(0,0,0,255);
+        }
+
+        public bool is_explored(Vector3 point)
+        {
+            int x = Mathf.FloorToInt(point.x + 128), z = Mathf.FloorToInt(point.z + 128);
+            return x >= 0 && x < SIZE && z >= 0 && z < SIZE && explored[x + z * SIZE];
+        }
+
         public void draw()
         {
             Graphics.DrawMesh(quad, Matrix4x4.TRS(new Vector3(0, 8, 0), Quaternion.Euler(90, 0, 0), new Vector3(256,256,1)), material, 0);

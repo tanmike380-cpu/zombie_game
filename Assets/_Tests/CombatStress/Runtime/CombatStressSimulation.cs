@@ -6,7 +6,7 @@ using ZombieGame.PerformanceTests;
 namespace ZombieGame.CombatStressTests
 {
     /// <summary>Fixed defensive line, native crowd navigation, spatial combat queries.</summary>
-    public sealed class CombatStressSimulation : IDisposable
+    public sealed partial class CombatStressSimulation : IDisposable
     {
         public const int SOLDIERS = 400, ZOMBIES = 10000, TOTAL = SOLDIERS + ZOMBIES;
         public readonly Vector3[] positions = new Vector3[TOTAL];
@@ -15,6 +15,8 @@ namespace ZombieGame.CombatStressTests
         public readonly bool[] exploder = new bool[TOTAL];
         public readonly NavMeshCrowd crowd;
         public readonly bool assault;
+        public readonly bool playable;
+        public readonly Vector3[] soldier_facing = new Vector3[SOLDIERS];
         public int shots, hits, bites, blasts, heard, dead_soldiers, dead_zombies, ever_active;
         public int active_now, pending, path_failures, dropped_projectiles, moving_now;
         public int peak_active, peak_moving, geometry_errors;
@@ -32,9 +34,9 @@ namespace ZombieGame.CombatStressTests
         private int path_cursor = SOLDIERS, shot_cursor, flash_cursor;
         private float next_tick;
 
-        public CombatStressSimulation(bool global_assault)
+        public CombatStressSimulation(bool global_assault, bool player_controlled = false)
         {
-            assault = global_assault;
+            assault = global_assault; playable = player_controlled;
             var walls = new[] {
                 new Bounds(new Vector3(10, 1.5f, -35), new Vector3(3, 3, 28)),
                 new Bounds(new Vector3(27, 1.5f, 20), new Vector3(3, 3, 34)),
@@ -44,7 +46,9 @@ namespace ZombieGame.CombatStressTests
                 ,new Bounds(new Vector3(36, .2f, -53), new Vector3(22, .4f, 16))
                 ,new Bounds(new Vector3(64, .2f, 8), new Vector3(24, .4f, 14))
             };
-            for (int i = 0; i < SOLDIERS; i++) positions[i] = new Vector3(-15 - i / 100 * .85f, 0, -79.2f + i % 100 * 1.6f);
+            for (int i = 0; i < SOLDIERS; i++)
+                positions[i] = playable ? new Vector3(-90 + i % 20 * .9f, 0, -8.55f + i / 20 * .9f)
+                    : new Vector3(-15 - i / 100 * .85f, 0, -79.2f + i % 100 * 1.6f);
             int filled = SOLDIERS;
             for (int slot = 0; filled < TOTAL; slot++)
             {
@@ -67,7 +71,12 @@ namespace ZombieGame.CombatStressTests
                 path_target[i] = -1;
                 exploder[i] = i >= SOLDIERS && (i - SOLDIERS) % 10 == 0;
                 crowd.agents[i].speed = i < SOLDIERS ? 3.5f : exploder[i] ? 4.25f : 4.5f;
-                if (i < SOLDIERS) { crowd.agents[i].enabled = true; crowd.agents[i].isStopped = true; }
+                if (i < SOLDIERS)
+                {
+                    crowd.agents[i].enabled = true; crowd.agents[i].isStopped = true;
+                    crowd.agents[i].acceleration = 100; crowd.agents[i].angularSpeed = 1440;
+                    order_targets[i] = -1; last_soldier_goal[i] = Vector3.positiveInfinity;
+                }
             }
             refresh_positions(); rebuild_grids();
         }
@@ -108,6 +117,8 @@ namespace ZombieGame.CombatStressTests
             {
                 if (health[i] <= 0) continue;
                 positions[i] = crowd.transforms[i].position;
+                if (i < SOLDIERS && crowd.agents[i].velocity.sqrMagnitude > .01f)
+                    soldier_facing[i] = crowd.agents[i].velocity;
                 if (i < SOLDIERS || !activated[i]) continue;
                 active_now++;
                 var agent = crowd.agents[i];
@@ -169,9 +180,10 @@ namespace ZombieGame.CombatStressTests
         {
             for (int i = 0; i < SOLDIERS; i++)
             {
-                if (health[i] <= 0 || now < next_attack[i]) continue;
-                int target = nearest(zombie_grid, positions[i], 7);
-                if (target < 0) continue;
+                if (health[i] <= 0) continue;
+                int target = playable ? update_player_order(i, now) : nearest(zombie_grid, positions[i], 7);
+                if (target >= 0) soldier_facing[i] = positions[target] - positions[i];
+                if (target < 0 || now < next_attack[i]) continue;
                 next_attack[i] = now + .8f; shots++; last_combat_time = now;
                 bool allocated = false;
                 for (int attempt = 0; attempt < projectiles.Length; attempt++)
@@ -230,8 +242,13 @@ namespace ZombieGame.CombatStressTests
                     }
                 }
                 else if (assault) target = lane_targets[lane(positions[i].z)];
-                if (target >= 0 && path_target[i] != target)
-                { path_target[i] = target; memories[i] = positions[target]; needs_path[i] = true; }
+                bool target_moved = playable && target >= 0 && (positions[target] - memories[i]).sqrMagnitude > 1
+                    && now >= zombie_repath_at[i] && (!crowd.agents[i].enabled || !crowd.agents[i].pathPending);
+                if (target >= 0 && (path_target[i] != target || target_moved))
+                {
+                    path_target[i] = target; memories[i] = positions[target]; needs_path[i] = true;
+                    zombie_repath_at[i] = now + .5f;
+                }
                 if (target < 0 && !assault && (positions[i] - memories[i]).sqrMagnitude < .8f * .8f)
                 { if (crowd.agents[i].enabled) crowd.agents[i].isStopped = true; }
                 else if (crowd.agents[i].enabled && !needs_path[i]) crowd.agents[i].isStopped = false;
