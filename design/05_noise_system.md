@@ -40,6 +40,23 @@ There is no generic "building destruction = 15 tiles" rule in V1. If a future bu
 
 ## Recommended Implementation
 
+### Confirmed hearing behaviour (2026-09-19)
+
+- For the 10-tile source, distance bands `(0,1]` through `(9,10]` carry
+  100%, 90%, ... 10% strength respectively; the source itself is 100%.
+  Exactly 10 tiles is audible; beyond 10 tiles is silent. Use horizontal distance.
+- Strength determines audibility, not a movement distance. Even 10% noise can
+  make a zombie investigate the source position; it does not mean "move one tile".
+- A zombie remembers the last heard source after the sound expires. It continues
+  investigating, then stays there if no direct target or new sound is found.
+- A new valid sound can update the remembered destination. Direct targets still
+  override noise. Arbitration between several simultaneous sources remains to be tuned.
+- Propagation delay and distance attenuation are separate. Nearer zombies hear
+  a pulse earlier. Do not use asynchronous path-request queue order as hearing order.
+- The isolated test uses a visual circular pulse at 5 tiles/s lasting .6 seconds;
+  these are demonstration parameters, not realistic acoustics or final weapon tuning.
+
+
 V1 uses a low-resolution **Noise Grid** rather than one object/event per shot.
 
 Example:
@@ -132,6 +149,17 @@ Use a cheap grid, fast decay, accumulation for sustained fire, and Direct Target
 V1 删除“建筑大型破坏固定产生 15 格声音”的泛化规则。以后如果某个特殊建筑/事件需要声音，单独为它定义即可。
 
 ## 推荐实现
+
+### 已确认的听觉行为（2026-09-19）
+
+- 十格声源按水平距离分档：第1格100%，第2格90%，依次到第10格10%。
+  声源点为100%，恰好十格能听见，超过十格为0。
+- 强度只影响是否听见，不代表行走距离；最弱的有效声音也会触发前往声源调查。
+- 声音消失后保留最后听见的位置，继续调查；到达后没有直接目标或新声音就停留。
+- 新的有效声音可以更新记忆目标；直接发现的目标仍优先。多个同时声源的选择策略另行调优。
+- 扩散延迟和距离衰减分开；近处先听见，不以寻路队列的处理顺序冒充听觉顺序。
+- 独立演示采用5格/秒、持续0.6秒的可视脉冲；这是测试参数，不是真实声学或最终武器数值。
+
 
 V1 使用低分辨率 **Noise Grid / 声音网格**，而不是每一发攻击都创建一个声音对象。
 
