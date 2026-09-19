@@ -2,6 +2,9 @@
 
 > Prototype movement values. Fast special zombies exist specifically to prevent ranged armies from kiting forever.
 
+Default zombie sight is **4 tiles**, shorter than the universal human sight of 10.
+Hearing a gunshot can still trigger investigation beyond sight range.
+
 ## Movement Baseline
 
 | Zombie | Move Speed (tiles/s) | Main Purpose |
@@ -52,7 +55,10 @@ Role: anti-clump formation breaker.
 - HP: low to medium; it should be killable before reaching the formation if focused.
 - Faster than the Archer prototype speed.
 - Reaches the player formation and detonates at close range.
+- Confirmed prototype behaviour: lethal damage also triggers an explosion, even
+  with no soldiers nearby. Focus fire causes a safer, distant explosion; it does not cancel it.
 - Prototype explosion radius: **2 tiles**.
+- Explosion effects and damage never generate attraction Noise or alert idle zombies.
 - High AOE damage. Player soldiers killed by the explosion immediately follow the normal infection rule and can spawn low-tier zombies.
 - Main counterplay: focus fire it at range and spread ranged units so one explosion cannot wipe a dense formation.
 - The purpose is to create RTS micro similar to manually spreading infantry against dangerous AOE threats.
@@ -111,6 +117,8 @@ Role: stage-specific boss encounter.
 
 # 僵尸兵种
 
+僵尸默认视野 **4格**，低于人类统一的10格；视野外仍可因听到枪声前往调查。
+
 > 当前移速全部是 Prototype 测试值。快速特殊僵尸的存在，就是为了防止远程军队无限风筝。
 
 ## 移速基线
@@ -163,7 +171,9 @@ Role: stage-specific boss encounter.
 - HP：低~中，应该允许玩家在其接近前通过集火击杀。
 - 比弓箭手略快。
 - 接近玩家阵型后贴脸自爆。
+- 已确认原型行为：被打死同样爆炸，附近没有士兵也播放效果；集火是让它提前在远处爆炸，而不是取消爆炸。
 - Prototype 爆炸半径：**2 格**。
+- 爆炸只产生范围伤害和视觉效果，不产生吸引声音，也不惊动待机僵尸。
 - AOE 伤害很高；被爆炸杀死的我方士兵继续按照正常感染规则，立即生成低级僵尸。
 - 核心反制：远距离优先集火，并主动拉开远程兵间距，避免一炸死一大片。
 - 这个单位的价值不是单纯高伤，而是逼玩家做“散兵”微操。

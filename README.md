@@ -8,6 +8,14 @@ The repository now includes a Unity 6000.6.1f1 project. Open the repository root
 in Unity and use `Tools > Zombie Game > Run 1K 5K 10K Benchmark` for the isolated
 render test. See [the verified local benchmark](docs/dev/BENCHMARK_2026-09-18.md).
 
+For playable RTS controls and Shenji/noise combat, open
+`Tools > Zombie Game > Combat > Open Playable RTS Test`, then press Play.
+See [controls and test scope](Assets/_Tests/Combat/README.md).
+
+Large-map combat load test (400 vs 10K, fog and terrain):
+`Tools > Zombie Game > Combat > Open 400 vs 10000 Stress Test`.
+See [measured results and limitations](docs/dev/COMBAT_STRESS_2026-09-19.md).
+
 English is the primary language. Each Markdown file contains the English version first and the Chinese version below in the same file.
 
 - `design/01_game_vision.md`: game vision / 游戏愿景
@@ -34,7 +42,7 @@ Current horde performance target:
 
 Important current combat rules:
 
-- Attack range and Noise attraction radius are separate values.
+- Weapon Noise radius is currently twice attack range (contact explosions pending separate tuning).
 - The Archer can outrun slow/medium zombies, but Runner, Exploder, and Zombie Hound can catch it.
 - Exploders punish tightly packed ranged formations; soldiers killed by their AOE can immediately trigger infection conversion.
 - Defensive buildings share the same Arrow / Gunpowder economy as the field army.
@@ -72,7 +80,7 @@ Important current combat rules:
 
 当前重要战斗规则：
 
-- 攻击射程和 Noise 声音吸引半径是两套独立数值。
+- 武器 Noise 声音吸引半径统一为射程两倍（贴脸爆炸单独待确认）。
 - 弓箭手能跑过慢速/中速僵尸，但 Runner、爆裂尸、尸犬可以追上它。
 - 爆裂尸负责惩罚密集远程阵型；被其 AOE 炸死的我方士兵会立刻触发感染转化。
 - 防御建筑与野战军共享 Arrows / Gunpowder 军需库存。

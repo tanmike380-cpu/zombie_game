@@ -1,8 +1,10 @@
 # Player Units
 
-> Prototype values only. **Attack Range** and **Noise Radius** are separate systems.
+> Prototype values only. Noise attraction radius is currently **2 × attack range** for ranged weapons (see `05_noise_system.md`).
 
 ## Movement / Range Baseline
+
+All human units use **10-tile sight**, independent of weapon range and noise.
 
 The Archer is intentionally faster than slow and medium zombies so the player can reposition, but it must **not** outrun every special zombie. Runner, Exploder, and Zombie Hound are intended to punish endless kiting.
 
@@ -128,9 +130,11 @@ V1 principle: do not keep expanding the roster. First verify whether the current
 
 # 玩家兵种
 
-> 当前全部是 Prototype 测试值。**攻击射程**和**声音吸引半径**是两套独立数值。
+> 当前全部是 Prototype 测试值。远程武器统一采用 **声音吸引半径 = 攻击射程 × 2**，详见 `05_noise_system.md`。
 
 ## 移速 / 射程基线
+
+所有人类兵种统一 **10格视野**，与武器射程、声音半径分开。
 
 弓箭手应该能够跑过慢速和中速僵尸，方便玩家拉扯和重新布阵，但不能比所有特殊僵尸都快。Runner、自爆尸、尸犬就是用来惩罚无限风筝的。
 

@@ -8,7 +8,7 @@ Role: basic sustained defense.
 - Attack range: **5 tiles**.
 - Ammo: **Arrows**.
 - Prototype ammo consumption: **1 Arrow per shot**.
-- Noise radius: **2 tiles**.
+- Noise radius: **10 tiles** (2 × attack range).
 - Gameplay role: a static alternative to basic Archers.
 - Best against ordinary low-tier hordes.
 - Low operating cost, but weaker against high-HP special zombies.
@@ -19,7 +19,7 @@ Role: long-range heavy AOE defense.
 - Attack range: **10 tiles**.
 - Ammo: **Gunpowder**.
 - Prototype ammo consumption: **5 Gunpowder per shot**.
-- Noise radius: **10 tiles**.
+- Noise radius: **20 tiles** (2 × attack range).
 - Slow firing, high impact, large AOE.
 - Designed for large late-game hordes and heavy targets.
 - Very strong, but sustained firing can rapidly drain the player's Gunpowder economy and attract nearby roaming zombies.
@@ -30,7 +30,7 @@ Role: extreme close-range anti-horde defense.
 - Attack range: **4 tiles** in a forward cone / area.
 - Ammo: **Gunpowder** in V1. No seventh fuel resource is added.
 - Prototype ammo consumption: **10 Gunpowder per burst**.
-- Noise radius: **6 tiles**; sustained firing keeps the local Noise active.
+- Noise radius: **8 tiles** (2 × attack range); sustained firing keeps the local Noise active.
 - Very high AOE damage against dense hordes.
 - Short range means it must be protected by walls / frontline defenses.
 - Intended as a high-cost emergency horde-melting structure rather than a general-purpose tower.
@@ -72,7 +72,7 @@ The goal is not to turn the game into a pure tower-defense title. Static defense
 - 攻击射程：**5 格**。
 - 弹药：**Arrows / 箭矢**。
 - Prototype 消耗：**每次攻击 1 箭矢**。
-- Noise 吸引半径：**2 格**。
+- Noise 吸引半径：**10 格**（射程两倍）。
 - 玩法定位：固定版基础弓箭手。
 - 主要处理普通低级尸潮。
 - 持续成本低，但面对高血特殊僵尸效率较差。
@@ -83,7 +83,7 @@ The goal is not to turn the game into a pure tower-defense title. Static defense
 - 攻击射程：**10 格**。
 - 弹药：**Gunpowder / 火药**。
 - Prototype 消耗：**每炮 5 火药**。
-- Noise 吸引半径：**10 格**。
+- Noise 吸引半径：**20 格**（射程两倍）。
 - 射速慢、单发冲击强、AOE 大。
 - 用来处理后期大型尸潮和高血目标。
 - 很强，但持续开炮会快速烧掉火药库存，同时把附近游荡僵尸吸引过来。
@@ -94,7 +94,7 @@ The goal is not to turn the game into a pure tower-defense title. Static defense
 - 攻击射程：**4 格**，建议做成前方扇形 / 区域攻击。
 - 弹药：V1 继续抽象成 **Gunpowder / 火药**，不新增第七种燃料资源。
 - Prototype 消耗：**每次喷射 10 火药**。
-- Noise 吸引半径：**6 格**；持续喷火会持续维持局部 Noise。
+- Noise 吸引半径：**8 格**（射程两倍）；持续喷火会持续维持局部 Noise。
 - 对高密度尸群造成恐怖 AOE。
 - 射程短，因此需要城墙或前排保护。
 - 定位是昂贵的紧急清尸建筑，不是万能塔。

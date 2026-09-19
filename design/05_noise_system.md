@@ -4,9 +4,9 @@
 
 Use combat noise as the primary long-range attraction mechanic for zombies.
 
-> Attack Range and Noise Radius are separate values.
+> Current prototype rule: Noise Radius = Attack Range × 2.
 
-A weapon can have a 7-tile attack range but only a 3-tile Noise radius, or the reverse. Noise should never be interpreted as weapon range.
+A 7-tile Shenji attack creates a 14-tile noise radius. Hearing a shot does not mean the listener is within weapon range.
 
 ## Basic Rules
 
@@ -19,22 +19,22 @@ A weapon can have a 7-tile attack range but only a 3-tile Noise radius, or the r
 
 ## Initial Prototype Noise Radii
 
-These values are intentionally kept compact. **10 tiles is the current maximum normal local attraction radius.**
+All ranged weapons and towers use twice their attack range; the old 10-tile cap is removed. Sustained fire refreshes duration, not this radius. Player contact explosions retain their previous 8-tile placeholder pending separate tuning. Zombie Exploders are explicitly silent to the attraction system: neither contact nor death explosions attract zombies.
 
 | Noise Source | Attraction Radius |
 |---|---:|
-| Melee combat | 1 tile |
-| Archer shot | 2 tiles |
-| Repeating Crossbow shot | 2 tiles per shot; sustained fire accumulates |
-| Heavy Crossbow shot | 3 tiles |
-| Heavy Ballista shot | 4 tiles |
-| Firearm Infantry shot | 6 tiles |
+| Melee combat (range 1) | 2 tiles |
+| Archer shot (range 5) | 10 tiles |
+| Repeating Crossbow shot (range 4) | 8 tiles |
+| Heavy Crossbow shot (range 7) | 14 tiles |
+| Heavy Ballista shot (range 10) | 20 tiles |
+| Firearm Infantry shot (range 7) | 14 tiles |
 | Player Suicide Bomber explosion | 8 tiles |
-| Zombie Exploder explosion | 8 tiles |
-| Cannon shot | 10 tiles |
-| Arrow Tower shot | 2 tiles |
-| Cannon Bastion shot | 10 tiles |
-| Flame Bastion burst | 6 tiles; sustained use keeps Noise active |
+| Zombie Exploder explosion | 0 — no attraction noise |
+| Cannon shot (range 10) | 20 tiles |
+| Arrow Tower shot (range 5) | 10 tiles |
+| Cannon Bastion shot (range 10) | 20 tiles |
+| Flame Bastion burst (range 4) | 8 tiles; sustained use keeps Noise active |
 
 There is no generic "building destruction = 15 tiles" rule in V1. If a future building or event needs Noise, it should define its own explicit value.
 
@@ -42,6 +42,8 @@ There is no generic "building destruction = 15 tiles" rule in V1. If a future bu
 
 ### Confirmed hearing behaviour (2026-09-19)
 
+- The existing 10-tile benchmark remains a hearing-boundary regression fixture,
+  not a maximum weapon-noise cap. The combat sandbox now uses Shenji's 14 tiles.
 - For the 10-tile source, distance bands `(0,1]` through `(9,10]` carry
   100%, 90%, ... 10% strength respectively; the source itself is 100%.
   Exactly 10 tiles is audible; beyond 10 tiles is silent. Use horizontal distance.
@@ -88,7 +90,7 @@ Stronger weapon
   -> more roaming zombies attracted
 ```
 
-Noise is not required to increase perfectly with weapon range. A short-ranged but loud weapon can create more Noise than a quiet long-ranged weapon.
+For this prototype, every ranged weapon uses the same 2× multiplier. Per-weapon loudness differences are deferred.
 
 ## Global Final Assault
 
@@ -114,9 +116,9 @@ Use a cheap grid, fast decay, accumulation for sustained fire, and Direct Target
 
 使用战斗产生的 **Noise / 声音**作为僵尸的主要远距离吸引机制。
 
-> **攻击射程**和**Noise 吸引半径**是两套完全独立的数值。
+> 当前统一规则：**Noise 吸引半径 = 攻击射程 × 2**。
 
-例如神机营可以攻击 7 格，但声音只吸引 6 格；不要再把 Noise 数值理解成攻击距离。
+例如神机营射程 7 格，声音吸引半径 14 格；听见枪声不代表已经进入武器射程。
 
 ## 基本规则
 
@@ -129,22 +131,22 @@ Use a cheap grid, fast decay, accumulation for sustained fire, and Direct Target
 
 ## 第一版 Prototype 声音范围
 
-当前普通局部声音的最大吸引半径先限制在 **10 格**。
+所有远程武器及防御塔统一取两倍射程，取消旧十格上限。持续开火刷新声音持续时间，不突破该半径。我方贴脸自爆兵暂留旧8格占位值，单独待确认；僵尸爆裂尸明确不产生吸引声音，贴身自爆和被打死爆炸均不会引怪。
 
 | 声音来源 | 吸引范围 |
 |---|---:|
-| 近战 | 1 格 |
-| 弓箭手 | 2 格 |
-| 连弩手 | 单发 2 格；持续射击可累积 |
-| 重弩手 | 3 格 |
-| 重弩炮 | 4 格 |
-| 神机营火铳 | 6 格 |
+| 近战（攻击距离1） | 2 格 |
+| 弓箭手（射程5） | 10 格 |
+| 连弩手（射程4） | 8 格 |
+| 重弩手（射程7） | 14 格 |
+| 重弩炮（射程10） | 20 格 |
+| 神机营火铳（射程7） | 14 格 |
 | 我方自爆兵爆炸 | 8 格 |
-| 爆裂尸爆炸 | 8 格 |
-| 火炮 | 10 格 |
-| 箭塔 | 2 格 |
-| 铁炮要塞 | 10 格 |
-| 喷火要塞 | 6 格；持续喷火会持续维持 Noise |
+| 爆裂尸爆炸 | 0，不产生吸引声音 |
+| 火炮（射程10） | 20 格 |
+| 箭塔（射程5） | 10 格 |
+| 铁炮要塞（射程10） | 20 格 |
+| 喷火要塞（射程4） | 8 格；持续喷火会持续维持 Noise |
 
 V1 删除“建筑大型破坏固定产生 15 格声音”的泛化规则。以后如果某个特殊建筑/事件需要声音，单独为它定义即可。
 
@@ -152,6 +154,7 @@ V1 删除“建筑大型破坏固定产生 15 格声音”的泛化规则。以�
 
 ### 已确认的听觉行为（2026-09-19）
 
+- 原十格压测保留为听觉边界回归用例，不再代表武器声音上限；当前战斗测试神机营采用14格。
 - 十格声源按水平距离分档：第1格100%，第2格90%，依次到第10格10%。
   声源点为100%，恰好十格能听见，超过十格为0。
 - 强度只影响是否听见，不代表行走距离；最弱的有效声音也会触发前往声源调查。
@@ -192,7 +195,7 @@ Noise Grid
   -> 更容易把附近游荡僵尸拉进战斗
 ```
 
-Noise 不需要和射程严格正相关。短射程但非常响的武器，也完全可以比安静的远程武器更容易引怪。
+这轮 Prototype 统一使用两倍射程，暂不做不同武器各自的响度差异。
 
 ## 最终总攻
 
