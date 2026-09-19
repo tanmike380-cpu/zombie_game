@@ -51,7 +51,7 @@ namespace ZombieGame.PerformanceTests
             walls_material.SetColor("_Color", new Color(.15f, .6f, .85f));
             output_directory = Path.Combine(Application.persistentDataPath, "NavMeshBenchmark", DateTime.Now.ToString("yyyyMMdd-HHmmss"));
             Directory.CreateDirectory(output_directory);
-            File.WriteAllText(Path.Combine(output_directory, "hardware.txt"), $"{SystemInfo.operatingSystem}\n{SystemInfo.processorType}\n{SystemInfo.graphicsDeviceName}\nUnity {Application.unityVersion}\nMedium avoidance; radius .25; speed 12; path iterations/frame 10000\n");
+            File.WriteAllText(Path.Combine(output_directory, "hardware.txt"), $"{SystemInfo.operatingSystem}\n{SystemInfo.processorType}\n{SystemInfo.graphicsDeviceName}\nUnity {Application.unityVersion}\nMedium avoidance; radius .25; speed {ZombieGame.Balance.UnitBalance.runner.move_speed}; path iterations/frame 10000\n");
             last_time = Time.realtimeSinceStartupAsDouble;
             StartCoroutine(run_suite());
         }

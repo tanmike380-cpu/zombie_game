@@ -99,7 +99,7 @@ namespace ZombieGame.PerformanceTests
                 new Bounds(new Vector3(-2.5f, 1.5f, -1.5f), new Vector3(.5f, 3, 5)),
                 new Bounds(new Vector3(-.5f, 1.5f, 1.5f), new Vector3(.5f, 3, 5))
             };
-            crowd = new NavMeshCrowd(COUNT, true, starts, walls, false, 1.8f);
+            crowd = new NavMeshCrowd(COUNT, true, starts, walls, false, ZombieGame.Balance.UnitBalance.get("walker"));
             idle_baseline = new Vector3[COUNT];
             for (int i = 0; i < COUNT; i++) idle_baseline[i] = crowd.transforms[i].position;
             Debug.Log($"[NoiseTest] Spawn snap requested={starts[0]:F5} native={idle_baseline[0]:F5}");
@@ -114,7 +114,7 @@ namespace ZombieGame.PerformanceTests
             frame_samples.Clear();
             result = "Pulse in 3 seconds; normal radius 10, NOT global attraction";
             set_close_camera();
-            Debug.Log($"[NoiseTest] START population={COUNT} expected_in_radius={expected} radius=10 speed=1.8 agent_radius=.25");
+            Debug.Log($"[NoiseTest] START population={COUNT} expected_in_radius={expected} radius={NoisePulseField.RADIUS} speed={ZombieGame.Balance.UnitBalance.get("walker").move_speed} agent_radius=.25");
         }
 
         private void Update()

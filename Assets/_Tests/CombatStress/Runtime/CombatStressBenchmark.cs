@@ -1,4 +1,5 @@
 using System;
+using ZombieGame.Balance;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
@@ -198,7 +199,7 @@ namespace ZombieGame.CombatStressTests
             {
                 if (flash.expires <= Time.time) continue;
                 if (!spectator && !fog.is_visible(flash.origin)) continue;
-                float size = Mathf.Lerp(4, .2f, (flash.expires - Time.time) / .85f);
+                float size = Mathf.Lerp(UnitBalance.exploder.explosion_radius * 2, .2f, (flash.expires - Time.time) / .85f);
                 matrices[6][counts[6]++] = Matrix4x4.TRS(flash.origin + Vector3.up * .12f, Quaternion.identity, new Vector3(size, .08f, size));
             }
             float grid_step = Camera.main.orthographicSize <= 25 ? 1 : 16;
@@ -220,7 +221,7 @@ namespace ZombieGame.CombatStressTests
 
         private void draw_health_bar(int index)
         {
-            float fraction = Mathf.Clamp01(simulation.health[index] / (index < CombatStressSimulation.SOLDIERS ? 100f : 60f));
+            float fraction = Mathf.Clamp01(simulation.health[index] / simulation.stats_for(index).health);
             Vector3 origin = simulation.positions[index] + new Vector3(0,1.6f,.48f);
             matrices[12][counts[12]++] = Matrix4x4.TRS(origin,Quaternion.identity,new Vector3(.7f,.03f,.14f));
             int group = fraction > .5f ? 13 : fraction > .25f ? 14 : 15;
@@ -256,8 +257,8 @@ namespace ZombieGame.CombatStressTests
             var s = simulation;
             GUI.Label(new Rect(20,55,970,22), $"Frame {frame_ms:F1}ms (~{1000 / Mathf.Max(1, frame_ms):F0} FPS) | Active {s.active_now}/10000 | Moving {s.moving_now} | Heard {s.heard} | Pending {s.pending}");
             GUI.Label(new Rect(20,78,970,22), $"Shots {s.shots} | Hits {s.hits} | Bites {s.bites} | Blasts {s.blasts} | Soldiers {400-s.dead_soldiers}/400 | Zombies {10000-s.dead_zombies}/10000");
-            GUI.Label(new Rect(20,101,970,22), $"Path failures {s.path_failures} | Geometry errors {s.geometry_errors} | Dropped bullets {s.dropped_projectiles} | Gun range 7 / noise 14 | Zombie blasts SILENT");
-            GUI.Label(new Rect(20,124,970,22), $"Sight human10 / zombie4 | Fog {(spectator ? "OFF debug" : "ON")} | C army / F map / V debug | F9 auto test / F10 playable");
+            GUI.Label(new Rect(20,101,970,22), $"Path failures {s.path_failures} | Geometry errors {s.geometry_errors} | Dropped bullets {s.dropped_projectiles} | Gun range {UnitBalance.human.attack_range} / noise {UnitBalance.human_noise(UnitBalance.human)} | Zombie blasts SILENT");
+            GUI.Label(new Rect(20,124,970,22), $"Sight human{UnitBalance.config.human_sight} / zombie{UnitBalance.config.zombie_sight} | Fog {(spectator ? "OFF debug" : "ON")} | C army / F map / V debug | F9 auto test / F10 playable");
         }
 
         private void OnDestroy() { simulation?.Dispose(); fog?.Dispose(); foreach (var material in materials) if (material != null) Destroy(material); }

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.IO;
 using UnityEngine;
+using ZombieGame.Balance;
 
 namespace ZombieGame.CombatTests
 {
@@ -17,7 +18,7 @@ namespace ZombieGame.CombatTests
             var archer = game.actors[0];
             var zombie = game.actors[CombatSandbox.FRIENDLY_COUNT];
             require(game.actors.Count == CombatSandbox.FRIENDLY_COUNT + CombatSandbox.ZOMBIE_COUNT, "Population count");
-            require(Mathf.Approximately(archer.agent.speed, 3.5f) && Mathf.Approximately(zombie.agent.speed, 4.5f), "Shared speed multiplier");
+            require(Mathf.Approximately(archer.agent.speed, UnitBalance.human.move_speed) && Mathf.Approximately(zombie.agent.speed, UnitBalance.runner.move_speed), "Shared balance speeds");
             require(!game.issue_order(zombie, CombatOrder.Move, Vector3.zero), "Zombie accepted player order");
             require(RtsInput.selection_rect(new Vector2(5, 5), Vector2.zero).Contains(new Vector2(2, 2)), "Reverse box selection");
             game.issue_order(archer, CombatOrder.Move, new Vector3(-5, 0, -2));
@@ -84,7 +85,7 @@ namespace ZombieGame.CombatTests
             foreach (var actor in game.actors) if (actor.friendly) actor.next_attack = Time.time + 10;
             var exploder = game.actors[CombatSandbox.FRIENDLY_COUNT + CombatSandbox.RUNNER_COUNT];
             var near = game.actors[0]; var second = game.actors[1]; var outside = game.actors[2];
-            require(exploder.exploder && Mathf.Approximately(exploder.agent.speed, 4.25f), "Exploder type/speed");
+            require(exploder.exploder && Mathf.Approximately(exploder.agent.speed, UnitBalance.exploder.move_speed), "Exploder type/speed");
             require(exploder.agent.Warp(new Vector3(-8, 0, 0)), "Exploder fixture warp");
             require(near.agent.Warp(new Vector3(-7.2f, 0, 0)), "Near fixture warp");
             require(second.agent.Warp(new Vector3(-8, 0, 1.2f)), "Second fixture warp");

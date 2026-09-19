@@ -1,4 +1,5 @@
 using System;
+using ZombieGame.Balance;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -7,16 +8,15 @@ namespace ZombieGame.CombatTests
 {
     public sealed class CombatSandbox : MonoBehaviour
     {
-        public const float ATTACK_RANGE = 7;
-        public const float HUMAN_SIGHT = 10;
-        public const float NOISE_RADIUS = ATTACK_RANGE * 2;
-        public const float SPEED_MULTIPLIER = 1.25f;
+        public static float ATTACK_RANGE => UnitBalance.human.attack_range;
+        public static float HUMAN_SIGHT => UnitBalance.config.human_sight;
+        public static float NOISE_RADIUS => UnitBalance.human_noise(UnitBalance.human);
         public const int FRIENDLY_COUNT = 8;
         public const int RUNNER_COUNT = 36;
         public const int EXPLODER_COUNT = 6;
         public const int ZOMBIE_COUNT = RUNNER_COUNT + EXPLODER_COUNT;
-        public const float BLAST_RADIUS = 2;
-        public const float BLAST_DAMAGE = 70;
+        public static float BLAST_RADIUS => UnitBalance.exploder.explosion_radius;
+        public static float BLAST_DAMAGE => UnitBalance.exploder.damage;
         public Material material_template;
         public bool running_checks;
         public readonly List<CombatActor> actors = new List<CombatActor>();
@@ -117,11 +117,11 @@ namespace ZombieGame.CombatTests
             root.transform.SetParent(world.transform); root.transform.position = position;
             var actor = root.AddComponent<CombatActor>();
             actor.exploder = exploder;
-            actor.friendly = friendly; actor.max_health = actor.health = friendly ? 100 : 60;
+            actor.friendly = friendly; actor.max_health = actor.health = actor.stats.health;
             actor.agent = root.AddComponent<NavMeshAgent>();
             actor.agent.radius = .3f; actor.agent.height = 1.4f;
-            actor.agent.speed = (friendly ? 2.8f : exploder ? 3.4f : 3.6f) * SPEED_MULTIPLIER;
-            actor.agent.acceleration = 100; actor.agent.updateRotation = false;
+            actor.agent.speed = actor.stats.move_speed;
+            actor.agent.acceleration = actor.stats.acceleration; actor.agent.updateRotation = false;
             actor.agent.obstacleAvoidanceType = ObstacleAvoidanceType.MedQualityObstacleAvoidance;
             var body = GameObject.CreatePrimitive(PrimitiveType.Capsule);
             body.transform.SetParent(root.transform, false); body.transform.localPosition = Vector3.up * .7f;
@@ -234,21 +234,22 @@ namespace ZombieGame.CombatTests
                 if (Time.time >= actor.detonate_at) apply_damage(actor, actor.health);
                 return;
             }
-            var visible = nearest_enemy(actor, 4);
+            var visible = nearest_enemy(actor, UnitBalance.config.zombie_sight);
             if (visible != null) { actor.target = visible; actor.has_memory = true; actor.memory_position = visible.transform.position; }
             else actor.target = null;
-            if (actor.exploder && actor.target != null && distance(actor, actor.target) < 1.2f)
+            actor.agent.autoBraking = actor.target == null;
+            if (actor.exploder && actor.target != null && distance(actor, actor.target) < actor.stats.attack_range)
             {
-                actor.halt(); actor.detonate_at = Time.time + .65f;
+                actor.halt(); actor.detonate_at = Time.time + actor.stats.fuse_seconds;
                 actor.blast_ring = create_ring(actor.transform, BLAST_RADIUS, purple);
                 actor.blast_ring.widthMultiplier = .12f;
                 return;
             }
-            if (actor.target != null && distance(actor, actor.target) < 1)
+            if (actor.target != null && distance(actor, actor.target) < actor.stats.attack_range)
             {
                 actor.halt(); face_target(actor, actor.target.transform.position);
                 if (Time.time >= actor.next_attack)
-                { actor.next_attack = Time.time + 1; bites++; apply_damage(actor.target, 10); }
+                { actor.next_attack = Time.time + actor.stats.attack_interval; bites++; apply_damage(actor.target, actor.stats.damage); }
             }
             else if (actor.has_memory)
             {
@@ -283,7 +284,7 @@ namespace ZombieGame.CombatTests
 
         private void fire_arrow(CombatActor actor, CombatActor victim)
         {
-            actor.next_attack = Time.time + .8f; shots++;
+            actor.next_attack = Time.time + actor.stats.attack_interval; shots++;
             var arrow = create_box("Musket Tracer", actor.transform.position + Vector3.up, new Vector3(.07f, .07f, .65f), yellow, false);
             arrows.Add(new Arrow { visual = arrow.transform, victim = victim, shooter = actor });
             emit_noise(actor.transform.position, NOISE_RADIUS);
@@ -301,18 +302,18 @@ namespace ZombieGame.CombatTests
             for (int p = pulses.Count - 1; p >= 0; p--)
             {
                 var pulse = pulses[p]; float age = Time.time - pulse.time;
-                pulse.ring.transform.localScale = Vector3.one * Mathf.Min(pulse.radius, age * 5);
+                pulse.ring.transform.localScale = Vector3.one * Mathf.Min(pulse.radius, age * UnitBalance.config.noise_propagation_speed);
                 for (int i = 0; i < actors.Count; i++)
                 {
                     var actor = actors[i];
                     if (actor.friendly || !actor.alive || pulse.notified[i]) continue;
                     Vector3 offset = actor.transform.position - pulse.origin; offset.y = 0;
                     float length = offset.magnitude;
-                    if (length > pulse.radius || age < length / 5 || age > length / 5 + .6f) continue;
+                    if (length > pulse.radius || age < length / UnitBalance.config.noise_propagation_speed || age > length / UnitBalance.config.noise_propagation_speed + UnitBalance.config.noise_pulse_duration) continue;
                     pulse.notified[i] = true; heard++;
                     if (actor.target == null) { actor.has_memory = true; actor.memory_position = pulse.origin; }
                 }
-                if (age > pulse.radius / 5 + .6f) { Destroy(pulse.ring.transform.parent.gameObject); pulses.RemoveAt(p); }
+                if (age > pulse.radius / UnitBalance.config.noise_propagation_speed + UnitBalance.config.noise_pulse_duration) { Destroy(pulse.ring.transform.parent.gameObject); pulses.RemoveAt(p); }
             }
         }
 
@@ -324,14 +325,14 @@ namespace ZombieGame.CombatTests
                 if (arrow.victim == null || !arrow.victim.alive) { Destroy(arrow.visual.gameObject); arrows.RemoveAt(i); continue; }
                 Vector3 goal = arrow.victim.transform.position + Vector3.up;
                 Vector3 previous = arrow.visual.position;
-                Vector3 next = Vector3.MoveTowards(previous, goal, 40 * Time.deltaTime);
+                Vector3 next = Vector3.MoveTowards(previous, goal, UnitBalance.human.projectile_speed * Time.deltaTime);
                 arrow.visual.position = next;
                 if ((goal - previous).sqrMagnitude > .001f) arrow.visual.rotation = Quaternion.LookRotation(goal - previous);
                 bool blocked = Physics.Linecast(previous, next, 1 << 8);
                 if (!blocked && Vector3.Distance(next, goal) > .15f) continue;
                 if (!blocked)
                 {
-                    hits++; apply_damage(arrow.victim, 20);
+                    hits++; apply_damage(arrow.victim, UnitBalance.human.damage);
                     if (arrow.victim.alive && arrow.shooter != null)
                     { arrow.victim.has_memory = true; arrow.victim.memory_position = arrow.shooter.transform.position; }
                 }

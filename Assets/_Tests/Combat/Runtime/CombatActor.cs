@@ -1,4 +1,5 @@
 using UnityEngine;
+using ZombieGame.Balance;
 using UnityEngine.AI;
 
 namespace ZombieGame.CombatTests
@@ -28,6 +29,7 @@ namespace ZombieGame.CombatTests
         public LineRenderer selection_ring;
         private readonly NavMeshPath path = new NavMeshPath();
         public bool alive => health > 0;
+        public UnitStats stats => friendly ? UnitBalance.human : exploder ? UnitBalance.exploder : UnitBalance.runner;
 
         public void halt()
         {
@@ -44,7 +46,7 @@ namespace ZombieGame.CombatTests
             agent.isStopped = false;
             if (Time.time < next_repath && Vector3.Distance(goal, last_path_goal) < .5f) return;
             if (Vector3.Distance(goal, last_path_goal) < .15f && agent.hasPath) return;
-            next_repath = Time.time + .2f;
+            next_repath = Time.time + UnitBalance.config.chase_repath_seconds;
             last_path_goal = goal;
             // Small combat sandbox: resolve explicit paths now, without the async request queue.
             if (agent.CalculatePath(goal, path) && path.status == NavMeshPathStatus.PathComplete)

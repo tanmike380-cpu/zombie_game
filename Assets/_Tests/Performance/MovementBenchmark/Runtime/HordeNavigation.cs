@@ -80,7 +80,7 @@ namespace ZombieGame.PerformanceTests
         public int arrived_count { get; private set; }
         public int invalid_count { get; private set; }
         public readonly HordeNavigation navigation;
-        public const float SPEED = 12f;
+        public static float SPEED => ZombieGame.Balance.UnitBalance.runner.move_speed;
 
         public HordeMovement(int count, HordeNavigation field)
         {

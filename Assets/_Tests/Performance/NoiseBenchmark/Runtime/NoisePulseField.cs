@@ -5,9 +5,9 @@ namespace ZombieGame.PerformanceTests
     /// <summary>One test pulse, ten one-tile bands. No raycasts, echoes or wall acoustics.</summary>
     public sealed class NoisePulseField
     {
-        public const float RADIUS = 10f;
-        public const float PROPAGATION_SPEED = 5f;
-        public const float PULSE_DURATION = .6f;
+        public static float RADIUS => ZombieGame.Balance.UnitBalance.human_noise(ZombieGame.Balance.UnitBalance.get("archer"));
+        public static float PROPAGATION_SPEED => ZombieGame.Balance.UnitBalance.config.noise_propagation_speed;
+        public static float PULSE_DURATION => ZombieGame.Balance.UnitBalance.config.noise_pulse_duration;
         public Vector3 source { get; private set; }
         public double emitted_at { get; private set; } = double.NegativeInfinity;
 

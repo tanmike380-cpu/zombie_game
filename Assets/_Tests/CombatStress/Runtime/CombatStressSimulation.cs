@@ -1,4 +1,5 @@
 using System;
+using ZombieGame.Balance;
 using UnityEngine;
 using UnityEngine.AI;
 using ZombieGame.PerformanceTests;
@@ -66,18 +67,19 @@ namespace ZombieGame.CombatStressTests
                 point.y = 0;
                 if (!blocked) positions[filled++] = point;
             }
-            crowd = new NavMeshCrowd(TOTAL, true, positions, walls, false, 4.5f);
+            crowd = new NavMeshCrowd(TOTAL, true, positions, walls, false, UnitBalance.runner);
             for (int i = 0; i < TOTAL; i++)
             {
-                health[i] = i < SOLDIERS ? 100 : 60;
                 hearing_due[i] = fuse[i] = float.PositiveInfinity;
                 path_target[i] = -1;
                 exploder[i] = i >= SOLDIERS && (i - SOLDIERS) % 10 == 0;
-                crowd.agents[i].speed = i < SOLDIERS ? 3.5f : exploder[i] ? 4.25f : 4.5f;
+                health[i] = stats_for(i).health;
+                crowd.agents[i].speed = stats_for(i).move_speed;
+                crowd.agents[i].acceleration = stats_for(i).acceleration;
                 if (i < SOLDIERS)
                 {
                     crowd.agents[i].enabled = true; crowd.agents[i].isStopped = true;
-                    crowd.agents[i].acceleration = 100; crowd.agents[i].angularSpeed = 1440;
+                    crowd.agents[i].angularSpeed = 1440;
                     order_targets[i] = -1; last_soldier_goal[i] = Vector3.positiveInfinity;
                 }
             }
@@ -184,10 +186,10 @@ namespace ZombieGame.CombatStressTests
             for (int i = 0; i < SOLDIERS; i++)
             {
                 if (health[i] <= 0) continue;
-                int target = playable ? update_player_order(i, now) : nearest(zombie_grid, positions[i], 7);
+                int target = playable ? update_player_order(i, now) : nearest(zombie_grid, positions[i], UnitBalance.human.attack_range);
                 if (target >= 0) soldier_facing[i] = positions[target] - positions[i];
                 if (target < 0 || now < next_attack[i]) continue;
-                next_attack[i] = now + .8f; shots++; last_combat_time = now;
+                next_attack[i] = now + UnitBalance.human.attack_interval; shots++; last_combat_time = now;
                 bool allocated = false;
                 for (int attempt = 0; attempt < projectiles.Length; attempt++)
                 {
@@ -203,7 +205,7 @@ namespace ZombieGame.CombatStressTests
 
         private void emit_gun_noise(Vector3 origin, float now)
         {
-            const float radius = 14;
+            float radius = UnitBalance.human_noise(UnitBalance.human);
             for (int z = CombatSpatialGrid.cell(origin.z - radius); z <= CombatSpatialGrid.cell(origin.z + radius); z++)
                 for (int x = CombatSpatialGrid.cell(origin.x - radius); x <= CombatSpatialGrid.cell(origin.x + radius); x++)
                     for (int i = zombie_grid.heads[x + z * CombatSpatialGrid.SIDE]; i >= 0; i = zombie_grid.next[i])
@@ -212,7 +214,7 @@ namespace ZombieGame.CombatStressTests
                         Vector3 offset = positions[i] - origin; offset.y = 0;
                         float distance = offset.magnitude;
                         if (distance > radius) continue;
-                        float due = now + distance / 5;
+                        float due = now + distance / UnitBalance.config.noise_propagation_speed;
                         if (due < hearing_due[i]) { hearing_due[i] = due; memories[i] = origin; }
                     }
         }
@@ -224,7 +226,7 @@ namespace ZombieGame.CombatStressTests
                 if (health[i] <= 0) continue;
                 if (fuse[i] < float.PositiveInfinity)
                 { if (now >= fuse[i]) damage(i, health[i], now); continue; }
-                int target = nearest(soldier_grid, positions[i], 4);
+                int target = nearest(soldier_grid, positions[i], UnitBalance.config.zombie_sight);
                 if (!activated[i] && (target >= 0 || now >= hearing_due[i]))
                 {
                     activated[i] = true; ever_active++;
@@ -235,22 +237,23 @@ namespace ZombieGame.CombatStressTests
                 if (target >= 0)
                 {
                     float distance = (positions[i] - positions[target]).magnitude;
-                    if (distance <= (exploder[i] ? 1.2f : 1))
+                    if (distance <= stats_for(i).attack_range)
                     {
                         if (crowd.agents[i].enabled) crowd.agents[i].isStopped = true;
-                        if (exploder[i]) fuse[i] = now + .65f;
+                        if (exploder[i]) fuse[i] = now + UnitBalance.exploder.fuse_seconds;
                         else if (now >= next_attack[i])
-                        { next_attack[i] = now + 1; bites++; last_combat_time = now; damage(target, 10, now); }
+                        { next_attack[i] = now + stats_for(i).attack_interval; bites++; last_combat_time = now; damage(target, stats_for(i).damage, now); }
                         continue;
                     }
                 }
                 else if (assault) target = lane_targets[lane(positions[i].z)];
-                bool target_moved = playable && target >= 0 && (positions[target] - memories[i]).sqrMagnitude > 1
+                crowd.agents[i].autoBraking = target < 0;
+                bool target_moved = playable && target >= 0 && (positions[target] - memories[i]).sqrMagnitude > .04f
                     && now >= zombie_repath_at[i] && (!crowd.agents[i].enabled || !crowd.agents[i].pathPending);
                 if (target >= 0 && (path_target[i] != target || target_moved))
                 {
                     path_target[i] = target; memories[i] = positions[target]; needs_path[i] = true;
-                    zombie_repath_at[i] = now + .5f;
+                    zombie_repath_at[i] = now + UnitBalance.config.chase_repath_seconds;
                 }
                 if (target < 0 && !assault && (positions[i] - memories[i]).sqrMagnitude < .8f * .8f)
                 { if (crowd.agents[i].enabled) crowd.agents[i].isStopped = true; }
@@ -280,10 +283,10 @@ namespace ZombieGame.CombatStressTests
                 if (!projectiles[i].active) continue;
                 Shot shot = projectiles[i];
                 if (health[shot.target] <= 0) { projectiles[i].active = false; continue; }
-                Vector3 next = Vector3.MoveTowards(shot.position, positions[shot.target] + Vector3.up, 40 * delta);
+                Vector3 next = Vector3.MoveTowards(shot.position, positions[shot.target] + Vector3.up, UnitBalance.human.projectile_speed * delta);
                 if (!visible(shot.position, next)) { projectiles[i].active = false; continue; }
                 if ((next - positions[shot.target] - Vector3.up).sqrMagnitude <= .04f)
-                { hits++; last_combat_time = now; damage(shot.target, 20, now); projectiles[i].active = false; }
+                { hits++; last_combat_time = now; damage(shot.target, UnitBalance.human.damage, now); projectiles[i].active = false; }
                 else { shot.position = next; projectiles[i] = shot; }
             }
         }
@@ -301,9 +304,11 @@ namespace ZombieGame.CombatStressTests
             flashes[flash_cursor++ % flashes.Length] = new Flash { origin = positions[victim], expires = now + .85f };
             // Explosions NEVER call emit_gun_noise; only friendly victims take AOE damage.
             for (int i = 0; i < SOLDIERS; i++)
-                if (health[i] > 0 && (positions[i] - positions[victim]).sqrMagnitude <= 4 && visible(positions[victim], positions[i]))
-                    damage(i, 70, now);
+                if (health[i] > 0 && (positions[i] - positions[victim]).sqrMagnitude <= UnitBalance.exploder.explosion_radius * UnitBalance.exploder.explosion_radius && visible(positions[victim], positions[i]))
+                    damage(i, UnitBalance.exploder.damage, now);
         }
+
+        public UnitStats stats_for(int index) => index < SOLDIERS ? UnitBalance.human : exploder[index] ? UnitBalance.exploder : UnitBalance.runner;
 
         public void Dispose() { crowd.Dispose(); }
     }

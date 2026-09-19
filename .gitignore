@@ -38,3 +38,6 @@ sysinfo.txt
 *.unitypackage
 
 # Keep Unity .meta files. Do NOT add *.meta here.
+# Generated build copy; edit only balance/unit_balance.json.
+/Assets/_Game/Resources/BalanceGenerated/
+/Assets/_Game/Resources/BalanceGenerated.meta

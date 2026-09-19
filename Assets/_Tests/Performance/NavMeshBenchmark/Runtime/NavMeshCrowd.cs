@@ -1,4 +1,5 @@
 using System;
+using ZombieGame.Balance;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -24,14 +25,14 @@ namespace ZombieGame.PerformanceTests
         private readonly bool[] geometry_failed;
         private readonly Vector3[] spawn_positions;
         private readonly bool prepare_paths;
-        private readonly float movement_speed;
+        private readonly UnitStats stats;
 
         public NavMeshCrowd(int count, bool obstacles, Vector3[] spawn_positions = null,
-            Bounds[] custom_walls = null, bool prepare_paths = true, float movement_speed = 12)
+            Bounds[] custom_walls = null, bool prepare_paths = true, UnitStats stats = null)
         {
             this.spawn_positions = spawn_positions;
             this.prepare_paths = prepare_paths;
-            this.movement_speed = movement_speed;
+            this.stats = stats ?? UnitBalance.runner;
             var timer = System.Diagnostics.Stopwatch.StartNew();
             walls = custom_walls ?? (obstacles ? new[] {
                 new Bounds(new Vector3(-47, 1.5f, -25.5f), new Vector3(2, 3, 205)),
@@ -78,8 +79,8 @@ namespace ZombieGame.PerformanceTests
             agent.agentTypeID = agent_type;
             agent.radius = .25f;
             agent.height = 1.2f;
-            agent.speed = movement_speed;
-            agent.acceleration = 40;
+            agent.speed = stats.move_speed;
+            agent.acceleration = stats.acceleration;
             agent.angularSpeed = 720;
             agent.stoppingDistance = .25f;
             agent.obstacleAvoidanceType = ObstacleAvoidanceType.MedQualityObstacleAvoidance;
