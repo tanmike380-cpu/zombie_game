@@ -17,9 +17,9 @@ namespace ZombieGame.CombatStressTests
         private bool spectator;
         private CombatStressSimulation simulation;
         private Mesh mesh, body_mesh;
-        private readonly Material[] materials = new Material[12];
-        private readonly Matrix4x4[][] matrices = new Matrix4x4[12][];
-        private readonly int[] counts = new int[12];
+        private readonly Material[] materials = new Material[16];
+        private readonly Matrix4x4[][] matrices = new Matrix4x4[16][];
+        private readonly int[] counts = new int[16];
         private readonly List<double> frames = new List<double>(20000), fighting_frames = new List<double>(20000);
         private readonly List<string> rows = new List<string>();
         private string status = "Preparing 400 vs 10,000", output_directory;
@@ -46,7 +46,8 @@ namespace ZombieGame.CombatStressTests
             Color[] colors = { new Color(.15f,.6f,1), new Color(.75f,.15f,.09f), new Color(.95f,.15f,.85f),
                 new Color(.75f,.15f,.09f), new Color(.36f,.32f,.28f), Color.yellow, new Color(1,.4f,.85f),
                 new Color(.16f,.25f,.12f), new Color(.08f,.3f,.55f), new Color(.25f,.34f,.2f), new Color(.1f,1,.35f),
-                new Color(1,.8f,.15f) };
+                new Color(1,.8f,.15f), new Color(.06f,.06f,.06f), new Color(.1f,1,.2f),
+                new Color(1,.8f,.05f), new Color(1,.12f,.08f) };
             for (int i = 0; i < materials.Length; i++)
             {
                 materials[i] = new Material(instance_template) { enableInstancing = true };
@@ -174,6 +175,7 @@ namespace ZombieGame.CombatStressTests
             {
                 if (simulation.health[i] <= 0) continue;
                 if (i >= 400 && !spectator && !fog.is_visible(simulation.positions[i])) continue;
+                draw_health_bar(i);
                 int group = i < 400 ? 0 : simulation.exploder[i] ? 2 : simulation.activated[i] ? 1 : 3;
                 // Match the Combat sandbox capsule and musket, using instancing instead of per-unit renderers.
                 matrices[group][counts[group]++] = Matrix4x4.TRS(simulation.positions[i] + Vector3.up * .7f, Quaternion.identity, new Vector3(.6f, .7f, .6f));
@@ -214,6 +216,16 @@ namespace ZombieGame.CombatStressTests
                 for (int start = 0; start < counts[group]; start += 1023)
                     Graphics.RenderMeshInstanced(parameters, group < 4 ? body_mesh : mesh, 0, matrices[group], Math.Min(1023, counts[group] - start), start);
             }
+        }
+
+        private void draw_health_bar(int index)
+        {
+            float fraction = Mathf.Clamp01(simulation.health[index] / (index < CombatStressSimulation.SOLDIERS ? 100f : 60f));
+            Vector3 origin = simulation.positions[index] + new Vector3(0,1.6f,.48f);
+            matrices[12][counts[12]++] = Matrix4x4.TRS(origin,Quaternion.identity,new Vector3(.7f,.03f,.14f));
+            int group = fraction > .5f ? 13 : fraction > .25f ? 14 : 15;
+            origin.x -= .32f * (1-fraction); origin.y += .025f;
+            matrices[group][counts[group]++] = Matrix4x4.TRS(origin,Quaternion.identity,new Vector3(.64f*fraction,.025f,.09f));
         }
 
         private void save_result(bool assault)

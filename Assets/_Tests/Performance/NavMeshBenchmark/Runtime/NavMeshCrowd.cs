@@ -156,10 +156,10 @@ namespace ZombieGame.PerformanceTests
 
         public void Dispose()
         {
-            root.SetActive(false);
-            UnityEngine.Object.Destroy(root);
-            nav_instance.Remove();
-            UnityEngine.Object.Destroy(nav_data);
+            // Unity may destroy the hierarchy before the controller on exiting Play Mode.
+            if (root != null) { root.SetActive(false); UnityEngine.Object.Destroy(root); }
+            if (nav_instance.valid) nav_instance.Remove();
+            if (nav_data != null) UnityEngine.Object.Destroy(nav_data);
         }
     }
 }

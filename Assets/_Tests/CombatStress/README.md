@@ -38,8 +38,9 @@ it does not mean that every later asynchronous request was audited for completio
   Circle visibility is cell-centre sampled, without terrain-height vision occlusion.
 - Native NavMesh medium avoidance. Spatial grids for combat broad phase, not custom
   pathfinding. Combat decisions at 10 Hz, at most 64 destination submissions/frame.
-- Reusable projectile/flash buffers and instanced simple geometry. No animation,
-  shadows, per-unit health bars, ammo economy, infection, buildings or networking.
+- Reusable projectile/flash buffers and instanced simple geometry/health bars.
+  Living visible units have proportional green/yellow/red health bars; fog-hidden
+  enemies have none. No animation, shadows, ammo economy, infection, buildings or networking.
 - Damage: bullets 20/.8s; zombie melee 10/1s; explosions 70 in radius2.
   Every Exploder death detonates; zombie explosions generate **no attraction noise**.
   High rocks block shots/blast damage; shallow water does not block sight/shots.
