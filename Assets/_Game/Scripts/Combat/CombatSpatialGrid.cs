@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ZombieGame.CombatStressTests
+namespace ZombieGame.Combat
 {
     /// <summary>Allocation-free spatial broad phase; routing remains native NavMesh.</summary>
     public sealed class CombatSpatialGrid

@@ -51,6 +51,12 @@ namespace ZombieGame.CombatTests
             yield return new WaitForSeconds(3.6f);
             require(zombie.has_memory && zombie.target == null, "Noise beyond range/through wall failed");
             require(!outside.has_memory, "Outside noise radius reacted");
+            Vector3 next_source = new Vector3(-4,0,8);
+            game.emit_noise(next_source, CombatSandbox.NOISE_RADIUS);
+            yield return new WaitForSeconds(2.3f);
+            require(zombie.has_memory && Vector3.Distance(zombie.memory_position,next_source)<.01f,
+                "Previously alerted small-scene zombie ignored newer noise");
+            Debug.Log("[SmallNoiseRetargetSmoke] PASS existing listener replaced previous source using shared production hearing");
             game.reset_battle();
             archer = game.actors[0]; zombie = game.actors[CombatSandbox.FRIENDLY_COUNT];
             foreach (var actor in game.actors)

@@ -1,3 +1,5 @@
+using ZombieGame.Combat;
+using ZombieGame.Vision;
 using System;
 using ZombieGame.Balance;
 using System.Collections;

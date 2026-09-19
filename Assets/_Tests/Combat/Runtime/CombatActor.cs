@@ -22,6 +22,7 @@ namespace ZombieGame.CombatTests
         public Vector3 patrol_end;
         public Vector3 memory_position;
         public bool has_memory;
+        public ZombieGame.AI.SoundMemory sound_memory;
         public bool selected;
         public float next_attack;
         public float next_repath;

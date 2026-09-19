@@ -16,3 +16,8 @@
 - Formation commands fill radial bands from the mouse target outward, assigning nearer units
   to inner bands before farther units. Match approach directions within each band to reduce
   crossing. Do not revert to unit-index-priority assignment or stagger command start times.
+- Reusable battle/navigation/perception logic lives under `Assets/_Game/Scripts`; test scenes
+  supply population/layout fixtures and must not become dependencies of production modules.
+- All living zombies, including previously alerted or settled ones, may hear new gunshots.
+  Newer audible emissions replace old sound memory; delayed older waves cannot restore old goals.
+  Visible-human pursuit has priority. Zombie explosions never emit attraction noise.

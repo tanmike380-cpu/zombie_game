@@ -31,7 +31,8 @@ namespace ZombieGame.CombatTests
         private readonly List<Pulse> pulses = new List<Pulse>();
         private Material blue, red, purple, stone, green, yellow, dark;
         private sealed class Arrow { public Transform visual; public CombatActor victim, shooter; }
-        private sealed class Pulse { public Vector3 origin; public float time, radius; public bool[] notified; public LineRenderer ring; }
+        private sealed class Pulse { public Vector3 origin; public float time, radius; public LineRenderer ring; }
+        private ZombieGame.Noise.NoiseTimeline noise;
 
         private void Start()
         {
@@ -93,6 +94,7 @@ namespace ZombieGame.CombatTests
             for (int i = 0; i < FRIENDLY_COUNT; i++) spawn_actor(new Vector3(-8 - i / 4 * 1.5f, 0, -3 + i % 4 * 2), true);
             for (int i = 0; i < RUNNER_COUNT; i++) spawn_actor(new Vector3(3 + i % 6 * 1.7f, 0, -4.25f + i / 6 * 1.7f), false);
             for (int i = 0; i < EXPLODER_COUNT; i++) spawn_actor(new Vector3(4, 0, -5 + i * 2), false, true);
+            noise = new ZombieGame.Noise.NoiseTimeline(actors.Count, NOISE_RADIUS);
             Physics.SyncTransforms();
             notice = "Purple = EXPLODER. Focus fire or spread out! Magenta warning ring = blast radius 2.";
         }
@@ -294,25 +296,30 @@ namespace ZombieGame.CombatTests
         {
             var holder = new GameObject("Noise Pulse"); holder.transform.SetParent(world.transform); holder.transform.position = origin;
             var ring = create_ring(holder.transform, 1, yellow);
-            pulses.Add(new Pulse { origin = origin, radius = radius, time = Time.time, notified = new bool[actors.Count], ring = ring });
+            pulses.Add(new Pulse { origin = origin, radius = radius, time = Time.time, ring = ring });
+            var signal = noise.create_signal(origin, radius, Time.time);
+            for (int i = 0; i < actors.Count; i++)
+                if (!actors[i].friendly && actors[i].alive) noise.queue_listener(i, signal, actors[i].transform.position);
         }
 
         private void update_noise()
         {
+            noise.advance(Time.time);
+            for (int i = 0; i < actors.Count; i++)
+            {
+                var actor = actors[i];
+                if (!actor.alive || actor.friendly || !noise.try_hear(i, out var signal) || !actor.sound_memory.accept(signal)) continue;
+                heard++;
+                if (actor.target == null)
+                {
+                    actor.has_memory = true; actor.memory_position = signal.origin;
+                    actor.next_repath = 0;
+                }
+            }
             for (int p = pulses.Count - 1; p >= 0; p--)
             {
                 var pulse = pulses[p]; float age = Time.time - pulse.time;
                 pulse.ring.transform.localScale = Vector3.one * Mathf.Min(pulse.radius, age * UnitBalance.config.noise_propagation_speed);
-                for (int i = 0; i < actors.Count; i++)
-                {
-                    var actor = actors[i];
-                    if (actor.friendly || !actor.alive || pulse.notified[i]) continue;
-                    Vector3 offset = actor.transform.position - pulse.origin; offset.y = 0;
-                    float length = offset.magnitude;
-                    if (length > pulse.radius || age < length / UnitBalance.config.noise_propagation_speed || age > length / UnitBalance.config.noise_propagation_speed + UnitBalance.config.noise_pulse_duration) continue;
-                    pulse.notified[i] = true; heard++;
-                    if (actor.target == null) { actor.has_memory = true; actor.memory_position = pulse.origin; }
-                }
                 if (age > pulse.radius / UnitBalance.config.noise_propagation_speed + UnitBalance.config.noise_pulse_duration) { Destroy(pulse.ring.transform.parent.gameObject); pulses.RemoveAt(p); }
             }
         }

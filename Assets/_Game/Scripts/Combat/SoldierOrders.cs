@@ -3,28 +3,28 @@ using ZombieGame.Balance;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace ZombieGame.CombatStressTests
+namespace ZombieGame.Combat
 {
     public enum SoldierOrder { Stop, Move, AttackMove, AttackTarget, Patrol }
 
-    public sealed partial class CombatStressSimulation
+    public partial class BattleSimulation
     {
-        public readonly bool[] selected = new bool[SOLDIERS];
-        public readonly SoldierOrder[] orders = new SoldierOrder[SOLDIERS];
-        public readonly int[] order_targets = new int[SOLDIERS];
-        public readonly Vector3[] order_goals = new Vector3[SOLDIERS];
-        private readonly Vector3[] patrol_starts = new Vector3[SOLDIERS], patrol_ends = new Vector3[SOLDIERS];
-        private readonly Vector3[] last_soldier_goal = new Vector3[SOLDIERS];
-        private readonly float[] soldier_repath_at = new float[SOLDIERS], zombie_repath_at = new float[TOTAL];
+        public readonly bool[] selected;
+        public readonly SoldierOrder[] orders;
+        public readonly int[] order_targets;
+        public readonly Vector3[] order_goals;
+        private readonly Vector3[] patrol_starts, patrol_ends;
+        private readonly Vector3[] last_soldier_goal;
+        private readonly float[] soldier_repath_at, zombie_repath_at;
         private readonly NavMeshPath soldier_path = new NavMeshPath();
         public Func<Vector3, bool> player_visibility;
 
         public bool issue_order(int index, SoldierOrder order, Vector3 goal, int target = -1)
         {
-            if (!playable || index < 0 || index >= SOLDIERS || health[index] <= 0) return false;
+            if (!playable || index < 0 || index >= soldier_count || health[index] <= 0) return false;
             if (order == SoldierOrder.AttackTarget)
             {
-                if (target < SOLDIERS || target >= TOTAL || health[target] <= 0 ||
+                if (target < soldier_count || target >= total_count || health[target] <= 0 ||
                     (player_visibility != null && !player_visibility(positions[target]))) return false;
                 goal = positions[target];
             }
@@ -75,7 +75,7 @@ namespace ZombieGame.CombatStressTests
             if (order == SoldierOrder.AttackTarget)
             {
                 target = order_targets[index];
-                if (target < SOLDIERS || health[target] <= 0)
+                if (target < soldier_count || health[target] <= 0)
                 { orders[index] = SoldierOrder.Stop; stop_soldier(index); return -1; }
                 if (player_visibility != null && !player_visibility(positions[target]))
                 { follow_soldier_route(index); return -1; }

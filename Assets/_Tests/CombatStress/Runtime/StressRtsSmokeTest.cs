@@ -1,3 +1,5 @@
+using ZombieGame.Combat;
+using ZombieGame.Vision;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -12,6 +14,7 @@ namespace ZombieGame.CombatStressTests
         private IEnumerator Start()
         {
             yield return null;
+            NoiseRetargetChecks.run();
             yield return verify_movement_speeds();
             game.reset_playable();
             yield return null;
@@ -109,8 +112,44 @@ namespace ZombieGame.CombatStressTests
             yield return new WaitForSeconds(2.5f);
             require(s.shots>0 && s.hits>0 && s.ever_active>0,"Attack/noise chase loop");
             yield return verify_extended_noise();
+            yield return verify_noise_retarget();
             Debug.Log($"[StressRtsSmoke] PASS manual start, 400-unit move, stop, patrol, screen picking/box selection, groups/recall/focus/reset/dead filtering, central obstacle detour, terrain bounds, enemy/hidden rejection, moving fog/exploration, attack/noise chase. shots={s.shots} hits={s.hits} activated={s.ever_active}");
             game.reset_playable(); game.input_locked=false;
+        }
+
+        private IEnumerator verify_noise_retarget()
+        {
+            game.reset_playable(); yield return null;
+            var simulation = game.current;
+            int listener = 401;
+            var agent = simulation.crowd.agents[listener];
+            agent.enabled = true;
+            require(agent.Warp(new Vector3(-100,0,-90)), "Retarget listener fixture warp");
+            yield return new WaitForSeconds(.2f);
+            Vector3 first = new Vector3(-100,0,-80), second = new Vector3(-112,0,-90), third = new Vector3(-100,0,-100);
+            simulation.emit_gun_noise(first, Time.time);
+            yield return new WaitForSeconds(2.5f);
+            require(simulation.activated[listener] && Vector3.Distance(agent.destination,first)<.2f, "Initial noise route");
+            simulation.emit_gun_noise(second, Time.time);
+            yield return new WaitForSeconds(3.2f);
+            require(Vector3.Distance(agent.destination,second)<.2f, "Active zombie kept old source");
+            float distance = Vector3.Distance(agent.transform.position,second);
+            yield return new WaitForSeconds(1);
+            require(Vector3.Distance(agent.transform.position,second)<distance-1, "Retarget did not move toward new source");
+            yield return new WaitForSeconds(3);
+            require(agent.isStopped && Vector3.Distance(agent.transform.position,second)<1, "Zombie did not settle at sound source");
+            simulation.emit_gun_noise(third, Time.time);
+            yield return new WaitForSeconds(3.6f);
+            require(!agent.isStopped && Vector3.Distance(agent.destination,third)<.2f, "Settled zombie did not wake for new source");
+            // Explicit temporary warp fixture: visible human must override an audible source.
+            Vector3 human = agent.transform.position + Vector3.right * 2.5f;
+            require(simulation.crowd.agents[0].Warp(human), "Visual priority human warp");
+            require(simulation.issue_order(0,SoldierOrder.Move,human+Vector3.forward*10), "Visual priority move");
+            simulation.emit_gun_noise(agent.transform.position,Time.time);
+            yield return new WaitForSeconds(.3f);
+            require(Vector3.Distance(agent.destination,simulation.positions[0])<1, "Noise overrode visible human chase");
+            Debug.Log($"[NoiseRetargetSmoke] PASS active reroute, physical movement, settled wake, visible-human priority; redirects={simulation.noise_redirects}");
+            game.reset_playable();
         }
 
         private IEnumerator verify_extended_noise()

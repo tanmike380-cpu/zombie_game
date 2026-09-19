@@ -1,8 +1,9 @@
 using System;
+using ZombieGame.Combat;
 using ZombieGame.Balance;
 using UnityEngine;
 
-namespace ZombieGame.CombatStressTests
+namespace ZombieGame.Vision
 {
     /// <summary>One-tile fog grid: human radius 10, persistent exploration, no height occlusion yet.</summary>
     public sealed class CombatFog : IDisposable
@@ -24,10 +25,10 @@ namespace ZombieGame.CombatStressTests
             quad = primitive.GetComponent<MeshFilter>().sharedMesh; UnityEngine.Object.Destroy(primitive);
         }
 
-        public void update_visibility(CombatStressSimulation simulation)
+        public void update_visibility(BattleSimulation simulation)
         {
             Array.Clear(visible, 0, visible.Length);
-            for (int i = 0; i < CombatStressSimulation.SOLDIERS; i++)
+            for (int i = 0; i < simulation.soldier_count; i++)
             {
                 if (simulation.health[i] <= 0) continue;
                 Vector3 center = simulation.positions[i];

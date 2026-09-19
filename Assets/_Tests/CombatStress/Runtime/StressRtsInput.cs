@@ -1,3 +1,5 @@
+using ZombieGame.Combat;
+using ZombieGame.Vision;
 using UnityEngine;
 using System.Collections.Generic;
 using ZombieGame.Movement;
