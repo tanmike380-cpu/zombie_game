@@ -22,16 +22,23 @@ namespace ZombieGame.PerformanceTests
         private readonly NavMeshData nav_data;
         private readonly NavMeshDataInstance nav_instance;
         private readonly bool[] geometry_failed;
+        private readonly Vector3[] spawn_positions;
+        private readonly bool prepare_paths;
+        private readonly float movement_speed;
 
-        public NavMeshCrowd(int count, bool obstacles)
+        public NavMeshCrowd(int count, bool obstacles, Vector3[] spawn_positions = null,
+            Bounds[] custom_walls = null, bool prepare_paths = true, float movement_speed = 12)
         {
+            this.spawn_positions = spawn_positions;
+            this.prepare_paths = prepare_paths;
+            this.movement_speed = movement_speed;
             var timer = System.Diagnostics.Stopwatch.StartNew();
-            walls = obstacles ? new[] {
+            walls = custom_walls ?? (obstacles ? new[] {
                 new Bounds(new Vector3(-47, 1.5f, -25.5f), new Vector3(2, 3, 205)),
                 new Bounds(new Vector3(18, 1.5f, 25), new Vector3(2, 3, 206)),
                 new Bounds(new Vector3(78, 1.5f, -68), new Vector3(2, 3, 120)),
                 new Bounds(new Vector3(78, 1.5f, 66), new Vector3(2, 3, 124))
-            } : Array.Empty<Bounds>();
+            } : Array.Empty<Bounds>());
             var sources = new List<NavMeshBuildSource>();
             sources.Add(box_source(new Bounds(new Vector3(0, -.5f, 0), new Vector3(256, 1, 256)), 0));
             foreach (Bounds wall in walls) sources.Add(box_source(wall, 1));
@@ -65,12 +72,13 @@ namespace ZombieGame.PerformanceTests
         {
             var unit = new GameObject("Agent");
             unit.transform.SetParent(root.transform, false);
-            unit.transform.position = new Vector3(-123.5f + index % 64, 0, -119.5f + index / 64);
+            unit.transform.position = spawn_positions == null
+                ? new Vector3(-123.5f + index % 64, 0, -119.5f + index / 64) : spawn_positions[index];
             var agent = unit.AddComponent<NavMeshAgent>();
             agent.agentTypeID = agent_type;
             agent.radius = .25f;
             agent.height = 1.2f;
-            agent.speed = 12;
+            agent.speed = movement_speed;
             agent.acceleration = 40;
             agent.angularSpeed = 720;
             agent.stoppingDistance = .25f;
@@ -80,6 +88,7 @@ namespace ZombieGame.PerformanceTests
             agents[index] = agent;
             if (!agent.isOnNavMesh) throw new InvalidOperationException("Agent spawn is off NavMesh: " + index);
             agent.isStopped = true;
+            if (!prepare_paths) { agent.enabled = false; return; }
             // Spread goals in the exit region; remove arrivals from avoidance to avoid an impossible single-point pile-up.
             Vector3 goal = new Vector3(110 + index % 16 * .5f, 0, -110 + index / 16 % 400 * .55f);
             // Pure movement test: calculate with Unity's native API before releasing ANY unit.
@@ -89,6 +98,20 @@ namespace ZombieGame.PerformanceTests
                 || path.status != NavMeshPathStatus.PathComplete || !agent.SetPath(path))
                 throw new InvalidOperationException("Native complete path unavailable: " + index);
             agent.isStopped = true;
+        }
+
+        /// <summary>Issue a native route only after a stimulus. Idle agents have no navigation workload.</summary>
+        public bool investigate_position(int index, Vector3 target)
+        {
+            NavMeshAgent agent = agents[index];
+            agent.enabled = true;
+            if (!agent.isOnNavMesh) return false;
+            var path = new NavMeshPath();
+            if (!NavMesh.CalculatePath(transforms[index].position, target, NavMesh.AllAreas, path)
+                || path.status != NavMeshPathStatus.PathComplete || !agent.SetPath(path)) return false;
+            agent.stoppingDistance = .8f;
+            agent.isStopped = false;
+            return true;
         }
 
         public void set_paused(bool paused)
