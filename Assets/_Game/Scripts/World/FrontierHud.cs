@@ -92,7 +92,7 @@ namespace ZombieGame.World
             draw_unit_stats(new Rect(x+66*s,y+32*s,area.width-94*s,44*s),count>0);
             var bar=new Rect(x,y+81*s,Mathf.Max(40*s,area.width-28*s),5*s);
             fill(bar,new Color(.16f,.18f,.16f));fill(new Rect(bar.x,bar.y,bar.width*(max_health>0?health/max_health:0),bar.height),new Color(.33f,.57f,.30f));
-            GUI.Label(new Rect(x,y+89*s,area.width-28*s,22*s),count>0?$"总生命 {health:0}/{max_health:0} · 携弹 {rounds}/{count*UnitBalance.human.ammunition_capacity} · 拼刀 {melee} 人 · T 切换":"框选部队查看属性 · 下方数字卡片为保存的编队",small);
+            GUI.Label(new Rect(x,y+89*s,area.width-28*s,22*s),count>0?$"平均生命 {health/count:0.#}/{max_health/count:0.#} · 携弹 {rounds}/{count*UnitBalance.human.ammunition_capacity} · 拼刀 {melee} 人 · T 切换":"框选部队查看属性 · 下方数字卡片为保存的编队",small);
             float card_width=(area.width-28*s)/10;
             for(int slot=0;slot<10;slot++)
             {

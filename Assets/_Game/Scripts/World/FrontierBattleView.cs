@@ -13,9 +13,9 @@ namespace ZombieGame.World
         private readonly CharacterCrowdRenderer characters;
         private readonly MusketEffects effects;
         private readonly Mesh cube;
-        private readonly Material[] materials=new Material[4];
-        private readonly Matrix4x4[][] matrices=new Matrix4x4[4][];
-        private readonly int[] counts=new int[4];
+        private readonly Material[] materials=new Material[5];
+        private readonly Matrix4x4[][] matrices=new Matrix4x4[5][];
+        private readonly int[] counts=new int[5];
         private readonly float[] seen_shots,death_started;
 
         public FrontierBattleView(int capacity,Transform parent,Shader shader)
@@ -24,8 +24,8 @@ namespace ZombieGame.World
             seen_shots=new float[capacity];death_started=new float[capacity];
             for(int i=0;i<capacity;i++) seen_shots[i]=float.NegativeInfinity;
             var primitive=GameObject.CreatePrimitive(PrimitiveType.Cube);cube=primitive.GetComponent<MeshFilter>().sharedMesh;UnityEngine.Object.Destroy(primitive);
-            Color[] colors={new Color(.47f,.65f,.24f),new Color(.09f,.08f,.045f),new Color(1,.8f,.2f),new Color(.6f,.2f,.4f)};
-            for(int i=0;i<4;i++) { materials[i]=new Material(shader){color=colors[i],enableInstancing=true};matrices[i]=new Matrix4x4[capacity+4096]; }
+            Color[] colors={new Color(.47f,.65f,.24f),new Color(.09f,.08f,.045f),new Color(1,.8f,.2f),new Color(.6f,.2f,.4f),new Color(.12f,.52f,1f)};
+            for(int i=0;i<materials.Length;i++) { materials[i]=new Material(shader){color=colors[i],enableInstancing=true};matrices[i]=new Matrix4x4[capacity+4096]; }
         }
         public void draw(BattleSimulation battle,CombatFog fog,bool reveal)
         {
@@ -59,12 +59,13 @@ namespace ZombieGame.World
                     add(0,p+Vector3.forward*.36f,new Vector3(.72f,.025f,.035f));
                     add(0,p+Vector3.back*.36f,new Vector3(.72f,.025f,.035f));
                 }
-                if((human&&battle.selected[i]&&Camera.main.orthographicSize<=14)||battle.health[i]<battle.stats_for(i).health)
+                if((human&&(battle.selected[i]||battle.ammunition[i]<UnitBalance.human.ammunition_capacity))||battle.health[i]<battle.stats_for(i).health)
                 {
                     float health=Mathf.Clamp01(battle.health[i]/battle.stats_for(i).health);
                     Vector3 point=battle.positions[i]+Vector3.up*1.9f;
-                    add(1,point,new Vector3(.7f,.08f,.10f));
-                    add(0,point+new Vector3(-.3f*(1-health),.04f,-.02f),new Vector3(.6f*health,.08f,.10f));
+                    draw_status_bar(point,health,0);
+                    if(human) draw_status_bar(point-Camera.main.transform.up*.15f,
+                        battle.ammunition[i]/(float)UnitBalance.human.ammunition_capacity,4);
                 }
             }
             foreach(var shot in battle.projectiles) if(shot.active&&(reveal||fog.is_visible(shot.position))) add(2,shot.position,Vector3.one*.13f);
@@ -74,7 +75,7 @@ namespace ZombieGame.World
                 for(int i=0;i<24;i++) add(3,flash.origin+new Vector3(Mathf.Cos(i*Mathf.PI/12)*radius,.15f,Mathf.Sin(i*Mathf.PI/12)*radius),new Vector3(.18f,.12f,.18f));
             }
             characters.draw();
-            for(int i=0;i<4;i++)
+            for(int i=0;i<materials.Length;i++)
             {
                 var parameters=new RenderParams(materials[i]){worldBounds=new Bounds(Vector3.zero,new Vector3(260,30,260)),shadowCastingMode=ShadowCastingMode.Off};
                 for(int start=0;start<counts[i];start+=1023) Graphics.RenderMeshInstanced(parameters,cube,0,matrices[i],Math.Min(1023,counts[i]-start),start);
@@ -82,6 +83,15 @@ namespace ZombieGame.World
         }
         private void add(int group,Vector3 point,Vector3 size)
         { if(counts[group]<matrices[group].Length)matrices[group][counts[group]++]=Matrix4x4.TRS(point,Quaternion.identity,size); }
+        private void draw_status_bar(Vector3 point,float fraction,int color_group)
+        {
+            var camera_transform=Camera.main.transform;
+            fraction=Mathf.Clamp01(fraction);
+            if(counts[1]<matrices[1].Length)matrices[1][counts[1]++]=Matrix4x4.TRS(point,camera_transform.rotation,new Vector3(.74f,.1f,.025f));
+            if(fraction<=0||counts[color_group]>=matrices[color_group].Length)return;
+            Vector3 fill_point=point-camera_transform.right*(.34f*(1-fraction))-camera_transform.forward*.025f;
+            matrices[color_group][counts[color_group]++]=Matrix4x4.TRS(fill_point,camera_transform.rotation,new Vector3(.68f*fraction,.06f,.025f));
+        }
         public void Dispose() { effects.Dispose();foreach(var material in materials)UnityEngine.Object.Destroy(material); }
     }
 }
