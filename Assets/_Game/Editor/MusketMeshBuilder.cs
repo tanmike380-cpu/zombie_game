@@ -13,19 +13,21 @@ namespace ZombieGame.EditorTools
             new Vector3(.50106332f,.34678560f,.80261678f)*point.y +
             new Vector3(-.87346851f,.23960823f,.44176795f)*point.z;
 
-        public static Mesh build()
+        public static Mesh build(CharacterArtSettings settings)
         {
             var parts = new List<CombineInstance>(); var meshes = new List<Mesh>();
-            Color wood = new Color(.30f,.13f,.045f,1), iron = new Color(.22f,.24f,.25f,1), brass = new Color(.48f,.36f,.12f,1);
-            add_part(parts,meshes,PrimitiveType.Cube,new Vector3(0,.035f,-.25f),new Vector3(.085f,.11f,.76f),Quaternion.identity,wood);
-            add_part(parts,meshes,PrimitiveType.Cube,new Vector3(0,-.06f,-.55f),new Vector3(.11f,.20f,.30f),Quaternion.Euler(12,0,0),wood);
-            add_part(parts,meshes,PrimitiveType.Cylinder,new Vector3(0,.12f,.51f),new Vector3(.062f,.76f,.062f),Quaternion.Euler(90,0,0),iron);
+            Color wood = settings.wood, iron = settings.iron, brass = settings.brass;
+            // Slender continuous fore-stock and a narrow downward-curved butt, not a broad rifle shoulder stock.
+            add_part(parts,meshes,PrimitiveType.Cube,new Vector3(0,.07f,.32f),new Vector3(settings.stock_width,.075f,1.38f),Quaternion.identity,wood);
+            add_part(parts,meshes,PrimitiveType.Cube,new Vector3(0,.025f,-.42f),new Vector3(settings.stock_width,.09f,.30f),Quaternion.Euler(-18,0,0),wood);
+            add_part(parts,meshes,PrimitiveType.Cube,new Vector3(0,-.065f,-.64f),new Vector3(settings.stock_width,.09f,.22f),Quaternion.Euler(-28,0,0),wood);
+            add_part(parts,meshes,PrimitiveType.Cylinder,new Vector3(0,.12f,.51f),new Vector3(settings.barrel_diameter,.76f,settings.barrel_diameter),Quaternion.Euler(90,0,0),iron);
             add_part(parts,meshes,PrimitiveType.Cube,new Vector3(.055f,.06f,-.03f),new Vector3(.04f,.08f,.15f),Quaternion.identity,brass);
             // Raised serpentine match holder and a pale cord: deliberately no magazine, scope or modern receiver.
             add_part(parts,meshes,PrimitiveType.Cube,new Vector3(.075f,.16f,-.08f),new Vector3(.018f,.18f,.026f),Quaternion.Euler(0,0,-28),iron);
             add_part(parts,meshes,PrimitiveType.Cylinder,new Vector3(.11f,.23f,-.03f),new Vector3(.014f,.065f,.014f),Quaternion.Euler(65,0,0),new Color(.72f,.60f,.39f,1));
             foreach (float z in new[] { .15f,.7f })
-                add_part(parts,meshes,PrimitiveType.Cylinder,new Vector3(0,.12f,z),new Vector3(.075f,.022f,.075f),Quaternion.Euler(90,0,0),brass);
+                add_part(parts,meshes,PrimitiveType.Cylinder,new Vector3(0,.12f,z),new Vector3(settings.barrel_diameter+.01f,.014f,settings.barrel_diameter+.01f),Quaternion.Euler(90,0,0),brass);
             var result = new Mesh { name = "Original Musket" }; result.CombineMeshes(parts.ToArray(),true,true);
             var vertices = result.vertices; var normals = result.normals;
             for(int i=0;i<vertices.Length;i++) { vertices[i]=to_grip(vertices[i]); normals[i]=to_grip(normals[i]); }

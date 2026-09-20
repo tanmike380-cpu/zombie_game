@@ -38,6 +38,7 @@ namespace ZombieGame.EditorTools
 
         private static void bake_character(string source, string name, string[] clips)
         {
+            var art = CharacterArtSettings.load_settings();
             string path = SOURCE + source + ".gltf";
             var prefab = AssetDatabase.LoadAssetAtPath<GameObject>(path);
             if (prefab == null) throw new InvalidOperationException("Model import missing: " + path);
@@ -57,6 +58,9 @@ namespace ZombieGame.EditorTools
                 var asset = ScriptableObject.CreateInstance<CharacterFrames>(); asset.poses = new PoseFrames[4];
                 AssetDatabase.CreateAsset(asset, output);
                 asset.material = new Material(Shader.Find("ZombieGame/CharacterAtlas")) { name = name + " Atlas", enableInstancing = true, mainTexture = atlas };
+                asset.material.SetFloat("_Saturation", art.saturation);
+                asset.material.SetColor("_Tint", art.tint);
+                asset.material.SetFloat("_Ambient", art.ambient_light);
                 AssetDatabase.AddObjectToAsset(asset.material, asset);
                 for (int pose = 0; pose < clips.Length; pose++)
                 {
@@ -69,13 +73,13 @@ namespace ZombieGame.EditorTools
                         clip.SampleAnimation(model, fraction * clip.length);
                         Transform rifle = renderers.FirstOrDefault(r=>r.name == "Rifle")?.transform;
                         frames.muzzle_positions[frame] = rifle == null ? Vector3.up : model.transform.InverseTransformPoint(rifle.TransformPoint(MusketMeshBuilder.to_grip(new Vector3(0,.12f,1.27f))));
-                        Mesh mesh = bake_frame(model, renderers);
+                        Mesh mesh = bake_frame(model, renderers, art);
                         if (name == "Exploder")
                         {
                             var colors = new Color[mesh.vertexCount];
                             Vector3[] vertices = mesh.vertices;
                             for (int v=0;v<colors.Length;v++) colors[v] = vertices[v].y > .45f && vertices[v].y < 1.05f
-                                ? new Color(.61f,.12f,.40f,.72f) : new Color(.39f,.24f,.42f,.45f);
+                                ? art.exploder_belly : art.exploder_body;
                             mesh.colors = colors;
                         }
                         // Small presentation-only recoil. Original pack supplies a rifle pose, not a firing clip.
@@ -97,7 +101,7 @@ namespace ZombieGame.EditorTools
             finally { UnityEngine.Object.DestroyImmediate(model); }
         }
 
-        private static Mesh bake_frame(GameObject model, Renderer[] renderers)
+        private static Mesh bake_frame(GameObject model, Renderer[] renderers, CharacterArtSettings art)
         {
             var combines = new List<CombineInstance>(); var temporary = new List<Mesh>();
             foreach (Renderer renderer in renderers)
@@ -107,7 +111,7 @@ namespace ZombieGame.EditorTools
                 {
                     mesh = new Mesh(); skin.BakeMesh(mesh); mesh.colors = new Color[mesh.vertexCount]; temporary.Add(mesh);
                 }
-                else { mesh = MusketMeshBuilder.build(); temporary.Add(mesh); }
+                else { mesh = MusketMeshBuilder.build(art); temporary.Add(mesh); }
                 for (int sub = 0; sub < mesh.subMeshCount; sub++)
                     combines.Add(new CombineInstance { mesh = mesh, subMeshIndex = sub, transform = model.transform.worldToLocalMatrix * renderer.localToWorldMatrix });
             }
