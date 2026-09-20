@@ -105,6 +105,8 @@ namespace ZombieGame.CombatStressTests
             require(game.current_fog.is_visible(new Vector3(-70.5f,0,-55)) && !game.current_fog.is_visible(new Vector3(-69,0,-55)),"Human 10-tile sight");
 
             require(s.crowd.agents[0].Warp(new Vector3(-15,0,0)),"Attack fixture soldier warp");
+            // Move-only fixture prevents the new 100-damage gun auto-killing the target before the explicit attack assertion.
+            require(s.issue_order(0,SoldierOrder.Move,new Vector3(-15,0,-20)),"Attack fixture firing hold via move order");
             s.crowd.agents[401].enabled = true;
             require(s.crowd.agents[401].Warp(new Vector3(-10,0,0)),"Attack fixture zombie warp");
             yield return new WaitForSeconds(.3f);

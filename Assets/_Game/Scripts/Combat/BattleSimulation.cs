@@ -21,6 +21,7 @@ namespace ZombieGame.Combat
         public readonly bool assault;
         public readonly bool playable;
         public readonly Vector3[] soldier_facing;
+        public readonly float[] attack_started_at;
         public int shots, hits, bites, blasts, heard, dead_soldiers, dead_zombies, ever_active;
         public int active_now, pending, path_failures, dropped_projectiles, moving_now;
         public int peak_active, peak_moving, geometry_errors;
@@ -54,6 +55,7 @@ namespace ZombieGame.Combat
             activated = new bool[total_count];
             exploder = new bool[total_count];
             soldier_facing = new Vector3[soldier_count];
+            attack_started_at = new float[total_count];
             next_attack = new float[total_count];
             noise = new NoiseTimeline(total_count, UnitBalance.human_noise(UnitBalance.human));
             sound_memories = new SoundMemory[total_count];
@@ -80,6 +82,7 @@ namespace ZombieGame.Combat
             for (int i = 0; i < total_count; i++)
             {
                 fuse[i] = float.PositiveInfinity;
+                attack_started_at[i] = float.NegativeInfinity;
                 path_target[i] = -1;
                 health[i] = stats_for(i).health;
                 crowd.agents[i].speed = stats_for(i).move_speed;
@@ -187,6 +190,7 @@ namespace ZombieGame.Combat
                 if (target >= 0) soldier_facing[i] = positions[target] - positions[i];
                 if (target < 0 || now < next_attack[i]) continue;
                 next_attack[i] = now + UnitBalance.human.attack_interval; shots++; last_combat_time = now;
+                attack_started_at[i] = now;
                 bool allocated = false;
                 for (int attempt = 0; attempt < projectiles.Length; attempt++)
                 {

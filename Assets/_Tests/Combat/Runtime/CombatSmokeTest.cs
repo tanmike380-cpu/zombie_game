@@ -63,6 +63,7 @@ namespace ZombieGame.CombatTests
                 if (actor.friendly) game.issue_order(actor, CombatOrder.AttackMove, new Vector3(8, 0, 0));
             yield return new WaitForSeconds(12);
             require(game.shots > 0 && game.hits > 0 && game.kills > 0, "Gun/damage/death cycle failed");
+            require(game.musket_visual_shots == game.shots, "Musket smoke/flash must emit exactly once per actual shot");
             string combat_counts = $"shots={game.shots} hits={game.hits} kills={game.kills}";
             game.reset_battle();
             yield return null; // Register fresh agents before constructing the melee fixture.

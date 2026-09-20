@@ -10,7 +10,7 @@ namespace ZombieGame.EditorTools
     public sealed class BalanceBuild : IPreprocessBuildWithReport
     {
         public int callbackOrder => -1000;
-        public void OnPreprocessBuild(BuildReport report) { sync_snapshot(); }
+        public void OnPreprocessBuild(BuildReport report) { sync_snapshot(); CharacterBake.ensure_models(); }
 
         [MenuItem("Tools/Zombie Game/Balance/Validate and sync build snapshot")]
         public static void sync_snapshot()

@@ -14,11 +14,15 @@ namespace ZombieGame.CombatTests
         private readonly FormationDestinations formation = new FormationDestinations();
         private readonly List<Vector3> origins = new List<Vector3>(), destinations = new List<Vector3>();
         private float ui_scale => Mathf.Max(1, Screen.height / 800f);
-        private bool over_hud => Input.mousePosition.y > Screen.height - 140 * ui_scale;
+        private bool show_hud = true;
+        private bool over_hud => !game.use_character_models && show_hud && Input.mousePosition.y > Screen.height - 140 * ui_scale;
 
         private void Update()
         {
             if (game == null || game.running_checks) return;
+            if (Input.GetKeyDown(KeyCode.H)) show_hud = !show_hud;
+            if (Input.GetKeyDown(KeyCode.F2) || Input.GetKeyDown(KeyCode.BackQuote))
+                foreach (var actor in game.actors) actor.selected = actor.friendly && actor.alive;
             if (Input.GetKeyDown(KeyCode.R)) { game.reset_battle(); pending = "Select"; dragging = false; }
             if (Input.GetKeyDown(KeyCode.Escape)) { pending = "Select"; dragging = false; }
             if (Input.GetKeyDown(KeyCode.A)) arm_command("Attack");
@@ -129,11 +133,14 @@ namespace ZombieGame.CombatTests
         {
             if (game == null) return;
             GUI.matrix = Matrix4x4.Scale(Vector3.one * ui_scale);
+            if (show_hud)
+            {
             GUI.Box(new Rect(8, 8, 940, 125), $"RTS COMBAT | 8 Shenji ({UnitBalance.human.move_speed}) vs 36 Runner ({UnitBalance.runner.move_speed}) + 6 purple Exploder ({UnitBalance.exploder.move_speed})");
             GUI.Label(new Rect(20, 32, 910, 22), "Left click/drag: select | Right click: move | A + left: attack | Q + left: patrol | S: stop | M + left: move");
             GUI.Label(new Rect(20, 55, 910, 22), $"Esc: cancel | R: reset | Wheel: zoom | Gun range {CombatSandbox.ATTACK_RANGE} / noise {CombatSandbox.NOISE_RADIUS} | Low wall: shoot over; high wall: blocked");
             GUI.Label(new Rect(20, 78, 910, 22), $"Mode: {pending} | Selected {selected_count()} | Shots {game.shots} | Hits {game.hits} | Heard {game.heard} | Bites {game.bites} | Blasts {game.blasts} | Dead {game.kills}/{CombatSandbox.ZOMBIE_COUNT}");
             GUI.Label(new Rect(20, 101, 910, 22), game.running_checks ? "AUTO CHECK (~30 seconds): controls resume when complete. Please wait." : game.notice);
+            }
             GUI.matrix = Matrix4x4.identity;
             foreach (var actor in game.actors)
             {
@@ -144,7 +151,7 @@ namespace ZombieGame.CombatTests
                 GUI.color = Color.black; GUI.DrawTexture(new Rect(x, y, 50, 6), Texture2D.whiteTexture);
                 GUI.color = actor.friendly ? Color.green : new Color(1, .25f, .15f);
                 GUI.DrawTexture(new Rect(x + 1, y + 1, 48 * actor.health / actor.max_health, 4), Texture2D.whiteTexture);
-                if (!actor.friendly)
+                if (!actor.friendly && show_hud)
                 {
                     GUI.color = actor.target != null ? Color.red : actor.has_memory ? Color.yellow : Color.white;
                     GUI.Label(new Rect(x - 15, y - 22, 95, 22), actor.detonate_at >= 0 ? "DETONATING!" : actor.target != null ? "CHASE" : actor.has_memory ? "INVESTIGATE" : "IDLE");

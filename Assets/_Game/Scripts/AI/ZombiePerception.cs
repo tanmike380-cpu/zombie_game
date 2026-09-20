@@ -39,7 +39,7 @@ namespace ZombieGame.Combat
                         if (crowd.agents[i].enabled) crowd.agents[i].isStopped = true;
                         if (exploder[i]) fuse[i] = now + UnitBalance.exploder.fuse_seconds;
                         else if (now >= next_attack[i])
-                        { next_attack[i] = now + stats_for(i).attack_interval; bites++; last_combat_time = now; damage(target, stats_for(i).damage, now); }
+                        { attack_started_at[i] = now; next_attack[i] = now + stats_for(i).attack_interval; bites++; last_combat_time = now; damage(target, stats_for(i).damage, now); }
                         continue;
                     }
                 }

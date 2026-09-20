@@ -18,6 +18,9 @@ namespace ZombieGame.CombatTests
         public static float BLAST_RADIUS => UnitBalance.exploder.explosion_radius;
         public static float BLAST_DAMAGE => UnitBalance.exploder.damage;
         public Material material_template;
+        public bool use_character_models;
+        private ZombieGame.Presentation.MusketEffects musket_effects;
+        public int musket_visual_shots => musket_effects?.shot_count ?? 0;
         public bool running_checks;
         public readonly List<CombatActor> actors = new List<CombatActor>();
         public string notice = "Select blue Shenji, then right-click to move. A + left-click to attack.";
@@ -37,6 +40,12 @@ namespace ZombieGame.CombatTests
         private void Start()
         {
             Application.runInBackground = true;
+            if (Array.IndexOf(Environment.GetCommandLineArgs(), "-characterRenderBenchmark") >= 0)
+            {
+                gameObject.AddComponent<ZombieGame.CharacterTests.CharacterRenderBenchmark>().template = material_template;
+                enabled = false; return;
+            }
+            if (use_character_models) ZombieGame.CharacterTests.CharacterVisualChecks.run();
             create_materials();
             reset_battle();
             gameObject.AddComponent<RtsInput>().game = this;
@@ -44,6 +53,7 @@ namespace ZombieGame.CombatTests
             {
                 running_checks = true;
                 gameObject.AddComponent<CombatSmokeTest>().game = this;
+                if (use_character_models) gameObject.AddComponent<ZombieGame.CharacterTests.MusketEffectSmokeTest>();
             }
         }
 
@@ -69,12 +79,14 @@ namespace ZombieGame.CombatTests
 
         public void reset_battle()
         {
+            musket_effects?.Dispose();
             if (world != null) { world.SetActive(false); Destroy(world); }
             if (nav_instance.valid) nav_instance.Remove();
             if (nav_data != null) Destroy(nav_data);
             actors.Clear(); arrows.Clear(); pulses.Clear();
             shots = hits = bites = heard = kills = blasts = blast_visuals_created = 0;
             world = new GameObject("Combat Test World");
+            musket_effects = new ZombieGame.Presentation.MusketEffects(world.transform);
             var sources = new List<NavMeshBuildSource>();
             create_box("Ground", new Vector3(0, -.5f, 0), new Vector3(32, 1, 24), dark, false);
             sources.Add(box_source(new Vector3(0, -.5f, 0), new Vector3(32, 1, 24), 0));
@@ -129,9 +141,18 @@ namespace ZombieGame.CombatTests
             body.transform.SetParent(root.transform, false); body.transform.localPosition = Vector3.up * .7f;
             body.transform.localScale = new Vector3(.6f, .7f, .6f);
             body.GetComponent<Renderer>().sharedMaterial = friendly ? blue : exploder ? purple : red;
+            if (use_character_models)
+            {
+                body.GetComponent<Renderer>().enabled = false;
+                var visual = new GameObject("Animated Character"); visual.transform.SetParent(root.transform, false);
+                actor.character_view = visual.AddComponent<ZombieGame.Presentation.CharacterView>();
+                actor.character_view.initialize(friendly, exploder);
+            }
             actor.selection_ring = create_ring(root.transform, .55f, green);
             actor.selection_ring.enabled = false;
-            if (friendly)
+            actor.selected = friendly && use_character_models;
+            if (use_character_models && exploder) create_ring(root.transform, .45f, purple);
+            if (friendly && !use_character_models)
             {
                 var bow = create_box("Simple Musket", position, new Vector3(.12f, .12f, .85f), yellow, false);
                 bow.transform.SetParent(root.transform, false); bow.transform.localPosition = new Vector3(.4f, .8f, .2f);
@@ -251,7 +272,7 @@ namespace ZombieGame.CombatTests
             {
                 actor.halt(); face_target(actor, actor.target.transform.position);
                 if (Time.time >= actor.next_attack)
-                { actor.next_attack = Time.time + actor.stats.attack_interval; bites++; apply_damage(actor.target, actor.stats.damage); }
+                { actor.last_attack_at = Time.time; actor.next_attack = Time.time + actor.stats.attack_interval; bites++; apply_damage(actor.target, actor.stats.damage); }
             }
             else if (actor.has_memory)
             {
@@ -286,6 +307,10 @@ namespace ZombieGame.CombatTests
 
         private void fire_arrow(CombatActor actor, CombatActor victim)
         {
+            actor.last_attack_at = Time.time;
+            Vector3 muzzle = actor.character_view != null ? actor.character_view.muzzle_position()
+                : actor.transform.position + Vector3.up + actor.transform.forward * .65f;
+            musket_effects.fire(muzzle, actor.transform.forward);
             actor.next_attack = Time.time + actor.stats.attack_interval; shots++;
             var arrow = create_box("Musket Tracer", actor.transform.position + Vector3.up, new Vector3(.07f, .07f, .65f), yellow, false);
             arrows.Add(new Arrow { visual = arrow.transform, victim = victim, shooter = actor });
@@ -357,12 +382,13 @@ namespace ZombieGame.CombatTests
             actor.halt(); actor.agent.enabled = false; actor.selected = false; actor.selection_ring.enabled = false;
             if (actor.blast_ring != null) Destroy(actor.blast_ring.gameObject);
             foreach (var collider in actor.GetComponentsInChildren<Collider>()) collider.enabled = false;
-            actor.transform.localScale = new Vector3(1, .15f, 1);
+            if (!use_character_models) actor.transform.localScale = new Vector3(1, .15f, 1);
             if (!actor.friendly) kills++;
         }
 
         private void OnDestroy()
         {
+            musket_effects?.Dispose();
             if (nav_instance.valid) nav_instance.Remove();
             if (nav_data != null) Destroy(nav_data);
             if (world != null) Destroy(world);

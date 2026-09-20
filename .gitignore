@@ -41,3 +41,5 @@ sysinfo.txt
 # Generated build copy; edit only balance/unit_balance.json.
 /Assets/_Game/Resources/BalanceGenerated/
 /Assets/_Game/Resources/BalanceGenerated.meta
+/Assets/_Game/Resources/CharacterGenerated/
+/Assets/_Game/Resources/CharacterGenerated.meta

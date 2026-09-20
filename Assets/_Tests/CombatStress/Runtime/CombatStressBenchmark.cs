@@ -1,5 +1,6 @@
 using ZombieGame.Combat;
 using ZombieGame.Vision;
+using ZombieGame.Presentation;
 using System;
 using ZombieGame.Balance;
 using System.Collections;
@@ -15,6 +16,11 @@ namespace ZombieGame.CombatStressTests
     {
         public Material instance_template;
         public Material fog_template;
+        public bool use_character_models;
+        private CharacterCrowdRenderer character_renderer;
+        private readonly float[] death_started = new float[CombatStressSimulation.TOTAL];
+        private readonly float[] muzzle_seen = new float[CombatStressSimulation.SOLDIERS];
+        private MusketEffects musket_effects;
         private CombatFog fog;
         private float next_fog_update;
         private bool spectator;
@@ -41,6 +47,8 @@ namespace ZombieGame.CombatStressTests
         private void Awake()
         {
             Application.runInBackground = true; QualitySettings.vSyncCount = 0; Application.targetFrameRate = -1;
+            if (Array.IndexOf(Environment.GetCommandLineArgs(), "-characterModels") >= 0) use_character_models = true;
+            musket_effects = new MusketEffects(transform);
             if (instance_template == null) throw new InvalidOperationException("Missing combat stress material");
             var primitive = GameObject.CreatePrimitive(PrimitiveType.Cube);
             mesh = primitive.GetComponent<MeshFilter>().sharedMesh; Destroy(primitive);
@@ -71,6 +79,7 @@ namespace ZombieGame.CombatStressTests
 
         public void reset_playable()
         {
+            musket_effects?.clear(); Array.Clear(muzzle_seen,0,muzzle_seen.Length); Array.Clear(death_started,0,death_started.Length);
             StopAllCoroutines(); running = advancing = sampling = false; spectator = false;
             simulation?.Dispose(); fog?.Dispose();
             simulation = new CombatStressSimulation(false, true);
@@ -129,6 +138,7 @@ namespace ZombieGame.CombatStressTests
 
         private void Update()
         {
+            if (!input_locked && !running && Input.GetKeyDown(KeyCode.F8)) use_character_models = !use_character_models;
             if (Input.GetKeyDown(KeyCode.H)) show_diagnostics = !show_diagnostics;
             double now = Time.realtimeSinceStartupAsDouble;
             double interval = (now - last_frame) * 1000; last_frame = now;
@@ -174,11 +184,40 @@ namespace ZombieGame.CombatStressTests
         private void draw_scene()
         {
             Array.Clear(counts, 0, counts.Length);
+            if (use_character_models) { character_renderer ??= new CharacterCrowdRenderer(CombatStressSimulation.TOTAL); character_renderer.begin_frame(); }
             for (int i = 0; i < CombatStressSimulation.TOTAL; i++)
             {
-                if (simulation.health[i] <= 0) continue;
+                if (i < 400 && simulation.attack_started_at[i] > muzzle_seen[i])
+                {
+                    muzzle_seen[i] = simulation.attack_started_at[i];
+                    Vector3 direction = simulation.soldier_facing[i].normalized;
+                    Quaternion rotation = direction.sqrMagnitude > .01f ? Quaternion.LookRotation(direction) : Quaternion.identity;
+                    Vector3 muzzle = use_character_models ? character_renderer.human_muzzle(simulation.positions[i],rotation)
+                        : simulation.positions[i] + Vector3.up + direction * .65f;
+                    musket_effects.fire(muzzle,direction);
+                }
+                if (simulation.health[i] > 0) death_started[i] = 0;
+                else
+                {
+                    if (death_started[i] == 0) death_started[i] = Time.time;
+                    if (use_character_models && Time.time-death_started[i] < 2 && (i < 400 || spectator || fog.is_visible(simulation.positions[i])))
+                        character_renderer.add(i < 400, CharacterPose.Death, Time.time-death_started[i],simulation.positions[i],simulation.crowd.transforms[i].rotation,simulation.exploder[i]);
+                    continue;
+                }
                 if (i >= 400 && !spectator && !fog.is_visible(simulation.positions[i])) continue;
                 draw_health_bar(i);
+                if (use_character_models)
+                {
+                    if (simulation.exploder[i]) matrices[6][counts[6]++] = Matrix4x4.TRS(simulation.positions[i]+Vector3.up*.04f,Quaternion.identity,new Vector3(.5f,.04f,.5f));
+                    var agent = simulation.crowd.agents[i];
+                    bool moving = agent.enabled && agent.velocity.sqrMagnitude > .04f;
+                    float attack_age = Time.time - simulation.attack_started_at[i];
+                    CharacterPose pose = moving ? CharacterPose.Run : attack_age < .4f ? CharacterPose.Attack : CharacterPose.Idle;
+                    Vector3 facing = i < 400 ? simulation.soldier_facing[i] : agent.enabled ? agent.velocity : Vector3.zero;
+                    Quaternion rotation = facing.sqrMagnitude > .001f ? Quaternion.LookRotation(facing) : simulation.crowd.transforms[i].rotation;
+                    character_renderer.add(i < 400, pose, pose == CharacterPose.Attack ? attack_age : Time.time+i*.137f,simulation.positions[i],rotation,simulation.exploder[i]);
+                    continue;
+                }
                 int group = i < 400 ? 0 : simulation.exploder[i] ? 2 : simulation.activated[i] ? 1 : 3;
                 // Match the Combat sandbox capsule and musket, using instancing instead of per-unit renderers.
                 matrices[group][counts[group]++] = Matrix4x4.TRS(simulation.positions[i] + Vector3.up * .7f, Quaternion.identity, new Vector3(.6f, .7f, .6f));
@@ -219,6 +258,7 @@ namespace ZombieGame.CombatStressTests
                 for (int start = 0; start < counts[group]; start += 1023)
                     Graphics.RenderMeshInstanced(parameters, group < 4 ? body_mesh : mesh, 0, matrices[group], Math.Min(1023, counts[group] - start), start);
             }
+            if (use_character_models) character_renderer.draw();
         }
 
         private void draw_health_bar(int index)
@@ -263,6 +303,6 @@ namespace ZombieGame.CombatStressTests
             GUI.Label(new Rect(20,124,970,22), $"Sight human{UnitBalance.config.human_sight} / zombie{UnitBalance.config.zombie_sight} | Fog {(spectator ? "OFF debug" : "ON")} | C army / F map / V debug | F9 auto test / F10 playable");
         }
 
-        private void OnDestroy() { simulation?.Dispose(); fog?.Dispose(); foreach (var material in materials) if (material != null) Destroy(material); }
+        private void OnDestroy() { musket_effects?.Dispose(); simulation?.Dispose(); fog?.Dispose(); foreach (var material in materials) if (material != null) Destroy(material); }
     }
 }

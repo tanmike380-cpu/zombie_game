@@ -9,7 +9,7 @@
   "formation_spacing": 0.8,
   "chase_repath_seconds": 0.15,
   "units": [
-    {"id":"firearm_infantry","name_zh":"神机营","implemented":true,"health":100,"move_speed":3.5,"acceleration":100,"attack_range":7,"damage":20,"attack_interval":0.8,"projectile_speed":40},
+    {"id":"firearm_infantry","name_zh":"神机营","implemented":true,"health":100,"move_speed":3.5,"acceleration":100,"attack_range":7,"damage":100,"attack_interval":0.8,"projectile_speed":40},
     {"id":"runner","name_zh":"狂暴僵尸","implemented":true,"health":60,"move_speed":4.5,"acceleration":100,"attack_range":1,"damage":10,"attack_interval":1},
     {"id":"exploder","name_zh":"爆裂尸","implemented":true,"health":60,"move_speed":4.25,"acceleration":100,"attack_range":1.2,"damage":70,"attack_interval":1,"explosion_radius":2,"fuse_seconds":0.65},
     {"id":"walker","name_zh":"普通慢速僵尸（尚无战斗实现）","move_speed":1.8,"acceleration":40},

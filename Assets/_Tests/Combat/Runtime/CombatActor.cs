@@ -25,6 +25,8 @@ namespace ZombieGame.CombatTests
         [System.NonSerialized] public ZombieGame.AI.SoundMemory sound_memory;
         public bool selected;
         public float next_attack;
+        public float last_attack_at = float.NegativeInfinity;
+        public ZombieGame.Presentation.CharacterView character_view;
         public float next_repath;
         public Vector3 last_path_goal = Vector3.positiveInfinity;
         public LineRenderer selection_ring;
@@ -57,6 +59,7 @@ namespace ZombieGame.CombatTests
 
         private void LateUpdate()
         {
+            character_view?.update_pose(alive, agent.enabled ? agent.velocity : Vector3.zero, last_attack_at, stats.attack_interval);
             if (!alive || !agent.enabled || agent.isStopped) return;
             Vector3 direction = agent.desiredVelocity;
             direction.y = 0;
