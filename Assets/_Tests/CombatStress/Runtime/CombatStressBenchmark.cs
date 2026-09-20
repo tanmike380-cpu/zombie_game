@@ -12,7 +12,7 @@ using UnityEngine.Rendering;
 
 namespace ZombieGame.CombatStressTests
 {
-    public sealed class CombatStressBenchmark : MonoBehaviour
+    public sealed class CombatStressBenchmark : MonoBehaviour, ZombieGame.Controls.IRtsBattleView
     {
         public Material instance_template;
         public Material fog_template;
@@ -40,6 +40,11 @@ namespace ZombieGame.CombatStressTests
         private bool show_diagnostics;
         private StressRtsInput rts_input;
         public CombatStressSimulation current => simulation;
+        BattleSimulation ZombieGame.Controls.IRtsBattleView.current => simulation;
+        public Vector3 camera_focus => new Vector3(Camera.main.transform.position.x,0,Camera.main.transform.position.z);
+        public void focus_camera(Vector3 point) { Camera.main.transform.position = new Vector3(point.x,200,point.z); }
+        public bool pointer_over_ui(Vector2 point) => false;
+        public Color32 obstacle_color(int index) => simulation.crowd.walls[index].size.y<1 ? new Color32(20,70,120,255) : new Color32(85,75,65,255);
         public CombatFog current_fog => fog;
         public bool can_control => simulation != null && simulation.playable && !running && !input_locked;
         public bool reveal_map => spectator;
