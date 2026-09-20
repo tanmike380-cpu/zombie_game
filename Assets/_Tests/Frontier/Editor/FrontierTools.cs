@@ -30,7 +30,7 @@ namespace ZombieGame.EditorTools
             sun.transform.rotation=Quaternion.Euler(48,-35,0);RenderSettings.ambientLight=new Color(.55f,.58f,.62f);
             var game=new GameObject("Frontier settlement").AddComponent<FrontierGame>();
             game.gameObject.AddComponent<ZombieGame.FrontierTests.FrontierSmokeChecks>();
-            game.landscape_shader=Shader.Find("Standard");
+            game.landscape_shader=Shader.Find("ZombieGame/FrontierSurface");
             const string material_path="Assets/_Game/Resources/FrontierFog.mat";
             game.fog_template=AssetDatabase.LoadAssetAtPath<Material>(material_path);
             if(game.fog_template==null){game.fog_template=new Material(Shader.Find("ZombieGame/WorldFog"));AssetDatabase.CreateAsset(game.fog_template,material_path);}

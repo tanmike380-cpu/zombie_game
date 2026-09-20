@@ -73,7 +73,13 @@ namespace ZombieGame.EditorTools
                         clip.SampleAnimation(model, fraction * clip.length);
                         Transform rifle = renderers.FirstOrDefault(r=>r.name == "Rifle")?.transform;
                         frames.muzzle_positions[frame] = rifle == null ? Vector3.up : model.transform.InverseTransformPoint(rifle.TransformPoint(MusketMeshBuilder.to_grip(new Vector3(0,.12f,1.27f))));
-                        Mesh mesh = bake_frame(model, renderers, art);
+                        Mesh mesh = bake_frame(model, renderers, art, name=="Human");
+                        // Leaner adult proportions; applied to all poses and the weapon socket, not navigation roots.
+                        var proportions=name=="Exploder"?new Vector3(1,1.04f,.96f):new Vector3(.88f,1.06f,.91f);
+                        var shaped_vertices=mesh.vertices;
+                        for(int v=0;v<shaped_vertices.Length;v++)shaped_vertices[v]=Vector3.Scale(shaped_vertices[v],proportions);
+                        mesh.vertices=shaped_vertices;mesh.RecalculateNormals();mesh.RecalculateBounds();
+                        frames.muzzle_positions[frame]=Vector3.Scale(frames.muzzle_positions[frame],proportions);
                         if (name == "Exploder")
                         {
                             var colors = new Color[mesh.vertexCount];
@@ -101,7 +107,7 @@ namespace ZombieGame.EditorTools
             finally { UnityEngine.Object.DestroyImmediate(model); }
         }
 
-        private static Mesh bake_frame(GameObject model, Renderer[] renderers, CharacterArtSettings art)
+        private static Mesh bake_frame(GameObject model, Renderer[] renderers, CharacterArtSettings art,bool human)
         {
             var combines = new List<CombineInstance>(); var temporary = new List<Mesh>();
             foreach (Renderer renderer in renderers)
@@ -109,7 +115,7 @@ namespace ZombieGame.EditorTools
                 Mesh mesh;
                 if (renderer is SkinnedMeshRenderer skin)
                 {
-                    mesh = new Mesh(); skin.BakeMesh(mesh); mesh.colors = new Color[mesh.vertexCount]; temporary.Add(mesh);
+                    mesh = new Mesh(); skin.BakeMesh(mesh); mesh.colors = build_garment_colors(skin,human); temporary.Add(mesh);
                 }
                 else { mesh = MusketMeshBuilder.build(art); temporary.Add(mesh); }
                 for (int sub = 0; sub < mesh.subMeshCount; sub++)
@@ -118,6 +124,30 @@ namespace ZombieGame.EditorTools
             var result = new Mesh(); result.CombineMeshes(combines.ToArray(), true, true); result.RecalculateBounds();
             foreach (Mesh mesh in temporary) UnityEngine.Object.DestroyImmediate(mesh);
             return result;
+        }
+
+        /// <summary>Bone-based cloth/iron palette follows animation, unlike a world-height color mask.</summary>
+        private static Color[] build_garment_colors(SkinnedMeshRenderer skin,bool human)
+        {
+            var weights=skin.sharedMesh.boneWeights;
+            var colors=new Color[skin.sharedMesh.vertexCount];
+            for(int i=0;i<colors.Length;i++)
+            {
+                if(i>=weights.Length)continue;
+                var weight=weights[i];int bone=weight.boneIndex0;float strongest=weight.weight0;
+                if(weight.weight1>strongest){bone=weight.boneIndex1;strongest=weight.weight1;}
+                if(weight.weight2>strongest){bone=weight.boneIndex2;strongest=weight.weight2;}
+                if(weight.weight3>strongest)bone=weight.boneIndex3;
+                string name=skin.bones[bone].name.ToLowerInvariant();
+                if(name.Contains("torso")||name.Contains("abdomen"))
+                    colors[i]=human?new Color(.24f,.25f,.20f,.86f):new Color(.27f,.25f,.16f,.65f);
+                else if(name.Contains("upperarm")||name.Contains("shoulder"))
+                    colors[i]=human?new Color(.36f,.18f,.10f,.83f):new Color(.29f,.27f,.19f,.5f);
+                else if(name.Contains("leg")||name.Contains("hips"))
+                    colors[i]=human?new Color(.24f,.22f,.16f,.82f):new Color(.24f,.23f,.17f,.62f);
+                else if(name.Contains("foot"))colors[i]=new Color(.14f,.115f,.08f,.9f);
+            }
+            return colors;
         }
     }
 }

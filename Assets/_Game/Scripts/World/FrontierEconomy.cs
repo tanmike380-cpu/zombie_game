@@ -20,6 +20,7 @@ namespace ZombieGame.World
         public readonly FrontierEconomyConfig config;
         public float food,wood,stone,iron,arrows,gunpowder;
         public bool arrow_works=true,powder_works=true;
+        public int arrow_workshops=1,powder_workshops=1;
         public int supplied_shots;
         public float food_sites=1,wood_sites=1,stone_sites=1,iron_sites=1;
         public FrontierEconomy(FrontierEconomyConfig config)
@@ -39,12 +40,12 @@ namespace ZombieGame.World
             stone+=config.stone_per_second*stone_sites*seconds; iron+=config.iron_per_second*iron_sites*seconds;
             if(arrow_works)
             {
-                float batches=Mathf.Min(config.arrow_batches_per_second*seconds,wood/config.wood_per_arrow_batch);
+                float batches=Mathf.Min(config.arrow_batches_per_second*arrow_workshops*seconds,wood/config.wood_per_arrow_batch);
                 wood-=batches*config.wood_per_arrow_batch; arrows+=batches*config.arrows_per_batch;
             }
             if(powder_works)
             {
-                float batches=Mathf.Min(config.powder_batches_per_second*seconds,iron/config.iron_per_powder_batch);
+                float batches=Mathf.Min(config.powder_batches_per_second*powder_workshops*seconds,iron/config.iron_per_powder_batch);
                 iron-=batches*config.iron_per_powder_batch; gunpowder+=batches*config.powder_per_batch;
             }
         }

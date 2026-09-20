@@ -25,11 +25,12 @@ namespace ZombieGame.World
     /// <summary>Deterministic 256-tile frontier. Visual regions and navigation blockers share one geometry source.</summary>
     public sealed class FrontierMap
     {
-        public const int SIZE = 256, SOLDIERS = 400, ZOMBIES = 5000;
+        public const int SIZE = 256, SOLDIERS = 400, HUMAN_CAPACITY = 600, ZOMBIES = 5000;
         public readonly List<LandscapeRegion> regions = new List<LandscapeRegion>();
         public readonly Vector3 base_center = new Vector3(-92,0,-92);
-        public readonly Vector3[] spawns = new Vector3[SOLDIERS+ZOMBIES];
-        public readonly bool[] explosive = new bool[SOLDIERS+ZOMBIES];
+        public readonly Vector3 headquarters_position = new Vector3(-104,0,-103);
+        public readonly Vector3[] spawns = new Vector3[HUMAN_CAPACITY+ZOMBIES];
+        public readonly bool[] explosive = new bool[HUMAN_CAPACITY+ZOMBIES];
         public Bounds[] blockers;
         public readonly ResourceSite[] resource_sites={
             new ResourceSite("Food",-111,-112,true),new ResourceSite("Wood",-111,-64,true),
@@ -55,6 +56,12 @@ namespace ZombieGame.World
             add_building(-106,-85,7,6,"BARRACKS");
             add_building(-91,-94,5,4,"HOUSE"); add_building(-82,-94,5,4,"HOUSE");
             add_building(-73,-94,5,4,"ARROW WORKS"); add_building(-111,-64,6,5,"LUMBER CAMP");
+            add_building(-118,-92,5,5,"PLOT:food");
+            add_building(-118,-78,5,5,"PLOT:wood");
+            add_building(-118,-54,5,5,"PLOT:stone");
+            add_building(-64,-117,5,5,"PLOT:iron");
+            add_building(-87,-119,5,5,"PLOT:powder");
+            add_building(-76,-119,5,5,"PLOT:arrows");
             blockers = regions.ConvertAll(region=>region.bounds).ToArray();
             spawn_units();
         }
@@ -81,8 +88,8 @@ namespace ZombieGame.World
 
         private void spawn_units()
         {
-            for(int i=0;i<SOLDIERS;i++) spawns[i]=new Vector3(-102+i%20*.85f,0,-79+i/20*.85f);
-            int filled=SOLDIERS;
+            for(int i=0;i<HUMAN_CAPACITY;i++) spawns[i]=new Vector3(-102+i%20*.85f,0,-79+i/20*.85f);
+            int filled=HUMAN_CAPACITY;
             var random=new System.Random(92026);
             for(int attempt=0;filled<spawns.Length && attempt<200000;attempt++)
             {
@@ -95,7 +102,7 @@ namespace ZombieGame.World
                 spawn_cells[x+z*256]=true;
                 spawns[filled]=new Vector3(x-127.5f,0,z-127.5f);
                 if(blocked(spawns[filled],.65f)) continue;
-                explosive[filled]=(filled-SOLDIERS)%12==0;
+                explosive[filled]=(filled-HUMAN_CAPACITY)%12==0;
                 filled++;
             }
             if(filled!=spawns.Length) throw new InvalidOperationException("Frontier zombie spawn capacity exhausted");

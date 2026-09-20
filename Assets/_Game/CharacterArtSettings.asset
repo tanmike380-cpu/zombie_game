@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64fd4f03a65245d0bd1b78f91d9c38df, type: 3}
   m_Name: CharacterArtSettings
   m_EditorClassIdentifier: Assembly-CSharp-Editor::ZombieGame.EditorTools.CharacterArtSettings
-  saturation: 0.78
-  tint: {r: 0.98, g: 0.97, b: 0.94, a: 1}
-  ambient_light: 0.48
+  saturation: 0.42
+  tint: {r: 0.94, g: 0.86, b: 0.68, a: 1}
+  ambient_light: 0.36
   wood: {r: 0.23, g: 0.13, b: 0.07, a: 1}
   iron: {r: 0.17, g: 0.18, b: 0.18, a: 1}
   brass: {r: 0.37, g: 0.3, b: 0.16, a: 1}
-  exploder_belly: {r: 0.43, g: 0.22, b: 0.28, a: 0.72}
-  exploder_body: {r: 0.36, g: 0.3, b: 0.32, a: 0.45}
+  exploder_belly: {r: 0.43, g: 0.30, b: 0.22, a: 0.72}
+  exploder_body: {r: 0.30, g: 0.31, b: 0.22, a: 0.55}
   barrel_diameter: 0.045
   stock_width: 0.065

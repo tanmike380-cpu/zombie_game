@@ -17,7 +17,7 @@ namespace ZombieGame.FrontierTests
             try
             {
                 require(game.current!=null,"simulation startup");
-                require(game.current.soldier_count==400&&game.current.zombie_count==5000,"population");
+                require(game.current.living_soldiers==400&&game.current.reserve_soldiers==200&&game.current.zombie_count==5000,"population and recruitment reserve");
                 foreach(var point in game.current.positions)
                     require(NavMesh.SamplePosition(point,out var hit,.3f,NavMesh.AllAreas),"spawn on native navigation");
                 foreach(var region in game.map.regions)
@@ -34,6 +34,10 @@ namespace ZombieGame.FrontierTests
                 float before=fixture.gunpowder;
                 require(fixture.try_supply(0)&&Mathf.Abs(fixture.gunpowder-(before-UnitBalance.human.ammunition_cost))<.001f,"supply consumes exactly authored cost");
                 require(game.current.try_supply_shot!=null,"live battle economy gate");
+                check_headquarters(game,config);
+                require(UnitBalance.config.zombie_sight==6&&UnitBalance.config.noise_propagation_speed==15,"requested sight and sound speed");
+                for(int i=0;i<game.current.total_count;i++)
+                    require(Mathf.Abs(game.current.crowd.agents[i].radius-UnitBalance.config.unit_navigation_radius)<.001f,"shared avoidance radius");
                 Debug.Log("[FrontierSmoke] PASS map256 population400+5000 all spawns valid, every river/forest/cliff/building centre blocked, north detour reachable, powder gating and production");
             }
             catch(Exception exception){Debug.LogError("[FrontierSmoke] FAIL "+exception);Application.Quit(1);yield break;}
@@ -43,5 +47,37 @@ namespace ZombieGame.FrontierTests
         }
         private static void require(bool success,string message)
         {if(!success)throw new InvalidOperationException(message);}
+
+        private static void check_headquarters(FrontierGame game,FrontierEconomyConfig economy_config)
+        {
+            var fixture_economy=new FrontierEconomy(economy_config);
+            var config=JsonUtility.FromJson<HeadquartersConfig>(Resources.Load<TextAsset>("HeadquartersProduction").text);
+            var fixture=new HeadquartersProduction(fixture_economy,config);
+            float food=fixture_economy.food,iron=fixture_economy.iron;
+            require(fixture.enqueue(0,200),"enqueue soldier");
+            require(fixture_economy.food==food-config.recipes[0].food,"deduct training cost once");
+            fixture.cancel_last();require(fixture_economy.food==food&&fixture_economy.iron==iron,"cancel refunds costs");
+            fixture_economy.food=0;require(!fixture.enqueue(0,200)&&fixture.queue.Count==0,"insufficient resources rejects production");
+            fixture_economy.food=food;require(!fixture.enqueue(0,0),"capacity rejects training");
+            require(fixture.enqueue(0,200),"queue production again");
+            fixture.step(config.recipes[0].seconds,_=>false);require(fixture.queue.Count==1&&fixture.progress==1,"blocked exit retains paid queue");
+            fixture.step(0,_=>true);require(fixture.queue.Count==0,"retry blocked completion");
+            for(int i=1;i<config.recipes.Length;i++)
+            {
+                require(fixture.enqueue(i,200),"enqueue facility "+config.recipes[i].id);
+                require(!fixture.enqueue(i,200),"duplicate queued facility rejected");
+                fixture.step(config.recipes[i].seconds,game.finish_production);
+                require(!fixture.enqueue(i,200),"duplicate completed facility rejected");
+            }
+            require(game.economy.food_sites==2&&game.economy.wood_sites==2&&game.economy.stone_sites==2&&game.economy.iron_sites==2,"four buildings increase gathering");
+            require(game.economy.powder_workshops==2&&game.economy.arrow_workshops==2,"workshops increase ammunition throughput");
+            require(game.finish_production(config.recipes[0]),"recruit onto clear native navigation");
+            require(game.current.living_soldiers==401&&game.current.reserve_soldiers==199,"new soldier becomes playable");
+            int index=FrontierMap.SOLDIERS;
+            require(game.current.health[index]==UnitBalance.human.health&&game.current.crowd.agents[index].speed==UnitBalance.human.move_speed,"recruit reads shared combat balance");
+            game.controls.select_all();require(game.controls.selected_count()==401,"F2 includes recruit");
+            Debug.Log("[HeadquartersSmoke] PASS costs/refunds/resource rejection/capacity/queue blockage/all six facilities/native recruit/shared stats/F2");
+            // Smoke-only mutations are confined to this disposable standalone test process.
+        }
     }
 }

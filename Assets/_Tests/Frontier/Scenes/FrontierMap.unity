@@ -245,7 +245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ZombieGame.World.FrontierGame
   fog_template: {fileID: 2100000, guid: 28486affa28c143dd952f673b8e52058, type: 2}
-  landscape_shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  landscape_shader: {fileID: 4800000, guid: 76b2ff2beecaf44df97558baaaaf8f02, type: 3}
 --- !u!4 &331470595
 Transform:
   m_ObjectHideFlags: 0

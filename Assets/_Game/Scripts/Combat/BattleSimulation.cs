@@ -12,6 +12,10 @@ namespace ZombieGame.Combat
     public partial class BattleSimulation : IDisposable
     {
         public readonly int soldier_count, zombie_count, total_count;
+        public int reserve_soldiers { get; private set; }
+        public int living_soldiers => soldier_count-dead_soldiers-reserve_soldiers;
+        private readonly bool[] recruited;
+        public bool is_reserve(int index) => index<soldier_count&&!recruited[index];
         public Func<int, int> forced_target;
         // Optional economy gate. Benchmarks without an economy retain their existing behaviour.
         public Func<int, bool> try_supply_shot;
@@ -45,12 +49,15 @@ namespace ZombieGame.Combat
         private float next_tick;
 
         public BattleSimulation(Vector3[] spawn_positions, int human_count, bool[] explosive_units,
-            Bounds[] obstacles, bool global_assault = false, bool player_controlled = true)
+            Bounds[] obstacles, bool global_assault = false, bool player_controlled = true, int initial_humans = -1)
         {
             if (spawn_positions == null || explosive_units == null || obstacles == null ||
                 human_count < 1 || human_count > spawn_positions.Length || explosive_units.Length != spawn_positions.Length)
                 throw new ArgumentException("Battle requires valid spawns, human count, explosive flags and obstacles");
             soldier_count = human_count; total_count = spawn_positions.Length; zombie_count = total_count - soldier_count;
+            if(initial_humans<0)initial_humans=human_count;
+            if(initial_humans>human_count)throw new ArgumentException("Initial humans exceed reserved capacity");
+            recruited=new bool[human_count];reserve_soldiers=human_count-initial_humans;
             path_cursor = soldier_count;
             positions = new Vector3[total_count];
             health = new float[total_count];
@@ -94,9 +101,28 @@ namespace ZombieGame.Combat
                     crowd.agents[i].enabled = true; crowd.agents[i].isStopped = true;
                     crowd.agents[i].angularSpeed = 1440;
                     order_targets[i] = -1; last_soldier_goal[i] = Vector3.positiveInfinity;
+                    recruited[i]=i<initial_humans;
+                    if(!recruited[i]){health[i]=0;crowd.agents[i].enabled=false;}
                 }
             }
             refresh_positions(); rebuild_grids();
+        }
+
+        /// <summary>Activate one never-deployed slot on native navigation; false leaves the queue pending.</summary>
+        public bool recruit_soldier(Vector3 point)
+        {
+            if(reserve_soldiers==0||!NavMesh.SamplePosition(point,out var hit,1,NavMesh.AllAreas))return false;
+            for(int i=0;i<total_count;i++)
+                if(health[i]>0&&(positions[i]-hit.position).sqrMagnitude<Mathf.Pow(UnitBalance.config.unit_navigation_radius*2+.05f,2))return false;
+            for(int i=0;i<soldier_count;i++)
+            {
+                if(recruited[i])continue;
+                var agent=crowd.agents[i];crowd.transforms[i].position=hit.position;agent.enabled=true;
+                if(!agent.isOnNavMesh){agent.enabled=false;return false;}
+                agent.isStopped=true;positions[i]=hit.position;health[i]=stats_for(i).health;
+                recruited[i]=true;reserve_soldiers--;return true;
+            }
+            return false;
         }
 
         public bool prepare_assault_path(int index)

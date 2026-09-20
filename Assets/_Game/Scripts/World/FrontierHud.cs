@@ -44,15 +44,17 @@ namespace ZombieGame.World
             panel(new Rect(0,Screen.height-242*s,224*s,242*s));
             GUI.Label(new Rect(14*s,Screen.height-238*s,200*s,25*s),"战术地图   256 × 256",small);
             float centre_x=234*s,resources_x=Screen.width-190*s,commands_x=resources_x-264*s;
-            draw_selection(new Rect(centre_x,y,commands_x-centre_x-10*s,190*s));
-            draw_commands(new Rect(commands_x,y,254*s,190*s));
+            var selection_area=new Rect(centre_x,y,commands_x-centre_x-10*s,190*s);
+            var command_area=new Rect(commands_x,y,254*s,190*s);
+            if(game.headquarters_selected){draw_headquarters(selection_area);draw_production_commands(command_area);}
+            else {draw_selection(selection_area);draw_commands(command_area);}
             draw_resources(new Rect(resources_x,y,190*s,190*s));
             if(show_help)
             {
                 panel(new Rect(15*s,92*s,600*s,106*s));
                 GUI.Label(new Rect(28*s,100*s,575*s,28*s),"左拖框选 · 右键移动 · A 后左键进攻 · Q 巡逻",text);
                 GUI.Label(new Rect(28*s,130*s,575*s,28*s),"Ctrl + 数字保存编队 · 数字/卡片召回 · 双击聚焦",text);
-                GUI.Label(new Rect(28*s,160*s,575*s,28*s),"方向键移镜头 · 滚轮缩放 · C 看部队 · Home 基地 · H 隐藏",small);
+                GUI.Label(new Rect(28*s,160*s,575*s,28*s),"方向键移镜头 · 滚轮缩放 · C 部队 · B 主基地 · H 隐藏",small);
             }
         }
         private void draw_resources(Rect area)
@@ -71,7 +73,7 @@ namespace ZombieGame.World
                 var value_style=new GUIStyle(text){alignment=TextAnchor.MiddleRight};
                 GUI.Label(new Rect(area.x+77*s,y,95*s,22*s),values[i].ToString("F0"),value_style);
             }
-            GUI.Label(new Rect(area.x+12*s,area.y+166*s,area.width-24*s,23*s),$"部队 {game.current.soldier_count-game.current.dead_soldiers} / 400",small);
+            GUI.Label(new Rect(area.x+12*s,area.y+166*s,area.width-24*s,23*s),$"部队 {game.current.living_soldiers} / {game.current.soldier_count}",small);
         }
         private void draw_selection(Rect area)
         {
@@ -128,11 +130,10 @@ namespace ZombieGame.World
         {
             panel(area);float s=scale;
             GUI.Label(new Rect(area.x+12*s,area.y+4*s,area.width-24*s,26*s),"部队指令",title);
-            string[] labels={"进攻\nA","移动\nM","停止\nS","巡逻\nQ","全选\nF2","占领\nE",
-                game.economy.powder_works?"火药坊\n生产中":"火药坊\n已暂停",game.economy.arrow_works?"箭坊\n生产中":"箭坊\n已暂停","聚焦部队\nC"};
+            string[] labels={"进攻\nA","移动\nM","停止\nS","巡逻\nQ","全选\nF2","聚焦部队\nC","主基地\nB"};
             float width=(area.width-24*s)/3;
             GUI.enabled=game.can_control;
-            for(int i=0;i<9;i++)
+            for(int i=0;i<labels.Length;i++)
                 if(GUI.Button(new Rect(area.x+12*s+i%3*width,area.y+32*s+i/3*43*s,width-5*s,39*s),labels[i],button))execute_command(i);
             GUI.enabled=true;
             string mode=game.controls.pending=="Attack"?"进攻：左键指定目标":game.controls.pending=="Move"?"移动：左键指定地点":game.controls.pending=="Patrol"?"巡逻：左键指定终点":"待命 · 右键移动";
@@ -147,11 +148,44 @@ namespace ZombieGame.World
                 case 2:game.controls.issue_selected(SoldierOrder.Stop,Vector3.zero);game.controls.cancel_command();break;
                 case 3:game.controls.arm("Patrol");break;
                 case 4:game.controls.select_all();break;
-                case 5:game.claim_site();break;
-                case 6:game.economy.powder_works=!game.economy.powder_works;break;
-                case 7:game.economy.arrow_works=!game.economy.arrow_works;break;
-                case 8:game.focus_camera(game.controls.selection_center());break;
+                case 5:game.focus_camera(game.controls.selection_center());break;
+                case 6:game.select_headquarters();break;
             }
+        }
+        private void draw_headquarters(Rect area)
+        {
+            panel(area);float s=scale,x=area.x+14*s,y=area.y;
+            GUI.Label(new Rect(x,y+5*s,area.width-28*s,26*s),"镇守府 · 主基地",title);
+            GUI.Label(new Rect(x,y+33*s,area.width-28*s,22*s),"统一建造与训练入口 · 资源设施完工后自动采集",text);
+            GUI.Label(new Rect(x,y+58*s,area.width-28*s,22*s),"本轮：固定扩建地基 · 生产参数暂定 · F2 返回部队",small);
+            var production=game.production;
+            string active=production.queue.Count==0?"队列空闲":$"{production.queue[0].name}  {production.elapsed:0.0} / {production.queue[0].seconds:0} 秒";
+            GUI.Label(new Rect(x,y+83*s,area.width-28*s,23*s),active,text);
+            var bar=new Rect(x,y+110*s,area.width-28*s,6*s);fill(bar,new Color(.18f,.17f,.13f));
+            fill(new Rect(bar.x,bar.y,bar.width*production.progress,bar.height),GOLD);
+            for(int i=0;i<production.queue.Count;i++)
+                GUI.Label(new Rect(x+i*(area.width-28*s)/8,y+120*s,(area.width-28*s)/8,25*s),$"{i+1}.{production.queue[i].name.Replace("训练", "").Replace("扩建", "")}",small);
+            GUI.Label(new Rect(x,y+156*s,area.width-28*s,27*s),production.notice,small);
+        }
+        private void draw_production_commands(Rect area)
+        {
+            panel(area);float s=scale,width=(area.width-24*s)/3;
+            GUI.Label(new Rect(area.x+12*s,area.y+4*s,area.width-24*s,26*s),"基地生产",title);
+            GUI.enabled=game.can_control;
+            var recipes=game.production.config.recipes;
+            for(int i=0;i<9;i++)
+            {
+                string label=i<recipes.Length?recipes[i].name:i==7?"取消末项":"返回部队\nF2";
+                string tip=i<recipes.Length?HeadquartersProduction.cost_label(recipes[i]):i==7?"全额退还末项资源":"选择所有存活士兵";
+                if(GUI.Button(new Rect(area.x+12*s+i%3*width,area.y+32*s+i/3*43*s,width-5*s,39*s),new GUIContent(label,tip),button))
+                {
+                    if(i<recipes.Length)game.production.enqueue(i,game.current.reserve_soldiers);
+                    else if(i==7)game.production.cancel_last();
+                    else game.controls.select_all();
+                }
+            }
+            GUI.enabled=true;
+            GUI.Label(new Rect(area.x+12*s,area.y+164*s,area.width-24*s,23*s),string.IsNullOrEmpty(GUI.tooltip)?"悬停查看费用 · 队列上限 8":GUI.tooltip,small);
         }
     }
 }

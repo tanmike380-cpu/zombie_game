@@ -16,6 +16,7 @@ namespace ZombieGame.Vision
         private readonly Material material;
         private readonly Mesh quad;
         private readonly float plane_height;
+        public Vector3? headquarters_vision;
 
         public CombatFog(Material template, float plane_height = 8)
         {
@@ -45,6 +46,14 @@ namespace ZombieGame.Vision
                         if (dx * dx + dz * dz <= HUMAN_SIGHT * HUMAN_SIGHT)
                             visible[x + z * SIZE] = explored[x + z * SIZE] = true;
                     }
+            }
+            if(headquarters_vision.HasValue)
+            {
+                Vector3 center=headquarters_vision.Value;
+                for(int z=Mathf.Max(0,Mathf.FloorToInt(center.z+128-HUMAN_SIGHT));z<=Mathf.Min(255,Mathf.CeilToInt(center.z+128+HUMAN_SIGHT));z++)
+                    for(int x=Mathf.Max(0,Mathf.FloorToInt(center.x+128-HUMAN_SIGHT));x<=Mathf.Min(255,Mathf.CeilToInt(center.x+128+HUMAN_SIGHT));x++)
+                        if((new Vector3(x-127.5f,0,z-127.5f)-center).sqrMagnitude<=HUMAN_SIGHT*HUMAN_SIGHT)
+                            visible[x+z*SIZE]=explored[x+z*SIZE]=true;
             }
             for (int i = 0; i < pixels.Length; i++) pixels[i] = new Color32(0, 0, 0, visible[i] ? (byte)0 : explored[i] ? (byte)175 : (byte)255);
             texture.SetPixels32(pixels); texture.Apply(false, false);

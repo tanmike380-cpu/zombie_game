@@ -24,7 +24,7 @@ namespace ZombieGame.World
             seen_shots=new float[capacity];death_started=new float[capacity];
             for(int i=0;i<capacity;i++) seen_shots[i]=float.NegativeInfinity;
             var primitive=GameObject.CreatePrimitive(PrimitiveType.Cube);cube=primitive.GetComponent<MeshFilter>().sharedMesh;UnityEngine.Object.Destroy(primitive);
-            Color[] colors={new Color(.2f,.9f,.3f),new Color(.05f,.06f,.05f),new Color(1,.8f,.2f),new Color(.6f,.2f,.4f)};
+            Color[] colors={new Color(.47f,.65f,.24f),new Color(.09f,.08f,.045f),new Color(1,.8f,.2f),new Color(.6f,.2f,.4f)};
             for(int i=0;i<4;i++) { materials[i]=new Material(shader){color=colors[i],enableInstancing=true};matrices[i]=new Matrix4x4[capacity+4096]; }
         }
         public void draw(BattleSimulation battle,CombatFog fog,bool reveal)
@@ -32,6 +32,7 @@ namespace ZombieGame.World
             characters.begin_frame();Array.Clear(counts,0,counts.Length);
             for(int i=0;i<battle.total_count;i++)
             {
+                if(battle.is_reserve(i))continue;
                 bool human=i<battle.soldier_count;
                 if(!human&&!reveal&&!fog.is_visible(battle.positions[i])) continue;
                 var agent=battle.crowd.agents[i];
@@ -49,7 +50,14 @@ namespace ZombieGame.World
                 characters.add(human,pose,pose==CharacterPose.Attack?age:Time.time+i*.137f,battle.positions[i],rotation,battle.exploder[i]);
                 if(human&&battle.attack_started_at[i]>seen_shots[i])
                 { seen_shots[i]=battle.attack_started_at[i];effects.fire(characters.human_muzzle(battle.positions[i],rotation),rotation*Vector3.forward); }
-                if(human&&battle.selected[i]) add(0,battle.positions[i]+Vector3.up*.04f,new Vector3(.7f,.04f,.7f));
+                if(human&&battle.selected[i])
+                {
+                    Vector3 p=battle.positions[i]+Vector3.up*.045f;
+                    add(0,p+Vector3.left*.36f,new Vector3(.035f,.025f,.72f));
+                    add(0,p+Vector3.right*.36f,new Vector3(.035f,.025f,.72f));
+                    add(0,p+Vector3.forward*.36f,new Vector3(.72f,.025f,.035f));
+                    add(0,p+Vector3.back*.36f,new Vector3(.72f,.025f,.035f));
+                }
                 if((human&&battle.selected[i]&&Camera.main.orthographicSize<=14)||battle.health[i]<battle.stats_for(i).health)
                 {
                     float health=Mathf.Clamp01(battle.health[i]/battle.stats_for(i).health);

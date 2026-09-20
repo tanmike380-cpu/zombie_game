@@ -11,6 +11,8 @@ namespace ZombieGame.Controls
     {
         public IRtsBattleView game;
         public bool custom_command_panel;
+        public System.Func<Vector2,bool> select_structure;
+        public System.Action selection_changed;
         public string pending = "Select";
         public string notice = "400 selected. Right-click to move; A then left-click to attack.";
         private Vector2 drag_start;
@@ -60,6 +62,7 @@ namespace ZombieGame.Controls
         public void recall_group(int group, bool focus)
         {
             if (group < 0 || group > 9) return;
+            selection_changed?.Invoke();
             for (int i = 0; i < game.current.soldier_count; i++)
                 game.current.selected[i] = control_groups[group,i] && game.current.health[i] > 0;
             cancel_command();
@@ -89,6 +92,7 @@ namespace ZombieGame.Controls
         public void select_all()
         {
             if (game.current == null) return;
+            selection_changed?.Invoke();
             for (int i = 0; i < game.current.soldier_count; i++) game.current.selected[i] = game.current.health[i] > 0;
             cancel_command(); notice = "All living soldiers selected. Right-click moves.";
         }
@@ -187,6 +191,8 @@ namespace ZombieGame.Controls
 
         public void select_rectangle(Vector2 start, Vector2 end, bool additive)
         {
+            selection_changed?.Invoke();
+            if(Vector2.Distance(start,end)<6*scale&&select_structure!=null&&select_structure(end))return;
             if (!additive) for (int i = 0; i < game.current.soldier_count; i++) game.current.selected[i] = false;
             if (Vector2.Distance(start,end) < 6 * scale)
             {
