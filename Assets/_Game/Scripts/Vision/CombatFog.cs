@@ -15,9 +15,11 @@ namespace ZombieGame.Vision
         private readonly Texture2D texture;
         private readonly Material material;
         private readonly Mesh quad;
+        private readonly float plane_height;
 
-        public CombatFog(Material template)
+        public CombatFog(Material template, float plane_height = 8)
         {
+            this.plane_height=plane_height;
             if (template == null) throw new InvalidOperationException("Missing serialized fog material");
             texture = new Texture2D(SIZE, SIZE, TextureFormat.RGBA32, false) { filterMode = FilterMode.Point, wrapMode = TextureWrapMode.Clamp };
             material = new Material(template); material.mainTexture = texture;
@@ -54,6 +56,12 @@ namespace ZombieGame.Vision
             return x >= 0 && x < SIZE && z >= 0 && z < SIZE && visible[x + z * SIZE];
         }
 
+        public void explore_area(Rect area)
+        {
+            for(int z=0;z<SIZE;z++) for(int x=0;x<SIZE;x++)
+                if(area.Contains(new Vector2(x-127.5f,z-127.5f))) explored[x+z*SIZE]=true;
+        }
+
         public Color32 minimap_color(int index, bool reveal)
         {
             if (reveal || visible[index]) return new Color32(41,64,31,255);
@@ -68,7 +76,7 @@ namespace ZombieGame.Vision
 
         public void draw()
         {
-            Graphics.DrawMesh(quad, Matrix4x4.TRS(new Vector3(0, 8, 0), Quaternion.Euler(90, 0, 0), new Vector3(256,256,1)), material, 0);
+            Graphics.DrawMesh(quad, Matrix4x4.TRS(new Vector3(0, plane_height, 0), Quaternion.Euler(90, 0, 0), new Vector3(256,256,1)), material, 0);
         }
 
         public void Dispose() { UnityEngine.Object.Destroy(texture); UnityEngine.Object.Destroy(material); }

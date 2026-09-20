@@ -1,0 +1,7 @@
+{
+  "provisional": true,
+  "food": 1800, "wood": 1200, "stone": 800, "iron": 600, "arrows": 1200, "gunpowder": 2400,
+  "food_per_second": 2, "wood_per_second": 2, "stone_per_second": 1, "iron_per_second": 1,
+  "arrow_batches_per_second": 1, "powder_batches_per_second": 1,
+  "wood_per_arrow_batch": 1, "arrows_per_batch": 3, "iron_per_powder_batch": 1, "powder_per_batch": 4
+}
