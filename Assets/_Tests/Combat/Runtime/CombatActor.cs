@@ -30,9 +30,15 @@ namespace ZombieGame.CombatTests
         public float next_repath;
         public Vector3 last_path_goal = Vector3.positiveInfinity;
         public LineRenderer selection_ring;
-        private readonly NavMeshPath path = new NavMeshPath();
+        private NavMeshPath path;
         public bool alive => health > 0;
         public UnitStats stats => friendly ? UnitBalance.human : exploder ? UnitBalance.exploder : UnitBalance.runner;
+
+        private void Awake()
+        {
+            // Unity native objects must be created on the main thread, not during MonoBehaviour construction.
+            path = new NavMeshPath();
+        }
 
         public void halt()
         {
