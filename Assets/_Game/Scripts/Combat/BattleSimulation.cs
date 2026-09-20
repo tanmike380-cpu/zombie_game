@@ -23,6 +23,7 @@ namespace ZombieGame.Combat
         public readonly float[] health;
         public readonly bool[] activated;
         public readonly bool[] exploder;
+        private readonly UnitStats[] zombie_stats;
         public readonly int[] ammunition;
         public readonly bool[] manual_melee,last_attack_melee;
         public int melee_strikes;
@@ -54,12 +55,22 @@ namespace ZombieGame.Combat
         private float next_tick;
 
         public BattleSimulation(Vector3[] spawn_positions, int human_count, bool[] explosive_units,
-            Bounds[] obstacles, bool global_assault = false, bool player_controlled = true, int initial_humans = -1)
+            Bounds[] obstacles, bool global_assault = false, bool player_controlled = true, int initial_humans = -1, string[] unit_ids = null)
         {
             if (spawn_positions == null || explosive_units == null || obstacles == null ||
                 human_count < 1 || human_count > spawn_positions.Length || explosive_units.Length != spawn_positions.Length)
                 throw new ArgumentException("Battle requires valid spawns, human count, explosive flags and obstacles");
             soldier_count = human_count; total_count = spawn_positions.Length; zombie_count = total_count - soldier_count;
+            if(unit_ids!=null&&unit_ids.Length!=total_count)throw new ArgumentException("Spawn unit ids must match positions");
+            zombie_stats=new UnitStats[zombie_count];
+            for(int i=human_count;i<total_count;i++)
+            {
+                string id=unit_ids==null?(explosive_units[i]?"exploder":"runner"):unit_ids[i];
+                var stats=UnitBalance.get(id);
+                if(!stats.implemented||(id!="walker"&&id!="runner"&&id!="exploder")||explosive_units[i]!=(id=="exploder"))
+                    throw new ArgumentException("Unsupported or inconsistent zombie spawn role: "+id);
+                zombie_stats[i-human_count]=stats;
+            }
             if(initial_humans<0)initial_humans=human_count;
             if(initial_humans>human_count)throw new ArgumentException("Initial humans exceed reserved capacity");
             recruited=new bool[human_count];reserve_soldiers=human_count-initial_humans;
@@ -313,7 +324,7 @@ namespace ZombieGame.Combat
                     damage(i, UnitBalance.exploder.damage, now);
         }
 
-        public UnitStats stats_for(int index) => index < soldier_count ? UnitBalance.human : exploder[index] ? UnitBalance.exploder : UnitBalance.runner;
+        public UnitStats stats_for(int index) => index < soldier_count ? UnitBalance.human : zombie_stats[index-soldier_count];
 
         public void Dispose() { crowd.Dispose(); }
     }

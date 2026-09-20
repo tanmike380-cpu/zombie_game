@@ -18,6 +18,7 @@ namespace ZombieGame.FrontierTests
             {
                 require(game.current!=null,"simulation startup");
                 require(game.current.living_soldiers==400&&game.current.reserve_soldiers==200&&game.current.zombie_count==5000,"population and recruitment reserve");
+                check_distribution(game);
                 foreach(var point in game.current.positions)
                     require(NavMesh.SamplePosition(point,out var hit,.3f,NavMesh.AllAreas),"spawn on native navigation");
                 foreach(var region in game.map.regions)
@@ -51,6 +52,34 @@ namespace ZombieGame.FrontierTests
         }
         private static void require(bool success,string message)
         {if(!success)throw new InvalidOperationException(message);}
+
+        private static void check_distribution(FrontierGame game)
+        {
+            var config=ZombieDistribution.load();var counts=new int[config.bands.Length];
+            var roles=new int[config.bands.Length,3];var occupied=new System.Collections.Generic.HashSet<Vector3>();
+            for(int i=FrontierMap.HUMAN_CAPACITY;i<game.map.spawns.Length;i++)
+            {
+                Vector3 point=game.map.spawns[i];
+                int band=ZombieDistribution.find_band(config,Vector3.Distance(point,game.map.headquarters_position));
+                require(band>=0&&occupied.Add(point),"valid unique distance-band spawn");counts[band]++;
+                string id=game.map.unit_ids[i];roles[band,id=="walker"?0:id=="runner"?1:2]++;
+                require(game.current.stats_for(i)==UnitBalance.get(id)&&game.current.crowd.agents[i].speed==UnitBalance.get(id).move_speed,"all distance-band roles use shared stats");
+                require(!(point.x<-40&&point.z<-48),"settlement remains safe");
+            }
+            float cumulative=0;int allocated=0;
+            for(int i=0;i<counts.Length;i++)
+            {
+                var band=config.bands[i];cumulative+=band.population_percent;
+                int end=i==counts.Length-1?FrontierMap.ZOMBIES:Mathf.RoundToInt(FrontierMap.ZOMBIES*cumulative/100);
+                require(counts[i]==end-allocated,"distance-band population quota");allocated=end;
+                require(roles[i,0]==Mathf.RoundToInt(counts[i]*band.walker_percent/100),"walker percentage");
+                require(roles[i,0]+roles[i,1]==Mathf.RoundToInt(counts[i]*(band.walker_percent+band.runner_percent)/100),"runner/exploder percentage");
+            }
+            config.bands[0].population_percent+=1;
+            bool rejected=false;try{ZombieDistribution.validate(config);}catch(InvalidOperationException){rejected=true;}
+            require(rejected,"invalid percentages rejected instead of silently changing population");
+            Debug.Log("[DistributionSmoke] PASS exact quotas/role shares, unique cells, safe settlement, shared stats, invalid config rejected");
+        }
 
         private static void check_headquarters(FrontierGame game,FrontierEconomyConfig economy_config)
         {

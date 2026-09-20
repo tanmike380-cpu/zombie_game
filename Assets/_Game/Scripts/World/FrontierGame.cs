@@ -48,7 +48,7 @@ namespace ZombieGame.World
             Camera.main.clearFlags=CameraClearFlags.SolidColor;
             map=new FrontierMap();
             landscape=new FrontierLandscape(map,transform,landscape_shader);
-            current=new BattleSimulation(map.spawns,FrontierMap.HUMAN_CAPACITY,map.explosive,map.blockers,initial_humans:FrontierMap.SOLDIERS);
+            current=new BattleSimulation(map.spawns,FrontierMap.HUMAN_CAPACITY,map.explosive,map.blockers,initial_humans:FrontierMap.SOLDIERS,unit_ids:map.unit_ids);
             economy=new FrontierEconomy(JsonUtility.FromJson<FrontierEconomyConfig>(Resources.Load<TextAsset>("FrontierEconomy").text));
             production=new HeadquartersProduction(economy,JsonUtility.FromJson<HeadquartersConfig>(Resources.Load<TextAsset>("HeadquartersProduction").text));
             supply=new AmmunitionSupply(economy);supply.depots.Add(map.initial_depot);

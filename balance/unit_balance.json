@@ -54,7 +54,8 @@
     },
     {
       "id": "walker",
-      "name_zh": "普通慢速僵尸（尚无战斗实现）",
+      "name_zh": "普通慢速僵尸（临时平衡）",
+      "implemented": true,
       "move_speed": 1.8,
       "acceleration": 40,
       "provisional": true,

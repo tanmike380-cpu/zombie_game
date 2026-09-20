@@ -32,6 +32,7 @@ namespace ZombieGame.World
         public readonly Vector3 initial_depot = new Vector3(-99,0,-94);
         public readonly Vector3[] spawns = new Vector3[HUMAN_CAPACITY+ZOMBIES];
         public readonly bool[] explosive = new bool[HUMAN_CAPACITY+ZOMBIES];
+        public readonly string[] unit_ids = new string[HUMAN_CAPACITY+ZOMBIES];
         public Bounds[] blockers;
         public readonly ResourceSite[] resource_sites={
             new ResourceSite("Food",-111,-112,true),new ResourceSite("Wood",-111,-64,true),
@@ -85,25 +86,8 @@ namespace ZombieGame.World
         private void spawn_units()
         {
             for(int i=0;i<HUMAN_CAPACITY;i++) spawns[i]=new Vector3(-102+i%20*.85f,0,-79+i/20*.85f);
-            int filled=HUMAN_CAPACITY;
-            var random=new System.Random(92026);
-            for(int attempt=0;filled<spawns.Length && attempt<200000;attempt++)
-            {
-                var point=new Vector3(-122+(float)random.NextDouble()*244,0,-122+(float)random.NextDouble()*244);
-                if(point.x < -40 && point.z < -48) continue; // Established settlement, not a spawn trap.
-                if(blocked(point,1)) continue;
-                // A spatial occupancy grid below keeps native agents from spawning on top of one another.
-                int x=Mathf.FloorToInt(point.x+128), z=Mathf.FloorToInt(point.z+128);
-                if(spawn_cells[x+z*256]) continue;
-                spawn_cells[x+z*256]=true;
-                spawns[filled]=new Vector3(x-127.5f,0,z-127.5f);
-                if(blocked(spawns[filled],.65f)) continue;
-                explosive[filled]=(filled-HUMAN_CAPACITY)%12==0;
-                filled++;
-            }
-            if(filled!=spawns.Length) throw new InvalidOperationException("Frontier zombie spawn capacity exhausted");
+            ZombieDistribution.populate(this);
             foreach(var point in spawns) if(blocked(point,.3f)) throw new InvalidOperationException("Blocked frontier spawn: "+point);
         }
-        private readonly bool[] spawn_cells=new bool[256*256];
     }
 }
