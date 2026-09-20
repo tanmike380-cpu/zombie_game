@@ -20,11 +20,14 @@ namespace ZombieGame.World
         private FrontierLandscape landscape;
         private FrontierBattleView battle_view;
         private RtsBattleInput input;
+        private FrontierHud hud;
+        public RtsBattleInput controls => input;
+        public bool is_paused => paused;
+        public string site_notice => resource_notice;
         private float next_fog;
         private bool paused;
-        private bool help=true;
         private string resource_notice="E: claim cleared resource site within 5 tiles";
-        public bool pointer_over_ui(Vector2 point) => point.y<62 || (help&&point.x<520&&point.y>Screen.height-175);
+        public bool pointer_over_ui(Vector2 point) => FrontierHud.contains(point);
         public Color32 obstacle_color(int index)
         {
             switch(map.regions[index].kind)
@@ -40,6 +43,7 @@ namespace ZombieGame.World
         {
             Application.runInBackground=true;QualitySettings.vSyncCount=1;Application.targetFrameRate=60;
             Camera.main.allowDynamicResolution=false;Camera.main.allowMSAA=true;QualitySettings.antiAliasing=4;
+            Camera.main.clearFlags=CameraClearFlags.SolidColor;
             map=new FrontierMap();
             landscape=new FrontierLandscape(map,transform,landscape_shader);
             current=new BattleSimulation(map.spawns,FrontierMap.SOLDIERS,map.explosive,map.blockers);
@@ -49,14 +53,15 @@ namespace ZombieGame.World
             current_fog.explore_area(new Rect(-124,-124,76,76));
             current_fog.update_visibility(current);current.player_visibility=current_fog.is_visible;
             battle_view=new FrontierBattleView(current.total_count,transform,landscape_shader);
-            input=gameObject.AddComponent<RtsBattleInput>();input.game=this;input.select_all();
-            Camera.main.orthographicSize=27;focus_camera(new Vector3(-88,0,-86));
+            input=gameObject.AddComponent<RtsBattleInput>();input.game=this;input.custom_command_panel=true;input.select_all();
+            hud=new FrontierHud(this);
+            Camera.main.orthographicSize=21;focus_camera(new Vector3(-91,0,-86));
             Debug.Log($"[Frontier] READY map=256x256 soldiers={current.soldier_count} zombies={current.zombie_count} blockers={map.blockers.Length} framebuffer={Screen.width}x{Screen.height}; economy provisional; only confirmed combat roles active");
         }
         public void focus_camera(Vector3 point)
         {
             camera_focus=new Vector3(Mathf.Clamp(point.x,-128,128),0,Mathf.Clamp(point.z,-128,128));
-            Camera.main.transform.rotation=Quaternion.Euler(55,0,0);
+            Camera.main.transform.rotation=Quaternion.Euler(45,0,0);
             Camera.main.transform.position=camera_focus-Camera.main.transform.forward*180;
         }
         private void Update()
@@ -65,7 +70,7 @@ namespace ZombieGame.World
             if(Input.GetKeyDown(KeyCode.Space)) { paused=!paused;Time.timeScale=paused?0:1; }
             if(!paused) { economy.step(Time.deltaTime);current.step(Time.time,Time.deltaTime); }
             if(Time.time>=next_fog) { next_fog=Time.time+.1f;current_fog.update_visibility(current); }
-            if(Input.GetKeyDown(KeyCode.H))help=!help;
+            if(Input.GetKeyDown(KeyCode.H))hud.show_help=!hud.show_help;
             if(Input.GetKeyDown(KeyCode.E)&&!paused)claim_site();
             if(Input.GetKeyDown(KeyCode.V))reveal_map=!reveal_map;
             if(Input.GetKeyDown(KeyCode.C)){Camera.main.orthographicSize=22;focus_camera(input.selection_center());}
@@ -78,25 +83,8 @@ namespace ZombieGame.World
             battle_view.draw(current,current_fog,reveal_map);
             if(!reveal_map)current_fog.draw();
         }
-        private void OnGUI()
-        {
-            if(economy==null)return;
-            GUI.Box(new Rect(0,0,Screen.width,62),"");
-            GUI.Label(new Rect(12,5,Screen.width-24,24),$"FRONTIER | Food {economy.food:F0}   Wood {economy.wood:F0}   Stone {economy.stone:F0}   Iron {economy.iron:F0}   Arrows {economy.arrows:F0}   Powder {economy.gunpowder:F0}   Army {current.soldier_count-current.dead_soldiers}");
-            economy.powder_works=GUI.Toggle(new Rect(12,31,165,25),economy.powder_works,"Powder works: iron > powder");
-            economy.arrow_works=GUI.Toggle(new Rect(195,31,170,25),economy.arrow_works,"Arrow works: wood > arrows");
-            GUI.Label(new Rect(390,31,Screen.width-400,25),paused?"PAUSED (Space)":economy.gunpowder<1?"NO POWDER: guns cannot fire":"Established settlement / provisional economy");
-            if(GUI.Button(new Rect(Screen.width-190,31,180,25),"Claim resource site (E)")&&!paused)claim_site();
-            foreach(var site in map.resource_sites)
-            {
-                if(!reveal_map&&!current_fog.is_explored(site.position))continue;
-                Vector3 screen=Camera.main.WorldToScreenPoint(site.position+Vector3.up*3);
-                if(screen.z>0&&screen.x>0&&screen.x<Screen.width&&screen.y>80&&screen.y<Screen.height-70)
-                    GUI.Label(new Rect(screen.x-70,Screen.height-screen.y,140,22),site.kind+(site.claimed?" / operating":" / unclaimed"));
-            }
-            if(help)GUI.Box(new Rect(8,Screen.height-175,510,116),"FRONTIER MAP SLICE — 256 x 256\nRight move | A + left attack | Q patrol | S stop | F2 / ` all\nCtrl+1..9 groups | double number focuses group\nArrows pan | Wheel zoom | C army | Home base | F overview\nV reveal (debug) | H help | Space pause\n"+resource_notice);
-        }
-        private void claim_site()
+        private void OnGUI() { if(economy!=null)hud?.draw(); }
+        public void claim_site()
         {
             foreach(var site in map.resource_sites)
             {

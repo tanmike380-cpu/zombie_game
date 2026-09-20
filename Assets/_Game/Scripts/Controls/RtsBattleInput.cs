@@ -10,6 +10,7 @@ namespace ZombieGame.Controls
     public class RtsBattleInput : MonoBehaviour
     {
         public IRtsBattleView game;
+        public bool custom_command_panel;
         public string pending = "Select";
         public string notice = "400 selected. Right-click to move; A then left-click to attack.";
         private Vector2 drag_start;
@@ -113,7 +114,7 @@ namespace ZombieGame.Controls
             if (Input.GetKeyDown(KeyCode.S)) { issue_selected(SoldierOrder.Stop,Vector3.zero); cancel_command(); }
         }
 
-        private void arm(string command)
+        public void arm(string command)
         {
             if (selected_count() == 0) { notice = "Select blue soldiers first."; return; }
             pending = command; dragging = false; notice = command + ": left-click destination / visible enemy.";
@@ -260,7 +261,7 @@ namespace ZombieGame.Controls
             if (game == null || game.current == null) return;
             GUI.matrix = Matrix4x4.identity;
             if (game.can_control) handle_mouse(Event.current);
-            GUI.Box(new Rect(8,Screen.height-48*scale,Screen.width-250*scale,40*scale),
+            if(!custom_command_panel) GUI.Box(new Rect(8,Screen.height-48*scale,Screen.width-250*scale,40*scale),
                 $"{(game.can_control ? "YOU CONTROL" : "AUTO / CHECK")} | Selected {selected_count()} | {pending} | {notice}");
             if (minimap != null) GUI.DrawTexture(map_rect,minimap);
             outline(map_rect,Color.white);
