@@ -13,6 +13,7 @@ namespace ZombieGame.Controls
         public bool custom_command_panel;
         public System.Func<Vector2,bool> select_structure;
         public System.Action selection_changed;
+        public System.Func<Event,bool> intercept_world_input;
         public string pending = "Select";
         public string notice = "400 selected. Right-click to move; A then left-click to attack.";
         private Vector2 drag_start;
@@ -27,6 +28,7 @@ namespace ZombieGame.Controls
         private bool[,] control_groups => saved_groups ??= new bool[10, game.current.soldier_count];
         private int last_group = -1;
         private float last_group_time = -1;
+        private float last_all_time=-10;
         private float scale => custom_command_panel ? Mathf.Clamp(Screen.height/900f,.8f,2.5f) : Mathf.Max(1, Screen.height / 800f);
         private Rect map_rect => custom_command_panel ? new Rect(14*scale,Screen.height-214*scale,196*scale,196*scale)
             : new Rect(Screen.width - 226 * scale, Screen.height - 246 * scale, 210 * scale, 210 * scale);
@@ -63,6 +65,7 @@ namespace ZombieGame.Controls
         {
             if (group < 0 || group > 9) return;
             selection_changed?.Invoke();
+            last_all_time=-10;
             for (int i = 0; i < game.current.soldier_count; i++)
                 game.current.selected[i] = control_groups[group,i] && game.current.health[i] > 0;
             cancel_command();
@@ -76,7 +79,7 @@ namespace ZombieGame.Controls
 
         private void handle_group_keys()
         {
-            if (Input.GetKeyDown(KeyCode.BackQuote) || Input.GetKeyDown(KeyCode.F2)) select_all();
+            if (Input.GetKeyDown(KeyCode.BackQuote) || Input.GetKeyDown(KeyCode.F2)) press_select_all(Time.unscaledTime);
             bool control = Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl);
             for (int group = 0; group <= 9; group++)
             {
@@ -96,6 +99,12 @@ namespace ZombieGame.Controls
             for (int i = 0; i < game.current.soldier_count; i++) game.current.selected[i] = game.current.health[i] > 0;
             cancel_command(); notice = "All living soldiers selected. Right-click moves.";
         }
+        public void press_select_all(float now)
+        {
+            select_all();
+            if(now-last_all_time<=.35f&&selected_count()>0)game.focus_camera(selection_center());
+            last_all_time=now;
+        }
         public int selected_count()
         {
             int count = 0;
@@ -105,13 +114,7 @@ namespace ZombieGame.Controls
         }
         public Vector3 selection_center()
         {
-            Vector3 center = Vector3.zero; int count = 0;
-            for (int i = 0; i < game.current.soldier_count; i++)
-                if (game.current.health[i] > 0 && game.current.selected[i]) { center += game.current.positions[i]; count++; }
-            if (count > 0) return center / count;
-            for (int i = 0; i < game.current.soldier_count; i++)
-                if (game.current.health[i] > 0) { center += game.current.positions[i]; count++; }
-            return count > 0 ? center / count : new Vector3(-81,0,0);
+            return SelectionFocus.find(game.current.positions,game.current.health,game.current.selected,game.current.soldier_count);
         }
 
         protected virtual void Update()
@@ -191,6 +194,7 @@ namespace ZombieGame.Controls
 
         public void select_rectangle(Vector2 start, Vector2 end, bool additive)
         {
+            last_all_time=-10;
             selection_changed?.Invoke();
             if(Vector2.Distance(start,end)<6*scale&&select_structure!=null&&select_structure(end))return;
             if (!additive) for (int i = 0; i < game.current.soldier_count; i++) game.current.selected[i] = false;
@@ -214,6 +218,7 @@ namespace ZombieGame.Controls
         {
             Vector2 mouse = input.mousePosition;
             if (game.pointer_over_ui(mouse) && !map_rect.Contains(mouse)) { dragging = false; return; }
+            if(intercept_world_input!=null&&intercept_world_input(input)){dragging=false;return;}
             if (input.type == EventType.MouseDown && map_rect.Contains(mouse))
             {
                 Vector3 point = new Vector3((mouse.x-map_rect.x)/map_rect.width*256-128,0,(1-(mouse.y-map_rect.y)/map_rect.height)*256-128);
