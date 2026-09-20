@@ -22,18 +22,19 @@ namespace ZombieGame.EditorTools
             string smoke_path = OUTPUT + "/MusketSmoke.mat";
             if (AssetDatabase.LoadAssetAtPath<Material>(smoke_path) == null)
                 AssetDatabase.CreateAsset(new Material(Shader.Find("ZombieGame/MusketSmoke")),smoke_path);
-            bake_character("Characters_Shaun", "Human", new[] { "Idle_Gun", "Run_Gun", "Idle_Gun", "Death" });
-            bake_character("Zombie_Basic", "Zombie", new[] { "Idle", "Run", "Punch", "Death" });
-            bake_character("Zombie_Chubby", "Exploder", new[] { "Idle", "Run", "Punch", "Death" });
+            bake_character("Characters_Shaun", "Human", new[] { "Idle_Gun", "Run_Gun", "Idle_Gun", "Death", "Punch", "Idle", "Run" });
+            bake_character("Zombie_Basic", "Zombie", new[] { "Idle", "Run", "Punch", "Death", "Punch", "Idle", "Run" });
+            bake_character("Zombie_Chubby", "Exploder", new[] { "Idle", "Run", "Punch", "Death", "Punch", "Idle", "Run" });
             AssetDatabase.SaveAssets();
-            Debug.Log("[CharacterBake] PASS human/basic/chubby: idle/run/attack/death, 12 shared frames per pose; human uses original matchlock mesh and recoil over Idle_Gun");
+            Debug.Log("[CharacterBake] PASS human/basic/chubby: 7 gun/knife poses, 12 shared frames per pose; matchlock fire and knife Punch/Idle/Run");
         }
 
         public static void ensure_models()
         {
             if (AssetDatabase.LoadAssetAtPath<CharacterFrames>(OUTPUT + "/Human.asset") == null ||
                 AssetDatabase.LoadAssetAtPath<CharacterFrames>(OUTPUT + "/Zombie.asset") == null ||
-                AssetDatabase.LoadAssetAtPath<CharacterFrames>(OUTPUT + "/Exploder.asset") == null) bake_models();
+                AssetDatabase.LoadAssetAtPath<CharacterFrames>(OUTPUT + "/Exploder.asset") == null ||
+                AssetDatabase.LoadAssetAtPath<CharacterFrames>(OUTPUT + "/Human.asset").poses.Length<7) bake_models();
         }
 
         private static void bake_character(string source, string name, string[] clips)
@@ -49,13 +50,13 @@ namespace ZombieGame.EditorTools
                 var animations = AssetDatabase.LoadAllAssetsAtPath(path).OfType<AnimationClip>().ToArray();
                 foreach (var animator in model.GetComponentsInChildren<Animator>()) animator.enabled = false;
                 Renderer[] renderers = model.GetComponentsInChildren<Renderer>(true)
-                    .Where(r => r is SkinnedMeshRenderer || r.gameObject.name == "Rifle").ToArray();
+                    .Where(r => r is SkinnedMeshRenderer || r.gameObject.name == "Rifle" || r.gameObject.name=="Knife").ToArray();
                 if (renderers.Length == 0) throw new InvalidOperationException("No character meshes: " + source);
                 var atlas = AssetDatabase.LoadAllAssetsAtPath(path).OfType<Texture2D>().FirstOrDefault();
                 if (atlas == null) throw new InvalidOperationException("No character atlas: " + source);
                 string output = OUTPUT + "/" + name + ".asset";
                 if (File.Exists(output)) AssetDatabase.DeleteAsset(output); // Regenerable bake, never source art.
-                var asset = ScriptableObject.CreateInstance<CharacterFrames>(); asset.poses = new PoseFrames[4];
+                var asset = ScriptableObject.CreateInstance<CharacterFrames>(); asset.poses = new PoseFrames[clips.Length];
                 AssetDatabase.CreateAsset(asset, output);
                 asset.material = new Material(Shader.Find("ZombieGame/CharacterAtlas")) { name = name + " Atlas", enableInstancing = true, mainTexture = atlas };
                 asset.material.SetFloat("_Saturation", art.saturation);
@@ -73,7 +74,7 @@ namespace ZombieGame.EditorTools
                         clip.SampleAnimation(model, fraction * clip.length);
                         Transform rifle = renderers.FirstOrDefault(r=>r.name == "Rifle")?.transform;
                         frames.muzzle_positions[frame] = rifle == null ? Vector3.up : model.transform.InverseTransformPoint(rifle.TransformPoint(MusketMeshBuilder.to_grip(new Vector3(0,.12f,1.27f))));
-                        Mesh mesh = bake_frame(model, renderers, art, name=="Human");
+                        Mesh mesh = bake_frame(model, renderers, art, name=="Human",pose>=4);
                         // Leaner adult proportions; applied to all poses and the weapon socket, not navigation roots.
                         var proportions=name=="Exploder"?new Vector3(1,1.04f,.96f):new Vector3(.88f,1.06f,.91f);
                         var shaped_vertices=mesh.vertices;
@@ -107,15 +108,22 @@ namespace ZombieGame.EditorTools
             finally { UnityEngine.Object.DestroyImmediate(model); }
         }
 
-        private static Mesh bake_frame(GameObject model, Renderer[] renderers, CharacterArtSettings art,bool human)
+        private static Mesh bake_frame(GameObject model, Renderer[] renderers, CharacterArtSettings art,bool human,bool melee)
         {
             var combines = new List<CombineInstance>(); var temporary = new List<Mesh>();
             foreach (Renderer renderer in renderers)
             {
+                if(renderer.name=="Rifle"&&melee||renderer.name=="Knife"&&!melee)continue;
                 Mesh mesh;
                 if (renderer is SkinnedMeshRenderer skin)
                 {
                     mesh = new Mesh(); skin.BakeMesh(mesh); mesh.colors = build_garment_colors(skin,human); temporary.Add(mesh);
+                }
+                else if(renderer.name=="Knife")
+                {
+                    mesh=UnityEngine.Object.Instantiate(renderer.GetComponent<MeshFilter>().sharedMesh);
+                    var colors=new Color[mesh.vertexCount];for(int i=0;i<colors.Length;i++)colors[i]=new Color(.5f,.48f,.4f,1);
+                    mesh.colors=colors;temporary.Add(mesh);
                 }
                 else { mesh = MusketMeshBuilder.build(art); temporary.Add(mesh); }
                 for (int sub = 0; sub < mesh.subMeshCount; sub++)

@@ -11,7 +11,8 @@ namespace ZombieGame.Balance
         public string id, name_zh;
         public bool implemented;
         public bool provisional;
-        public int ammunition_cost;
+        public int ammunition_cost, ammunition_capacity;
+        public float melee_damage, melee_attack_interval, melee_range;
         public float health, move_speed, acceleration, attack_range, damage, attack_interval;
         public float projectile_speed, explosion_radius, fuse_seconds, noise_radius;
     }
@@ -21,7 +22,7 @@ namespace ZombieGame.Balance
     {
         public int version;
         public float human_sight, zombie_sight, noise_range_multiplier, noise_probe_radius, noise_propagation_speed, noise_pulse_duration;
-        public float formation_spacing, chase_repath_seconds, unit_navigation_radius;
+        public float formation_spacing, chase_repath_seconds, unit_navigation_radius, ammunition_depot_radius;
         public UnitStats[] units;
     }
 
@@ -52,27 +53,29 @@ namespace ZombieGame.Balance
         {
             if (values == null || values.version != 1 || values.units == null || values.human_sight <= 0 || values.zombie_sight <= 0
                 || values.noise_range_multiplier <= 0 || values.noise_probe_radius <= 0 || values.noise_propagation_speed <= 0 || values.noise_pulse_duration <= 0
-                || values.unit_navigation_radius<=0 || values.formation_spacing < values.unit_navigation_radius*2 || values.chase_repath_seconds <= 0)
+                || values.unit_navigation_radius<=0 || values.ammunition_depot_radius<=0 || values.formation_spacing < values.unit_navigation_radius*2 || values.chase_repath_seconds <= 0)
                 throw new InvalidOperationException("Invalid balance/unit_balance.json globals/schema");
             var ids = new HashSet<string>();
             foreach (var stats in values.units)
             {
                 if (stats == null || string.IsNullOrEmpty(stats.id) || !ids.Add(stats.id)) throw new InvalidOperationException("Duplicate/missing balance unit id");
                 if (stats.ammunition_cost < 0) throw new InvalidOperationException("Negative ammunition cost: " + stats.id);
-                foreach (float number in new[] {stats.health,stats.move_speed,stats.acceleration,stats.attack_range,stats.damage,stats.attack_interval,stats.projectile_speed,stats.explosion_radius,stats.fuse_seconds,stats.noise_radius})
+                foreach (float number in new[] {stats.health,stats.move_speed,stats.acceleration,stats.attack_range,stats.damage,stats.attack_interval,stats.projectile_speed,stats.explosion_radius,stats.fuse_seconds,stats.noise_radius,stats.melee_damage,stats.melee_attack_interval,stats.melee_range})
                     if (float.IsNaN(number) || float.IsInfinity(number) || number < 0) throw new InvalidOperationException("Invalid numeric balance: " + stats.id);
                 if (stats.implemented && (stats.health <= 0 || stats.move_speed <= 0 || stats.acceleration <= 0 || stats.attack_range <= 0 || stats.damage <= 0 || stats.attack_interval <= 0))
                     throw new InvalidOperationException("Incomplete active unit balance: " + stats.id);
             }
             foreach (string required in new[] { "firearm_infantry", "runner", "exploder", "walker", "archer" })
                 if (!ids.Contains(required)) throw new InvalidOperationException("Required balance unit missing: " + required);
-            foreach (float number in new[] {values.human_sight,values.zombie_sight,values.noise_range_multiplier,values.noise_probe_radius,values.noise_propagation_speed,values.noise_pulse_duration,values.formation_spacing,values.chase_repath_seconds,values.unit_navigation_radius})
+            foreach (float number in new[] {values.human_sight,values.zombie_sight,values.noise_range_multiplier,values.noise_probe_radius,values.noise_propagation_speed,values.noise_pulse_duration,values.formation_spacing,values.chase_repath_seconds,values.unit_navigation_radius,values.ammunition_depot_radius})
                 if (float.IsNaN(number) || float.IsInfinity(number)) throw new InvalidOperationException("Non-finite balance global");
             var human_stats = Array.Find(values.units,unit => unit.id == "firearm_infantry");
             var runner_stats = Array.Find(values.units,unit => unit.id == "runner");
             var exploder_stats = Array.Find(values.units,unit => unit.id == "exploder");
             if (!human_stats.implemented || !runner_stats.implemented || !exploder_stats.implemented
-                || human_stats.projectile_speed <= 0 || exploder_stats.explosion_radius <= 0 || exploder_stats.fuse_seconds <= 0
+                || human_stats.projectile_speed <= 0 || human_stats.ammunition_capacity<1 || human_stats.ammunition_cost<1
+                || human_stats.melee_damage<=0 || human_stats.melee_range<=0 || human_stats.melee_attack_interval<=0
+                || exploder_stats.explosion_radius <= 0 || exploder_stats.fuse_seconds <= 0
                 || runner_stats.move_speed <= human_stats.move_speed || exploder_stats.move_speed <= human_stats.move_speed
                 || runner_stats.noise_radius != 0 || exploder_stats.noise_radius != 0)
                 throw new InvalidOperationException("Invalid combat roles: check projectile/explosion stats, silent zombies and zombies faster than Shenji");

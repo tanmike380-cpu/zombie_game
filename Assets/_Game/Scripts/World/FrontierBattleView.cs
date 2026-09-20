@@ -47,8 +47,9 @@ namespace ZombieGame.World
                 float age=Time.time-battle.attack_started_at[i];
                 bool moving=agent.enabled&&agent.velocity.sqrMagnitude>.04f;
                 var pose=moving?CharacterPose.Run:age<.4f?CharacterPose.Attack:CharacterPose.Idle;
-                characters.add(human,pose,pose==CharacterPose.Attack?age:Time.time+i*.137f,battle.positions[i],rotation,battle.exploder[i]);
-                if(human&&battle.attack_started_at[i]>seen_shots[i])
+                if(human&&battle.uses_melee(i))pose=moving?CharacterPose.MeleeRun:age<.55f&&battle.last_attack_melee[i]?CharacterPose.MeleeAttack:CharacterPose.MeleeIdle;
+                characters.add(human,pose,pose==CharacterPose.Attack||pose==CharacterPose.MeleeAttack?age:Time.time+i*.137f,battle.positions[i],rotation,battle.exploder[i]);
+                if(human&&!battle.last_attack_melee[i]&&battle.attack_started_at[i]>seen_shots[i])
                 { seen_shots[i]=battle.attack_started_at[i];effects.fire(characters.human_muzzle(battle.positions[i],rotation),rotation*Vector3.forward); }
                 if(human&&battle.selected[i])
                 {

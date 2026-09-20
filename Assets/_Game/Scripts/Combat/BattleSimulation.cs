@@ -23,6 +23,11 @@ namespace ZombieGame.Combat
         public readonly float[] health;
         public readonly bool[] activated;
         public readonly bool[] exploder;
+        public readonly int[] ammunition;
+        public readonly bool[] manual_melee,last_attack_melee;
+        public int melee_strikes;
+        public bool uses_melee(int index) => manual_melee[index]||ammunition[index]<UnitBalance.human.ammunition_cost;
+        public float human_range(int index) => uses_melee(index)?UnitBalance.human.melee_range:UnitBalance.human.attack_range;
         public readonly NativeNavMeshCrowd crowd;
         public readonly bool assault;
         public readonly bool playable;
@@ -61,6 +66,7 @@ namespace ZombieGame.Combat
             path_cursor = soldier_count;
             positions = new Vector3[total_count];
             health = new float[total_count];
+            ammunition=new int[soldier_count];manual_melee=new bool[soldier_count];last_attack_melee=new bool[soldier_count];
             activated = new bool[total_count];
             exploder = new bool[total_count];
             soldier_facing = new Vector3[soldier_count];
@@ -102,6 +108,7 @@ namespace ZombieGame.Combat
                     crowd.agents[i].angularSpeed = 1440;
                     order_targets[i] = -1; last_soldier_goal[i] = Vector3.positiveInfinity;
                     recruited[i]=i<initial_humans;
+                    ammunition[i]=recruited[i]?UnitBalance.human.ammunition_capacity:0;
                     if(!recruited[i]){health[i]=0;crowd.agents[i].enabled=false;}
                 }
             }
@@ -214,10 +221,17 @@ namespace ZombieGame.Combat
             for (int i = 0; i < soldier_count; i++)
             {
                 if (health[i] <= 0) continue;
-                int target = playable ? update_player_order(i, now) : nearest(zombie_grid, positions[i], UnitBalance.human.attack_range);
+                int target = playable ? update_player_order(i, now) : nearest(zombie_grid, positions[i], human_range(i));
                 if (target >= 0) soldier_facing[i] = positions[target] - positions[i];
                 if (target < 0 || now < next_attack[i]) continue;
+                if(uses_melee(i))
+                {
+                    next_attack[i]=now+UnitBalance.human.melee_attack_interval;attack_started_at[i]=now;
+                    last_attack_melee[i]=true;melee_strikes++;last_combat_time=now;
+                    damage(target,UnitBalance.human.melee_damage,now);continue;
+                }
                 if (try_supply_shot != null && !try_supply_shot(i)) continue;
+                ammunition[i]-=UnitBalance.human.ammunition_cost;last_attack_melee[i]=false;
                 next_attack[i] = now + UnitBalance.human.attack_interval; shots++; last_combat_time = now;
                 attack_started_at[i] = now;
                 bool allocated = false;

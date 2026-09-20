@@ -11,6 +11,7 @@ namespace ZombieGame.Presentation
         private readonly Matrix4x4[][] matrices;
         private readonly int[] counts;
         private readonly int frames_per_pose;
+        private readonly int pose_count;
         public int submitted { get; private set; }
 
         public CharacterCrowdRenderer(int capacity)
@@ -18,7 +19,8 @@ namespace ZombieGame.Presentation
             characters = new[] { Resources.Load<CharacterFrames>("CharacterGenerated/Human"), Resources.Load<CharacterFrames>("CharacterGenerated/Zombie"), Resources.Load<CharacterFrames>("CharacterGenerated/Exploder") };
             if (Array.Exists(characters,c=>c==null)) throw new InvalidOperationException("Bake character models before enabling animated crowd");
             frames_per_pose = characters[0].poses[0].frames.Length;
-            int buckets = characters.Length * 4 * frames_per_pose;
+            pose_count=characters[0].poses.Length;
+            int buckets = characters.Length * pose_count * frames_per_pose;
             matrices = new Matrix4x4[buckets][]; counts = new int[buckets];
             for (int i = 0; i < buckets; i++) matrices[i] = new Matrix4x4[capacity];
         }
@@ -29,7 +31,7 @@ namespace ZombieGame.Presentation
         {
             int character = human ? 0 : explosive ? 2 : 1;
             int frame = characters[character].frame_index(pose, age);
-            int bucket = (character * 4 + (int)pose) * frames_per_pose + frame;
+            int bucket = (character * pose_count + (int)pose) * frames_per_pose + frame;
             matrices[bucket][counts[bucket]++] = Matrix4x4.TRS(position, rotation, Vector3.one);
             submitted++;
         }
@@ -39,7 +41,7 @@ namespace ZombieGame.Presentation
             for (int bucket = 0; bucket < counts.Length; bucket++)
             {
                 if (counts[bucket] == 0) continue;
-                int character = bucket / (4 * frames_per_pose), pose = bucket / frames_per_pose % 4, frame = bucket % frames_per_pose;
+                int character = bucket / (pose_count * frames_per_pose), pose = bucket / frames_per_pose % pose_count, frame = bucket % frames_per_pose;
                 var parameters = new RenderParams(characters[character].material) { worldBounds = new Bounds(Vector3.zero,new Vector3(260,30,260)), shadowCastingMode = ShadowCastingMode.Off, receiveShadows = false };
                 for (int start = 0; start < counts[bucket]; start += 1023)
                     Graphics.RenderMeshInstanced(parameters, characters[character].poses[pose].frames[frame], 0,

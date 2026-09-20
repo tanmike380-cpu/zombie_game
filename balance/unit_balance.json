@@ -8,6 +8,7 @@
   "noise_pulse_duration": 0.6,
   "formation_spacing": 0.9,
   "unit_navigation_radius": 0.34,
+  "ammunition_depot_radius": 20,
   "chase_repath_seconds": 0.15,
   "units": [
     {
@@ -21,7 +22,11 @@
       "damage": 100,
       "attack_interval": 0.8,
       "projectile_speed": 40,
-      "ammunition_cost": 1
+      "ammunition_cost": 1,
+      "ammunition_capacity": 30,
+      "melee_damage": 10,
+      "melee_attack_interval": 1,
+      "melee_range": 1.15
     },
     {
       "id": "runner",
