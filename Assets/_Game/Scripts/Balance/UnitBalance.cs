@@ -10,6 +10,8 @@ namespace ZombieGame.Balance
     {
         public string id, name_zh;
         public bool implemented;
+        public bool provisional;
+        public int ammunition_cost;
         public float health, move_speed, acceleration, attack_range, damage, attack_interval;
         public float projectile_speed, explosion_radius, fuse_seconds, noise_radius;
     }
@@ -56,6 +58,7 @@ namespace ZombieGame.Balance
             foreach (var stats in values.units)
             {
                 if (stats == null || string.IsNullOrEmpty(stats.id) || !ids.Add(stats.id)) throw new InvalidOperationException("Duplicate/missing balance unit id");
+                if (stats.ammunition_cost < 0) throw new InvalidOperationException("Negative ammunition cost: " + stats.id);
                 foreach (float number in new[] {stats.health,stats.move_speed,stats.acceleration,stats.attack_range,stats.damage,stats.attack_interval,stats.projectile_speed,stats.explosion_radius,stats.fuse_seconds,stats.noise_radius})
                     if (float.IsNaN(number) || float.IsInfinity(number) || number < 0) throw new InvalidOperationException("Invalid numeric balance: " + stats.id);
                 if (stats.implemented && (stats.health <= 0 || stats.move_speed <= 0 || stats.acceleration <= 0 || stats.attack_range <= 0 || stats.damage <= 0 || stats.attack_interval <= 0))

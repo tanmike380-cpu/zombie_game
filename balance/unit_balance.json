@@ -9,25 +9,213 @@
   "formation_spacing": 0.8,
   "chase_repath_seconds": 0.15,
   "units": [
-    {"id":"firearm_infantry","name_zh":"神机营","implemented":true,"health":100,"move_speed":3.5,"acceleration":100,"attack_range":7,"damage":100,"attack_interval":0.8,"projectile_speed":40},
-    {"id":"runner","name_zh":"狂暴僵尸","implemented":true,"health":60,"move_speed":4.5,"acceleration":100,"attack_range":1,"damage":10,"attack_interval":1},
-    {"id":"exploder","name_zh":"爆裂尸","implemented":true,"health":60,"move_speed":4.25,"acceleration":100,"attack_range":1.2,"damage":70,"attack_interval":1,"explosion_radius":2,"fuse_seconds":0.65},
-    {"id":"walker","name_zh":"普通慢速僵尸（尚无战斗实现）","move_speed":1.8,"acceleration":40},
-    {"id":"wooden_shield_guard","name_zh":"木盾兵（待实现）","move_speed":2.6,"attack_range":1},
-    {"id":"iron_shield_guard","name_zh":"铁盾兵（待实现）","move_speed":2.2,"attack_range":1},
-    {"id":"suicide_bomber","name_zh":"人类自爆兵（待实现）","move_speed":3.5,"noise_radius":8},
-    {"id":"archer","name_zh":"弓箭手（待实现）","move_speed":3.2,"attack_range":5},
-    {"id":"repeating_crossbowman","name_zh":"连弩手（待实现）","move_speed":3,"attack_range":4},
-    {"id":"heavy_crossbowman","name_zh":"重弩手（待实现）","move_speed":2.8,"attack_range":7},
-    {"id":"heavy_ballista","name_zh":"重弩炮（待实现）","move_speed":1.5,"attack_range":10},
-    {"id":"cannon","name_zh":"火炮（待实现）","move_speed":1.3,"attack_range":10},
-    {"id":"brute","name_zh":"胖尸（待实现）","move_speed":2.2},
-    {"id":"zombie_hound","name_zh":"尸犬（待实现）","move_speed":4.2},
-    {"id":"spitter","name_zh":"毒液僵尸（待实现）","move_speed":2.6},
-    {"id":"giant","name_zh":"巨型僵尸（待实现）","move_speed":1.5},
-    {"id":"boss","name_zh":"Boss（数值待定）"},
-    {"id":"arrow_tower","name_zh":"箭塔（待实现）","attack_range":5},
-    {"id":"cannon_bastion","name_zh":"铁炮要塞（待实现）","attack_range":10},
-    {"id":"flame_bastion","name_zh":"喷火要塞（待实现）","attack_range":4}
+    {
+      "id": "firearm_infantry",
+      "name_zh": "神机营",
+      "implemented": true,
+      "health": 100,
+      "move_speed": 3.5,
+      "acceleration": 100,
+      "attack_range": 7,
+      "damage": 100,
+      "attack_interval": 0.8,
+      "projectile_speed": 40,
+      "ammunition_cost": 1
+    },
+    {
+      "id": "runner",
+      "name_zh": "狂暴僵尸",
+      "implemented": true,
+      "health": 60,
+      "move_speed": 4.5,
+      "acceleration": 100,
+      "attack_range": 1,
+      "damage": 10,
+      "attack_interval": 1
+    },
+    {
+      "id": "exploder",
+      "name_zh": "爆裂尸",
+      "implemented": true,
+      "health": 60,
+      "move_speed": 4.25,
+      "acceleration": 100,
+      "attack_range": 1.2,
+      "damage": 70,
+      "attack_interval": 1,
+      "explosion_radius": 2,
+      "fuse_seconds": 0.65
+    },
+    {
+      "id": "walker",
+      "name_zh": "普通慢速僵尸（尚无战斗实现）",
+      "move_speed": 1.8,
+      "acceleration": 40,
+      "provisional": true,
+      "health": 60,
+      "damage": 8,
+      "attack_interval": 1.2,
+      "attack_range": 1
+    },
+    {
+      "id": "wooden_shield_guard",
+      "name_zh": "木盾兵（待实现）",
+      "move_speed": 2.6,
+      "attack_range": 1,
+      "provisional": true,
+      "health": 300,
+      "damage": 12,
+      "attack_interval": 1,
+      "acceleration": 60
+    },
+    {
+      "id": "iron_shield_guard",
+      "name_zh": "铁盾兵（待实现）",
+      "move_speed": 2.2,
+      "attack_range": 1,
+      "provisional": true,
+      "health": 600,
+      "damage": 18,
+      "attack_interval": 1.2,
+      "acceleration": 60
+    },
+    {
+      "id": "suicide_bomber",
+      "name_zh": "人类自爆兵（待实现）",
+      "move_speed": 3.5,
+      "noise_radius": 8,
+      "provisional": true,
+      "health": 100,
+      "damage": 180,
+      "attack_interval": 1,
+      "attack_range": 0,
+      "acceleration": 60,
+      "explosion_radius": 3,
+      "fuse_seconds": 0.5
+    },
+    {
+      "id": "archer",
+      "name_zh": "弓箭手（待实现）",
+      "move_speed": 3.2,
+      "attack_range": 5,
+      "provisional": true,
+      "health": 80,
+      "damage": 25,
+      "attack_interval": 1,
+      "acceleration": 60,
+      "projectile_speed": 25
+    },
+    {
+      "id": "repeating_crossbowman",
+      "name_zh": "连弩手（待实现）",
+      "move_speed": 3,
+      "attack_range": 4,
+      "provisional": true,
+      "health": 90,
+      "damage": 12,
+      "attack_interval": 0.25,
+      "acceleration": 60,
+      "projectile_speed": 25
+    },
+    {
+      "id": "heavy_crossbowman",
+      "name_zh": "重弩手（待实现）",
+      "move_speed": 2.8,
+      "attack_range": 7,
+      "provisional": true,
+      "health": 90,
+      "damage": 90,
+      "attack_interval": 1.8,
+      "acceleration": 60,
+      "projectile_speed": 25
+    },
+    {
+      "id": "heavy_ballista",
+      "name_zh": "重弩炮（待实现）",
+      "move_speed": 1.5,
+      "attack_range": 10,
+      "provisional": true,
+      "health": 240,
+      "damage": 220,
+      "attack_interval": 3,
+      "acceleration": 60,
+      "projectile_speed": 25
+    },
+    {
+      "id": "cannon",
+      "name_zh": "火炮（待实现）",
+      "move_speed": 1.3,
+      "attack_range": 10,
+      "provisional": true,
+      "health": 260,
+      "damage": 180,
+      "attack_interval": 3.5,
+      "acceleration": 60,
+      "projectile_speed": 25
+    },
+    {
+      "id": "brute",
+      "name_zh": "胖尸（待实现）",
+      "move_speed": 2.2,
+      "provisional": true,
+      "health": 500,
+      "damage": 35,
+      "attack_interval": 1.5,
+      "attack_range": 1.2,
+      "acceleration": 60
+    },
+    {
+      "id": "zombie_hound",
+      "name_zh": "尸犬（待实现）",
+      "move_speed": 4.2,
+      "provisional": true,
+      "health": 70,
+      "damage": 12,
+      "attack_interval": 0.8,
+      "attack_range": 1,
+      "acceleration": 60
+    },
+    {
+      "id": "spitter",
+      "name_zh": "毒液僵尸（待实现）",
+      "move_speed": 2.6,
+      "provisional": true,
+      "health": 120,
+      "damage": 15,
+      "attack_interval": 2,
+      "attack_range": 6,
+      "acceleration": 60,
+      "projectile_speed": 25
+    },
+    {
+      "id": "giant",
+      "name_zh": "巨型僵尸（待实现）",
+      "move_speed": 1.5,
+      "provisional": true,
+      "health": 2400,
+      "damage": 100,
+      "attack_interval": 2.5,
+      "attack_range": 2,
+      "acceleration": 60
+    },
+    {
+      "id": "boss",
+      "name_zh": "Boss（数值待定）"
+    },
+    {
+      "id": "arrow_tower",
+      "name_zh": "箭塔（待实现）",
+      "attack_range": 5
+    },
+    {
+      "id": "cannon_bastion",
+      "name_zh": "铁炮要塞（待实现）",
+      "attack_range": 10
+    },
+    {
+      "id": "flame_bastion",
+      "name_zh": "喷火要塞（待实现）",
+      "attack_range": 4
+    }
   ]
 }

@@ -13,6 +13,8 @@ namespace ZombieGame.Combat
     {
         public readonly int soldier_count, zombie_count, total_count;
         public Func<int, int> forced_target;
+        // Optional economy gate. Benchmarks without an economy retain their existing behaviour.
+        public Func<int, bool> try_supply_shot;
         public readonly Vector3[] positions;
         public readonly float[] health;
         public readonly bool[] activated;
@@ -189,6 +191,7 @@ namespace ZombieGame.Combat
                 int target = playable ? update_player_order(i, now) : nearest(zombie_grid, positions[i], UnitBalance.human.attack_range);
                 if (target >= 0) soldier_facing[i] = positions[target] - positions[i];
                 if (target < 0 || now < next_attack[i]) continue;
+                if (try_supply_shot != null && !try_supply_shot(i)) continue;
                 next_attack[i] = now + UnitBalance.human.attack_interval; shots++; last_combat_time = now;
                 attack_started_at[i] = now;
                 bool allocated = false;
