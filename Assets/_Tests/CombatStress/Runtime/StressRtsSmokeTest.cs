@@ -15,6 +15,7 @@ namespace ZombieGame.CombatStressTests
         {
             yield return null;
             NoiseRetargetChecks.run();
+            yield return verify_crowded_arrival();
             yield return verify_movement_speeds();
             game.reset_playable();
             yield return null;
@@ -93,6 +94,14 @@ namespace ZombieGame.CombatStressTests
                 yield return null;
             }
             require(regrouped,"Two separated squads failed to converge at center");
+            yield return new WaitForSeconds(20);
+            int settled_count=0;
+            for(int i=0;i<400;i++)if(s.crowd.agents[i].isStopped)settled_count++;
+            if(settled_count<380)
+                for(int i=0;i<400;i++)if(!s.crowd.agents[i].isStopped)
+                    Debug.Log($"[RegroupPending] index={i} distance={Vector3.Distance(s.positions[i],s.order_goals[i]):F2} remaining={s.crowd.agents[i].remainingDistance:F2} speed={s.crowd.agents[i].velocity.magnitude:F2}");
+            require(settled_count>=380,$"Crowded regroup never settled: {settled_count}/400 stopped");
+            Debug.Log($"[CrowdedRegroupSmoke] PASS {settled_count}/400 naturally stopped after regroup, before forced stop");
             input.issue_selected(SoldierOrder.Stop,Vector3.zero);
             Debug.Log("[RegroupSmoke] PASS 400 soldiers in two 200-unit squads, >64-tile empty gap removed; all reached within 13 tiles of click");
 
@@ -117,6 +126,41 @@ namespace ZombieGame.CombatStressTests
             yield return verify_noise_retarget();
             Debug.Log($"[StressRtsSmoke] PASS manual start, 400-unit move, stop, patrol, screen picking/box selection, groups/recall/focus/reset/dead filtering, central obstacle detour, terrain bounds, enemy/hidden rejection, moving fog/exploration, attack/noise chase. shots={s.shots} hits={s.hits} activated={s.ever_active}");
             game.reset_playable(); game.input_locked=false;
+        }
+
+        private IEnumerator verify_crowded_arrival()
+        {
+            game.reset_playable(); yield return null;
+            var simulation=game.current;
+            Vector3 occupied=new Vector3(-110,0,-70);
+            require(simulation.crowd.agents[0].Warp(occupied),"Occupied arrival fixture");
+            require(simulation.crowd.agents[1].Warp(occupied+Vector3.left*3),"Blocked mover fixture");
+            yield return null;
+            require(simulation.issue_order(1,SoldierOrder.Move,occupied),"Occupied goal rejected");
+            yield return new WaitForSeconds(5);
+            require(simulation.orders[1]==SoldierOrder.Stop&&simulation.crowd.agents[1].isStopped,
+                $"Occupied goal kept oscillating: position={simulation.positions[1]} goal={occupied} remaining={simulation.crowd.agents[1].remainingDistance} blocker={simulation.positions[0]} velocity={simulation.crowd.agents[1].velocity}");
+            require(Vector3.Distance(simulation.positions[1],occupied)<1.8f,"Stopped too far from occupied goal");
+            Vector3 settled=simulation.positions[1];
+            for(int sample=0;sample<20;sample++)
+            {
+                yield return new WaitForSeconds(.1f);
+                require(Vector3.Distance(settled,simulation.positions[1])<.08f,"Settled mover drifted or restarted");
+            }
+            require(simulation.issue_order(1,SoldierOrder.Move,occupied+Vector3.left*6),"New move failed to wake settled unit");
+            yield return new WaitForSeconds(1);
+            require(Vector3.Distance(settled,simulation.positions[1])>.8f,"Settled unit ignored new move");
+            simulation.issue_order(1,SoldierOrder.Stop,Vector3.zero);
+            require(simulation.crowd.agents[1].Warp(occupied+Vector3.left*3),"Patrol arrival fixture");
+            yield return null;
+            require(simulation.issue_order(1,SoldierOrder.Patrol,occupied),"Occupied patrol rejected");
+            yield return new WaitForSeconds(5);
+            require(simulation.orders[1]==SoldierOrder.Patrol&&simulation.crowd.agents[1].isStopped,"Patrol failed to wait at occupied endpoint");
+            simulation.issue_order(0,SoldierOrder.Move,occupied+Vector3.forward*4);
+            yield return new WaitForSeconds(3);
+            require(simulation.orders[1]==SoldierOrder.Patrol&&!simulation.crowd.agents[1].isStopped,"Patrol did not resume after blocker left");
+            Debug.Log("[CrowdedArrivalSmoke] PASS occupied endpoint settles, 2s drift<0.08, new move wakes, patrol waits/resumes; fixtures reset");
+            game.reset_playable();yield return null;
         }
 
         private IEnumerator verify_noise_retarget()

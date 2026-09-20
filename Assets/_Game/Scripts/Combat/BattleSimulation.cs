@@ -89,6 +89,10 @@ namespace ZombieGame.Combat
             patrol_ends = new Vector3[soldier_count];
             last_soldier_goal = new Vector3[soldier_count];
             soldier_repath_at = new float[soldier_count];
+            route_settled = new bool[soldier_count];
+            route_progress_goal = new Vector3[soldier_count];
+            route_best_distance = new float[soldier_count];
+            route_progress_at = new float[soldier_count];
             zombie_repath_at = new float[total_count];
             Array.Copy(spawn_positions, positions, total_count);
             Array.Copy(explosive_units, exploder, total_count);
@@ -169,7 +173,8 @@ namespace ZombieGame.Combat
             {
                 if (health[i] <= 0) continue;
                 positions[i] = crowd.transforms[i].position;
-                if (i < soldier_count && crowd.agents[i].velocity.sqrMagnitude > .01f)
+                // Ignore tiny avoidance corrections when choosing visual facing; firing still aims at its target.
+                if (i < soldier_count && crowd.agents[i].velocity.sqrMagnitude > Mathf.Pow(UnitBalance.human.move_speed*.2f,2))
                     soldier_facing[i] = crowd.agents[i].velocity;
                 if (i < soldier_count || !activated[i]) continue;
                 active_now++;

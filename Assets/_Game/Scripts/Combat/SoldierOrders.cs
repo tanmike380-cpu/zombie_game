@@ -35,6 +35,7 @@ namespace ZombieGame.Combat
                 goal = hit.position;
             }
             stop_soldier(index);
+            reset_route_progress(index, goal);
             orders[index] = order; order_targets[index] = target; order_goals[index] = goal;
             patrol_starts[index] = positions[index]; patrol_ends[index] = goal;
             soldier_repath_at[index] = 0;
@@ -48,7 +49,7 @@ namespace ZombieGame.Combat
         {
             var agent = crowd.agents[index];
             if (agent.enabled && agent.isOnNavMesh)
-            { agent.isStopped = true; agent.ResetPath(); agent.velocity = Vector3.zero; }
+            { agent.ResetPath(); agent.isStopped = true; agent.velocity = Vector3.zero; }
             last_soldier_goal[index] = Vector3.positiveInfinity;
         }
 
@@ -56,6 +57,7 @@ namespace ZombieGame.Combat
         {
             var agent = crowd.agents[index];
             if (!agent.enabled || !agent.isOnNavMesh) return false;
+            route_settled[index] = false;
             agent.stoppingDistance = stopping_distance;
             if (!immediate && Time.time < soldier_repath_at[index]) return true;
             if (!immediate && agent.hasPath && (last_soldier_goal[index] - goal).sqrMagnitude < .25f)
@@ -96,7 +98,15 @@ namespace ZombieGame.Combat
         private void follow_soldier_route(int index)
         {
             if (orders[index] == SoldierOrder.Stop) { stop_soldier(index); return; }
-            if ((positions[index] - order_goals[index]).sqrMagnitude < .35f * .35f)
+            if (route_settled[index])
+            {
+                // Patrol keeps its endpoint and resumes when the local obstruction clears.
+                if (orders[index] != SoldierOrder.Patrol || has_arrival_blocker(index)) return;
+                reset_route_progress(index, order_goals[index]);
+            }
+            if (try_settle_crowded_arrival(index)) return;
+            float arrival_radius = UnitBalance.config.unit_navigation_radius * (orders[index]==SoldierOrder.Patrol?1:2);
+            if ((positions[index] - order_goals[index]).sqrMagnitude < arrival_radius * arrival_radius)
             {
                 if (orders[index] == SoldierOrder.Patrol)
                     order_goals[index] = (order_goals[index] - patrol_ends[index]).sqrMagnitude < .1f
