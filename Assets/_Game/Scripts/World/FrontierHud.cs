@@ -46,7 +46,7 @@ namespace ZombieGame.World
             float centre_x=234*s,resources_x=Screen.width-190*s,commands_x=resources_x-264*s;
             var selection_area=new Rect(centre_x,y,commands_x-centre_x-10*s,190*s);
             var command_area=new Rect(commands_x,y,254*s,190*s);
-            if(game.headquarters_selected){draw_headquarters(selection_area);draw_production_commands(command_area);}
+            if(game.headquarters_selected){draw_structure_labels();draw_headquarters(selection_area);draw_production_commands(command_area);}
             else {draw_selection(selection_area);draw_commands(command_area);}
             draw_resources(new Rect(resources_x,y,190*s,190*s));
             if(show_help)
@@ -175,7 +175,7 @@ namespace ZombieGame.World
             var recipes=game.production.config.recipes;
             for(int i=0;i<9;i++)
             {
-                string label=i<recipes.Length?recipes[i].name:i==7?"取消末项":"返回部队\nF2";
+                string label=i<recipes.Length?recipes[i].name.Replace("训练", "").Replace("扩建", "")+(i==0?"\n训练":"\n扩建"):i==7?"取消末项":"返回部队\nF2";
                 string tip=i<recipes.Length?HeadquartersProduction.cost_label(recipes[i]):i==7?"全额退还末项资源":"选择所有存活士兵";
                 if(GUI.Button(new Rect(area.x+12*s+i%3*width,area.y+32*s+i/3*43*s,width-5*s,39*s),new GUIContent(label,tip),button))
                 {
@@ -186,6 +186,25 @@ namespace ZombieGame.World
             }
             GUI.enabled=true;
             GUI.Label(new Rect(area.x+12*s,area.y+164*s,area.width-24*s,23*s),string.IsNullOrEmpty(GUI.tooltip)?"悬停查看费用 · 队列上限 8":GUI.tooltip,small);
+        }
+        private void draw_structure_labels()
+        {
+            foreach(var region in game.map.regions)
+            {
+                bool headquarters=region.label=="COMMAND HALL";
+                if(!headquarters&&!region.label.StartsWith("PLOT:"))continue;
+                string id=headquarters?"":region.label.Substring(5),label="镇守府";
+                bool complete=headquarters||game.production.completed.ContainsKey(id);
+                if(!headquarters)
+                    foreach(var recipe in game.production.config.recipes)
+                        if(recipe.id==id)label=recipe.name.Replace("扩建", "")+(complete?" · 产出中":" · 扩建地基");
+                var world=new Vector3(region.bounds.center.x,headquarters?7.7f:complete?4.7f:1.1f,region.bounds.center.z);
+                Vector3 screen=Camera.main.WorldToScreenPoint(world);
+                var rect=new Rect(screen.x-65*scale,Screen.height-screen.y,130*scale,22*scale);
+                if(screen.z<=0||rect.yMax>Screen.height-195*scale||rect.x<0||rect.xMax>Screen.width)continue;
+                fill(rect,new Color(.08f,.07f,.045f,.9f));
+                GUI.Label(rect,label,new GUIStyle(small){alignment=TextAnchor.MiddleCenter});
+            }
         }
     }
 }
