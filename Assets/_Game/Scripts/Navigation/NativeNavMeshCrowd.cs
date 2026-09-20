@@ -31,7 +31,7 @@ namespace ZombieGame.Navigation
             sources.Add(box_source(new Bounds(new Vector3(0, -.5f, 0), new Vector3(256, 1, 256)), 0));
             foreach (Bounds wall in walls) sources.Add(box_source(wall, 1));
             NavMeshBuildSettings settings = NavMesh.GetSettingsByIndex(0);
-            settings.agentRadius = .25f;
+            settings.agentRadius = UnitBalance.config.unit_navigation_radius;
             settings.agentHeight = 1.2f;
             settings.agentClimb = .2f;
             settings.overrideVoxelSize = true;
@@ -61,7 +61,7 @@ namespace ZombieGame.Navigation
             unit.transform.position = spawn_positions[index];
             var agent = unit.AddComponent<NavMeshAgent>();
             agent.agentTypeID = agent_type;
-            agent.radius = .25f;
+            agent.radius = UnitBalance.config.unit_navigation_radius;
             agent.height = 1.2f;
             agent.speed = stats.move_speed;
             agent.acceleration = stats.acceleration;
