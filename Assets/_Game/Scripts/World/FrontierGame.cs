@@ -18,6 +18,8 @@ namespace ZombieGame.World
         public FrontierMap map {get;private set;}
         public FrontierEconomy economy {get;private set;}
         public HeadquartersProduction production {get;private set;}
+        public FrontierConstruction construction {get;private set;}
+        public AmmunitionSupply supply {get;private set;}
         public bool headquarters_selected {get;private set;}
         private FrontierLandscape landscape;
         private FrontierBattleView battle_view;
@@ -49,7 +51,7 @@ namespace ZombieGame.World
             current=new BattleSimulation(map.spawns,FrontierMap.HUMAN_CAPACITY,map.explosive,map.blockers,initial_humans:FrontierMap.SOLDIERS);
             economy=new FrontierEconomy(JsonUtility.FromJson<FrontierEconomyConfig>(Resources.Load<TextAsset>("FrontierEconomy").text));
             production=new HeadquartersProduction(economy,JsonUtility.FromJson<HeadquartersConfig>(Resources.Load<TextAsset>("HeadquartersProduction").text));
-            current.try_supply_shot=economy.try_supply;
+            supply=new AmmunitionSupply(economy);supply.depots.Add(map.initial_depot);
             current_fog=new CombatFog(fog_template,.08f);
             current_fog.headquarters_vision=map.headquarters_position;
             current_fog.explore_area(new Rect(-124,-124,76,76));
@@ -57,7 +59,9 @@ namespace ZombieGame.World
             battle_view=new FrontierBattleView(current.total_count,transform,landscape_shader);
             input=gameObject.AddComponent<RtsBattleInput>();input.game=this;input.custom_command_panel=true;input.select_all();
             input.select_structure=try_select_headquarters;
-            input.selection_changed=()=>headquarters_selected=false;
+            input.selection_changed=()=>{headquarters_selected=false;construction?.cancel_preview();};
+            construction=new FrontierConstruction(this,landscape,landscape_shader);
+            input.intercept_world_input=construction.handle_input;
             hud=new FrontierHud(this);
             configure_lighting();
             Camera.main.orthographicSize=24;focus_camera(new Vector3(-99,0,-92));
@@ -73,10 +77,11 @@ namespace ZombieGame.World
         {
             if(current==null)return;
             if(Input.GetKeyDown(KeyCode.Space)) { paused=!paused;Time.timeScale=paused?0:1; }
-            if(!paused) { economy.step(Time.deltaTime);production.step(Time.deltaTime,finish_production);current.step(Time.time,Time.deltaTime); }
+            if(!paused) { economy.step(Time.deltaTime);production.step(Time.deltaTime,finish_production);supply.step(current);current.step(Time.time,Time.deltaTime); }
             if(Time.time>=next_fog) { next_fog=Time.time+.1f;current_fog.update_visibility(current); }
             if(Input.GetKeyDown(KeyCode.H))hud.show_help=!hud.show_help;
-            if(Input.GetKeyDown(KeyCode.B)&&!paused)select_headquarters();
+            if(Input.GetKeyDown(KeyCode.B)&&!paused)select_headquarters(false);
+            if(Input.GetKeyDown(KeyCode.T)&&!paused)toggle_selected_weapon();
             if(Input.GetKeyDown(KeyCode.V))reveal_map=!reveal_map;
             if(Input.GetKeyDown(KeyCode.C)){Camera.main.orthographicSize=22;focus_camera(input.selection_center());}
             if(Input.GetKeyDown(KeyCode.Home)){Camera.main.orthographicSize=27;focus_camera(map.base_center);}
@@ -85,14 +90,16 @@ namespace ZombieGame.World
             Vector3 pan=new Vector3((Input.GetKey(KeyCode.RightArrow)?1:0)-(Input.GetKey(KeyCode.LeftArrow)?1:0),0,
                 (Input.GetKey(KeyCode.UpArrow)?1:0)-(Input.GetKey(KeyCode.DownArrow)?1:0));
             if(pan.sqrMagnitude>0)focus_camera(camera_focus+pan*Camera.main.orthographicSize*Time.unscaledDeltaTime);
+            construction.update();
             battle_view.draw(current,current_fog,reveal_map);
             if(!reveal_map)current_fog.draw();
         }
         private void OnGUI() { if(economy!=null)hud?.draw(); }
-        public void select_headquarters()
+        public void select_headquarters(bool focus=true)
         {
+            construction?.cancel_preview();
             headquarters_selected=true;System.Array.Clear(current.selected,0,current.selected.Length);
-            input.cancel_command();focus_camera(map.headquarters_position);Camera.main.orthographicSize=20;
+            input.cancel_command();if(focus){focus_camera(map.headquarters_position);Camera.main.orthographicSize=20;}
         }
         private bool try_select_headquarters(Vector2 mouse)
         {
@@ -111,17 +118,13 @@ namespace ZombieGame.World
                 }
                 return false;
             }
-            switch(recipe.id)
-            {
-                case "food":economy.food_sites++;break;
-                case "wood":economy.wood_sites++;break;
-                case "stone":economy.stone_sites++;break;
-                case "iron":economy.iron_sites++;break;
-                case "powder":economy.powder_workshops++;break;
-                case "arrows":economy.arrow_workshops++;break;
-                default:throw new System.InvalidOperationException("Unknown production recipe: "+recipe.id);
-            }
-            landscape.complete_facility(recipe.id);return true;
+            construction.finish(recipe);return true;
+        }
+        public void toggle_selected_weapon()
+        {
+            bool use_knife=false;
+            for(int i=0;i<current.soldier_count;i++)if(current.selected[i]&&current.health[i]>0&&!current.manual_melee[i]){use_knife=true;break;}
+            for(int i=0;i<current.soldier_count;i++)if(current.selected[i]&&current.health[i]>0)current.manual_melee[i]=use_knife;
         }
         private static void configure_lighting()
         {
@@ -135,6 +138,6 @@ namespace ZombieGame.World
             QualitySettings.shadows=ShadowQuality.All;QualitySettings.shadowDistance=260;
         }
         private void OnDestroy()
-        { Time.timeScale=1;battle_view?.Dispose();landscape?.Dispose();current_fog?.Dispose();current?.Dispose(); }
+        { Time.timeScale=1;construction?.Dispose();battle_view?.Dispose();landscape?.Dispose();current_fog?.Dispose();current?.Dispose(); }
     }
 }

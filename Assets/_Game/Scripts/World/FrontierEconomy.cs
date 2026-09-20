@@ -21,6 +21,7 @@ namespace ZombieGame.World
         public float food,wood,stone,iron,arrows,gunpowder;
         public bool arrow_works=true,powder_works=true;
         public int arrow_workshops=1,powder_workshops=1;
+        public float food_bonus_minute,wood_bonus_minute,stone_bonus_minute,iron_bonus_minute;
         public int supplied_shots;
         public float food_sites=1,wood_sites=1,stone_sites=1,iron_sites=1;
         public FrontierEconomy(FrontierEconomyConfig config)
@@ -38,6 +39,8 @@ namespace ZombieGame.World
         {
             food+=config.food_per_second*food_sites*seconds; wood+=config.wood_per_second*wood_sites*seconds;
             stone+=config.stone_per_second*stone_sites*seconds; iron+=config.iron_per_second*iron_sites*seconds;
+            food+=food_bonus_minute/60*seconds;wood+=wood_bonus_minute/60*seconds;
+            stone+=stone_bonus_minute/60*seconds;iron+=iron_bonus_minute/60*seconds;
             if(arrow_works)
             {
                 float batches=Mathf.Min(config.arrow_batches_per_second*arrow_workshops*seconds,wood/config.wood_per_arrow_batch);

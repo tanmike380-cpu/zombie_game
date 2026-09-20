@@ -33,8 +33,10 @@ namespace ZombieGame.FrontierTests
                 fixture.powder_works=true;fixture.step(1);
                 float before=fixture.gunpowder;
                 require(fixture.try_supply(0)&&Mathf.Abs(fixture.gunpowder-(before-UnitBalance.human.ammunition_cost))<.001f,"supply consumes exactly authored cost");
-                require(game.current.try_supply_shot!=null,"live battle economy gate");
+                require(game.current.try_supply_shot==null&&game.supply.depots.Count==1,"world uses carried ammo, not global per-shot spending");
                 check_headquarters(game,config);
+                FrontierFeatureChecks.run(game);
+                ZombieGame.CharacterTests.CharacterVisualChecks.run();
                 require(UnitBalance.config.zombie_sight==6&&UnitBalance.config.noise_propagation_speed==15,"requested sight and sound speed");
                 for(int i=0;i<game.current.total_count;i++)
                     require(Mathf.Abs(game.current.crowd.agents[i].radius-UnitBalance.config.unit_navigation_radius)<.001f,"shared avoidance radius");
@@ -42,6 +44,8 @@ namespace ZombieGame.FrontierTests
             }
             catch(Exception exception){Debug.LogError("[FrontierSmoke] FAIL "+exception);Application.Quit(1);yield break;}
             yield return new WaitForSeconds(3);
+            foreach(var facility in game.construction.facilities)
+                require(!NavMesh.SamplePosition(facility.recipe.position,out var building_hit,.2f,NavMesh.AllAreas),"constructed footprint carved from native navigation");
             require(game.current.geometry_errors==0,"no geometry intrusion");
             Debug.Log("[FrontierSmoke] COMPLETE geometry=0");Application.Quit(0);
         }
@@ -62,21 +66,13 @@ namespace ZombieGame.FrontierTests
             require(fixture.enqueue(0,200),"queue production again");
             fixture.step(config.recipes[0].seconds,_=>false);require(fixture.queue.Count==1&&fixture.progress==1,"blocked exit retains paid queue");
             fixture.step(0,_=>true);require(fixture.queue.Count==0,"retry blocked completion");
-            for(int i=1;i<config.recipes.Length;i++)
-            {
-                require(fixture.enqueue(i,200),"enqueue facility "+config.recipes[i].id);
-                require(!fixture.enqueue(i,200),"duplicate queued facility rejected");
-                fixture.step(config.recipes[i].seconds,game.finish_production);
-                require(!fixture.enqueue(i,200),"duplicate completed facility rejected");
-            }
-            require(game.economy.food_sites==2&&game.economy.wood_sites==2&&game.economy.stone_sites==2&&game.economy.iron_sites==2,"four buildings increase gathering");
-            require(game.economy.powder_workshops==2&&game.economy.arrow_workshops==2,"workshops increase ammunition throughput");
+            require(!fixture.enqueue(1,200),"unplaced building rejected");
             require(game.finish_production(config.recipes[0]),"recruit onto clear native navigation");
             require(game.current.living_soldiers==401&&game.current.reserve_soldiers==199,"new soldier becomes playable");
             int index=FrontierMap.SOLDIERS;
             require(game.current.health[index]==UnitBalance.human.health&&game.current.crowd.agents[index].speed==UnitBalance.human.move_speed,"recruit reads shared combat balance");
             game.controls.select_all();require(game.controls.selected_count()==401,"F2 includes recruit");
-            Debug.Log("[HeadquartersSmoke] PASS costs/refunds/resource rejection/capacity/queue blockage/all six facilities/native recruit/shared stats/F2");
+            Debug.Log("[HeadquartersSmoke] PASS costs/refunds/resource rejection/capacity/queue blockage/unplaced rejection/native recruit/shared stats/F2");
             // Smoke-only mutations are confined to this disposable standalone test process.
         }
     }

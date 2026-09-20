@@ -29,6 +29,7 @@ namespace ZombieGame.World
         public readonly List<LandscapeRegion> regions = new List<LandscapeRegion>();
         public readonly Vector3 base_center = new Vector3(-92,0,-92);
         public readonly Vector3 headquarters_position = new Vector3(-104,0,-103);
+        public readonly Vector3 initial_depot = new Vector3(-99,0,-94);
         public readonly Vector3[] spawns = new Vector3[HUMAN_CAPACITY+ZOMBIES];
         public readonly bool[] explosive = new bool[HUMAN_CAPACITY+ZOMBIES];
         public Bounds[] blockers;
@@ -56,12 +57,7 @@ namespace ZombieGame.World
             add_building(-106,-85,7,6,"BARRACKS");
             add_building(-91,-94,5,4,"HOUSE"); add_building(-82,-94,5,4,"HOUSE");
             add_building(-73,-94,5,4,"ARROW WORKS"); add_building(-111,-64,6,5,"LUMBER CAMP");
-            add_building(-118,-92,5,5,"PLOT:food");
-            add_building(-118,-78,5,5,"PLOT:wood");
-            add_building(-118,-54,5,5,"PLOT:stone");
-            add_building(-64,-117,5,5,"PLOT:iron");
-            add_building(-87,-119,5,5,"PLOT:powder");
-            add_building(-76,-119,5,5,"PLOT:arrows");
+            add_building(initial_depot.x,initial_depot.z,5,4,"AMMUNITION DEPOT");
             blockers = regions.ConvertAll(region=>region.bounds).ToArray();
             spawn_units();
         }

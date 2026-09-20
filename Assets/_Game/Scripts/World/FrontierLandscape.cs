@@ -13,7 +13,6 @@ namespace ZombieGame.World
         private readonly List<Material> owned_materials=new List<Material>();
         private readonly Dictionary<Color,List<CombineInstance>> batches=new Dictionary<Color,List<CombineInstance>>();
         private readonly System.Random random=new System.Random(20260920);
-        private readonly Dictionary<string,GameObject> facilities=new Dictionary<string,GameObject>();
         private static readonly Color GRASS=new Color(.38f,.34f,.20f), WATER=new Color(.14f,.23f,.21f);
         private static readonly Color TIMBER=new Color(.23f,.135f,.075f), TILE=new Color(.22f,.235f,.20f), STONE=new Color(.46f,.42f,.32f);
 
@@ -28,9 +27,7 @@ namespace ZombieGame.World
             // Settlement roads are purely visual and do not restrict player commands.
             add(cube,new Vector3(-85,.005f,-87),new Vector3(66,.015f,3),new Color(.48f,.40f,.28f));
             add(cube,new Vector3(-98,.005f,-83),new Vector3(3,.015f,70),new Color(.48f,.40f,.28f));
-            foreach(var region in map.regions)
-                if(!region.label.StartsWith("PLOT:"))build_region(region);
-                else build_foundation(region.bounds);
+            foreach(var region in map.regions)build_region(region);
             // Established farm and exposed resource seams; throughput is documented in the scenario economy config.
             for(int i=0;i<12;i++) add(cube,new Vector3(-115+i*.65f,.04f,-112),new Vector3(.3f,.09f,12),new Color(.57f,.49f,.20f));
             add_deposit(new Vector3(-61,0,-116),new Color(.29f,.28f,.27f));
@@ -45,20 +42,63 @@ namespace ZombieGame.World
                 add(rock,p,new Vector3(.12f,.06f,.2f),i%2==0?STONE*.7f:GRASS*.8f);
             }
             flush(shader);
-            foreach(var region in map.regions)
-            {
-                if(!region.label.StartsWith("PLOT:"))continue;
-                string id=region.label.Substring(5);
-                var facility=new GameObject("Facility - "+id);facility.transform.SetParent(root.transform,false);
-                build_building(region.bounds,false);build_industry(region.bounds,id);flush(shader,facility.transform);
-                facility.SetActive(false);facilities.Add(id,facility);
-            }
         }
 
-        public void complete_facility(string id)
+        public GameObject create_facility(string id,Vector2 size,Shader shader)
         {
-            if(!facilities.TryGetValue(id,out var facility))throw new System.InvalidOperationException("Missing facility plot: "+id);
-            facility.SetActive(true);
+            var model=new GameObject("Placed "+id);model.transform.SetParent(root.transform,false);
+            build_facility_geometry(new Bounds(new Vector3(0,1.5f,0),new Vector3(size.x,3,size.y)),id);
+            flush(shader,model.transform);return model;
+        }
+        private void build_facility_geometry(Bounds b,string id)
+        {
+            Vector3 p=new Vector3(b.center.x,0,b.center.z);
+            if(id=="food")
+            {
+                add(cube,p+Vector3.up*.04f,new Vector3(b.size.x,.08f,b.size.z),new Color(.29f,.19f,.085f));
+                for(float x=-b.extents.x+.4f;x<b.extents.x;x+=.55f)
+                {
+                    add(cube,p+new Vector3(x,.14f,0),new Vector3(.18f,.2f,b.size.z-.5f),new Color(.51f,.49f,.19f));
+                    for(float z=-b.extents.z+.3f;z<b.extents.z;z+=.65f)
+                        add(cone,p+new Vector3(x,.2f,z),new Vector3(.2f,.45f,.2f),new Color(.54f,.47f,.16f));
+                }
+                add(cube,p+new Vector3(b.extents.x-.5f,.4f,b.extents.z-.5f),new Vector3(.7f,.8f,.7f),TIMBER);
+                return;
+            }
+            if(id=="wood")
+            {
+                for(int i=0;i<4;i++)add(cube,p+new Vector3(i%2==0?-1.6f:1.6f,1,i/2==0?-1.3f:1.3f),new Vector3(.2f,2,.2f),TIMBER);
+                build_tiled_roof(p+Vector3.up*2,3.8f,3.5f,.9f);
+                for(int i=0;i<9;i++)add(rock,p+new Vector3(i%3*.5f-.8f,.25f+i/3*.33f,.2f),new Vector3(.45f,.42f,2.8f),TIMBER*1.4f);
+                add(cube,p+new Vector3(1.2f,.7f,-.5f),new Vector3(.8f,.15f,2),STONE*.65f);return;
+            }
+            if(id=="stone"||id=="iron")
+            {
+                add(cube,p+Vector3.up*.08f,new Vector3(b.size.x,.16f,b.size.z),id=="stone"?STONE*.8f:new Color(.17f,.14f,.1f));
+                for(int i=0;i<9;i++)add(rock,p+new Vector3(i%3-1,.35f+(i%2)*.15f,i/3-1),new Vector3(1.1f,.8f,1),id=="stone"?STONE:new Color(.25f,.22f,.17f));
+                if(id=="iron")
+                {
+                    for(int side=-1;side<=1;side+=2)add(cube,p+new Vector3(side*1.2f,1.5f,0),new Vector3(.2f,3,.3f),TIMBER);
+                    add(cube,p+new Vector3(0,3,0),new Vector3(3,.3f,.35f),TIMBER);
+                    add(cube,p+new Vector3(0,1.8f,0),new Vector3(.07f,2,.07f),new Color(.25f,.23f,.19f));
+                }
+                else add(cube,p+new Vector3(-1.3f,.45f,-1.5f),new Vector3(1,.5f,1),TIMBER);
+                return;
+            }
+            build_building(b,false);
+            if(id=="depot")
+            {
+                for(int side=-1;side<=1;side+=2)
+                    add(cube,p+new Vector3(side*(b.extents.x-.25f),1.1f,-b.extents.z-.05f),new Vector3(.45f,2.1f,.5f),STONE*.7f);
+                for(int i=0;i<4;i++)
+                {
+                    var crate=p+new Vector3(i*.7f-1,.4f,-b.extents.z+.5f);
+                    add(cube,crate,new Vector3(.6f,.8f,.6f),TIMBER);
+                    add(cube,crate+Vector3.up*.15f,new Vector3(.62f,.06f,.62f),new Color(.28f,.29f,.25f));
+                }
+                add(cube,p+new Vector3(0,2.5f,-b.extents.z-.1f),new Vector3(1.5f,.4f,.12f),new Color(.22f,.32f,.35f));
+            }
+            else build_industry(b,id);
         }
 
         private void build_region(LandscapeRegion region)
@@ -93,6 +133,7 @@ namespace ZombieGame.World
                         add(rock,new Vector3(x,b.extents.y,b.min.z+.4f),new Vector3(3.2f,b.size.y*1.1f,2),new Color(.36f,.33f,.28f));
                     break;
                 case LandscapeKind.Building:
+                    if(region.label=="AMMUNITION DEPOT"){build_facility_geometry(b,"depot");break;}
                     build_building(b,region.label=="COMMAND HALL");
                     if(region.label=="POWDER WORKS")build_industry(b,"powder");
                     if(region.label=="LUMBER CAMP")build_industry(b,"wood");
@@ -101,11 +142,6 @@ namespace ZombieGame.World
             }
         }
 
-        private void build_foundation(Bounds b)
-        {
-            add(cube,new Vector3(b.center.x,.03f,b.center.z),new Vector3(b.size.x,.06f,b.size.z),STONE*.7f);
-            for(int i=0;i<4;i++)add(cube,new Vector3(i%2==0?b.min.x:b.max.x,.5f,i/2==0?b.min.z:b.max.z),new Vector3(.14f,1,.14f),TIMBER);
-        }
         private void build_building(Bounds b,bool headquarters)
         {
             Vector3 p=b.center;float wall_height=headquarters?3.1f:2.1f;

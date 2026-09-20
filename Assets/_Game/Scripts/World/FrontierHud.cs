@@ -49,6 +49,12 @@ namespace ZombieGame.World
             if(game.headquarters_selected){draw_structure_labels();draw_headquarters(selection_area);draw_production_commands(command_area);}
             else {draw_selection(selection_area);draw_commands(command_area);}
             draw_resources(new Rect(resources_x,y,190*s,190*s));
+            if(game.construction.active)
+            {
+                var hint=new Rect(Mathf.Clamp(Input.mousePosition.x+18*s,8*s,Screen.width-520*s),Mathf.Clamp(Screen.height-Input.mousePosition.y-64*s,8*s,Screen.height-260*s),505*s,54*s);
+                panel(hint);GUI.Label(new Rect(hint.x+8*s,hint.y+3*s,hint.width-16*s,24*s),game.construction.notice,small);
+                GUI.Label(new Rect(hint.x+8*s,hint.y+27*s,hint.width-16*s,22*s),"左键放置 · 右键 / Esc 取消 · 资源在确认位置时扣除",small);
+            }
             if(show_help)
             {
                 panel(new Rect(15*s,92*s,600*s,106*s));
@@ -78,15 +84,15 @@ namespace ZombieGame.World
         private void draw_selection(Rect area)
         {
             panel(area);float s=scale,x=area.x+14*s,y=area.y;
-            int count=game.controls.selected_count();float health=0,max_health=0;
+            int count=game.controls.selected_count(),rounds=0,melee=0;float health=0,max_health=0;
             for(int i=0;i<game.current.soldier_count;i++)
-                if(game.current.selected[i]&&game.current.health[i]>0){health+=game.current.health[i];max_health+=game.current.stats_for(i).health;}
+                if(game.current.selected[i]&&game.current.health[i]>0){health+=game.current.health[i];max_health+=game.current.stats_for(i).health;rounds+=game.current.ammunition[i];if(game.current.uses_melee(i))melee++;}
             draw_unit_icon(new Rect(x,y+10*s,50*s,60*s),count>0);
             GUI.Label(new Rect(x+66*s,y+6*s,area.width-90*s,26*s),count>0?$"神机营   × {count}":"未选择部队",title);
             draw_unit_stats(new Rect(x+66*s,y+32*s,area.width-94*s,44*s),count>0);
             var bar=new Rect(x,y+81*s,Mathf.Max(40*s,area.width-28*s),5*s);
             fill(bar,new Color(.16f,.18f,.16f));fill(new Rect(bar.x,bar.y,bar.width*(max_health>0?health/max_health:0),bar.height),new Color(.33f,.57f,.30f));
-            GUI.Label(new Rect(x,y+89*s,area.width-28*s,22*s),count>0?$"部队生命 {health:0} / {max_health:0} · 远程火绳枪兵，射击消耗火药":"框选部队查看属性 · 下方数字卡片为保存的编队",small);
+            GUI.Label(new Rect(x,y+89*s,area.width-28*s,22*s),count>0?$"总生命 {health:0}/{max_health:0} · 携弹 {rounds}/{count*UnitBalance.human.ammunition_capacity} · 拼刀 {melee} 人 · T 切换":"框选部队查看属性 · 下方数字卡片为保存的编队",small);
             float card_width=(area.width-28*s)/10;
             for(int slot=0;slot<10;slot++)
             {
@@ -99,7 +105,7 @@ namespace ZombieGame.World
                 draw_unit_icon(new Rect(card.x+card.width*.50f,card.y+5*s,card.width*.38f,22*s),n>0);
                 GUI.Label(new Rect(card.x+5*s,card.y+22*s,card.width-6*s,20*s),n>0?n.ToString():"—",small);
             }
-            GUI.Label(new Rect(x,y+161*s,area.width-28*s,24*s),game.is_paused?"已暂停 · 空格继续":"Ctrl+数字保存 · 单击召回 · 双击聚焦 · H 帮助",small);
+            GUI.Label(new Rect(x,y+161*s,area.width-28*s,24*s),game.is_paused?"已暂停 · 空格继续":"Ctrl+数字编队 · 双击数字 / F2 / ` 聚焦主力 · H 帮助",small);
         }
         /// <summary>Single-unit attributes from the same authored balance used by combat.</summary>
         private void draw_unit_stats(Rect area,bool selected)
@@ -110,7 +116,7 @@ namespace ZombieGame.World
                 $"单兵生命 {stats.health:0}",$"伤害 {stats.damage:0}",
                 $"射程 {stats.attack_range:0.#} 格",$"攻击间隔 {stats.attack_interval:0.##} 秒",
                 $"移速 {stats.move_speed:0.##}",$"视野 {UnitBalance.config.human_sight:0.#} 格",
-                $"噪音 {UnitBalance.human_noise(stats):0.#} 格","属性 / 单兵"};
+                $"噪音 {UnitBalance.human_noise(stats):0.#} 格",$"刀 {stats.melee_damage:0} / {stats.melee_attack_interval:0.#}秒"};
             float width=area.width/4;
             for(int i=0;i<values.Length;i++)
                 GUI.Label(new Rect(area.x+i%4*width,area.y+i/4*22*scale,width,22*scale),values[i],small);
@@ -130,7 +136,7 @@ namespace ZombieGame.World
         {
             panel(area);float s=scale;
             GUI.Label(new Rect(area.x+12*s,area.y+4*s,area.width-24*s,26*s),"部队指令",title);
-            string[] labels={"进攻\nA","移动\nM","停止\nS","巡逻\nQ","全选\nF2","聚焦部队\nC","主基地\nB"};
+            string[] labels={"进攻\nA","移动\nM","停止\nS","巡逻\nQ","全选\nF2","聚焦部队\nC","主基地\nB","枪 / 刀\nT"};
             float width=(area.width-24*s)/3;
             GUI.enabled=game.can_control;
             for(int i=0;i<labels.Length;i++)
@@ -149,7 +155,8 @@ namespace ZombieGame.World
                 case 3:game.controls.arm("Patrol");break;
                 case 4:game.controls.select_all();break;
                 case 5:game.focus_camera(game.controls.selection_center());break;
-                case 6:game.select_headquarters();break;
+                case 6:game.select_headquarters(false);break;
+                case 7:game.toggle_selected_weapon();break;
             }
         }
         private void draw_headquarters(Rect area)
@@ -157,14 +164,14 @@ namespace ZombieGame.World
             panel(area);float s=scale,x=area.x+14*s,y=area.y;
             GUI.Label(new Rect(x,y+5*s,area.width-28*s,26*s),"镇守府 · 主基地",title);
             GUI.Label(new Rect(x,y+33*s,area.width-28*s,22*s),"统一建造与训练入口 · 资源设施完工后自动采集",text);
-            GUI.Label(new Rect(x,y+58*s,area.width-28*s,22*s),"本轮：固定扩建地基 · 生产参数暂定 · F2 返回部队",small);
+            GUI.Label(new Rect(x,y+58*s,area.width-28*s,22*s),"选建筑 → 鼠标绿模放置 · 弹药库20格补给 · F2返回部队",small);
             var production=game.production;
             string active=production.queue.Count==0?"队列空闲":$"{production.queue[0].name}  {production.elapsed:0.0} / {production.queue[0].seconds:0} 秒";
             GUI.Label(new Rect(x,y+83*s,area.width-28*s,23*s),active,text);
             var bar=new Rect(x,y+110*s,area.width-28*s,6*s);fill(bar,new Color(.18f,.17f,.13f));
             fill(new Rect(bar.x,bar.y,bar.width*production.progress,bar.height),GOLD);
             for(int i=0;i<production.queue.Count;i++)
-                GUI.Label(new Rect(x+i*(area.width-28*s)/8,y+120*s,(area.width-28*s)/8,25*s),$"{i+1}.{production.queue[i].name.Replace("训练", "").Replace("扩建", "")}",small);
+                GUI.Label(new Rect(x+i*(area.width-28*s)/8,y+120*s,(area.width-28*s)/8,25*s),$"{i+1}.{production.queue[i].name.Replace("训练", "").Replace("建造", "")}",small);
             GUI.Label(new Rect(x,y+156*s,area.width-28*s,27*s),production.notice,small);
         }
         private void draw_production_commands(Rect area)
@@ -175,13 +182,13 @@ namespace ZombieGame.World
             var recipes=game.production.config.recipes;
             for(int i=0;i<9;i++)
             {
-                string label=i<recipes.Length?recipes[i].name.Replace("训练", "").Replace("扩建", "")+(i==0?"\n训练":"\n扩建"):i==7?"取消末项":"返回部队\nF2";
-                string tip=i<recipes.Length?HeadquartersProduction.cost_label(recipes[i]):i==7?"全额退还末项资源":"选择所有存活士兵";
+                string label=i<recipes.Length?recipes[i].name.Replace("训练", "").Replace("建造", "")+(i==0?"\n训练":"\n建造"):"取消末项";
+                string tip=i<recipes.Length?HeadquartersProduction.cost_label(recipes[i]):"全额退还末项资源";
                 if(GUI.Button(new Rect(area.x+12*s+i%3*width,area.y+32*s+i/3*43*s,width-5*s,39*s),new GUIContent(label,tip),button))
                 {
-                    if(i<recipes.Length)game.production.enqueue(i,game.current.reserve_soldiers);
-                    else if(i==7)game.production.cancel_last();
-                    else game.controls.select_all();
+                    if(i==0)game.production.enqueue(i,game.current.reserve_soldiers);
+                    else if(i<recipes.Length)game.construction.begin(i);
+                    else game.production.cancel_last();
                 }
             }
             GUI.enabled=true;
@@ -192,12 +199,14 @@ namespace ZombieGame.World
             foreach(var region in game.map.regions)
             {
                 bool headquarters=region.label=="COMMAND HALL";
-                if(!headquarters&&!region.label.StartsWith("PLOT:"))continue;
-                string id=headquarters?"":region.label.Substring(5),label="镇守府";
-                bool complete=headquarters||game.production.completed.ContainsKey(id);
+                bool initial_depot=region.label=="AMMUNITION DEPOT";
+                if(!headquarters&&!initial_depot&&!region.label.StartsWith("BUILT:"))continue;
+                string id=headquarters?"":initial_depot?"depot":region.label.Substring(6),label=headquarters?"镇守府":"弹药库 · 20格补给";
+                var facility=game.construction.facilities.Find(entry=>entry.region.bounds==region.bounds);
+                bool complete=headquarters||initial_depot||facility!=null&&facility.complete;
                 if(!headquarters)
                     foreach(var recipe in game.production.config.recipes)
-                        if(recipe.id==id)label=recipe.name.Replace("扩建", "")+(complete?" · 产出中":" · 扩建地基");
+                        if(recipe.id==id)label=recipe.name.Replace("建造", "")+(complete?id=="depot"?" · 20格补给":$" · +{facility?.recipe.yield_per_minute??0:0}/分":" · 建造中");
                 var world=new Vector3(region.bounds.center.x,headquarters?7.7f:complete?4.7f:1.1f,region.bounds.center.z);
                 Vector3 screen=Camera.main.WorldToScreenPoint(world);
                 var rect=new Rect(screen.x-65*scale,Screen.height-screen.y,130*scale,22*scale);

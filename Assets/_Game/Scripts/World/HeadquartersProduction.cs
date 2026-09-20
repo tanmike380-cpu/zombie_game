@@ -9,6 +9,15 @@ namespace ZombieGame.World
     {
         public string id, name;
         public float food, wood, stone, iron, seconds;
+        public float width,depth,gather_radius,yield_per_cell_minute;
+        [NonSerialized] public Vector3 position;
+        [NonSerialized] public float yield_per_minute;
+        [NonSerialized] public int[] resource_cells;
+        public HeadquartersRecipe at(Vector3 position,float yield_per_minute,int[] cells)
+        {
+            var placed=(HeadquartersRecipe)MemberwiseClone();placed.position=position;
+            placed.yield_per_minute=yield_per_minute;placed.resource_cells=cells;return placed;
+        }
     }
     [Serializable]
     public sealed class HeadquartersConfig
@@ -24,6 +33,7 @@ namespace ZombieGame.World
         public readonly HeadquartersConfig config;
         public readonly List<HeadquartersRecipe> queue=new List<HeadquartersRecipe>();
         public readonly Dictionary<string,int> completed=new Dictionary<string,int>();
+        public Action<HeadquartersRecipe> cancelled;
         private readonly FrontierEconomy economy;
         public float elapsed {get;private set;}
         public string notice {get;private set;}="选择项目加入生产队列";
@@ -38,22 +48,23 @@ namespace ZombieGame.World
             {
                 if(recipe==null||string.IsNullOrEmpty(recipe.id)||!ids.Add(recipe.id)||recipe.seconds<=0)
                     throw new ArgumentException("Invalid/duplicate headquarters recipe");
-                foreach(float value in new[]{recipe.food,recipe.wood,recipe.stone,recipe.iron,recipe.seconds})
+                if(recipe.id!="soldier"&&(recipe.width<=0||recipe.depth<=0))throw new ArgumentException("Missing building footprint: "+recipe.id);
+                foreach(float value in new[]{recipe.food,recipe.wood,recipe.stone,recipe.iron,recipe.seconds,recipe.width,recipe.depth,recipe.gather_radius,recipe.yield_per_cell_minute})
                     if(float.IsNaN(value)||float.IsInfinity(value)||value<0)throw new ArgumentException("Invalid recipe costs: "+recipe.id);
             }
         }
-        public bool enqueue(int index,int available_recruits)
+        public bool enqueue(int index,int available_recruits,HeadquartersRecipe placed=null)
         {
             if(index<0||index>=config.recipes.Length)return false;
-            var recipe=config.recipes[index];
+            var recipe=placed??config.recipes[index];
+            if(recipe.id!=config.recipes[index].id)return false;
             if(queue.Count>=config.queue_capacity){notice="生产队列已满";return false;}
             if(recipe.id=="soldier")
             {
                 int queued=0;foreach(var entry in queue)if(entry.id=="soldier")queued++;
                 if(queued>=available_recruits){notice="本轮测试的预留招募名额已满";return false;}
             }
-            else if(completed.ContainsKey(recipe.id)||queue.Exists(entry=>entry.id==recipe.id))
-            {notice="该扩建设施已建成或正在建造";return false;}
+            else if(placed==null){notice="请先选择建筑位置";return false;}
             if(economy.food<recipe.food||economy.wood<recipe.wood||economy.stone<recipe.stone||economy.iron<recipe.iron)
             {notice="资源不足："+cost_label(recipe);return false;}
             economy.food-=recipe.food;economy.wood-=recipe.wood;economy.stone-=recipe.stone;economy.iron-=recipe.iron;
@@ -65,6 +76,7 @@ namespace ZombieGame.World
             int index=queue.Count-1;var recipe=queue[index];queue.RemoveAt(index);
             economy.food+=recipe.food;economy.wood+=recipe.wood;economy.stone+=recipe.stone;economy.iron+=recipe.iron;
             if(index==0)elapsed=0;
+            cancelled?.Invoke(recipe);
             notice="已取消 "+recipe.name+"，资源全额返还";
         }
         public void step(float seconds,Func<HeadquartersRecipe,bool> finish)

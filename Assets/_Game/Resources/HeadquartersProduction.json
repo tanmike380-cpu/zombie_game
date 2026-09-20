@@ -3,11 +3,12 @@
   "queue_capacity": 8,
   "recipes": [
     {"id":"soldier", "name":"训练神机营", "food":60, "wood":0, "stone":0, "iron":20, "seconds":8},
-    {"id":"food", "name":"扩建农庄", "food":0, "wood":100, "stone":30, "iron":0, "seconds":12},
-    {"id":"wood", "name":"扩建伐木场", "food":0, "wood":80, "stone":20, "iron":0, "seconds":12},
-    {"id":"stone", "name":"扩建采石场", "food":0, "wood":100, "stone":20, "iron":0, "seconds":14},
-    {"id":"iron", "name":"扩建铁矿场", "food":0, "wood":100, "stone":60, "iron":0, "seconds":16},
-    {"id":"powder", "name":"扩建火药坊", "food":0, "wood":120, "stone":80, "iron":30, "seconds":18},
-    {"id":"arrows", "name":"扩建箭坊", "food":0, "wood":100, "stone":40, "iron":10, "seconds":14}
+    {"id":"food", "name":"建造农田", "wood":100, "stone":30, "seconds":12, "width":6, "depth":6, "gather_radius":3, "yield_per_cell_minute":6},
+    {"id":"wood", "name":"建造伐木场", "wood":80, "stone":20, "seconds":12, "width":4, "depth":4, "gather_radius":7, "yield_per_cell_minute":10},
+    {"id":"stone", "name":"建造采石场", "wood":100, "stone":20, "seconds":14, "width":4, "depth":4, "gather_radius":7, "yield_per_cell_minute":6},
+    {"id":"iron", "name":"建造铁矿场", "wood":100, "stone":60, "seconds":16, "width":4, "depth":4, "gather_radius":7, "yield_per_cell_minute":4},
+    {"id":"powder", "name":"建造火药坊", "wood":120, "stone":80, "iron":30, "seconds":18, "width":5, "depth":5},
+    {"id":"arrows", "name":"建造箭坊", "wood":100, "stone":40, "iron":10, "seconds":14, "width":5, "depth":4},
+    {"id":"depot", "name":"建造弹药库", "wood":100, "stone":80, "iron":20, "seconds":12, "width":5, "depth":4}
   ]
 }

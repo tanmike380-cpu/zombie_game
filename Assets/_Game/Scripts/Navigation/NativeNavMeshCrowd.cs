@@ -11,7 +11,7 @@ namespace ZombieGame.Navigation
     {
         public readonly NavMeshAgent[] agents;
         public readonly Transform[] transforms;
-        public readonly Bounds[] walls;
+        public Bounds[] walls {get;private set;}
         public double setup_ms { get; protected set; }
         private readonly GameObject root;
         private readonly NavMeshData nav_data;
@@ -96,6 +96,21 @@ namespace ZombieGame.Navigation
                 if (agents[i].enabled && agents[i].isOnNavMesh) agents[i].isStopped = paused;
         }
 
+        /// <summary>Unity-owned carving for runtime construction; no custom routing.</summary>
+        public GameObject add_building(Bounds bounds)
+        {
+            var obstacle=new GameObject("Constructed building navigation");obstacle.transform.SetParent(root.transform,false);
+            obstacle.transform.position=bounds.center;
+            var carving=obstacle.AddComponent<NavMeshObstacle>();carving.shape=NavMeshObstacleShape.Box;
+            carving.size=bounds.size;carving.carving=true;carving.carveOnlyStationary=false;
+            var updated=new List<Bounds>(walls){bounds};walls=updated.ToArray();return obstacle;
+        }
+        public void remove_building(Bounds bounds,GameObject obstacle)
+        {
+            if(obstacle==null)return;
+            obstacle.SetActive(false);UnityEngine.Object.Destroy(obstacle);
+            var updated=new List<Bounds>(walls);updated.Remove(bounds);walls=updated.ToArray();
+        }
         public void Dispose()
         {
             // Unity may destroy the hierarchy before the controller on exiting Play Mode.
