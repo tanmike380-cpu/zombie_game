@@ -55,13 +55,13 @@ namespace ZombieGame.World
             battle_view=new FrontierBattleView(current.total_count,transform,landscape_shader);
             input=gameObject.AddComponent<RtsBattleInput>();input.game=this;input.custom_command_panel=true;input.select_all();
             hud=new FrontierHud(this);
-            Camera.main.orthographicSize=21;focus_camera(new Vector3(-91,0,-86));
+            Camera.main.orthographicSize=21;focus_camera(new Vector3(-91,0,-81));
             Debug.Log($"[Frontier] READY map=256x256 soldiers={current.soldier_count} zombies={current.zombie_count} blockers={map.blockers.Length} framebuffer={Screen.width}x{Screen.height}; economy provisional; only confirmed combat roles active");
         }
         public void focus_camera(Vector3 point)
         {
             camera_focus=new Vector3(Mathf.Clamp(point.x,-128,128),0,Mathf.Clamp(point.z,-128,128));
-            Camera.main.transform.rotation=Quaternion.Euler(45,0,0);
+            Camera.main.transform.rotation=Quaternion.Euler(45,30,0);
             Camera.main.transform.position=camera_focus-Camera.main.transform.forward*180;
         }
         private void Update()

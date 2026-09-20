@@ -50,7 +50,7 @@ namespace ZombieGame.World
                 if(human&&battle.attack_started_at[i]>seen_shots[i])
                 { seen_shots[i]=battle.attack_started_at[i];effects.fire(characters.human_muzzle(battle.positions[i],rotation),rotation*Vector3.forward); }
                 if(human&&battle.selected[i]) add(0,battle.positions[i]+Vector3.up*.04f,new Vector3(.7f,.04f,.7f));
-                if((human&&battle.selected[i])||battle.health[i]<battle.stats_for(i).health)
+                if((human&&battle.selected[i]&&Camera.main.orthographicSize<=14)||battle.health[i]<battle.stats_for(i).health)
                 {
                     float health=Mathf.Clamp01(battle.health[i]/battle.stats_for(i).health);
                     Vector3 point=battle.positions[i]+Vector3.up*1.9f;

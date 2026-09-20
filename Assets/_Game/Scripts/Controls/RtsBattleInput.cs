@@ -25,8 +25,21 @@ namespace ZombieGame.Controls
         private bool[,] control_groups => saved_groups ??= new bool[10, game.current.soldier_count];
         private int last_group = -1;
         private float last_group_time = -1;
-        private float scale => Mathf.Max(1, Screen.height / 800f);
-        private Rect map_rect => new Rect(Screen.width - 226 * scale, Screen.height - 246 * scale, 210 * scale, 210 * scale);
+        private float scale => custom_command_panel ? Mathf.Clamp(Screen.height/900f,.8f,2.5f) : Mathf.Max(1, Screen.height / 800f);
+        private Rect map_rect => custom_command_panel ? new Rect(14*scale,Screen.height-214*scale,196*scale,196*scale)
+            : new Rect(Screen.width - 226 * scale, Screen.height - 246 * scale, 210 * scale, 210 * scale);
+        public int group_count(int group)
+        {
+            if(group<0||group>9)return 0;
+            int count=0;for(int i=0;i<game.current.soldier_count;i++)if(control_groups[group,i]&&game.current.health[i]>0)count++;
+            return count;
+        }
+        public void click_group(int group)
+        {
+            if(Input.GetKey(KeyCode.LeftControl)||Input.GetKey(KeyCode.RightControl)){store_group(group);return;}
+            recall_group(group,last_group==group&&Time.unscaledTime-last_group_time<=.35f);
+            last_group=group;last_group_time=Time.unscaledTime;
+        }
 
         public void cancel_command() { pending = "Select"; dragging = false; }
         public void clear_groups()
@@ -194,7 +207,7 @@ namespace ZombieGame.Controls
         public void handle_mouse(Event input)
         {
             Vector2 mouse = input.mousePosition;
-            if (game.pointer_over_ui(mouse)) { dragging = false; return; }
+            if (game.pointer_over_ui(mouse) && !map_rect.Contains(mouse)) { dragging = false; return; }
             if (input.type == EventType.MouseDown && map_rect.Contains(mouse))
             {
                 Vector3 point = new Vector3((mouse.x-map_rect.x)/map_rect.width*256-128,0,(1-(mouse.y-map_rect.y)/map_rect.height)*256-128);
@@ -260,13 +273,17 @@ namespace ZombieGame.Controls
         {
             if (game == null || game.current == null) return;
             GUI.matrix = Matrix4x4.identity;
+            GUI.depth=0;
             if (game.can_control) handle_mouse(Event.current);
             if(!custom_command_panel) GUI.Box(new Rect(8,Screen.height-48*scale,Screen.width-250*scale,40*scale),
                 $"{(game.can_control ? "YOU CONTROL" : "AUTO / CHECK")} | Selected {selected_count()} | {pending} | {notice}");
             if (minimap != null) GUI.DrawTexture(map_rect,minimap);
-            outline(map_rect,Color.white);
-            GUI.Label(new Rect(map_rect.x,map_rect.y-24*scale,map_rect.width,24*scale),"FULL MAP: 256 x 256 tiles");
-            GUI.Label(new Rect(map_rect.x,map_rect.yMax+3,map_rect.width,25*scale),"Left: camera | Right: move units");
+            outline(map_rect,new Color(.65f,.52f,.3f));
+            if(!custom_command_panel)
+            {
+                GUI.Label(new Rect(map_rect.x,map_rect.y-24*scale,map_rect.width,24*scale),"FULL MAP: 256 x 256 tiles");
+                GUI.Label(new Rect(map_rect.x,map_rect.yMax+3,map_rect.width,25*scale),"Left: camera | Right: move units");
+            }
             Camera camera = Camera.main;
             Vector3 focus = game.camera_focus;
             float half_z = camera.orthographicSize, half_x = half_z*camera.aspect;
@@ -278,7 +295,7 @@ namespace ZombieGame.Controls
             camera_box = Rect.MinMaxRect(Mathf.Max(map_rect.x,camera_box.x),Mathf.Max(map_rect.y,camera_box.y),Mathf.Min(map_rect.xMax,camera_box.xMax),Mathf.Min(map_rect.yMax,camera_box.yMax));
             outline(camera_box,Color.yellow,1);
             Vector3 left_top = camera.WorldToScreenPoint(new Vector3(-128,0,128)), right_bottom = camera.WorldToScreenPoint(new Vector3(128,0,-128));
-            outline(Rect.MinMaxRect(left_top.x,Screen.height-left_top.y,right_bottom.x,Screen.height-right_bottom.y),Color.white);
+            if(!custom_command_panel)outline(Rect.MinMaxRect(left_top.x,Screen.height-left_top.y,right_bottom.x,Screen.height-right_bottom.y),Color.white);
             if (dragging)
             {
                 Vector2 mouse = Event.current.mousePosition;
