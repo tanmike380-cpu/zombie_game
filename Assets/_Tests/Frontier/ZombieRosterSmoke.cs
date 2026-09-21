@@ -105,6 +105,13 @@ namespace ZombieGame.FrontierTests
             require(RtsCameraPan.edge_direction(new Vector2(1,500),size,true)==Vector2.left,"left edge");
             require(RtsCameraPan.edge_direction(new Vector2(1599,500),size,true)==Vector2.right,"right edge");
             require(RtsCameraPan.edge_direction(new Vector2(800,999),size,true)==Vector2.up,"top edge");
+            for(int frame=0;frame<300;frame++)
+            {
+                require(RtsCameraPan.edge_direction(new Vector2(1600,500),size,true)==Vector2.right,"sustained exact right boundary");
+                require(RtsCameraPan.edge_direction(new Vector2(800,1000),size,true)==Vector2.up,"sustained exact top boundary");
+            }
+            require(RtsCameraPan.edge_direction(new Vector2(1601,500),size,true)==Vector2.zero,"outside right boundary");
+            require(RtsCameraPan.edge_direction(new Vector2(800,1001),size,true)==Vector2.zero,"outside top boundary");
             require(RtsCameraPan.edge_direction(new Vector2(800,1),size,true)==Vector2.down,"bottom edge over HUD");
             require(Mathf.Approximately(RtsCameraPan.edge_direction(Vector2.one,size,true).magnitude,1),"diagonal not faster");
             require(RtsCameraPan.edge_direction(new Vector2(-1,500),size,true)==Vector2.zero,"outside viewport");

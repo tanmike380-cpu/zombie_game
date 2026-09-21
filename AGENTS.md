@@ -18,6 +18,11 @@
   crossing. Do not revert to unit-index-priority assignment or stagger command start times.
 - Reusable battle/navigation/perception logic lives under `Assets/_Game/Scripts`; test scenes
   supply population/layout fixtures and must not become dependencies of production modules.
+- Preserve accepted RTS feedback across every art/style change: living human units show green HP
+  and blue ammunition above their heads (including full/unselected units); selected humans have
+  ground-position selection rings. Feedback stays readable across camera zoom and lighting.
+- Edge pan and directional cursors share drawable-window coordinates; test all four exact bounds,
+  sustained top/right contact, focus loss, resize and zoom. Keep unit UI framebuffer regressions.
 - All living zombies, including previously alerted or settled ones, may hear new gunshots.
   Newer audible emissions replace old sound memory; delayed older waves cannot restore old goals.
   Visible-human pursuit has priority. Zombie explosions never emit attraction noise.
