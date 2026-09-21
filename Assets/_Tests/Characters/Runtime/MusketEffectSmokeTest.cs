@@ -15,6 +15,8 @@ namespace ZombieGame.CharacterTests
                 if(effects.shot_count!=400 || effects.live_particles==0 || effects.live_particles>3000)
                     throw new InvalidOperationException("Musket particle burst/capacity regression");
                 yield return new WaitForSeconds(2);
+                if(effects.live_particles==0)throw new InvalidOperationException("Musket smoke dispersed before three seconds");
+                yield return new WaitForSeconds(1.4f);
                 if(effects.live_particles!=0)throw new InvalidOperationException("Musket smoke particles failed to expire");
                 effects.clear();
                 if(effects.shot_count!=0)throw new InvalidOperationException("Musket reset failed");

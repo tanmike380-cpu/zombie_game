@@ -18,7 +18,7 @@ namespace ZombieGame.Presentation
             Shader shader = template != null ? template.shader : Shader.Find("ZombieGame/MusketSmoke");
             if (shader == null) throw new System.InvalidOperationException("Missing musket smoke shader");
             smoke_material = new Material(shader); flash_material = new Material(shader);
-            smoke = create_emitter("White-grey smoke", smoke_material, 2500);
+            smoke = create_emitter("White-grey smoke", smoke_material, 10000);
             flash = create_emitter("Muzzle flash", flash_material, 500);
         }
 
@@ -50,8 +50,8 @@ namespace ZombieGame.Presentation
                 float angle = (shot_count * 2.39996f + i * 1.25664f);
                 var drift = new Vector3(Mathf.Cos(angle),.35f,Mathf.Sin(angle)) * .25f;
                 smoke.Emit(new ParticleSystem.EmitParams { position = muzzle + direction * i * .04f,
-                    velocity = direction * (.8f + i * .12f) + Vector3.up * .3f + drift,
-                    startLifetime = .85f + i * .1f, startSize = .7f + i * .06f,
+                    velocity = direction * (.4f + i * .06f) + Vector3.up * .2f + drift,
+                    startLifetime = 3f, startSize = 1.4f + i * .12f,
                     startColor = new Color(.79f,.80f,.77f,.65f) }, 1);
             }
             flash.Emit(new ParticleSystem.EmitParams { position = muzzle, velocity = direction * .4f,
