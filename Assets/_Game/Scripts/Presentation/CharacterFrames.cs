@@ -17,6 +17,7 @@ namespace ZombieGame.Presentation
     public sealed class CharacterFrames : ScriptableObject
     {
         public Material material;
+        public int visual_revision;
         public PoseFrames[] poses;
         public int frame_index(CharacterPose pose, float age)
         {

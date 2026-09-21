@@ -1,0 +1,7 @@
+{
+  "styles": [
+    {"id":"fortress","name":"A · 铁甲边军","description":"星际式硬朗轮廓 / 分块铁甲 / 冷暖战场对比","grass":"#53615A","stone":"#75838B","timber":"#343A3B","roof":"#354D60","plaster":"#6D7779","cloth":"#204E72","metal":"#667886","accent":"#D5A957","skin":"#AE8C72","sky":"#8DA9BD","sunlight":"#FFE2BB","ink":"#0F1D29","head_scale":0.72,"shoulder_scale":1.2,"sun_intensity":1.25,"camera_pitch":48,"camera_yaw":30,"roughness":0.38},
+    {"id":"dusk","name":"B · 暮色围城","description":"亿万僵尸式旧材质 / 铜木细节 / 暖光荒野","grass":"#777047","stone":"#86745A","timber":"#483222","roof":"#46544C","plaster":"#B39565","cloth":"#685136","metal":"#686B59","accent":"#B58740","skin":"#A88765","sky":"#968D6E","sunlight":"#FFD69B","ink":"#221C12","head_scale":0.70,"shoulder_scale":0.96,"sun_intensity":1.12,"camera_pitch":43,"camera_yaw":35,"roughness":0.13},
+    {"id":"dynasty","name":"C · 山河明军","description":"帝国时代式自然尺度 / 明式甲衣 / 瓦木与田野","grass":"#788057","stone":"#A6A18D","timber":"#5A3828","roof":"#57676C","plaster":"#C8BA96","cloth":"#7B3430","metal":"#6E7778","accent":"#BB985B","skin":"#BB997D","sky":"#B1BDCA","sunlight":"#FFF0D6","ink":"#182526","head_scale":0.66,"shoulder_scale":0.9,"sun_intensity":1.2,"camera_pitch":42,"camera_yaw":30,"roughness":0.17}
+  ]
+}

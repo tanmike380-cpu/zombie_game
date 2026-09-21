@@ -14,15 +14,26 @@ namespace ZombieGame.Presentation
         private readonly int pose_count;
         public int submitted { get; private set; }
 
-        public CharacterCrowdRenderer(int capacity)
+        public CharacterCrowdRenderer(int capacity,string style=null)
         {
-            characters = new[] { Resources.Load<CharacterFrames>("CharacterGenerated/Human"), Resources.Load<CharacterFrames>("CharacterGenerated/Zombie"), Resources.Load<CharacterFrames>("CharacterGenerated/Exploder") };
+            characters = new CharacterFrames[3];set_style(style);
             if (Array.Exists(characters,c=>c==null)) throw new InvalidOperationException("Bake character models before enabling animated crowd");
             frames_per_pose = characters[0].poses[0].frames.Length;
             pose_count=characters[0].poses.Length;
             int buckets = characters.Length * pose_count * frames_per_pose;
             matrices = new Matrix4x4[buckets][]; counts = new int[buckets];
             for (int i = 0; i < buckets; i++) matrices[i] = new Matrix4x4[capacity];
+        }
+        public void set_style(string style)
+        {
+            string prefix="CharacterGenerated/"+(string.IsNullOrEmpty(style)?"":style+"/");
+            string[] names={"Human","Zombie","Exploder"};
+            for(int i=0;i<3;i++)
+            {
+                var asset=Resources.Load<CharacterFrames>(prefix+names[i]);
+                if(asset==null)throw new InvalidOperationException("Missing baked art variant: "+prefix+names[i]);
+                characters[i]=asset;
+            }
         }
 
         public void begin_frame() { Array.Clear(counts, 0, counts.Length); submitted = 0; }
@@ -42,7 +53,7 @@ namespace ZombieGame.Presentation
             {
                 if (counts[bucket] == 0) continue;
                 int character = bucket / (pose_count * frames_per_pose), pose = bucket / frames_per_pose % pose_count, frame = bucket % frames_per_pose;
-                var parameters = new RenderParams(characters[character].material) { worldBounds = new Bounds(Vector3.zero,new Vector3(260,30,260)), shadowCastingMode = ShadowCastingMode.Off, receiveShadows = false };
+                var parameters = new RenderParams(characters[character].material) { worldBounds = new Bounds(Vector3.zero,new Vector3(260,30,260)), shadowCastingMode = character==0?ShadowCastingMode.On:ShadowCastingMode.Off, receiveShadows = true };
                 for (int start = 0; start < counts[bucket]; start += 1023)
                     Graphics.RenderMeshInstanced(parameters, characters[character].poses[pose].frames[frame], 0,
                         matrices[bucket], Math.Min(1023, counts[bucket]-start), start);
