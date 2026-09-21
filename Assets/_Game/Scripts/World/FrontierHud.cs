@@ -1,6 +1,7 @@
 using UnityEngine;
 using ZombieGame.Combat;
 using ZombieGame.Balance;
+using ZombieGame.Presentation;
 
 namespace ZombieGame.World
 {
@@ -13,9 +14,10 @@ namespace ZombieGame.World
         public bool show_help;
         public static float scale => Mathf.Clamp(Screen.height/900f,.8f,2.5f);
         public static bool contains(Vector2 point) => point.y>Screen.height-190*scale ||
-            (point.x<224*scale && point.y>Screen.height-242*scale);
-        private static readonly Color GOLD=new Color(.69f,.55f,.30f);
-        private static readonly Color INK=new Color(.065f,.084f,.089f,.98f);
+            (point.x<224*scale && point.y>Screen.height-242*scale) || style_toolbar().Contains(point);
+        private static Color GOLD=>VisualStyles.current.color(VisualStyles.current.accent);
+        private static Color INK=>VisualStyles.current.color(VisualStyles.current.ink);
+        private static Rect style_toolbar()=>new Rect(234*scale,Screen.height-222*scale,570*scale,30*scale);
         public FrontierHud(FrontierGame game) { this.game=game; }
 
         private void prepare_styles()
@@ -49,6 +51,7 @@ namespace ZombieGame.World
             if(game.headquarters_selected){draw_structure_labels();draw_headquarters(selection_area);draw_production_commands(command_area);}
             else {draw_selection(selection_area);draw_commands(command_area);}
             draw_resources(new Rect(resources_x,y,190*s,190*s));
+            draw_style_toolbar();
             if(game.construction.active)
             {
                 var hint=new Rect(Mathf.Clamp(Input.mousePosition.x+18*s,8*s,Screen.width-520*s),Mathf.Clamp(Screen.height-Input.mousePosition.y-64*s,8*s,Screen.height-260*s),505*s,54*s);
@@ -62,6 +65,16 @@ namespace ZombieGame.World
                 GUI.Label(new Rect(28*s,130*s,575*s,28*s),"Ctrl + 数字保存编队 · 数字/卡片召回 · 双击聚焦",text);
                 GUI.Label(new Rect(28*s,160*s,575*s,28*s),"方向键移镜头 · 滚轮缩放 · C 部队 · B 主基地 · H 隐藏",small);
             }
+        }
+        private void draw_style_toolbar()
+        {
+            Rect area=style_toolbar();panel(area);float width=area.width/3;
+            for(int i=0;i<3;i++)
+            {
+                GUI.backgroundColor=i==VisualStyles.index?GOLD:Color.gray;
+                if(GUI.Button(new Rect(area.x+i*width+3*scale,area.y+3*scale,width-6*scale,24*scale),$"F{i+5}  {VisualStyles.all[i].name}",button))game.switch_visual_style(i);
+            }
+            GUI.backgroundColor=Color.white;
         }
         private void draw_resources(Rect area)
         {

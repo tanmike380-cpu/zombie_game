@@ -2,6 +2,7 @@ using UnityEngine;
 using ZombieGame.Combat;
 using ZombieGame.Controls;
 using ZombieGame.Vision;
+using ZombieGame.Presentation;
 
 namespace ZombieGame.World
 {
@@ -46,13 +47,16 @@ namespace ZombieGame.World
             Application.runInBackground=true;QualitySettings.vSyncCount=1;Application.targetFrameRate=60;
             Camera.main.allowDynamicResolution=false;Camera.main.allowMSAA=true;QualitySettings.antiAliasing=4;
             Camera.main.clearFlags=CameraClearFlags.SolidColor;
+            var arguments=System.Environment.GetCommandLineArgs();
+            int style_argument=System.Array.IndexOf(arguments,"-artStyle");
+            if(style_argument>=0&&style_argument+1<arguments.Length&&int.TryParse(arguments[style_argument+1],out int requested_style))VisualStyles.select(requested_style);
             map=new FrontierMap();
             landscape=new FrontierLandscape(map,transform,landscape_shader);
             current=new BattleSimulation(map.spawns,FrontierMap.HUMAN_CAPACITY,map.explosive,map.blockers,initial_humans:FrontierMap.SOLDIERS,unit_ids:map.unit_ids);
             economy=new FrontierEconomy(JsonUtility.FromJson<FrontierEconomyConfig>(Resources.Load<TextAsset>("FrontierEconomy").text));
             production=new HeadquartersProduction(economy,JsonUtility.FromJson<HeadquartersConfig>(Resources.Load<TextAsset>("HeadquartersProduction").text));
             supply=new AmmunitionSupply(economy);supply.depots.Add(map.initial_depot);
-            current_fog=new CombatFog(fog_template,.08f);
+            current_fog=new CombatFog(fog_template,.08f,true);
             current_fog.headquarters_vision=map.headquarters_position;
             current_fog.explore_area(new Rect(-124,-124,76,76));
             current_fog.update_visibility(current);current.player_visibility=current_fog.is_visible;
@@ -70,12 +74,15 @@ namespace ZombieGame.World
         public void focus_camera(Vector3 point)
         {
             camera_focus=new Vector3(Mathf.Clamp(point.x,-128,128),0,Mathf.Clamp(point.z,-128,128));
-            Camera.main.transform.rotation=Quaternion.Euler(45,30,0);
+            Camera.main.transform.rotation=Quaternion.Euler(VisualStyles.current.camera_pitch,VisualStyles.current.camera_yaw,0);
             Camera.main.transform.position=camera_focus-Camera.main.transform.forward*180;
         }
         private void Update()
         {
             if(current==null)return;
+            if(Input.GetKeyDown(KeyCode.F5))switch_visual_style(0);
+            if(Input.GetKeyDown(KeyCode.F6))switch_visual_style(1);
+            if(Input.GetKeyDown(KeyCode.F7))switch_visual_style(2);
             if(Input.GetKeyDown(KeyCode.Space)) { paused=!paused;Time.timeScale=paused?0:1; }
             if(!paused) { economy.step(Time.deltaTime);production.step(Time.deltaTime,finish_production);supply.step(current);current.step(Time.time,Time.deltaTime); }
             if(Time.time>=next_fog) { next_fog=Time.time+.1f;current_fog.update_visibility(current); }
@@ -126,16 +133,29 @@ namespace ZombieGame.World
             for(int i=0;i<current.soldier_count;i++)if(current.selected[i]&&current.health[i]>0&&!current.manual_melee[i]){use_knife=true;break;}
             for(int i=0;i<current.soldier_count;i++)if(current.selected[i]&&current.health[i]>0)current.manual_melee[i]=use_knife;
         }
+        public void switch_visual_style(int index)
+        {
+            if(index==VisualStyles.index)return;
+            construction.cancel_preview();VisualStyles.select(index);
+            var old_landscape=landscape;
+            landscape=new FrontierLandscape(map,transform,landscape_shader);
+            construction.rebuild_visuals(landscape);old_landscape.Dispose();
+            battle_view.set_style();configure_lighting();focus_camera(camera_focus);
+            Debug.Log("[ArtStyle] "+VisualStyles.current.id+" switched; battle, economy, buildings, orders and fog retained");
+        }
         private static void configure_lighting()
         {
+            var style=VisualStyles.current;
             RenderSettings.ambientMode=UnityEngine.Rendering.AmbientMode.Trilight;
-            RenderSettings.ambientSkyColor=new Color(.40f,.43f,.40f);
-            RenderSettings.ambientEquatorColor=new Color(.32f,.29f,.22f);
-            RenderSettings.ambientGroundColor=new Color(.15f,.16f,.13f);
+            RenderSettings.ambientSkyColor=style.color(style.sky)*.65f;
+            RenderSettings.ambientEquatorColor=style.color(style.sky)*.4f;
+            RenderSettings.ambientGroundColor=style.color(style.grass)*.27f;
+            Camera.main.backgroundColor=style.color(style.sky)*.35f;
             foreach(var light in Object.FindObjectsByType<Light>(FindObjectsSortMode.None))
                 if(light.type==LightType.Directional)
-                {light.color=new Color(1,.82f,.58f);light.intensity=1.15f;light.transform.rotation=Quaternion.Euler(48,-35,0);light.shadows=LightShadows.Soft;light.shadowStrength=.7f;}
-            QualitySettings.shadows=ShadowQuality.All;QualitySettings.shadowDistance=260;
+                {light.color=style.color(style.sunlight);light.intensity=style.sun_intensity;light.transform.rotation=Quaternion.Euler(style.id=="dusk"?35:52,-35,0);light.shadows=LightShadows.Soft;light.shadowStrength=.78f;light.shadowBias=.05f;light.shadowNormalBias=.25f;}
+            QualitySettings.shadows=ShadowQuality.All;QualitySettings.shadowDistance=245;
+            QualitySettings.shadowResolution=UnityEngine.ShadowResolution.VeryHigh;QualitySettings.shadowCascades=4;
         }
         private void OnDestroy()
         { Time.timeScale=1;construction?.Dispose();battle_view?.Dispose();landscape?.Dispose();current_fog?.Dispose();current?.Dispose(); }

@@ -1,13 +1,13 @@
 Shader "ZombieGame/FrontierSurface"
 {
-    Properties { _Color ("Earth palette", Color) = (0.4,0.35,0.22,1) _Glossiness ("Roughness response", Range(0,1)) = 0.12 }
+    Properties { _Color ("Earth palette", Color) = (0.4,0.35,0.22,1) _Glossiness ("Roughness response", Range(0,1)) = 0.12 _SurfaceKind("Ground Wood Stone Roof Water Other",Float)=5 }
     SubShader
     {
         Tags { "RenderType"="Opaque" }
         CGPROGRAM
         #pragma surface surf Standard fullforwardshadows
         #pragma target 3.0
-        fixed4 _Color; half _Glossiness;
+        fixed4 _Color; half _Glossiness;float _SurfaceKind;
         struct Input { float3 worldPos; float3 worldNormal; };
         float hash(float2 p) { return frac(sin(dot(p,float2(127.1,311.7)))*43758.5453); }
         float noise(float2 p)
@@ -19,12 +19,24 @@ Shader "ZombieGame/FrontierSurface"
         {
             float2 p=abs(i.worldNormal.y)>.6?i.worldPos.xz:i.worldPos.xy+i.worldPos.zy;
             float broad=noise(p*.32),detail=noise(p*9),grain=noise(p*43);
-            float variation=.76+broad*.32+detail*.12+grain*.07;
-            float ground=1-smoothstep(.10,.20,i.worldPos.y);
+            float variation=.86+broad*.22+detail*.08;
+            float ground=_SurfaceKind<.5?1:0;
             float patches=noise(p*.15)*noise(p*1.9);
-            float3 dirt=lerp(_Color.rgb,float3(.27,.215,.125),ground*smoothstep(.28,.57,patches)*.55);
+            float3 dirt=lerp(_Color.rgb,float3(.27,.215,.125),ground*smoothstep(.28,.57,patches)*.18);
+            if(_SurfaceKind>.5&&_SurfaceKind<1.5)variation*=.80+.20*noise(float2(p.x*22,p.y*.65));
+            if(_SurfaceKind>1.5&&_SurfaceKind<3.5)
+            {
+                float2 coordinates=float2(p.x*(_SurfaceKind>2.5?3.2:1.3)+floor(p.y*2)*.5,p.y*2);
+                float2 tile=frac(coordinates);
+                float filter_width=max(fwidth(coordinates.x),fwidth(coordinates.y));
+                float mortar=smoothstep(.025,.075+filter_width,min(tile.x,tile.y));
+                float detail_strength=1-smoothstep(.2,.7,filter_width);
+                variation*=lerp(1,lerp(.72,1,mortar),detail_strength);
+            }
+            if(_SurfaceKind>3.5&&_SurfaceKind<4.5)
+            {variation=.88+.12*sin(p.x*2+p.y*3+_Time.y*.8);dirt=_Color.rgb;}
             o.Albedo=dirt*variation;
-            o.Metallic=0;o.Smoothness=_Glossiness;o.Occlusion=.85+.15*detail;
+            o.Metallic=0;o.Smoothness=_Glossiness;o.Occlusion=.9+.1*detail;
         }
         ENDCG
     }

@@ -18,11 +18,11 @@ namespace ZombieGame.Vision
         private readonly float plane_height;
         public Vector3? headquarters_vision;
 
-        public CombatFog(Material template, float plane_height = 8)
+        public CombatFog(Material template, float plane_height = 8, bool smooth_edges = false)
         {
             this.plane_height=plane_height;
             if (template == null) throw new InvalidOperationException("Missing serialized fog material");
-            texture = new Texture2D(SIZE, SIZE, TextureFormat.RGBA32, false) { filterMode = FilterMode.Point, wrapMode = TextureWrapMode.Clamp };
+            texture = new Texture2D(SIZE, SIZE, TextureFormat.RGBA32, false) { filterMode = smooth_edges?FilterMode.Bilinear:FilterMode.Point, wrapMode = TextureWrapMode.Clamp };
             material = new Material(template); material.mainTexture = texture;
             var primitive = GameObject.CreatePrimitive(PrimitiveType.Quad);
             quad = primitive.GetComponent<MeshFilter>().sharedMesh; UnityEngine.Object.Destroy(primitive);

@@ -20,13 +20,14 @@ namespace ZombieGame.World
 
         public FrontierBattleView(int capacity,Transform parent,Shader shader)
         {
-            characters=new CharacterCrowdRenderer(capacity);effects=new MusketEffects(parent);
+            characters=new CharacterCrowdRenderer(capacity,VisualStyles.current.id);effects=new MusketEffects(parent);
             seen_shots=new float[capacity];death_started=new float[capacity];
             for(int i=0;i<capacity;i++) seen_shots[i]=float.NegativeInfinity;
             var primitive=GameObject.CreatePrimitive(PrimitiveType.Cube);cube=primitive.GetComponent<MeshFilter>().sharedMesh;UnityEngine.Object.Destroy(primitive);
             Color[] colors={new Color(.47f,.65f,.24f),new Color(.09f,.08f,.045f),new Color(1,.8f,.2f),new Color(.6f,.2f,.4f),new Color(.12f,.52f,1f)};
             for(int i=0;i<materials.Length;i++) { materials[i]=new Material(shader){color=colors[i],enableInstancing=true};matrices[i]=new Matrix4x4[capacity+4096]; }
         }
+        public void set_style(){characters.set_style(VisualStyles.current.id);}
         public void draw(BattleSimulation battle,CombatFog fog,bool reveal)
         {
             characters.begin_frame();Array.Clear(counts,0,counts.Length);

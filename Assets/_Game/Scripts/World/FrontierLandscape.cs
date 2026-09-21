@@ -1,11 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
+using ZombieGame.Presentation;
 
 namespace ZombieGame.World
 {
     /// <summary>Batched frontier terrain and Eastern architecture; presentation shares the navigation footprints.</summary>
-    public sealed class FrontierLandscape : System.IDisposable
+    public sealed partial class FrontierLandscape : System.IDisposable
     {
         private readonly GameObject root;
         private readonly Mesh cube,cone,roof,rock;
@@ -13,8 +14,12 @@ namespace ZombieGame.World
         private readonly List<Material> owned_materials=new List<Material>();
         private readonly Dictionary<Color,List<CombineInstance>> batches=new Dictionary<Color,List<CombineInstance>>();
         private readonly System.Random random=new System.Random(20260920);
-        private static readonly Color GRASS=new Color(.38f,.34f,.20f), WATER=new Color(.14f,.23f,.21f);
-        private static readonly Color TIMBER=new Color(.23f,.135f,.075f), TILE=new Color(.22f,.235f,.20f), STONE=new Color(.46f,.42f,.32f);
+        private readonly VisualStyle style=VisualStyles.current;
+        private Color GRASS=>style.color(style.grass);
+        private Color WATER=>style.id=="fortress"?new Color(.12f,.27f,.32f):style.id=="dusk"?new Color(.19f,.29f,.25f):new Color(.23f,.38f,.39f);
+        private Color TIMBER=>style.color(style.timber);
+        private Color TILE=>style.color(style.roof);
+        private Color STONE=>style.color(style.stone);
 
         public FrontierLandscape(FrontierMap map, Transform parent, Shader shader)
         {
@@ -27,7 +32,7 @@ namespace ZombieGame.World
             // Settlement roads are purely visual and do not restrict player commands.
             add(cube,new Vector3(-85,.005f,-87),new Vector3(66,.015f,3),new Color(.48f,.40f,.28f));
             add(cube,new Vector3(-98,.005f,-83),new Vector3(3,.015f,70),new Color(.48f,.40f,.28f));
-            foreach(var region in map.regions)build_region(region);
+            foreach(var region in map.regions)if(!region.label.StartsWith("BUILT:"))build_region(region);
             // Established farm and exposed resource seams; throughput is documented in the scenario economy config.
             for(int i=0;i<12;i++) add(cube,new Vector3(-115+i*.65f,.04f,-112),new Vector3(.3f,.09f,12),new Color(.57f,.49f,.20f));
             add_deposit(new Vector3(-61,0,-116),new Color(.29f,.28f,.27f));
@@ -41,7 +46,7 @@ namespace ZombieGame.World
                 if(map.blocked(p,.3f))continue;
                 add(rock,p,new Vector3(.12f,.06f,.2f),i%2==0?STONE*.7f:GRASS*.8f);
             }
-            flush(shader);
+            add_settlement_details();flush(shader);
         }
 
         public GameObject create_facility(string id,Vector2 size,Shader shader)
@@ -112,17 +117,22 @@ namespace ZombieGame.World
                     add(cube,new Vector3(b.max.x,.07f,p.z),new Vector3(.45f,.12f,b.size.z),new Color(.60f,.55f,.39f));
                     break;
                 case LandscapeKind.Forest:
-                    add(cube,new Vector3(p.x,.01f,p.z),new Vector3(b.size.x,.02f,b.size.z),new Color(.23f,.25f,.12f));
+                    add(cube,new Vector3(p.x,.01f,p.z),new Vector3(b.size.x,.02f,b.size.z),GRASS*.65f);
                     for(int i=0;i<4;i++)
                     {
                         Vector3 tree=new Vector3(p.x+(i%2-.5f)*1.7f,.0f,p.z+(i/2-.5f)*1.7f);
                         float height=3.1f+(float)random.NextDouble()*1.4f;
                         add(cube,tree+Vector3.up*height*.4f,new Vector3(.18f,height*.8f,.18f),new Color(.27f,.20f,.12f));
+                        if(style.id=="fortress")
+                        {
+                            for(int tier=0;tier<3;tier++)add(cone,tree+Vector3.up*(height*.3f+tier*.65f),new Vector3(2.2f-tier*.4f,1.8f,2.2f-tier*.4f),new Color(.19f,.31f,.29f));
+                            continue;
+                        }
                         for(int crown=0;crown<5;crown++)
                         {
                             float angle=crown*2.4f+i;
                             Vector3 offset=new Vector3(Mathf.Cos(angle)*.6f,height*.65f+crown*.17f,Mathf.Sin(angle)*.6f);
-                            add(rock,tree+offset,new Vector3(1.7f,1.5f,1.7f),i%3==0?new Color(.40f,.27f,.10f):new Color(.22f,.27f,.115f));
+                            add(rock,tree+offset,new Vector3(1.7f,1.5f,1.7f),style.id=="dusk"?(i%3==0?new Color(.49f,.32f,.12f):new Color(.29f,.32f,.14f)):(i%3==0?new Color(.43f,.46f,.20f):new Color(.23f,.36f,.19f)));
                         }
                     }
                     break;
@@ -146,7 +156,7 @@ namespace ZombieGame.World
         {
             Vector3 p=b.center;float wall_height=headquarters?3.1f:2.1f;
             add(cube,new Vector3(p.x,.22f,p.z),new Vector3(b.size.x+.6f,.44f,b.size.z+.6f),STONE);
-            add(cube,new Vector3(p.x,wall_height*.5f+.4f,p.z),new Vector3(b.size.x,wall_height,b.size.z),new Color(.62f,.54f,.39f));
+            add(cube,new Vector3(p.x,wall_height*.5f+.4f,p.z),new Vector3(b.size.x,wall_height,b.size.z),style.color(style.plaster));
             for(int side=-1;side<=1;side+=2)
             {
                 float z=p.z+side*b.extents.z;
@@ -159,6 +169,7 @@ namespace ZombieGame.World
                 }
             }
             add(cube,new Vector3(p.x,1.2f,b.min.z-.05f),new Vector3(1.4f,1.9f,.13f),TIMBER*.65f);
+            add_architecture_details(b,headquarters,wall_height);
             build_tiled_roof(new Vector3(p.x,wall_height+.35f,p.z),b.size.x+1.2f,b.size.z+1.2f,1.5f);
             if(headquarters)
             {
@@ -179,12 +190,16 @@ namespace ZombieGame.World
             add(cube,p+Vector3.up*(height+.035f),new Vector3(width+.15f,.16f,.20f),TILE*.75f);
             for(int side=-1;side<=1;side+=2)
             {
-                add(cube,p+new Vector3(0,.05f,side*depth*.5f),new Vector3(width,.14f,.16f),TIMBER);
                 for(int row=0;row<8;row++)
                 {
                     float t=(row+.5f)/8;
-                    float y=height*(1-t)+.24f*t*t*t;
-                    add(cube,p+new Vector3(0,y,side*depth*.5f*t),new Vector3(width,.07f,.12f),row%2==0?TILE*.85f:TILE);
+                    for(int column=0;column<12;column++)
+                    {
+                        float u=(column+.5f)/12-.5f;
+                        float y=height*roof_height(u,t)+.07f;
+                        add(cube,p+new Vector3(u*width,y,side*depth*.5f*t),new Vector3(width/12+.015f,.055f,.10f),row%2==0?TILE*.85f:TILE);
+                        if(row==7)add(cube,p+new Vector3(u*width,height*roof_height(u,1)-.07f,side*depth*.5f),new Vector3(width/12+.015f,.14f,.16f),TIMBER);
+                    }
                 }
             }
         }
@@ -222,7 +237,8 @@ namespace ZombieGame.World
             {
                 var mesh=new Mesh{indexFormat=IndexFormat.UInt32,name="Batched landscape"};
                 mesh.CombineMeshes(batch.Value.ToArray(),true,true);owned_meshes.Add(mesh);
-                var material=new Material(shader){color=batch.Key};material.SetFloat("_Glossiness",.05f);owned_materials.Add(material);
+                var material=new Material(shader){color=batch.Key};material.SetFloat("_Glossiness",batch.Key==WATER?.65f:style.roughness);
+                material.SetFloat("_SurfaceKind",batch.Key==GRASS?0:batch.Key==TIMBER?1:batch.Key==STONE?2:batch.Key==TILE?3:batch.Key==WATER?4:5);owned_materials.Add(material);
                 var group=new GameObject("Landscape material batch");group.transform.SetParent(parent==null?root.transform:parent,false);
                 group.AddComponent<MeshFilter>().sharedMesh=mesh;
                 var renderer=group.AddComponent<MeshRenderer>();renderer.sharedMaterial=material;
@@ -242,11 +258,40 @@ namespace ZombieGame.World
             }
             var mesh=new Mesh{name="Original eight-sided foliage and rock"};mesh.SetVertices(vertices);mesh.SetTriangles(triangles,0);mesh.RecalculateNormals();return mesh;
         }
-        private static Mesh build_roof()
+        private Mesh build_roof()
         {
-            var mesh=new Mesh{name="Original pitched tile roof"};
-            mesh.vertices=new[]{new Vector3(-.5f,0,-.5f),new Vector3(.5f,0,-.5f),new Vector3(-.5f,0,.5f),new Vector3(.5f,0,.5f),new Vector3(-.5f,1,0),new Vector3(.5f,1,0)};
-            mesh.triangles=new[]{0,4,1,1,4,5,2,3,4,3,5,4,0,2,4,1,5,3};mesh.RecalculateNormals();return mesh;
+            var vertices=new List<Vector3>();var triangles=new List<int>();
+            const int length_steps=12,slope_steps=8;
+            for(int side=-1;side<=1;side+=2)
+            {
+                int start=vertices.Count;
+                for(int x=0;x<=length_steps;x++)for(int row=0;row<=slope_steps;row++)
+                {
+                    float u=x/(float)length_steps-.5f,t=row/(float)slope_steps;
+                    float y=roof_height(u,t);
+                    vertices.Add(new Vector3(u,y,side*t*.5f));
+                    if(x==length_steps||row==slope_steps)continue;
+                    int a=start+x*(slope_steps+1)+row,b=a+slope_steps+1;
+                    if(side<0){triangles.Add(a);triangles.Add(b);triangles.Add(a+1);triangles.Add(a+1);triangles.Add(b);triangles.Add(b+1);}
+                    else{triangles.Add(a);triangles.Add(a+1);triangles.Add(b);triangles.Add(a+1);triangles.Add(b+1);triangles.Add(b);}
+                }
+            }
+            // Close both gable ends; no open roof shell when the camera approaches from the side.
+            foreach(int end in new[]{-1,1})foreach(int side in new[]{-1,1})
+                for(int row=0;row<slope_steps;row++)
+                {
+                    float a=row/(float)slope_steps,b=(row+1)/(float)slope_steps;int start=vertices.Count;
+                    vertices.Add(new Vector3(end*.5f,0,0));
+                    vertices.Add(new Vector3(end*.5f,roof_height(.5f,a),side*a*.5f));
+                    vertices.Add(new Vector3(end*.5f,roof_height(.5f,b),side*b*.5f));
+                    triangles.Add(start);triangles.Add(start+(end*side>0?1:2));triangles.Add(start+(end*side>0?2:1));
+                }
+            var mesh=new Mesh{name=style.id+" curved eave roof"};mesh.SetVertices(vertices);mesh.SetTriangles(triangles,0);mesh.RecalculateNormals();return mesh;
+        }
+        private float roof_height(float u,float t)
+        {
+            float curl=style.id=="dynasty"?.32f:style.id=="dusk"?.16f:.04f;
+            return 1-t+curl*Mathf.Pow(t,4)+curl*Mathf.Pow(Mathf.Abs(u*2),6)*t*t;
         }
         private static Mesh build_rock()
         {
@@ -264,6 +309,6 @@ namespace ZombieGame.World
             var mesh=new Mesh{name="Shared irregular foliage and stone"};mesh.SetVertices(vertices);mesh.SetTriangles(triangles,0);mesh.RecalculateNormals();return mesh;
         }
         public void Dispose()
-        { Object.Destroy(root);foreach(var mesh in owned_meshes) Object.Destroy(mesh);foreach(var material in owned_materials) Object.Destroy(material); }
+        { root.SetActive(false);Object.Destroy(root);foreach(var mesh in owned_meshes) Object.Destroy(mesh);foreach(var material in owned_materials) Object.Destroy(material); }
     }
 }

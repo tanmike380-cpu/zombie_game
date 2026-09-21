@@ -17,7 +17,7 @@ namespace ZombieGame.World
     public sealed class FrontierConstruction : IDisposable
     {
         private readonly FrontierGame game;
-        private readonly FrontierLandscape landscape;
+        private FrontierLandscape landscape;
         private readonly Shader shader;
         private readonly ResourceTerrain terrain;
         private readonly Dictionary<string,HashSet<int>> claimed=new Dictionary<string,HashSet<int>>();
@@ -45,6 +45,20 @@ namespace ZombieGame.World
         }
         private HashSet<int> claimed_cells(string id)
         {if(!claimed.TryGetValue(id,out var cells)){cells=new HashSet<int>();claimed.Add(id,cells);}return cells;}
+        public void rebuild_visuals(FrontierLandscape replacement)
+        {
+            cancel_preview();landscape=replacement;
+            foreach(var facility in facilities)
+            {
+                facility.model=landscape.create_facility(facility.recipe.id,new Vector2(facility.recipe.width,facility.recipe.depth),shader);
+                facility.model.transform.position=facility.recipe.position;
+                if(!facility.complete)
+                {
+                    tint.SetColor("_Color",new Color(.32f,.29f,.21f));
+                    foreach(var renderer in facility.model.GetComponentsInChildren<Renderer>())renderer.SetPropertyBlock(tint);
+                }
+            }
+        }
         public void begin(int recipe_index)
         {
             if(recipe_index<1||recipe_index>=game.production.config.recipes.Length)return;
