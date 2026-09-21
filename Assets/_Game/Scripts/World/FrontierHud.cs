@@ -6,15 +6,16 @@ using ZombieGame.Presentation;
 namespace ZombieGame.World
 {
     /// <summary>RTS deck: left tactical map, centre unit status/control groups, right command grid.</summary>
-    public sealed class FrontierHud
+    public sealed partial class FrontierHud
     {
         private readonly FrontierGame game;
         private GUIStyle text,number,button,title,small;
         private Font font;
         public bool show_help;
+        public bool show_roster;
         public static float scale => Mathf.Clamp(Screen.height/900f,.8f,2.5f);
-        public static bool contains(Vector2 point) => point.y>Screen.height-190*scale ||
-            (point.x<224*scale && point.y>Screen.height-242*scale) || style_toolbar().Contains(point);
+        public static bool contains(Vector2 point,bool roster_open=false) => point.y>Screen.height-190*scale ||
+            (point.x<224*scale && point.y>Screen.height-242*scale) || style_toolbar().Contains(point)||threat_button().Contains(point)||(roster_open&&roster_rect().Contains(point));
         private static Color GOLD=>VisualStyles.current.color(VisualStyles.current.accent);
         private static Color INK=>VisualStyles.current.color(VisualStyles.current.ink);
         private static Rect style_toolbar()=>new Rect(234*scale,Screen.height-222*scale,570*scale,30*scale);
@@ -42,6 +43,7 @@ namespace ZombieGame.World
         public void draw()
         {
             prepare_styles();GUI.matrix=Matrix4x4.identity;GUI.depth=1;
+            draw_threat_intelligence();
             float s=scale,y=Screen.height-190*s;
             panel(new Rect(0,Screen.height-242*s,224*s,242*s));
             GUI.Label(new Rect(14*s,Screen.height-238*s,200*s,25*s),"战术地图   256 × 256",small);
@@ -63,7 +65,7 @@ namespace ZombieGame.World
                 panel(new Rect(15*s,92*s,600*s,106*s));
                 GUI.Label(new Rect(28*s,100*s,575*s,28*s),"左拖框选 · 右键移动 · A 后左键进攻 · Q 巡逻",text);
                 GUI.Label(new Rect(28*s,130*s,575*s,28*s),"Ctrl + 数字保存编队 · 数字/卡片召回 · 双击聚焦",text);
-                GUI.Label(new Rect(28*s,160*s,575*s,28*s),"方向键移镜头 · 滚轮缩放 · C 部队 · B 主基地 · H 隐藏",small);
+                GUI.Label(new Rect(28*s,160*s,575*s,28*s),"贴边 / 方向键移镜头 · Z 尸群图鉴 · 滚轮缩放 · H 隐藏",small);
             }
         }
         private void draw_style_toolbar()

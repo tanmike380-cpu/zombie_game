@@ -267,6 +267,8 @@ namespace ZombieGame.Controls
                 int x = Mathf.Clamp(Mathf.FloorToInt(p.x+128),0,255), z = Mathf.Clamp(Mathf.FloorToInt(p.z+128),0,255);
                 map_pixels[x+z*256] = i < game.current.soldier_count ? new Color32(40,170,255,255) : game.current.exploder[i] ? new Color32(240,30,220,255) : new Color32(230,40,20,255);
             }
+            // Boss intelligence is a marker only: never modifies fog or reveals nearby units.
+            BossMapMarkers.draw(game.current,map_pixels);
             minimap.SetPixels32(map_pixels); minimap.Apply(false,false);
         }
 

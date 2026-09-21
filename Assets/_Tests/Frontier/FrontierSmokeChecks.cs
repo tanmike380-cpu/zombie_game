@@ -40,7 +40,7 @@ namespace ZombieGame.FrontierTests
                 ZombieGame.CharacterTests.CharacterVisualChecks.run();
                 require(UnitBalance.config.zombie_sight==6&&UnitBalance.config.noise_propagation_speed==15,"requested sight and sound speed");
                 for(int i=0;i<game.current.total_count;i++)
-                    require(Mathf.Abs(game.current.crowd.agents[i].radius-UnitBalance.config.unit_navigation_radius)<.001f,"shared avoidance radius");
+                    require(Mathf.Abs(game.current.crowd.agents[i].radius-UnitBalance.navigation_radius(game.current.stats_for(i)))<.001f,"shared per-role avoidance radius");
                 Debug.Log("[FrontierSmoke] PASS map256 population400+5000 all spawns valid, every river/forest/cliff/building centre blocked, north detour reachable, powder gating and production");
             }
             catch(Exception exception){Debug.LogError("[FrontierSmoke] FAIL "+exception);Application.Quit(1);yield break;}
@@ -56,13 +56,13 @@ namespace ZombieGame.FrontierTests
         private static void check_distribution(FrontierGame game)
         {
             var config=ZombieDistribution.load();var counts=new int[config.bands.Length];
-            var roles=new int[config.bands.Length,3];var occupied=new System.Collections.Generic.HashSet<Vector3>();
+            var roles=new int[config.bands.Length,UnitBalance.zombie_ids.Length];var occupied=new System.Collections.Generic.HashSet<Vector3>();
             for(int i=FrontierMap.HUMAN_CAPACITY;i<game.map.spawns.Length;i++)
             {
                 Vector3 point=game.map.spawns[i];
                 int band=ZombieDistribution.find_band(config,Vector3.Distance(point,game.map.headquarters_position));
                 require(band>=0&&occupied.Add(point),"valid unique distance-band spawn");counts[band]++;
-                string id=game.map.unit_ids[i];roles[band,id=="walker"?0:id=="runner"?1:2]++;
+                string id=game.map.unit_ids[i];roles[band,Array.IndexOf(UnitBalance.zombie_ids,id)]++;
                 require(game.current.stats_for(i)==UnitBalance.get(id)&&game.current.crowd.agents[i].speed==UnitBalance.get(id).move_speed,"all distance-band roles use shared stats");
                 require(!(point.x<-40&&point.z<-48),"settlement remains safe");
             }
@@ -72,8 +72,13 @@ namespace ZombieGame.FrontierTests
                 var band=config.bands[i];cumulative+=band.population_percent;
                 int end=i==counts.Length-1?FrontierMap.ZOMBIES:Mathf.RoundToInt(FrontierMap.ZOMBIES*cumulative/100);
                 require(counts[i]==end-allocated,"distance-band population quota");allocated=end;
-                require(roles[i,0]==Mathf.RoundToInt(counts[i]*band.walker_percent/100),"walker percentage");
-                require(roles[i,0]+roles[i,1]==Mathf.RoundToInt(counts[i]*(band.walker_percent+band.runner_percent)/100),"runner/exploder percentage");
+                int[] expected=ZombieDistribution.role_counts(band,counts[i]);
+                for(int role=0;role<band.roles.Length;role++)require(roles[i,Array.IndexOf(UnitBalance.zombie_ids,band.roles[role].id)]==expected[role],"exact role quota: "+band.roles[role].id);
+            }
+            for(int role=0;role<UnitBalance.zombie_ids.Length;role++)
+            {
+                int count=0;for(int band=0;band<config.bands.Length;band++)count+=roles[band,role];
+                require(count>0,"all eight designed types present: "+UnitBalance.zombie_ids[role]);
             }
             config.bands[0].population_percent+=1;
             bool rejected=false;try{ZombieDistribution.validate(config);}catch(InvalidOperationException){rejected=true;}

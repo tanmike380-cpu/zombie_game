@@ -35,6 +35,7 @@ namespace ZombieGame.World
             {
                 if(battle.is_reserve(i))continue;
                 bool human=i<battle.soldier_count;
+                float model_scale=human?1:battle.stats_for(i).model_scale;
                 if(!human&&!reveal&&!fog.is_visible(battle.positions[i])) continue;
                 var agent=battle.crowd.agents[i];
                 Vector3 facing=human?battle.soldier_facing[i]:agent.enabled?agent.velocity:Vector3.zero;
@@ -42,14 +43,14 @@ namespace ZombieGame.World
                 if(battle.health[i]<=0)
                 {
                     if(death_started[i]==0)death_started[i]=Time.time;
-                    if(Time.time-death_started[i]<2) characters.add(human,CharacterPose.Death,Time.time-death_started[i],battle.positions[i],rotation,battle.exploder[i]);
+                    if(Time.time-death_started[i]<2) characters.add(human,CharacterPose.Death,Time.time-death_started[i],battle.positions[i],rotation,battle.exploder[i],model_scale);
                     continue;
                 }
                 float age=Time.time-battle.attack_started_at[i];
                 bool moving=agent.enabled&&agent.velocity.sqrMagnitude>.04f;
                 var pose=moving?CharacterPose.Run:age<.4f?CharacterPose.Attack:CharacterPose.Idle;
                 if(human&&battle.uses_melee(i))pose=moving?CharacterPose.MeleeRun:age<.55f&&battle.last_attack_melee[i]?CharacterPose.MeleeAttack:CharacterPose.MeleeIdle;
-                characters.add(human,pose,pose==CharacterPose.Attack||pose==CharacterPose.MeleeAttack?age:Time.time+i*.137f,battle.positions[i],rotation,battle.exploder[i]);
+                characters.add(human,pose,pose==CharacterPose.Attack||pose==CharacterPose.MeleeAttack?age:Time.time+i*.137f,battle.positions[i],rotation,battle.exploder[i],model_scale);
                 if(human&&!battle.last_attack_melee[i]&&battle.attack_started_at[i]>seen_shots[i])
                 { seen_shots[i]=battle.attack_started_at[i];effects.fire(characters.human_muzzle(battle.positions[i],rotation),rotation*Vector3.forward); }
                 if(human&&battle.selected[i])
@@ -63,13 +64,16 @@ namespace ZombieGame.World
                 if((human&&(battle.selected[i]||battle.ammunition[i]<UnitBalance.human.ammunition_capacity))||battle.health[i]<battle.stats_for(i).health)
                 {
                     float health=Mathf.Clamp01(battle.health[i]/battle.stats_for(i).health);
-                    Vector3 point=battle.positions[i]+Vector3.up*1.9f;
+                    Vector3 point=battle.positions[i]+Vector3.up*1.9f*model_scale;
                     draw_status_bar(point,health,0);
                     if(human) draw_status_bar(point-Camera.main.transform.up*.15f,
                         battle.ammunition[i]/(float)UnitBalance.human.ammunition_capacity,4);
                 }
             }
             foreach(var shot in battle.projectiles) if(shot.active&&(reveal||fog.is_visible(shot.position))) add(2,shot.position,Vector3.one*.13f);
+            foreach(var shot in battle.enemy_projectiles)if(shot.active&&(reveal||fog.is_visible(shot.position)))add(0,shot.position,Vector3.one*.28f);
+            foreach(var impact in battle.enemy_impacts)if(impact.expires>Time.time&&(reveal||fog.is_visible(impact.origin)))
+                for(int i=0;i<32;i++)add(impact.acid?0:2,impact.origin+new Vector3(Mathf.Cos(i*Mathf.PI/16)*impact.radius,.12f,Mathf.Sin(i*Mathf.PI/16)*impact.radius),new Vector3(.18f,.08f,.18f));
             foreach(var flash in battle.flashes) if(flash.expires>Time.time&&(reveal||fog.is_visible(flash.origin)))
             {
                 float radius=UnitBalance.exploder.explosion_radius*(1-(flash.expires-Time.time)/.85f);

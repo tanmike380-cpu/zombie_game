@@ -24,13 +24,14 @@ namespace ZombieGame.World
         public bool headquarters_selected {get;private set;}
         private FrontierLandscape landscape;
         private FrontierBattleView battle_view;
+        private BattleAudio battle_audio;
         private RtsBattleInput input;
         private FrontierHud hud;
         public RtsBattleInput controls => input;
         public bool is_paused => paused;
         private float next_fog;
         private bool paused;
-        public bool pointer_over_ui(Vector2 point) => FrontierHud.contains(point);
+        public bool pointer_over_ui(Vector2 point) => FrontierHud.contains(point,hud!=null&&hud.show_roster);
         public Color32 obstacle_color(int index)
         {
             switch(map.regions[index].kind)
@@ -61,6 +62,7 @@ namespace ZombieGame.World
             current_fog.explore_area(new Rect(-124,-124,76,76));
             current_fog.update_visibility(current);current.player_visibility=current_fog.is_visible;
             battle_view=new FrontierBattleView(current.total_count,transform,landscape_shader);
+            battle_audio=new BattleAudio(current.total_count,transform);
             input=gameObject.AddComponent<RtsBattleInput>();input.game=this;input.custom_command_panel=true;input.select_all();
             input.select_structure=try_select_headquarters;
             input.selection_changed=()=>{headquarters_selected=false;construction?.cancel_preview();};
@@ -69,7 +71,7 @@ namespace ZombieGame.World
             hud=new FrontierHud(this);
             configure_lighting();
             Camera.main.orthographicSize=24;focus_camera(new Vector3(-99,0,-92));
-            Debug.Log($"[Frontier] READY map=256x256 soldiers={current.living_soldiers} reserve={current.reserve_soldiers} zombies={current.zombie_count} blockers={map.blockers.Length} framebuffer={Screen.width}x{Screen.height}; economy provisional; only confirmed combat roles active");
+            Debug.Log($"[Frontier] READY map=256x256 soldiers={current.living_soldiers} reserve={current.reserve_soldiers} zombies={current.zombie_count} blockers={map.blockers.Length} framebuffer={Screen.width}x{Screen.height}; eight zombie roles; new role balance provisional");
         }
         public void focus_camera(Vector3 point)
         {
@@ -87,6 +89,7 @@ namespace ZombieGame.World
             if(!paused) { economy.step(Time.deltaTime);production.step(Time.deltaTime,finish_production);supply.step(current);current.step(Time.time,Time.deltaTime); }
             if(Time.time>=next_fog) { next_fog=Time.time+.1f;current_fog.update_visibility(current); }
             if(Input.GetKeyDown(KeyCode.H))hud.show_help=!hud.show_help;
+            if(Input.GetKeyDown(KeyCode.Z))hud.show_roster=!hud.show_roster;
             if(Input.GetKeyDown(KeyCode.B)&&!paused)select_headquarters(false);
             if(Input.GetKeyDown(KeyCode.T)&&!paused)toggle_selected_weapon();
             if(Input.GetKeyDown(KeyCode.V))reveal_map=!reveal_map;
@@ -94,10 +97,13 @@ namespace ZombieGame.World
             if(Input.GetKeyDown(KeyCode.Home)){Camera.main.orthographicSize=27;focus_camera(map.base_center);}
             if(Input.GetKeyDown(KeyCode.F)){Camera.main.orthographicSize=140;focus_camera(Vector3.zero);}
             Camera.main.orthographicSize=Mathf.Clamp(Camera.main.orthographicSize-Input.mouseScrollDelta.y*2,8,145);
-            Vector3 pan=new Vector3((Input.GetKey(KeyCode.RightArrow)?1:0)-(Input.GetKey(KeyCode.LeftArrow)?1:0),0,
+            Vector2 pan=new Vector2((Input.GetKey(KeyCode.RightArrow)?1:0)-(Input.GetKey(KeyCode.LeftArrow)?1:0),
                 (Input.GetKey(KeyCode.UpArrow)?1:0)-(Input.GetKey(KeyCode.DownArrow)?1:0));
-            if(pan.sqrMagnitude>0)focus_camera(camera_focus+pan*Camera.main.orthographicSize*Time.unscaledDeltaTime);
+            pan+=RtsCameraPan.edge_direction(Input.mousePosition,new Vector2(Screen.width,Screen.height),Application.isFocused);
+            pan=Vector2.ClampMagnitude(pan,1);
+            if(pan.sqrMagnitude>0)focus_camera(camera_focus+RtsCameraPan.world_direction(pan,Camera.main.transform.rotation)*Camera.main.orthographicSize*Time.unscaledDeltaTime);
             construction.update();
+            battle_audio.update(current,current_fog,reveal_map,camera_focus,Camera.main,paused);
             battle_view.draw(current,current_fog,reveal_map);
             if(!reveal_map)current_fog.draw();
         }
@@ -158,6 +164,6 @@ namespace ZombieGame.World
             QualitySettings.shadowResolution=UnityEngine.ShadowResolution.VeryHigh;QualitySettings.shadowCascades=4;
         }
         private void OnDestroy()
-        { Time.timeScale=1;construction?.Dispose();battle_view?.Dispose();landscape?.Dispose();current_fog?.Dispose();current?.Dispose(); }
+        { Time.timeScale=1;battle_audio?.Dispose();construction?.Dispose();battle_view?.Dispose();landscape?.Dispose();current_fog?.Dispose();current?.Dispose(); }
     }
 }

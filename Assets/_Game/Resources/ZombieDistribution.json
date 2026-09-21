@@ -1,10 +1,126 @@
 {
-  "version": 1,
+  "version": 2,
   "seed": 92026,
   "bands": [
-    { "name": "近郊", "max_distance_tiles": 90, "population_percent": 2, "walker_percent": 95, "runner_percent": 5, "exploder_percent": 0 },
-    { "name": "荒野", "max_distance_tiles": 160, "population_percent": 15, "walker_percent": 70, "runner_percent": 25, "exploder_percent": 5 },
-    { "name": "危险区", "max_distance_tiles": 235, "population_percent": 30, "walker_percent": 35, "runner_percent": 50, "exploder_percent": 15 },
-    { "name": "尸潮腹地", "max_distance_tiles": 400, "population_percent": 53, "walker_percent": 10, "runner_percent": 60, "exploder_percent": 30 }
+    {
+      "name": "近郊",
+      "max_distance_tiles": 90,
+      "population_percent": 2,
+      "roles": [
+        {
+          "id": "walker",
+          "percent": 95
+        },
+        {
+          "id": "runner",
+          "percent": 5
+        }
+      ]
+    },
+    {
+      "name": "荒野",
+      "max_distance_tiles": 160,
+      "population_percent": 15,
+      "roles": [
+        {
+          "id": "walker",
+          "percent": 60
+        },
+        {
+          "id": "runner",
+          "percent": 25
+        },
+        {
+          "id": "brute",
+          "percent": 6
+        },
+        {
+          "id": "exploder",
+          "percent": 4
+        },
+        {
+          "id": "zombie_hound",
+          "percent": 4
+        },
+        {
+          "id": "spitter",
+          "percent": 1
+        }
+      ]
+    },
+    {
+      "name": "危险区",
+      "max_distance_tiles": 235,
+      "population_percent": 30,
+      "roles": [
+        {
+          "id": "walker",
+          "percent": 25
+        },
+        {
+          "id": "runner",
+          "percent": 35
+        },
+        {
+          "id": "brute",
+          "percent": 12
+        },
+        {
+          "id": "exploder",
+          "percent": 12
+        },
+        {
+          "id": "zombie_hound",
+          "percent": 10
+        },
+        {
+          "id": "spitter",
+          "percent": 5
+        },
+        {
+          "id": "giant",
+          "percent": 1
+        }
+      ]
+    },
+    {
+      "name": "尸潮腹地",
+      "max_distance_tiles": 400,
+      "population_percent": 53,
+      "roles": [
+        {
+          "id": "walker",
+          "percent": 8
+        },
+        {
+          "id": "runner",
+          "percent": 30
+        },
+        {
+          "id": "brute",
+          "percent": 15
+        },
+        {
+          "id": "exploder",
+          "percent": 20
+        },
+        {
+          "id": "zombie_hound",
+          "percent": 15
+        },
+        {
+          "id": "spitter",
+          "percent": 10
+        },
+        {
+          "id": "giant",
+          "percent": 1.9
+        },
+        {
+          "id": "boss",
+          "percent": 0.1
+        }
+      ]
+    }
   ]
 }

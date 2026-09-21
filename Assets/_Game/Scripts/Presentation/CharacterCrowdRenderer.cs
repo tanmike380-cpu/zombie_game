@@ -38,12 +38,12 @@ namespace ZombieGame.Presentation
 
         public void begin_frame() { Array.Clear(counts, 0, counts.Length); submitted = 0; }
 
-        public void add(bool human, CharacterPose pose, float age, Vector3 position, Quaternion rotation, bool explosive = false)
+        public void add(bool human, CharacterPose pose, float age, Vector3 position, Quaternion rotation, bool explosive = false,float model_scale=1)
         {
             int character = human ? 0 : explosive ? 2 : 1;
             int frame = characters[character].frame_index(pose, age);
             int bucket = (character * pose_count + (int)pose) * frames_per_pose + frame;
-            matrices[bucket][counts[bucket]++] = Matrix4x4.TRS(position, rotation, Vector3.one);
+            matrices[bucket][counts[bucket]++] = Matrix4x4.TRS(position, rotation, Vector3.one*model_scale);
             submitted++;
         }
 
