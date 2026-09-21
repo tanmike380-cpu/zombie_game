@@ -36,14 +36,18 @@ namespace ZombieGame.Combat
                     float distance = (positions[i] - positions[target]).magnitude;
                     if (distance <= stats_for(i).attack_range)
                     {
+                        memories[i]=positions[target];path_target[i]=target;
+                        needs_path[i]=false;
                         if (crowd.agents[i].enabled) crowd.agents[i].isStopped = true;
                         if (exploder[i]) fuse[i] = now + UnitBalance.exploder.fuse_seconds;
                         else if (now >= next_attack[i])
-                        { attack_started_at[i] = now; next_attack[i] = now + stats_for(i).attack_interval; bites++; last_combat_time = now; damage(target, stats_for(i).damage, now); }
+                        { attack_started_at[i] = now; next_attack[i] = now + stats_for(i).attack_interval; bites++; last_combat_time = now; execute_zombie_attack(i,target,now); }
                         continue;
                     }
                 }
                 else if (assault) target = forced_target?.Invoke(i) ?? -1;
+                else if(path_target[i]>=0)
+                {path_target[i]=-1;needs_path[i]=true;} // Investigate the last visible position, unless a newer sound already replaced it.
                 crowd.agents[i].autoBraking = target < 0;
                 bool target_moved = playable && target >= 0 && (positions[target] - memories[i]).sqrMagnitude > .04f
                     && now >= zombie_repath_at[i] && (!crowd.agents[i].enabled || !crowd.agents[i].pathPending);
@@ -53,7 +57,7 @@ namespace ZombieGame.Combat
                     zombie_repath_at[i] = now + UnitBalance.config.chase_repath_seconds;
                 }
                 if (target < 0 && !assault && (positions[i] - memories[i]).sqrMagnitude < .8f * .8f)
-                { if (crowd.agents[i].enabled) crowd.agents[i].isStopped = true; }
+                { needs_path[i]=false;if (crowd.agents[i].enabled) crowd.agents[i].isStopped = true; }
                 else if (crowd.agents[i].enabled && !needs_path[i]) crowd.agents[i].isStopped = false;
             }
         }

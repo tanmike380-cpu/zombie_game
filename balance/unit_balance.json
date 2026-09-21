@@ -37,7 +37,9 @@
       "acceleration": 100,
       "attack_range": 1,
       "damage": 10,
-      "attack_interval": 1
+      "attack_interval": 1,
+      "threat_tier": 2,
+      "model_scale": 1
     },
     {
       "id": "exploder",
@@ -50,7 +52,9 @@
       "damage": 70,
       "attack_interval": 1,
       "explosion_radius": 2,
-      "fuse_seconds": 0.65
+      "fuse_seconds": 0.65,
+      "threat_tier": 3,
+      "model_scale": 1.15
     },
     {
       "id": "walker",
@@ -62,7 +66,9 @@
       "health": 60,
       "damage": 8,
       "attack_interval": 1.2,
-      "attack_range": 1
+      "attack_range": 1,
+      "threat_tier": 1,
+      "model_scale": 1
     },
     {
       "id": "wooden_shield_guard",
@@ -162,29 +168,36 @@
     },
     {
       "id": "brute",
-      "name_zh": "胖尸（待实现）",
+      "name_zh": "胖尸",
       "move_speed": 2.2,
       "provisional": true,
       "health": 500,
       "damage": 35,
       "attack_interval": 1.5,
       "attack_range": 1.2,
-      "acceleration": 60
+      "acceleration": 60,
+      "implemented": true,
+      "threat_tier": 3,
+      "model_scale": 1.6,
+      "navigation_radius": 0.5
     },
     {
       "id": "zombie_hound",
-      "name_zh": "尸犬（待实现）",
-      "move_speed": 4.2,
+      "name_zh": "尸犬",
+      "move_speed": 6.5,
       "provisional": true,
       "health": 70,
       "damage": 12,
       "attack_interval": 0.8,
       "attack_range": 1,
-      "acceleration": 60
+      "acceleration": 60,
+      "implemented": true,
+      "threat_tier": 2,
+      "model_scale": 0.8
     },
     {
       "id": "spitter",
-      "name_zh": "毒液僵尸（待实现）",
+      "name_zh": "毒液僵尸",
       "move_speed": 2.6,
       "provisional": true,
       "health": 120,
@@ -192,22 +205,46 @@
       "attack_interval": 2,
       "attack_range": 6,
       "acceleration": 60,
-      "projectile_speed": 25
+      "projectile_speed": 25,
+      "implemented": true,
+      "threat_tier": 3,
+      "model_scale": 1.15,
+      "splash_radius": 1.5,
+      "poison_damage_per_second": 3,
+      "poison_duration": 3
     },
     {
       "id": "giant",
-      "name_zh": "巨型僵尸（待实现）",
+      "name_zh": "巨型僵尸",
       "move_speed": 1.5,
       "provisional": true,
       "health": 2400,
       "damage": 100,
       "attack_interval": 2.5,
-      "attack_range": 2,
-      "acceleration": 60
+      "attack_range": 3,
+      "acceleration": 60,
+      "implemented": true,
+      "threat_tier": 4,
+      "model_scale": 3,
+      "navigation_radius": 0.9,
+      "splash_radius": 2.8
     },
     {
       "id": "boss",
-      "name_zh": "Boss（数值待定）"
+      "name_zh": "尸王",
+      "implemented": true,
+      "provisional": true,
+      "threat_tier": 5,
+      "model_scale": 5,
+      "navigation_radius": 1.5,
+      "health": 12000,
+      "move_speed": 2.4,
+      "acceleration": 30,
+      "attack_range": 4.5,
+      "damage": 120,
+      "attack_interval": 3,
+      "splash_radius": 4.5,
+      "map_revealed": true
     },
     {
       "id": "arrow_tower",

@@ -67,7 +67,7 @@ namespace ZombieGame.Combat
             {
                 string id=unit_ids==null?(explosive_units[i]?"exploder":"runner"):unit_ids[i];
                 var stats=UnitBalance.get(id);
-                if(!stats.implemented||(id!="walker"&&id!="runner"&&id!="exploder")||explosive_units[i]!=(id=="exploder"))
+                if(!stats.implemented||!UnitBalance.is_zombie(id)||explosive_units[i]!=(id=="exploder"))
                     throw new ArgumentException("Unsupported or inconsistent zombie spawn role: "+id);
                 zombie_stats[i-human_count]=stats;
             }
@@ -78,6 +78,7 @@ namespace ZombieGame.Combat
             positions = new Vector3[total_count];
             health = new float[total_count];
             ammunition=new int[soldier_count];manual_melee=new bool[soldier_count];last_attack_melee=new bool[soldier_count];
+            poisoned_until=new float[soldier_count];poison_dps=new float[soldier_count];
             activated = new bool[total_count];
             exploder = new bool[total_count];
             soldier_facing = new Vector3[soldier_count];
@@ -108,7 +109,9 @@ namespace ZombieGame.Combat
             Array.Copy(spawn_positions, positions, total_count);
             Array.Copy(explosive_units, exploder, total_count);
             assault = global_assault; playable = player_controlled;
-            crowd = new NativeNavMeshCrowd(positions, obstacles, UnitBalance.runner);
+            var navigation_stats=new UnitStats[total_count];
+            for(int i=0;i<total_count;i++)navigation_stats[i]=stats_for(i);
+            crowd = new NativeNavMeshCrowd(positions, obstacles, UnitBalance.runner,navigation_stats);
             for (int i = 0; i < total_count; i++)
             {
                 fuse[i] = float.PositiveInfinity;
@@ -173,7 +176,7 @@ namespace ZombieGame.Combat
                 next_tick = now + .1f; // No unlimited catch-up loop after a slow frame.
                 rebuild_grids(); update_soldiers(now); noise.advance(now); update_zombies(now);
             }
-            process_paths(); update_projectiles(now, delta);
+            process_paths(); update_projectiles(now, delta);update_poison(now,delta);update_enemy_projectiles(now,delta);
             peak_active = Math.Max(peak_active, active_now); peak_moving = Math.Max(peak_moving, moving_now);
         }
 

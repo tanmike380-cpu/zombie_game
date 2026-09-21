@@ -1,5 +1,13 @@
 # Zombie Units
 
+> Runtime update (2026-09-21): all eight types now have active shared records in
+> `balance/unit_balance.json`; new types are explicitly provisional. The old speed
+> tables below are historical design intent, not current runtime values. Sight is
+> now 6, Runner speed 5.2, Exploder 4.9, Hound 6.5. Threat tiers are 1–5, not an XP
+> system. Spitter projectiles/poison and Giant/Boss area attacks are implemented.
+> Hound vaulting, destructible-building siege bonuses, infection conversion and
+> encounter-specific Boss phases remain future mechanics, not completed features.
+
 > Prototype movement values. Fast special zombies exist specifically to prevent ranged armies from kiting forever.
 
 Default zombie sight is **4 tiles**, shorter than the universal human sight of 10.

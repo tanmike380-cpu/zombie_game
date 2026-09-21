@@ -15,6 +15,9 @@ namespace ZombieGame.Balance
         public float melee_damage, melee_attack_interval, melee_range;
         public float health, move_speed, acceleration, attack_range, damage, attack_interval;
         public float projectile_speed, explosion_radius, fuse_seconds, noise_radius;
+        public int threat_tier;
+        public float model_scale, navigation_radius, splash_radius, poison_damage_per_second, poison_duration;
+        public bool map_revealed;
     }
 
     [Serializable]
@@ -35,6 +38,9 @@ namespace ZombieGame.Balance
         public static UnitStats human => get("firearm_infantry");
         public static UnitStats runner => get("runner");
         public static UnitStats exploder => get("exploder");
+        public static readonly string[] zombie_ids={"walker","runner","brute","exploder","zombie_hound","spitter","giant","boss"};
+        public static bool is_zombie(string id)=>Array.IndexOf(zombie_ids,id)>=0;
+        public static float navigation_radius(UnitStats stats)=>stats.navigation_radius>0?stats.navigation_radius:config.unit_navigation_radius;
         public static string source_hash { get; private set; }
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
@@ -60,10 +66,14 @@ namespace ZombieGame.Balance
             {
                 if (stats == null || string.IsNullOrEmpty(stats.id) || !ids.Add(stats.id)) throw new InvalidOperationException("Duplicate/missing balance unit id");
                 if (stats.ammunition_cost < 0) throw new InvalidOperationException("Negative ammunition cost: " + stats.id);
-                foreach (float number in new[] {stats.health,stats.move_speed,stats.acceleration,stats.attack_range,stats.damage,stats.attack_interval,stats.projectile_speed,stats.explosion_radius,stats.fuse_seconds,stats.noise_radius,stats.melee_damage,stats.melee_attack_interval,stats.melee_range})
+                foreach (float number in new[] {stats.health,stats.move_speed,stats.acceleration,stats.attack_range,stats.damage,stats.attack_interval,stats.projectile_speed,stats.explosion_radius,stats.fuse_seconds,stats.noise_radius,stats.melee_damage,stats.melee_attack_interval,stats.melee_range,stats.model_scale,stats.navigation_radius,stats.splash_radius,stats.poison_damage_per_second,stats.poison_duration})
                     if (float.IsNaN(number) || float.IsInfinity(number) || number < 0) throw new InvalidOperationException("Invalid numeric balance: " + stats.id);
                 if (stats.implemented && (stats.health <= 0 || stats.move_speed <= 0 || stats.acceleration <= 0 || stats.attack_range <= 0 || stats.damage <= 0 || stats.attack_interval <= 0))
                     throw new InvalidOperationException("Incomplete active unit balance: " + stats.id);
+                if(stats.implemented&&is_zombie(stats.id)&&(stats.threat_tier<1||stats.threat_tier>5||stats.model_scale<=0||stats.noise_radius!=0))
+                    throw new InvalidOperationException("Zombie tier, presentation scale or silence invalid: "+stats.id);
+                if(stats.implemented&&stats.id=="spitter"&&(stats.projectile_speed<=0||stats.splash_radius<=0||stats.poison_damage_per_second<=0||stats.poison_duration<=0))
+                    throw new InvalidOperationException("Incomplete spitter projectile/poison stats");
             }
             foreach (string required in new[] { "firearm_infantry", "runner", "exploder", "walker", "archer" })
                 if (!ids.Contains(required)) throw new InvalidOperationException("Required balance unit missing: " + required);

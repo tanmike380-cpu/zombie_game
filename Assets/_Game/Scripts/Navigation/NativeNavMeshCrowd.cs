@@ -7,7 +7,7 @@ using UnityEngine.AI;
 namespace ZombieGame.Navigation
 {
     /// <summary>Reusable native agents and box-based map bake. All routing/avoidance belongs to Unity.</summary>
-    public class NativeNavMeshCrowd : IDisposable
+    public partial class NativeNavMeshCrowd : IDisposable
     {
         public readonly NavMeshAgent[] agents;
         public readonly Transform[] transforms;
@@ -19,7 +19,7 @@ namespace ZombieGame.Navigation
         private readonly Vector3[] spawn_positions;
         private readonly UnitStats stats;
 
-        public NativeNavMeshCrowd(Vector3[] spawn_positions, Bounds[] obstacles, UnitStats stats = null)
+        public NativeNavMeshCrowd(Vector3[] spawn_positions, Bounds[] obstacles, UnitStats stats = null,UnitStats[] agent_stats=null)
         {
             if (spawn_positions == null || obstacles == null) throw new ArgumentException("Navigation requires explicit spawns and map obstacles");
             int count = spawn_positions.Length;
@@ -43,7 +43,13 @@ namespace ZombieGame.Navigation
             root = new GameObject("Native NavMesh Agents");
             agents = new NavMeshAgent[count];
             transforms = new Transform[count];
-            for (int i = 0; i < count; i++) spawn_agent(i, settings.agentTypeID);
+            if(agent_stats!=null&&agent_stats.Length!=count)throw new ArgumentException("Per-agent navigation stats must match spawns");
+            for (int i = 0; i < count; i++)
+            {
+                float radius=agent_stats==null?UnitBalance.config.unit_navigation_radius:UnitBalance.navigation_radius(agent_stats[i]);
+                int agent_type=radius<=UnitBalance.config.unit_navigation_radius?settings.agentTypeID:ensure_large_profile(radius,sources);
+                spawn_agent(i,agent_type,radius);
+            }
             timer.Stop();
             setup_ms = timer.Elapsed.TotalMilliseconds;
         }
@@ -54,14 +60,14 @@ namespace ZombieGame.Navigation
                 transform = Matrix4x4.TRS(bounds.center, Quaternion.identity, Vector3.one), size = bounds.size, area = area };
         }
 
-        private void spawn_agent(int index, int agent_type)
+        private void spawn_agent(int index, int agent_type,float radius)
         {
             var unit = new GameObject("Agent");
             unit.transform.SetParent(root.transform, false);
             unit.transform.position = spawn_positions[index];
             var agent = unit.AddComponent<NavMeshAgent>();
             agent.agentTypeID = agent_type;
-            agent.radius = UnitBalance.config.unit_navigation_radius;
+            agent.radius = radius;
             agent.height = 1.2f;
             agent.speed = stats.move_speed;
             agent.acceleration = stats.acceleration;
@@ -83,7 +89,7 @@ namespace ZombieGame.Navigation
             agent.enabled = true;
             if (!agent.isOnNavMesh) return false;
             var path = new NavMeshPath();
-            if (!NavMesh.CalculatePath(transforms[index].position, target, NavMesh.AllAreas, path)
+            if (!agent.CalculatePath(target,path)
                 || path.status != NavMeshPathStatus.PathComplete || !agent.SetPath(path)) return false;
             agent.stoppingDistance = .8f;
             agent.isStopped = false;
@@ -117,6 +123,7 @@ namespace ZombieGame.Navigation
             if (root != null) { root.SetActive(false); UnityEngine.Object.Destroy(root); }
             if (nav_instance.valid) nav_instance.Remove();
             if (nav_data != null) UnityEngine.Object.Destroy(nav_data);
+            dispose_large_profiles();
         }
     }
 }
