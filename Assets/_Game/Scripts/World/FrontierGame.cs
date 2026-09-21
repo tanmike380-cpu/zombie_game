@@ -25,6 +25,11 @@ namespace ZombieGame.World
         private FrontierLandscape landscape;
         private FrontierBattleView battle_view;
         private BattleAudio battle_audio;
+        private RtsCursor game_cursor;
+        private Vector2 gui_pointer;
+        private bool has_gui_pointer;
+        public FrontierSiege siege {get;private set;}
+        private int previous_navigation_iterations=-1;
         private RtsBattleInput input;
         private FrontierHud hud;
         public RtsBattleInput controls => input;
@@ -63,10 +68,14 @@ namespace ZombieGame.World
             current_fog.update_visibility(current);current.player_visibility=current_fog.is_visible;
             battle_view=new FrontierBattleView(current.total_count,transform,landscape_shader);
             battle_audio=new BattleAudio(current.total_count,transform);
+            game_cursor=new RtsCursor();
             input=gameObject.AddComponent<RtsBattleInput>();input.game=this;input.custom_command_panel=true;input.select_all();
             input.select_structure=try_select_headquarters;
             input.selection_changed=()=>{headquarters_selected=false;construction?.cancel_preview();};
             construction=new FrontierConstruction(this,landscape,landscape_shader);
+            siege=new FrontierSiege(JsonUtility.FromJson<SiegeConfig>(Resources.Load<TextAsset>("SiegeConfig").text));
+            previous_navigation_iterations=UnityEngine.AI.NavMesh.pathfindingIterationsPerFrame;
+            UnityEngine.AI.NavMesh.pathfindingIterationsPerFrame=siege.config.navigation_iterations_per_frame;
             input.intercept_world_input=construction.handle_input;
             hud=new FrontierHud(this);
             configure_lighting();
@@ -86,7 +95,7 @@ namespace ZombieGame.World
             if(Input.GetKeyDown(KeyCode.F6))switch_visual_style(1);
             if(Input.GetKeyDown(KeyCode.F7))switch_visual_style(2);
             if(Input.GetKeyDown(KeyCode.Space)) { paused=!paused;Time.timeScale=paused?0:1; }
-            if(!paused) { economy.step(Time.deltaTime);production.step(Time.deltaTime,finish_production);supply.step(current);current.step(Time.time,Time.deltaTime); }
+            if(!paused) { economy.step(Time.deltaTime);production.step(Time.deltaTime,finish_production);supply.step(current);siege.step(Time.deltaTime,current,construction,map.base_center);current.step(Time.time,Time.deltaTime); }
             if(Time.time>=next_fog) { next_fog=Time.time+.1f;current_fog.update_visibility(current); }
             if(Input.GetKeyDown(KeyCode.H))hud.show_help=!hud.show_help;
             if(Input.GetKeyDown(KeyCode.Z))hud.show_roster=!hud.show_roster;
@@ -99,7 +108,10 @@ namespace ZombieGame.World
             Camera.main.orthographicSize=Mathf.Clamp(Camera.main.orthographicSize-Input.mouseScrollDelta.y*2,8,145);
             Vector2 pan=new Vector2((Input.GetKey(KeyCode.RightArrow)?1:0)-(Input.GetKey(KeyCode.LeftArrow)?1:0),
                 (Input.GetKey(KeyCode.UpArrow)?1:0)-(Input.GetKey(KeyCode.DownArrow)?1:0));
-            pan+=RtsCameraPan.edge_direction(Input.mousePosition,new Vector2(Screen.width,Screen.height),Application.isFocused);
+            Vector2 pointer=has_gui_pointer?gui_pointer:(Vector2)Input.mousePosition;
+            Vector2 edge=RtsCameraPan.edge_direction(pointer,new Vector2(Screen.width,Screen.height),Application.isFocused);
+            game_cursor.update(edge,Application.isFocused,input.pending=="Attack");
+            pan+=edge;
             pan=Vector2.ClampMagnitude(pan,1);
             if(pan.sqrMagnitude>0)focus_camera(camera_focus+RtsCameraPan.world_direction(pan,Camera.main.transform.rotation)*Camera.main.orthographicSize*Time.unscaledDeltaTime);
             construction.update();
@@ -107,7 +119,14 @@ namespace ZombieGame.World
             battle_view.draw(current,current_fog,reveal_map);
             if(!reveal_map)current_fog.draw();
         }
-        private void OnGUI() { if(economy!=null)hud?.draw(); }
+        private void OnGUI()
+        {
+            // Same drawable-window coordinates as selection/commands, including Retina resize and window borders.
+            if(Event.current.isMouse||Event.current.type==EventType.Repaint)
+            {gui_pointer=new Vector2(Event.current.mousePosition.x,Screen.height-Event.current.mousePosition.y);has_gui_pointer=true;}
+            if(economy!=null)hud?.draw();
+        }
+        private void OnApplicationFocus(bool focused){has_gui_pointer=false;if(!focused)game_cursor?.update(Vector2.zero,false,false);}
         public void select_headquarters(bool focus=true)
         {
             construction?.cancel_preview();
@@ -164,6 +183,6 @@ namespace ZombieGame.World
             QualitySettings.shadowResolution=UnityEngine.ShadowResolution.VeryHigh;QualitySettings.shadowCascades=4;
         }
         private void OnDestroy()
-        { Time.timeScale=1;battle_audio?.Dispose();construction?.Dispose();battle_view?.Dispose();landscape?.Dispose();current_fog?.Dispose();current?.Dispose(); }
+        { Time.timeScale=1;if(previous_navigation_iterations>=0)UnityEngine.AI.NavMesh.pathfindingIterationsPerFrame=previous_navigation_iterations;game_cursor?.Dispose();battle_audio?.Dispose();construction?.Dispose();battle_view?.Dispose();landscape?.Dispose();current_fog?.Dispose();current?.Dispose(); }
     }
 }

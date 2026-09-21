@@ -1,0 +1,17 @@
+{
+  "defense_test": true,
+  "navigation_iterations_per_frame": 10000,
+  "rally_forward_offset": 6,
+  "preparation_seconds": 60,
+  "campaign_first_wave_seconds": 720,
+  "low_pressure_interval_seconds": 180,
+  "high_pressure_interval_seconds": 60,
+  "safe_radius": 35,
+  "frontier_radius": 250,
+  "territory_cells_for_full_pressure": 180,
+  "territory_cell_size": 8,
+  "distance_weight": 0.65,
+  "area_weight": 0.35,
+  "low_pressure_wave_fraction": 0.04,
+  "high_pressure_wave_fraction": 0.12
+}

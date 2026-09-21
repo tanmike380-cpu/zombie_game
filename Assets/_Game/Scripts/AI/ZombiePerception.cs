@@ -47,7 +47,10 @@ namespace ZombieGame.Combat
                 }
                 else if (assault) target = forced_target?.Invoke(i) ?? -1;
                 else if(path_target[i]>=0)
-                {path_target[i]=-1;needs_path[i]=true;} // Investigate the last visible position, unless a newer sound already replaced it.
+                {path_target[i]=-1;needs_path[i]=true;if(has_siege_order(i)&&!new_sound)memories[i]=siege_goal;}
+                if(target<0&&has_siege_order(i)&&!new_sound&&(positions[i]-memories[i]).sqrMagnitude<.64f&&
+                    (memories[i]-siege_goal).sqrMagnitude>.01f)
+                {memories[i]=siege_goal;needs_path[i]=true;}
                 crowd.agents[i].autoBraking = target < 0;
                 bool target_moved = playable && target >= 0 && (positions[target] - memories[i]).sqrMagnitude > .04f
                     && now >= zombie_repath_at[i] && (!crowd.agents[i].enabled || !crowd.agents[i].pathPending);

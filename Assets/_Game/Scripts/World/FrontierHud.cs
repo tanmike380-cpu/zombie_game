@@ -44,6 +44,14 @@ namespace ZombieGame.World
         {
             prepare_styles();GUI.matrix=Matrix4x4.identity;GUI.depth=1;
             draw_threat_intelligence();
+            if(game.siege!=null)
+            {
+                var siege=game.siege;
+                string countdown=siege.remaining>0?$"{Mathf.CeilToInt(siege.remaining)/60:00}:{Mathf.CeilToInt(siege.remaining)%60:00}":"进攻中";
+                string label=siege.config.defense_test?$"防守测试 · {countdown} · {(siege.waves==0?"全图尸群来袭":"守住阵地")}":$"尸潮 {siege.waves} · 下一波 {countdown}";
+                panel(new Rect(Screen.width/2-240*scale,8*scale,480*scale,38*scale));
+                GUI.Label(new Rect(Screen.width/2-230*scale,10*scale,460*scale,34*scale),label+$" · 压力 {siege.pressure:P0}",title);
+            }
             float s=scale,y=Screen.height-190*s;
             panel(new Rect(0,Screen.height-242*s,224*s,242*s));
             GUI.Label(new Rect(14*s,Screen.height-238*s,200*s,25*s),"战术地图   256 × 256",small);
