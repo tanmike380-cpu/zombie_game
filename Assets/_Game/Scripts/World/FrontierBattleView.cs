@@ -44,15 +44,15 @@ namespace ZombieGame.World
                 if(battle.health[i]<=0)
                 {
                     if(death_started[i]==0)death_started[i]=Time.time;
-                    if(Time.time-death_started[i]<2) characters.add(human,CharacterPose.Death,Time.time-death_started[i],battle.positions[i],rotation,battle.exploder[i],model_scale);
+                    if(Time.time-death_started[i]<2) characters.add(human,CharacterPose.Death,Time.time-death_started[i],battle.positions[i],rotation,battle.exploder[i],model_scale,battle.stats_for(i).id);
                     continue;
                 }
                 float age=Time.time-battle.attack_started_at[i];
                 bool moving=agent.enabled&&agent.velocity.sqrMagnitude>.04f;
                 var pose=moving?CharacterPose.Run:age<.4f?CharacterPose.Attack:CharacterPose.Idle;
                 if(human&&battle.uses_melee(i))pose=moving?CharacterPose.MeleeRun:age<.55f&&battle.last_attack_melee[i]?CharacterPose.MeleeAttack:CharacterPose.MeleeIdle;
-                characters.add(human,pose,pose==CharacterPose.Attack||pose==CharacterPose.MeleeAttack?age:Time.time+i*.137f,battle.positions[i],rotation,battle.exploder[i],model_scale);
-                if(human&&!battle.last_attack_melee[i]&&battle.attack_started_at[i]>seen_shots[i])
+                characters.add(human,pose,pose==CharacterPose.Attack||pose==CharacterPose.MeleeAttack?age:Time.time+i*.137f,battle.positions[i],rotation,battle.exploder[i],model_scale,battle.stats_for(i).id);
+                if(human&&battle.stats_for(i).ammunition_type=="gunpowder"&&!battle.last_attack_melee[i]&&battle.attack_started_at[i]>seen_shots[i])
                 { seen_shots[i]=battle.attack_started_at[i];effects.fire(characters.human_muzzle(battle.positions[i],rotation),rotation*Vector3.forward); }
             }
             foreach(var shot in battle.projectiles) if(shot.active&&(reveal||fog.is_visible(shot.position))) add(2,shot.position,Vector3.one*.13f);

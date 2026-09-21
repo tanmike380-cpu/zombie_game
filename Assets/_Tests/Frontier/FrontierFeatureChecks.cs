@@ -74,6 +74,7 @@ namespace ZombieGame.FrontierTests
             for(int index=1;index<game.production.config.recipes.Length;index++)
             {
                 var recipe=game.production.config.recipes[index];bool found=false;Vector3 point=Vector3.zero;
+                if(recipe.is_unit)continue;
                 for(int z=-122;z<122&&!found;z+=4)for(int x=-122;x<122&&!found;x+=4)
                 {
                     var candidate=new Vector3(x,0,z);

@@ -52,7 +52,7 @@ namespace ZombieGame.World
             {
                 scan_at=elapsed+1;
                 for(int i=0;i<battle.soldier_count;i++)if(battle.health[i]>0&&!battle.is_reserve(i))record_expansion(battle.positions[i],home);
-                if(construction!=null)foreach(var facility in construction.facilities)if(facility.complete)record_expansion(facility.region.bounds.center,home);
+                if(construction!=null)foreach(var facility in construction.facilities)if(facility.complete&&!facility.destroyed)record_expansion(facility.region.bounds.center,home);
             }
             if(waves==0)
             {if(remaining>0)return;send_wave(battle,home);return;}

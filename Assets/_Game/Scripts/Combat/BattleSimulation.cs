@@ -11,11 +11,15 @@ namespace ZombieGame.Combat
     /// <summary>Production combat, orders, perception and native crowd navigation.</summary>
     public partial class BattleSimulation : IDisposable
     {
-        public readonly int soldier_count, zombie_count, total_count;
+        public readonly int soldier_count, total_count;
+        public int zombie_count {get;private set;}
+        private readonly bool[] zombie_deployed;
+        private readonly UnitStats[] human_stats;
+        public int infection_spawned {get;private set;}
         public int reserve_soldiers { get; private set; }
         public int living_soldiers => soldier_count-dead_soldiers-reserve_soldiers;
         private readonly bool[] recruited;
-        public bool is_reserve(int index) => index<soldier_count&&!recruited[index];
+        public bool is_reserve(int index) => index<soldier_count?!recruited[index]:!zombie_deployed[index-soldier_count];
         public Func<int, int> forced_target;
         // Optional economy gate. Benchmarks without an economy retain their existing behaviour.
         public Func<int, bool> try_supply_shot;
@@ -27,8 +31,8 @@ namespace ZombieGame.Combat
         public readonly int[] ammunition;
         public readonly bool[] manual_melee,last_attack_melee;
         public int melee_strikes;
-        public bool uses_melee(int index) => manual_melee[index]||ammunition[index]<UnitBalance.human.ammunition_cost;
-        public float human_range(int index) => uses_melee(index)?UnitBalance.human.melee_range:UnitBalance.human.attack_range;
+        public bool uses_melee(int index) => manual_melee[index]||ammunition[index]<stats_for(index).ammunition_cost;
+        public float human_range(int index) => uses_melee(index)?stats_for(index).melee_range:stats_for(index).attack_range;
         public readonly NativeNavMeshCrowd crowd;
         public readonly bool assault;
         public readonly bool playable;
@@ -40,7 +44,7 @@ namespace ZombieGame.Combat
         public float last_combat_time = -10;
         public readonly Shot[] projectiles = new Shot[2048];
         public readonly Flash[] flashes = new Flash[256];
-        public struct Shot { public bool active; public Vector3 position; public int target; }
+        public struct Shot { public bool active; public Vector3 position; public int target,source; }
         public struct Flash { public Vector3 origin; public float expires; }
         private readonly CombatSpatialGrid zombie_grid;
         private readonly CombatSpatialGrid soldier_grid;
@@ -55,17 +59,35 @@ namespace ZombieGame.Combat
         private float next_tick;
 
         public BattleSimulation(Vector3[] spawn_positions, int human_count, bool[] explosive_units,
-            Bounds[] obstacles, bool global_assault = false, bool player_controlled = true, int initial_humans = -1, string[] unit_ids = null)
+            Bounds[] obstacles, bool global_assault = false, bool player_controlled = true, int initial_humans = -1, string[] unit_ids = null, int infection_reserve = 0)
         {
             if (spawn_positions == null || explosive_units == null || obstacles == null ||
                 human_count < 1 || human_count > spawn_positions.Length || explosive_units.Length != spawn_positions.Length)
                 throw new ArgumentException("Battle requires valid spawns, human count, explosive flags and obstacles");
-            soldier_count = human_count; total_count = spawn_positions.Length; zombie_count = total_count - soldier_count;
+            int initial_total=spawn_positions.Length;
+            if(unit_ids!=null&&unit_ids.Length!=initial_total)throw new ArgumentException("Spawn unit ids must match positions");
+            if(infection_reserve<0)throw new ArgumentOutOfRangeException(nameof(infection_reserve));
+            if(infection_reserve>0)
+            {
+                Array.Resize(ref spawn_positions,initial_total+infection_reserve);Array.Resize(ref explosive_units,initial_total+infection_reserve);
+                if(unit_ids!=null)Array.Resize(ref unit_ids,initial_total+infection_reserve);
+                for(int i=initial_total;i<spawn_positions.Length;i++){spawn_positions[i]=spawn_positions[0];if(unit_ids!=null)unit_ids[i]="walker";}
+            }
+            soldier_count = human_count; total_count = spawn_positions.Length; zombie_count = initial_total - soldier_count;
+            zombie_deployed=new bool[total_count-soldier_count];
+            human_stats=new UnitStats[soldier_count];
+            for(int i=0;i<soldier_count;i++)
+            {
+                string id=unit_ids==null||string.IsNullOrEmpty(unit_ids[i])?"firearm_infantry":unit_ids[i];
+                human_stats[i]=UnitBalance.get(id);
+                if(!UnitBalance.is_human(id)||!human_stats[i].implemented)throw new ArgumentException("Unsupported human spawn: "+id);
+            }
             if(unit_ids!=null&&unit_ids.Length!=total_count)throw new ArgumentException("Spawn unit ids must match positions");
-            zombie_stats=new UnitStats[zombie_count];
+            zombie_stats=new UnitStats[total_count-soldier_count];
             for(int i=human_count;i<total_count;i++)
             {
-                string id=unit_ids==null?(explosive_units[i]?"exploder":"runner"):unit_ids[i];
+                string id=i>=initial_total?"walker":unit_ids==null?(explosive_units[i]?"exploder":"runner"):unit_ids[i];
+                zombie_deployed[i-human_count]=i<initial_total;
                 var stats=UnitBalance.get(id);
                 if(!stats.implemented||!UnitBalance.is_zombie(id)||explosive_units[i]!=(id=="exploder"))
                     throw new ArgumentException("Unsupported or inconsistent zombie spawn role: "+id);
@@ -84,7 +106,7 @@ namespace ZombieGame.Combat
             soldier_facing = new Vector3[soldier_count];
             attack_started_at = new float[total_count];
             next_attack = new float[total_count];
-            noise = new NoiseTimeline(total_count, UnitBalance.human_noise(UnitBalance.human));
+            noise = new NoiseTimeline(total_count, UnitBalance.max_human_noise);
             sound_memories = new SoundMemory[total_count];
             fuse = new float[total_count];
             memories = new Vector3[total_count];
@@ -117,7 +139,7 @@ namespace ZombieGame.Combat
                 fuse[i] = float.PositiveInfinity;
                 attack_started_at[i] = float.NegativeInfinity;
                 path_target[i] = -1;
-                health[i] = stats_for(i).health;
+                health[i] = i>=initial_total?0:stats_for(i).health;
                 crowd.agents[i].speed = stats_for(i).move_speed;
                 crowd.agents[i].acceleration = stats_for(i).acceleration;
                 if (i < soldier_count)
@@ -126,7 +148,7 @@ namespace ZombieGame.Combat
                     crowd.agents[i].angularSpeed = 1440;
                     order_targets[i] = -1; last_soldier_goal[i] = Vector3.positiveInfinity;
                     recruited[i]=i<initial_humans;
-                    ammunition[i]=recruited[i]?UnitBalance.human.ammunition_capacity:0;
+                    ammunition[i]=recruited[i]?stats_for(i).ammunition_capacity:0;
                     if(!recruited[i]){health[i]=0;crowd.agents[i].enabled=false;}
                 }
             }
@@ -134,8 +156,10 @@ namespace ZombieGame.Combat
         }
 
         /// <summary>Activate one never-deployed slot on native navigation; false leaves the queue pending.</summary>
-        public bool recruit_soldier(Vector3 point)
+        public bool recruit_soldier(Vector3 point,string unit_id="firearm_infantry")
         {
+            var recruit_stats=UnitBalance.get(unit_id);
+            if(!UnitBalance.is_human(unit_id)||!recruit_stats.implemented)throw new ArgumentException("Unsupported recruitment role: "+unit_id);
             if(reserve_soldiers==0||!NavMesh.SamplePosition(point,out var hit,1,NavMesh.AllAreas))return false;
             for(int i=0;i<total_count;i++)
                 if(health[i]>0&&(positions[i]-hit.position).sqrMagnitude<Mathf.Pow(UnitBalance.config.unit_navigation_radius*2+.05f,2))return false;
@@ -144,7 +168,8 @@ namespace ZombieGame.Combat
                 if(recruited[i])continue;
                 var agent=crowd.agents[i];crowd.transforms[i].position=hit.position;agent.enabled=true;
                 if(!agent.isOnNavMesh){agent.enabled=false;return false;}
-                agent.isStopped=true;positions[i]=hit.position;health[i]=stats_for(i).health;
+                human_stats[i]=recruit_stats;agent.speed=recruit_stats.move_speed;agent.acceleration=recruit_stats.acceleration;
+                agent.isStopped=true;positions[i]=hit.position;health[i]=recruit_stats.health;ammunition[i]=recruit_stats.ammunition_capacity;
                 recruited[i]=true;reserve_soldiers--;return true;
             }
             return false;
@@ -176,7 +201,7 @@ namespace ZombieGame.Combat
                 next_tick = now + .1f; // No unlimited catch-up loop after a slow frame.
                 rebuild_grids(); update_soldiers(now); noise.advance(now); update_zombies(now);
             }
-            process_paths(); update_projectiles(now, delta);update_poison(now,delta);update_enemy_projectiles(now,delta);
+            process_paths(); update_projectiles(now, delta);update_poison(now,delta);update_enemy_projectiles(now,delta);update_building_infection();
             peak_active = Math.Max(peak_active, active_now); peak_moving = Math.Max(peak_moving, moving_now);
         }
 
@@ -188,7 +213,7 @@ namespace ZombieGame.Combat
                 if (health[i] <= 0) continue;
                 positions[i] = crowd.transforms[i].position;
                 // Ignore tiny avoidance corrections when choosing visual facing; firing still aims at its target.
-                if (i < soldier_count && crowd.agents[i].velocity.sqrMagnitude > Mathf.Pow(UnitBalance.human.move_speed*.2f,2))
+                if (i < soldier_count && crowd.agents[i].velocity.sqrMagnitude > Mathf.Pow(stats_for(i).move_speed*.2f,2))
                     soldier_facing[i] = crowd.agents[i].velocity;
                 if (i < soldier_count || !activated[i]) continue;
                 active_now++;
@@ -245,30 +270,30 @@ namespace ZombieGame.Combat
                 if (target < 0 || now < next_attack[i]) continue;
                 if(uses_melee(i))
                 {
-                    next_attack[i]=now+UnitBalance.human.melee_attack_interval;attack_started_at[i]=now;
+                    next_attack[i]=now+stats_for(i).melee_attack_interval;attack_started_at[i]=now;
                     last_attack_melee[i]=true;melee_strikes++;last_combat_time=now;
-                    damage(target,UnitBalance.human.melee_damage,now);continue;
+                    damage(target,stats_for(i).melee_damage,now);continue;
                 }
                 if (try_supply_shot != null && !try_supply_shot(i)) continue;
-                ammunition[i]-=UnitBalance.human.ammunition_cost;last_attack_melee[i]=false;
-                next_attack[i] = now + UnitBalance.human.attack_interval; shots++; last_combat_time = now;
+                ammunition[i]-=stats_for(i).ammunition_cost;last_attack_melee[i]=false;
+                next_attack[i] = now + stats_for(i).attack_interval; shots++; last_combat_time = now;
                 attack_started_at[i] = now;
                 bool allocated = false;
                 for (int attempt = 0; attempt < projectiles.Length; attempt++)
                 {
                     int slot = shot_cursor++ % projectiles.Length;
                     if (projectiles[slot].active) continue;
-                    projectiles[slot] = new Shot { active = true, position = positions[i] + Vector3.up, target = target };
+                    projectiles[slot] = new Shot { active = true, position = positions[i] + Vector3.up, target = target, source=i };
                     allocated = true; break;
                 }
                 if (!allocated) dropped_projectiles++;
-                emit_gun_noise(positions[i], now);
+                emit_gun_noise(positions[i], now, stats_for(i));
             }
         }
 
-        public void emit_gun_noise(Vector3 origin, float now)
+        public void emit_gun_noise(Vector3 origin, float now,UnitStats shooter=null)
         {
-            float radius = UnitBalance.human_noise(UnitBalance.human);
+            float radius = UnitBalance.human_noise(shooter??UnitBalance.human);
             NoiseSignal signal = noise.create_signal(origin, radius, now);
             for (int z = CombatSpatialGrid.cell(origin.z - radius); z <= CombatSpatialGrid.cell(origin.z + radius); z++)
                 for (int x = CombatSpatialGrid.cell(origin.x - radius); x <= CombatSpatialGrid.cell(origin.x + radius); x++)
@@ -283,7 +308,7 @@ namespace ZombieGame.Combat
         private void process_paths()
         {
             int issued = 0;
-            for (int scanned = 0; scanned < zombie_count && issued < 64; scanned++)
+            for (int scanned = 0; scanned < total_count-soldier_count && issued < 64; scanned++)
             {
                 int i = path_cursor++;
                 if (path_cursor >= total_count) path_cursor = soldier_count;
@@ -291,7 +316,9 @@ namespace ZombieGame.Combat
                 needs_path[i] = false; issued++;
                 var agent = crowd.agents[i]; agent.enabled = true;
                 if (!agent.isOnNavMesh || !agent.SetDestination(memories[i])) { path_failures++; continue; }
-                agent.stoppingDistance = .75f; agent.isStopped = false;
+                agent.stoppingDistance = building_targets!=null&&building_targets[i]>=0
+                    ? Mathf.Min(.75f,Mathf.Max(.05f,stats_for(i).attack_range-UnitBalance.navigation_radius(stats_for(i))-.3f)) : .75f;
+                agent.isStopped = false;
             }
         }
 
@@ -302,10 +329,10 @@ namespace ZombieGame.Combat
                 if (!projectiles[i].active) continue;
                 Shot shot = projectiles[i];
                 if (health[shot.target] <= 0) { projectiles[i].active = false; continue; }
-                Vector3 next = Vector3.MoveTowards(shot.position, positions[shot.target] + Vector3.up, UnitBalance.human.projectile_speed * delta);
+                Vector3 next = Vector3.MoveTowards(shot.position, positions[shot.target] + Vector3.up, stats_for(shot.source).projectile_speed * delta);
                 if (!visible(shot.position, next)) { projectiles[i].active = false; continue; }
                 if ((next - positions[shot.target] - Vector3.up).sqrMagnitude <= .04f)
-                { hits++; last_combat_time = now; damage(shot.target, UnitBalance.human.damage, now); projectiles[i].active = false; }
+                { hits++; last_combat_time = now; apply_human_projectile(shot,now); projectiles[i].active = false; }
                 else { shot.position = next; projectiles[i] = shot; }
             }
         }
@@ -322,12 +349,13 @@ namespace ZombieGame.Combat
             blasts++; last_combat_time = now;
             flashes[flash_cursor++ % flashes.Length] = new Flash { origin = positions[victim], expires = now + .85f };
             // Explosions NEVER call emit_gun_noise; only friendly victims take AOE damage.
+            damage_buildings_in_radius(positions[victim],UnitBalance.exploder.explosion_radius,UnitBalance.exploder.damage,now);
             for (int i = 0; i < soldier_count; i++)
                 if (health[i] > 0 && (positions[i] - positions[victim]).sqrMagnitude <= UnitBalance.exploder.explosion_radius * UnitBalance.exploder.explosion_radius && visible(positions[victim], positions[i]))
                     damage(i, UnitBalance.exploder.damage, now);
         }
 
-        public UnitStats stats_for(int index) => index < soldier_count ? UnitBalance.human : zombie_stats[index-soldier_count];
+        public UnitStats stats_for(int index) => index < soldier_count ? human_stats[index] : zombie_stats[index-soldier_count];
 
         public void Dispose() { crowd.Dispose(); }
     }

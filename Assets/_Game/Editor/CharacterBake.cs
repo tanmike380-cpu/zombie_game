@@ -14,7 +14,7 @@ namespace ZombieGame.EditorTools
         private const string OUTPUT = "Assets/_Game/Resources/CharacterGenerated";
         private const string SOURCE = "Assets/ThirdParty/Quaternius/";
         private const int FRAME_COUNT = 12;
-        private const int VISUAL_REVISION = 3;
+        private const int VISUAL_REVISION = 4;
 
         [InitializeOnLoadMethod]
         private static void register_art_refresh()
@@ -43,6 +43,9 @@ namespace ZombieGame.EditorTools
                 bake_character("Zombie_Basic","Zombie",new[]{"Idle","Run","Punch","Death","Punch","Idle","Run"},style);
                 bake_character("Zombie_Chubby","Exploder",new[]{"Idle","Run","Punch","Death","Punch","Idle","Run"},style);
             }
+            foreach(var style in new VisualStyle[]{null}.Concat(VisualStyles.all))
+                foreach(string role in new[]{"Archer","Repeater","Crossbow","Ballista","Cannon"})
+                    bake_character("Characters_Shaun",role,new[]{"Idle_Gun","Run_Gun","Idle_Gun","Death","Punch","Idle","Run"},style,role);
             AssetDatabase.SaveAssets();
             Debug.Log("[CharacterBake] PASS human/basic/chubby: 7 gun/knife poses, 12 shared frames per pose; matchlock fire and knife Punch/Idle/Run");
         }
@@ -51,7 +54,7 @@ namespace ZombieGame.EditorTools
         {
             var folders=new[]{""}.Concat(VisualStyles.all.Select(style=>style.id+"/"));
             foreach(string folder in folders)
-                foreach(string name in new[]{"Human","Zombie","Exploder"})
+                foreach(string name in new[]{"Human","Zombie","Exploder","Archer","Repeater","Crossbow","Ballista","Cannon"})
                 {
                     var asset=AssetDatabase.LoadAssetAtPath<CharacterFrames>(OUTPUT+"/"+folder+name+".asset");
                     if(asset!=null&&asset.poses!=null&&asset.poses.Length==7&&asset.visual_revision==VISUAL_REVISION)continue;
@@ -59,7 +62,7 @@ namespace ZombieGame.EditorTools
                 }
         }
 
-        private static void bake_character(string source, string name, string[] clips,VisualStyle style=null)
+        private static void bake_character(string source, string name, string[] clips,VisualStyle style=null,string weapon=null)
         {
             var art = CharacterArtSettings.load_settings();
             string path = SOURCE + source + ".gltf";
@@ -91,14 +94,14 @@ namespace ZombieGame.EditorTools
                 {
                     var clip = animations.FirstOrDefault(c => c.name == clips[pose]);
                     if (clip == null) throw new InvalidOperationException("Missing animation: " + clips[pose] + " in " + string.Join(",", animations.Select(c=>c.name)));
-                    var frames = new PoseFrames { source_clip = clip.name, duration = pose == 2 && name == "Human" ? .4f : clip.length, frames = new Mesh[FRAME_COUNT], muzzle_positions = new Vector3[FRAME_COUNT] };
+                    var frames = new PoseFrames { source_clip = clip.name, duration = pose == 2 && source == "Characters_Shaun" ? .4f : clip.length, frames = new Mesh[FRAME_COUNT], muzzle_positions = new Vector3[FRAME_COUNT] };
                     for (int frame = 0; frame < FRAME_COUNT; frame++)
                     {
                         float fraction = frame / (float)(pose == 3 ? FRAME_COUNT - 1 : FRAME_COUNT);
                         clip.SampleAnimation(model, fraction * clip.length);
                         Transform rifle = renderers.FirstOrDefault(r=>r.name == "Rifle")?.transform;
                         frames.muzzle_positions[frame] = rifle == null ? Vector3.up : model.transform.InverseTransformPoint(rifle.TransformPoint(MusketMeshBuilder.to_grip(new Vector3(0,.12f,1.27f))));
-                        Mesh mesh = bake_frame(model, renderers, art, name=="Human",pose>=4,style,name=="Exploder");
+                        Mesh mesh = bake_frame(model, renderers, art, source=="Characters_Shaun",pose>=4,style,name=="Exploder",weapon);
                         // Leaner adult proportions; applied to all poses and the weapon socket, not navigation roots.
                         var proportions=name=="Exploder"?new Vector3(1,1.04f,.96f):style==null?new Vector3(.88f,1.06f,.91f):new Vector3(.80f,1.28f,.86f);
                         var shaped_vertices=mesh.vertices;
@@ -139,12 +142,12 @@ namespace ZombieGame.EditorTools
             finally { UnityEngine.Object.DestroyImmediate(model); }
         }
 
-        private static Mesh bake_frame(GameObject model, Renderer[] renderers, CharacterArtSettings art,bool human,bool melee,VisualStyle style,bool explosive)
+        private static Mesh bake_frame(GameObject model, Renderer[] renderers, CharacterArtSettings art,bool human,bool melee,VisualStyle style,bool explosive,string weapon)
         {
             var combines = new List<CombineInstance>(); var temporary = new List<Mesh>();
             foreach (Renderer renderer in renderers)
             {
-                if(renderer.name=="Rifle"&&melee||renderer.name=="Knife"&&!melee)continue;
+                if(renderer.name=="Rifle"&&(melee||weapon=="Ballista"||weapon=="Cannon")||renderer.name=="Knife"&&!melee)continue;
                 // Style variants replace the cartoon body, keeping only the licensed rig/clips and weapon socket.
                 if(style!=null&&renderer is SkinnedMeshRenderer)continue;
                 Mesh mesh;
@@ -158,7 +161,7 @@ namespace ZombieGame.EditorTools
                     var colors=new Color[mesh.vertexCount];for(int i=0;i<colors.Length;i++)colors[i]=new Color(.5f,.48f,.4f,1);
                     mesh.colors=colors;temporary.Add(mesh);
                 }
-                else { mesh = MusketMeshBuilder.build(art); temporary.Add(mesh); }
+                else { mesh = weapon==null?MusketMeshBuilder.build(art):RangedWeaponMeshBuilder.build(weapon,true); temporary.Add(mesh); }
                 for (int sub = 0; sub < mesh.subMeshCount; sub++)
                     combines.Add(new CombineInstance { mesh = mesh, subMeshIndex = sub, transform = model.transform.worldToLocalMatrix * renderer.localToWorldMatrix });
             }
@@ -166,6 +169,11 @@ namespace ZombieGame.EditorTools
             {
                 var equipment=new CharacterStyleGeometry(model,style).build(human,explosive);temporary.Add(equipment);
                 combines.Add(new CombineInstance{mesh=equipment,transform=Matrix4x4.identity});
+            }
+            if(!melee&&(weapon=="Ballista"||weapon=="Cannon"))
+            {
+                var machine=RangedWeaponMeshBuilder.build(weapon,false);temporary.Add(machine);
+                combines.Add(new CombineInstance{mesh=machine,transform=Matrix4x4.Translate(new Vector3(0,0,.95f))});
             }
             var result = new Mesh(); result.CombineMeshes(combines.ToArray(), true, true); result.RecalculateBounds();
             foreach (Mesh mesh in temporary) UnityEngine.Object.DestroyImmediate(mesh);

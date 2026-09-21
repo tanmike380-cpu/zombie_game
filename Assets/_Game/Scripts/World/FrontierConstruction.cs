@@ -11,7 +11,7 @@ namespace ZombieGame.World
         public HeadquartersRecipe recipe;
         public LandscapeRegion region;
         public GameObject model,navigation;
-        public bool complete;
+        public bool complete,destroyed;
     }
     /// <summary>Ghost placement, validated footprints, reserved harvest cells and Unity obstacle carving.</summary>
     public sealed class FrontierConstruction : IDisposable
@@ -50,6 +50,7 @@ namespace ZombieGame.World
             cancel_preview();landscape=replacement;
             foreach(var facility in facilities)
             {
+                if(facility.destroyed)continue;
                 facility.model=landscape.create_facility(facility.recipe.id,new Vector2(facility.recipe.width,facility.recipe.depth),shader);
                 facility.model.transform.position=facility.recipe.position;
                 if(!facility.complete)
@@ -61,7 +62,7 @@ namespace ZombieGame.World
         }
         public void begin(int recipe_index)
         {
-            if(recipe_index<1||recipe_index>=game.production.config.recipes.Length)return;
+            if(recipe_index<0||recipe_index>=game.production.config.recipes.Length||game.production.config.recipes[recipe_index].is_unit||game.defeated)return;
             cancel_preview();pending=recipe_index;game.controls.cancel_command();
             var recipe=game.production.config.recipes[pending];
             ghost=landscape.create_facility(recipe.id,new Vector2(recipe.width,recipe.depth),shader);
@@ -132,7 +133,7 @@ namespace ZombieGame.World
         }
         public bool try_place(int index,Vector3 point)
         {
-            if(index<1||index>=game.production.config.recipes.Length)return false;
+            if(index<0||index>=game.production.config.recipes.Length||game.production.config.recipes[index].is_unit||game.defeated)return false;
             var recipe=game.production.config.recipes[index];
             if(!validate(recipe,point,out string reason,out float rate,out int[] cells)){notice=reason;return false;}
             var order=recipe.at(point,rate,cells);
@@ -143,6 +144,7 @@ namespace ZombieGame.World
             tint.SetColor("_Color",new Color(.32f,.29f,.21f));foreach(var renderer in model.GetComponentsInChildren<Renderer>())renderer.SetPropertyBlock(tint);
             var placed=new PlacedFacility{recipe=order,region=region,model=model,navigation=game.current.crowd.add_building(region.bounds)};
             facilities.Add(placed);game.map.regions.Add(region);foreach(int cell in cells)claimed_cells(recipe.id).Add(cell);
+            game.structures?.register_facility(placed);
             notice="已放置，等待建造完成";return true;
         }
         public void finish(HeadquartersRecipe order)
@@ -163,8 +165,9 @@ namespace ZombieGame.World
         }
         private void cancel_facility(HeadquartersRecipe order)
         {
-            if(order.id=="soldier")return;
+            if(order.is_unit)return;
             var facility=facilities.Find(entry=>ReferenceEquals(entry.recipe,order));if(facility==null)return;
+            game.structures?.remove_cancelled(facility);
             game.current.crowd.remove_building(facility.region.bounds,facility.navigation);game.map.regions.Remove(facility.region);
             UnityEngine.Object.Destroy(facility.model);facilities.Remove(facility);
             foreach(int cell in order.resource_cells)claimed_cells(order.id).Remove(cell);
@@ -182,6 +185,31 @@ namespace ZombieGame.World
         }
         private void add_depot_ring(Vector3 point)
         {var line=create_ring("Ammunition supply - 20 tiles");set_ring(line,point,UnitBalance.config.ammunition_depot_radius,new Color(.53f,.72f,.8f));depot_rings.Add(line);}
+        public void remove_depot(Vector3 point)
+        {
+            game.supply.depots.Remove(point);
+            for(int i=depot_rings.Count-1;i>=0;i--)
+                if(Vector3.Distance(depot_rings[i].GetPosition(0),point+new Vector3(UnitBalance.config.ammunition_depot_radius,.15f,0))<.1f)
+                {UnityEngine.Object.Destroy(depot_rings[i].gameObject);depot_rings.RemoveAt(i);}
+        }
+        public void lose_facility(PlacedFacility facility)
+        {
+            if(facility.destroyed)return;
+            facility.destroyed=true;var order=facility.recipe;
+            game.production.remove_destroyed_order(order);
+            foreach(int cell in order.resource_cells)claimed_cells(order.id).Remove(cell);
+            if(!facility.complete)return;
+            switch(order.id)
+            {
+                case "food":game.economy.food_bonus_minute-=order.yield_per_minute;break;
+                case "wood":game.economy.wood_bonus_minute-=order.yield_per_minute;break;
+                case "stone":game.economy.stone_bonus_minute-=order.yield_per_minute;break;
+                case "iron":game.economy.iron_bonus_minute-=order.yield_per_minute;break;
+                case "powder":game.economy.powder_workshops--;break;
+                case "arrows":game.economy.arrow_workshops--;break;
+                case "depot":remove_depot(order.position);break;
+            }
+        }
         public void Dispose()
         {
             cancel_preview();UnityEngine.Object.Destroy(preview_ring.gameObject);

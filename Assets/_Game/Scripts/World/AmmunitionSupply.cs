@@ -19,12 +19,13 @@ namespace ZombieGame.World
         }
         public void step(BattleSimulation battle)
         {
-            for(int i=0;i<battle.soldier_count&&economy.gunpowder>=1;i++)
+            for(int i=0;i<battle.soldier_count;i++)
             {
                 if(battle.health[i]<=0||!covers(battle.positions[i]))continue;
-                int transfer=Mathf.Min(UnitBalance.human.ammunition_capacity-battle.ammunition[i],Mathf.FloorToInt(economy.gunpowder));
+                var stats=battle.stats_for(i);bool arrows=stats.ammunition_type=="arrows";
+                int transfer=Mathf.Min(stats.ammunition_capacity-battle.ammunition[i],Mathf.FloorToInt(arrows?economy.arrows:economy.gunpowder));
                 if(transfer<=0)continue;
-                battle.ammunition[i]+=transfer;economy.gunpowder-=transfer;
+                battle.ammunition[i]+=transfer;if(arrows)economy.arrows-=transfer;else economy.gunpowder-=transfer;
             }
         }
     }

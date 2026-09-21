@@ -38,7 +38,7 @@ namespace ZombieGame.EditorTools
         }
         public static void build_player()
         {
-            CharacterBake.bake_models();create_scene();
+            CharacterBake.ensure_models();create_scene();
             var report=BuildPipeline.BuildPlayer(new BuildPlayerOptions{scenes=new[]{SCENE},locationPathName="Builds/Frontier.app",target=BuildTarget.StandaloneOSX});
             if(report.summary.result!=BuildResult.Succeeded)throw new InvalidOperationException("Frontier build failed");
             Debug.Log("[FrontierBuild] PASS");

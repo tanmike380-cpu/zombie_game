@@ -26,7 +26,8 @@
       "ammunition_capacity": 30,
       "melee_damage": 10,
       "melee_attack_interval": 1,
-      "melee_range": 1.15
+      "melee_range": 1.15,
+      "ammunition_type": "gunpowder"
     },
     {
       "id": "runner",
@@ -108,7 +109,7 @@
     },
     {
       "id": "archer",
-      "name_zh": "弓箭手（待实现）",
+      "name_zh": "弓箭手",
       "move_speed": 3.2,
       "attack_range": 5,
       "provisional": true,
@@ -116,11 +117,18 @@
       "damage": 25,
       "attack_interval": 1,
       "acceleration": 60,
-      "projectile_speed": 25
+      "projectile_speed": 25,
+      "implemented": true,
+      "ammunition_type": "arrows",
+      "ammunition_cost": 1,
+      "ammunition_capacity": 30,
+      "melee_damage": 10,
+      "melee_attack_interval": 1,
+      "melee_range": 1.15
     },
     {
       "id": "repeating_crossbowman",
-      "name_zh": "连弩手（待实现）",
+      "name_zh": "连弩手",
       "move_speed": 3,
       "attack_range": 4,
       "provisional": true,
@@ -128,11 +136,18 @@
       "damage": 12,
       "attack_interval": 0.25,
       "acceleration": 60,
-      "projectile_speed": 25
+      "projectile_speed": 25,
+      "implemented": true,
+      "ammunition_type": "arrows",
+      "ammunition_cost": 1,
+      "ammunition_capacity": 30,
+      "melee_damage": 10,
+      "melee_attack_interval": 1,
+      "melee_range": 1.15
     },
     {
       "id": "heavy_crossbowman",
-      "name_zh": "重弩手（待实现）",
+      "name_zh": "重弩手",
       "move_speed": 2.8,
       "attack_range": 7,
       "provisional": true,
@@ -140,11 +155,18 @@
       "damage": 90,
       "attack_interval": 1.8,
       "acceleration": 60,
-      "projectile_speed": 25
+      "projectile_speed": 25,
+      "implemented": true,
+      "ammunition_type": "arrows",
+      "ammunition_cost": 1,
+      "ammunition_capacity": 30,
+      "melee_damage": 10,
+      "melee_attack_interval": 1,
+      "melee_range": 1.15
     },
     {
       "id": "heavy_ballista",
-      "name_zh": "重弩炮（待实现）",
+      "name_zh": "重弩炮",
       "move_speed": 1.5,
       "attack_range": 10,
       "provisional": true,
@@ -152,11 +174,19 @@
       "damage": 220,
       "attack_interval": 3,
       "acceleration": 60,
-      "projectile_speed": 25
+      "projectile_speed": 25,
+      "implemented": true,
+      "ammunition_type": "arrows",
+      "ammunition_cost": 10,
+      "ammunition_capacity": 100,
+      "melee_damage": 10,
+      "melee_attack_interval": 1,
+      "melee_range": 1.15,
+      "large_target_multiplier": 1.5
     },
     {
       "id": "cannon",
-      "name_zh": "火炮（待实现）",
+      "name_zh": "火炮",
       "move_speed": 1.3,
       "attack_range": 10,
       "provisional": true,
@@ -164,7 +194,15 @@
       "damage": 180,
       "attack_interval": 3.5,
       "acceleration": 60,
-      "projectile_speed": 25
+      "projectile_speed": 25,
+      "implemented": true,
+      "ammunition_type": "gunpowder",
+      "ammunition_cost": 5,
+      "ammunition_capacity": 50,
+      "melee_damage": 10,
+      "melee_attack_interval": 1,
+      "melee_range": 1.15,
+      "splash_radius": 2.5
     },
     {
       "id": "brute",
@@ -261,5 +299,13 @@
       "name_zh": "喷火要塞（待实现）",
       "attack_range": 4
     }
-  ]
+  ],
+  "buildings": {
+    "normal_health": 300,
+    "headquarters_health": 500,
+    "normal_infection_count": 10,
+    "headquarters_infection_count": 30,
+    "infection_unit": "walker",
+    "provisional": true
+  }
 }

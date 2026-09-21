@@ -9,6 +9,8 @@ namespace ZombieGame.Balance
     public sealed class UnitStats
     {
         public string id, name_zh;
+        public string ammunition_type;
+        public float large_target_multiplier;
         public bool implemented;
         public bool provisional;
         public int ammunition_cost, ammunition_capacity;
@@ -21,12 +23,21 @@ namespace ZombieGame.Balance
     }
 
     [Serializable]
+    public sealed class BuildingStats
+    {
+        public float normal_health,headquarters_health;
+        public int normal_infection_count,headquarters_infection_count;
+        public string infection_unit;
+        public bool provisional;
+    }
+    [Serializable]
     public sealed class BalanceConfig
     {
         public int version;
         public float human_sight, zombie_sight, noise_range_multiplier, noise_probe_radius, noise_propagation_speed, noise_pulse_duration;
         public float formation_spacing, chase_repath_seconds, unit_navigation_radius, ammunition_depot_radius;
         public UnitStats[] units;
+        public BuildingStats buildings;
     }
 
     /// <summary>Single authored source: repository balance/unit_balance.json. Builds embed an exact generated snapshot.</summary>
@@ -39,6 +50,9 @@ namespace ZombieGame.Balance
         public static UnitStats runner => get("runner");
         public static UnitStats exploder => get("exploder");
         public static readonly string[] zombie_ids={"walker","runner","brute","exploder","zombie_hound","spitter","giant","boss"};
+        public static readonly string[] human_ids={"firearm_infantry","archer","repeating_crossbowman","heavy_crossbowman","heavy_ballista","cannon"};
+        public static bool is_human(string id)=>Array.IndexOf(human_ids,id)>=0;
+        public static float max_human_noise {get {float radius=0;foreach(string id in human_ids)if(get(id).implemented)radius=Mathf.Max(radius,human_noise(get(id)));return radius;}}
         public static bool is_zombie(string id)=>Array.IndexOf(zombie_ids,id)>=0;
         public static float navigation_radius(UnitStats stats)=>stats.navigation_radius>0?stats.navigation_radius:config.unit_navigation_radius;
         public static string source_hash { get; private set; }
@@ -62,6 +76,11 @@ namespace ZombieGame.Balance
                 || values.unit_navigation_radius<=0 || values.ammunition_depot_radius<=0 || values.formation_spacing < values.unit_navigation_radius*2 || values.chase_repath_seconds <= 0)
                 throw new InvalidOperationException("Invalid balance/unit_balance.json globals/schema");
             var ids = new HashSet<string>();
+            var buildings=values.buildings;
+            if(buildings==null||buildings.normal_health<=0||buildings.headquarters_health<=0||
+                float.IsNaN(buildings.normal_health)||float.IsInfinity(buildings.normal_health)||float.IsNaN(buildings.headquarters_health)||float.IsInfinity(buildings.headquarters_health)||
+                buildings.normal_infection_count<0||buildings.headquarters_infection_count<0||buildings.infection_unit!="walker")
+                throw new InvalidOperationException("Invalid authored building health/infection balance");
             foreach (var stats in values.units)
             {
                 if (stats == null || string.IsNullOrEmpty(stats.id) || !ids.Add(stats.id)) throw new InvalidOperationException("Duplicate/missing balance unit id");
@@ -72,6 +91,9 @@ namespace ZombieGame.Balance
                     throw new InvalidOperationException("Incomplete active unit balance: " + stats.id);
                 if(stats.implemented&&is_zombie(stats.id)&&(stats.threat_tier<1||stats.threat_tier>5||stats.model_scale<=0||stats.noise_radius!=0))
                     throw new InvalidOperationException("Zombie tier, presentation scale or silence invalid: "+stats.id);
+                if(stats.implemented&&is_human(stats.id)&&(stats.ammunition_capacity<stats.ammunition_cost||stats.ammunition_cost<1||
+                    (stats.ammunition_type!="arrows"&&stats.ammunition_type!="gunpowder")||stats.projectile_speed<=0||stats.melee_damage<=0||stats.melee_attack_interval<=0||stats.melee_range<=0))
+                    throw new InvalidOperationException("Incomplete ranged human ammunition/melee stats: "+stats.id);
                 if(stats.implemented&&stats.id=="spitter"&&(stats.projectile_speed<=0||stats.splash_radius<=0||stats.poison_damage_per_second<=0||stats.poison_duration<=0))
                     throw new InvalidOperationException("Incomplete spitter projectile/poison stats");
             }

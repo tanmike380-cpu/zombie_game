@@ -32,13 +32,22 @@ namespace ZombieGame.World
             // Settlement roads are purely visual and do not restrict player commands.
             add(cube,new Vector3(-85,.005f,-87),new Vector3(66,.015f,3),new Color(.48f,.40f,.28f));
             add(cube,new Vector3(-98,.005f,-83),new Vector3(3,.015f,70),new Color(.48f,.40f,.28f));
-            foreach(var region in map.regions)if(!region.label.StartsWith("BUILT:"))build_region(region);
+            foreach(var region in map.regions)if(!region.label.StartsWith("BUILT:"))
+            {
+                if(region.kind!=LandscapeKind.Building){build_region(region);continue;}
+                flush(shader);
+                var building=new GameObject(region.label);building.transform.SetParent(root.transform,false);
+                build_region(region);flush(shader,building.transform);building_models[region.bounds]=building;
+            }
             // Established farm and exposed resource seams; throughput is documented in the scenario economy config.
             for(int i=0;i<12;i++) add(cube,new Vector3(-115+i*.65f,.04f,-112),new Vector3(.3f,.09f,12),new Color(.57f,.49f,.20f));
-            add_deposit(new Vector3(-61,0,-116),new Color(.29f,.28f,.27f));
-            add_deposit(new Vector3(-118,0,-44),new Color(.47f,.45f,.40f));
-            add_deposit(new Vector3(44,0,-101),new Color(.29f,.28f,.27f));
-            add_deposit(new Vector3(79,0,60),new Color(.47f,.45f,.40f));
+            foreach(var site in map.resource_sites)
+            {
+                if(site.kind=="Stone"||site.kind=="Iron")
+                    add_deposit(site.position,site.tier==3?new Color(.30f,.67f,.66f):site.kind=="Iron"?new Color(.36f,.31f,.23f):new Color(.62f,.58f,.46f));
+                if(site.kind=="Food")
+                    add(cube,site.position+Vector3.up*.035f,new Vector3(site.radius*2,.05f,site.radius*2),new Color(.46f,.48f,.22f));
+            }
             // Rubble, dry vegetation and wheel-ruts break up flat ground without changing walkability.
             for(int i=0;i<2400;i++)
             {
@@ -49,6 +58,7 @@ namespace ZombieGame.World
             add_settlement_details();flush(shader);
         }
 
+        public readonly Dictionary<Bounds,GameObject> building_models=new Dictionary<Bounds,GameObject>();
         public GameObject create_facility(string id,Vector2 size,Shader shader)
         {
             var model=new GameObject("Placed "+id);model.transform.SetParent(root.transform,false);

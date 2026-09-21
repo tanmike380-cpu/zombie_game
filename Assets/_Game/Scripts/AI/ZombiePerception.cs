@@ -13,6 +13,10 @@ namespace ZombieGame.Combat
                 { if (now >= fuse[i]) damage(i, health[i], now); continue; }
                 int target = nearest(soldier_grid, positions[i], UnitBalance.config.zombie_sight);
                 bool new_sound = noise.try_hear(i, out var signal) && sound_memories[i].accept(signal);
+                bool investigating_sound=sound_memories[i].has_memory&&(positions[i]-memories[i]).sqrMagnitude>=.64f&&
+                    (building_targets==null||building_targets[i]<0);
+                if(target<0&&!new_sound&&!investigating_sound&&try_attack_building(i,now))continue;
+                if(building_targets!=null&&(target>=0||new_sound))building_targets[i]=-1;
                 if (new_sound && target < 0 && !assault)
                 {
                     bool changed_goal = !activated[i] || path_target[i] >= 0 || (memories[i] - signal.origin).sqrMagnitude > .01f;

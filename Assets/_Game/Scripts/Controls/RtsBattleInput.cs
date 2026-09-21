@@ -268,6 +268,14 @@ namespace ZombieGame.Controls
                 map_pixels[x+z*256] = i < game.current.soldier_count ? new Color32(40,170,255,255) : game.current.exploder[i] ? new Color32(240,30,220,255) : new Color32(230,40,20,255);
             }
             // Boss intelligence is a marker only: never modifies fog or reveals nearby units.
+            if(game is ZombieGame.World.FrontierGame frontier)
+                foreach(var site in frontier.map.resource_sites)
+                {
+                    if(!game.reveal_map&&!game.current_fog.is_explored(site.position))continue;
+                    int sx=Mathf.RoundToInt(site.position.x+128),sz=Mathf.RoundToInt(site.position.z+128);
+                    Color32 color=site.tier==3?new Color32(90,245,225,255):site.tier==2?new Color32(240,185,65,255):new Color32(225,230,150,255);
+                    for(int dz=-1;dz<=1;dz++)for(int dx=-1;dx<=1;dx++)if(sx+dx>=0&&sx+dx<256&&sz+dz>=0&&sz+dz<256)map_pixels[sx+dx+(sz+dz)*256]=color;
+                }
             BossMapMarkers.draw(game.current,map_pixels);
             minimap.SetPixels32(map_pixels); minimap.Apply(false,false);
         }

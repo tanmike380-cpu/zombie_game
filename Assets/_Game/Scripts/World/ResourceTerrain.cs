@@ -18,8 +18,9 @@ namespace ZombieGame.World
             foreach(var site in map.resource_sites)
             {
                 var cells=site.kind=="Stone"?stone:site.kind=="Iron"?iron:null;if(cells==null)continue;
-                for(int z=-3;z<=3;z++)for(int x=-3;x<=3;x++)
-                    if(x*x+z*z<=9)cells.Add(cell(Mathf.RoundToInt(site.position.x)+x,Mathf.RoundToInt(site.position.z)+z));
+                int radius=Mathf.CeilToInt(site.radius);
+                for(int z=-radius;z<=radius;z++)for(int x=-radius;x<=radius;x++)
+                    if(x*x+z*z<=site.radius*site.radius)cells.Add(cell(Mathf.RoundToInt(site.position.x)+x,Mathf.RoundToInt(site.position.z)+z));
             }
         }
         public static int cell(int x,int z)=>(x+128)+(z+128)*256;
@@ -54,9 +55,16 @@ namespace ZombieGame.World
                     case "iron":if(!iron.Contains(key))continue;break;
                     default:continue;
                 }
-                eligible.Add(key);rate+=quality*recipe.yield_per_cell_minute;
+                eligible.Add(key);rate+=quality*resource_multiplier(recipe.id,point)*recipe.yield_per_cell_minute;
             }
             cells=eligible.ToArray();return rate;
+        }
+        public float resource_multiplier(string id,Vector3 point)
+        {
+            float result=1;
+            foreach(var site in map.resource_sites)
+                if(string.Equals(id,site.kind,System.StringComparison.OrdinalIgnoreCase)&&(point-site.position).sqrMagnitude<=(site.radius+.75f)*(site.radius+.75f))result=Mathf.Max(result,site.yield_multiplier);
+            return result;
         }
     }
 }

@@ -10,6 +10,8 @@ namespace ZombieGame.World
         public readonly string kind;
         public readonly Vector3 position;
         public bool claimed;
+        public int tier=1;
+        public float radius=3,yield_multiplier=1;
         public ResourceSite(string kind,float x,float z,bool claimed)
         {this.kind=kind;position=new Vector3(x,0,z);this.claimed=claimed;}
     }
@@ -34,11 +36,7 @@ namespace ZombieGame.World
         public readonly bool[] explosive = new bool[HUMAN_CAPACITY+ZOMBIES];
         public readonly string[] unit_ids = new string[HUMAN_CAPACITY+ZOMBIES];
         public Bounds[] blockers;
-        public readonly ResourceSite[] resource_sites={
-            new ResourceSite("Food",-111,-112,true),new ResourceSite("Wood",-111,-64,true),
-            new ResourceSite("Stone",-118,-44,true),new ResourceSite("Iron",-61,-116,true),
-            new ResourceSite("Iron",44,-101,false),new ResourceSite("Stone",79,60,false),
-            new ResourceSite("Food",-80,80,false),new ResourceSite("Wood",-75,45,false)};
+        public readonly ResourceSite[] resource_sites;
 
         public FrontierMap()
         {
@@ -59,6 +57,7 @@ namespace ZombieGame.World
             add_building(-91,-94,5,4,"HOUSE"); add_building(-82,-94,5,4,"HOUSE");
             add_building(-73,-94,5,4,"ARROW WORKS"); add_building(-111,-64,6,5,"LUMBER CAMP");
             add_building(initial_depot.x,initial_depot.z,5,4,"AMMUNITION DEPOT");
+            resource_sites=ResourceDistribution.populate(this);
             blockers = regions.ConvertAll(region=>region.bounds).ToArray();
             spawn_units();
         }

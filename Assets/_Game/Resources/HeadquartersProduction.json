@@ -2,13 +2,134 @@
   "provisional": true,
   "queue_capacity": 8,
   "recipes": [
-    {"id":"soldier", "name":"训练神机营", "food":60, "wood":0, "stone":0, "iron":20, "seconds":8},
-    {"id":"food", "name":"建造农田", "wood":100, "stone":30, "seconds":12, "width":6, "depth":6, "gather_radius":3, "yield_per_cell_minute":6},
-    {"id":"wood", "name":"建造伐木场", "wood":80, "stone":20, "seconds":12, "width":4, "depth":4, "gather_radius":7, "yield_per_cell_minute":10},
-    {"id":"stone", "name":"建造采石场", "wood":100, "stone":20, "seconds":14, "width":4, "depth":4, "gather_radius":7, "yield_per_cell_minute":6},
-    {"id":"iron", "name":"建造铁矿场", "wood":100, "stone":60, "seconds":16, "width":4, "depth":4, "gather_radius":7, "yield_per_cell_minute":4},
-    {"id":"powder", "name":"建造火药坊", "wood":120, "stone":80, "iron":30, "seconds":18, "width":5, "depth":5},
-    {"id":"arrows", "name":"建造箭坊", "wood":100, "stone":40, "iron":10, "seconds":14, "width":5, "depth":4},
-    {"id":"depot", "name":"建造弹药库", "wood":100, "stone":80, "iron":20, "seconds":12, "width":5, "depth":4}
+    {
+      "id": "soldier",
+      "name": "训练神机营",
+      "food": 60,
+      "wood": 0,
+      "stone": 0,
+      "iron": 20,
+      "seconds": 8,
+      "unit_id": "firearm_infantry"
+    },
+    {
+      "id": "food",
+      "name": "建造农田",
+      "wood": 100,
+      "stone": 30,
+      "seconds": 12,
+      "width": 6,
+      "depth": 6,
+      "gather_radius": 3,
+      "yield_per_cell_minute": 6
+    },
+    {
+      "id": "wood",
+      "name": "建造伐木场",
+      "wood": 80,
+      "stone": 20,
+      "seconds": 12,
+      "width": 4,
+      "depth": 4,
+      "gather_radius": 7,
+      "yield_per_cell_minute": 10
+    },
+    {
+      "id": "stone",
+      "name": "建造采石场",
+      "wood": 100,
+      "stone": 20,
+      "seconds": 14,
+      "width": 4,
+      "depth": 4,
+      "gather_radius": 7,
+      "yield_per_cell_minute": 6
+    },
+    {
+      "id": "iron",
+      "name": "建造铁矿场",
+      "wood": 100,
+      "stone": 60,
+      "seconds": 16,
+      "width": 4,
+      "depth": 4,
+      "gather_radius": 7,
+      "yield_per_cell_minute": 4
+    },
+    {
+      "id": "powder",
+      "name": "建造火药坊",
+      "wood": 120,
+      "stone": 80,
+      "iron": 30,
+      "seconds": 18,
+      "width": 5,
+      "depth": 5
+    },
+    {
+      "id": "arrows",
+      "name": "建造箭坊",
+      "wood": 100,
+      "stone": 40,
+      "iron": 10,
+      "seconds": 14,
+      "width": 5,
+      "depth": 4
+    },
+    {
+      "id": "depot",
+      "name": "建造弹药库",
+      "wood": 100,
+      "stone": 80,
+      "iron": 20,
+      "seconds": 12,
+      "width": 5,
+      "depth": 4
+    },
+    {
+      "id": "archer",
+      "name": "训练弓箭手",
+      "unit_id": "archer",
+      "food": 40,
+      "wood": 30,
+      "iron": 0,
+      "seconds": 6
+    },
+    {
+      "id": "repeating_crossbowman",
+      "name": "训练连弩手",
+      "unit_id": "repeating_crossbowman",
+      "food": 50,
+      "wood": 40,
+      "iron": 10,
+      "seconds": 8
+    },
+    {
+      "id": "heavy_crossbowman",
+      "name": "训练重弩手",
+      "unit_id": "heavy_crossbowman",
+      "food": 50,
+      "wood": 40,
+      "iron": 20,
+      "seconds": 10
+    },
+    {
+      "id": "heavy_ballista",
+      "name": "制造重型床弩",
+      "unit_id": "heavy_ballista",
+      "food": 80,
+      "wood": 150,
+      "iron": 60,
+      "seconds": 20
+    },
+    {
+      "id": "cannon",
+      "name": "制造火炮",
+      "unit_id": "cannon",
+      "food": 80,
+      "wood": 100,
+      "iron": 120,
+      "seconds": 24
+    }
   ]
 }

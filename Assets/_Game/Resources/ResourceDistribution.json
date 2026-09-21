@@ -1,0 +1,9 @@
+{
+  "provisional": true,
+  "seed": 20260922,
+  "tiers": [
+    {"level":1,"center_on_map":false,"min_distance":0,"max_distance":50,"sites_per_kind":1,"deposit_radius":3,"yield_multiplier":1},
+    {"level":2,"center_on_map":false,"min_distance":50,"max_distance":100,"sites_per_kind":2,"deposit_radius":4,"yield_multiplier":1.75},
+    {"level":3,"center_on_map":true,"min_distance":0,"max_distance":30,"sites_per_kind":2,"deposit_radius":5,"yield_multiplier":3}
+  ]
+}

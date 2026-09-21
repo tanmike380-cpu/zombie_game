@@ -63,7 +63,7 @@ namespace ZombieGame.Presentation
                 if(distance>=45||(!human&&!reveal&&!fog.is_visible(battle.positions[i])))continue;
                 float gain=Mathf.Clamp01(1-distance/45);
                 float pan=Mathf.Clamp(Vector3.Dot(delta,camera.transform.right)/20,-1,1);
-                if(human&&attacked)
+                if(human&&attacked&&(battle.last_attack_melee[i]||battle.stats_for(i).ammunition_type=="gunpowder"))
                     play(battle.last_attack_melee[i]?1:0,gain,pan);
                 else if(!human&&battle.activated[i]&&Time.time>=next_growl[i]&&Time.time>=next_roar&&
                     (battle.crowd.agents[i].velocity.sqrMagnitude>.04f||attacked))

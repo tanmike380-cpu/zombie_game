@@ -13,7 +13,9 @@ namespace ZombieGame.World
         public Shader landscape_shader;
         public BattleSimulation current {get;private set;}
         public CombatFog current_fog {get;private set;}
-        public bool can_control => current!=null && !paused;
+        public bool can_control => current!=null && !paused && !defeated;
+        public FrontierStructures structures {get;private set;}
+        public bool defeated => structures?.headquarters?.infected??false;
         public bool reveal_map {get;private set;}
         public Vector3 camera_focus {get;private set;}
         public FrontierMap map {get;private set;}
@@ -58,7 +60,7 @@ namespace ZombieGame.World
             if(style_argument>=0&&style_argument+1<arguments.Length&&int.TryParse(arguments[style_argument+1],out int requested_style))VisualStyles.select(requested_style);
             map=new FrontierMap();
             landscape=new FrontierLandscape(map,transform,landscape_shader);
-            current=new BattleSimulation(map.spawns,FrontierMap.HUMAN_CAPACITY,map.explosive,map.blockers,initial_humans:FrontierMap.SOLDIERS,unit_ids:map.unit_ids);
+            current=new BattleSimulation(map.spawns,FrontierMap.HUMAN_CAPACITY,map.explosive,map.blockers,initial_humans:FrontierMap.SOLDIERS,unit_ids:map.unit_ids,infection_reserve:1024);
             economy=new FrontierEconomy(JsonUtility.FromJson<FrontierEconomyConfig>(Resources.Load<TextAsset>("FrontierEconomy").text));
             production=new HeadquartersProduction(economy,JsonUtility.FromJson<HeadquartersConfig>(Resources.Load<TextAsset>("HeadquartersProduction").text));
             supply=new AmmunitionSupply(economy);supply.depots.Add(map.initial_depot);
@@ -73,6 +75,7 @@ namespace ZombieGame.World
             input.select_structure=try_select_headquarters;
             input.selection_changed=()=>{headquarters_selected=false;construction?.cancel_preview();};
             construction=new FrontierConstruction(this,landscape,landscape_shader);
+            structures=new FrontierStructures(this,landscape,landscape_shader);
             siege=new FrontierSiege(JsonUtility.FromJson<SiegeConfig>(Resources.Load<TextAsset>("SiegeConfig").text));
             previous_navigation_iterations=UnityEngine.AI.NavMesh.pathfindingIterationsPerFrame;
             UnityEngine.AI.NavMesh.pathfindingIterationsPerFrame=siege.config.navigation_iterations_per_frame;
@@ -141,12 +144,12 @@ namespace ZombieGame.World
         }
         public bool finish_production(HeadquartersRecipe recipe)
         {
-            if(recipe.id=="soldier")
+            if(recipe.is_unit)
             {
                 for(int i=0;i<48;i++)
                 {
                     var point=map.headquarters_position+new Vector3(-4+i%8*1.1f,0,-6-i/8*1.1f);
-                    if(!map.blocked(point,.5f)&&current.recruit_soldier(point))return true;
+                    if(!map.blocked(point,.5f)&&current.recruit_soldier(point,recipe.recruit_id))return true;
                 }
                 return false;
             }
@@ -164,7 +167,7 @@ namespace ZombieGame.World
             construction.cancel_preview();VisualStyles.select(index);
             var old_landscape=landscape;
             landscape=new FrontierLandscape(map,transform,landscape_shader);
-            construction.rebuild_visuals(landscape);old_landscape.Dispose();
+            construction.rebuild_visuals(landscape);structures.rebuild_visuals(landscape);old_landscape.Dispose();
             battle_view.set_style();configure_lighting();focus_camera(camera_focus);
             Debug.Log("[ArtStyle] "+VisualStyles.current.id+" switched; battle, economy, buildings, orders and fog retained");
         }
@@ -183,6 +186,6 @@ namespace ZombieGame.World
             QualitySettings.shadowResolution=UnityEngine.ShadowResolution.VeryHigh;QualitySettings.shadowCascades=4;
         }
         private void OnDestroy()
-        { Time.timeScale=1;if(previous_navigation_iterations>=0)UnityEngine.AI.NavMesh.pathfindingIterationsPerFrame=previous_navigation_iterations;game_cursor?.Dispose();battle_audio?.Dispose();construction?.Dispose();battle_view?.Dispose();landscape?.Dispose();current_fog?.Dispose();current?.Dispose(); }
+        { Time.timeScale=1;if(previous_navigation_iterations>=0)UnityEngine.AI.NavMesh.pathfindingIterationsPerFrame=previous_navigation_iterations;game_cursor?.Dispose();battle_audio?.Dispose();structures?.Dispose();construction?.Dispose();battle_view?.Dispose();landscape?.Dispose();current_fog?.Dispose();current?.Dispose(); }
     }
 }
