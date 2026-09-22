@@ -4,6 +4,8 @@ namespace ZombieGame.Combat
 {
     public partial class BattleSimulation
     {
+        /// <summary>Current navigation intent for regression diagnostics.</summary>
+        public Vector3 zombie_navigation_goal(int index)=>memories[index];
         private void update_zombies(float now)
         {
             for (int i = soldier_count; i < total_count; i++)
@@ -13,15 +15,23 @@ namespace ZombieGame.Combat
                 { if (now >= fuse[i]) damage(i, health[i], now); continue; }
                 int target = nearest(soldier_grid, positions[i], UnitBalance.config.zombie_sight);
                 bool new_sound = noise.try_hear(i, out var signal) && sound_memories[i].accept(signal);
-                bool investigating_sound=sound_memories[i].has_memory&&(positions[i]-memories[i]).sqrMagnitude>=.64f&&
-                    (building_targets==null||building_targets[i]<0);
+                if(target<0&&sound_memories[i].pending&&(positions[i]-sound_memories[i].origin).sqrMagnitude<.64f)
+                    sound_memories[i].finish_investigation();
+                bool investigating_sound=sound_memories[i].pending;
                 bool siege=has_siege_order(i);
+                if(siege&&target<0&&siege_headquarters!=null&&siege_headquarters.health<=0)
+                {
+                    needs_path[i]=false;path_target[i]=-1;
+                    if(crowd.agents[i].enabled&&crowd.agents[i].isOnNavMesh)crowd.agents[i].isStopped=true;
+                    continue;
+                }
                 if(target<0&&(siege||(!new_sound&&!investigating_sound))&&try_attack_building(i,now))continue;
                 if(building_targets!=null&&(target>=0||new_sound&&!siege))building_targets[i]=-1;
-                if (new_sound && target < 0 && !assault && !siege)
+                if (investigating_sound && target < 0 && !assault && !siege)
                 {
-                    bool changed_goal = !activated[i] || path_target[i] >= 0 || (memories[i] - signal.origin).sqrMagnitude > .01f;
-                    memories[i] = signal.origin; path_target[i] = -1;
+                    Vector3 sound_origin=sound_memories[i].origin;
+                    bool changed_goal = !activated[i] || path_target[i] >= 0 || (memories[i] - sound_origin).sqrMagnitude > .01f;
+                    memories[i] = sound_origin; path_target[i] = -1;
                     if (changed_goal)
                     {
                         noise_redirects++; needs_path[i] = true;

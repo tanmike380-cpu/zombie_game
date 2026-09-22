@@ -48,6 +48,7 @@ namespace ZombieGame.Combat
                 bool siege=has_siege_order(index);
                 if(!siege&&length>UnitBalance.config.zombie_sight)continue;
                 bool can_attack=length<=stats.attack_range&&building_visible(positions[index],building,edge);
+                if(siege&&!building.headquarters&&!can_attack)continue;
                 int priority=siege?(can_attack?0:building.headquarters?1:2):0;
                 if(priority>best_priority||priority==best_priority&&length>=distance)continue;
                 if(!siege&&!building_visible(positions[index],building,edge))continue;

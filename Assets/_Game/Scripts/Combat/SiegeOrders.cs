@@ -6,13 +6,14 @@ namespace ZombieGame.Combat
     {
         private bool[] siege_committed;
         private Vector3 siege_goal;
+        private BattleBuilding siege_headquarters;
         public int siege_units {get;private set;}
         /// <summary>Persistent attack-move objective. Local combat may interrupt it; sound cannot replace it.</summary>
         public int order_siege(Vector3 goal,int count)
         {
             siege_committed??=new bool[total_count];siege_goal=goal;
             foreach(var building in buildings)
-                if(building.headquarters&&building.health>0&&!building.infected){siege_goal=building.bounds.center;siege_goal.y=0;break;}
+                if(building.headquarters&&building.health>0&&!building.infected){siege_headquarters=building;siege_goal=building.bounds.center;siege_goal.y=0;break;}
             int ordered=0;
             for(int i=soldier_count;i<total_count&&ordered<count;i++)
             {

@@ -39,3 +39,7 @@
 - A committed siege is a persistent attack-move objective against the living headquarters, not
   a sound investigation or a rally-point move. Local combat may interrupt it; sounds cannot replace
   it. Resume the HQ objective after local combat and recover exhausted/invalid navigation paths.
+- Siege uses simple attack-move: fight visible humans, then resume HQ when they die or leave sight.
+  Do not add timed retaliation memory or repeatedly reset valid combat paths. HQ destruction
+  completes the strategic objective, not a global building sweep.
+- Art direction: coherent low-poly presentation with Eastern architecture and matchlock infantry.

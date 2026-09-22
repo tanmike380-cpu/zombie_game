@@ -33,7 +33,11 @@ namespace ZombieGame.CombatStressTests
             timeline.queue_listener(0, after_pause, Vector3.right * 5);
             timeline.advance(100);
             require(timeline.try_hear(0, out heard) && memory.accept(heard), "Long frame dropped pending arrival");
-            Debug.Log("[NoiseMemorySmoke] PASS propagation delay, newest emission, late-old rejection, same-tick ordering, outside radius, long-frame delivery");
+            require(memory.pending,"new sound has an unfinished investigation");
+            long completed_sequence=memory.sequence;
+            memory.finish_investigation();
+            require(!memory.pending&&memory.sequence==completed_sequence,"arrival clears pending work without forgetting emission ordering");
+            Debug.Log("[NoiseMemorySmoke] PASS propagation delay, newest emission, late-old rejection, same-tick ordering, outside radius, long-frame delivery, independent pending investigation");
             verify_dense_burst(radius);
         }
 
