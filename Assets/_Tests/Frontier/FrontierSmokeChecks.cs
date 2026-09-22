@@ -9,8 +9,16 @@ namespace ZombieGame.FrontierTests
 {
     public sealed class FrontierSmokeChecks : MonoBehaviour
     {
+        private bool environment_camera_fixture;
+        private Vector3 environment_camera_focus;
+        private void LateUpdate()
+        {
+            if(environment_camera_fixture)GetComponent<FrontierGame>().focus_camera(environment_camera_focus);
+        }
         private IEnumerator Start()
         {
+            if(Array.IndexOf(Environment.GetCommandLineArgs(),"-freeEnvironmentSmoke")>=0)
+            {yield return check_free_environment();yield break;}
             if(Array.IndexOf(Environment.GetCommandLineArgs(),"-frontierSmoke")<0)yield break;
             yield return null;
             var game=GetComponent<FrontierGame>();
@@ -49,6 +57,60 @@ namespace ZombieGame.FrontierTests
                 require(!NavMesh.SamplePosition(facility.recipe.position,out var building_hit,.2f,NavMesh.AllAreas),"constructed footprint carved from native navigation");
             require(game.current.geometry_errors==0,"no geometry intrusion");
             Debug.Log("[FrontierSmoke] COMPLETE geometry=0");Application.Quit(0);
+        }
+        private IEnumerator check_free_environment()
+        {
+            yield return null;
+            var game=GetComponent<FrontierGame>();
+            bool legacy=Array.IndexOf(Environment.GetCommandLineArgs(),"-legacyEnvironment")>=0;
+            string variant=legacy?"legacy":"cc0";
+            try
+            {
+                int textured=0,rock_groups=0;
+                foreach(var renderer in game.GetComponentsInChildren<MeshRenderer>())
+                {
+                    foreach(var material in renderer.sharedMaterials)
+                    {
+                        require(material!=null&&material.shader.isSupported,"supported environment material");
+                        if(material.HasProperty("_TextureMode")&&material.GetFloat("_TextureMode")>0)textured++;
+                    }
+                }
+                foreach(var transform in game.GetComponentsInChildren<Transform>())
+                    if(transform.name=="CC0 moss rocks")
+                    {
+                        rock_groups++;
+                        require(transform.GetComponentsInChildren<Collider>().Length==0,"art imports must not add blockers");
+                        require(transform.GetComponent<LODGroup>()!=null,"imported rocks have distance culling");
+                    }
+                require(legacy?textured==0:textured>=10,"ground and building scanned materials");
+                require(legacy?rock_groups==0:rock_groups>0&&rock_groups<=12,"bounded imported FBX groups");
+                require(game.current.living_soldiers==400&&game.current.zombie_count==5000,"art does not alter population");
+                Debug.Log($"[FreeEnvironmentSmoke] variant={variant} textured={textured} rock_groups={rock_groups}");
+            }
+            catch(Exception exception){Debug.LogError("[FreeEnvironmentSmoke] FAIL "+exception);Application.Quit(1);yield break;}
+            environment_camera_fixture=true;environment_camera_focus=game.map.base_center;
+            Camera.main.orthographicSize=24;game.focus_camera(environment_camera_focus);
+            yield return new WaitForSecondsRealtime(2);
+            yield return new WaitForEndOfFrame();
+            ScreenCapture.CaptureScreenshot("/tmp/zombie-environment-"+variant+".png");
+            var samples=new System.Collections.Generic.List<float>();
+            float deadline=Time.realtimeSinceStartup+8;
+            while(Time.realtimeSinceStartup<deadline)
+            {yield return null;samples.Add(Time.unscaledDeltaTime*1000);}
+            samples.Sort();
+            Debug.Log($"[FreeEnvironmentSmoke] PASS variant={variant} resolution={Screen.width}x{Screen.height} samples={samples.Count} frame_ms_median={samples[samples.Count/2]:F2} p95={samples[Mathf.Min(samples.Count-1,Mathf.FloorToInt(samples.Count*.95f))]:F2}; startup idle snapshot, not siege benchmark");
+            // Art-only inspection after performance sampling; no fog override leaks into playable mode.
+            game.enabled=false;game.controls.enabled=false;
+            foreach(var site in game.map.resource_sites)if(site.kind=="Stone")
+            {
+                environment_camera_focus=site.position;Camera.main.orthographicSize=7;
+                yield return null;yield return new WaitForEndOfFrame();
+                ScreenCapture.CaptureScreenshot("/tmp/zombie-environment-rocks-"+variant+".png");
+                break;
+            }
+            yield return null;yield return new WaitForEndOfFrame();
+            environment_camera_fixture=false;game.enabled=true;game.controls.enabled=true;
+            Application.Quit(0);
         }
         private static void require(bool success,string message)
         {if(!success)throw new InvalidOperationException(message);}

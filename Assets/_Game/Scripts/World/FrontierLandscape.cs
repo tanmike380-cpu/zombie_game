@@ -15,6 +15,7 @@ namespace ZombieGame.World
         private readonly Dictionary<Color,List<CombineInstance>> batches=new Dictionary<Color,List<CombineInstance>>();
         private readonly System.Random random=new System.Random(20260920);
         private readonly VisualStyle style=VisualStyles.current;
+        private readonly FreeEnvironmentArt environment_art;
         private Color GRASS=>style.color(style.grass);
         private Color WATER=>style.id=="fortress"?new Color(.12f,.27f,.32f):style.id=="dusk"?new Color(.19f,.29f,.25f):new Color(.23f,.38f,.39f);
         private Color TIMBER=>style.color(style.timber);
@@ -23,6 +24,7 @@ namespace ZombieGame.World
 
         public FrontierLandscape(FrontierMap map, Transform parent, Shader shader)
         {
+            environment_art=new FreeEnvironmentArt(shader);
             root=new GameObject("Frontier landscape - Eastern settlement");root.transform.SetParent(parent,false);
             var primitive=GameObject.CreatePrimitive(PrimitiveType.Cube);cube=primitive.GetComponent<MeshFilter>().sharedMesh;
             Object.Destroy(primitive);cone=build_cone();roof=build_roof();owned_meshes.Add(cone);owned_meshes.Add(roof);
@@ -43,8 +45,10 @@ namespace ZombieGame.World
             for(int i=0;i<12;i++) add(cube,new Vector3(-115+i*.65f,.04f,-112),new Vector3(.3f,.09f,12),new Color(.57f,.49f,.20f));
             foreach(var site in map.resource_sites)
             {
-                if(site.kind=="Stone"||site.kind=="Iron")
-                    add_deposit(site.position,site.tier==3?new Color(.30f,.67f,.66f):site.kind=="Iron"?new Color(.36f,.31f,.23f):new Color(.62f,.58f,.46f));
+                if(site.kind=="Stone"&&!environment_art.place_rocks(root.transform,site.position,site.radius*1.8f))
+                    add_deposit(site.position,site.tier==3?new Color(.30f,.67f,.66f):new Color(.62f,.58f,.46f));
+                if(site.kind=="Iron")
+                    add_deposit(site.position,site.tier==3?new Color(.30f,.67f,.66f):new Color(.36f,.31f,.23f));
                 if(site.kind=="Food")
                     add(cube,site.position+Vector3.up*.035f,new Vector3(site.radius*2,.05f,site.radius*2),new Color(.46f,.48f,.22f));
             }
@@ -249,6 +253,7 @@ namespace ZombieGame.World
                 mesh.CombineMeshes(batch.Value.ToArray(),true,true);owned_meshes.Add(mesh);
                 var material=new Material(shader){color=batch.Key};material.SetFloat("_Glossiness",batch.Key==WATER?.65f:style.roughness);
                 material.SetFloat("_SurfaceKind",batch.Key==GRASS?0:batch.Key==TIMBER?1:batch.Key==STONE?2:batch.Key==TILE?3:batch.Key==WATER?4:5);owned_materials.Add(material);
+                environment_art.apply_surface(material,batch.Key==GRASS,batch.Key==style.color(style.plaster));
                 var group=new GameObject("Landscape material batch");group.transform.SetParent(parent==null?root.transform:parent,false);
                 group.AddComponent<MeshFilter>().sharedMesh=mesh;
                 var renderer=group.AddComponent<MeshRenderer>();renderer.sharedMaterial=material;
@@ -319,6 +324,6 @@ namespace ZombieGame.World
             var mesh=new Mesh{name="Shared irregular foliage and stone"};mesh.SetVertices(vertices);mesh.SetTriangles(triangles,0);mesh.RecalculateNormals();return mesh;
         }
         public void Dispose()
-        { root.SetActive(false);Object.Destroy(root);foreach(var mesh in owned_meshes) Object.Destroy(mesh);foreach(var material in owned_materials) Object.Destroy(material); }
+        { root.SetActive(false);Object.Destroy(root);environment_art.Dispose();foreach(var mesh in owned_meshes) Object.Destroy(mesh);foreach(var material in owned_materials) Object.Destroy(material); }
     }
 }
