@@ -32,8 +32,8 @@ namespace ZombieGame.World
             for(int z=-124;z<128;z+=8) for(int x=-124;x<128;x+=8)
                 add(cube,new Vector3(x,-.18f,z),new Vector3(8,.35f,8),GRASS);
             // Settlement roads are purely visual and do not restrict player commands.
-            add(cube,new Vector3(-85,.005f,-87),new Vector3(66,.015f,3),new Color(.48f,.40f,.28f));
-            add(cube,new Vector3(-98,.005f,-83),new Vector3(3,.015f,70),new Color(.48f,.40f,.28f));
+            add(cube,new Vector3(-94,.005f,-99),new Vector3(36,.015f,1.4f),new Color(.48f,.40f,.28f));
+            add(cube,new Vector3(-100,.005f,-89),new Vector3(1.4f,.015f,29),new Color(.48f,.40f,.28f));
             foreach(var region in map.regions)if(!region.label.StartsWith("BUILT:"))
             {
                 if(region.kind!=LandscapeKind.Building){build_region(region);continue;}

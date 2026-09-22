@@ -51,11 +51,12 @@ namespace ZombieGame.World
             regions.Add(new LandscapeRegion(46,76,32,15,6,LandscapeKind.Cliff));
             regions.Add(new LandscapeRegion(107,20,20,40,5,LandscapeKind.Cliff));
             add_building(-104,-103,9,7,"COMMAND HALL");
-            add_building(-87,-108,7,5,"GRANARY");
-            add_building(-68,-105,8,6,"POWDER WORKS");
-            add_building(-106,-85,7,6,"BARRACKS");
-            add_building(-91,-94,5,4,"HOUSE"); add_building(-82,-94,5,4,"HOUSE");
-            add_building(-73,-94,5,4,"ARROW WORKS"); add_building(-111,-64,6,5,"LUMBER CAMP");
+            // Compact settlement blocks; leave streets between footprints and the northern army muster.
+            add_building(-93,-107,7,5,"GRANARY");
+            add_building(-82,-106,8,6,"POWDER WORKS");
+            add_building(-106,-91,7,6,"BARRACKS");
+            add_building(-93,-96,5,4,"HOUSE"); add_building(-86,-96,5,4,"HOUSE");
+            add_building(-78,-96,5,4,"ARROW WORKS"); add_building(-82,-86,6,5,"LUMBER CAMP");
             add_building(initial_depot.x,initial_depot.z,5,4,"AMMUNITION DEPOT");
             resource_sites=ResourceDistribution.populate(this);
             blockers = regions.ConvertAll(region=>region.bounds).ToArray();

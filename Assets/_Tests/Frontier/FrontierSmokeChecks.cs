@@ -27,6 +27,7 @@ namespace ZombieGame.FrontierTests
                 require(game.current!=null,"simulation startup");
                 require(game.current.living_soldiers==400&&game.current.reserve_soldiers==200&&game.current.zombie_count==5000,"population and recruitment reserve");
                 check_distribution(game);
+                check_compact_settlement(game);
                 foreach(var point in game.current.positions)
                     require(NavMesh.SamplePosition(point,out var hit,.3f,NavMesh.AllAreas),"spawn on native navigation");
                 foreach(var region in game.map.regions)
@@ -114,6 +115,27 @@ namespace ZombieGame.FrontierTests
         }
         private static void require(bool success,string message)
         {if(!success)throw new InvalidOperationException(message);}
+
+        private static void check_compact_settlement(FrontierGame game)
+        {
+            Bounds footprint=new Bounds(game.map.headquarters_position,Vector3.zero);
+            int buildings=0;
+            foreach(var region in game.map.regions)
+            {
+                if(region.kind!=LandscapeKind.Building)continue;
+                footprint.Encapsulate(region.bounds);buildings++;
+            }
+            require(buildings==9&&footprint.size.x<=34&&footprint.size.z<=30,"compact nine-building settlement footprint");
+            foreach(var building in game.current.buildings)
+            {
+                Vector3 toward=new Vector3(-94,0,-78)-building.bounds.center;toward.y=0;
+                Vector3 entrance=building.bounds.ClosestPoint(building.bounds.center+toward.normalized*20)+toward.normalized*1.6f;entrance.y=0;
+                require(NavMesh.SamplePosition(entrance,out var hit,2,NavMesh.AllAreas),"compact building has accessible perimeter: "+building.label);
+                var path=new NavMeshPath();
+                require(NavMesh.CalculatePath(new Vector3(-94,0,-78),hit.position,NavMesh.AllAreas,path)&&path.status==NavMeshPathStatus.PathComplete,"muster can route to compact building: "+building.label);
+            }
+            Debug.Log($"[CompactSettlementSmoke] PASS buildings={buildings} footprint={footprint.size.x:F1}x{footprint.size.z:F1}; all perimeters connected to muster");
+        }
 
         private static void check_distribution(FrontierGame game)
         {
