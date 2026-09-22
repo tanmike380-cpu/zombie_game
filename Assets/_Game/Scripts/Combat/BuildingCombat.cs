@@ -39,15 +39,19 @@ namespace ZombieGame.Combat
         {
             if(buildings.Count==0)return false;
             if(building_targets==null){building_targets=new int[total_count];Array.Fill(building_targets,-1);}
-            var stats=stats_for(index);int best=-1;float distance=float.PositiveInfinity;Vector3 point=Vector3.zero;
+            var stats=stats_for(index);int best=-1,best_priority=int.MaxValue;float distance=float.PositiveInfinity;Vector3 point=Vector3.zero;
             for(int b=0;b<buildings.Count;b++)
             {
-                var building=buildings[b];if(building.health<=0)continue;
+                var building=buildings[b];if(building.health<=0||building.infected)continue;
                 Vector3 edge=building.bounds.ClosestPoint(positions[index]+Vector3.up);edge.y=0;
                 float length=Vector3.Distance(positions[index],edge);
-                if(length>=distance||(!has_siege_order(index)&&length>UnitBalance.config.zombie_sight))continue;
-                if(!has_siege_order(index)&&!building_visible(positions[index],building,edge))continue;
-                best=b;distance=length;point=edge;
+                bool siege=has_siege_order(index);
+                if(!siege&&length>UnitBalance.config.zombie_sight)continue;
+                bool can_attack=length<=stats.attack_range&&building_visible(positions[index],building,edge);
+                int priority=siege?(can_attack?0:building.headquarters?1:2):0;
+                if(priority>best_priority||priority==best_priority&&length>=distance)continue;
+                if(!siege&&!building_visible(positions[index],building,edge))continue;
+                best=b;best_priority=priority;distance=length;point=edge;
             }
             if(best<0){building_targets[index]=-1;return false;}
             if(!activated[index]){activated[index]=true;ever_active++;}
@@ -70,7 +74,8 @@ namespace ZombieGame.Combat
             if(outward.sqrMagnitude<.01f)outward=Vector3.forward;
             Vector3 destination=point+outward.normalized*(UnitBalance.navigation_radius(stats)+.25f);
             if(building_targets[index]!=best||(memories[index]-destination).sqrMagnitude>1||
-                (!needs_path[index]&&agent.enabled&&!agent.pathPending&&!agent.hasPath&&now>=zombie_repath_at[index]))
+                (!needs_path[index]&&agent.enabled&&agent.isOnNavMesh&&!agent.pathPending&&now>=zombie_repath_at[index]&&
+                    (!agent.hasPath||agent.pathStatus!=NavMeshPathStatus.PathComplete||agent.remainingDistance<=agent.stoppingDistance+.1f)))
             {
                 var filter=new NavMeshQueryFilter{agentTypeID=agent.agentTypeID,areaMask=NavMesh.AllAreas};
                 if(NavMesh.SamplePosition(destination,out var hit,3,filter))destination=hit.position;

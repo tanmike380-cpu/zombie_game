@@ -63,7 +63,8 @@ namespace ZombieGame.World
         private void send_wave(BattleSimulation battle,Vector3 home)
         {
             int count=config.defense_test?battle.zombie_count:Mathf.CeilToInt(battle.zombie_count*Mathf.Lerp(config.low_pressure_wave_fraction,config.high_pressure_wave_fraction,pressure));
-            last_wave_units=battle.order_siege(home+Vector3.forward*config.rally_forward_offset,count);waves++;
+            // BattleSimulation resolves the living HQ; the old rally offset must not become a final stop.
+            last_wave_units=battle.order_siege(home,count);waves++;
             Debug.Log($"[Siege] wave={waves} ordered={last_wave_units} pressure={pressure:P0} defense_test={config.defense_test}");
         }
     }

@@ -36,3 +36,6 @@
 - All living zombies, including previously alerted or settled ones, may hear new gunshots.
   Newer audible emissions replace old sound memory; delayed older waves cannot restore old goals.
   Visible-human pursuit has priority. Zombie explosions never emit attraction noise.
+- A committed siege is a persistent attack-move objective against the living headquarters, not
+  a sound investigation or a rally-point move. Local combat may interrupt it; sounds cannot replace
+  it. Resume the HQ objective after local combat and recover exhausted/invalid navigation paths.

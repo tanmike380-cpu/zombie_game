@@ -15,9 +15,10 @@ namespace ZombieGame.Combat
                 bool new_sound = noise.try_hear(i, out var signal) && sound_memories[i].accept(signal);
                 bool investigating_sound=sound_memories[i].has_memory&&(positions[i]-memories[i]).sqrMagnitude>=.64f&&
                     (building_targets==null||building_targets[i]<0);
-                if(target<0&&!new_sound&&!investigating_sound&&try_attack_building(i,now))continue;
-                if(building_targets!=null&&(target>=0||new_sound))building_targets[i]=-1;
-                if (new_sound && target < 0 && !assault)
+                bool siege=has_siege_order(i);
+                if(target<0&&(siege||(!new_sound&&!investigating_sound))&&try_attack_building(i,now))continue;
+                if(building_targets!=null&&(target>=0||new_sound&&!siege))building_targets[i]=-1;
+                if (new_sound && target < 0 && !assault && !siege)
                 {
                     bool changed_goal = !activated[i] || path_target[i] >= 0 || (memories[i] - signal.origin).sqrMagnitude > .01f;
                     memories[i] = signal.origin; path_target[i] = -1;
@@ -51,9 +52,8 @@ namespace ZombieGame.Combat
                 }
                 else if (assault) target = forced_target?.Invoke(i) ?? -1;
                 else if(path_target[i]>=0)
-                {path_target[i]=-1;needs_path[i]=true;if(has_siege_order(i)&&!new_sound)memories[i]=siege_goal;}
-                if(target<0&&has_siege_order(i)&&!new_sound&&(positions[i]-memories[i]).sqrMagnitude<.64f&&
-                    (memories[i]-siege_goal).sqrMagnitude>.01f)
+                {path_target[i]=-1;needs_path[i]=true;if(siege)memories[i]=siege_goal;}
+                if(target<0&&siege&&(memories[i]-siege_goal).sqrMagnitude>.01f)
                 {memories[i]=siege_goal;needs_path[i]=true;}
                 crowd.agents[i].autoBraking = target < 0;
                 bool target_moved = playable && target >= 0 && (positions[target] - memories[i]).sqrMagnitude > .04f
