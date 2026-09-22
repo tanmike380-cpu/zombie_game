@@ -1,5 +1,16 @@
 # 美术素材筛选：2026-09-22
 
+## 免费优先（用户后续选择）
+
+现在只考虑免费路线，不购买付费包。已核对官方页面：
+
+- **Terrain Asset Pack / Terrain Sample**（下表链接）：Unity 官方免费，411 条评价，列出 Unity 6 Built-in 兼容。优先地表。
+- **[Free English Oak Set](https://assetstore.unity.com/packages/3d/vegetation/trees/free-english-oak-set-260312)**：免费，8 MB；2022.3 Built-in 兼容，评价不足。适合先测试真实树冠轮廓，不保证 Unity 6000.6 无需适配，也不把英国橡树当成完整东方植被库。
+- **[European Forests – Realistic Trees](https://assetstore.unity.com/packages/3d/vegetation/trees/european-forests-realistic-trees-229716)**：免费，10 条评价、588 收藏，198.1 MB；明确不支持 Built-in，URP/HDRP 可用。暂不为它迁移整个项目。
+- **[Ultimate Nature – Starter](https://assetstore.unity.com/packages/3d/environments/landscapes/ultimate-nature-starter-176906)**：免费，约 32 条评价，当前 Unity 6 版本 URP-only、偏风格化；不是这次首选。
+
+以上页面标为 Standard Unity Asset Store EULA，不代表素材源文件可以随意再分发。需要通过用户 Unity 账户获取合法包。当前未在本地找到这些包，商店交互工具连接超时；已请求用户下载/提供包。**尚未导入，不能称为画面已替换。** 后续只把模型/材质接入既有地图表现层，不替换相机、小地图、框选、战斗及平衡实现。
+
 目标：东方历史 RTS，可信的比例和材质，鲜明但不荧光的自然色彩；拒绝玩偶比例与简单几何树。当前程序生成模型仅是玩法占位，不能当成最终商业美术。本轮尚未购买或导入以下素材。
 
 ## 优先候选
