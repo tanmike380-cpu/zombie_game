@@ -36,6 +36,7 @@ namespace ZombieGame.FrontierTests
                     }
                     require(fixture.health[12]==UnitBalance.get("brute").health-UnitBalance.get("cannon").damage,"cannon damages second target in splash radius");
                     require(fixture.dropped_projectiles==0,"no dropped projectiles");
+                    foreach(var alert in fixture.attack_alerts)require(alert.expires==0,"hitting zombies does not warn the player about friendly damage");
                 }
                 ZombieGame.CombatStressTests.NoiseRetargetChecks.run();
                 Debug.Log("[HumanRosterSmoke] PASS six projectiles/authored damage/ballista large bonus/cannon AOE/distinct ammo costs/noise regressions");Application.Quit(0);

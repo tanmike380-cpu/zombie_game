@@ -18,6 +18,12 @@ namespace ZombieGame.Controls
         public string notice = "400 selected. Right-click to move; A then left-click to attack.";
         private Vector2 drag_start;
         private bool dragging;
+        public bool minimap_dragging {get;private set;}
+        public Rect minimap_bounds => map_rect;
+        public bool pointer_over_minimap(Vector2 bottom_left_point) => map_rect.Contains(new Vector2(bottom_left_point.x,Screen.height-bottom_left_point.y));
+        public void cancel_pointer_capture(){minimap_dragging=false;dragging=false;}
+        protected virtual void OnApplicationFocus(bool focused){if(!focused)cancel_pointer_capture();}
+        protected virtual void OnDisable(){cancel_pointer_capture();}
         private Texture2D minimap;
         private readonly Color32[] map_pixels = new Color32[256 * 256];
         private float next_map_refresh;
@@ -120,6 +126,7 @@ namespace ZombieGame.Controls
         protected virtual void Update()
         {
             if (game == null || game.current == null) return;
+            if(minimap_dragging&&!Input.GetMouseButton(0))minimap_dragging=false;
             if (Time.unscaledTime >= next_map_refresh) { next_map_refresh = Time.unscaledTime + .15f; refresh_minimap(); }
             if (!game.can_control) { dragging = false; return; }
             handle_group_keys();
@@ -216,17 +223,11 @@ namespace ZombieGame.Controls
 
         public void handle_mouse(Event input)
         {
+            if(handle_minimap(input))return;
+            if(!game.can_control){dragging=false;return;}
             Vector2 mouse = input.mousePosition;
             if (game.pointer_over_ui(mouse) && !map_rect.Contains(mouse)) { dragging = false; return; }
             if(intercept_world_input!=null&&intercept_world_input(input)){dragging=false;return;}
-            if (input.type == EventType.MouseDown && map_rect.Contains(mouse))
-            {
-                Vector3 point = new Vector3((mouse.x-map_rect.x)/map_rect.width*256-128,0,(1-(mouse.y-map_rect.y)/map_rect.height)*256-128);
-                if (input.button == 1) { issue_selected(SoldierOrder.Move,point); cancel_command(); }
-                else if (input.button == 0 && pending != "Select") issue_click(mouse,point,true);
-                else if (input.button == 0) game.focus_camera(point);
-                dragging = false; input.Use(); return;
-            }
             // Diagnostic text is non-interactive: selection may start/end beneath it.
             if (input.type == EventType.MouseDown)
             {
@@ -245,6 +246,35 @@ namespace ZombieGame.Controls
                 select_rectangle(drag_start,mouse,input.shift);
                 input.Use();
             }
+        }
+
+        private Vector3 minimap_world(Vector2 mouse)
+        {
+            var area=map_rect;
+            return new Vector3(Mathf.Clamp01((mouse.x-area.x)/area.width)*256-128,0,
+                (1-Mathf.Clamp01((mouse.y-area.y)/area.height))*256-128);
+        }
+        /// <summary>Capture camera drags before UI/build placement; never turn a camera drag into a unit order.</summary>
+        private bool handle_minimap(Event input)
+        {
+            if(minimap_dragging)
+            {
+                if(input.type==EventType.MouseDrag&&input.button==0)
+                {game.focus_camera(minimap_world(input.mousePosition));input.Use();return true;}
+                if(input.rawType==EventType.MouseUp&&input.button==0)
+                {minimap_dragging=false;input.Use();return true;}
+                if(input.type==EventType.KeyDown&&input.keyCode==KeyCode.Escape)
+                {cancel_pointer_capture();input.Use();return true;}
+            }
+            if(!map_rect.Contains(input.mousePosition)||!input.isMouse)return false;
+            if(input.type==EventType.MouseDown)
+            {
+                Vector3 point=minimap_world(input.mousePosition);
+                if(input.button==1&&game.can_control){issue_selected(SoldierOrder.Move,point);cancel_command();}
+                else if(input.button==0&&game.can_control&&pending!="Select")issue_click(input.mousePosition,point,true);
+                else if(input.button==0){minimap_dragging=true;game.focus_camera(point);}
+            }
+            dragging=false;input.Use();return true;
         }
 
         private void refresh_minimap()
@@ -295,7 +325,7 @@ namespace ZombieGame.Controls
             if (game == null || game.current == null) return;
             GUI.matrix = Matrix4x4.identity;
             GUI.depth=0;
-            if (game.can_control) handle_mouse(Event.current);
+            handle_mouse(Event.current);
             if(!custom_command_panel) GUI.Box(new Rect(8,Screen.height-48*scale,Screen.width-250*scale,40*scale),
                 $"{(game.can_control ? "YOU CONTROL" : "AUTO / CHECK")} | Selected {selected_count()} | {pending} | {notice}");
             if (minimap != null) GUI.DrawTexture(map_rect,minimap);
@@ -315,6 +345,7 @@ namespace ZombieGame.Controls
                 map_rect.y+(128-focus.z+half_z)/256*map_rect.height);
             camera_box = Rect.MinMaxRect(Mathf.Max(map_rect.x,camera_box.x),Mathf.Max(map_rect.y,camera_box.y),Mathf.Min(map_rect.xMax,camera_box.xMax),Mathf.Min(map_rect.yMax,camera_box.yMax));
             outline(camera_box,Color.yellow,1);
+            draw_attack_alerts();
             Vector3 left_top = camera.WorldToScreenPoint(new Vector3(-128,0,128)), right_bottom = camera.WorldToScreenPoint(new Vector3(128,0,-128));
             if(!custom_command_panel)outline(Rect.MinMaxRect(left_top.x,Screen.height-left_top.y,right_bottom.x,Screen.height-right_bottom.y),Color.white);
             if (dragging)
@@ -324,6 +355,18 @@ namespace ZombieGame.Controls
             }
         }
 
+        private void draw_attack_alerts()
+        {
+            var area=map_rect;
+            float radius=Mathf.Lerp(13,4,Mathf.Repeat(Time.unscaledTime,1))*scale;
+            foreach(var alert in game.current.attack_alerts)
+            {
+                if(alert.expires<=Time.time)continue;
+                Vector2 center=new Vector2(area.x+(alert.position.x+128)/256*area.width,area.y+(128-alert.position.z)/256*area.height);
+                var frame=Rect.MinMaxRect(Mathf.Max(area.x,center.x-radius),Mathf.Max(area.y,center.y-radius),Mathf.Min(area.xMax,center.x+radius),Mathf.Min(area.yMax,center.y+radius));
+                outline(frame,new Color(1,.08f,.04f,.95f),2*scale);
+            }
+        }
         protected virtual void OnDestroy() { if (minimap != null) Destroy(minimap); }
     }
 }

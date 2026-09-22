@@ -23,6 +23,13 @@
   ground-position selection rings. Feedback stays readable across camera zoom and lighting.
 - Edge pan and directional cursors share drawable-window coordinates; test all four exact bounds,
   sustained top/right contact, focus loss, resize and zoom. Keep unit UI framebuffer regressions.
+- Extend existing production systems rather than recreating accepted features in new test controllers.
+  Every regression fix must extend the existing checks and be saved in Git before handoff.
+- Minimap left-click/hold/drag moves the camera, including while paused or defeated. Capture lasts
+  until release/cancel/focus loss, clamps outside the minimap, and does not select or command units.
+  Preserve minimap right-click movement and A-left-click attack; suppress edge pan over the minimap.
+- Friendly unit/building damage produces bounded, merging, expiring red minimap warnings.
+  Enemy damage alone must not warn; warning presentation must never reveal fog or emit noise.
 - All living zombies, including previously alerted or settled ones, may hear new gunshots.
   Newer audible emissions replace old sound memory; delayed older waves cannot restore old goals.
   Visible-human pursuit has priority. Zombie explosions never emit attraction noise.

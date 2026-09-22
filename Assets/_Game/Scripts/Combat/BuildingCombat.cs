@@ -83,6 +83,7 @@ namespace ZombieGame.Combat
         {
             if(float.IsNaN(amount)||float.IsInfinity(amount))throw new ArgumentException("Building damage must be finite");
             if(building==null||building.health<=0||amount<=0)return;
+            report_attack(building.bounds.center,now);
             building.health=Mathf.Max(0,building.health-amount);
             if(building.health>0)return;
             building.infected=true;

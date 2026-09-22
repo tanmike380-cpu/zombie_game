@@ -44,6 +44,20 @@ namespace ZombieGame.Combat
         public float last_combat_time = -10;
         public readonly Shot[] projectiles = new Shot[2048];
         public readonly Flash[] flashes = new Flash[256];
+        public struct AttackAlert { public Vector3 position; public float expires; }
+        public readonly AttackAlert[] attack_alerts=new AttackAlert[32];
+        /// <summary>Presentation-only bounded damage notifications. Nearby attacks merge, not noise or perception.</summary>
+        private void report_attack(Vector3 point,float now)
+        {
+            int slot=0;float earliest=float.PositiveInfinity;
+            for(int i=0;i<attack_alerts.Length;i++)
+            {
+                if(attack_alerts[i].expires>now&&(attack_alerts[i].position-point).sqrMagnitude<100)
+                {attack_alerts[i]=new AttackAlert{position=point,expires=now+4};return;}
+                if(attack_alerts[i].expires<earliest){slot=i;earliest=attack_alerts[i].expires;}
+            }
+            attack_alerts[slot]=new AttackAlert{position=point,expires=now+4};
+        }
         public struct Shot { public bool active; public Vector3 position; public int target,source; }
         public struct Flash { public Vector3 origin; public float expires; }
         private readonly CombatSpatialGrid zombie_grid;
@@ -340,6 +354,7 @@ namespace ZombieGame.Combat
         private void damage(int victim, float amount, float now)
         {
             if (health[victim] <= 0) return;
+            if(victim<soldier_count&&amount>0)report_attack(positions[victim],now);
             health[victim] = Mathf.Max(0, health[victim] - amount);
             if (health[victim] > 0) return;
             crowd.agents[victim].enabled = false;

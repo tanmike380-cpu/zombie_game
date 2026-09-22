@@ -113,6 +113,7 @@ namespace ZombieGame.World
                 (Input.GetKey(KeyCode.UpArrow)?1:0)-(Input.GetKey(KeyCode.DownArrow)?1:0));
             Vector2 pointer=has_gui_pointer?gui_pointer:(Vector2)Input.mousePosition;
             Vector2 edge=RtsCameraPan.edge_direction(pointer,new Vector2(Screen.width,Screen.height),Application.isFocused);
+            if(input.minimap_dragging||input.pointer_over_minimap(pointer))edge=Vector2.zero;
             game_cursor.update(edge,Application.isFocused,input.pending=="Attack");
             pan+=edge;
             pan=Vector2.ClampMagnitude(pan,1);

@@ -39,6 +39,9 @@ namespace ZombieGame.FrontierTests
             yield return new WaitForSeconds(2.5f);
             Debug.Log($"[SettlementSmoke] attack fixture hp={headquarters.health} zombie={game.current.positions[walker]} path={agent.hasPath} stopped={agent.isStopped}");
             require(headquarters.health<500&&headquarters.health>0,"ordinary zombie actually damages HQ");
+            int local_alerts=0;
+            foreach(var alert in game.current.attack_alerts)if(alert.expires>Time.time&&(alert.position-headquarters.bounds.center).sqrMagnitude<1)local_alerts++;
+            require(local_alerts==1,"HQ damage emits one merged minimap warning");
             int expected=0;
             foreach(var building in game.current.buildings)
             {
@@ -57,6 +60,13 @@ namespace ZombieGame.FrontierTests
             require(game.current.geometry_errors==0,"infection spawns outside blocked footprints");
             Debug.Log($"[SettlementSmoke] PASS resource tiers/yields/six recruits/building attacks/HP300-500/infection={expected}/defeat/no duplicate/no geometry errors");
             game.current.try_supply_shot=null;
+            yield return new WaitForEndOfFrame();
+            var area=game.controls.minimap_bounds;
+            var pixels=new Texture2D(Mathf.FloorToInt(area.width),Mathf.FloorToInt(area.height),TextureFormat.RGB24,false);
+            pixels.ReadPixels(new Rect(area.x,Screen.height-area.yMax,pixels.width,pixels.height),0,0);pixels.Apply();
+            int red=0;foreach(var color in pixels.GetPixels32())if(color.r>235&&color.g<45&&color.b<35)red++;
+            Destroy(pixels);require(red>20,"actual minimap framebuffer shows red attack warning frames");
+            Debug.Log($"[MinimapAlertSmoke] PASS HQ merged alert and rendered red warning pixels={red}");
             ScreenCapture.CaptureScreenshot("/tmp/zombie-settlement-defeat.png");yield return new WaitForSeconds(.3f);Application.Quit(0);
         }
         private static void check_resources(FrontierMap map)

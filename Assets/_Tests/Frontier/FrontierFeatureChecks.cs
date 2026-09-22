@@ -15,7 +15,7 @@ namespace ZombieGame.FrontierTests
         {if(!success)throw new InvalidOperationException(message);}
         public static void run(FrontierGame game)
         {
-            check_focus(game);check_resources(game);check_ammunition(game.economy.config);check_placement(game);
+            check_focus(game);check_minimap(game);check_resources(game);check_ammunition(game.economy.config);check_placement(game);
         }
         private static void check_focus(FrontierGame game)
         {
@@ -31,6 +31,64 @@ namespace ZombieGame.FrontierTests
             game.controls.store_group(1);game.focus_camera(Vector3.zero);game.controls.recall_group(1,true);
             require(Vector3.Distance(game.camera_focus,game.controls.selection_center())<.01f,"double group focus uses cluster");
             Debug.Log("[DenseFocusSmoke] PASS main cluster/dead filtering/single select/double all/group recall");
+        }
+        private sealed class CameraOnlyFixture:IRtsBattleView
+        {
+            private readonly FrontierGame source;
+            public CameraOnlyFixture(FrontierGame source){this.source=source;}
+            public BattleSimulation current=>source.current;
+            public ZombieGame.Vision.CombatFog current_fog=>source.current_fog;
+            public bool can_control=>false;
+            public bool reveal_map=>source.reveal_map;
+            public Vector3 camera_focus=>source.camera_focus;
+            public void focus_camera(Vector3 point)=>source.focus_camera(point);
+            public bool pointer_over_ui(Vector2 point)=>source.pointer_over_ui(point);
+            public Color32 obstacle_color(int index)=>source.obstacle_color(index);
+        }
+        private static void check_minimap(FrontierGame game)
+        {
+            var controls=game.controls;var original_view=controls.game;var original_focus=game.camera_focus;
+            var original_intercept=controls.intercept_world_input;int selected=controls.selected_count();
+            bool original_panel=controls.custom_command_panel;
+            try
+            {
+                foreach(bool custom in new[]{true,false})
+                {
+                    controls.custom_command_panel=custom;var area=controls.minimap_bounds;
+                    controls.cancel_command();
+                    controls.intercept_world_input=_=>throw new InvalidOperationException("Minimap leaked into building/world input");
+                    controls.handle_mouse(new Event{type=EventType.MouseDown,button=0,mousePosition=area.center});
+                    require(controls.minimap_dragging&&game.camera_focus.sqrMagnitude<.01f,"minimap left down captures camera");
+                    for(int i=1;i<=4;i++)
+                    {
+                        controls.handle_mouse(new Event{type=EventType.MouseDrag,button=0,mousePosition=area.center+new Vector2(area.width*i*.1f,-area.height*i*.1f)});
+                        require(Vector3.Distance(game.camera_focus,new Vector3(25.6f*i,0,25.6f*i))<.01f,"continuous camera drag");
+                    }
+                    var outside=new Vector2(area.xMax+30,area.y-30);
+                    controls.handle_mouse(new Event{type=EventType.MouseDrag,button=0,mousePosition=outside});
+                    require(game.camera_focus==new Vector3(128,0,128),"capture clamps outside map");
+                    controls.handle_mouse(new Event{type=EventType.MouseUp,button=0,mousePosition=outside});
+                    require(!controls.minimap_dragging&&controls.selected_count()==selected,"release outside preserves selection");
+                    controls.handle_mouse(new Event{type=EventType.MouseDown,button=0,mousePosition=area.center});
+                    controls.SendMessage("OnApplicationFocus",false);require(!controls.minimap_dragging,"focus loss cancels capture");
+                    controls.game=new CameraOnlyFixture(game);
+                    controls.handle_mouse(new Event{type=EventType.MouseDown,button=0,mousePosition=area.center});
+                    controls.handle_mouse(new Event{type=EventType.MouseDrag,button=0,mousePosition=area.center+Vector2.right*area.width*.25f});
+                    require(Mathf.Abs(game.camera_focus.x-64)<.01f&&controls.minimap_dragging,"camera works when orders are disabled: "+game.camera_focus);
+                    controls.handle_mouse(new Event{type=EventType.MouseUp,button=0,mousePosition=area.center});
+                    controls.game=original_view;
+                    controls.handle_mouse(new Event{type=EventType.MouseDown,button=1,mousePosition=area.center});
+                    require(!controls.minimap_dragging&&game.current.orders[0]==SoldierOrder.Move,"right-click remains movement");
+                    controls.arm("Attack");controls.handle_mouse(new Event{type=EventType.MouseDown,button=0,mousePosition=area.center});
+                    require(!controls.minimap_dragging&&game.current.orders[0]==SoldierOrder.AttackMove,"A-left remains attack move");
+                }
+            }
+            finally
+            {
+                controls.game=original_view;controls.custom_command_panel=original_panel;controls.intercept_world_input=original_intercept;
+                controls.cancel_pointer_capture();controls.cancel_command();controls.issue_selected(SoldierOrder.Stop,Vector3.zero);game.focus_camera(original_focus);
+            }
+            Debug.Log("[MinimapSmoke] PASS both layouts/click/continuous drag/outside clamp/release/focus loss/disabled orders/selection/right move/A attack");
         }
         private static void check_resources(FrontierGame game)
         {
@@ -60,8 +118,13 @@ namespace ZombieGame.FrontierTests
                 fixture.step(0,.1f);require(fixture.crowd.agents[0].hasPath&&!fixture.crowd.agents[0].isStopped,"empty gun does not idle at gun range");
                 fixture.crowd.agents[1].enabled=true;require(fixture.crowd.agents[1].Warp(new Vector3(-4.1f,0,0)),"melee fixture warp");fixture.crowd.agents[1].isStopped=true;
                 fixture.step(.2f,.1f);require(fixture.melee_strikes==1&&fixture.health[1]==UnitBalance.runner.health-10,"knife deals 10");
+                int attack_alerts=0;foreach(var alert in fixture.attack_alerts)if(alert.expires>.2f)attack_alerts++;
+                require(fixture.health[0]<fixture.stats_for(0).health&&attack_alerts==1,"human bitten produces one minimap alarm");
                 fixture.step(.7f,.1f);require(fixture.melee_strikes==1,"knife cooldown before 1 second");
                 fixture.step(1.21f,.1f);require(fixture.melee_strikes==2&&fixture.shots==0,"knife interval 1 / no gunshots");
+                attack_alerts=0;foreach(var alert in fixture.attack_alerts)if(alert.expires>1.21f)attack_alerts++;
+                require(attack_alerts==1,"nearby repeated damage merges warnings");
+                foreach(var alert in fixture.attack_alerts)require(alert.expires<10,"damage warnings expire instead of sticking forever");
                 fixture.ammunition[0]=3;fixture.manual_melee[0]=true;require(fixture.uses_melee(0),"manual knife overrides loaded musket");
                 fixture.manual_melee[0]=false;require(!fixture.uses_melee(0),"manual switch back to gun");
                 fixture.step(2.3f,.1f);require(fixture.shots==1&&fixture.ammunition[0]==2&&economy.gunpowder==10,"shot consumes carried round, not distant global inventory");
