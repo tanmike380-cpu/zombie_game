@@ -43,3 +43,6 @@ sysinfo.txt
 /Assets/_Game/Resources/BalanceGenerated.meta
 /Assets/_Game/Resources/CharacterGenerated/
 /Assets/_Game/Resources/CharacterGenerated.meta
+# Reproducible CC0 download cache; sources and checksums live in art/free_environment_manifest.json.
+/Assets/_Game/Resources/FreeEnvironment/
+/Assets/_Game/Resources/FreeEnvironment.meta

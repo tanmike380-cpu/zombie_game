@@ -1,0 +1,98 @@
+{
+  "provider": "Poly Haven",
+  "credit": "Powered by Poly Haven",
+  "license_url": "https://polyhaven.com/license",
+  "packs": [
+    {
+      "id": "grass_path_2",
+      "source": "https://polyhaven.com/a/grass_path_2",
+      "license": "CC0-1.0",
+      "files": [
+        {
+          "channel": "Diffuse",
+          "size": 716010,
+          "md5": "48cebe95af233211c9469a9bfe2f42f2",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/grass_path_2/grass_path_2_diff_1k.jpg",
+          "name": "grass_path_2_diff_1k.jpg"
+        },
+        {
+          "channel": "nor_gl",
+          "size": 831959,
+          "md5": "aa04d930b6af2bd7e3252e31776822bd",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/grass_path_2/grass_path_2_nor_gl_1k.jpg",
+          "name": "grass_path_2_nor_gl_1k.jpg"
+        },
+        {
+          "channel": "Rough",
+          "size": 335245,
+          "md5": "a3f245c716d0f2bbdece65a38b1bcd4a",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/grass_path_2/grass_path_2_rough_1k.jpg",
+          "name": "grass_path_2_rough_1k.jpg"
+        }
+      ]
+    },
+    {
+      "id": "rock_moss_set_01",
+      "source": "https://polyhaven.com/a/rock_moss_set_01",
+      "license": "CC0-1.0",
+      "files": [
+        {
+          "channel": "Diffuse",
+          "size": 168099,
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/rock_moss_set_01/rock_moss_set_01_diff_1k.jpg",
+          "md5": "b8742301e6b4bc5683d2de712e83f772",
+          "name": "rock_moss_set_01_diff_1k.jpg"
+        },
+        {
+          "channel": "nor_gl",
+          "size": 209975,
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/rock_moss_set_01/rock_moss_set_01_nor_gl_1k.jpg",
+          "md5": "eb7ebd31ad08e78d0497900652ff1568",
+          "name": "rock_moss_set_01_nor_gl_1k.jpg"
+        },
+        {
+          "channel": "Rough",
+          "size": 82624,
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/rock_moss_set_01/rock_moss_set_01_rough_1k.jpg",
+          "md5": "ed9d8a2c863262f76f881346e8047c6a",
+          "name": "rock_moss_set_01_rough_1k.jpg"
+        },
+        {
+          "channel": "model",
+          "size": 2652988,
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/fbx/1k/rock_moss_set_01/rock_moss_set_01_1k.fbx",
+          "md5": "3f82316eb266746b71ae287f5609bafb",
+          "name": "rock_moss_set_01_1k.fbx"
+        }
+      ]
+    },
+    {
+      "id": "plastered_stone_wall",
+      "source": "https://polyhaven.com/a/plastered_stone_wall",
+      "license": "CC0-1.0",
+      "files": [
+        {
+          "channel": "Diffuse",
+          "size": 680077,
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/plastered_stone_wall/plastered_stone_wall_diff_1k.jpg",
+          "md5": "dfa5e68b2337761c887f995301272ac3",
+          "name": "plastered_stone_wall_diff_1k.jpg"
+        },
+        {
+          "channel": "nor_gl",
+          "size": 1041406,
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/plastered_stone_wall/plastered_stone_wall_nor_gl_1k.jpg",
+          "md5": "8f38591716ec61172255880bff0dccec",
+          "name": "plastered_stone_wall_nor_gl_1k.jpg"
+        },
+        {
+          "channel": "Rough",
+          "size": 508548,
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/plastered_stone_wall/plastered_stone_wall_rough_1k.jpg",
+          "md5": "8bab4178befcd298d625d27d792a21b8",
+          "name": "plastered_stone_wall_rough_1k.jpg"
+        }
+      ]
+    }
+  ]
+}
