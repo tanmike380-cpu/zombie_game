@@ -65,7 +65,6 @@ namespace ZombieGame.World
             production=new HeadquartersProduction(economy,JsonUtility.FromJson<HeadquartersConfig>(Resources.Load<TextAsset>("HeadquartersProduction").text));
             supply=new AmmunitionSupply(economy);supply.depots.Add(map.initial_depot);
             current_fog=new CombatFog(fog_template,.08f,true);
-            current_fog.headquarters_vision=map.headquarters_position;
             current_fog.explore_area(new Rect(-124,-124,76,76));
             current_fog.update_visibility(current);current.player_visibility=current_fog.is_visible;
             battle_view=new FrontierBattleView(current.total_count,transform,landscape_shader);
@@ -76,6 +75,7 @@ namespace ZombieGame.World
             input.selection_changed=()=>{headquarters_selected=false;construction?.cancel_preview();};
             construction=new FrontierConstruction(this,landscape,landscape_shader);
             structures=new FrontierStructures(this,landscape,landscape_shader);
+            current_fog.update_visibility(current);
             siege=new FrontierSiege(JsonUtility.FromJson<SiegeConfig>(Resources.Load<TextAsset>("SiegeConfig").text));
             previous_navigation_iterations=UnityEngine.AI.NavMesh.pathfindingIterationsPerFrame;
             UnityEngine.AI.NavMesh.pathfindingIterationsPerFrame=siege.config.navigation_iterations_per_frame;

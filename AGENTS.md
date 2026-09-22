@@ -18,9 +18,12 @@
   crossing. Do not revert to unit-index-priority assignment or stagger command start times.
 - Reusable battle/navigation/perception logic lives under `Assets/_Game/Scripts`; test scenes
   supply population/layout fixtures and must not become dependencies of production modules.
-- Preserve accepted RTS feedback across every art/style change: living human units show green HP
-  and blue ammunition above their heads (including full/unselected units); selected humans have
+- Preserve accepted RTS feedback across every art/style change: living units show green HP only
+  below full health; humans show blue ammunition only below capacity, including an empty-ammo cue.
+  These conditions are independent and apply to unselected units too; selected humans have
   ground-position selection rings. Feedback stays readable across camera zoom and lighting.
+- All deployed living friendly units and living uninfected buildings supply shared human sight.
+  Destroyed/cancelled buildings lose sight; explored terrain remains remembered.
 - Edge pan and directional cursors share drawable-window coordinates; test all four exact bounds,
   sustained top/right contact, focus loss, resize and zoom. Keep unit UI framebuffer regressions.
 - Extend existing production systems rather than recreating accepted features in new test controllers.

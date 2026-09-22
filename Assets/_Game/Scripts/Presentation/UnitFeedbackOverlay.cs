@@ -38,17 +38,21 @@ namespace ZombieGame.Presentation
                 if(battle.health[i]<=0||battle.is_reserve(i))continue;
                 bool human=i<battle.soldier_count;
                 if(!human&&!reveal&&(fog==null||!fog.is_visible(battle.positions[i])))continue;
+                var stats=battle.stats_for(i);
+                bool show_health=battle.health[i]<stats.health;
+                bool show_ammunition=human&&stats.ammunition_capacity>0&&battle.ammunition[i]<stats.ammunition_capacity;
+                bool show_ring=human&&battle.selected[i];
+                if(!show_health&&!show_ammunition&&!show_ring)continue;
                 Vector3 foot=camera.WorldToScreenPoint(battle.positions[i]);
                 if(foot.z<=0||foot.x<0||foot.x>camera.pixelWidth||foot.y<0||foot.y>camera.pixelHeight)continue;
-                var stats=battle.stats_for(i);
-                if(human&&battle.selected[i]){draw_ring(battle.positions[i],foot);selection_rings++;}
-                if(!human&&battle.health[i]>=stats.health)continue;
+                if(show_ring){draw_ring(battle.positions[i],foot);selection_rings++;}
+                if(!show_health&&!show_ammunition)continue;
                 float scale=human?1:stats.model_scale;
                 Vector3 head=camera.WorldToScreenPoint(battle.positions[i]+Vector3.up*2.35f*scale);
                 float width=Mathf.Clamp(camera.pixelHeight/camera.orthographicSize*.9f,24,44);
                 float y=Mathf.Max(head.y,foot.y+14)+7;
-                draw_bar(new Rect(head.x-width/2,y,width,6),battle.health[i]/stats.health,HEALTH);health_bars++;
-                if(human)
+                if(show_health){draw_bar(new Rect(head.x-width/2,y,width,6),battle.health[i]/stats.health,HEALTH);health_bars++;}
+                if(show_ammunition)
                 {
                     draw_bar(new Rect(head.x-width/2,y-8,width,5),battle.ammunition[i]/(float)stats.ammunition_capacity,AMMO);
                     ammunition_bars++;
@@ -60,6 +64,9 @@ namespace ZombieGame.Presentation
         private void draw_bar(Rect rect,float fraction,Color32 color)
         {
             add_quad(new Vector2(rect.x-1,rect.y-1),new Vector2(rect.xMax+1,rect.y-1),new Vector2(rect.xMax+1,rect.yMax+1),new Vector2(rect.x-1,rect.yMax+1),BACKGROUND);
+            // Retain a colored baseline when empty: zero ammunition must not look like a hidden full bar.
+            if(fraction<=0)
+                add_quad(new Vector2(rect.x,rect.y),new Vector2(rect.xMax,rect.y),new Vector2(rect.xMax,rect.y+1),new Vector2(rect.x,rect.y+1),color);
             float right=rect.x+rect.width*Mathf.Clamp01(fraction);
             if(right>rect.x)add_quad(new Vector2(rect.x,rect.y),new Vector2(right,rect.y),new Vector2(right,rect.yMax),new Vector2(rect.x,rect.yMax),color);
         }

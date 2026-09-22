@@ -16,7 +16,6 @@ namespace ZombieGame.Vision
         private readonly Material material;
         private readonly Mesh quad;
         private readonly float plane_height;
-        public Vector3? headquarters_vision;
 
         public CombatFog(Material template, float plane_height = 8, bool smooth_edges = false)
         {
@@ -33,30 +32,31 @@ namespace ZombieGame.Vision
             Array.Clear(visible, 0, visible.Length);
             for (int i = 0; i < simulation.soldier_count; i++)
             {
-                if (simulation.health[i] <= 0) continue;
-                Vector3 center = simulation.positions[i];
-                int min_x = Mathf.Max(0, Mathf.FloorToInt(center.x + 128 - HUMAN_SIGHT));
-                int max_x = Mathf.Min(255, Mathf.FloorToInt(center.x + 128 + HUMAN_SIGHT));
-                int min_z = Mathf.Max(0, Mathf.FloorToInt(center.z + 128 - HUMAN_SIGHT));
-                int max_z = Mathf.Min(255, Mathf.FloorToInt(center.z + 128 + HUMAN_SIGHT));
-                for (int z = min_z; z <= max_z; z++)
-                    for (int x = min_x; x <= max_x; x++)
-                    {
-                        float dx = x - 127.5f - center.x, dz = z - 127.5f - center.z;
-                        if (dx * dx + dz * dz <= HUMAN_SIGHT * HUMAN_SIGHT)
-                            visible[x + z * SIZE] = explored[x + z * SIZE] = true;
-                    }
+                if (simulation.health[i] <= 0 || simulation.is_reserve(i)) continue;
+                reveal_area(simulation.positions[i]);
             }
-            if(headquarters_vision.HasValue)
+            foreach(var building in simulation.buildings)
             {
-                Vector3 center=headquarters_vision.Value;
-                for(int z=Mathf.Max(0,Mathf.FloorToInt(center.z+128-HUMAN_SIGHT));z<=Mathf.Min(255,Mathf.CeilToInt(center.z+128+HUMAN_SIGHT));z++)
-                    for(int x=Mathf.Max(0,Mathf.FloorToInt(center.x+128-HUMAN_SIGHT));x<=Mathf.Min(255,Mathf.CeilToInt(center.x+128+HUMAN_SIGHT));x++)
-                        if((new Vector3(x-127.5f,0,z-127.5f)-center).sqrMagnitude<=HUMAN_SIGHT*HUMAN_SIGHT)
-                            visible[x+z*SIZE]=explored[x+z*SIZE]=true;
+                if(building.health>0&&!building.infected)reveal_area(building.bounds.center);
             }
             for (int i = 0; i < pixels.Length; i++) pixels[i] = new Color32(0, 0, 0, visible[i] ? (byte)0 : explored[i] ? (byte)175 : (byte)255);
             texture.SetPixels32(pixels); texture.Apply(false, false);
+        }
+
+        /// <summary>Reveal a ground-plane circle using the shared human sight, regardless of model height.</summary>
+        private void reveal_area(Vector3 center)
+        {
+            float radius=HUMAN_SIGHT;
+            int min_z=Mathf.Max(0,Mathf.CeilToInt(center.z+127.5f-radius));
+            int max_z=Mathf.Min(SIZE-1,Mathf.FloorToInt(center.z+127.5f+radius));
+            for(int z=min_z;z<=max_z;z++)
+            {
+                float dz=z-127.5f-center.z;
+                float half_width=Mathf.Sqrt(Mathf.Max(0,radius*radius-dz*dz));
+                int min_x=Mathf.Max(0,Mathf.CeilToInt(center.x+127.5f-half_width));
+                int max_x=Mathf.Min(SIZE-1,Mathf.FloorToInt(center.x+127.5f+half_width));
+                for(int x=min_x;x<=max_x;x++)visible[x+z*SIZE]=explored[x+z*SIZE]=true;
+            }
         }
 
         public bool is_visible(Vector3 point)
