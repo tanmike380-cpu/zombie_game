@@ -29,6 +29,12 @@
 .DS_Store
 Thumbs.db
 
+# Local art-tool caches and Blender autosave backups (keep authored .blend masters).
+__pycache__/
+*.pyc
+*.blend1
+*.blend2
+
 # Crash reports
 sysinfo.txt
 
@@ -43,6 +49,8 @@ sysinfo.txt
 /Assets/_Game/Resources/BalanceGenerated.meta
 /Assets/_Game/Resources/CharacterGenerated/
 /Assets/_Game/Resources/CharacterGenerated.meta
+/Assets/_Game/ArtGenerated/
+/Assets/_Game/ArtGenerated.meta
 # Reproducible CC0 download cache; sources and checksums live in art/free_environment_manifest.json.
 /Assets/_Game/Resources/FreeEnvironment/
 /Assets/_Game/Resources/FreeEnvironment.meta

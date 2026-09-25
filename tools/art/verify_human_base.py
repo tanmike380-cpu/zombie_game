@@ -1,0 +1,80 @@
+"""Validate the saved production master in a fresh Blender process."""
+import json
+import math
+from pathlib import Path
+import sys
+
+import bpy
+from mathutils import Vector
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from freeze_human_base import (BODY_NAME, PROJECT_ROOT, get_body_hash, get_file_hash,
+                              get_protected_geometry_hash, render_previews)
+from human_hands import GRIP_KEY, get_hand_basis
+
+
+def require(condition, message):
+    if not condition:
+        raise AssertionError(message)
+
+
+def verify_hand_pose(rig, side, expected):
+    """Measure actual saved bone matrices rather than trusting the build report."""
+    hand = rig.pose.bones[f'hand.{side}']
+    forearm = rig.pose.bones[f'forearm.{side}']
+    transform = hand.matrix @ rig.data.bones[hand.name].matrix_local.inverted()
+    forward = transform.to_3x3() @ get_hand_basis(side)[0]
+    angle = math.degrees(forward.angle(forearm.tail-forearm.head))
+    require(angle < 35, f'Wrist {side} is folded: {angle:.1f} degrees')
+    require(abs(angle-expected['wrist_angle_degrees']) < .1, f'Wrist {side} report mismatch')
+    require((hand.head-Vector(expected['wrist_world'])).length < .0001, f'Wrist {side} moved')
+    require((forearm.tail-hand.head).length < .0001, f'Wrist {side} detached from forearm')
+
+
+def verify_finger_volume(body):
+    """Regression: distal curl limiting must not flatten fingertip surfaces."""
+    key = body.data.shape_keys.key_blocks[GRIP_KEY]
+    minimum_ratio = 1.0
+    for face in body.data.polygons:
+        if not all(abs((body.matrix_world @ body.data.vertices[index].co).x) > .33 and
+                   .73 < (body.matrix_world @ body.data.vertices[index].co).z < .99
+                   for index in face.vertices):
+            continue
+        for index in range(1, len(face.vertices)-1):
+            indices = (face.vertices[0], face.vertices[index], face.vertices[index+1])
+            original = [body.data.vertices[item].co for item in indices]
+            posed = [key.data[item].co for item in indices]
+            source_area = (original[1]-original[0]).cross(original[2]-original[0]).length
+            target_area = (posed[1]-posed[0]).cross(posed[2]-posed[0]).length
+            if source_area > 1e-10:
+                ratio = target_area/source_area
+                minimum_ratio = min(minimum_ratio, ratio)
+                require(ratio > .02, f'Collapsed finger triangle on face {face.index}: {ratio:.5f}')
+    print(f'FINGER_SURFACE_VERIFIED: minimum triangle area ratio {minimum_ratio:.4f}', flush=True)
+
+
+def verify_master():
+    master = PROJECT_ROOT/'art/characters/human_base/human_base.blend'
+    report = json.loads(master.with_suffix('.verification.json').read_text())
+    require(get_file_hash(master) == report['master_sha256'], 'Master changed without review/manifest update')
+    bpy.ops.wm.open_mainfile(filepath=str(master))
+    body = bpy.data.objects[BODY_NAME]
+    require(get_body_hash(body) == report['body_rest_sha256'], 'Approved rest body changed')
+    require(get_protected_geometry_hash() == report['costume_geometry_sha256'], 'Approved costume/weapon changed')
+    require(body.data.color_attributes.get('HumanSkin') is not None, 'Missing skin color attribute')
+    require(body.data.materials[0].name == 'HumanBase | warm skin', 'Body still has review clay')
+    verify_finger_volume(body)
+    rig = bpy.data.objects['Equipment | editable holding pose rig']
+    for side in (-1, 1):
+        verify_hand_pose(rig, side, report['hands'][str(side)])
+    eyes = [obj for obj in bpy.data.objects if '.eye.' in obj.name]
+    require(len(eyes) == 2, 'Expected two original eyes')
+    require(all(obj.data.materials[0].name == 'HumanBase | eyes' for obj in eyes), 'Unpainted eye')
+    require(not bpy.context.scene['runtime_animation_ready'], 'Do not label the arm study a complete runtime rig')
+    print('HUMAN_BASE_VERIFIED: protected geometry, skin, eyes, connected wrists below 35 degrees', flush=True)
+
+
+if __name__ == '__main__':
+    verify_master()
+    if '--render' in sys.argv:
+        render_previews(PROJECT_ROOT/'Builds/ArtReview/HumanBase-v1', preview_only=False)

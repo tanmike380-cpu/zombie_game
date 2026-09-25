@@ -1,0 +1,48 @@
+{
+  "id": "human-matchlock-v1",
+  "approved_source_sha256": "8c2648e943647e54667ebb1d76c0db6a8cf2fffba048ad9d6aba111c649b27aa",
+  "master_sha256": "687152752c1beac80fae1cfdac68b7666b5863f4e23bf00df3b2d5a45f03f9dd",
+  "body_rest_sha256": "15152a242ffe6d118af7d9eac851bd7c09167e9c965db829689ba8d5b11514f2",
+  "costume_geometry_sha256": "c1769930046fd2c6bdd73efc20f1b3a4fec39a2e3a0684dbb74b68edf7f5868b",
+  "protected_geometry_unchanged": true,
+  "hands": {
+    "-1": {
+      "wrist_angle_degrees": 9.742331676427836,
+      "grip_world": [
+        -0.06928479671478271,
+        -0.33000001311302185,
+        1.2015910148620605
+      ],
+      "wrist_world": [
+        -0.12821388244628906,
+        -0.24930867552757263,
+        1.1937636137008667
+      ],
+      "elbow_world": [
+        -0.34198543429374695,
+        -0.08099930733442307,
+        1.2753398418426514
+      ]
+    },
+    "1": {
+      "wrist_angle_degrees": 23.344246158478967,
+      "grip_world": [
+        0.316006600856781,
+        -0.33000001311302185,
+        1.0614104270935059
+      ],
+      "wrist_world": [
+        0.2623893916606903,
+        -0.24924181401729584,
+        1.0868723392486572
+      ],
+      "elbow_world": [
+        0.35491982102394104,
+        -0.0618499219417572,
+        1.2792350053787231
+      ]
+    }
+  },
+  "colored_eyes": 2,
+  "runtime_animation_ready": false
+}
