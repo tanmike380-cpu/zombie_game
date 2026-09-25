@@ -11,7 +11,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from freeze_human_base import BODY_NAME, PROJECT_ROOT, configure_view, get_file_hash
 from human_weapon_poses import MASTER, PRESETS, REVIEW_DIR, verify_pose, is_head_equipment
 from human_rts_hands import HAND_PREFIX
-from export_human_preview import merge_preview_parts
+from export_human_preview import bake_eye_colors, merge_preview_parts
 
 CONFIG = PROJECT_ROOT/'art/characters/human_base/rts_lightweight.json'
 OUTPUT = PROJECT_ROOT/'Builds/ArtReview/RTSLightweight-v1'
@@ -87,6 +87,9 @@ def compact_proportions(point, config, enlarge_head=False):
 
 def bake_part(obj, depsgraph, config):
     mesh = bpy.data.meshes.new_from_object(obj.evaluated_get(depsgraph), preserve_all_data_layers=True, depsgraph=depsgraph)
+    if '.eye.' in obj.name:
+        # The procedural iris uses object coordinates; bake before moving/merging.
+        bake_eye_colors(mesh)
     mesh.calc_loop_triangles()
     before = len(mesh.loop_triangles)
     duplicate = bpy.data.objects.new(obj.name+' | RTS', mesh)
@@ -140,6 +143,17 @@ def validate_candidate(objects, report, config):
         raise ValueError('Armor lost its readable rivet pattern')
     if any(obj.modifiers for obj in objects):
         raise ValueError('Static candidate still has live subdivision/geometry modifiers')
+    eyes = [obj for obj in objects if any(material and material.name.startswith('HumanBase | eyes')
+                                         for material in obj.data.materials)]
+    if not eyes:
+        raise ValueError('RTS candidate lost both eye meshes')
+    for eye in eyes:
+        colors = eye.data.color_attributes.get('HumanEye')
+        if colors is None or not colors.data:
+            raise ValueError('Bake the iris colors before merging the eye meshes')
+        values = [item.color[0] for item in colors.data]
+        if max(values)-min(values) < .1:
+            raise ValueError('RTS iris lost color contrast')
     return triangles
 
 
