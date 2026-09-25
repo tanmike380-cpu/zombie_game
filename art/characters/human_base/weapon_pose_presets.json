@@ -1,0 +1,32 @@
+{
+  "description": "Unapproved static pose studies derived from the unchanged human master. Coordinates are meters; no gameplay stats.",
+  "source_sha256": "15c99426bc5d823b526d77330273788a1f9127b70135590462d3c5b83be7aac2",
+  "poses": {
+    "aim": {
+      "label": "举枪瞄准",
+      "gun_origin": [-0.14,0.015,1.565],
+      "gun_axis": [0.025,-1.0,0.018],
+      "grip_distance_m": {"trigger": 0.28,"support": 0.46},
+      "grip_height_m": {"trigger": -0.075,"support": -0.030},
+      "thumb_directions_weapon": {"trigger": [[-0.10,0.50,0.86],[0.35,0.75,0.55],[0.60,0.75,-0.27]],"support": [[0.30,0.80,0.50],[-0.30,-0.10,0.95],[-0.25,-0.80,0.50]]},
+      "hand_forward_weapon": {"trigger": [0.75,0.30,0.59],"support": [0.30,-0.82,0.49]},
+      "hand_across_weapon": {"trigger": [0,0,-1],"support": [1,0,0]},
+      "elbow_poles": {"trigger": [-0.30,0.0,1.20],"support": [0.26,-0.34,1.24]},
+      "head_pitch_degrees": 19,
+      "head_lean_m": -0.050,
+      "views": [["overview",-55,12,[0,-0.28,1.13],2.25,[1150,1150]],["hands",-65,28,[0,-0.33,1.48],0.88,[1400,1050]],["side",-100,8,[0,-0.36,1.44],1.22,[1400,1000]]]
+    },
+    "chest": {
+      "label": "胸前持枪",
+      "gun_origin": [-0.44,-0.29,1.32],
+      "gun_axis": [0.93,0.0,0.367],
+      "grip_distance_m": {"trigger": 0.30,"support": 0.60},
+      "grip_height_m": {"trigger": -0.010,"support": -0.025},
+      "thumb_directions_weapon": {"trigger": [[-0.30,0.60,0.73],[0.50,-0.30,0.81],[0.70,-0.65,-0.30]],"support": [[-0.12,0.04,0.99],[-0.15,-0.80,0.59],[-0.20,-0.95,-0.20]]},
+      "hand_forward_weapon": {"trigger": [0.68,-0.72,0.12],"support": [-0.45,-0.70,0.55]},
+      "elbow_poles": {"trigger": [-0.43,-0.06,1.20],"support": [0.43,-0.05,1.20]},
+      "head_pitch_degrees": 0,
+      "views": [["overview",15,7,[0.02,-0.06,1.06],2.30,[1150,1150]],["hands",0,20,[0.04,-0.28,1.38],0.95,[1400,1050]],["side",-45,30,[0.0,-0.28,1.38],1.06,[1400,1000]]]
+    }
+  }
+}

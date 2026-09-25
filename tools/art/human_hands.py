@@ -54,7 +54,7 @@ def refine_finger_curl(body):
     key.value = 1
 
 
-def solve_elbow(shoulder, wrist, upper_length, forearm_length, side):
+def solve_elbow(shoulder, wrist, upper_length, forearm_length, side, pole=None):
     delta = wrist-shoulder
     distance = delta.length
     if not abs(upper_length-forearm_length) < distance < upper_length+forearm_length:
@@ -62,7 +62,7 @@ def solve_elbow(shoulder, wrist, upper_length, forearm_length, side):
     direction = delta/distance
     along = (upper_length**2-forearm_length**2+distance**2)/(2*distance)
     height = math.sqrt(max(0, upper_length**2-along**2))
-    pole = Vector((side*.7, -.04, 1.16))-shoulder
+    pole = (Vector(pole) if pole is not None else Vector((side*.7, -.04, 1.16)))-shoulder
     bend = (pole-direction*pole.dot(direction)).normalized()
     return shoulder+direction*along+bend*height
 
@@ -216,9 +216,9 @@ def deform_finger_point(point, joints, transforms, segment_index, parameter, is_
     return transforms[segment_index] @ point
 
 
-def refine_articulated_grip(body, config_path):
+def refine_articulated_grip(body, config_path, settings_override=None, weapon_inverse=None):
     """Replace the rubber-tube curl with per-finger joint articulation only."""
-    settings = json.loads(Path(config_path).read_text())
+    settings = settings_override or json.loads(Path(config_path).read_text())
     config = settings['fingers']
     chains = {name: [Vector(point) for point in entry['joints']] for name, entry in config.items()}
     key = body.data.shape_keys.key_blocks[GRIP_KEY]
@@ -231,7 +231,7 @@ def refine_articulated_grip(body, config_path):
         role = 'trigger' if side < 0 else 'support'
         from hand_contacts import fit_finger_contacts, get_hand_contact_frame
         transform, pitch = get_hand_contact_frame(side, settings['hand_pitch_degrees'][role])
-        solved = fit_finger_contacts(body, side, config, chains, transform)
+        solved = fit_finger_contacts(body, side, config, chains, transform, weapon_inverse)
         articulation[role] = {name: {'angles': parameters[:3],
                                      'total_curl_degrees': sum(parameters[:3])+math.degrees(get_palm_frame(chains[name][0]).to_quaternion().angle)}
                               for name, parameters in solved.items()}

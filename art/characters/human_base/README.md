@@ -34,6 +34,22 @@
 
 ## 当前交付边界
 
+### 双姿势审看稿（未定稿，不覆盖母版）
+
+用户要求放弃原握姿，改看「举枪瞄准」和「胸前持枪」两个方案。两者均从本目录同一母版派生，人物、衣甲和枪的基础网格/材质不重做。只调整骨骼姿态、握持形体、武器整体位置；瞄准稿另有可逆的轻微低头/侧靠动作，胸前稿不动头部。
+
+- 参数：`weapon_pose_presets.json`。`trigger` 为人物右手，`support` 为人物左手；握点、掌心朝向和手肘参考点分别设置，不能再把原握姿整体旋转成瞄准。
+- 制作脚本：`tools/art/human_weapon_poses.py`，复用现有 `human_hands.py` / `hand_contacts.py`，后者新增可选武器坐标变换，默认母版流程不变。
+- 本地输出：`Builds/ArtReview/WeaponPoses-v1/aim/aim.blend`、`chest/chest.blend`，各有全身、手部、侧面渲染和验证报告。它们是可重建的未确认审看资产，不覆盖正式母版，也不替换 Unity 战场。
+- 校验：重新打开保存文件，检查基础造型和材质不变、枪各部件保持刚性整体、手腕连续且折角小于 35 度、指面未塌陷、静态基网格接触样点无超过 2mm 的枪托/枪管穿插。这不是完整皮肤碰撞或动画验收。
+
+```sh
+/Applications/Blender.app/Contents/MacOS/Blender --background --threads 6 --python-exit-code 1 --python tools/art/human_weapon_poses.py
+/Applications/Blender.app/Contents/MacOS/Blender --background --threads 6 --python-exit-code 1 --python tools/art/human_weapon_poses.py -- --verify-only
+```
+
+主母版的 SHA-256 被姿势参数锁定；原稿变更后需要明确更新参数基准。已接受的运行时动画与游戏反馈保持原样。两份 `.blend` 留本地供用户选择，Git 保存源母版、姿势参数和制作/验证脚本，不提交重复生成的两套完整角色和渲染缓存。
+
 **这是正式美术母版，不是已经替换战场全部士兵的动画资产。** 当前只有手臂握持骨架；完整的行走、开火、换刀、近战与死亡绑定尚未完成。现有 `CharacterBake` / `CharacterCrowdRenderer` 的动画及游戏反馈保持不变，不能把静态母版当作完成了动画的成品直接覆盖它们。
 
 Unity 静态检查导出位于 `Assets/_Game/ArtGenerated/HumanBase/human_base.glb`，从母版重建，不提交生成物，也不放进 Resources 自动打入游戏包。它仅供导入/比例/造型检查；Blender 程序化木纹、微表面等并非完整烘焙贴图，不保证检查版与离线渲染逐像素一致。运行时拓扑、共享骨架和材质烘焙需要下一阶段完成。

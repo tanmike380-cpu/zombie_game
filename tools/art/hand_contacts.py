@@ -26,7 +26,9 @@ def get_stock_distance(point, surface):
     return distance if (point-location).dot(normal) >= 0 else -distance
 
 
-def get_barrel_distance(point):
+def get_barrel_distance(point, weapon_inverse=None):
+    if weapon_inverse is not None:
+        point = weapon_inverse @ point
     relative = point-GUN_ORIGIN
     along = relative.dot(GUN_AXIS)
     up = Vector((-GUN_AXIS.z, 0, GUN_AXIS.x))
@@ -36,7 +38,7 @@ def get_barrel_distance(point):
     return math.hypot(max(0, radial), axial) if axial else radial
 
 
-def score_finger(parameters, joints, transform, surface, name):
+def score_finger(parameters, joints, transform, surface, name, weapon_inverse=None):
     transforms = build_finger_transforms(joints, parameters[:3], False, parameters[3])
     radius = {'index': .0075, 'middle': .008, 'ring': .0075, 'little': .006}[name]
     palm_angle = math.degrees(get_palm_frame(joints[0]).to_quaternion().angle)
@@ -49,16 +51,16 @@ def score_finger(parameters, joints, transform, surface, name):
             distance = get_stock_distance(world, surface)
             clearance = radius*(1-.15*segment)
             score += 35*max(0, clearance-distance)**2
-            score += 45*max(0, clearance+.001-get_barrel_distance(world))**2
+            score += 45*max(0, clearance+.001-get_barrel_distance(world, weapon_inverse))**2
             if segment == 2:
                 score += (distance-clearance-.001)**2*(4 if fraction == 1 else 1)
     return score
 
 
-def optimize_finger(initial, joints, transform, surface, name):
+def optimize_finger(initial, joints, transform, surface, name, weapon_inverse=None):
     parameters = [15, initial[1], initial[2], 0.0]
     bounds = [(5, 70), (15, 80), (5, 45), (-7, 7)]
-    score = score_finger(parameters, joints, transform, surface, name)
+    score = score_finger(parameters, joints, transform, surface, name, weapon_inverse)
     for step in (20, 10, 5, 2):
         for _ in range(8):
             improved = False
@@ -66,7 +68,7 @@ def optimize_finger(initial, joints, transform, surface, name):
                 for sign in (-1, 1):
                     candidate = parameters.copy()
                     candidate[index] = max(bounds[index][0], min(bounds[index][1], candidate[index]+sign*step))
-                    cost = score_finger(candidate, joints, transform, surface, name)
+                    cost = score_finger(candidate, joints, transform, surface, name, weapon_inverse)
                     if cost < score:
                         parameters, score, improved = candidate, cost, True
             if not improved:
@@ -88,7 +90,7 @@ def get_hand_contact_frame(side, pitch_degrees):
     return unpitched @ local_rotation.to_4x4(), local_rotation
 
 
-def fit_finger_contacts(body, side, config, chains, transform):
+def fit_finger_contacts(body, side, config, chains, transform, weapon_inverse=None):
     """Solve within joint-angle limits; never reposition wrist, gun or arm."""
     surface = build_stock_surface()
     role = 'trigger' if side < 0 else 'support'
@@ -96,7 +98,7 @@ def fit_finger_contacts(body, side, config, chains, transform):
     for name, entry in config.items():
         if name == 'thumb':
             continue  # Explicit opposition directions preserve the thumb silhouette.
-        parameters, score = optimize_finger(entry[role], chains[name], transform, surface, name)
+        parameters, score = optimize_finger(entry[role], chains[name], transform, surface, name, weapon_inverse)
         solved[name] = parameters
         print('FINGER_CONTACT_FIT', role, name, parameters, round(score, 6), flush=True)
     return solved
@@ -136,7 +138,7 @@ def measure_thumb_exposure(body, settings):
     return report
 
 
-def measure_hand_clearance(body):
+def measure_hand_clearance(body, weapon_inverse=None):
     """Report deep stock/barrel intersections for fully hand-weighted vertices."""
     surface = build_stock_surface()
     rig = bpy.data.objects['Equipment | editable holding pose rig']
@@ -154,7 +156,7 @@ def measure_hand_clearance(body):
             for key in list(keys)[1:]:
                 point += (key.data[vertex.index].co-keys[0].data[vertex.index].co)*key.value
             world = transform @ (body.matrix_world @ point)
-            distance = min(get_stock_distance(world, surface), get_barrel_distance(world))
+            distance = min(get_stock_distance(world, surface), get_barrel_distance(world, weapon_inverse))
             tested += 1
             if distance < -.002:
                 penetrations += 1
@@ -164,11 +166,11 @@ def measure_hand_clearance(body):
     return report
 
 
-def find_clear_contact(point, surface):
+def find_clear_contact(point, surface, weapon_inverse=None):
     """Find the smallest local pad correction outside both wood and barrel."""
     clearance = .0015
     def is_clear(candidate):
-        return min(get_stock_distance(candidate, surface), get_barrel_distance(candidate)) >= clearance
+        return min(get_stock_distance(candidate, surface), get_barrel_distance(candidate, weapon_inverse)) >= clearance
     if is_clear(point):
         return point
     location, normal, _, _ = surface.find_nearest(point)
@@ -177,9 +179,13 @@ def find_clear_contact(point, surface):
     if is_clear(closest):
         candidates.append(closest)
     up = Vector((-GUN_AXIS.z, 0, GUN_AXIS.x))
+    lateral = Vector((0, 1, 0))
+    if weapon_inverse is not None:
+        rotation = weapon_inverse.to_3x3().inverted()
+        up, lateral = rotation @ up, rotation @ lateral
     for index in range(24):
         angle = index*math.tau/24
-        direction = up*math.cos(angle)+Vector((0, 1, 0))*math.sin(angle)
+        direction = up*math.cos(angle)+lateral*math.sin(angle)
         lower, upper = 0.0, .050
         if not is_clear(point+direction*upper):
             continue
@@ -195,7 +201,7 @@ def find_clear_contact(point, surface):
     return min(candidates, key=lambda candidate: (candidate-point).length_squared)
 
 
-def resolve_hand_contacts(body):
+def resolve_hand_contacts(body, weapon_inverse=None):
     """Small corrective hand shape; never modify the gun or any non-hand vertex."""
     from human_hands import GRIP_KEY
     surface = build_stock_surface()
@@ -218,7 +224,7 @@ def resolve_hand_contacts(body):
             for key in list(keys)[1:]:
                 point += (key.data[vertex.index].co-keys[0].data[vertex.index].co)*key.value
             world = transform @ point
-            correction = find_clear_contact(world, surface)-world
+            correction = find_clear_contact(world, surface, weapon_inverse)-world
             if correction.length > .000001:
                 # Leave a small elastic margin instead of projecting every vertex
                 # onto exactly the same contact plane, which can flatten triangles.
