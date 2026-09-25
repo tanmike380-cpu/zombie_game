@@ -1,7 +1,7 @@
 {
   "id": "human-matchlock-v1",
   "approved_source_sha256": "8c2648e943647e54667ebb1d76c0db6a8cf2fffba048ad9d6aba111c649b27aa",
-  "master_sha256": "687152752c1beac80fae1cfdac68b7666b5863f4e23bf00df3b2d5a45f03f9dd",
+  "master_sha256": "5358b8e300df2a7fea15a7953651470f3acae3c56d01bab425f7c1ee59437a1c",
   "body_rest_sha256": "15152a242ffe6d118af7d9eac851bd7c09167e9c965db829689ba8d5b11514f2",
   "costume_geometry_sha256": "c1769930046fd2c6bdd73efc20f1b3a4fec39a2e3a0684dbb74b68edf7f5868b",
   "protected_geometry_unchanged": true,
@@ -44,5 +44,37 @@
     }
   },
   "colored_eyes": 2,
-  "runtime_animation_ready": false
+  "runtime_animation_ready": false,
+  "hand_revision": 2,
+  "hand_parameters_sha256": "76aea34cb00bc86aa61aba35b5fbced0853296fda79e8c6b51468fd65f9ec608",
+  "hand_clearance_before": {
+    "-1": {
+      "tested_vertices": 681,
+      "deep_intersections": 72,
+      "maximum_depth_m": 0.01801345869898796
+    },
+    "1": {
+      "tested_vertices": 681,
+      "deep_intersections": 12,
+      "maximum_depth_m": 0.007386574987322092
+    }
+  },
+  "hand_clearance_after": {
+    "-1": {
+      "tested_vertices": 681,
+      "deep_intersections": 0,
+      "maximum_depth_m": 0.0
+    },
+    "1": {
+      "tested_vertices": 681,
+      "deep_intersections": 0,
+      "maximum_depth_m": 0.0
+    }
+  },
+  "hand_contact_corrections": {
+    "corrected_vertices": 97,
+    "maximum_correction_m": 0.014768289897539796
+  },
+  "hands_only_source_sha256": "687152752c1beac80fae1cfdac68b7666b5863f4e23bf00df3b2d5a45f03f9dd",
+  "frozen_except_hands_sha256": "536d3369f8549bdbf0804b683e1ed37db8924f144ad0ab7a23c19c6b407e810e"
 }

@@ -15,13 +15,15 @@ import bpy
 from mathutils import Vector
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from human_hands import refine_finger_curl, refine_holding_pose, restore_underarm_lining
+from human_hands import (GRIP_KEY, refine_finger_curl, refine_holding_pose,
+                         restore_underarm_lining, refine_articulated_grip)
 from human_skin import paint_eyes, paint_skin
 
 LOGGER = logging.getLogger(__name__)
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 SOURCE_HASH = '8c2648e943647e54667ebb1d76c0db6a8cf2fffba048ad9d6aba111c649b27aa'
 BODY_NAME = 'Body | continuous anatomical foundation'
+HAND_REVIEW_SOURCE_HASH = '687152752c1beac80fae1cfdac68b7666b5863f4e23bf00df3b2d5a45f03f9dd'
 
 
 def get_file_hash(path):
@@ -58,6 +60,74 @@ def get_protected_geometry_hash():
     return digest.hexdigest()
 
 
+def get_hand_only_scope_hash():
+    """Protect everything on the character except grip-key vertices in the hands."""
+    digest = hashlib.sha256()
+    digest.update(get_body_hash(bpy.data.objects[BODY_NAME]).encode())
+    digest.update(get_protected_geometry_hash().encode())
+    for obj in sorted(bpy.data.objects, key=lambda item: item.name):
+        if obj.type in ('CAMERA', 'LIGHT'):
+            continue
+        digest.update(repr((obj.name, obj.hide_render, obj.hide_get())).encode())
+        for row in obj.matrix_world:
+            digest.update(struct.pack('ffff', *row))
+        for modifier in obj.modifiers:
+            values = [(name, str(getattr(modifier, name))) for name in
+                      ('type', 'show_viewport', 'show_render', 'levels', 'render_levels',
+                       'offset', 'vertex_group', 'wrap_mode', 'thickness') if hasattr(modifier, name)]
+            digest.update(repr(values).encode())
+        if obj.type == 'CURVE':
+            digest.update(repr((obj.data.bevel_depth, obj.data.bevel_resolution)).encode())
+            for spline in obj.data.splines:
+                for point in spline.points:
+                    digest.update(struct.pack('ffff', *point.co))
+                for point in spline.bezier_points:
+                    for coordinates in (point.co, point.handle_left, point.handle_right):
+                        digest.update(struct.pack('fff', *coordinates))
+        if obj.type == 'ARMATURE':
+            for bone in obj.pose.bones:
+                digest.update(bone.name.encode())
+                for row in bone.matrix:
+                    digest.update(struct.pack('ffff', *row))
+        if obj.type != 'MESH':
+            continue
+        for face in obj.data.polygons:
+            digest.update(repr((tuple(face.vertices), face.material_index)).encode())
+        for vertex in obj.data.vertices:
+            digest.update(repr([(group.group, group.weight) for group in vertex.groups]).encode())
+        for attribute in obj.data.color_attributes:
+            for item in attribute.data:
+                digest.update(struct.pack('ffff', *item.color))
+        if obj.data.shape_keys:
+            for key in obj.data.shape_keys.key_blocks:
+                digest.update(repr((key.name, key.value)).encode())
+                for index, item in enumerate(key.data):
+                    world = obj.matrix_world @ obj.data.vertices[index].co
+                    is_editable_hand = obj.name == BODY_NAME and key.name == GRIP_KEY and abs(world.x) > .33 and .73 < world.z < .99
+                    if not is_editable_hand:
+                        digest.update(struct.pack('fff', *item.co))
+    for material in sorted(bpy.data.materials, key=lambda item: item.name):
+        digest.update(repr((material.name, tuple(material.diffuse_color))).encode())
+        if not material.node_tree:
+            continue
+        for node in material.node_tree.nodes:
+            digest.update(repr((node.name, node.type)).encode())
+            if hasattr(node, 'color_ramp'):
+                digest.update(repr([(element.position, tuple(element.color))
+                                    for element in node.color_ramp.elements]).encode())
+            for property_name in ('operation', 'blend_type', 'layer_name', 'attribute_name'):
+                if hasattr(node, property_name):
+                    digest.update(str(getattr(node, property_name)).encode())
+            for socket in node.inputs:
+                if hasattr(socket, 'default_value'):
+                    value = socket.default_value
+                    value = tuple(value) if hasattr(value, '__len__') and not isinstance(value, str) else str(value)
+                    digest.update(repr((socket.name, value)).encode())
+        digest.update(repr([(link.from_node.name, link.from_socket.name, link.to_node.name, link.to_socket.name)
+                            for link in material.node_tree.links]).encode())
+    return digest.hexdigest()
+
+
 def configure_view(yaw, pitch, target, scale, resolution):
     scene = bpy.context.scene
     yaw, pitch = math.radians(yaw), math.radians(pitch)
@@ -80,6 +150,21 @@ def render_previews(output_dir, preview_only, hands_only=False):
         views += [('full', 25, 3, (.08, -.04, .96), 2.20, (1100, 1250)),
                   ('rts', 25, 42, (.08, -.04, .96), 2.20, (1100, 1250)),
                   ('hands', 0, 12, (.03, -.28, 1.15), .70, (1400, 1000))]
+    for name, yaw, pitch, target, scale, resolution in views:
+        configure_view(yaw, pitch, target, scale, resolution)
+        scene.render.filepath = str(output_dir/f'{name}.png')
+        bpy.ops.render.render(write_still=True)
+
+
+def render_hand_study(output_dir):
+    """Show both complete hands and high-angle contact views on the saved model."""
+    output_dir.mkdir(parents=True, exist_ok=True)
+    scene = bpy.context.scene
+    scene.cycles.samples = 40
+    views = [('hands_pair', 0, 16, (.12, -.29, 1.19), .90, (1600, 1000)),
+             ('trigger_hand', -30, 35, (-.08, -.30, 1.20), .40, (1000, 1000)),
+             ('support_hand', 30, 40, (.32, -.30, 1.075), .40, (1000, 1000)),
+             ('detail', 22, 4, (.06, -.08, 1.39), 1.20, (1200, 1050))]
     for name, yaw, pitch, target, scale, resolution in views:
         configure_view(yaw, pitch, target, scale, resolution)
         scene.render.filepath = str(output_dir/f'{name}.png')
@@ -111,6 +196,8 @@ def parse_arguments():
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--preview-only', action='store_true')
     parser.add_argument('--hands-only', action='store_true')
+    parser.add_argument('--refine-hands', action='store_true', help='Change only hands on the frozen production master')
+    parser.add_argument('--no-render', action='store_true')
     return parser.parse_args(sys.argv[sys.argv.index('--')+1:])
 
 
@@ -119,12 +206,39 @@ def main():
     args = parse_arguments()
     if args.source.resolve() == args.output.resolve():
         raise ValueError('Never overwrite the approved input checkpoint')
-    if get_file_hash(args.source) != SOURCE_HASH:
+    expected_hash = HAND_REVIEW_SOURCE_HASH if args.refine_hands else SOURCE_HASH
+    if get_file_hash(args.source) != expected_hash:
         raise ValueError(f'Approved source hash mismatch: {args.source}')
     bpy.ops.wm.open_mainfile(filepath=str(args.source))
     body = bpy.data.objects[BODY_NAME]
     body_hash = get_body_hash(body)
     costume_hash = get_protected_geometry_hash()
+    if args.refine_hands:
+        from hand_contacts import measure_hand_clearance, resolve_hand_contacts
+        scope_hash = get_hand_only_scope_hash()
+        clearance_before = measure_hand_clearance(body)
+        refine_articulated_grip(body, PROJECT_ROOT/'art/characters/human_base/hand_grip_pose.json')
+        corrections = resolve_hand_contacts(body)
+        if get_hand_only_scope_hash() != scope_hash:
+            raise ValueError('Hand-only update changed a frozen model component')
+        report = json.loads(args.source.with_suffix('.verification.json').read_text())
+        report['hand_revision'] = 2
+        report['hand_parameters_sha256'] = get_file_hash(PROJECT_ROOT/'art/characters/human_base/hand_grip_pose.json')
+        report['hand_clearance_before'] = clearance_before
+        report['hand_clearance_after'] = measure_hand_clearance(body)
+        report['hand_contact_corrections'] = corrections
+        LOGGER.info('Hand intersections: before=%s; after=%s', clearance_before, report['hand_clearance_after'])
+        report['hands_only_source_sha256'] = expected_hash
+        report['frozen_except_hands_sha256'] = scope_hash
+        # Save without resetting any object/pose/material or viewport from the master.
+        bpy.context.preferences.filepaths.save_version = 0
+        bpy.ops.wm.save_as_mainfile(filepath=str(args.output), compress=True)
+        report['master_sha256'] = get_file_hash(args.output)
+        args.output.with_suffix('.verification.json').write_text(json.dumps(report, indent=2)+'\n')
+        if not args.no_render:
+            render_previews(PROJECT_ROOT/'Builds/ArtReview/HandRefinement', args.preview_only, args.hands_only)
+        LOGGER.info('Hand-only revision saved; other components hash: %s', scope_hash)
+        return
     refine_finger_curl(body)
     pose_report = refine_holding_pose(bpy.data.objects['Equipment | editable holding pose rig'])
     restore_underarm_lining()

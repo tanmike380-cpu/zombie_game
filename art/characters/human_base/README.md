@@ -16,6 +16,14 @@
 
 本轮修正：重解两臂姿势，减小腕部折角；放松手指卷曲；补齐内衬在新姿势下的衔接；皮肤、嘴唇和眼睛着色。原始人体、脸型、服装、铠甲和武器顶点不变。
 
+### 手部专项修正（同日第二轮）
+
+按用户要求，上一轮的非手部结果全部冻结。本轮只修改既有握持形体键中的手部顶点：按实际指节分别弯曲四指、独立处理拇指对掌、保留掌心托枪弧度，并修正手部接触面。枪、服装、脸、肤色、手臂骨骼和手腕位置不变。
+
+研究依据与工序见 `HAND_STUDY.md`。新增 `hand_grip_pose.json`、`hand_contacts.py` 和严格的手部范围校验。检查包括指节三角面不塌陷、基网格手部样点没有超过 2mm 的枪托/枪管穿插，以及模拟脸部、肤色和武器误改时冻结检查必须失败。这个采样检查不等于已经验证完整动画的所有帧。
+
+当前手部审看图保存在 `Builds/ArtReview/HandRefinement/`。上一轮母版另有本地只读对照副本 `frozen_before.blend`，且可从 Git 的前一版本找回。
+
 ## 当前交付边界
 
 **这是正式美术母版，不是已经替换战场全部士兵的动画资产。** 当前只有手臂握持骨架；完整的行走、开火、换刀、近战与死亡绑定尚未完成。现有 `CharacterBake` / `CharacterCrowdRenderer` 的动画及游戏反馈保持不变，不能把静态母版当作完成了动画的成品直接覆盖它们。
@@ -28,6 +36,7 @@ Unity 静态检查导出位于 `Assets/_Game/ArtGenerated/HumanBase/human_base.g
 
 ```sh
 /Applications/Blender.app/Contents/MacOS/Blender --background --threads 6 --python-exit-code 1 --python tools/art/verify_human_base.py
+/Applications/Blender.app/Contents/MacOS/Blender --background --threads 6 --python-exit-code 1 --python tools/art/verify_human_base.py -- --test-freeze-guard --render-hands
 /Applications/Blender.app/Contents/MacOS/Blender --background --threads 6 --python-exit-code 1 --python tools/art/export_human_preview.py
 ```
 

@@ -9,7 +9,8 @@ from mathutils import Vector
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from freeze_human_base import (BODY_NAME, PROJECT_ROOT, get_body_hash, get_file_hash,
-                              get_protected_geometry_hash, render_previews)
+                              get_protected_geometry_hash, get_hand_only_scope_hash, render_previews,
+                              render_hand_study)
 from human_hands import GRIP_KEY, get_hand_basis
 
 
@@ -53,14 +54,25 @@ def verify_finger_volume(body):
     print(f'FINGER_SURFACE_VERIFIED: minimum triangle area ratio {minimum_ratio:.4f}', flush=True)
 
 
-def verify_master():
-    master = PROJECT_ROOT/'art/characters/human_base/human_base.blend'
+def verify_master(master=None):
+    master = master or PROJECT_ROOT/'art/characters/human_base/human_base.blend'
     report = json.loads(master.with_suffix('.verification.json').read_text())
     require(get_file_hash(master) == report['master_sha256'], 'Master changed without review/manifest update')
     bpy.ops.wm.open_mainfile(filepath=str(master))
     body = bpy.data.objects[BODY_NAME]
     require(get_body_hash(body) == report['body_rest_sha256'], 'Approved rest body changed')
     require(get_protected_geometry_hash() == report['costume_geometry_sha256'], 'Approved costume/weapon changed')
+    if 'frozen_except_hands_sha256' in report:
+        require(get_hand_only_scope_hash() == report['frozen_except_hands_sha256'],
+                'Hand-only edit changed frozen geometry, pose, colors, or materials')
+        require(get_file_hash(PROJECT_ROOT/'art/characters/human_base/hand_grip_pose.json') == report['hand_parameters_sha256'],
+                'Hand parameters changed without regenerating and reviewing the model')
+        from hand_contacts import measure_hand_clearance
+        clearance = measure_hand_clearance(body)
+        for side, result in clearance.items():
+            require(result['deep_intersections'] == 0, f'Hand {side} still has deep stock/barrel intersections')
+            require(result == report['hand_clearance_after'][side], f'Hand {side} clearance report is stale')
+        print('HAND_CONTACT_SAMPLES_VERIFIED: no intersections deeper than 2mm in sampled base vertices', flush=True)
     require(body.data.color_attributes.get('HumanSkin') is not None, 'Missing skin color attribute')
     require(body.data.materials[0].name == 'HumanBase | warm skin', 'Body still has review clay')
     verify_finger_volume(body)
@@ -74,7 +86,37 @@ def verify_master():
     print('HUMAN_BASE_VERIFIED: protected geometry, skin, eyes, connected wrists below 35 degrees', flush=True)
 
 
+def verify_freeze_guard():
+    """Negative controls prove non-hand changes are rejected without saving them."""
+    original = get_hand_only_scope_hash()
+    body = bpy.data.objects[BODY_NAME]
+    vertex = next(vertex for vertex in body.data.vertices if (body.matrix_world @ vertex.co).z > 1.65)
+    point = vertex.co.copy()
+    vertex.co.x += .001
+    require(get_hand_only_scope_hash() != original, 'Freeze guard missed a face edit')
+    vertex.co = point
+    material = body.data.materials[0]
+    color = tuple(material.diffuse_color)
+    material.diffuse_color[0] += .01
+    require(get_hand_only_scope_hash() != original, 'Freeze guard missed a skin-color edit')
+    material.diffuse_color = color
+    weapon = bpy.data.objects['veteran_matchlock_carved_stock']
+    location = weapon.location.copy()
+    weapon.location.x += .001
+    bpy.context.view_layer.update()
+    require(get_hand_only_scope_hash() != original, 'Freeze guard missed a weapon move')
+    weapon.location = location
+    bpy.context.view_layer.update()
+    require(get_hand_only_scope_hash() == original, 'Freeze guard test failed to restore the in-memory scene')
+    print('FREEZE_GUARD_NEGATIVE_CONTROLS_PASSED: face, skin color, weapon', flush=True)
+
+
 if __name__ == '__main__':
-    verify_master()
+    candidate = Path(sys.argv[sys.argv.index('--master')+1]) if '--master' in sys.argv else None
+    verify_master(candidate)
+    if '--test-freeze-guard' in sys.argv:
+        verify_freeze_guard()
     if '--render' in sys.argv:
         render_previews(PROJECT_ROOT/'Builds/ArtReview/HumanBase-v1', preview_only=False)
+    if '--render-hands' in sys.argv:
+        render_hand_study(PROJECT_ROOT/'Builds/ArtReview/HandRefinement')
