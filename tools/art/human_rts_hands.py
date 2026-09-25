@@ -67,32 +67,40 @@ def make_grip(preset, role, side, surface, inverse):
     axis = Vector(preset['gun_axis']).normalized()
     lateral = Vector((0, 0, 1)).cross(axis).normalized()
     up = axis.cross(lateral).normalized()
-    center = Vector(preset['gun_origin'])+axis*preset['grip_distance_m'][role]-up*.023
+    grip_distance = preset['grip_distance_m'][role]-(.045 if role == 'trigger' else 0)
+    center = Vector(preset['gun_origin'])+axis*grip_distance-up*.023
     rig = bpy.data.objects['Equipment | editable holding pose rig']
     wrist = rig.matrix_world @ rig.pose.bones[f'hand.{side}'].head
-    radial = wrist-center-axis*(wrist-center).dot(axis)
-    radial.normalize()
+    # The opening must face the barrel, not the camera-facing side of the wood.
+    # This leaves visible pads around both sides and the underside of the fore-end.
+    radial = -up
     tangent = axis.cross(radial).normalized()
     parts, centers, axes, radii = [], [], [], []
     for index in range(25):
-        angle = math.radians(-110+220*index/24)
+        angle = math.radians(-125+250*index/24)
         outward = radial*math.cos(angle)+tangent*math.sin(angle)
         hit = surface.ray_cast(center, outward, .13)[0]
         radius = (hit-center).length if hit is not None else .024
         centers.append(center+outward*(radius+.011))
         axes.append((axis, outward))
         taper = .35 if index in (0, 24) else (.8 if index in (1, 23) else 1)
-        radii.append((.026*taper, .011*taper))
+        radii.append((.030*taper, .012*taper))
     add_loft(parts, 'mitten curl', centers, axes, radii)
     attach = centers[12]
-    add_capsule(parts, 'palm', wrist, attach, .023, .027)
+    forearm = rig.pose.bones[f'forearm.{side}']
+    arm_axis = (forearm.tail-forearm.head).normalized()
+    add_capsule(parts, 'palm', wrist-arm_axis*.045, attach, .026, .029)
     # A modest thumb lobe overlaps the palm instead of looking like a separate claw.
-    thumb_base = centers[8]+axis*(-side*.027)
-    thumb_tip = centers[4]+axis*(-side*.026)
+    thumb_base = centers[18]+axis*(-side*.027)
+    thumb_tip = centers[22]+axis*(-side*.026)
     add_capsule(parts, 'thumb', thumb_base, thumb_tip, .010)
     if role == 'trigger':
-        start = centers[16]+axis*.024
-        add_capsule(parts, 'index', start, start+axis*.047-tangent*.007, .009)
+        origin = Vector(preset['gun_origin'])
+        points = [origin+axis*x+lateral*y+up*z for x, y, z in
+                  ((.245,-.048,-.026),(.300,-.050,-.028),(.323,-.043,-.045),
+                   (.315,-.027,-.061),(.295,-.022,-.061))]
+        for start, end in zip(points, points[1:]):
+            add_capsule(parts, 'curved trigger index', start, end, .009)
     bpy.ops.object.select_all(action='DESELECT')
     for obj in parts:
         obj.select_set(True)
@@ -102,7 +110,7 @@ def make_grip(preset, role, side, surface, inverse):
     hand.name = HAND_PREFIX+role
     remesh = hand.modifiers.new('Fuse palm and mitten silhouette', 'REMESH')
     remesh.mode = 'VOXEL'
-    remesh.voxel_size = .004
+    remesh.voxel_size = .0035
     bpy.ops.object.modifier_apply(modifier=remesh.name)
     smooth = hand.modifiers.new('Round silhouette', 'SMOOTH')
     smooth.factor = .7

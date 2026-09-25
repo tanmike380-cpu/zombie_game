@@ -12,9 +12,10 @@ from freeze_human_base import BODY_NAME, PROJECT_ROOT, configure_view, get_file_
 from human_weapon_poses import MASTER, PRESETS, REVIEW_DIR, verify_pose, is_head_equipment
 from human_rts_hands import HAND_PREFIX
 from export_human_preview import bake_eye_colors, merge_preview_parts
+from human_wrist_surface import join_wrist_surfaces, verify_wrist_surfaces
 
 CONFIG = PROJECT_ROOT/'art/characters/human_base/rts_lightweight.json'
-OUTPUT = PROJECT_ROOT/'Builds/ArtReview/RTSLightweight-v1'
+OUTPUT = PROJECT_ROOT/'Builds/ArtReview/RTSLightweight-v2'
 
 
 def collect_character_objects():
@@ -162,8 +163,23 @@ def render_candidate(output, preset):
     scene.cycles.samples = 32
     for label, yaw, pitch, target, scale, resolution in preset['views']:
         configure_view(yaw, pitch, target, scale, resolution)
+        if label == 'overview':
+            fit_overview_camera()
         scene.render.filepath = str(output/f'{label}.png')
         bpy.ops.render.render(write_still=True)
+
+
+def fit_overview_camera():
+    """Keep the extended muzzle and the whole figure within the review image."""
+    bpy.context.view_layer.update()
+    camera = bpy.context.scene.camera
+    inverse = camera.matrix_world.inverted()
+    points = [inverse @ (obj.matrix_world @ vertex.co) for obj in collect_character_objects() for vertex in obj.data.vertices]
+    low_x, high_x = min(point.x for point in points), max(point.x for point in points)
+    low_y, high_y = min(point.y for point in points), max(point.y for point in points)
+    camera.location += camera.rotation_euler.to_matrix() @ Vector(((low_x+high_x)*.5, (low_y+high_y)*.5, 0))
+    scene = bpy.context.scene
+    camera.data.ortho_scale = max(high_y-low_y, (high_x-low_x)*scene.render.resolution_y/scene.render.resolution_x)*1.12
 
 
 def verify_saved_candidate(name, config):
@@ -175,8 +191,12 @@ def verify_saved_candidate(name, config):
         raise ValueError(f'{name}: stale candidate/config')
     if report['source_sha256'] != get_file_hash(MASTER):
         raise ValueError(f'{name}: frozen master differs')
+    if report['pose_sha256'] != get_file_hash(REVIEW_DIR/name/f'{name}.blend'):
+        raise ValueError(f'{name}: grip input changed; rebuild the lightweight mesh')
     bpy.ops.wm.open_mainfile(filepath=str(path))
     objects = collect_character_objects()
+    verify_wrist_surfaces(objects, report.get('wrist_surfaces', {}))
+    verify_trigger_contact(objects, json.loads(PRESETS.read_text())['poses'][name], config)
     if validate_candidate(objects, report, config) != report['triangles']:
         raise ValueError(f'{name}: saved mesh count mismatch')
     broken = dict(report, parts=[entry for entry in report['parts'] if 'rivet' not in entry['name']])
@@ -187,6 +207,22 @@ def verify_saved_candidate(name, config):
     else:
         raise AssertionError('Missing-rivet regression was not rejected')
     print('RTS_CANDIDATE_VERIFIED', name, report['triangles'], 'triangles; rivet guard passed', flush=True)
+
+
+def verify_trigger_contact(objects, preset, config):
+    """The separate index silhouette must actually reach the trigger region."""
+    axis = Vector(preset['gun_axis']).normalized()
+    lateral = Vector((0, 0, 1)).cross(axis).normalized()
+    up = axis.cross(lateral).normalized()
+    target = Vector(preset['gun_origin'])+axis*.294-lateral*.022-up*.059
+    target = compact_proportions(target, config)
+    points = [obj.matrix_world @ vertex.co for obj in objects
+              if any(material and material.name == 'HumanBase | warm skin' for material in obj.data.materials)
+              for vertex in obj.data.vertices]
+    distance = min((point-target).length for point in points)
+    if distance > .018:
+        raise ValueError(f'Index finger no longer reaches the trigger: {distance*1000:.1f}mm')
+    print('TRIGGER_CONTACT_VERIFIED', round(distance*1000, 2), 'mm nearest skin vertex', flush=True)
 
 
 def build_candidate(name, preset, config, render):
@@ -216,6 +252,7 @@ def build_candidate(name, preset, config, render):
               'rivets_before': sum('rivet' in obj.name for obj in originals),
               'rivets_after': sum('rivet' in obj.name for obj in kept),
               'runtime_animation_ready': False}
+    report['wrist_surfaces'] = join_wrist_surfaces(parts, config['body_scale'])
     # Originals remain in the untouched input file; the output contains only baked geometry.
     for obj in originals:
         bpy.data.objects.remove(obj, do_unlink=True)
@@ -245,14 +282,17 @@ def main():
     parser.add_argument('--pose', choices=('all', 'aim', 'chest'), default='all')
     parser.add_argument('--no-render', action='store_true')
     parser.add_argument('--verify-only', action='store_true')
+    parser.add_argument('--render-only', action='store_true')
     args = parser.parse_args(sys.argv[sys.argv.index('--')+1:] if '--' in sys.argv else [])
     config = json.loads(CONFIG.read_text())
     presets = json.loads(PRESETS.read_text())['poses']
     source_hash = get_file_hash(MASTER)
     for name, preset in presets.items():
         if args.pose in ('all', name):
-            if args.verify_only:
+            if args.verify_only or args.render_only:
                 verify_saved_candidate(name, config)
+                if args.render_only:
+                    render_candidate(OUTPUT/name, preset)
             else:
                 build_candidate(name, preset, config, not args.no_render)
     if source_hash != get_file_hash(MASTER):

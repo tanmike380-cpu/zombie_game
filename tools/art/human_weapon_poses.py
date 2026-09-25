@@ -17,11 +17,12 @@ from human_hands import (GUN_AXIS, GUN_ORIGIN, GRIP_KEY, get_hand_basis,
 from hand_contacts import measure_hand_clearance, resolve_hand_contacts
 from verify_human_base import verify_master, verify_finger_volume
 from human_rts_hands import HAND_PREFIX, MASK_GROUP, build_rts_hands, measure_rts_hands
+from matchlock_stock import STOCK_NAME, refit_stock, get_stock_coordinates, verify_weapon_fit
 
 MASTER = PROJECT_ROOT/'art/characters/human_base/human_base.blend'
 PRESETS = PROJECT_ROOT/'art/characters/human_base/weapon_pose_presets.json'
 HAND_CONFIG = PROJECT_ROOT/'art/characters/human_base/hand_grip_pose.json'
-REVIEW_DIR = PROJECT_ROOT/'Builds/ArtReview/WeaponPoses-v2'
+REVIEW_DIR = PROJECT_ROOT/'Builds/ArtReview/WeaponPoses-v3'
 HEAD_KEY = 'Pose study | gentle aiming head tilt'
 
 
@@ -41,7 +42,8 @@ def get_identity_hash():
             digest.update(repr(tuple(tuple(row) for row in obj.matrix_world)).encode())
         if obj.type == 'MESH':
             for vertex in obj.data.vertices:
-                digest.update(struct.pack('fff', *vertex.co))
+                if obj.name != STOCK_NAME:
+                    digest.update(struct.pack('fff', *vertex.co))
                 digest.update(repr([(group.group, group.weight) for group in vertex.groups
                                     if obj.vertex_groups[group.group].name != MASK_GROUP]).encode())
             for face in obj.data.polygons:
@@ -107,10 +109,18 @@ def pose_arms(preset, weapon_transform):
         normal = forward.cross(across).normalized()
         contact = Vector(preset['gun_origin'])+axis*preset['grip_distance_m'][role]+up*preset['grip_height_m'][role]
         wrist = contact-forward*.085-across*(side*.040)-normal*.030
+        offsets = preset.get('wrist_offsets_weapon', {}).get(role)
+        if offsets:
+            wrist = Vector(preset['gun_origin'])+axis*(preset['grip_distance_m'][role]+offsets[0])+lateral*offsets[1]+up*offsets[2]
         rotation = Matrix((forward, across, normal)).transposed() @ Matrix(get_hand_basis(side))
         shoulder, rest_elbow, rest_wrist = get_rest_joints(side)
         elbow = solve_elbow(shoulder, wrist, (rest_elbow-shoulder).length,
                             (rest_wrist-rest_elbow).length, side, preset['elbow_poles'][role])
+        if offsets:
+            forward = (wrist-elbow).normalized()
+            across = (axis-forward*axis.dot(forward)).normalized()
+            normal = forward.cross(across).normalized()
+            rotation = Matrix((forward, across, normal)).transposed() @ Matrix(get_hand_basis(side))
         upper_rotation = (rest_elbow-shoulder).rotation_difference(elbow-shoulder).to_matrix()
         forearm_rotation = (rest_wrist-rest_elbow).rotation_difference(wrist-elbow).to_matrix()
         set_world_bone(rig, f'upper.{side}', shoulder, upper_rotation)
@@ -145,6 +155,7 @@ def pose_head(body, degrees, lean=0):
 def build_pose(name, preset, source_hash):
     bpy.ops.wm.open_mainfile(filepath=str(MASTER))
     identity = get_identity_hash()
+    refit_stock(preset)
     body = bpy.data.objects[BODY_NAME]
     transform = get_weapon_transform(preset)
     arms = pose_arms(preset, transform)
@@ -206,11 +217,17 @@ def verify_pose(name, preset):
         raise ValueError(f'{name}: rebuild this study from current source/settings')
     bpy.ops.wm.open_mainfile(filepath=str(MASTER))
     source_identity = get_identity_hash()
+    refit_stock(preset)
+    expected_stock = get_stock_coordinates()
     weapon_matrices = {obj.name: obj.matrix_world.copy() for obj in bpy.data.objects if obj.name.startswith('veteran_')}
     bpy.ops.wm.open_mainfile(filepath=str(blend_path))
+    if get_stock_coordinates() != expected_stock:
+        raise ValueError(f'{name}: stock differs from the authorized full-length wood refit')
     if get_identity_hash() != source_identity or report['identity_sha256'] != source_identity:
         raise ValueError(f'{name}: character identity differs from the frozen master')
     weapon_transform = get_weapon_transform(preset)
+    if preset.get('stock_refit'):
+        verify_weapon_fit(name, preset)
     for object_name, matrix in weapon_matrices.items():
         actual = bpy.data.objects[object_name].matrix_world
         expected = weapon_transform @ matrix
