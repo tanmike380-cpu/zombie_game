@@ -1,6 +1,10 @@
 {
   "description": "Hand-only authoring parameters in wrist-local meters; not gameplay balance.",
   "hand_pitch_degrees": {"trigger": 12, "support": 0},
+  "thumb_directions_world": {
+    "trigger": [[-0.25,0.35,0.90],[-0.50,-0.65,0.55],[-0.55,-0.75,-0.36]],
+    "support": [[-0.12,0.04,0.99],[-0.15,-0.80,0.59],[-0.20,-0.95,-0.20]]
+  },
   "fingers": {
     "index": {"joints": [[0.103,0.069,-0.008],[0.134,0.095,-0.012],[0.157,0.113,-0.005],[0.175,0.123,0.000]], "trigger": [25,60,30], "support": [30,60,30]},
     "middle": {"joints": [[0.113,0.047,-0.009],[0.154,0.069,-0.014],[0.185,0.087,-0.012],[0.204,0.097,-0.006]], "trigger": [40,70,35], "support": [35,65,30]},

@@ -11,6 +11,8 @@ GUN_AXIS = Vector((.940, 0, -.342)).normalized()
 GRIP_KEY = 'Equipment pose | relaxed fingers around matchlock'
 KNUCKLE_DISTANCE = .082
 GRIP_RADIUS = .036
+PALM_CUP_RADIUS = .140
+PALM_CUP_LIMIT = .40
 
 
 def get_rest_joints(side):
@@ -121,19 +123,19 @@ def get_anatomical_basis(side):
 
 
 def get_wrapped_palm_point(point):
-    """Keep the accepted cupped palm while replacing only distal articulation."""
+    """Gently cup the metacarpals; finger joints supply the actual grip curl."""
     length, width, depth = point
     if length <= KNUCKLE_DISTANCE:
         return point.copy()
     arc_length = length-KNUCKLE_DISTANCE
-    angle = min(2.35, arc_length/GRIP_RADIUS)
-    extension = max(0, arc_length-2.35*GRIP_RADIUS)
-    return Vector((KNUCKLE_DISTANCE+(GRIP_RADIUS-depth)*math.sin(angle)+extension*math.cos(angle),
-                   width, GRIP_RADIUS-(GRIP_RADIUS-depth)*math.cos(angle)+extension*math.sin(angle)))
+    angle = min(PALM_CUP_LIMIT, arc_length/PALM_CUP_RADIUS)
+    extension = max(0, arc_length-PALM_CUP_LIMIT*PALM_CUP_RADIUS)
+    return Vector((KNUCKLE_DISTANCE+(PALM_CUP_RADIUS-depth)*math.sin(angle)+extension*math.cos(angle),
+                   width, PALM_CUP_RADIUS-(PALM_CUP_RADIUS-depth)*math.cos(angle)+extension*math.sin(angle)))
 
 
 def get_palm_frame(joint):
-    angle = max(0, min(2.35, (joint.x-KNUCKLE_DISTANCE)/GRIP_RADIUS))
+    angle = max(0, min(PALM_CUP_LIMIT, (joint.x-KNUCKLE_DISTANCE)/PALM_CUP_RADIUS))
     return Matrix.Translation(get_wrapped_palm_point(joint)) @ Matrix.Rotation(-angle, 4, 'Y') @ Matrix.Translation(-joint)
 
 
@@ -167,6 +169,21 @@ def locate_finger(point, chains):
             candidates.append((distance, name, index, parameter, distance_along+parameter*segment.length))
             distance_along += segment.length
     return min(candidates)
+
+
+def build_thumb_opposition(joints, world_directions, hand_transform):
+    """Pose the thumb around the stock with length-preserving, explicit directions."""
+    parent = get_palm_frame(joints[0])
+    inverse = hand_transform.to_3x3().inverted()
+    transforms = []
+    for index, direction in enumerate(world_directions):
+        source = parent.to_3x3() @ (joints[index+1]-joints[index]).normalized()
+        target = (inverse @ Vector(direction)).normalized()
+        rotation = source.rotation_difference(target).to_matrix().to_4x4()
+        pivot = parent @ joints[index]
+        parent = Matrix.Translation(pivot) @ rotation @ Matrix.Translation(-pivot) @ parent
+        transforms.append(parent.copy())
+    return transforms
 
 
 def blend_rigid_transforms(point, first, second, weight, pivot):
@@ -207,6 +224,7 @@ def refine_articulated_grip(body, config_path):
     key = body.data.shape_keys.key_blocks[GRIP_KEY]
     inverse = body.matrix_world.inverted()
     changed = 0
+    articulation = {}
     for side in (-1, 1):
         basis = get_anatomical_basis(side)
         wrist = get_rest_joints(side)[2]
@@ -214,8 +232,12 @@ def refine_articulated_grip(body, config_path):
         from hand_contacts import fit_finger_contacts, get_hand_contact_frame
         transform, pitch = get_hand_contact_frame(side, settings['hand_pitch_degrees'][role])
         solved = fit_finger_contacts(body, side, config, chains, transform)
+        articulation[role] = {name: {'angles': parameters[:3],
+                                     'total_curl_degrees': sum(parameters[:3])+math.degrees(get_palm_frame(chains[name][0]).to_quaternion().angle)}
+                              for name, parameters in solved.items()}
         transforms = {name: build_finger_transforms(chains[name], entry[:3], name == 'thumb', entry[3])
                       for name, entry in solved.items()}
+        transforms['thumb'] = build_thumb_opposition(chains['thumb'], settings['thumb_directions_world'][role], transform)
         for vertex, target in zip(body.data.vertices, key.data):
             world = body.matrix_world @ vertex.co
             if world.x*side < .33 or not .73 < world.z < .99:
@@ -230,4 +252,4 @@ def refine_articulated_grip(body, config_path):
             deformed = deformed.lerp(pitch @ deformed, wrist_falloff)
             target.co = inverse @ (wrist+basis @ deformed)
             changed += 1
-    return changed
+    return {'changed_vertices': changed, 'articulation': articulation}

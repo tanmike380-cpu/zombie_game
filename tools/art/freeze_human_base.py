@@ -23,7 +23,7 @@ LOGGER = logging.getLogger(__name__)
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 SOURCE_HASH = '8c2648e943647e54667ebb1d76c0db6a8cf2fffba048ad9d6aba111c649b27aa'
 BODY_NAME = 'Body | continuous anatomical foundation'
-HAND_REVIEW_SOURCE_HASH = '687152752c1beac80fae1cfdac68b7666b5863f4e23bf00df3b2d5a45f03f9dd'
+HAND_REVIEW_SOURCE_HASH = '5358b8e300df2a7fea15a7953651470f3acae3c56d01bab425f7c1ee59437a1c'
 
 
 def get_file_hash(path):
@@ -162,6 +162,7 @@ def render_hand_study(output_dir):
     scene = bpy.context.scene
     scene.cycles.samples = 40
     views = [('hands_pair', 0, 16, (.12, -.29, 1.19), .90, (1600, 1000)),
+             ('thumbs_top', 0, 70, (.12, -.29, 1.19), .90, (1600, 1000)),
              ('trigger_hand', -30, 35, (-.08, -.30, 1.20), .40, (1000, 1000)),
              ('support_hand', 30, 40, (.32, -.30, 1.075), .40, (1000, 1000)),
              ('detail', 22, 4, (.06, -.08, 1.39), 1.20, (1200, 1050))]
@@ -214,15 +215,18 @@ def main():
     body_hash = get_body_hash(body)
     costume_hash = get_protected_geometry_hash()
     if args.refine_hands:
-        from hand_contacts import measure_hand_clearance, resolve_hand_contacts
+        from hand_contacts import measure_hand_clearance, resolve_hand_contacts, measure_thumb_exposure
         scope_hash = get_hand_only_scope_hash()
         clearance_before = measure_hand_clearance(body)
-        refine_articulated_grip(body, PROJECT_ROOT/'art/characters/human_base/hand_grip_pose.json')
+        config_path = PROJECT_ROOT/'art/characters/human_base/hand_grip_pose.json'
+        hand_changes = refine_articulated_grip(body, config_path)
         corrections = resolve_hand_contacts(body)
         if get_hand_only_scope_hash() != scope_hash:
             raise ValueError('Hand-only update changed a frozen model component')
         report = json.loads(args.source.with_suffix('.verification.json').read_text())
-        report['hand_revision'] = 2
+        report['hand_revision'] = 3
+        report['hand_articulation'] = hand_changes['articulation']
+        report['thumb_exposure'] = measure_thumb_exposure(body, json.loads(config_path.read_text()))
         report['hand_parameters_sha256'] = get_file_hash(PROJECT_ROOT/'art/characters/human_base/hand_grip_pose.json')
         report['hand_clearance_before'] = clearance_before
         report['hand_clearance_after'] = measure_hand_clearance(body)

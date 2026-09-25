@@ -1,7 +1,7 @@
 {
   "id": "human-matchlock-v1",
   "approved_source_sha256": "8c2648e943647e54667ebb1d76c0db6a8cf2fffba048ad9d6aba111c649b27aa",
-  "master_sha256": "5358b8e300df2a7fea15a7953651470f3acae3c56d01bab425f7c1ee59437a1c",
+  "master_sha256": "15c99426bc5d823b526d77330273788a1f9127b70135590462d3c5b83be7aac2",
   "body_rest_sha256": "15152a242ffe6d118af7d9eac851bd7c09167e9c965db829689ba8d5b11514f2",
   "costume_geometry_sha256": "c1769930046fd2c6bdd73efc20f1b3a4fec39a2e3a0684dbb74b68edf7f5868b",
   "protected_geometry_unchanged": true,
@@ -45,18 +45,18 @@
   },
   "colored_eyes": 2,
   "runtime_animation_ready": false,
-  "hand_revision": 2,
-  "hand_parameters_sha256": "76aea34cb00bc86aa61aba35b5fbced0853296fda79e8c6b51468fd65f9ec608",
+  "hand_revision": 3,
+  "hand_parameters_sha256": "038fa85e67ac8e33b8283e0f2217bbdf47b6a5bb4848f51eb9e7385e690cd027",
   "hand_clearance_before": {
     "-1": {
       "tested_vertices": 681,
-      "deep_intersections": 72,
-      "maximum_depth_m": 0.01801345869898796
+      "deep_intersections": 0,
+      "maximum_depth_m": 0.0
     },
     "1": {
       "tested_vertices": 681,
-      "deep_intersections": 12,
-      "maximum_depth_m": 0.007386574987322092
+      "deep_intersections": 0,
+      "maximum_depth_m": 0.0
     }
   },
   "hand_clearance_after": {
@@ -72,9 +72,91 @@
     }
   },
   "hand_contact_corrections": {
-    "corrected_vertices": 97,
-    "maximum_correction_m": 0.014768289897539796
+    "corrected_vertices": 73,
+    "maximum_correction_m": 0.018510320600928935
   },
-  "hands_only_source_sha256": "687152752c1beac80fae1cfdac68b7666b5863f4e23bf00df3b2d5a45f03f9dd",
-  "frozen_except_hands_sha256": "536d3369f8549bdbf0804b683e1ed37db8924f144ad0ab7a23c19c6b407e810e"
+  "hands_only_source_sha256": "5358b8e300df2a7fea15a7953651470f3acae3c56d01bab425f7c1ee59437a1c",
+  "frozen_except_hands_sha256": "536d3369f8549bdbf0804b683e1ed37db8924f144ad0ab7a23c19c6b407e810e",
+  "hand_articulation": {
+    "trigger": {
+      "index": {
+        "angles": [
+          35,
+          80,
+          10
+        ],
+        "total_curl_degrees": 133.59438434394474
+      },
+      "middle": {
+        "angles": [
+          15,
+          80,
+          35
+        ],
+        "total_curl_degrees": 142.68688172290734
+      },
+      "ring": {
+        "angles": [
+          5,
+          58,
+          37
+        ],
+        "total_curl_degrees": 115.5516884570533
+      },
+      "little": {
+        "angles": [
+          5,
+          80,
+          45
+        ],
+        "total_curl_degrees": 147.18873112184903
+      }
+    },
+    "support": {
+      "index": {
+        "angles": [
+          50,
+          60,
+          45
+        ],
+        "total_curl_degrees": 163.59438434394474
+      },
+      "middle": {
+        "angles": [
+          42,
+          80,
+          30
+        ],
+        "total_curl_degrees": 164.68688172290734
+      },
+      "ring": {
+        "angles": [
+          49,
+          80,
+          19
+        ],
+        "total_curl_degrees": 163.5516884570533
+      },
+      "little": {
+        "angles": [
+          51,
+          61,
+          35
+        ],
+        "total_curl_degrees": 164.18873112184903
+      }
+    }
+  },
+  "thumb_exposure": {
+    "-1": {
+      "sample_count": 33,
+      "gun_unoccluded_samples": 32,
+      "maximum_height_above_stock_axis_m": 0.014134183526039124
+    },
+    "1": {
+      "sample_count": 33,
+      "gun_unoccluded_samples": 33,
+      "maximum_height_above_stock_axis_m": 0.05567024648189545
+    }
+  }
 }
