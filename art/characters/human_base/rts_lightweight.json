@@ -1,0 +1,14 @@
+{
+  "description": "Unapproved static RTS silhouette candidate. Keeps the detailed master; not a runtime crowd asset or FPS claim.",
+  "body_scale": [1.07, 1.05, 0.96],
+  "head_scale": 1.06,
+  "head_pivot_height_m": 1.56,
+  "rivet_spacing_m": 0.065,
+  "rivet_scale": 1.75,
+  "helmet_rivet_spacing_m": 0.048,
+  "helmet_rivet_scale": 1.35,
+  "maximum_triangles": 50000,
+  "part_budgets": {"body": 6000, "cloth": 800, "armor": 1400, "skirt": 500, "trim": 500, "hand": 400, "weapon": 400, "eye": 180, "rivet": 24, "small": 90},
+  "tassel_stride": 6,
+  "quilt_seam_stride": 3
+}

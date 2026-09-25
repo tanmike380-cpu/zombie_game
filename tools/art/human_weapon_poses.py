@@ -16,11 +16,12 @@ from human_hands import (GUN_AXIS, GUN_ORIGIN, GRIP_KEY, get_hand_basis,
                          get_rest_joints, refine_articulated_grip, set_world_bone, solve_elbow)
 from hand_contacts import measure_hand_clearance, resolve_hand_contacts
 from verify_human_base import verify_master, verify_finger_volume
+from human_rts_hands import HAND_PREFIX, MASK_GROUP, build_rts_hands, measure_rts_hands
 
 MASTER = PROJECT_ROOT/'art/characters/human_base/human_base.blend'
 PRESETS = PROJECT_ROOT/'art/characters/human_base/weapon_pose_presets.json'
 HAND_CONFIG = PROJECT_ROOT/'art/characters/human_base/hand_grip_pose.json'
-REVIEW_DIR = PROJECT_ROOT/'Builds/ArtReview/WeaponPoses-v1'
+REVIEW_DIR = PROJECT_ROOT/'Builds/ArtReview/WeaponPoses-v2'
 HEAD_KEY = 'Pose study | gentle aiming head tilt'
 
 
@@ -33,7 +34,7 @@ def get_identity_hash():
     """Freeze local geometry, materials and non-posing transforms across studies."""
     digest = hashlib.sha256()
     for obj in sorted(bpy.data.objects, key=lambda item: item.name):
-        if obj.type not in ('MESH', 'CURVE', 'ARMATURE'):
+        if obj.type not in ('MESH', 'CURVE', 'ARMATURE') or obj.name.startswith(HAND_PREFIX):
             continue
         digest.update(obj.name.encode())
         if not (obj.name.startswith('veteran_') or is_head_equipment(obj)):
@@ -41,7 +42,8 @@ def get_identity_hash():
         if obj.type == 'MESH':
             for vertex in obj.data.vertices:
                 digest.update(struct.pack('fff', *vertex.co))
-                digest.update(repr([(group.group, group.weight) for group in vertex.groups]).encode())
+                digest.update(repr([(group.group, group.weight) for group in vertex.groups
+                                    if obj.vertex_groups[group.group].name != MASK_GROUP]).encode())
             for face in obj.data.polygons:
                 digest.update(repr((tuple(face.vertices), face.material_index)).encode())
             for attribute in obj.data.color_attributes:
@@ -159,13 +161,19 @@ def build_pose(name, preset, source_hash):
         role: [list(axis*direction[0]+lateral*direction[1]+up*direction[2]) for direction in directions]
         for role, directions in preset['thumb_directions_weapon'].items()}
     inverse = transform.inverted()
-    hands = refine_articulated_grip(body, HAND_CONFIG, settings, inverse)
-    corrections = resolve_hand_contacts(body, inverse)
+    simplified = preset.get('hand_style') == 'rts_mitten'
+    if simplified:
+        hands = build_rts_hands(body, preset, inverse)
+        corrections = {}
+    else:
+        hands = refine_articulated_grip(body, HAND_CONFIG, settings, inverse)
+        corrections = resolve_hand_contacts(body, inverse)
     pose_head(body, preset['head_pitch_degrees'], preset.get('head_lean_m', 0))
     if get_identity_hash() != identity:
         raise ValueError(f'{name}: frozen character identity changed')
-    verify_finger_volume(body)
-    clearance = measure_hand_clearance(body, inverse)
+    if not simplified:
+        verify_finger_volume(body)
+    clearance = measure_rts_hands(body, inverse) if simplified else measure_hand_clearance(body, inverse)
     if any(hand['deep_intersections'] for hand in clearance.values()):
         raise ValueError(f'{name}: deep hand/weapon intersections: {clearance}')
     bpy.context.scene['pose_study'] = name
@@ -217,18 +225,21 @@ def verify_pose(name, preset):
         if angle > 35 or (hand.head-forearm.tail).length > .0001:
             raise ValueError(f'{name}: disconnected/folded wrist {side}: {angle:.1f} degrees')
     body = bpy.data.objects[BODY_NAME]
-    verify_finger_volume(body)
-    contacts = measure_hand_clearance(body, weapon_transform.inverted())
+    if preset.get('hand_style') == 'rts_mitten':
+        contacts = measure_rts_hands(body, weapon_transform.inverted())
+    else:
+        verify_finger_volume(body)
+        contacts = measure_hand_clearance(body, weapon_transform.inverted())
     if contacts != report['contacts'] or any(hand['deep_intersections'] for hand in contacts.values()):
         raise ValueError(f'{name}: invalid hand contact report')
-    print('POSE_STUDY_VERIFIED', name, 'identity, rigid weapon, wrists, finger surfaces, static contact samples', flush=True)
+    print('POSE_STUDY_VERIFIED', name, 'identity, rigid weapon, wrists, visible hand contact samples', flush=True)
 
 
 def render_pose(name, preset, draft=False):
     output = REVIEW_DIR/name
     bpy.ops.wm.open_mainfile(filepath=str(output/f'{name}.blend'))
     bpy.context.scene.cycles.samples = 12 if draft else 40
-    for label, yaw, pitch, target, scale, resolution in preset['views'][:2 if draft else 3]:
+    for label, yaw, pitch, target, scale, resolution in preset['views'][:2 if draft else None]:
         size = tuple(int(value*.65) for value in resolution) if draft else resolution
         configure_view(yaw, pitch, target, scale, size)
         bpy.context.scene.render.filepath = str(output/f'{label}{"_draft" if draft else ""}.png')

@@ -34,6 +34,23 @@
 
 ## 当前交付边界
 
+### RTS 轮廓轻量派生（2026-09-25，待确认）
+
+用户允许对整体做轻量简化：参考其提供的《亿万僵尸》俯视截图，不再要求远景看不清的独立指节。此授权只用于派生审看，精细母版仍保留，不直接覆盖战场动画。
+
+- 手部：`human_rts_hands.py` 将四指合为圆润 C 形握块，保留短拇指；右手增加简化食指。旧解剖手通过可逆 Mask 隐藏，原拓扑不删除。参数仍在 `weapon_pose_presets.json`，两个姿势输出到 `Builds/ArtReview/WeaponPoses-v2/`。
+- 全身：`human_rts_lightweight.py` 从上述已校验姿势派生，适度加宽/缩短整体比例、稍放大头部，减少细褶网格及高密度装饰；保留圆润法线、红甲、黑色包边、葫芦和火绳枪。可编辑配置为 `rts_lightweight.json`，不是游戏平衡数据。
+- **铆钉不删除**：按空间间隔减少数量、放大单颗尺寸，保留胸肩甲和盔甲的金属紧固件。配置 `rivet_spacing_m` / `rivet_scale` 控制甲身；`helmet_rivet_*` 控制头盔和护颈。密度检查防止把铆钉全部删掉。
+- 全身候选：`Builds/ArtReview/RTSLightweight-v1/aim/aim_rts.blend` 和 `chest/chest_rts.blend`。同目录保存渲染及网格/铆钉统计。`rts.png` 是 280×280 的小尺寸静态俯视预览，不是 Unity 截图或帧率测试。
+- 验证分开：握姿版本校验非手部原始网格/材质冻结、手腕连接及可见手样点；轻量版本检查三角面预算、装备轮廓要素和铆钉保留。轻量版为静态烘焙，不声称保留生产动画绑定；程序化材质还未烘焙为统一游戏贴图。
+
+```sh
+/Applications/Blender.app/Contents/MacOS/Blender --background --threads 6 --python-exit-code 1 --python tools/art/human_weapon_poses.py -- --no-render
+/Applications/Blender.app/Contents/MacOS/Blender --background --threads 6 --python-exit-code 1 --python tools/art/human_rts_lightweight.py
+```
+
+下面 v1、精细指节等段落保留制作历史，不代表目前推荐的 RTS 手部方案。当前未完成万人性能验证；减面不能替代动画、材质批次、LOD、阴影及导航开销的测量与优化。
+
 ### 双姿势审看稿（未定稿，不覆盖母版）
 
 用户要求放弃原握姿，改看「举枪瞄准」和「胸前持枪」两个方案。两者均从本目录同一母版派生，人物、衣甲和枪的基础网格/材质不重做。只调整骨骼姿态、握持形体、武器整体位置；瞄准稿另有可逆的轻微低头/侧靠动作，胸前稿不动头部。
