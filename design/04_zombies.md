@@ -1,237 +1,92 @@
-# Zombie Units
+# 僵尸兵种 / Zombie Units
 
-> Runtime update (2026-09-21): all eight types now have active shared records in
-> `balance/unit_balance.json`; new types are explicitly provisional. The old speed
-> tables below are historical design intent, not current runtime values. Sight is
-> now 6, Runner speed 5.2, Exploder 4.9, Hound 6.5. Threat tiers are 1–5, not an XP
-> system. Spitter projectiles/poison and Giant/Boss area attacks are implemented.
-> Hound vaulting, destructible-building siege bonuses, infection conversion and
-> encounter-specific Boss phases remain future mechanics, not completed features.
+> 2026-09-27 最终确认：**7 种类型、4 个威胁层级**，不是七级逐级升级链。
+> Current design: low-tier Walker / Exploder / Hound → mid-tier Brute → high-tier Spitter → boss-tier Headbutter / Zombie Hurler.
+> 本轮更新设定与概念图，尚未迁移现有游戏的刷怪、平衡记录和 AI。
 
-> Prototype movement values. Fast special zombies exist specifically to prevent ranged armies from kiting forever.
+## 类型与等级
 
-Default zombie sight is **4 tiles**, shorter than the universal human sight of 10.
-Hearing a gunshot can still trigger investigation beyond sight range.
+| 概念编号 | 类型 | 威胁层级 | 核心作用 |
+|---|---|---|---|
+| 01 | 普通僵尸 / Walker | 低阶 | 尸潮数量压力 |
+| 02 | 自爆尸（原爆裂尸）/ Exploder | 低阶 | 接近或死亡爆炸，惩罚密集阵型 |
+| 03 | 尸犬 / Zombie Hound | 低阶 | 快速接近、侧翼骚扰 |
+| 04 | 胖尸 / Brute | 中阶 | 厚重前排、承受火力 |
+| 05 | 毒液尸 / Spitter | 高阶 | 远程毒液压制、迫使调整阵地 |
+| 06 | 头槌巨尸 / Headbutter | Boss 级 | 消耗自身生命，近战用头撞墙 |
+| 07 | 背负投尸巨尸 / Zombie Hurler | Boss 级 | 背负小僵尸并抛出，远程破墙 |
 
-## Movement Baseline
+低阶不等于无威胁：自爆尸仍克制扎堆，尸犬仍有机动威胁。编号不代表等级，不能按 01–07 直接套递增属性。
 
-| Zombie | Move Speed (tiles/s) | Main Purpose |
-|---|---:|---|
-| Walker | 1.8 | Basic mass pressure |
-| Runner | 3.6 | Chase and break ranged formations |
-| Brute | 2.2 | Durable frontline pressure |
-| Exploder | 3.4 | Anti-clump / formation breaker |
-| Zombie Hound | 4.2 | Fastest backline disruption |
-| Spitter | 2.6 | Ranged harassment |
-| Giant | 1.5 | Slow siege threat |
-| Boss Zombie | TBD | Stage-specific rule change |
+## 01–05 常规类型
 
-The Archer prototype speed is 3.2 tiles/s. It can escape Walkers, Brutes, Spitters, and Giants, but not Runners, Exploders, or Zombie Hounds.
+### 普通僵尸
 
-## 1. Walker
-Role: basic cannon-fodder zombie.
+- 消瘦的东方平民感染者，破布、拖步、清楚的人形剪影。
+- 单体威胁低，以数量形成压力。
 
-- Movement speed: 1.8 tiles/s.
-- HP: low.
-- Damage: low.
-- Main threat: numbers.
-- Hearing sensitivity: normal.
+### 自爆尸
 
-## 2. Runner
-Role: fast breakthrough unit.
+- 上躯干膨胀、暗紫病变块与紧绷破布，俯视可与胖尸区分，不只靠爆炸特效辨认。
+- 保留已确认规则：主动自爆与被击杀都播放爆炸效果，不以附近是否有士兵决定是否显示。
+- 爆炸不产生吸引噪音，不引来其他僵尸。
+- 伤害、感染等沿用正式机制，数值只从共享配置读取。
 
-- Movement speed: 3.6 tiles/s.
-- HP: low to medium.
-- Damage: medium.
-- Faster than the Archer prototype speed.
-- Purpose: quickly close on ranged units and punish endless kiting.
-- Hearing sensitivity: high.
+### 尸犬
 
-## 3. Brute
-Role: high-HP, high-damage frontline zombie.
+- 低矮四足、前扑轮廓，与人形尸明显区分。
+- 通过机动性制造威胁；翻墙等旧设想不等于本轮已确认或已实现的能力。
 
-- Movement speed: 2.2 tiles/s.
-- HP: high.
-- Damage: high.
-- Characteristic: can kill ordinary soldiers quickly and pressure frontline tanks.
-- Hearing sensitivity: normal.
+### 胖尸
 
-## 4. Exploder
-Role: anti-clump formation breaker.
+- 比低阶尸厚重，宽肩粗颈与大躯干，承担承压前排角色。
+- 不画成自爆尸同款紫色膨胀病变球，主要靠体量和姿态辨认。
 
-- Movement speed: 3.4 tiles/s.
-- HP: low to medium; it should be killable before reaching the formation if focused.
-- Faster than the Archer prototype speed.
-- Reaches the player formation and detonates at close range.
-- Confirmed prototype behaviour: lethal damage also triggers an explosion, even
-  with no soldiers nearby. Focus fire causes a safer, distant explosion; it does not cancel it.
-- Prototype explosion radius: **2 tiles**.
-- Explosion effects and damage never generate attraction Noise or alert idle zombies.
-- High AOE damage. Player soldiers killed by the explosion immediately follow the normal infection rule and can spawn low-tier zombies.
-- Main counterplay: focus fire it at range and spread ranged units so one explosion cannot wipe a dense formation.
-- The purpose is to create RTS micro similar to manually spreading infantry against dangerous AOE threats.
+### 毒液尸
 
-## 5. Zombie Hound
-Role: highest-mobility backline disruptor.
+- **替换新名单中的狂暴尸**，不额外保留狂暴尸作为第八种。
+- 高阶远程单位；颈部/喉囊与前倾喷吐姿态是识别重点，概念采用克制的黄绿色毒囊。
+- 现有 `spitter` 有原型，新视觉与等级尚未同步到运行时。
 
-- Movement speed: 4.2 tiles/s.
-- HP: low.
-- Damage: medium.
-- Special ability: can vault selected low-level walls/obstacles; exact rules to be prototyped.
-- Hearing sensitivity: very high.
+## 06 头槌巨尸：近战耗血撞墙
 
-## 6. Spitter
-Role: ranged harassment that forces formation changes.
+- Boss 级、高生命、大体型；厚颈、巨大钝额/颅骨、低重心，整具身体像活体冲城槌。
+- **头槌，不是投锤**：不用手持锤，不投掷武器，不是远程攻击。
+- 接近木墙或石墙，蓄势后用头猛烈撞击，造成很大的结构伤害。
+- **每次有效撞击牺牲自己的一部分生命**，以厚血换破墙能力，不是无代价重复攻击。
+- 不以杀伤士兵为核心用途，不自动附加大范围反步兵伤害。
+- 待定：消耗固定生命还是百分比、能否用最后一撞耗尽自身生命、蓄力及打断、撞击间隔、木墙与石墙的伤害差异。
+- 本轮只确认机制与外观，不编造具体数值、不激活新记录。
 
-- Movement speed: 2.6 tiles/s.
-- HP: low to medium.
-- Damage: area or damage-over-time.
-- Special ability: spits toxic fluid.
-- Hearing sensitivity: normal.
+## 07 背负投尸巨尸：远程投尸破墙
 
-## 7. Giant
-Role: siege/breach unit.
+- Boss 级、巨大驼背与长投掷臂；背部供小僵尸攀附，概念用木架和绳索增强可读性。
+- 从背上抓取小僵尸，投向木墙或石墙，以冲击造成很大的结构伤害。
+- **投出的小僵尸撞墙后死亡，不是在墙后存活的空投增援。**
+- 小僵尸是体型较小的成年感染者，不设计成儿童。
+- 核心为远程攻城而非杀伤士兵，与头槌的近战破墙形成差异。
+- 待定：背负容量、补充方式、投射射程、耗时、是否结构范围伤害、巨尸死亡后背负僵尸的处理。画面中的数量不是容量定值。
 
-- Movement speed: 1.5 tiles/s.
-- HP: very high.
-- Damage: very high.
-- Extra threat to buildings and walls.
-- Hearing sensitivity: low to normal.
+## 共同行为与数值约束
 
-## 8. Boss Zombie
-Role: stage-specific boss encounter.
+- 数值唯一来源：[unit_balance.json](../balance/unit_balance.json)，正式玩法与测试读取 `ZombieGame.Balance.UnitBalance`，本文不复制移速、生命和伤害表。
+- 当前共享僵尸视野为 6 格，不再把旧稿 4 格当作现行规则。
+- 非总攻：直接看见目标时优先视觉追击；否则调查最新听见的声源。延迟的旧声波不能恢复旧目标。
+- 总攻：持续攻击移动到活着的主基地，途中遇兵可以打兵；目标死亡或离开视野后继续攻主基地，声音不能取代战略目标。
+- 两种 Boss 的破墙服务于通往主基地的攻城目标，不将总攻改为全图拆楼。墙体选取规则尚待实现与回归。
+- 正常 RTS 视距下 Boss 应有明显的大体型；地图上可识别 Boss 位置的需求保留，是否穿透迷雾显示位置需另行确认。
+- 越远离基地、密度和高阶占比越高的既有机制保留；新四层级映射和百分比要在运行时迁移时一起调整并测试。
 
-- Exact mechanics will be designed separately.
-- Principle: a boss should change battlefield rules rather than simply having more HP.
+## 新设计与旧原型的边界
 
-## Noise Targeting Rule
+| 旧运行时 ID | 当前设计处理 |
+|---|---|
+| `walker`、`exploder`、`zombie_hound` | 保留类型；设计统一低阶，旧 `threat_tier` 本轮未改 |
+| `brute` | 保留，设计归中阶 |
+| `spitter` | 保留，设计归高阶，并替代狂暴尸 |
+| `runner` | 从新设计名单移除；本轮不删原型及刷怪引用 |
+| `giant`、`boss` | 新设计不再使用两个泛称，以两种明确的攻城 Boss 取代；旧 AI 不可只改名冒充新机制 |
 
-- If a zombie directly detects a player unit/building, direct combat targeting has priority.
-- If it has no direct target, it can move toward active Noise sources.
-- Noise guides roaming zombies toward where the player is fighting, not toward corpse locations.
+游戏现有八种原型仍保留，新名单七种尚未全部接入。实施时需迁移共享配置、分布层级、墙体受击、目标选择及动画，并补回归检查。
 
-## V1 Principles
-
-- Walkers create numerical pressure.
-- Runners chase ranged units and punish kiting.
-- Brutes pressure the frontline.
-- Exploders punish tightly packed formations and can trigger infection snowballs.
-- Zombie Hounds create the highest-mobility backline threat.
-- Spitters force formation changes.
-- Giants break fortifications.
-- Bosses create special-stage challenges.
-
----
-
-# 僵尸兵种
-
-僵尸默认视野 **4格**，低于人类统一的10格；视野外仍可因听到枪声前往调查。
-
-> 当前移速全部是 Prototype 测试值。快速特殊僵尸的存在，就是为了防止远程军队无限风筝。
-
-## 移速基线
-
-| 僵尸 | 移速（格/秒） | 核心作用 |
-|---|---:|---|
-| 普通僵尸 Walker | 1.8 | 数量压力 |
-| 狂暴僵尸 Runner | 3.6 | 追击、突破远程阵型 |
-| 胖尸 Brute | 2.2 | 高血高伤前排 |
-| 爆裂尸 Exploder | 3.4 | 反密集阵型 / AOE 威胁 |
-| 尸犬 Zombie Hound | 4.2 | 最快的后排切入 |
-| 毒液僵尸 Spitter | 2.6 | 远程骚扰 |
-| 巨型僵尸 Giant | 1.5 | 慢速攻城 |
-| Boss Zombie | TBD | 阶段性规则变化 |
-
-弓箭手当前 Prototype 移速为 3.2 格/秒，可以跑过普通尸、胖尸、毒液尸和巨型尸，但跑不过狂暴尸、爆裂尸和尸犬。
-
-## 1. 普通僵尸 Walker
-定位：最基础炮灰。
-
-- 移速：1.8 格/秒。
-- HP：低。
-- 伤害：低。
-- 威胁来源：数量。
-- 听觉敏感度：普通。
-
-## 2. 狂暴僵尸 Runner
-定位：快速追击与突破。
-
-- 移速：3.6 格/秒。
-- HP：低~中。
-- 伤害：中。
-- 比弓箭手更快。
-- 用于快速贴近远程单位，防止玩家无限风筝。
-- 听觉敏感度：高。
-
-## 3. 胖尸 Brute
-定位：高血量、高伤害前排。
-
-- 移速：2.2 格/秒。
-- HP：高。
-- 伤害：高。
-- 可以快速击杀普通士兵，对前排形成压力。
-- 听觉敏感度：普通。
-
-## 4. 爆裂尸 Exploder
-定位：反密集阵型、逼迫玩家散兵操作。
-
-- 移速：3.4 格/秒。
-- HP：低~中，应该允许玩家在其接近前通过集火击杀。
-- 比弓箭手略快。
-- 接近玩家阵型后贴脸自爆。
-- 已确认原型行为：被打死同样爆炸，附近没有士兵也播放效果；集火是让它提前在远处爆炸，而不是取消爆炸。
-- Prototype 爆炸半径：**2 格**。
-- 爆炸只产生范围伤害和视觉效果，不产生吸引声音，也不惊动待机僵尸。
-- AOE 伤害很高；被爆炸杀死的我方士兵继续按照正常感染规则，立即生成低级僵尸。
-- 核心反制：远距离优先集火，并主动拉开远程兵间距，避免一炸死一大片。
-- 这个单位的价值不是单纯高伤，而是逼玩家做“散兵”微操。
-
-## 5. 尸犬 Zombie Hound
-定位：最高机动性的后排威胁。
-
-- 移速：4.2 格/秒。
-- HP：低。
-- 伤害：中。
-- 特殊能力：可翻越部分低等级墙体/障碍（具体规则待原型）。
-- 听觉敏感度：非常高。
-
-## 6. 毒液僵尸 Spitter
-定位：远程骚扰 / 迫使阵型移动。
-
-- 移速：2.6 格/秒。
-- HP：低~中。
-- 伤害：范围或持续伤害。
-- 特殊能力：喷射毒液。
-- 听觉敏感度：普通。
-
-## 7. 巨型僵尸 Giant
-定位：攻坚单位。
-
-- 移速：1.5 格/秒。
-- HP：非常高。
-- 伤害：非常高。
-- 对建筑/城墙有额外威胁。
-- 听觉敏感度：低~普通。
-
-## 8. Boss Zombie
-定位：阶段性 Boss。
-
-- 具体机制后续单独设计。
-- 原则：Boss 应改变战场规则，而不是单纯增加 HP。
-
-## Noise 目标规则
-
-- 僵尸如果直接发现玩家单位/建筑，优先直接追击和攻击。
-- 没有直接目标时，才根据当前有效的 Noise 声音源移动。
-- Noise 的作用是把游荡僵尸引向玩家正在战斗的位置，而不是引向尸体位置。
-
-## 第一版原则
-
-- 普通尸负责数量压力。
-- 狂暴尸负责追击远程兵、惩罚风筝。
-- 胖尸负责正面承压。
-- 爆裂尸负责惩罚密集阵型，并制造感染雪崩风险。
-- 尸犬负责最高速切后排。
-- 毒液尸负责逼迫阵型移动。
-- 巨型尸负责攻城。
-- Boss 负责特殊阶段挑战。
+[本轮概念图及提示词](../art/concepts/2026-09-27/README.md)。含狂暴尸的先前评审图已被更新稿替代，不再作为当前制作依据。
