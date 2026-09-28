@@ -4,6 +4,8 @@ A **1–2 player cooperative Survival RTS** set in a fictionalized ancient/medie
 
 ## Documentation
 
+- [Concept art atlas / 概念图总册](art/concepts/README.md): versioned original images, faction/unit references, individual three-view sheets, and clearly separated historical drafts.
+
 The repository now includes a Unity 6000.6.1f1 project. Open the repository root
 in Unity and use `Tools > Zombie Game > Run 1K 5K 10K Benchmark` for the isolated
 render test. See [the verified local benchmark](docs/dev/BENCHMARK_2026-09-18.md).

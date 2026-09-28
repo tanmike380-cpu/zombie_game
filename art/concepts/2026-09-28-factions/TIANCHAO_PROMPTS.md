@@ -1,0 +1,24 @@
+# 天朝其余步兵 · 独立三视图与手套长袖统一
+
+使用内置 image_gen；参考既有天朝兵种图。每单位单独生成，保留红甲体系与大而稀疏铆钉。
+
+## 09-tianchao-archer
+
+```text
+Use case: stylized-concept. Input image is the approved Tianchao infantry identity/armor STYLE reference. Create ONE standalone realistic RTS unit FRONT SIDE BACK three-view concept sheet, title supplied below, view labels exactly "正面", "侧面", "背面". Three equally scaled full figures of exactly the SAME soldier, same equipment and pose viewed front orthographic, side orthographic and back orthographic, warm neutral grey background, consistent soft light and premium textured realistic game art. Do not copy other two units on reference.
+Lock accepted Tianchao uniform: dark rounded Eastern helmet with small red tassel and neck lames, RED cloth-covered brigandine with LARGE SPARSE brass rivets, belt and small gourd, grey trousers, cream calf puttees, dark boots. Long CHARCOAL sleeves cover all arms through wrists, NO rolled cuffs, NO bare forearms. BOTH hands fully covered in dark brown LEATHER gloves, sleeve cuffs overlap gloves no exposed wrist skin. Simple glove silhouette: palm, thumb, simple index and grouped remaining fingers for RTS readability, naturally holding weapon, no missing/disconnected wrists, no tiny anatomy. Keep armor rounded cloth-covered not modern plate carrier or Roman armor. All Tianchao units share exact armor and clothing, only weapon/ammo differ. No purple Roman clothes, no bare hands, no modern weapons, no extra inset, no stats, no fourth view. Title "天朝 · 弓箭手". Weapon: a historical composite recurve bow held naturally at side and arrow quiver; no crossbow.
+```
+
+## 10-tianchao-repeater
+
+```text
+Use case: stylized-concept. Input image is the approved Tianchao infantry identity/armor STYLE reference. Create ONE standalone realistic RTS unit FRONT SIDE BACK three-view concept sheet, title supplied below, view labels exactly "正面", "侧面", "背面". Three equally scaled full figures of exactly the SAME soldier, same equipment and pose viewed front orthographic, side orthographic and back orthographic, warm neutral grey background, consistent soft light and premium textured realistic game art. Do not copy other two units on reference.
+Lock accepted Tianchao uniform: dark rounded Eastern helmet with small red tassel and neck lames, RED cloth-covered brigandine with LARGE SPARSE brass rivets, belt and small gourd, grey trousers, cream calf puttees, dark boots. Long CHARCOAL sleeves cover all arms through wrists, NO rolled cuffs, NO bare forearms. BOTH hands fully covered in dark brown LEATHER gloves, sleeve cuffs overlap gloves no exposed wrist skin. Simple glove silhouette: palm, thumb, simple index and grouped remaining fingers for RTS readability, naturally holding weapon, no missing/disconnected wrists, no tiny anatomy. Keep armor rounded cloth-covered not modern plate carrier or Roman armor. All Tianchao units share exact armor and clothing, only weapon/ammo differ. No purple Roman clothes, no bare hands, no modern weapons, no extra inset, no stats, no fourth view. Title "天朝 · 诸葛弩手". Weapon: a Chinese wooden repeating crossbow with clearly visible top rectangular wooden bolt magazine, operating lever and transverse bow, held naturally across waist; NO modern gun magazine.
+```
+
+## 11-tianchao-crossbowman
+
+```text
+Use case: stylized-concept. Input image is the approved Tianchao infantry identity/armor STYLE reference. Create ONE standalone realistic RTS unit FRONT SIDE BACK three-view concept sheet, title supplied below, view labels exactly "正面", "侧面", "背面". Three equally scaled full figures of exactly the SAME soldier, same equipment and pose viewed front orthographic, side orthographic and back orthographic, warm neutral grey background, consistent soft light and premium textured realistic game art. Do not copy other two units on reference.
+Lock accepted Tianchao uniform: dark rounded Eastern helmet with small red tassel and neck lames, RED cloth-covered brigandine with LARGE SPARSE brass rivets, belt and small gourd, grey trousers, cream calf puttees, dark boots. Long CHARCOAL sleeves cover all arms through wrists, NO rolled cuffs, NO bare forearms. BOTH hands fully covered in dark brown LEATHER gloves, sleeve cuffs overlap gloves no exposed wrist skin. Simple glove silhouette: palm, thumb, simple index and grouped remaining fingers for RTS readability, naturally holding weapon, no missing/disconnected wrists, no tiny anatomy. Keep armor rounded cloth-covered not modern plate carrier or Roman armor. All Tianchao units share exact armor and clothing, only weapon/ammo differ. No purple Roman clothes, no bare hands, no modern weapons, no extra inset, no stats, no fourth view. Title "天朝 · 普通弩手". Weapon: a historical SINGLE-SHOT wooden crossbow with transverse bow, one bolt groove and front stirrup, held naturally at waist; NO top magazine and NO repeating lever.
+```
