@@ -1,5 +1,7 @@
 # Defensive Buildings
 
+> 2026-09-28 最新修订：两国均有一时代箭塔、二时代炮塔；三时代天朝独有“长城”（搭载蜂巢炮），拜占庭独有喷火塔。两国城堡取消，拜占庭新增大浴场。完整规则见 [建筑与时代](08_buildings_and_ages.md)。下文旧射程、消耗、噪音倍数只保留作历史提案，不是本轮重新批准的参数；本轮未更改运行时。
+
 Defensive buildings are intentionally strong enough to appeal to tower-defense players, but they consume the same military supplies as mobile ranged units. This keeps static defense connected to the core economy instead of becoming free damage.
 
 ## 1. Arrow Tower
