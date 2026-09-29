@@ -1,0 +1,88 @@
+# Tripo 独立视图素材包
+
+更新：2026-09-30。**这里的每张 PNG 只有一个单位的一个视角，不是多人合照，也不是三视图拼图。**
+
+共 91 个模型版本、273 张独立 PNG：人类 72 张，僵尸 21 张，工程器械 18 张，建筑 162 张。本轮只整理二维参考图，没有上传 Tripo、消耗 Tripo 积分、生成游戏模型或修改正式游戏数值。
+
+## 怎么上传
+
+1. 先选一个阵营、兵种和等级，例如 `humans/tianchao/archer/militia/`。
+2. 该文件夹内 `front.png` 是正面、`side.png` 是侧面、`back.png` 是背面，三张都是独立文件。
+3. **单图生成**时一次上传其中一张，通常先用正面；其余留作修正参考。
+4. 如果使用支持多视图的入口，把同一文件夹的三张图分别放到对应视角槽位。不把民兵、老兵、精英九张图混成同一个模型，也不把合并底稿传进去。
+5. “批量生成多个模型”与“一个模型的多视图”不同。先试一个兵种，确认没有生成三个人、武器没有粘连，再批量处理。
+
+### 人类：一个兵种九张图
+
+每个下列目录都有 `militia/`（民兵）、`veteran/`（老兵）、`elite/`（精英），各三张。
+
+| 阵营 | 兵种 | 九张图所在目录 |
+|---|---|---|
+| 天朝 | 弓箭手 | [archer](humans/tianchao/archer/) |
+| 天朝 | 诸葛弩手 | [repeater](humans/tianchao/repeater/) |
+| 天朝 | 普通弩手 | [crossbowman](humans/tianchao/crossbowman/) |
+| 天朝 | 三眼神铳手 | [three-eyed](humans/tianchao/three-eyed/) |
+| 罗马／拜占庭 | 军团投矛手 | [javelineer](humans/byzantine/javelineer/) |
+| 罗马／拜占庭 | 弓箭手 | [archer](humans/byzantine/archer/) |
+| 罗马／拜占庭 | 弩手 | [crossbowman](humans/byzantine/crossbowman/) |
+| 罗马／拜占庭 | 火枪手 | [musketeer](humans/byzantine/musketeer/) |
+
+例如天朝民兵弓箭手：[正面单图](humans/tianchao/archer/militia/front.png)、[侧面单图](humans/tianchao/archer/militia/side.png)、[背面单图](humans/tianchao/archer/militia/back.png)。天朝沿用长袖皮手套，拜占庭沿用长袖锁甲手套。老兵以皮革甲区分精英，未改变兵种玩法。
+
+### 僵尸：七种，各三张
+
+| 类型 | 目录 |
+|---|---|
+| 普通僵尸 | [01-common](zombies/01-common/) |
+| 自爆尸 | [02-exploder](zombies/02-exploder/) |
+| 犬尸 | [03-hound](zombies/03-hound/) |
+| 胖尸 | [04-fat](zombies/04-fat/) |
+| 毒液尸 | [05-venom](zombies/05-venom/) |
+| 头槌巨尸 | [06-headram](zombies/06-headram/) |
+| 背负投尸巨尸 | [07-carrier](zombies/07-carrier/) |
+
+头槌巨尸保留厚额骨的撞墙轮廓，不是手持锤子的怪物。投尸巨尸使用小头、长臂与空木架；被投掷的小僵尸应复用独立普通僵尸模型，在 Unity 中挂载，避免生成时把多具身体融为一体。
+
+### 工程器械：两国六种，各三张
+
+- 天朝：[重弩](siege/tianchao/ballista/)、[投石机](siege/tianchao/trebuchet/)、[蜂巢炮](siege/tianchao/nest-of-bees/)。
+- 拜占庭：[重弩](siege/byzantine/ballista/)、[投石机](siege/byzantine/trebuchet/)、[希腊火](siege/byzantine/greek-fire/)。
+
+当前参考的是展开／工作状态。行军折叠、车轮、弩弦、投臂需要在建模后拆分和制作动作，不会因三视图自动成为可活动机构。
+
+### 建筑：54 个方案，各三张
+
+[天朝建筑目录](buildings/tianchao/) · [拜占庭建筑目录](buildings/byzantine/)。每个建筑独立文件夹，名称与编号沿用总概念图册。
+
+- `front-perspective.png`：正面方向的斜俯视主图。
+- `side.png`：原稿侧面参考。
+- `rear-perspective.png`：背面方向的透视参考。
+
+**建筑原稿不是严格正交三视图。** 本轮保留已确认造型并切开，没有擅自重画 54 栋建筑；正、背视角保留透视命名，不能当成精确施工图。原稿较小的侧面／背面不做虚假放大。建筑周围的地面、木堆、树木等可能被 Tripo 一起生成，游戏中应按需要拆分或清理。
+
+主基地三个时代都保留宏伟 v2 版；不是只保留三时代。六张小体量主基地首稿、两张已取消城堡和一张旧拜占庭木屋已从当前目录删除，仍可从 Git 历史恢复。其他功能建筑没有另一个已确认的“宏伟版”，沿用现有最新版。
+
+## 动画是否能共用
+
+Tripo 提供自动骨骼／蒙皮和预设动画，并可导出带骨骼的 FBX 或 GLB；这不等于一定能直接生成符合我们武器结构的拉弓、装填、三眼神铳三连发等完整动作。[官方教程](https://www.tripo3d.ai/blog/tripo-studio-tutorial-english) · [官方自动绑定说明](https://www.tripo3d.ai/features/ai-auto-rigging)。
+
+建议每个兵种的民兵、老兵、精英共用一套标准骨架和动作，在 Blender 中修正或制作，在 Unity 中播放。同一套动作不要求三个模型顶点数相同，但每个模型都必须正确绑定权重；骨骼名称、层级、参考姿态和比例需要兼容。不兼容的独立骨架要先重定向，不能承诺任意三个导出模型直接套用。
+
+这些是持械外观参考，不是自动绑定已验收的模型。制作动画时建议准备 A/T 姿态，武器与手分开，弓弦、弹丸与烟雾独立处理。弓箭手三等级可以共用拉弓动作，但弩手和火枪手不应强行套同一攻击动作。动作复用后还要检查手与武器接触、袖口及铠甲穿插。
+
+## 来源与检查
+
+- [manifest.json](manifest.json)：全部源图路径、裁切区域、遮罩、尺寸及 SHA-256。它是当前输出的权威清单。
+- [补画提示词](generation-prompts.json) 与 [实际生成来源](../2026-09-30-turnarounds/provenance.json)：16 个民兵／老兵、七种僵尸、三种天朝器械的新增角度，由内置 `image_gen` 生成。合并底稿只用于保持各角度外观一致，不用于 Tripo 输入。
+- 精英与拜占庭器械沿用已批准的原始多视图；裁切不更换设计。
+- 裁切仅分离视图、遮掉邻图与添加留边；未用图像处理脚本编造缺失视角。AI 补画仍可能存在跨角度装饰或结构差异，最终以建模时统一为准，并非摄影测量数据。
+- 已逐页查看全部输出缩略图，并修正长城、打猎小屋、大浴场、石门的相邻视图混入及精英弩手的武器裁切；未进行 Tripo 生成成功率测试。
+
+在仓库根目录运行（Python 3 + Pillow）：
+
+```sh
+python3 tools/art/concept_views.py export
+python3 -m tools.art.concept_review validate
+```
+
+开发用面板定位器需要 NumPy、SciPy。它只用于初始候选遮罩，不能替代视觉检查；重新运行候选定位／生成清单后，需执行 `python3 -m tools.art.concept_review correct` 恢复人工修正并重新验图。

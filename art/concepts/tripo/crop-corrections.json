@@ -1,0 +1,12 @@
+[
+  {"id":"buildings/tianchao/28-great-wall","name":"front-perspective","box":[0,75,1080,1015],"polygon":[[0,130],[400,130],[450,75],[760,75],[800,200],[960,375],[1010,530],[1080,810],[820,1015],[0,1015]]},
+  {"id":"buildings/tianchao/28-great-wall","name":"side","box":[1075,510,1536,920]},
+  {"id":"buildings/byzantine/08-hunting-lodge","name":"front-perspective","box":[0,130,1070,935],"polygon":[[0,130],[830,130],[1050,550],[1070,620],[1060,670],[965,720],[920,925],[0,935]]},
+  {"id":"buildings/byzantine/08-hunting-lodge","name":"side","box":[930,540,1536,900],"polygon":[[1130,540],[1535,540],[1535,900],[930,900],[965,835],[980,740],[1110,650]]},
+  {"id":"buildings/byzantine/15-grand-bathhouse","name":"front-perspective","box":[0,80,1080,945],"polygon":[[0,145],[540,145],[550,80],[1000,80],[1030,300],[1080,460],[990,780],[860,945],[0,945]]},
+  {"id":"buildings/byzantine/15-grand-bathhouse","name":"side","box":[940,600,1536,888],"polygon":[[1000,740],[1160,735],[1200,630],[1470,600],[1535,775],[1535,887],[940,887],[965,810]]},
+  {"id":"buildings/byzantine/25-stone-gate","name":"front-perspective","box":[0,120,1050,930],"polygon":[[0,120],[965,120],[980,350],[1050,785],[950,930],[0,930]]},
+  {"id":"buildings/byzantine/25-stone-gate","name":"side","box":[1070,500,1536,920]},
+  {"id":"humans/byzantine/crossbowman/elite","name":"front","box":[60,72,513,920]},
+  {"id":"humans/byzantine/crossbowman/elite","name":"side","box":[605,72,957,920]}
+]
