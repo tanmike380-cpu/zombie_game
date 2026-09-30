@@ -208,6 +208,9 @@ then reloads the saved PNG to verify purple pigment coverage. FBX texture extrac
 this model so it cannot overwrite the authored PNG. Unity also checks pixel coverage at build time,
 not only the texture's filename. This fixes a real case where the Blender preview was purple while
 the game still received the old pale source image.
+The subsequent user review requested softer edges and less crystal-like saturation. Pigment now
+uses a wider smoothstep transition across the pustule boundary and a muted purple mix, keeping
+the sacs readable without the previous fluorescent block of colour. Original UVs/topology remain.
 
 The ground ring and uniform spherical droplets are replaced by bounded, tapered, irregular slime
 fragments, short torn sheets and shrinking ground residue. The shared effect consumes existing

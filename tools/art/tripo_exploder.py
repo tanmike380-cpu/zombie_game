@@ -28,8 +28,8 @@ def paint_pustules(mesh):
     mask *= np.clip((np.max(rgb, axis=1) - .025) / .07, 0, 1)
     mask = expand_pustule_coverage(mesh, texture.size[:], mask)
     luminance = red * .2126 + green * .7152 + blue * .0722
-    purple = luminance[:, None] * np.array([1.50, .22, 2.10], dtype=np.float32)
-    rgb[:] = np.clip(rgb * (1 - mask[:, None] * .98) + purple * mask[:, None] * .98, 0, 1)
+    purple = luminance[:, None] * np.array([1.28, .48, 1.60], dtype=np.float32)
+    rgb[:] = np.clip(rgb * (1 - mask[:, None] * .82) + purple * mask[:, None] * .82, 0, 1)
     # A fresh image avoids saving the imported FBX image's stale packed source bytes.
     painted = bpy.data.images.new("ExploderPustules", width=texture.size[0], height=texture.size[1], alpha=True)
     painted.colorspace_settings.name = texture.colorspace_settings.name
@@ -64,7 +64,8 @@ def expand_pustule_coverage(mesh, size, pigment):
     weights = np.zeros(len(positions), dtype=np.float32)
     for start in range(0, len(positions), 256):
         distance = np.sqrt(((positions[start:start+256, None, :] - seeds[None, :, :])**2).sum(axis=2).min(axis=1))
-        weights[start:start+256] = np.clip((.065 - distance) / .020, 0, 1)
+        fade = np.clip((.078 - distance) / .055, 0, 1)
+        weights[start:start+256] = fade * fade * (3 - 2 * fade)
     painted = np.zeros((height, width), dtype=np.float32)
     mesh.data.calc_loop_triangles()
     for triangle in mesh.data.loop_triangles:
