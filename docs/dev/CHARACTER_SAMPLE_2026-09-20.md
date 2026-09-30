@@ -70,3 +70,60 @@ This short sample exposes significant model cost and frame-time spikes. It does 
 stable 60 FPS target for the full game. Before committing final art, profile realistic camera views,
 combat and smoke together; add LOD and lower distant animation detail based on those measurements.
 Raw local log: `/tmp/zombie-character-renderbench.log` (not committed).
+
+## Tripo camera comparison on 2026 September 30
+
+Keep the original model detail before reducing polygons. An isolated comparison on Apple M2 Pro,
+16 GB RAM, Unity 6000.6.1f1, Metal, 1440 × 900, MSAA 2 and VSync off measured the following.
+Each stage used two seconds of warmup and twelve seconds of sampling. All stages kept 10,000
+original Tripo archers, 9,923 triangles each, the original 2K color texture, and no character shadows.
+These are static shared-mesh instances, without animation, navigation or combat.
+
+| Camera and drawing | Submitted units | Mean FPS | P95 frame time |
+|---|---:|---:|---:|
+| Whole army overview | 10,000 | 19.42 | 323.20 ms |
+| Closer camera only | 10,000 | 19.57 | 320.54 ms |
+| Closer camera with per-instance frustum culling | 1,672 | 96.62 | 23.01 ms |
+
+The other 8,328 units remain in the population but are not submitted for drawing. No LOD, texture
+reduction or resolution reduction was used. This short run establishes a rendering benefit, not a
+stable 96 FPS combat target. Frame spikes remain; the full AI, NavMesh, projectile, fog and smoke
+workload still needs an equivalent comparison. Offscreen units must keep their gameplay simulation.
+
+`CharacterCrowdRenderer.begin_frame(camera)` enables the opt-in culling path. Existing callers
+without a camera retain their behavior. The main game zoom limit has not changed. Transformed
+mesh bounds include weapons and armor, retaining units partially visible at the screen edge.
+Regression checks cover visible, partially visible, offscreen, behind-camera and culling-disabled
+cases, plus the null-simulation control-group reset. Unity compilation and the standalone build pass.
+
+Reproduce with `Tools > Zombie Game > Characters > Build Original Tripo 10K Baseline`, then run
+`Builds/TripoArcher/TripoArcher.app` with `-tripoBenchmark -tripoQuit -tripoOutput <output-directory>`
+and Unity player options `-screen-width 1440 -screen-height 900 -screen-fullscreen 0`.
+Raw local measurements and screenshots are in `Builds/ArtReview/TripoArcher/camera-comparison/`.
+The old report's generic conditions text says overview; the stage names distinguish the overview
+(orthographic size 84) and both closer-camera cases (size 14).
+
+## Tripo source and animation review status
+
+The original archer source is `Assets/_Game/Art/TripoArcher/OriginalTripoRig.fbx`, with a packed
+Blender copy at `art/models/tripo-archer/OriginalTripoRig.blend`. It has 67 bones but no supplied
+animation. The rejected custom bow animation is retained only in the ignored local directory
+`Builds/ArtReview/TripoArcher/unapproved-animation/`, not in the Unity asset database.
+
+The newer crossbow source ZIP is locally named `BZT+croosbow+Elite.zip`. It contains 67 bones,
+10,412 triangles and color, normal, metallic and roughness maps, but no supplied animation.
+`tools/art/tripo_crossbow.py` creates an animation REVIEW DRAFT on those existing bones; it does
+not rebuild the skeleton. It expects the extracted original FBX and texture folder under
+`Builds/ArtReview/TripoCrossbow/source/`. `art/models/tripo-crossbow/ByzantineCrossbow.blend` and
+`Assets/_Game/Art/TripoCrossbow/ByzantineCrossbow.fbx` retain that draft. Original bone rest transforms
+are checked unchanged. Weapon skin weights are adjusted to keep the bow rigid.
+
+The crossbow draft is NOT visually approved: raising the arms stretches parts of the waist/armor.
+It has idle, run, aim and attack authoring, but no dedicated death or melee animation. Unity's review
+slots use explicit fallbacks. Do not deploy this draft to the main game or treat import/vertex-motion
+checks as animation-quality approval. Its older local player may predate the latest Blender edits.
+No current crossbow combat performance or visual-quality pass is claimed here.
+
+Generated sampled meshes under `Resources/TripoArcher` and `Resources/TripoCrossbow` are ignored;
+the two review build commands regenerate them. Unit combat numbers still come only from shared
+`UnitBalance`; neither the render-only comparison nor review fixtures change authored balance.

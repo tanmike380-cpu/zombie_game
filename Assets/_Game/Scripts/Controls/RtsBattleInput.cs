@@ -54,7 +54,8 @@ namespace ZombieGame.Controls
         public void cancel_command() { pending = "Select"; dragging = false; }
         public void clear_groups()
         {
-            System.Array.Clear(control_groups,0,control_groups.Length);
+            // A fixture/recruitment reset can change capacity or temporarily have no simulation.
+            saved_groups = null;
             last_group = -1; last_group_time = -1;
         }
 

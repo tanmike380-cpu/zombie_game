@@ -13,15 +13,29 @@ namespace ZombieGame.Presentation
         private readonly int frames_per_pose;
         private readonly int pose_count;
         private readonly int capacity;
+        private readonly Plane[] view_planes = new Plane[6];
+        private bool cull_to_view;
         public int submitted { get; private set; }
+        public int culled { get; private set; }
 
-        public CharacterCrowdRenderer(int capacity,string style=null)
+        public CharacterCrowdRenderer(int capacity,string style=null,CharacterFrames archer_override=null,string override_unit="archer")
         {
             if(capacity<1)throw new ArgumentOutOfRangeException(nameof(capacity));this.capacity=capacity;
             characters = new CharacterFrames[8];set_style(style);
+            if(archer_override!=null)characters[human_index(override_unit)]=archer_override;
             if (Array.Exists(characters,c=>c==null)) throw new InvalidOperationException("Bake character models before enabling animated crowd");
-            frames_per_pose = characters[0].poses[0].frames.Length;
             pose_count=characters[0].poses.Length;
+            int maximum_frames=0;
+            foreach(var character in characters)
+            {
+                if(character.poses.Length!=pose_count)throw new InvalidOperationException("Crowd pose layout differs");
+                foreach(var pose in character.poses)
+                {
+                    if(pose.frames.Length==0)throw new InvalidOperationException("Empty crowd animation");
+                    maximum_frames=Math.Max(maximum_frames,pose.frames.Length);
+                }
+            }
+            frames_per_pose=maximum_frames;
             int buckets = characters.Length * pose_count * frames_per_pose;
             matrices = new Matrix4x4[buckets][]; counts = new int[buckets];
             for (int i = 0; i < buckets; i++) matrices[i] = new Matrix4x4[Math.Min(capacity,128)];
@@ -38,17 +52,35 @@ namespace ZombieGame.Presentation
             }
         }
 
-        public void begin_frame() { Array.Clear(counts, 0, counts.Length); submitted = 0; }
+        public void begin_frame(Camera view=null)
+        {
+            Array.Clear(counts, 0, counts.Length); submitted = culled = 0;
+            cull_to_view = view != null;
+            if(cull_to_view)GeometryUtility.CalculateFrustumPlanes(view,view_planes);
+        }
 
         public void add(bool human, CharacterPose pose, float age, Vector3 position, Quaternion rotation, bool explosive = false,float model_scale=1,string human_id=null)
         {
             int character = human ? human_index(human_id) : explosive ? 2 : 1;
             int frame = characters[character].frame_index(pose, age);
+            Matrix4x4 matrix = Matrix4x4.TRS(position, rotation, Vector3.one*model_scale);
+            if(cull_to_view&&!is_visible(characters[character].poses[(int)pose].frames[frame].bounds,matrix))
+            {culled++;return;}
             int bucket = (character * pose_count + (int)pose) * frames_per_pose + frame;
             if(counts[bucket]>=capacity)throw new InvalidOperationException("Crowd frame exceeds declared capacity");
             if(counts[bucket]==matrices[bucket].Length)Array.Resize(ref matrices[bucket],Math.Min(capacity,matrices[bucket].Length*2));
-            matrices[bucket][counts[bucket]++] = Matrix4x4.TRS(position, rotation, Vector3.one*model_scale);
+            matrices[bucket][counts[bucket]++] = matrix;
             submitted++;
+        }
+
+        private bool is_visible(Bounds local,Matrix4x4 matrix)
+        {
+            Vector3 x=matrix.MultiplyVector(new Vector3(local.extents.x,0,0));
+            Vector3 y=matrix.MultiplyVector(new Vector3(0,local.extents.y,0));
+            Vector3 z=matrix.MultiplyVector(new Vector3(0,0,local.extents.z));
+            Vector3 extents=new Vector3(Mathf.Abs(x.x)+Mathf.Abs(y.x)+Mathf.Abs(z.x),Mathf.Abs(x.y)+Mathf.Abs(y.y)+Mathf.Abs(z.y),Mathf.Abs(x.z)+Mathf.Abs(y.z)+Mathf.Abs(z.z));
+            // Mesh bounds include armor and weapon; do not clip units at their feet on viewport edges.
+            return GeometryUtility.TestPlanesAABB(view_planes,new Bounds(matrix.MultiplyPoint3x4(local.center),extents*2));
         }
 
         public void draw()

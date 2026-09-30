@@ -6,6 +6,65 @@ namespace ZombieGame.CharacterTests
 {
     public static class CharacterVisualChecks
     {
+        public static void run_tripo_original()
+        {
+            var asset = Resources.Load<CharacterFrames>("TripoArcher/OriginalRest");
+            require(asset != null && asset.material.mainTexture != null, "Original Tripo material missing");
+            require(asset.poses[0].frames[0].triangles.Length / 3 == 9923, "Original Tripo topology changed");
+            var fixture = new GameObject("Group reset null-simulation fixture");
+            try { fixture.AddComponent<ZombieGame.Controls.RtsBattleInput>().clear_groups(); }
+            finally { UnityEngine.Object.DestroyImmediate(fixture); }
+            verify_crowd_culling(asset);
+            Debug.Log("[TripoOriginalChecks] PASS original mesh and null-simulation group reset");
+        }
+
+        private static void verify_crowd_culling(CharacterFrames asset)
+        {
+            var root = new GameObject("Crowd culling regression camera");
+            try
+            {
+                var view = root.AddComponent<Camera>();
+                view.enabled = false; view.orthographic = true; view.orthographicSize = 2;
+                view.aspect = 1; view.nearClipPlane = .1f; view.farClipPlane = 20;
+                view.transform.position = new Vector3(0, 1, -5);
+                var renderer = new CharacterCrowdRenderer(4, null, asset);
+                renderer.begin_frame(view);
+                foreach (var position in new[] { Vector3.zero, new Vector3(2.2f, 0, 0), new Vector3(100, 0, 0), new Vector3(0, 0, -50) })
+                    renderer.add(true, CharacterPose.Idle, 0, position, Quaternion.identity, human_id: "archer");
+                require(renderer.submitted == 2 && renderer.culled == 2, "Offscreen / viewport-edge culling regression");
+                renderer.begin_frame();
+                renderer.add(true, CharacterPose.Idle, 0, new Vector3(100, 0, 0), Quaternion.identity, human_id: "archer");
+                require(renderer.submitted == 1 && renderer.culled == 0, "Default production renderer changed without opting in");
+                Debug.Log("[CrowdCullingChecks] PASS visible, partial-edge, offscreen, behind-camera and disabled-culling cases");
+            }
+            finally { UnityEngine.Object.DestroyImmediate(root); }
+        }
+
+        public static void run_tripo()
+        {
+            var asset = Resources.Load<CharacterFrames>("TripoCrossbow/Frames");
+            require(asset != null && asset.material != null && asset.material.mainTexture != null, "Tripo original texture missing");
+            require(asset.poses.Length == 7, "Tripo crowd pose layout");
+            require(Mathf.Abs(asset.poses[0].frames[0].bounds.size.y - 2) < .02f, "Tripo unit height");
+            foreach (var pose in asset.poses)
+            {
+                require(pose.frames.Length == 24, "Tripo shared frame count");
+                foreach (var mesh in pose.frames)
+                    require(mesh != null && mesh.triangles.Length / 3 > 9500 && mesh.bounds.size.y < 3, "Tripo full geometry / scale");
+            }
+            foreach (int pose in new[] { 1, 2 })
+            {
+                var first = asset.poses[pose].frames[0].vertices;
+                var later = asset.poses[pose].frames[6].vertices;
+                float movement = 0;
+                for (int i = 0; i < first.Length; i++) movement += (first[i] - later[i]).sqrMagnitude;
+                require(movement > .01f, "Tripo imported animation is static: pose=" + pose + " delta=" + movement);
+            }
+            var muzzle = asset.poses[2].muzzle_positions[0];
+            require(muzzle.y > 1 && muzzle.y < 2, "Tripo hand height: " + muzzle);
+            Debug.Log("[TripoVisualChecks] PASS original texture, full mesh, scale, idle/run/attack clips and animated vertices");
+        }
+
         public static void run()
         {
             CharacterFrames basic = null, explosive = null;
