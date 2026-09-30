@@ -6,6 +6,25 @@ namespace ZombieGame.CharacterTests
 {
     public static class CharacterVisualChecks
     {
+        public static void run_explosion_feedback()
+        {
+            using (var feedback = new ExplosionFeedback(Shader.Find("Standard")))
+            {
+                var flashes = new ZombieGame.Combat.BattleSimulation.Flash[256];
+                float expires = Time.time + .5f;
+                flashes[0] = new ZombieGame.Combat.BattleSimulation.Flash { origin = Vector3.zero, expires = expires };
+                feedback.draw_events(flashes, null, true);
+                require(feedback.visible_events == 1, "Active explosion visual missing");
+                feedback.draw_events(flashes, null, false);
+                require(feedback.visible_events == 0, "Explosion visual reveals fog");
+                require(flashes[0].expires == expires && flashes[0].origin == Vector3.zero, "Explosion renderer mutated source events");
+                flashes[0] = default;
+                feedback.draw_events(flashes, null, true);
+                require(feedback.visible_events == 0, "Expired explosion visual leaked");
+            }
+            Debug.Log("[ExplosionFeedbackChecks] PASS active/expired/hidden events and immutable presentation input; renderer has no damage/noise dispatch");
+        }
+
         public static void run_tripo_original()
         {
             var asset = Resources.Load<CharacterFrames>("TripoArcher/OriginalRest");
@@ -42,6 +61,19 @@ namespace ZombieGame.CharacterTests
 
         public static void run_tripo()
         {
+            var layout = new Vector3[2400];
+            TripoKitingBattle.fill_layout(layout, 400);
+            var occupied = new System.Collections.Generic.HashSet<Vector3>(layout);
+            require(occupied.Count == 2400, "Kiting fixture spawn overlap");
+            require(layout[0].z == 0 && layout[399].z < 0 && layout[400].z == 12 && layout[2399].z < 128,
+                "Kiting fixture human/enemy layout or bounds");
+            var large_layout = new Vector3[4400];
+            TripoKitingBattle.fill_layout(large_layout, 400);
+            require(new System.Collections.Generic.HashSet<Vector3>(large_layout).Count == 4400 && large_layout[4399].z < 128,
+                "4000 exploder fixture overlaps or exceeds map");
+            var exploder_asset = Resources.Load<CharacterFrames>("TripoExploder/Frames");
+            require(exploder_asset != null && exploder_asset.poses[0].frames[0].triangles.Length / 3 == 10154,
+                "Tripo exploder original topology missing");
             var asset = Resources.Load<CharacterFrames>("TripoCrossbow/Frames");
             require(asset != null && asset.material != null && asset.material.mainTexture != null, "Tripo original texture missing");
             require(asset.poses.Length == 7, "Tripo crowd pose layout");

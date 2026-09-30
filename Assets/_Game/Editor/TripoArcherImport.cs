@@ -14,6 +14,24 @@ namespace ZombieGame.EditorTools
         public const string FRAME_PATH = "Assets/_Game/Resources/TripoCrossbow/Frames.asset";
         private const int FRAME_COUNT = 12;
         public const string REST_PATH = "Assets/_Game/Resources/TripoArcher/OriginalRest.asset";
+        public const string EXPLODER_PATH = "Assets/_Game/Resources/TripoExploder/Frames.asset";
+
+        public static void import_exploder()
+        {
+            const string source = "Assets/_Game/Art/TripoExploder/TripoExploder.fbx";
+            const string textures = "Assets/_Game/Art/TripoExploder/Textures";
+            AssetDatabase.Refresh();
+            var importer = (ModelImporter)AssetImporter.GetAtPath(source);
+            importer.animationType = ModelImporterAnimationType.Generic;
+            importer.importAnimation = true; importer.isReadable = true;
+            importer.animationCompression = ModelImporterAnimationCompression.Off;
+            importer.SaveAndReimport();
+            Directory.CreateDirectory(textures); importer.ExtractTextures(textures); AssetDatabase.Refresh();
+            string texture_path = AssetDatabase.GUIDToAssetPath(AssetDatabase.FindAssets("t:Texture2D", new[] { textures }).First());
+            var model = UnityEngine.Object.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>(source));
+            try { bake_model(model, AssetDatabase.LoadAssetAtPath<Texture2D>(texture_path), source, EXPLODER_PATH, false); }
+            finally { UnityEngine.Object.DestroyImmediate(model); }
+        }
 
         public static void bake_original_rest()
         {
@@ -78,26 +96,28 @@ namespace ZombieGame.EditorTools
             finally { UnityEngine.Object.DestroyImmediate(model); }
         }
 
-        private static void bake_model(GameObject model, Texture2D texture)
+        private static void bake_model(GameObject model, Texture2D texture, string model_path = MODEL_PATH, string frame_path = FRAME_PATH, bool use_pbr = true)
         {
             foreach (var animator in model.GetComponentsInChildren<Animator>()) animator.enabled = false;
-            var clips = AssetDatabase.LoadAllAssetsAtPath(MODEL_PATH).OfType<AnimationClip>()
+            var clips = AssetDatabase.LoadAllAssetsAtPath(model_path).OfType<AnimationClip>()
                 .Where(clip => !clip.name.StartsWith("__preview__")).ToArray();
             Debug.Log("[TripoArcher] clips=" + string.Join(",", clips.Select(clip => clip.name)));
             var renderers = model.GetComponentsInChildren<SkinnedMeshRenderer>();
             if (renderers.Length == 0) throw new InvalidOperationException("Missing Tripo skinned mesh");
-            Directory.CreateDirectory(Path.GetDirectoryName(FRAME_PATH));
+            Directory.CreateDirectory(Path.GetDirectoryName(frame_path));
             AssetDatabase.Refresh();
-            var frames = AssetDatabase.LoadAssetAtPath<CharacterFrames>(FRAME_PATH);
+            var frames = AssetDatabase.LoadAssetAtPath<CharacterFrames>(frame_path);
             if (frames == null)
             {
                 frames = ScriptableObject.CreateInstance<CharacterFrames>();
-                AssetDatabase.CreateAsset(frames, FRAME_PATH);
+                AssetDatabase.CreateAsset(frames, frame_path);
             }
             else
-                foreach (var child in AssetDatabase.LoadAllAssetsAtPath(FRAME_PATH))
+                foreach (var child in AssetDatabase.LoadAllAssetsAtPath(frame_path))
                     if (child != frames) UnityEngine.Object.DestroyImmediate(child, true);
-            frames.material = TripoPbrMaterial.create(texture, "Assets/_Game/Art/TripoCrossbow/Textures");
+            frames.material = use_pbr ? TripoPbrMaterial.create(texture, "Assets/_Game/Art/TripoCrossbow/Textures")
+                : new Material(Shader.Find("Standard")) { name = "Tripo exploder original color", mainTexture = texture, enableInstancing = true };
+            if (!use_pbr) frames.material.SetFloat("_Glossiness", .15f);
             AssetDatabase.AddObjectToAsset(frames.material, frames);
             frames.poses = new PoseFrames[7];
             // Melee slots are explicit presentation fallbacks, not a new melee animation.

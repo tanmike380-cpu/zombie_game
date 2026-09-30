@@ -122,8 +122,58 @@ The crossbow draft is NOT visually approved: raising the arms stretches parts of
 It has idle, run, aim and attack authoring, but no dedicated death or melee animation. Unity's review
 slots use explicit fallbacks. Do not deploy this draft to the main game or treat import/vertex-motion
 checks as animation-quality approval. Its older local player may predate the latest Blender edits.
-No current crossbow combat performance or visual-quality pass is claimed here.
+The later kiting runs below validate combat integration, not animation visual quality.
 
 Generated sampled meshes under `Resources/TripoArcher` and `Resources/TripoCrossbow` are ignored;
 the two review build commands regenerate them. Unit combat numbers still come only from shared
 `UnitBalance`; neither the render-only comparison nor review fixtures change authored balance.
+
+## Crossbow kiting and Tripo exploder combat
+
+The user confirmed that friendly congestion and overkill are intended micro-management challenges.
+Keep production targeting, collision and damage assignment unchanged. The isolated fixture sends
+ordinary movement and attack-move inputs: after a real ranged attack, hold the release pose briefly,
+request a 1.2-unit retreat, then resume attack-move. Original cooldowns, ammunition and damage apply.
+Blocked units are not warped. All enemies begin charging together using the existing assault fixture
+hook and retain local visual combat. There are no invulnerability, resupply or health overrides.
+
+Both scenarios use a flat 256 × 256 test floor, no buildings or obstacles, original model detail,
+1440 × 900, MSAA 2, shared sampled animation and optional per-instance culling. Fog calculations,
+native NavMesh, projectiles, HP/ammo/selection feedback and combat are active. The map is revealed
+for observation. This is not a complete terrain-heavy production-map benchmark.
+
+The 400 crossbow versus 2,000 walker rerun eliminated the zombies at 39.89 seconds, losing 19 humans;
+5,619 shots were fired. The first run lost 22 humans instead; avoid interpreting one crowd simulation
+as deterministic. The rerun measured 17.49 FPS during combat, not the higher post-combat average
+observed in the first run. Reports remain local under `Builds/ArtReview/TripoCrossbow/`.
+
+The newer `explore+zombie.zip` contains 67 bones, 10,154 triangles and a color texture, no animation.
+`tools/art/tripo_exploder.py` adds a draft charge loop to the original skeleton without replacing its
+rest bones, topology or skin weights. The packed source is `art/models/tripo-exploder/TripoExploder.blend`.
+The crossbow remains a 10,412-triangle animation draft. No mesh simplification was applied.
+
+The 400 versus 4,000 exploder run used the shared `exploder` record, including its faster movement,
+fuse, death explosion and friendly-only AOE damage. All 400 humans died at 11.64 seconds. There were
+1,019 zombie deaths and exactly 1,019 explosions, 1,082 arrows fired, zero dropped projectiles,
+zero failed navigation paths, zero geometry errors and zero observed shots during the retreat state.
+The fixture recorded 518 retreats of at least half the requested step and 363 repeat shooters.
+These are functional checks, not a balanced encounter or animation-quality acceptance.
+
+Measured performance on M2 Pro: 31.41 FPS during combat, combat P95 62.27 ms, 47.28 FPS over the
+60-second observation. The early dense sample was 16.36 FPS. All 2,746 measured frames reported
+the player focused. Most of the minute occurred AFTER the humans died, so the 47 FPS figure cannot
+establish sustained 4,000-unit combat performance. The existing bounded visual pool reached 256
+concurrent explosion events; visual events can replace old slots, but damage is never skipped for
+that reason. The performance result is not a stable-60-FPS pass.
+
+`ExplosionFeedback` extracts the existing expanding purple ring into a production presentation
+component shared by Frontier and this fixture. It only consumes existing `BattleSimulation.flashes`;
+it never emits noise or damage. Checks cover active, expired, fog-hidden and side-effect-free events.
+Nothing changed in production unit balance, collision, formation allocation or target selection.
+
+Build with `Tools > Zombie Game > Characters > Build Tripo Crossbow Battle`.
+Launch `tools/art/play_crossbow_kiting.command` for 400 versus 2,000 walkers, or
+`tools/art/play_exploder_kiting.command` for 400 versus 4,000 original-model exploders.
+Both open paused: Space starts/pauses; F8 switches automatic kiting and manual RTS control; R resets.
+F2 selects all, right-click moves, A then left-click attacks. Automatic inputs are test-only, not a new
+production unit ability. Raw exploder measurements/screenshots: `Builds/ArtReview/TripoExploder/kiting-400-4000/`.

@@ -13,10 +13,14 @@ namespace ZombieGame.CharacterTests
     public sealed class TripoArcherBattle : MonoBehaviour, IRtsBattleView
     {
         public CharacterFrames archer_frames;
+        public CharacterFrames exploder_frames;
+        public bool exploder_fixture { get; private set; }
+        public ExplosionFeedback explosions { get; private set; }
         public Material fog_template;
         public bool original_rest_only;
         public string human_unit_id = "archer";
         public bool frustum_culling;
+        public bool kiting_fixture { get; private set; }
         public int sample_humans = 6, sample_zombies = 6;
         public BattleSimulation current { get; private set; }
         public CombatFog current_fog { get; private set; }
@@ -49,9 +53,20 @@ namespace ZombieGame.CharacterTests
             controls = gameObject.AddComponent<RtsBattleInput>();
             controls.game = this;
             create_arrow_visual();
+            explosions = new ExplosionFeedback(Shader.Find("Standard"));
             var benchmark = gameObject.AddComponent<TripoArcherBenchmark>();
             benchmark.game = this;
-            if (Array.IndexOf(Environment.GetCommandLineArgs(), "-tripoBenchmark") >= 0)
+            exploder_fixture = Array.IndexOf(Environment.GetCommandLineArgs(), "-tripoExploders") >= 0;
+            kiting_fixture = exploder_fixture || Array.IndexOf(Environment.GetCommandLineArgs(), "-tripoKiting") >= 0;
+            if (kiting_fixture)
+            {
+                if (original_rest_only || human_unit_id != "heavy_crossbowman")
+                    throw new InvalidOperationException("Kiting fixture requires the Tripo crossbow review build");
+                if (exploder_fixture && exploder_frames == null) throw new InvalidOperationException("Import the user's Tripo exploder first");
+                sample_humans = 400; sample_zombies = exploder_fixture ? 4000 : 2000; frustum_culling = true;
+                reset_population(sample_humans, sample_zombies, false);
+            }
+            else if (Array.IndexOf(Environment.GetCommandLineArgs(), "-tripoBenchmark") >= 0)
                 benchmark.begin();
             else
             {
@@ -64,6 +79,10 @@ namespace ZombieGame.CharacterTests
 
         public void reset_population(int humans, int zombies, bool rendering_only)
         {
+            var previous_kiting = GetComponent<TripoKitingBattle>();
+            if (previous_kiting != null) { previous_kiting.enabled = false; Destroy(previous_kiting); }
+            advance_simulation = true;
+            Time.timeScale = 1;
             current?.Dispose(); current = null;
             current_fog?.Dispose(); current_fog = null;
             forced_pose = null;
@@ -84,12 +103,15 @@ namespace ZombieGame.CharacterTests
                 visual_positions[humans + i] = humans < 100
                     ? new Vector3((i % 3 - 1) * 1.4f, 0, 3 + i / 3 * 1.5f)
                     : new Vector3((i % 100 - 49.5f) * 1.05f, 0, 55 + i / 100 * 1.1f);
-                ids[humans + i] = "walker";
+                ids[humans + i] = exploder_fixture ? "exploder" : "walker";
             }
-            crowd_renderer = new CharacterCrowdRenderer(total, null, archer_frames, human_unit_id);
+            if (kiting_fixture) TripoKitingBattle.fill_layout(visual_positions, humans);
+            crowd_renderer = new CharacterCrowdRenderer(total, null, archer_frames, human_unit_id, exploder_fixture ? exploder_frames : null);
             if (!rendering_only)
             {
-                current = new BattleSimulation(visual_positions, humans, new bool[total], Array.Empty<Bounds>(), unit_ids: ids);
+                var explosive = new bool[total];
+                if (exploder_fixture) for (int i = humans; i < total; i++) explosive[i] = true;
+                current = new BattleSimulation(visual_positions, humans, explosive, Array.Empty<Bounds>(), global_assault: kiting_fixture, unit_ids: ids);
                 current_fog = new CombatFog(fog_template);
                 current_fog.update_visibility(current);
                 current.player_visibility = current_fog.is_visible;
@@ -105,6 +127,11 @@ namespace ZombieGame.CharacterTests
             controls.notice = "F2 select all | Right-click move | A + left-click attack | R restart | F9 benchmark";
             Camera.main.orthographicSize = humans < 100 ? 8 : 84;
             focus_camera(Vector3.zero);
+            if (kiting_fixture)
+            {
+                Camera.main.orthographicSize = 24;
+                gameObject.AddComponent<TripoKitingBattle>().initialize(this);
+            }
         }
 
         private void Update()
@@ -126,6 +153,7 @@ namespace ZombieGame.CharacterTests
             {
                 feedback.draw(current, current_fog, true, Camera.main);
                 draw_arrows();
+                explosions.draw(current, current_fog, true);
             }
             update_camera();
         }
@@ -149,7 +177,8 @@ namespace ZombieGame.CharacterTests
                 Vector3 facing = human ? current.soldier_facing[index] : current.crowd.transforms[index].forward;
                 if (facing.sqrMagnitude > .001f) rotation = Quaternion.LookRotation(facing);
             }
-            crowd_renderer.add(human, pose, age, position, rotation, human_id: human ? human_unit_id : null);
+            crowd_renderer.add(human, pose, age, position, rotation, explosive: !human && exploder_fixture,
+                model_scale: human || current == null ? 1 : current.stats_for(index).model_scale, human_id: human ? human_unit_id : null);
         }
 
         private void create_arrow_visual()
@@ -202,13 +231,15 @@ namespace ZombieGame.CharacterTests
             GUI.Box(new Rect(8, 8, Screen.width - 16, 64), "");
             GUI.Label(new Rect(20, 16, Screen.width - 40, 25), status + $" | {1000 / Mathf.Max(1, smoothed_ms):F1} FPS");
             string details = current == null ? $"{visual_count:N0} full-detail models; animation/render ONLY, no combat/nav"
-                : $"Archers {current.living_soldiers}/{visual_count} | Kills {current.dead_zombies} | Shots {current.shots} | Hits {current.hits} | R restart | F9 10K test";
+                : $"Units {current.living_soldiers}/{visual_count} | Zombies {current.zombie_count-current.dead_zombies} | Shots {current.shots} | Hits {current.hits} | R restart";
             GUI.Label(new Rect(20, 40, Screen.width - 40, 25), details);
         }
 
         private void OnDestroy()
         {
+            Time.timeScale = 1;
             current?.Dispose(); current_fog?.Dispose(); feedback?.Dispose(); cursor?.Dispose();
+            explosions?.Dispose();
             if (arrow_material != null) Destroy(arrow_material);
         }
     }

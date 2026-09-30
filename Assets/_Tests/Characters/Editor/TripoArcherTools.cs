@@ -35,7 +35,7 @@ namespace ZombieGame.CharacterTests.Editor
             if (!Application.isBatchMode && !EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo()) return;
             CharacterBake.ensure_models();
             if (original_only) { TripoArcherImport.bake_original_rest(); CharacterVisualChecks.run_tripo_original(); }
-            else { TripoArcherImport.import_and_bake(); CharacterVisualChecks.run_tripo(); }
+            else { TripoArcherImport.import_and_bake(); TripoArcherImport.import_exploder(); CharacterVisualChecks.run_tripo(); CharacterVisualChecks.run_explosion_feedback(); }
             create_scene();
             Directory.CreateDirectory("Builds/TripoArcher");
             string app_path = original_only ? "Builds/TripoArcher/TripoArcher.app" : "Builds/TripoArcher/TripoCrossbow.app";
@@ -85,6 +85,7 @@ namespace ZombieGame.CharacterTests.Editor
             fixture.sample_humans = 3; fixture.sample_zombies = 18;
             fixture.status = original_only ? "Original Tripo model (no animation)" : "Tripo crossbow: original skeleton / shooting and reloading review";
             fixture.archer_frames = AssetDatabase.LoadAssetAtPath<CharacterFrames>(original_only ? TripoArcherImport.REST_PATH : TripoArcherImport.FRAME_PATH);
+            if (!original_only) fixture.exploder_frames = AssetDatabase.LoadAssetAtPath<CharacterFrames>(TripoArcherImport.EXPLODER_PATH);
             fixture.fog_template = AssetDatabase.LoadAssetAtPath<Material>("Assets/_Game/Resources/FrontierFog.mat");
             Directory.CreateDirectory(Path.GetDirectoryName(scene_path));
             EditorSceneManager.SaveScene(scene, scene_path);

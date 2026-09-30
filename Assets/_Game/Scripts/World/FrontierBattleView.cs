@@ -12,6 +12,7 @@ namespace ZombieGame.World
     {
         private readonly CharacterCrowdRenderer characters;
         private readonly MusketEffects effects;
+        private readonly ExplosionFeedback explosions;
         private readonly UnitFeedbackOverlay feedback=new UnitFeedbackOverlay();
         private readonly Mesh cube;
         private readonly Material[] materials=new Material[5];
@@ -22,6 +23,7 @@ namespace ZombieGame.World
         public FrontierBattleView(int capacity,Transform parent,Shader shader)
         {
             characters=new CharacterCrowdRenderer(capacity,VisualStyles.current.id);effects=new MusketEffects(parent);
+            explosions=new ExplosionFeedback(shader);
             seen_shots=new float[capacity];death_started=new float[capacity];
             for(int i=0;i<capacity;i++) seen_shots[i]=float.NegativeInfinity;
             var primitive=GameObject.CreatePrimitive(PrimitiveType.Cube);cube=primitive.GetComponent<MeshFilter>().sharedMesh;UnityEngine.Object.Destroy(primitive);
@@ -59,11 +61,7 @@ namespace ZombieGame.World
             foreach(var shot in battle.enemy_projectiles)if(shot.active&&(reveal||fog.is_visible(shot.position)))add(0,shot.position,Vector3.one*.28f);
             foreach(var impact in battle.enemy_impacts)if(impact.expires>Time.time&&(reveal||fog.is_visible(impact.origin)))
                 for(int i=0;i<32;i++)add(impact.acid?0:2,impact.origin+new Vector3(Mathf.Cos(i*Mathf.PI/16)*impact.radius,.12f,Mathf.Sin(i*Mathf.PI/16)*impact.radius),new Vector3(.18f,.08f,.18f));
-            foreach(var flash in battle.flashes) if(flash.expires>Time.time&&(reveal||fog.is_visible(flash.origin)))
-            {
-                float radius=UnitBalance.exploder.explosion_radius*(1-(flash.expires-Time.time)/.85f);
-                for(int i=0;i<24;i++) add(3,flash.origin+new Vector3(Mathf.Cos(i*Mathf.PI/12)*radius,.15f,Mathf.Sin(i*Mathf.PI/12)*radius),new Vector3(.18f,.12f,.18f));
-            }
+            explosions.draw(battle,fog,reveal);
             characters.draw();
             feedback.draw(battle,fog,reveal,Camera.main);
             for(int i=0;i<materials.Length;i++)
@@ -74,6 +72,6 @@ namespace ZombieGame.World
         }
         private void add(int group,Vector3 point,Vector3 size)
         { if(counts[group]<matrices[group].Length)matrices[group][counts[group]++]=Matrix4x4.TRS(point,Quaternion.identity,size); }
-        public void Dispose() { feedback.Dispose();effects.Dispose();foreach(var material in materials)UnityEngine.Object.Destroy(material); }
+        public void Dispose() { feedback.Dispose();effects.Dispose();explosions.Dispose();foreach(var material in materials)UnityEngine.Object.Destroy(material); }
     }
 }

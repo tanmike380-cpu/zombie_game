@@ -18,11 +18,12 @@ namespace ZombieGame.Presentation
         public int submitted { get; private set; }
         public int culled { get; private set; }
 
-        public CharacterCrowdRenderer(int capacity,string style=null,CharacterFrames archer_override=null,string override_unit="archer")
+        public CharacterCrowdRenderer(int capacity,string style=null,CharacterFrames archer_override=null,string override_unit="archer",CharacterFrames exploder_override=null)
         {
             if(capacity<1)throw new ArgumentOutOfRangeException(nameof(capacity));this.capacity=capacity;
             characters = new CharacterFrames[8];set_style(style);
             if(archer_override!=null)characters[human_index(override_unit)]=archer_override;
+            if(exploder_override!=null)characters[2]=exploder_override;
             if (Array.Exists(characters,c=>c==null)) throw new InvalidOperationException("Bake character models before enabling animated crowd");
             pose_count=characters[0].poses.Length;
             int maximum_frames=0;
