@@ -27,7 +27,8 @@ namespace ZombieGame.EditorTools
             importer.animationCompression = ModelImporterAnimationCompression.Off;
             importer.SaveAndReimport();
             Directory.CreateDirectory(textures); importer.ExtractTextures(textures); AssetDatabase.Refresh();
-            string texture_path = AssetDatabase.GUIDToAssetPath(AssetDatabase.FindAssets("t:Texture2D", new[] { textures }).First());
+            string texture_path = textures + "/ExploderPustules.png";
+            if (!File.Exists(texture_path)) throw new InvalidOperationException("Missing Blender-authored exploder pustule texture");
             var model = UnityEngine.Object.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>(source));
             try { bake_model(model, AssetDatabase.LoadAssetAtPath<Texture2D>(texture_path), source, EXPLODER_PATH, false); }
             finally { UnityEngine.Object.DestroyImmediate(model); }
@@ -119,9 +120,11 @@ namespace ZombieGame.EditorTools
                 : new Material(Shader.Find("Standard")) { name = "Tripo exploder original color", mainTexture = texture, enableInstancing = true };
             if (!use_pbr) frames.material.SetFloat("_Glossiness", .15f);
             AssetDatabase.AddObjectToAsset(frames.material, frames);
-            frames.poses = new PoseFrames[7];
+            bool exploder = frame_path == EXPLODER_PATH;
+            frames.poses = new PoseFrames[exploder ? 8 : 7];
             // Melee slots are explicit presentation fallbacks, not a new melee animation.
-            string[] names = { "Idle", "Run", "Attack", "Idle", "Attack", "Idle", "Run" };
+            string[] names = exploder ? new[] { "Idle", "Walk", "Attack", "Idle", "Attack", "Idle", "Walk", "Run" }
+                : new[] { "Idle", "Run", "Attack", "Idle", "Attack", "Idle", "Run" };
             float normalization = 1;
             var transforms = model.GetComponentsInChildren<Transform>();
             Vector3 forward = (transforms.First(item => item.name == "Left_Eye").position + transforms.First(item => item.name == "Right_Eye").position) * .5f
@@ -132,7 +135,7 @@ namespace ZombieGame.EditorTools
             Transform bow = transforms.First(item => item.name == "Right_Hand");
             for (int pose = 0; pose < names.Length; pose++)
             {
-                if (pose >= 4) { frames.poses[pose] = frames.poses[pose == 4 ? 2 : pose == 5 ? 0 : 1]; continue; }
+                if (pose >= 4 && pose < 7) { frames.poses[pose] = frames.poses[pose == 4 ? 2 : pose == 5 ? 0 : 1]; continue; }
                 var clip = clips.FirstOrDefault(item => item.name == names[pose] || item.name.EndsWith("|" + names[pose]));
                 if (clip == null) throw new InvalidOperationException("Missing Tripo clip: " + names[pose]);
                 var sequence = new PoseFrames { source_clip = clip.name, duration = clip.length,

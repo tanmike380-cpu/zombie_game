@@ -29,7 +29,7 @@ namespace ZombieGame.Presentation
             int maximum_frames=0;
             foreach(var character in characters)
             {
-                if(character.poses.Length!=pose_count)throw new InvalidOperationException("Crowd pose layout differs");
+                pose_count=Math.Max(pose_count,character.poses.Length);
                 foreach(var pose in character.poses)
                 {
                     if(pose.frames.Length==0)throw new InvalidOperationException("Empty crowd animation");
@@ -63,6 +63,7 @@ namespace ZombieGame.Presentation
         public void add(bool human, CharacterPose pose, float age, Vector3 position, Quaternion rotation, bool explosive = false,float model_scale=1,string human_id=null)
         {
             int character = human ? human_index(human_id) : explosive ? 2 : 1;
+            if((int)pose>=characters[character].poses.Length) pose=CharacterPose.Run;
             int frame = characters[character].frame_index(pose, age);
             Matrix4x4 matrix = Matrix4x4.TRS(position, rotation, Vector3.one*model_scale);
             if(cull_to_view&&!is_visible(characters[character].poses[(int)pose].frames[frame].bounds,matrix))

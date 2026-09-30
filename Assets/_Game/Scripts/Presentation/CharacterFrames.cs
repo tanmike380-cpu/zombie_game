@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace ZombieGame.Presentation
 {
-    public enum CharacterPose { Idle, Run, Attack, Death, MeleeAttack, MeleeIdle, MeleeRun }
+    public enum CharacterPose { Idle, Run, Attack, Death, MeleeAttack, MeleeIdle, MeleeRun, Charge }
 
     [System.Serializable]
     public sealed class PoseFrames
