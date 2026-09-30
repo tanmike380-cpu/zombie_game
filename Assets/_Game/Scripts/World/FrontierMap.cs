@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using ZombieGame.Balance;
 
 namespace ZombieGame.World
 {
@@ -85,7 +86,16 @@ namespace ZombieGame.World
 
         private void spawn_units()
         {
-            for(int i=0;i<HUMAN_CAPACITY;i++) spawns[i]=new Vector3(-102+i%20*.85f,0,-79+i/20*.85f);
+            // Include reserve slots without spawning inside the new native collision footprints.
+            float spacing = UnitBalance.config.formation_spacing;
+            int count = 0;
+            for(float z=-81;z<-49 && count<HUMAN_CAPACITY;z+=spacing)
+                for(float x=-118;x<-118+40*spacing && count<HUMAN_CAPACITY;x+=spacing)
+                {
+                    var point = new Vector3(x,0,z);
+                    if(!blocked(point,UnitBalance.config.unit_navigation_radius+.1f)) spawns[count++]=point;
+                }
+            if(count!=HUMAN_CAPACITY) throw new InvalidOperationException("Frontier muster area cannot fit shared unit spacing");
             ZombieDistribution.populate(this);
             foreach(var point in spawns) if(blocked(point,.3f)) throw new InvalidOperationException("Blocked frontier spawn: "+point);
         }

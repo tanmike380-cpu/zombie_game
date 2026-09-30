@@ -15,12 +15,16 @@ namespace ZombieGame.CharacterTests
                 flashes[0] = new ZombieGame.Combat.BattleSimulation.Flash { origin = Vector3.zero, expires = expires };
                 feedback.draw_events(flashes, null, true);
                 require(feedback.visible_events == 1, "Active explosion visual missing");
+                require(feedback.live_splashes == 1 && feedback.emitted_splashes == 1, "Slime burst missing");
+                feedback.draw_events(flashes, null, true);
+                require(feedback.emitted_splashes == 1, "Repeated frame duplicated slime burst");
                 feedback.draw_events(flashes, null, false);
-                require(feedback.visible_events == 0, "Explosion visual reveals fog");
+                require(feedback.visible_events == 0 && feedback.live_splashes == 0, "Explosion visual reveals fog");
                 require(flashes[0].expires == expires && flashes[0].origin == Vector3.zero, "Explosion renderer mutated source events");
                 flashes[0] = default;
                 feedback.draw_events(flashes, null, true);
                 require(feedback.visible_events == 0, "Expired explosion visual leaked");
+                require(feedback.live_splashes == 1 && feedback.emitted_splashes == 1, "Slime residue should outlast gameplay flash without re-emission");
             }
             Debug.Log("[ExplosionFeedbackChecks] PASS active/expired/hidden events and immutable presentation input; renderer has no damage/noise dispatch");
         }
@@ -61,6 +65,11 @@ namespace ZombieGame.CharacterTests
 
         public static void run_tripo()
         {
+            require(Mathf.Approximately(ZombieGame.Balance.UnitBalance.navigation_radius(ZombieGame.Balance.UnitBalance.human)*2,1.2f),"Fixed human diameter");
+            foreach(string id in ZombieGame.Balance.UnitBalance.zombie_ids)
+                require(Mathf.Approximately(ZombieGame.Balance.UnitBalance.navigation_radius(ZombieGame.Balance.UnitBalance.get(id))*2,1.1f),"Fixed zombie diameter including boss: "+id);
+            var map = new ZombieGame.World.FrontierMap();
+            require(map.spawns.Length > 400, "Production map spawn validation");
             var layout = new Vector3[2400];
             TripoKitingBattle.fill_layout(layout, 400);
             var occupied = new System.Collections.Generic.HashSet<Vector3>(layout);
@@ -74,6 +83,16 @@ namespace ZombieGame.CharacterTests
             var exploder_asset = Resources.Load<CharacterFrames>("TripoExploder/Frames");
             require(exploder_asset != null && exploder_asset.poses[0].frames[0].triangles.Length / 3 == 10154,
                 "Tripo exploder original topology missing");
+            require(exploder_asset.material.mainTexture != null && exploder_asset.material.mainTexture.name == "ExploderPustules",
+                "Blender purple pustule texture must reach the playable renderer");
+            require(exploder_asset.poses.Length==8 && exploder_asset.poses[1].source_clip.EndsWith("Walk")
+                && exploder_asset.poses[7].source_clip.EndsWith("Run"),"Distinct exploder walk and charge clips");
+            var walk=exploder_asset.poses[1].frames[6].vertices;
+            var charge=exploder_asset.poses[7].frames[6].vertices;
+            var strike=exploder_asset.poses[2].frames[6].vertices;
+            float charge_delta=0,attack_delta=0;
+            for(int i=0;i<walk.Length;i++) {charge_delta+=(walk[i]-charge[i]).sqrMagnitude;attack_delta+=(strike[i]-charge[i]).sqrMagnitude;}
+            require(charge_delta>1 && attack_delta>1,"Charge/attack must deform differently, not rename walking");
             var asset = Resources.Load<CharacterFrames>("TripoCrossbow/Frames");
             require(asset != null && asset.material != null && asset.material.mainTexture != null, "Tripo original texture missing");
             require(asset.poses.Length == 7, "Tripo crowd pose layout");

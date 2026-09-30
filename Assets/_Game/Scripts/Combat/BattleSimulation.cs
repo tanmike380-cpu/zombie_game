@@ -33,6 +33,10 @@ namespace ZombieGame.Combat
         public int melee_strikes;
         public bool uses_melee(int index) => manual_melee[index]||ammunition[index]<stats_for(index).ammunition_cost;
         public float human_range(int index) => uses_melee(index)?stats_for(index).melee_range:stats_for(index).attack_range;
+        public float contact_distance(int source, int target) => UnitBalance.navigation_radius(stats_for(source)) + UnitBalance.navigation_radius(stats_for(target));
+        public float zombie_attack_range(int source, int target) => stats_for(source).id == "spitter" ? stats_for(source).attack_range
+            : Mathf.Max(stats_for(source).attack_range, contact_distance(source, target) + .05f);
+        public float human_target_range(int source, int target) => Mathf.Max(human_range(source), contact_distance(source, target) + .05f);
         public readonly NativeNavMeshCrowd crowd;
         public readonly bool assault;
         public readonly bool playable;
@@ -176,7 +180,7 @@ namespace ZombieGame.Combat
             if(!UnitBalance.is_human(unit_id)||!recruit_stats.implemented)throw new ArgumentException("Unsupported recruitment role: "+unit_id);
             if(reserve_soldiers==0||!NavMesh.SamplePosition(point,out var hit,1,NavMesh.AllAreas))return false;
             for(int i=0;i<total_count;i++)
-                if(health[i]>0&&(positions[i]-hit.position).sqrMagnitude<Mathf.Pow(UnitBalance.config.unit_navigation_radius*2+.05f,2))return false;
+                if(health[i]>0&&(positions[i]-hit.position).sqrMagnitude<Mathf.Pow(UnitBalance.navigation_radius(recruit_stats)+UnitBalance.navigation_radius(stats_for(i))+.05f,2))return false;
             for(int i=0;i<soldier_count;i++)
             {
                 if(recruited[i])continue;
@@ -194,7 +198,9 @@ namespace ZombieGame.Combat
             int target = forced_target?.Invoke(index) ?? -1;
             if (target < 0 || target >= soldier_count) return false;
             path_target[index] = target;
-            bool ready = crowd.investigate_position(index, positions[target]);
+            Vector3 goal=zombie_follow_through_goal(index,target,out bool advancing);
+            bool ready = crowd.investigate_position(index, goal);
+            crowd.agents[index].stoppingDistance = advancing?.15f:Mathf.Max(contact_distance(index,target), zombie_attack_range(index,target)-.05f);
             crowd.agents[index].isStopped = true;
             if (!ready) path_failures++;
             return ready;
@@ -322,18 +328,40 @@ namespace ZombieGame.Combat
         private void process_paths()
         {
             int issued = 0;
+            // Recover stopped/empty routes first; normal moving-target refreshes must not strand the rear ranks.
+            for (int pass=0;pass<2 && issued<64;pass++)
             for (int scanned = 0; scanned < total_count-soldier_count && issued < 64; scanned++)
             {
                 int i = path_cursor++;
                 if (path_cursor >= total_count) path_cursor = soldier_count;
                 if (!needs_path[i] || health[i] <= 0) continue;
+                var agent = crowd.agents[i];
+                if(pass==0 && agent.enabled && agent.isOnNavMesh && agent.hasPath && !agent.isStopped) continue;
                 needs_path[i] = false; issued++;
-                var agent = crowd.agents[i]; agent.enabled = true;
-                if (!agent.isOnNavMesh || !agent.SetDestination(memories[i])) { path_failures++; continue; }
+                agent.enabled = true;
+                bool advancing=false;
+                Vector3 goal=path_target[i]>=0?zombie_follow_through_goal(i,path_target[i],out advancing):memories[i];
+                if (!agent.isOnNavMesh || !agent.SetDestination(goal)) { path_failures++; continue; }
                 agent.stoppingDistance = building_targets!=null&&building_targets[i]>=0
-                    ? Mathf.Min(.75f,Mathf.Max(.05f,stats_for(i).attack_range-UnitBalance.navigation_radius(stats_for(i))-.3f)) : .75f;
+                    ? Mathf.Min(.75f,Mathf.Max(.05f,building_attack_range(i)-UnitBalance.navigation_radius(stats_for(i))-.3f))
+                    : path_target[i]>=0 ? advancing?.15f:Mathf.Max(contact_distance(i,path_target[i]), zombie_attack_range(i,path_target[i])-.05f) : .75f;
                 agent.isStopped = false;
             }
+        }
+
+        /// <summary>Attack-move through the target, not to its centre. Combat checks still stop and attack in range.
+        /// Only extend over clear native navigation; walls/map edges retain the normal contact endpoint.</summary>
+        private Vector3 zombie_follow_through_goal(int index,int target,out bool advancing)
+        {
+            advancing=false;
+            Vector3 contact=positions[target];
+            if(stats_for(index).id=="spitter") return contact;
+            Vector3 direction=contact-positions[index];direction.y=0;
+            if(direction.sqrMagnitude<.01f)return contact;
+            Vector3 proposed=contact+direction.normalized*UnitBalance.config.zombie_attack_move_follow_through;
+            var filter=new NavMeshQueryFilter {agentTypeID=crowd.agents[index].agentTypeID,areaMask=NavMesh.AllAreas};
+            if(!NavMesh.SamplePosition(proposed,out var hit,.25f,filter)||NavMesh.Raycast(contact,hit.position,out _,filter))return contact;
+            advancing=true;return hit.position;
         }
 
         private void update_projectiles(float now, float delta)

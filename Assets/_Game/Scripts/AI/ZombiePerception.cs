@@ -11,6 +11,16 @@ namespace ZombieGame.Combat
             for (int i = soldier_count; i < total_count; i++)
             {
                 if (health[i] <= 0) continue;
+                if (path_target[i]>=0 && health[path_target[i]]<=0)
+                {
+                    // Keep a useful far-away route while queuing its replacement; brake only near the dead goal.
+                    int dead_target=path_target[i];
+                    path_target[i]=-1; needs_path[i]=true;
+                    var stale_agent=crowd.agents[i];
+                    if(stale_agent.enabled && stale_agent.isOnNavMesh &&
+                        (!stale_agent.hasPath || stale_agent.remainingDistance<contact_distance(i,dead_target)+UnitBalance.config.formation_spacing))
+                    {stale_agent.ResetPath(); stale_agent.isStopped=true;}
+                }
                 if (fuse[i] < float.PositiveInfinity)
                 { if (now >= fuse[i]) damage(i, health[i], now); continue; }
                 int target = nearest(soldier_grid, positions[i], UnitBalance.config.zombie_sight);
@@ -49,12 +59,12 @@ namespace ZombieGame.Combat
                 if (target >= 0)
                 {
                     float distance = (positions[i] - positions[target]).magnitude;
-                    if (distance <= stats_for(i).attack_range)
+                    if (distance <= zombie_attack_range(i,target))
                     {
                         memories[i]=positions[target];path_target[i]=target;
                         needs_path[i]=false;
                         if (crowd.agents[i].enabled) crowd.agents[i].isStopped = true;
-                        if (exploder[i]) fuse[i] = now + UnitBalance.exploder.fuse_seconds;
+                        if (exploder[i]) { attack_started_at[i]=now; fuse[i] = now + UnitBalance.exploder.fuse_seconds; }
                         else if (now >= next_attack[i])
                         { attack_started_at[i] = now; next_attack[i] = now + stats_for(i).attack_interval; bites++; last_combat_time = now; execute_zombie_attack(i,target,now); }
                         continue;
@@ -63,12 +73,27 @@ namespace ZombieGame.Combat
                 else if (assault) target = forced_target?.Invoke(i) ?? -1;
                 else if(path_target[i]>=0)
                 {path_target[i]=-1;needs_path[i]=true;if(siege)memories[i]=siege_goal;}
+                // A completed test assault must not keep squeezing into the last dead human's position.
+                if (assault && target < 0 && living_soldiers == 0)
+                {
+                    needs_path[i] = false; path_target[i] = -1;
+                    var finished_agent = crowd.agents[i];
+                    if (finished_agent.enabled && finished_agent.isOnNavMesh && !finished_agent.isStopped)
+                    { finished_agent.ResetPath(); finished_agent.isStopped = true; }
+                    continue;
+                }
                 if(target<0&&siege&&(memories[i]-siege_goal).sqrMagnitude>.01f)
                 {memories[i]=siege_goal;needs_path[i]=true;}
-                crowd.agents[i].autoBraking = target < 0;
+                crowd.agents[i].autoBraking = true;
                 bool target_moved = playable && target >= 0 && (positions[target] - memories[i]).sqrMagnitude > .04f
                     && now >= zombie_repath_at[i] && (!crowd.agents[i].enabled || !crowd.agents[i].pathPending);
-                if (target >= 0 && (path_target[i] != target || target_moved))
+                var chase_agent=crowd.agents[i];
+                bool route_exhausted=target>=0 && !needs_path[i] && chase_agent.enabled && chase_agent.isOnNavMesh &&
+                    !chase_agent.pathPending && now>=zombie_repath_at[i] &&
+                    (!chase_agent.hasPath || chase_agent.pathStatus!=UnityEngine.AI.NavMeshPathStatus.PathComplete ||
+                        chase_agent.remainingDistance<=chase_agent.stoppingDistance+.1f &&
+                        Vector3.Distance(positions[i],positions[target])>zombie_attack_range(i,target));
+                if (target >= 0 && (path_target[i] != target || target_moved || route_exhausted))
                 {
                     path_target[i] = target; memories[i] = positions[target]; needs_path[i] = true;
                     zombie_repath_at[i] = now + UnitBalance.config.chase_repath_seconds;

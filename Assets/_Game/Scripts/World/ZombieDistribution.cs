@@ -72,7 +72,9 @@ namespace ZombieGame.World
             var config=load();var random=new System.Random(config.seed);
             var cells=new List<Vector3>[config.bands.Length];
             for(int i=0;i<cells.Length;i++)cells[i]=new List<Vector3>();
-            for(int z=-122;z<122;z++)for(int x=-122;x<122;x++)
+            // All zombie roles now share one fixed footprint, so one global hex lattice guarantees spacing.
+            float spacing=UnitBalance.config.zombie_navigation_radius*2+.05f;int row=0;
+            for(float z=-122;z<122;z+=spacing*.8660254f,row++)for(float x=-122+(row%2)*spacing*.5f;x<122;x+=spacing)
             {
                 var point=new Vector3(x+.5f,0,z+.5f);
                 if((point.x<-40&&point.z<-48)||map.blocked(point,1))continue;
@@ -80,8 +82,7 @@ namespace ZombieGame.World
                 if(band<0)throw new InvalidOperationException("Last zombie band does not cover map");
                 cells[band].Add(point);
             }
-            var occupied=new Dictionary<Vector2Int,float>();
-            float max_radius=0;foreach(string id in UnitBalance.zombie_ids)max_radius=Mathf.Max(max_radius,UnitBalance.navigation_radius(UnitBalance.get(id)));
+            var occupied=new HashSet<Vector3>();
             int filled=FrontierMap.HUMAN_CAPACITY,allocated=0;float cumulative=0;
             for(int band_index=0;band_index<cells.Length;band_index++)
             {
@@ -99,21 +100,14 @@ namespace ZombieGame.World
                     foreach(var point in candidates)
                     {
                         if(spawned==quotas[role])break;
-                        if(map.blocked(point,radius+.4f)||!has_clearance(point,radius,max_radius,occupied))continue;
+                        if(map.blocked(point,radius+.4f)||occupied.Contains(point))continue;
                         map.spawns[filled]=point;map.unit_ids[filled]=id;map.explosive[filled]=id=="exploder";filled++;spawned++;
-                        occupied.Add(new Vector2Int(Mathf.FloorToInt(point.x),Mathf.FloorToInt(point.z)),radius);
+                        occupied.Add(point);
                     }
                     if(spawned!=quotas[role])throw new InvalidOperationException("Insufficient cleared spawn cells: "+band.name+" "+id);
                     Debug.Log($"[ZombieDistribution] {band.name} {id} count={spawned}");
                 }
             }
-        }
-        private static bool has_clearance(Vector3 point,float radius,float max_radius,Dictionary<Vector2Int,float> occupied)
-        {
-            var cell=new Vector2Int(Mathf.FloorToInt(point.x),Mathf.FloorToInt(point.z));int reach=Mathf.CeilToInt(radius+max_radius);
-            for(int z=-reach;z<=reach;z++)for(int x=-reach;x<=reach;x++)
-                if(occupied.TryGetValue(cell+new Vector2Int(x,z),out float other_radius)&&x*x+z*z<(radius+other_radius+.05f)*(radius+other_radius+.05f))return false;
-            return true;
         }
     }
 }

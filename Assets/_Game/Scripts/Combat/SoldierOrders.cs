@@ -40,7 +40,7 @@ namespace ZombieGame.Combat
             patrol_starts[index] = positions[index]; patrol_ends[index] = goal;
             soldier_repath_at[index] = 0;
             if (order == SoldierOrder.Stop) return true;
-            if (order == SoldierOrder.AttackTarget && (goal - positions[index]).sqrMagnitude <= human_range(index) * human_range(index) && visible(positions[index], goal)) return true;
+            if (order == SoldierOrder.AttackTarget && (goal - positions[index]).sqrMagnitude <= Mathf.Pow(human_target_range(index,target),2) && visible(positions[index], goal)) return true;
             if (walk_soldier(index, goal, .15f, true)) return true;
             orders[index] = SoldierOrder.Stop; return false;
         }
@@ -87,10 +87,11 @@ namespace ZombieGame.Combat
             if (target >= 0)
             {
                 bool line_clear = visible(positions[index], positions[target]);
-                if ((positions[index] - positions[target]).sqrMagnitude <= human_range(index) * human_range(index) && line_clear)
+                float target_range = human_target_range(index,target);
+                if ((positions[index] - positions[target]).sqrMagnitude <= target_range * target_range && line_clear)
                 { stop_soldier(index); return target; }
                 if (order != SoldierOrder.Stop||uses_melee(index))
-                { walk_soldier(index, positions[target], line_clear ? Mathf.Max(.15f,human_range(index)-.25f) : .15f); return -1; }
+                { walk_soldier(index, positions[target], line_clear ? Mathf.Max(contact_distance(index,target),target_range-.05f) : .15f); return -1; }
             }
             follow_soldier_route(index); return -1;
         }
@@ -105,7 +106,8 @@ namespace ZombieGame.Combat
                 reset_route_progress(index, order_goals[index]);
             }
             if (try_settle_crowded_arrival(index)) return;
-            float arrival_radius = UnitBalance.config.unit_navigation_radius * (orders[index]==SoldierOrder.Patrol?1:2);
+            // Slot tolerance must not grow with body radius: stopping a diameter short leaves gaps.
+            float arrival_radius = .25f;
             if ((positions[index] - order_goals[index]).sqrMagnitude < arrival_radius * arrival_radius)
             {
                 if (orders[index] == SoldierOrder.Patrol)

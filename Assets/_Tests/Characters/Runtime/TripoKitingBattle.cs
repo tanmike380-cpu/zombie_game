@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using UnityEngine;
 using ZombieGame.Combat;
+using ZombieGame.Balance;
 
 namespace ZombieGame.CharacterTests
 {
@@ -26,6 +27,7 @@ namespace ZombieGame.CharacterTests
         private float victory_seconds = -1;
         private float defeat_seconds = -1;
         private int peak_explosion_events, focused_frames;
+        private int peak_charging_zombies, peak_attacking_zombies;
         private readonly List<Snapshot> snapshots = new List<Snapshot>();
         private int retreat_orders, failed_orders, completed_steps, repeat_shooters, peak_moving, shots_while_retreating;
         private float retreat_distance;
@@ -36,6 +38,8 @@ namespace ZombieGame.CharacterTests
         {
             public float seconds;
             public float window_fps;
+            public float minimum_spacing_ratio;
+            public int stopped_zombies;
             public int humans_alive, zombies_alive, shots, hits, bites, ammunition, moving, submitted, culled;
         }
         [Serializable] private sealed class Report
@@ -45,6 +49,7 @@ namespace ZombieGame.CharacterTests
             public int shots, hits, kills, human_deaths, bites, melee, ammunition_used, dropped_projectiles;
             public int retreat_orders, completed_steps, repeat_shooters, failed_orders, shots_while_retreating;
             public int geometry_errors, path_failures, peak_moving, activated;
+            public int peak_charging_zombies, peak_attacking_zombies, emitted_slime;
             public float mean_retreat_distance, elapsed, fps, p95_ms, p99_ms, combat_fps, combat_p95_ms, victory_seconds, defeat_seconds;
             public Snapshot[] timeline;
         }
@@ -52,9 +57,12 @@ namespace ZombieGame.CharacterTests
         public static void fill_layout(Vector3[] positions, int humans)
         {
             if (humans != 400 || positions.Length != 2400 && positions.Length != 4400) throw new ArgumentException("Kiting fixture requires 400 versus 2000 or 4000");
-            for (int i = 0; i < humans; i++) positions[i] = new Vector3((i % 40 - 19.5f) * 1.05f, 0, -i / 40 * 1.05f);
+            float human_spacing = UnitBalance.config.formation_spacing;
+            float zombie_spacing = UnitBalance.navigation_radius(positions.Length == 4400 ? UnitBalance.exploder : UnitBalance.get("walker")) * 2 + .1f;
+            int columns = positions.Length == 4400 ? 80 : 50;
+            for (int i = 0; i < humans; i++) positions[i] = new Vector3((i % 40 - 19.5f) * human_spacing, 0, -i / 40 * human_spacing);
             for (int i = humans; i < positions.Length; i++)
-            { int slot = i - humans; positions[i] = new Vector3((slot % 50 - 24.5f) * 1.05f, 0, 12 + slot / 50 * 1.05f); }
+            { int slot = i - humans; positions[i] = new Vector3((slot % columns - (columns-1)*.5f) * zombie_spacing, 0, 12 + slot / columns * zombie_spacing); }
         }
 
         public void initialize(TripoArcherBattle fixture)
@@ -99,13 +107,13 @@ namespace ZombieGame.CharacterTests
                     for (int i = 0; i < battle.soldier_count; i++)
                     {
                         if (battle.health[i] <= 0) continue;
-                        float score = Mathf.Abs(battle.positions[i].x - (lane - 24.5f) * 1.05f) * 3 - battle.positions[i].z;
+                        float score = Mathf.Abs(battle.positions[i].x - (lane - 24.5f) * UnitBalance.config.formation_spacing * 39 / 49) * 3 - battle.positions[i].z;
                         if (score < best) { best = score; target = i; }
                     }
                     lane_targets[lane] = target;
                 }
             }
-            int column = Mathf.Clamp(Mathf.RoundToInt(battle.positions[index].x / 1.05f + 24.5f), 0, 49);
+            int column = Mathf.Clamp(Mathf.RoundToInt(battle.positions[index].x / (UnitBalance.config.formation_spacing * 39 / 49) + 24.5f), 0, 49);
             return lane_targets[column];
         }
 
@@ -133,6 +141,8 @@ namespace ZombieGame.CharacterTests
             if (victory_seconds < 0 && game.current.dead_zombies == game.current.zombie_count) victory_seconds = elapsed;
             if (defeat_seconds < 0 && game.current.living_soldiers == 0) defeat_seconds = elapsed;
             peak_explosion_events = Math.Max(peak_explosion_events, game.explosions.visible_events);
+            peak_charging_zombies=Math.Max(peak_charging_zombies,game.charging_zombies);
+            peak_attacking_zombies=Math.Max(peak_attacking_zombies,game.attacking_zombies);
             previous = now;
             peak_moving = Math.Max(peak_moving, game.current.moving_now);
             if (automatic && game.advance_simulation) update_kiting();
@@ -182,7 +192,11 @@ namespace ZombieGame.CharacterTests
         private void record_snapshot(float elapsed)
         {
             var battle = game.current;
+            int stopped = 0;
+            for (int i=battle.soldier_count;i<battle.total_count;i++)
+                if(battle.health[i]>0 && battle.crowd.agents[i].isStopped) stopped++;
             snapshots.Add(new Snapshot { seconds = elapsed, window_fps = window_frame_ms.Count > 0 ? 1000 / window_frame_ms.Average() : 0, humans_alive = battle.living_soldiers,
+                minimum_spacing_ratio = CrowdSpacingChecks.minimum_ratio(battle), stopped_zombies = stopped,
                 zombies_alive = battle.zombie_count - battle.dead_zombies, shots = battle.shots, hits = battle.hits,
                 bites = battle.bites, ammunition = battle.ammunition.Sum(), moving = battle.moving_now,
                 submitted = game.crowd_renderer.submitted, culled = game.crowd_renderer.culled });
@@ -200,10 +214,11 @@ namespace ZombieGame.CharacterTests
             bool passed = battle.shots > 0 && battle.hits > 0 && battle.dead_zombies > 0 && peak_moving > 1000
                 && repeat_shooters > 20 && completed_steps > 20 && shots_while_retreating == 0
                 && failed_orders == 0 && battle.geometry_errors == 0 && battle.dropped_projectiles == 0;
-            if (game.exploder_fixture) passed &= battle.blasts == battle.dead_zombies && peak_explosion_events > 0;
+            if (game.exploder_fixture) passed &= battle.blasts == battle.dead_zombies && peak_explosion_events > 0
+                && peak_charging_zombies>0 && peak_attacking_zombies>0 && game.explosions.emitted_splashes>0;
             var report = new Report { hardware = SystemInfo.processorType + "; " + SystemInfo.graphicsDeviceName,
-                scope = "Actual production combat/navigation/fog/HP/ammo and silent AOE/explosion rings; full-detail Tripo animation DRAFT; shared sampled meshes; frustum culling; no terrain/obstacles/buildings. All enemies charge lane-front humans. No stat overrides or resupply. First 2s and setup excluded from overall FPS. Combat FPS only while both sides survive after first shot. Screenshot costs included. Player step 1.2 units, original cooldown preserved. Existing collision and overkill retained.",
-                result = passed ? "PASS functional kiting checks; visual animation review still pending" : "FAIL see counters",
+                scope = "Production combat/navigation/fog/HP/ammo and silent purple slime; full-detail Tripo animation DRAFT; shared sampled meshes; frustum culling; no terrain/obstacles/buildings. Larger shared native collision footprints, no custom separation solver. All enemies charge lane-front humans, stop when none survive. No stat overrides or resupply. First 2s/setup excluded. Combat FPS only while both sides survive after first shot. Screenshot/diagnostic costs included. Player step 1.2 units, original cooldown and overkill preserved.",
+                result = passed ? "PASS combat/retreat only; spacing is diagnostic, NOT a hard-separation pass; animation pending review" : "FAIL see counters",
                 width = Screen.width, height = Screen.height, triangles = game.archer_frames.poses[0].frames[0].triangles.Length / 3,
                 zombies = battle.zombie_count, zombie_triangles = game.exploder_fixture ? game.exploder_frames.poses[0].frames[0].triangles.Length / 3 : 0,
                 blasts = battle.blasts, peak_explosion_events = peak_explosion_events, focused_frames = focused_frames, frames = frame_ms.Count,
@@ -213,6 +228,7 @@ namespace ZombieGame.CharacterTests
                 dropped_projectiles = battle.dropped_projectiles, retreat_orders = retreat_orders, completed_steps = completed_steps,
                 repeat_shooters = repeat_shooters, failed_orders = failed_orders, shots_while_retreating = shots_while_retreating,
                 geometry_errors = battle.geometry_errors, path_failures = battle.path_failures, peak_moving = peak_moving, activated = battle.ever_active,
+                peak_charging_zombies=peak_charging_zombies,peak_attacking_zombies=peak_attacking_zombies,emitted_slime=game.explosions.emitted_splashes,
                 mean_retreat_distance = retreat_distance / Mathf.Max(1, retreat_orders), elapsed = elapsed,
                 combat_fps = combat_frame_ms.Count > 0 ? 1000 / combat_frame_ms.Average() : 0,
                 combat_p95_ms = combat_frame_ms.Count > 0 ? combat_frame_ms[(int)((combat_frame_ms.Count - 1) * .95f)] : 0,

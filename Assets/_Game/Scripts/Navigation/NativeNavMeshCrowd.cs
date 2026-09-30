@@ -73,8 +73,9 @@ namespace ZombieGame.Navigation
             agent.acceleration = stats.acceleration;
             agent.angularSpeed = 720;
             agent.stoppingDistance = .25f;
-            agent.obstacleAvoidanceType = ObstacleAvoidanceType.MedQualityObstacleAvoidance;
-            agent.avoidancePriority = 30 + index % 40;
+            agent.obstacleAvoidanceType = ObstacleAvoidanceType.HighQualityObstacleAvoidance;
+            // Equal priorities prevent an arbitrary index from ignoring lower-priority living units.
+            agent.avoidancePriority = 50;
             transforms[index] = unit.transform;
             agents[index] = agent;
             if (!agent.isOnNavMesh) throw new InvalidOperationException("Agent spawn is off NavMesh: " + index);

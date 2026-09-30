@@ -32,6 +32,8 @@ namespace ZombieGame.CharacterTests
         public CharacterPose? forced_pose;
         public string status = "Tripo archer: original texture + Blender animations";
         public int visual_count { get; private set; }
+        public int charging_zombies { get; private set; }
+        public int attacking_zombies { get; private set; }
         public CharacterCrowdRenderer crowd_renderer { get; private set; }
         private Vector3[] visual_positions;
         private UnitFeedbackOverlay feedback;
@@ -54,6 +56,10 @@ namespace ZombieGame.CharacterTests
             controls.game = this;
             create_arrow_visual();
             explosions = new ExplosionFeedback(Shader.Find("Standard"));
+            if (Array.IndexOf(Environment.GetCommandLineArgs(), "-tripoChaseSmoke") >= 0)
+            { benchmarking = true; advance_simulation = false; StartCoroutine(CrowdSpacingChecks.run_chase()); return; }
+            if (Array.IndexOf(Environment.GetCommandLineArgs(), "-tripoSpacingSmoke") >= 0)
+            { benchmarking = true; advance_simulation = false; StartCoroutine(CrowdSpacingChecks.run()); return; }
             var benchmark = gameObject.AddComponent<TripoArcherBenchmark>();
             benchmark.game = this;
             exploder_fixture = Array.IndexOf(Environment.GetCommandLineArgs(), "-tripoExploders") >= 0;
@@ -91,7 +97,7 @@ namespace ZombieGame.CharacterTests
             visual_positions = new Vector3[total];
             var ids = new string[total];
             int columns = humans < 100 ? 3 : 100;
-            float spacing = humans < 100 ? 1.1f : 1.05f;
+            float spacing = rendering_only ? 1.05f : UnitBalance.config.formation_spacing;
             for (int i = 0; i < humans; i++)
             {
                 visual_positions[i] = new Vector3((i % columns - (columns - 1) * .5f) * spacing,
@@ -101,7 +107,7 @@ namespace ZombieGame.CharacterTests
             for (int i = 0; i < zombies; i++)
             {
                 visual_positions[humans + i] = humans < 100
-                    ? new Vector3((i % 3 - 1) * 1.4f, 0, 3 + i / 3 * 1.5f)
+                    ? new Vector3((i % 3 - 1) * spacing, 0, 3 + i / 3 * spacing)
                     : new Vector3((i % 100 - 49.5f) * 1.05f, 0, 55 + i / 100 * 1.1f);
                 ids[humans + i] = exploder_fixture ? "exploder" : "walker";
             }
@@ -146,6 +152,7 @@ namespace ZombieGame.CharacterTests
                 { current_fog.update_visibility(current); next_fog = Time.time + .25f; }
             }
             if (crowd_renderer == null) return;
+            charging_zombies=attacking_zombies=0;
             crowd_renderer.begin_frame(frustum_culling ? Camera.main : null);
             for (int i = 0; i < visual_positions.Length; i++) draw_unit(i);
             crowd_renderer.draw();
@@ -174,6 +181,13 @@ namespace ZombieGame.CharacterTests
                 float interval = current.stats_for(index).attack_interval;
                 if (attack_age < interval && pose != CharacterPose.Run)
                 { pose = CharacterPose.Attack; age = attack_age / interval * archer_frames.poses[2].duration; }
+                if(!human)
+                {
+                    pose=ZombieAnimation.choose_pose(current,index,Time.time);
+                    if(pose==CharacterPose.Charge) charging_zombies++;
+                    if(pose==CharacterPose.Attack) attacking_zombies++;
+                    if(pose==CharacterPose.Attack) age=attack_age;
+                }
                 Vector3 facing = human ? current.soldier_facing[index] : current.crowd.transforms[index].forward;
                 if (facing.sqrMagnitude > .001f) rotation = Quaternion.LookRotation(facing);
             }

@@ -35,6 +35,8 @@ namespace ZombieGame.Combat
                 if(wall!=building.bounds&&wall.IntersectRay(ray,out float hit)&&hit<length-.05f)return false;
             return true;
         }
+        private float building_attack_range(int index) => Mathf.Max(stats_for(index).attack_range,UnitBalance.navigation_radius(stats_for(index))+.4f);
+
         private bool try_attack_building(int index,float now)
         {
             if(buildings.Count==0)return false;
@@ -47,7 +49,7 @@ namespace ZombieGame.Combat
                 float length=Vector3.Distance(positions[index],edge);
                 bool siege=has_siege_order(index);
                 if(!siege&&length>UnitBalance.config.zombie_sight)continue;
-                bool can_attack=length<=stats.attack_range&&building_visible(positions[index],building,edge);
+                bool can_attack=length<=building_attack_range(index)&&building_visible(positions[index],building,edge);
                 if(siege&&!building.headquarters&&!can_attack)continue;
                 int priority=siege?(can_attack?0:building.headquarters?1:2):0;
                 if(priority>best_priority||priority==best_priority&&length>=distance)continue;
@@ -57,7 +59,7 @@ namespace ZombieGame.Combat
             if(best<0){building_targets[index]=-1;return false;}
             if(!activated[index]){activated[index]=true;ever_active++;}
             var agent=crowd.agents[index];var target=buildings[best];
-            if(distance<=stats.attack_range&&building_visible(positions[index],target,point))
+            if(distance<=building_attack_range(index)&&building_visible(positions[index],target,point))
             {
                 if(!agent.enabled)agent.enabled=true;
                 if(agent.isOnNavMesh)agent.isStopped=true;

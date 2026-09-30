@@ -6,8 +6,10 @@
   "noise_probe_radius": 10,
   "noise_propagation_speed": 15,
   "noise_pulse_duration": 0.6,
-  "formation_spacing": 0.9,
-  "unit_navigation_radius": 0.34,
+  "formation_spacing": 1.25,
+  "unit_navigation_radius": 0.6,
+  "zombie_navigation_radius": 0.55,
+  "zombie_attack_move_follow_through": 4,
   "ammunition_depot_radius": 20,
   "chase_repath_seconds": 0.15,
   "units": [
@@ -216,8 +218,7 @@
       "acceleration": 60,
       "implemented": true,
       "threat_tier": 3,
-      "model_scale": 1.6,
-      "navigation_radius": 0.5
+      "model_scale": 1.6
     },
     {
       "id": "zombie_hound",
@@ -264,7 +265,6 @@
       "implemented": true,
       "threat_tier": 4,
       "model_scale": 3,
-      "navigation_radius": 0.9,
       "splash_radius": 2.8
     },
     {
@@ -274,7 +274,6 @@
       "provisional": true,
       "threat_tier": 5,
       "model_scale": 5,
-      "navigation_radius": 1.5,
       "health": 12000,
       "move_speed": 2.4,
       "acceleration": 30,

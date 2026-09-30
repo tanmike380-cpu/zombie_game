@@ -166,10 +166,10 @@ establish sustained 4,000-unit combat performance. The existing bounded visual p
 concurrent explosion events; visual events can replace old slots, but damage is never skipped for
 that reason. The performance result is not a stable-60-FPS pass.
 
-`ExplosionFeedback` extracts the existing expanding purple ring into a production presentation
+The initial `ExplosionFeedback` version extracted the expanding purple ring into a production presentation
 component shared by Frontier and this fixture. It only consumes existing `BattleSimulation.flashes`;
 it never emits noise or damage. Checks cover active, expired, fog-hidden and side-effect-free events.
-Nothing changed in production unit balance, collision, formation allocation or target selection.
+That initial version did not change production unit balance, collision, formation allocation or target selection.
 
 Build with `Tools > Zombie Game > Characters > Build Tripo Crossbow Battle`.
 Launch `tools/art/play_crossbow_kiting.command` for 400 versus 2,000 walkers, or
@@ -177,3 +177,36 @@ Launch `tools/art/play_crossbow_kiting.command` for 400 versus 2,000 walkers, or
 Both open paused: Space starts/pauses; F8 switches automatic kiting and manual RTS control; R resets.
 F2 selects all, right-click moves, A then left-click attacks. Automatic inputs are test-only, not a new
 production unit ability. Raw exploder measurements/screenshots: `Builds/ArtReview/TripoExploder/kiting-400-4000/`.
+
+## October 1 chase and exploder revision
+
+The shared navigation radii now encode the user's fixed tile sizes: humans 0.6, every zombie 0.55,
+including giants and bosses. Near-target movement no longer accepts a full body diameter as arrival.
+Zombie pursuit extends its route four tiles beyond the human when the extension is navigable;
+actual combat still stops in attack range. Dead-target routes remain usable for distant followers
+until replacement, and exhausted paths receive priority. No crowd-wide waiting gate is used.
+
+The 400 versus 4000 follow-through run finished its full 60-second observation on M2 Pro at 1440×900.
+It measured 37.07 combat FPS and 46.93 ms combat P95. Humans were eliminated at 11.90 seconds;
+697 exploders died and produced 697 silent bursts. All 4000 had charge presentation; peak simultaneous
+attack poses were 68. Navigation/geometry errors and failed orders were zero. Focus was recorded for
+1049 of 3490 frames, so this is not a consistently foreground-only benchmark. The 60.14 overall FPS
+mostly measures the period after defeat and is not the combat result.
+
+**Unresolved:** native avoidance still compresses units under extreme congestion. At five seconds,
+the closest live pair was only 0.0046 of its configured contact distance. Functional combat checks
+passing do not establish hard minimum separation. Keep the spacing diagnostics visible in reports.
+The later art revision below needs its own performance sample; do not reuse these FPS as that result.
+
+The original 67-bone exploder skeleton, rest transforms, UVs and 10154 triangles are retained. Blender
+now authors distinct idle, walk, charge and self-detonation wind-up clips. They remain review drafts.
+`tools/art/tripo_exploder.py` expands lavender pigment over neighboring pustule surfaces in 3D and
+bakes the stronger purple into `Assets/_Game/Art/TripoExploder/Textures/ExploderPustules.png`.
+Unity explicitly loads this texture instead of arbitrarily choosing the first texture in the folder.
+
+The ground ring and uniform spherical droplets are replaced by bounded, tapered, irregular slime
+fragments, short torn sheets and shrinking ground residue. The shared effect consumes existing
+explosion events only, respects fog, and cannot emit damage or attraction noise. Slots expire after
+2.5 seconds; repeats do not duplicate emissions. The model file is
+`art/models/tripo-exploder/TripoExploder.blend`; review render is local at
+`Builds/ArtReview/TripoExploder/charge-draft.png`.
