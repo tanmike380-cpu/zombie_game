@@ -37966,38 +37966,38 @@
           "box": [
             2,
             0,
-            510,
+            508,
             1024
           ],
-          "width": 548,
+          "width": 546,
           "height": 1064,
-          "sha256": "d6e95f4e64963bc2c012cc8f8b2a813b7a6e62a3ed3547e459c2a187344be838"
+          "sha256": "267619338065df644203fed8b27152251cf442cb6f964629ba1e351aba788b06"
         },
         {
           "name": "side",
           "source": "2026-09-30-turnarounds/zombies--07-carrier.png",
           "box": [
-            514,
+            512,
             0,
-            1022,
+            1073,
             1024
           ],
-          "width": 548,
+          "width": 601,
           "height": 1064,
-          "sha256": "b49d98303ac1abc7f46b2c64cd68dcc07ac5b7a34c6ea09f867c1c0010e49776"
+          "sha256": "35ce0676fd727cb3b4081e3c90a7ed0c53f62655217a1897dd2026bc31daa36a"
         },
         {
           "name": "back",
           "source": "2026-09-30-turnarounds/zombies--07-carrier.png",
           "box": [
-            1026,
+            1077,
             0,
             1534,
             1024
           ],
-          "width": 548,
+          "width": 497,
           "height": 1064,
-          "sha256": "d44b5e479bd4fded64c16c97e3054c1df908611301d565183f320a86494fa268"
+          "sha256": "af25b4a812897aa28ecc61ac94ec0adfef6da7e51a48fe0ac69048011df44857"
         }
       ]
     },

@@ -13,6 +13,7 @@ PANEL_EDGES = {
     "siege/tianchao/trebuchet": [0, 477, 1078, 1536],
     "siege/tianchao/nest-of-bees": [0, 561, 1213, 1774],
     "zombies/03-hound": [0, 469, 1413, 1881],
+    "zombies/07-carrier": [0, 510, 1075, 1536],
 }
 
 
