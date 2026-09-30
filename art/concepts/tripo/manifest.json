@@ -36467,7 +36467,7 @@
           ],
           "width": 530,
           "height": 900,
-          "sha256": "e9a2caca59cdc43953a0a9e850176b40d7b4c7fba09429d2ba31403de50a2675"
+          "sha256": "a0444d5e00a50c107811389e074d394f69963f5d8eb1c5eeabbb4ce8e5df02cd"
         },
         {
           "name": "side",
@@ -36480,7 +36480,7 @@
           ],
           "width": 560,
           "height": 900,
-          "sha256": "39845d69ebd32804992f3bdc38c93a84c7b33d6b9e653ee29cd0b9e38720e2c9"
+          "sha256": "2b04ca4fc25db74ff019e5cd54642717eae36400a7f09953104b2c13bd1bb380"
         },
         {
           "name": "back",
@@ -36493,7 +36493,7 @@
           ],
           "width": 536,
           "height": 900,
-          "sha256": "8e36cc388023ffce4cf0986a61d3dcfbd393efbb930b2a573b476605a06181ce"
+          "sha256": "142ac5dc72e8cd5a65cb51aeeac4b9906edb3905b0d76b6065cf260f9f5f8fe7"
         }
       ]
     },
@@ -36601,40 +36601,40 @@
           "name": "front",
           "source": "2026-09-28-factions/08-tianchao-three-eyed.png",
           "box": [
-            5,
-            120,
-            495,
-            950
+            55,
+            140,
+            440,
+            945
           ],
-          "width": 530,
-          "height": 870,
-          "sha256": "8ac391a73bc24920975c76d5d00979dcb5a9f823e97be353c83ef2e7899c16f8"
+          "width": 425,
+          "height": 845,
+          "sha256": "d33da91b4f48dd9f856a2210b6596719cf5e96da8e9d8fb620f2c2ae8fc71c39"
         },
         {
           "name": "side",
           "source": "2026-09-28-factions/08-tianchao-three-eyed.png",
           "box": [
-            505,
-            120,
-            1000,
-            950
+            585,
+            140,
+            995,
+            945
           ],
-          "width": 535,
-          "height": 870,
-          "sha256": "667a386369f1c8be53bb1129d58e944b147dc16753c7e6c99007e8065b3940ec"
+          "width": 450,
+          "height": 845,
+          "sha256": "e8c3dd3f154eb0cfc6969f03615d8f575337edf8727257f92c0cb34a2bc41e6a"
         },
         {
           "name": "back",
           "source": "2026-09-28-factions/08-tianchao-three-eyed.png",
           "box": [
-            1010,
-            120,
-            1531,
-            950
+            1120,
+            140,
+            1510,
+            945
           ],
-          "width": 561,
-          "height": 870,
-          "sha256": "742896f87ad188792a69fafde7f20709d2136beea3af72718f55783c82290fc4"
+          "width": 430,
+          "height": 845,
+          "sha256": "369899e6c7798945851c32f94784e3cc6a9ecfa3386cbeddadd8967bceddcbff"
         }
       ]
     },
@@ -36648,40 +36648,64 @@
           "name": "front",
           "source": "2026-09-28-factions/09-tianchao-archer.png",
           "box": [
-            5,
-            105,
-            523,
-            955
+            60,
+            100,
+            495,
+            945
           ],
-          "width": 558,
-          "height": 890,
-          "sha256": "a1b14f2c4c7609169e1675a6dec0fc02b1df2eba2e7ed2e3da79ff5c63a01ce3"
+          "width": 475,
+          "height": 885,
+          "sha256": "2354b34fef84a443cc4ca98a0738f91f2c4d837edc56c1a76e474e28f36ca514",
+          "erase": [
+            [
+              40,
+              98,
+              170,
+              140
+            ]
+          ]
         },
         {
           "name": "side",
           "source": "2026-09-28-factions/09-tianchao-archer.png",
           "box": [
-            533,
-            105,
-            1005,
-            955
+            590,
+            100,
+            980,
+            945
           ],
-          "width": 512,
-          "height": 890,
-          "sha256": "3ace73f95c59b20213ee303a52de7f6d151f75908da50175df9641fb58c5c42e"
+          "width": 430,
+          "height": 885,
+          "sha256": "01c1ea8fa3415ab0607c34cfef7e16e983c14c5eca63653bb06c843aa2395d3e",
+          "erase": [
+            [
+              580,
+              98,
+              675,
+              136
+            ]
+          ]
         },
         {
           "name": "back",
           "source": "2026-09-28-factions/09-tianchao-archer.png",
           "box": [
-            1015,
-            105,
-            1531,
-            955
+            1040,
+            100,
+            1485,
+            945
           ],
-          "width": 556,
-          "height": 890,
-          "sha256": "998c20f3d9621bc23c83a45aef13b2ddb8d04735fe6d48fa99fd9ffaecdce6fe"
+          "width": 485,
+          "height": 885,
+          "sha256": "1c0c75198d7036c26f2f2adf45374148c3157cd08156b6ab5912a440ee8e2371",
+          "erase": [
+            [
+              1050,
+              98,
+              1160,
+              136
+            ]
+          ]
         }
       ]
     },
@@ -36695,40 +36719,40 @@
           "name": "front",
           "source": "2026-09-28-factions/10-tianchao-repeater.png",
           "box": [
-            5,
-            95,
-            510,
-            965
+            20,
+            125,
+            535,
+            945
           ],
-          "width": 545,
-          "height": 910,
-          "sha256": "f546ccc0ca65ed7ba993f7c9a57655e45fce8f0383a0433e1c7b4a6aff51811b"
+          "width": 555,
+          "height": 860,
+          "sha256": "9b2a97d73b8fb8d9d24370e09d31bdb5fdfd3a66d1653650876cc37506fd036b"
         },
         {
           "name": "side",
           "source": "2026-09-28-factions/10-tianchao-repeater.png",
           "box": [
-            520,
-            95,
-            1025,
-            965
+            580,
+            125,
+            1018,
+            945
           ],
-          "width": 545,
-          "height": 910,
-          "sha256": "9aca2e7486f97e2babe7a258aebbb65d8ad36e850cc1bdd0815f305e42289eeb"
+          "width": 478,
+          "height": 860,
+          "sha256": "cc4215db511cdd1995d9abbcdaedabec83970bab579aa20fe93a7ed2f1614b0e"
         },
         {
           "name": "back",
           "source": "2026-09-28-factions/10-tianchao-repeater.png",
           "box": [
             1035,
-            95,
-            1531,
-            965
+            125,
+            1505,
+            945
           ],
-          "width": 536,
-          "height": 910,
-          "sha256": "743461af5862150f804215f1ef47caa883b42e32c21c055c081b6710752886d2"
+          "width": 510,
+          "height": 860,
+          "sha256": "ba548348c69d818d2a6b3d00f7eaf3f9d1a48ceaa4747b90ef90ffd31ce3fa2f"
         }
       ]
     },
@@ -36742,40 +36766,40 @@
           "name": "front",
           "source": "2026-09-28-factions/11-tianchao-crossbowman.png",
           "box": [
-            5,
-            100,
-            505,
-            940
+            60,
+            85,
+            535,
+            925
           ],
-          "width": 540,
+          "width": 515,
           "height": 880,
-          "sha256": "d7c37ca60272c3cc7514fced4f16eb680cb21f16c10b641c093c905ac59b0260"
+          "sha256": "dfa2b367baf30c6b16aa8b2c14dccb53b55021a19038e0a98fcb8110b82e51c2"
         },
         {
           "name": "side",
           "source": "2026-09-28-factions/11-tianchao-crossbowman.png",
           "box": [
-            515,
-            100,
+            610,
+            85,
             1000,
-            940
+            925
           ],
-          "width": 525,
+          "width": 430,
           "height": 880,
-          "sha256": "57faf33d143b1eda02708a0c09ce368b8d3664cf87b6725ce121c2196c7ee12e"
+          "sha256": "62638681f20c0646b656172ef38c535c08267f72c67c701257d34b523297ed9b"
         },
         {
           "name": "back",
           "source": "2026-09-28-factions/11-tianchao-crossbowman.png",
           "box": [
-            1010,
-            100,
-            1531,
-            940
+            1030,
+            85,
+            1455,
+            925
           ],
-          "width": 561,
+          "width": 465,
           "height": 880,
-          "sha256": "c32bdd50ab364c2599e31c75ba2b0d48c1182eb2e4ec059f32bb25b6223c3732"
+          "sha256": "f4a19970b0d5d2f0491952fd0a7dda100b3254f1323c1ec661efb9a84f157bda"
         }
       ]
     },
@@ -36937,7 +36961,7 @@
           ],
           "width": 548,
           "height": 1064,
-          "sha256": "7b01ced62bfd5627075f8e3a5bbd2151366cd8ce95dd60e0234840f54e61b67a"
+          "sha256": "2e9f7026a2c0d3049f955738ea244ce68bbcfe60fd47743f8d161a56d4a45877"
         },
         {
           "name": "side",
@@ -36950,7 +36974,7 @@
           ],
           "width": 548,
           "height": 1064,
-          "sha256": "f74c70c5d2aabc22b0c01c0f0d2a445fa564ce23dd68738e2a78bdae94cbbc4f"
+          "sha256": "daf42ddf64882052939ca7b0a9735829b825784643556b1c25aa4d5ac95c48b1"
         },
         {
           "name": "back",
@@ -36963,7 +36987,7 @@
           ],
           "width": 548,
           "height": 1064,
-          "sha256": "171408617dd1b8a8a61e5d245fa39f8fce30cb837ff9c7a996aaa007e375519e"
+          "sha256": "5b9465f4fc2f74e456beac8d5a95ddc8ec4b1982385940e1c5cceea375f5f02f"
         }
       ]
     },
@@ -36979,25 +37003,25 @@
           "box": [
             2,
             0,
-            510,
+            545,
             1024
           ],
-          "width": 548,
+          "width": 583,
           "height": 1064,
-          "sha256": "0f6ae3dc3c8caeecbc382e310739298f69ffd8c4980efa6d3a305903a4108096"
+          "sha256": "5cc62d3e567012686d8abf5aec14ba9528824b1630a355a7d6555b10a73e81fd"
         },
         {
           "name": "side",
           "source": "2026-09-30-turnarounds/humans--tianchao--repeater--militia.png",
           "box": [
-            514,
+            575,
             0,
             1022,
             1024
           ],
-          "width": 548,
+          "width": 487,
           "height": 1064,
-          "sha256": "e1d2c23e4fe6b832b6c30242a0a4460fc94858d7c1f6fbb2e3102aae00c63b01"
+          "sha256": "bb4f5771c3a30a8bdbacc405edfacf5448375bd6cadc14d6f545234c20e3e554"
         },
         {
           "name": "back",
@@ -37010,7 +37034,7 @@
           ],
           "width": 548,
           "height": 1064,
-          "sha256": "5bc783b31c8fd21e639bd650cfee29ce5e7b640e7a02925f41ce6252c28eb211"
+          "sha256": "f518952b5e80209f9dc81c8535f3bacdbd34ec4f6d55f583b8faaec81be95dac"
         }
       ]
     },
@@ -37031,7 +37055,7 @@
           ],
           "width": 548,
           "height": 1064,
-          "sha256": "dc04b53aaf25cad3a65acbfbebe7c53be298e0348c46cc74be6656a8457b04bf"
+          "sha256": "cf8e60109bd81bb23eedc573d184983c7531b5d7d688c7ef782b95f5eb3ff1f0"
         },
         {
           "name": "side",
@@ -37044,7 +37068,7 @@
           ],
           "width": 548,
           "height": 1064,
-          "sha256": "e11ab6c05b7be65499829e1e5ec7f0d52b6001341cba5ba0f22d7d9a884264d4"
+          "sha256": "81b8f184455e8715f8bbf55e73f5716de36be928ec0d5f1d1c8a5c68d07929bb"
         },
         {
           "name": "back",
@@ -37057,7 +37081,7 @@
           ],
           "width": 548,
           "height": 1064,
-          "sha256": "59b47879de6b78cfd7bec323d8def9e8e0fb9c54c7e2dc1602c8544054fc3a6f"
+          "sha256": "31adb35195baba4a69b3a7937d30a1abc82b83198c7ef56c92937ad7efdfe8eb"
         }
       ]
     },
@@ -37078,7 +37102,7 @@
           ],
           "width": 576,
           "height": 1064,
-          "sha256": "991bf54b72edcac2da52d764af6707461839393c015d4b809ed01f3b34059c48"
+          "sha256": "3c5d4198a85e2ff75e4ca5de193ecdffbccbf7577d485d17aedc37e5b65a31ec"
         },
         {
           "name": "side",
@@ -37091,7 +37115,7 @@
           ],
           "width": 520,
           "height": 1064,
-          "sha256": "a16902889eb6796d544b070144f2ad6f14f02a92bc66425b92d71168993b9541"
+          "sha256": "5e47223f59c6555640807095fc577c469bdb3c8556c12d396923648e4e03dbf7"
         },
         {
           "name": "back",
@@ -37104,7 +37128,7 @@
           ],
           "width": 548,
           "height": 1064,
-          "sha256": "0a8a73d9f2af27be4a0e0367645b833d9af7522c14fb2dcf0835a994d5b17426"
+          "sha256": "49a30954b87ce289e7aa6ed9ae828728a3fb30e779f3f40b8bf2bd2388bce821"
         }
       ]
     },
@@ -37313,7 +37337,7 @@
           ],
           "width": 548,
           "height": 1064,
-          "sha256": "272c10f3e2877d963958c8270d3ebd19bf639d9e1c9a465d559d58899c65471e"
+          "sha256": "9c6b3e91d3b2559baaca4c578e9714e18d6a59e75408fd0b139535a459ff3a14"
         },
         {
           "name": "side",
@@ -37326,7 +37350,7 @@
           ],
           "width": 548,
           "height": 1064,
-          "sha256": "b0ba1478be68f17b60b051d0b2ef2f65000b8e46aa2421149a85e3e40e3c2947"
+          "sha256": "bbaabeb03495f1a27188f2740aba578e6763a7b8866801ba9969c7fedac134da"
         },
         {
           "name": "back",
@@ -37339,7 +37363,7 @@
           ],
           "width": 548,
           "height": 1064,
-          "sha256": "a02bcac98d49b507e4eb6cdcb52a43ee930bbc4f7002d0cf60fbda76a15043be"
+          "sha256": "e27661679ebfc8bc2990a23ca11e28d4a65d700024299237b2e22d76f721fc74"
         }
       ]
     },
@@ -37360,7 +37384,7 @@
           ],
           "width": 548,
           "height": 1064,
-          "sha256": "3ac3de8b7207566c98e7dfb3ffb29deac670ca4d3a5615c4db2313444bce9f05"
+          "sha256": "a8696751f2228ce95a74ff577208c2d7f9f02118fae66c0619a9d25e8efa11ed"
         },
         {
           "name": "side",
@@ -37373,7 +37397,7 @@
           ],
           "width": 548,
           "height": 1064,
-          "sha256": "2b7db76a5a84d5ecd0210bfda9dce55bc45b5a2d9b026c9c6da36f0a6a0f7d24"
+          "sha256": "bbb09408e4ec8dac5767e021ab95b459e50df87738fe2e3aa416aeb85fcf2c68"
         },
         {
           "name": "back",
@@ -37386,7 +37410,7 @@
           ],
           "width": 548,
           "height": 1064,
-          "sha256": "427468a932db640d30cbb4e3c5462009da4e571ecc7508734460af3bba2c5a5c"
+          "sha256": "ca915c1c2e3dfa283608ea13ded47b484477dc5c371976b9bbd2e6da6bbe066b"
         }
       ]
     },
@@ -37407,7 +37431,7 @@
           ],
           "width": 548,
           "height": 1064,
-          "sha256": "f8cc81d91eb5a19fe75a11b6b8d9f371827070bff3986b9ad148c1fe89828274"
+          "sha256": "386643950381696aa3de7cd854de3d744ba3093c70c0e46ffe87e68afb09df4a"
         },
         {
           "name": "side",
@@ -37420,7 +37444,7 @@
           ],
           "width": 548,
           "height": 1064,
-          "sha256": "f4ae89713ef0a8ef52c331a848ae26e559d5b8e53f108c5bda0585519401519e"
+          "sha256": "85813503aa2f9c7fa36ebfd35a6267803053f2a84b01e8ab7717c949e6962fc3"
         },
         {
           "name": "back",
@@ -37433,7 +37457,7 @@
           ],
           "width": 548,
           "height": 1064,
-          "sha256": "01ad0ab286a8752ddc3f1488edbe647b8d52cac15f0bff22af37b7957ac3a593"
+          "sha256": "49088f6fb3ef35eb0fa7bbb7fb535f883f8f1be27644386fb9d7124c9dd1a2ff"
         }
       ]
     },
@@ -37454,7 +37478,7 @@
           ],
           "width": 548,
           "height": 1064,
-          "sha256": "01cdb7a77dd3d306707beb5d40a669d15b50415b0e29982eaf86814bee30e541"
+          "sha256": "0eecf9331777a56fa21364a315c9d7f97d127a2828a0f83f3e8b2a3f23dca75d"
         },
         {
           "name": "side",
@@ -37467,7 +37491,7 @@
           ],
           "width": 548,
           "height": 1064,
-          "sha256": "85f85a7744651c9c37a8cae9c39bfc7ce2781de108b5454eec5c9be076967c02"
+          "sha256": "5c7b71bc2529f9c7b63358bc922242b0f5ae93b084c6df3191a5173f43d42e06"
         },
         {
           "name": "back",
@@ -37480,7 +37504,7 @@
           ],
           "width": 548,
           "height": 1064,
-          "sha256": "6db7b115826a0556487edfeb66cc09360b1abaab1696be5506f4200a4fb1bd08"
+          "sha256": "d9dc2e0e5dad6a3eaf4b256d9ed764d00223f9c3876ff30d0314df8585ca0c8d"
         }
       ]
     },
@@ -37501,7 +37525,7 @@
           ],
           "width": 548,
           "height": 1064,
-          "sha256": "2c76f840448e51dd51c57c5f70c3c35e448f9c6a73df53ddf7fd6d1cb330ceaf"
+          "sha256": "ad7a90983878f036d6500f6fe3c1df24513bc20012f514bbfb8ea2a4d7da1ff3"
         },
         {
           "name": "side",
@@ -37514,7 +37538,7 @@
           ],
           "width": 548,
           "height": 1064,
-          "sha256": "3dc2292628b44f3dbdf924c152594c2444b814176ea89622b53ba69034366096"
+          "sha256": "7f2e5b9549709fdc1e4ded3dc486e2e3b2af4175c54af724c570350924c14327"
         },
         {
           "name": "back",
@@ -37527,7 +37551,7 @@
           ],
           "width": 548,
           "height": 1064,
-          "sha256": "514487aba915c5608d9fcbcaaf72785661dbd2cafc23da77c7c4fd012316522a"
+          "sha256": "d4a0d1633c863fa9b73ddc4174657f3f6c35e49bc959de1224cc99cf12142d8a"
         }
       ]
     },
@@ -37548,7 +37572,7 @@
           ],
           "width": 548,
           "height": 1064,
-          "sha256": "9a13e9e976805728d96cd16ef89b6fec5b7e4534ee6e98805eef94dba2b1e309"
+          "sha256": "21745e5c0f3df49ab3bff8a6ee3773764d1fd7fc486ffb5bd3997e5532d91f8d"
         },
         {
           "name": "side",
@@ -37561,7 +37585,7 @@
           ],
           "width": 548,
           "height": 1064,
-          "sha256": "92ddba947080d45e1b2f1eba5ac006bb24c271c80129868175d180e226a29556"
+          "sha256": "36393daeba21b5c51076ce185eaa5a7651fdd4630aa859af43f3d49f4a41fc84"
         },
         {
           "name": "back",
@@ -37574,7 +37598,7 @@
           ],
           "width": 548,
           "height": 1064,
-          "sha256": "55fcb58f5dca73c7b96edc99812b089b707aabe8416bd181f9fc741d40c1d494"
+          "sha256": "a0c49aa017b609294ae44738706b66928be310d63270e3a949ba718cf37f0775"
         }
       ]
     },
@@ -37595,7 +37619,7 @@
           ],
           "width": 594,
           "height": 1064,
-          "sha256": "262f00bd9688acb0373b49d43381919741a15ce57d5f9930054fafbb8e2b5bbf"
+          "sha256": "75ceb56ab761e5f0928ec76c00e6a2b59ce82f1ba28d89bcbf256060a7efa371"
         },
         {
           "name": "side",
@@ -37608,7 +37632,7 @@
           ],
           "width": 502,
           "height": 1064,
-          "sha256": "ebc2820082b394129e4018a892a2d7f028eeb1365f1545489389c74e57871835"
+          "sha256": "14dfbbf9c70c860a69f4fba75ebf4f9dbf68a4173477e96ae29011b19178e82f"
         },
         {
           "name": "back",
@@ -37621,7 +37645,7 @@
           ],
           "width": 548,
           "height": 1064,
-          "sha256": "bff3b8c9eea476c90d84fff6d1084df0963e0dd973eb75c46b1e150a4f01b51e"
+          "sha256": "63daec5cbec51f54a3dfcfee1c806933ca563a8600bd53ed397911cfacd87a42"
         }
       ]
     },
@@ -37642,7 +37666,7 @@
           ],
           "width": 548,
           "height": 1064,
-          "sha256": "7c44196b06fe7ab9dbf031b8660d7d78fc0c5fd8fea9a3a37b4443e7070bd082"
+          "sha256": "d76dc8e49900dffb5a5d5f48b7921d5028504b99d084106efddfafd79e936ea9"
         },
         {
           "name": "side",
@@ -37655,7 +37679,7 @@
           ],
           "width": 548,
           "height": 1064,
-          "sha256": "db8b72316e9d9c3be04ca92aff2178f14b15721d71836515fb341fcc01ce2354"
+          "sha256": "ebbb1afe656f26393e135e15f0b8f2152c0c1b193c8d4ff63b7b742aa2a0eb75"
         },
         {
           "name": "back",
@@ -37668,7 +37692,7 @@
           ],
           "width": 548,
           "height": 1064,
-          "sha256": "caf2faae7b3bdb1f74bcbe016d4bb7444924b2f480d4bc8126f31636530bb74a"
+          "sha256": "5c30f419cbde34cb8fa46d6b89b0c2c78e1aa7b09a3869ac633daacfef5a2bdc"
         }
       ]
     },

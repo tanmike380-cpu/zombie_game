@@ -1,0 +1,174 @@
+{
+  "date": "2026-09-30",
+  "mode": "built-in image_gen localized edits; deterministic separate-view crops",
+  "base_commit": "9545b78",
+  "scope": "Hands only on current human concepts; remove Byzantine archers' loose right-hand arrow, preserve bow and quiver. No Unity models, animation or balance modified.",
+  "rules": {
+    "militia": "Bare hands, both factions",
+    "veteran": "Brown leather gloves, both factions",
+    "elite": "Chainmail gloves; Tianchao adds restrained small Eastern backhand plates"
+  },
+  "research": [
+    {
+      "url": "https://www.metmuseum.org/art/collection/search/32075",
+      "note": "Chinese high-ranking ceremonial armor material reference, NOT proof of hand armor design."
+    },
+    {
+      "url": "https://www.horniman.ac.uk/object/30.6.53/37/",
+      "note": "Chinese brigandine layering/borders. Proposed elite gloves are game adaptation, not a historical standardized officer gauntlet."
+    }
+  ],
+  "unchanged_compliant": [
+    {
+      "id": "humans/byzantine/javelineer/elite",
+      "source": "2026-09-28-factions/01-roman-javelineer.png"
+    },
+    {
+      "id": "humans/byzantine/crossbowman/elite",
+      "source": "2026-09-28-factions/03-roman-crossbowman.png"
+    },
+    {
+      "id": "humans/byzantine/musketeer/elite",
+      "source": "2026-09-28-factions/04-roman-musketeer.png"
+    },
+    {
+      "id": "humans/tianchao/archer/veteran",
+      "source": "2026-09-30-turnarounds/humans--tianchao--archer--veteran.png"
+    },
+    {
+      "id": "humans/tianchao/repeater/veteran",
+      "source": "2026-09-30-turnarounds/humans--tianchao--repeater--veteran.png"
+    },
+    {
+      "id": "humans/tianchao/crossbowman/veteran",
+      "source": "2026-09-30-turnarounds/humans--tianchao--crossbowman--veteran.png"
+    },
+    {
+      "id": "humans/tianchao/three-eyed/veteran",
+      "source": "2026-09-30-turnarounds/humans--tianchao--three-eyed--veteran.png"
+    }
+  ],
+  "edits": [
+    {
+      "id": "humans/byzantine/archer/elite",
+      "source": "2026-09-28-factions/02-roman-archer.png",
+      "prompt": "Precise localized image edit of the supplied existing game concept sheet. Preserve EXACT original 1536x1024 canvas, layout, ALL THREE front/side/back views at same coordinates, scale, body poses, face, helmet/headwear, clothing, torso armor, colors, weapons, lighting, background and any text. NO redesign outside hands. Edit visible hands consistently in ALL three views. Keep existing chainmail gloves, but REMOVE the SINGLE LOOSE ARROW held in the character's RIGHT HAND in ALL THREE views. Right hand rests naturally empty. Keep the BOW in left hand, its string and ALL arrows INSIDE QUIVER completely intact.",
+      "generated_file": "exec-2d530bee-7f45-4820-8301-db87b02aac69.png"
+    },
+    {
+      "id": "humans/tianchao/three-eyed/elite",
+      "source": "2026-09-28-factions/08-tianchao-three-eyed.png",
+      "prompt": "Precise localized image edit of the supplied existing game concept sheet. Preserve EXACT original 1536x1024 canvas, layout, ALL THREE front/side/back views at same coordinates, scale, body poses, face, helmet/headwear, clothing, torso armor, colors, weapons, lighting, background and any text. NO redesign outside hands. Edit visible hands consistently in ALL three views. Replace both brown leather gloves with refined Eastern Chinese elite METAL HAND PROTECTION: fine dark-silver interlinked CHAINMAIL covering all fingers and back of hand, a few SMALL overlapping dark steel plates over back of hand, restrained short red-bound cuff. Natural flexible grip, hands original size, NOT huge European gauntlets, not modern tactical gloves. Do NOT add armor to forearms or change torso armor or sleeves.",
+      "generated_file": "exec-eee97849-53c5-4e9d-b393-80897292fa8e.png"
+    },
+    {
+      "id": "humans/tianchao/archer/elite",
+      "source": "2026-09-28-factions/09-tianchao-archer.png",
+      "prompt": "Precise localized image edit of the supplied existing game concept sheet. Preserve EXACT original 1536x1024 canvas, layout, ALL THREE front/side/back views at same coordinates, scale, body poses, face, helmet/headwear, clothing, torso armor, colors, weapons, lighting, background and any text. NO redesign outside hands. Edit visible hands consistently in ALL three views. Replace both brown leather gloves with refined Eastern Chinese elite METAL HAND PROTECTION: fine dark-silver interlinked CHAINMAIL covering all fingers and back of hand, a few SMALL overlapping dark steel plates over back of hand, restrained short red-bound cuff. Natural flexible grip, hands original size, NOT huge European gauntlets, not modern tactical gloves. Do NOT add armor to forearms or change torso armor or sleeves.",
+      "generated_file": "exec-69e1df70-e72c-45b5-a0b1-78050a634168.png"
+    },
+    {
+      "id": "humans/tianchao/repeater/elite",
+      "source": "2026-09-28-factions/10-tianchao-repeater.png",
+      "prompt": "Precise localized image edit of the supplied existing game concept sheet. Preserve EXACT original 1536x1024 canvas, layout, ALL THREE front/side/back views at same coordinates, scale, body poses, face, helmet/headwear, clothing, torso armor, colors, weapons, lighting, background and any text. NO redesign outside hands. Edit visible hands consistently in ALL three views. Replace both brown leather gloves with refined Eastern Chinese elite METAL HAND PROTECTION: fine dark-silver interlinked CHAINMAIL covering all fingers and back of hand, a few SMALL overlapping dark steel plates over back of hand, restrained short red-bound cuff. Natural flexible grip, hands original size, NOT huge European gauntlets, not modern tactical gloves. Do NOT add armor to forearms or change torso armor or sleeves.",
+      "generated_file": "exec-02d43bb5-8af4-4b3f-bc9b-d3dab3b877b3.png"
+    },
+    {
+      "id": "humans/tianchao/crossbowman/elite",
+      "source": "2026-09-28-factions/11-tianchao-crossbowman.png",
+      "prompt": "Precise localized image edit of the supplied existing game concept sheet. Preserve EXACT original 1536x1024 canvas, layout, ALL THREE front/side/back views at same coordinates, scale, body poses, face, helmet/headwear, clothing, torso armor, colors, weapons, lighting, background and any text. NO redesign outside hands. Edit visible hands consistently in ALL three views. Replace both brown leather gloves with refined Eastern Chinese elite METAL HAND PROTECTION: fine dark-silver interlinked CHAINMAIL covering all fingers and back of hand, a few SMALL overlapping dark steel plates over back of hand, restrained short red-bound cuff. Natural flexible grip, hands original size, NOT huge European gauntlets, not modern tactical gloves. Do NOT add armor to forearms or change torso armor or sleeves.",
+      "generated_file": "exec-c0dc9f7d-316d-4afd-95d0-0eb9c5d564e9.png"
+    },
+    {
+      "id": "humans/tianchao/archer/militia",
+      "source": "2026-09-30-turnarounds/humans--tianchao--archer--militia.png",
+      "prompt": "Precise localized image edit of the supplied existing game concept sheet. Preserve EXACT original 1536x1024 canvas, layout, ALL THREE front/side/back views at same coordinates, scale, body poses, face, helmet/headwear, clothing, torso armor, colors, weapons, lighting, background and any text. NO redesign outside hands. Edit visible hands consistently in ALL three views. Remove ALL gloves and mail on BOTH hands; replace with anatomically natural BARE HUMAN HANDS and wrists with warm skin matching the face. Clearly visible skin fingers/thumbs, natural weapon grip, no gloves, no hand armor, no wraps on hands. Preserve original sleeve ends and everything above wrist.",
+      "generated_file": "exec-a4f77a36-11a9-4c1c-8687-846db8a82f98.png"
+    },
+    {
+      "id": "humans/tianchao/repeater/militia",
+      "source": "2026-09-30-turnarounds/humans--tianchao--repeater--militia.png",
+      "prompt": "Precise localized image edit of the supplied existing game concept sheet. Preserve EXACT original 1536x1024 canvas, layout, ALL THREE front/side/back views at same coordinates, scale, body poses, face, helmet/headwear, clothing, torso armor, colors, weapons, lighting, background and any text. NO redesign outside hands. Edit visible hands consistently in ALL three views. Remove ALL gloves and mail on BOTH hands; replace with anatomically natural BARE HUMAN HANDS and wrists with warm skin matching the face. Clearly visible skin fingers/thumbs, natural weapon grip, no gloves, no hand armor, no wraps on hands. Preserve original sleeve ends and everything above wrist.",
+      "generated_file": "exec-16fe0988-d91e-4321-a828-6670a149e430.png"
+    },
+    {
+      "id": "humans/tianchao/crossbowman/militia",
+      "source": "2026-09-30-turnarounds/humans--tianchao--crossbowman--militia.png",
+      "prompt": "Precise localized image edit of the supplied existing game concept sheet. Preserve EXACT original 1536x1024 canvas, layout, ALL THREE front/side/back views at same coordinates, scale, body poses, face, helmet/headwear, clothing, torso armor, colors, weapons, lighting, background and any text. NO redesign outside hands. Edit visible hands consistently in ALL three views. Remove ALL gloves and mail on BOTH hands; replace with anatomically natural BARE HUMAN HANDS and wrists with warm skin matching the face. Clearly visible skin fingers/thumbs, natural weapon grip, no gloves, no hand armor, no wraps on hands. Preserve original sleeve ends and everything above wrist.",
+      "generated_file": "exec-616c4d68-fa13-4c1f-bbc1-b4241c35015c.png"
+    },
+    {
+      "id": "humans/tianchao/three-eyed/militia",
+      "source": "2026-09-30-turnarounds/humans--tianchao--three-eyed--militia.png",
+      "prompt": "Precise localized image edit of the supplied existing game concept sheet. Preserve EXACT original 1536x1024 canvas, layout, ALL THREE front/side/back views at same coordinates, scale, body poses, face, helmet/headwear, clothing, torso armor, colors, weapons, lighting, background and any text. NO redesign outside hands. Edit visible hands consistently in ALL three views. Remove ALL gloves and mail on BOTH hands; replace with anatomically natural BARE HUMAN HANDS and wrists with warm skin matching the face. Clearly visible skin fingers/thumbs, natural weapon grip, no gloves, no hand armor, no wraps on hands. Preserve original sleeve ends and everything above wrist.",
+      "generated_file": "exec-29270d0a-2da0-4da8-8fdd-b73010bc4385.png"
+    },
+    {
+      "id": "humans/byzantine/javelineer/militia",
+      "source": "2026-09-30-turnarounds/humans--byzantine--javelineer--militia.png",
+      "prompt": "Precise localized image edit of the supplied existing game concept sheet. Preserve EXACT original 1536x1024 canvas, layout, ALL THREE front/side/back views at same coordinates, scale, body poses, face, helmet/headwear, clothing, torso armor, colors, weapons, lighting, background and any text. NO redesign outside hands. Edit visible hands consistently in ALL three views. Remove ALL gloves and mail on BOTH hands; replace with anatomically natural BARE HUMAN HANDS and wrists with warm skin matching the face. Clearly visible skin fingers/thumbs, natural weapon grip, no gloves, no hand armor, no wraps on hands. Preserve original sleeve ends and everything above wrist.",
+      "generated_file": "exec-0b892d5d-027c-48b1-919f-5479ef68309e.png"
+    },
+    {
+      "id": "humans/byzantine/archer/militia",
+      "source": "2026-09-30-turnarounds/humans--byzantine--archer--militia.png",
+      "prompt": "Precise localized image edit of the supplied existing game concept sheet. Preserve EXACT original 1536x1024 canvas, layout, ALL THREE front/side/back views at same coordinates, scale, body poses, face, helmet/headwear, clothing, torso armor, colors, weapons, lighting, background and any text. NO redesign outside hands. Edit visible hands consistently in ALL three views. Remove ALL gloves and mail on BOTH hands; replace with anatomically natural BARE HUMAN HANDS and wrists with warm skin matching the face. Clearly visible skin fingers/thumbs, natural weapon grip, no gloves, no hand armor, no wraps on hands. Preserve original sleeve ends and everything above wrist.",
+      "generated_file": "exec-d75f00f3-3307-427b-9424-ca69b22755e2.png"
+    },
+    {
+      "id": "humans/byzantine/crossbowman/militia",
+      "source": "2026-09-30-turnarounds/humans--byzantine--crossbowman--militia.png",
+      "prompt": "Precise localized image edit of the supplied existing game concept sheet. Preserve EXACT original 1536x1024 canvas, layout, ALL THREE front/side/back views at same coordinates, scale, body poses, face, helmet/headwear, clothing, torso armor, colors, weapons, lighting, background and any text. NO redesign outside hands. Edit visible hands consistently in ALL three views. Remove ALL gloves and mail on BOTH hands; replace with anatomically natural BARE HUMAN HANDS and wrists with warm skin matching the face. Clearly visible skin fingers/thumbs, natural weapon grip, no gloves, no hand armor, no wraps on hands. Preserve original sleeve ends and everything above wrist.",
+      "generated_file": "exec-313e0721-e7cd-4424-bc8a-ccc67ec2ca39.png"
+    },
+    {
+      "id": "humans/byzantine/musketeer/militia",
+      "source": "2026-09-30-turnarounds/humans--byzantine--musketeer--militia.png",
+      "prompt": "Precise localized image edit of the supplied existing game concept sheet. Preserve EXACT original 1536x1024 canvas, layout, ALL THREE front/side/back views at same coordinates, scale, body poses, face, helmet/headwear, clothing, torso armor, colors, weapons, lighting, background and any text. NO redesign outside hands. Edit visible hands consistently in ALL three views. Remove ALL gloves and mail on BOTH hands; replace with anatomically natural BARE HUMAN HANDS and wrists with warm skin matching the face. Clearly visible skin fingers/thumbs, natural weapon grip, no gloves, no hand armor, no wraps on hands. Preserve original sleeve ends and everything above wrist.",
+      "generated_file": "exec-ab9cc199-ff11-4b4d-9325-b915804f8d4a.png"
+    },
+    {
+      "id": "humans/byzantine/javelineer/veteran",
+      "source": "2026-09-30-turnarounds/humans--byzantine--javelineer--veteran.png",
+      "prompt": "Precise localized image edit of the supplied existing game concept sheet. Preserve EXACT original 1536x1024 canvas, layout, ALL THREE front/side/back views at same coordinates, scale, body poses, face, helmet/headwear, clothing, torso armor, colors, weapons, lighting, background and any text. NO redesign outside hands. Edit visible hands consistently in ALL three views. Replace chainmail on BOTH hands with simple fitted dark brown LEATHER GLOVES, smooth worn leather, subtle seams, covered fingers/thumbs. No metal rings, no metal plates, no bare fingers. Preserve original sleeve ends.",
+      "generated_file": "exec-adcf031c-2837-4b9f-8d54-de6ba0ee3e09.png"
+    },
+    {
+      "id": "humans/byzantine/archer/veteran",
+      "source": "2026-09-30-turnarounds/humans--byzantine--archer--veteran.png",
+      "prompt": "Precise localized image edit of the supplied existing game concept sheet. Preserve EXACT original 1536x1024 canvas, layout, ALL THREE front/side/back views at same coordinates, scale, body poses, face, helmet/headwear, clothing, torso armor, colors, weapons, lighting, background and any text. NO redesign outside hands. Edit visible hands consistently in ALL three views. Replace chainmail on BOTH hands with simple fitted dark brown LEATHER GLOVES, smooth worn leather, subtle seams, covered fingers/thumbs. No metal rings, no metal plates, no bare fingers. Preserve original sleeve ends.",
+      "generated_file": "exec-f3abd80e-b0ce-4f16-b95f-e76ce55e2d65.png"
+    },
+    {
+      "id": "humans/byzantine/crossbowman/veteran",
+      "source": "2026-09-30-turnarounds/humans--byzantine--crossbowman--veteran.png",
+      "prompt": "Precise localized image edit of the supplied existing game concept sheet. Preserve EXACT original 1536x1024 canvas, layout, ALL THREE front/side/back views at same coordinates, scale, body poses, face, helmet/headwear, clothing, torso armor, colors, weapons, lighting, background and any text. NO redesign outside hands. Edit visible hands consistently in ALL three views. Replace chainmail on BOTH hands with simple fitted dark brown LEATHER GLOVES, smooth worn leather, subtle seams, covered fingers/thumbs. No metal rings, no metal plates, no bare fingers. Preserve original sleeve ends.",
+      "generated_file": "exec-466cd028-47da-4599-ab74-a922ab11c1aa.png"
+    },
+    {
+      "id": "humans/byzantine/musketeer/veteran",
+      "source": "2026-09-30-turnarounds/humans--byzantine--musketeer--veteran.png",
+      "prompt": "Precise localized image edit of the supplied existing game concept sheet. Preserve EXACT original 1536x1024 canvas, layout, ALL THREE front/side/back views at same coordinates, scale, body poses, face, helmet/headwear, clothing, torso armor, colors, weapons, lighting, background and any text. NO redesign outside hands. Edit visible hands consistently in ALL three views. Replace chainmail on BOTH hands with simple fitted dark brown LEATHER GLOVES, smooth worn leather, subtle seams, covered fingers/thumbs. No metal rings, no metal plates, no bare fingers. Preserve original sleeve ends.",
+      "generated_file": "exec-8a5c7428-2d79-4986-bf04-972414f60ad1.png"
+    },
+    {
+      "id": "lineup/01-tianchao-militia-v2.png",
+      "source": "2026-09-29-unit-ranks/01-tianchao-militia-v2.png",
+      "prompt": "Precise localized edit. Preserve original canvas, ALL FOUR large soldiers and ALL FOUR small isometric RTS thumbnails, exact layout, all faces, clothes, armor, headgear, poses, weapon shapes, colors, lighting, background and lettering. Edit hands only, consistently on every visible hand in large and small views. Remove all gloves/mail from BOTH hands of ALL four classes, replace with natural bare human hands matching facial skin. No hand armor, no wraps, no gloves. Do not modify torso armor or sleeve lengths. No new designs, no zoom, no crop.",
+      "generated_file": "exec-c685d517-2683-4d29-9939-9b572e0b4265.png"
+    },
+    {
+      "id": "lineup/03-byzantine-militia-v2.png",
+      "source": "2026-09-29-unit-ranks/03-byzantine-militia-v2.png",
+      "prompt": "Precise localized edit. Preserve original canvas, ALL FOUR large soldiers and ALL FOUR small isometric RTS thumbnails, exact layout, all faces, clothes, armor, headgear, poses, weapon shapes, colors, lighting, background and lettering. Edit hands only, consistently on every visible hand in large and small views. Remove all gloves/mail from BOTH hands of ALL four classes, replace with natural bare human hands matching facial skin. No hand armor, no wraps, no gloves. Also remove ONLY the loose arrow held in the ARCHER's RIGHT HAND in large and thumbnail view. Keep bow and bowstring, keep arrows inside quiver, keep javelineer's javelin. Empty right hand rests naturally. Do not modify torso armor or sleeve lengths. No new designs, no zoom, no crop.",
+      "generated_file": "exec-8babefb9-fd6d-4c92-955e-d9e39e64ddf7.png"
+    },
+    {
+      "id": "lineup/04-byzantine-veteran-v3.png",
+      "source": "2026-09-29-unit-ranks/04-byzantine-veteran-v3.png",
+      "prompt": "Precise localized edit. Preserve original canvas, ALL FOUR large soldiers and ALL FOUR small isometric RTS thumbnails, exact layout, all faces, clothes, armor, headgear, poses, weapon shapes, colors, lighting, background and lettering. Edit hands only, consistently on every visible hand in large and small views. Replace all chainmail gloves on BOTH hands of ALL four classes with plain fitted dark brown leather gloves, no metal rings or metal plates on hands, covered fingers. Also remove ONLY the loose arrow held in the ARCHER's RIGHT HAND in large and thumbnail view. Keep bow and bowstring, keep arrows inside quiver, keep javelineer's javelin. Empty right hand rests naturally. Do not modify torso armor or sleeve lengths. No new designs, no zoom, no crop.",
+      "generated_file": "exec-70f43c86-986d-4690-af96-8d45dafa36b2.png"
+    }
+  ],
+  "archive_policy": "Historical rejected/older concepts and original prompts remain history; current files replaced in-place; previous images recoverable from base_commit."
+}

@@ -27,7 +27,15 @@
 | 罗马／拜占庭 | 弩手 | [crossbowman](humans/byzantine/crossbowman/) |
 | 罗马／拜占庭 | 火枪手 | [musketeer](humans/byzantine/musketeer/) |
 
-例如天朝民兵弓箭手：[正面单图](humans/tianchao/archer/militia/front.png)、[侧面单图](humans/tianchao/archer/militia/side.png)、[背面单图](humans/tianchao/archer/militia/back.png)。天朝沿用长袖皮手套，拜占庭沿用长袖锁甲手套。老兵以皮革甲区分精英，未改变兵种玩法。
+例如天朝民兵弓箭手：[正面单图](humans/tianchao/archer/militia/front.png)、[侧面单图](humans/tianchao/archer/militia/side.png)、[背面单图](humans/tianchao/archer/militia/back.png)。2026-09-30 手部修订：两国均为民兵裸手、老兵皮革手套、精英锁甲手套；天朝精英加小型东方覆手甲。长袖、身体甲胄和兵种玩法不变。拜占庭弓箭手取消手持散箭，箭筒内箭束保留。旧文件已原路径更新，不需寻找另一个版本目录。
+
+### 箭筒与剩余弹药：后续模型制作建议，尚未接入运行时
+
+不需要生成一整套“空箭筒人物”。在 Blender 中将人物、箭筒、筒内箭束分为独立部件，补好空筒内壁与筒底、UV 和材质，避免箭束被烘焙进筒口贴图。若 AI 网格粘连，需要先清理或局部重建，不能保证一键分离成功。
+
+Unity 读取现有弹药状态，零弹药隐藏箭束，补给后恢复；箭筒保留。首版建议仅有箭／空筒两态，后续可做满／半／少／空档位，不逐发替换整个人物，也不把箭束显示当作实际弹药数据来源。箭筒挂在骨骼上，箭束跟随箭筒，同一人物骨架和动作无需为此复制。注意批量单位的额外渲染开销，最终需实机验证。
+
+参考：[Blender 分离网格](https://docs.blender.org/manual/en/2.90/modeling/meshes/editing/mesh/separate.html)、[Unity 显隐对象](https://docs.unity.com/en-us/engine/6000.6/script-reference/unityengine/gameobject/setactive)。
 
 ### 僵尸：七种，各三张
 
@@ -74,7 +82,7 @@ Tripo 提供自动骨骼／蒙皮和预设动画，并可导出带骨骼的 FBX 
 
 - [manifest.json](manifest.json)：全部源图路径、裁切区域、遮罩、尺寸及 SHA-256。它是当前输出的权威清单。
 - [补画提示词](generation-prompts.json) 与 [实际生成来源](../2026-09-30-turnarounds/provenance.json)：16 个民兵／老兵、七种僵尸、三种天朝器械的新增角度，由内置 `image_gen` 生成。合并底稿只用于保持各角度外观一致，不用于 Tripo 输入。
-- 精英与拜占庭器械沿用已批准的原始多视图；裁切不更换设计。
+- [手部修订记录](../2026-09-30-hand-revision.json)：以原多视图局部编辑手部和拜占庭弓箭手散箭；原补画提示词及 provenance 为初始生成历史，不代表当前手套标准。器械不变。
 - 裁切仅分离视图、遮掉邻图与添加留边；未用图像处理脚本编造缺失视角。AI 补画仍可能存在跨角度装饰或结构差异，最终以建模时统一为准，并非摄影测量数据。
 - 已逐页查看全部输出缩略图，并修正长城、打猎小屋、大浴场、石门的相邻视图混入及精英弩手的武器裁切；未进行 Tripo 生成成功率测试。
 
