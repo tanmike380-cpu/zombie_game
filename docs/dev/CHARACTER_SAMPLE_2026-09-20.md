@@ -203,6 +203,11 @@ now authors distinct idle, walk, charge and self-detonation wind-up clips. They 
 `tools/art/tripo_exploder.py` expands lavender pigment over neighboring pustule surfaces in 3D and
 bakes the stronger purple into `Assets/_Game/Art/TripoExploder/Textures/ExploderPustules.png`.
 Unity explicitly loads this texture instead of arbitrarily choosing the first texture in the folder.
+The painter writes a fresh image rather than re-saving the imported image's stale packed bytes,
+then reloads the saved PNG to verify purple pigment coverage. FBX texture extraction is disabled for
+this model so it cannot overwrite the authored PNG. Unity also checks pixel coverage at build time,
+not only the texture's filename. This fixes a real case where the Blender preview was purple while
+the game still received the old pale source image.
 
 The ground ring and uniform spherical droplets are replaced by bounded, tapered, irregular slime
 fragments, short torn sheets and shrinking ground residue. The shared effect consumes existing

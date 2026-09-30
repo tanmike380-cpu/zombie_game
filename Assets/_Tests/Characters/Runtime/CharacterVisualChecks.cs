@@ -85,6 +85,9 @@ namespace ZombieGame.CharacterTests
                 "Tripo exploder original topology missing");
             require(exploder_asset.material.mainTexture != null && exploder_asset.material.mainTexture.name == "ExploderPustules",
                 "Blender purple pustule texture must reach the playable renderer");
+#if UNITY_EDITOR
+            verify_purple_texture();
+#endif
             require(exploder_asset.poses.Length==8 && exploder_asset.poses[1].source_clip.EndsWith("Walk")
                 && exploder_asset.poses[7].source_clip.EndsWith("Run"),"Distinct exploder walk and charge clips");
             var walk=exploder_asset.poses[1].frames[6].vertices;
@@ -138,5 +141,21 @@ namespace ZombieGame.CharacterTests
             Debug.Log("[CharacterVisualSmoke] PASS model/material imports, 7 gun/knife poses, run deformation, death fall, distinct exploder and knife mesh");
         }
         private static void require(bool condition,string message) { if(!condition)throw new InvalidOperationException("Character visuals: "+message); }
+#if UNITY_EDITOR
+        private static void verify_purple_texture()
+        {
+            var probe=new Texture2D(2,2);
+            try
+            {
+                require(probe.LoadImage(System.IO.File.ReadAllBytes("Assets/_Game/Art/TripoExploder/Textures/ExploderPustules.png")),"Pustule PNG unreadable");
+                var pixels=probe.GetPixels32();int purple=0;
+                foreach(var pixel in pixels)
+                    if(pixel.b>pixel.g*1.7f && pixel.r>pixel.g*1.5f && pixel.b>26)purple++;
+                require(purple>pixels.Length*.05f,"Export/import replaced painted pustules with pale source texture");
+                Debug.Log($"[PustuleTextureChecks] PASS purple coverage={(float)purple/pixels.Length:P1}");
+            }
+            finally {UnityEngine.Object.DestroyImmediate(probe);}
+        }
+#endif
     }
 }

@@ -26,7 +26,8 @@ namespace ZombieGame.EditorTools
             importer.importAnimation = true; importer.isReadable = true;
             importer.animationCompression = ModelImporterAnimationCompression.Off;
             importer.SaveAndReimport();
-            Directory.CreateDirectory(textures); importer.ExtractTextures(textures); AssetDatabase.Refresh();
+            // Authored PNG is the source of truth. Never extract embedded FBX textures over it.
+            Directory.CreateDirectory(textures); AssetDatabase.Refresh();
             string texture_path = textures + "/ExploderPustules.png";
             if (!File.Exists(texture_path)) throw new InvalidOperationException("Missing Blender-authored exploder pustule texture");
             var model = UnityEngine.Object.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>(source));

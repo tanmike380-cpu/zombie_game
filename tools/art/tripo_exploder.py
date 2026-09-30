@@ -16,7 +16,8 @@ REVIEW = ROOT / "Builds/ArtReview/TripoExploder"
 def paint_pustules(mesh):
     """Strengthen the source's lavender pustule pigment, retaining its UVs and fine texture."""
     material = mesh.data.materials[0]
-    texture = next(node.image for node in material.node_tree.nodes if node.type == "TEX_IMAGE" and node.image)
+    node = next(node for node in material.node_tree.nodes if node.type == "TEX_IMAGE" and node.image)
+    texture = node.image
     pixels = np.array(texture.pixels[:], dtype=np.float32).reshape((-1, 4))
     rgb = pixels[:, :3]
     red, green, blue = rgb[:, 0].copy(), rgb[:, 1].copy(), rgb[:, 2].copy()
@@ -29,11 +30,21 @@ def paint_pustules(mesh):
     luminance = red * .2126 + green * .7152 + blue * .0722
     purple = luminance[:, None] * np.array([1.50, .22, 2.10], dtype=np.float32)
     rgb[:] = np.clip(rgb * (1 - mask[:, None] * .98) + purple * mask[:, None] * .98, 0, 1)
-    texture.pixels.foreach_set(pixels.ravel())
-    texture.filepath_raw = str(ROOT / "Assets/_Game/Art/TripoExploder/Textures/ExploderPustules.png")
-    texture.file_format = "PNG"
-    texture.save()
-    texture.pack()
+    # A fresh image avoids saving the imported FBX image's stale packed source bytes.
+    painted = bpy.data.images.new("ExploderPustules", width=texture.size[0], height=texture.size[1], alpha=True)
+    painted.colorspace_settings.name = texture.colorspace_settings.name
+    painted.pixels.foreach_set(pixels.ravel())
+    painted.filepath_raw = str(ROOT / "Assets/_Game/Art/TripoExploder/Textures/ExploderPustules.png")
+    painted.file_format = "PNG"
+    painted.save()
+    painted.pack()
+    node.image = painted
+    verified = bpy.data.images.load(painted.filepath_raw, check_existing=False)
+    saved = np.array(verified.pixels[:], dtype=np.float32).reshape((-1, 4))
+    purple_pixels = (saved[:, 2] > saved[:, 1]*1.7) & (saved[:, 0] > saved[:, 1]*1.5) & (saved[:, 2] > .1)
+    if purple_pixels.mean() < .05:
+        raise RuntimeError("Saved pustule PNG lost the painted purple pigment")
+    bpy.data.images.remove(verified)
     print(f"[TripoExploder] recoloured lavender pustule texels={np.count_nonzero(mask > .5)}; topology and UVs unchanged")
 
 
