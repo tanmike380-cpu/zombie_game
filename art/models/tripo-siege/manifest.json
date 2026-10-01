@@ -1,0 +1,17 @@
+{
+  "status": "Blender animation drafts for user review; not integrated into Unity",
+  "working_file": "SiegeAnimations.blend",
+  "source_snapshot": "TripoModelsGrounded.blend",
+  "scenes": {
+    "01_AllModels_Grounded": "Seven source model hierarchies grounded; source XY preserved; Greek Fire stabilizers removed",
+    "02_GreekFire_Preview": "Original 25-bone rig; rigid nozzle and wheels; moving spray timing placeholder",
+    "03_Headbutter_Preview": "Original 67-bone rig and skin; lead-foot step, anticipation, heavy head ram, recoil and recovery"
+  },
+  "lighting": "Original packed textures retained; previews use flat textured Workbench without new lights",
+  "gameplay_balance": "No changes. Animation timing is a draft choreography, not gameplay attack timing.",
+  "authoring_script": "tools/art/tripo_siege.py",
+  "verification_script": "tools/art/verify_siege_animation.py",
+  "local_exports": ["GreekFireAnimationDraft.fbx", "HeadbutterAnimationDraft.fbx"],
+  "preview": "Builds/ArtReview/TripoSiege/review.html",
+  "revision": "2026-10-02: stronger head ram with 0.29-model-unit step and planted rear foot"
+}
