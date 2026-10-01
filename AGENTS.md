@@ -18,6 +18,9 @@
   crowd-wide holds. Contact radii still come exclusively from UnitBalance.
   Apply hard contacts only to zombie-zombie and zombie-human pairs; preserve native human-human
   avoidance and formation feel (user confirmed after testing). Human radius remains 0.6 tiles.
+- Frozen zombie-contact baseline: commit `6325116`, approved on 2026-10-01 for the formal game.
+  Preserve this scoped behavior in future art, test and performance work; do not replace it with
+  a test-only controller, restore overlap, or silently enable hard human-human contacts.
 - Formation commands fill radial bands from the mouse target outward, assigning nearer units
   to inner bands before farther units. Match approach directions within each band to reduce
   crossing. Do not revert to unit-index-priority assignment or stagger command start times.
