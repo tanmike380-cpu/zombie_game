@@ -104,6 +104,19 @@
   {
     "id": "zombies/02-exploder",
     "source": "2026-09-30-turnarounds/zombies--02-exploder.png",
+    "latest_revision": {
+      "date": "2026-10-01",
+      "generator": "built-in image_gen",
+      "edit_target_commit": "c14522d",
+      "edit_target_path": "art/concepts/2026-09-30-turnarounds/zombies--02-exploder.png",
+      "prompt": "Use case: precise-object-edit. Edit target: the provided existing three-view exploder zombie concept sheet. This is an ORIGINAL RTS enemy asset for Tripo modelling, NOT a new character design. Preserve the exact three equal-width columns, their left FRONT / middle RIGHT-FACING SIDE / right BACK order, existing poses, camera angles, full-body framing, height, head/face/hair, limbs, torn charcoal historical robe, rope sash, leg wraps, pale-grey background, ground shadows and realistic painted rendering. Change ONLY the closed organic pustule growths on the torso. Increase their distribution so clearly readable bulging rounded pustules cover the lower belly immediately above the sash, upper belly, chest, collarbone and both shoulder tops, with corresponding flank/back shoulder growths in side/back views. These should look like flesh-grown asymmetrical fluid-filled sacs attached to the torso, varied large and medium sizes with a few small connecting ones, not perfectly uniform grapes, not crystalline gems, not armour. Keep the original body silhouette generally recognizable; don't increase the whole creature's bulk dramatically. Make the pustules a clearly stronger rich muted violet-purple comparable to MCU Thanos's skin colour: midtone approximately #85549B, warmer plum shadows, soft lavender highlights. Colour the WHOLE sac surface purple, not just veins or tiny dots, with natural smooth fading into the grey diseased surrounding skin around each base. Maintain organic skin texture and subtle semi-gloss; NO neon emission, no glowing purple mist, no crystals, no gore amplification. Face, hands, legs and clothing remain their original grey/brown colours. All three angles must depict the SAME edited creature and same pustule palette/placement. Keep each full body entirely within its own third of the canvas with background gutters at x=512 and x=1024 so the existing exporter can separate them. Output a landscape 1536x1024 image, no text, no new borders, no captions, no watermark. This is a localized revision of this exact sheet.",
+      "outputs": [
+        "tripo/zombies/02-exploder/front.png",
+        "tripo/zombies/02-exploder/side.png",
+        "tripo/zombies/02-exploder/back.png"
+      ],
+      "scope": "Concept images only. Runtime model, texture, explosion effects, balance and frozen zombie-contact baseline are unchanged."
+    },
     "prompt": "Use case: identity-preserve. Create a consistent THREE VIEW model reference sheet for the SINGLE specified creature from the reference. Three equal-width panels on landscape1536x1024: FRONT, SIDE PROFILE facing right, BACK. Plain light neutral gray background, no text no border no thumbnail no action scene no scale human. Keep all limbs/tails/equipment entirely within each panel, generous empty gutters at thirds. Full body, same pose rotated, same scale baseline. Match the reference's exact silhouette, pale gray-olive diseased skin, ragged dark Eastern clothing, coarse weathered textures. Realistic dark fantasy RTS creature, not cartoon, not plastic. No blood or exposed organs. One creature per view, do not include the other types in reference. SECOND of five: purple EXPLODER with several huge muted-violet swollen sacs clustered across upper torso and shoulders, ragged dark cloth, protruding belly but not obese fat brute. Empty hands, no explosives or barrels.",
     "reference": "2026-09-27/03-zombies-01-05.png"
   },
