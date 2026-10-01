@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using ZombieGame.Combat;
+using ZombieGame.Balance;
 namespace ZombieGame.CombatStressTests
 {
     /// <summary>Benchmark population/map fixture only; gameplay lives in BattleSimulation.</summary>
@@ -30,9 +31,10 @@ namespace ZombieGame.CombatStressTests
                 ,new Bounds(new Vector3(-40, 1.5f, 14), new Vector3(3, 3, 20))
                 ,new Bounds(new Vector3(-40, 1.5f, -18), new Vector3(3, 3, 16))
             };
+            float spacing=UnitBalance.config.formation_spacing;
             for (int i = 0; i < SOLDIERS; i++)
-                positions[i] = player_controlled ? new Vector3(-90 + i % 20 * .9f, 0, -8.55f + i / 20 * .9f)
-                    : new Vector3(-15 - i / 100 * .85f, 0, -79.2f + i % 100 * 1.6f);
+                positions[i] = player_controlled ? new Vector3(-95 + i % 20 * spacing, 0, (i / 20 - 9.5f) * spacing)
+                    : new Vector3(-15 - i / 100 * spacing, 0, -79.2f + i % 100 * 1.6f);
             int filled = SOLDIERS;
             for (int slot = 0; filled < TOTAL; slot++)
             {

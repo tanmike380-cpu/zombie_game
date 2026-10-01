@@ -39,6 +39,8 @@ namespace ZombieGame.CharacterTests
             public float seconds;
             public float window_fps;
             public float minimum_spacing_ratio;
+            public float contact_solver_ms;
+            public int clipped_contact_moves;
             public int stopped_zombies;
             public int humans_alive, zombies_alive, shots, hits, bites, ammunition, moving, submitted, culled;
         }
@@ -196,7 +198,8 @@ namespace ZombieGame.CharacterTests
             for (int i=battle.soldier_count;i<battle.total_count;i++)
                 if(battle.health[i]>0 && battle.crowd.agents[i].isStopped) stopped++;
             snapshots.Add(new Snapshot { seconds = elapsed, window_fps = window_frame_ms.Count > 0 ? 1000 / window_frame_ms.Average() : 0, humans_alive = battle.living_soldiers,
-                minimum_spacing_ratio = CrowdSpacingChecks.minimum_ratio(battle), stopped_zombies = stopped,
+                minimum_spacing_ratio = CrowdSpacingChecks.minimum_ratio(battle,true), stopped_zombies = stopped,
+                contact_solver_ms=(float)battle.contacts.solve_ms, clipped_contact_moves=battle.contacts.blocked_moves,
                 zombies_alive = battle.zombie_count - battle.dead_zombies, shots = battle.shots, hits = battle.hits,
                 bites = battle.bites, ammunition = battle.ammunition.Sum(), moving = battle.moving_now,
                 submitted = game.crowd_renderer.submitted, culled = game.crowd_renderer.culled });
@@ -213,12 +216,13 @@ namespace ZombieGame.CharacterTests
             combat_frame_ms.Sort();
             bool passed = battle.shots > 0 && battle.hits > 0 && battle.dead_zombies > 0 && peak_moving > 1000
                 && repeat_shooters > 20 && completed_steps > 20 && shots_while_retreating == 0
-                && failed_orders == 0 && battle.geometry_errors == 0 && battle.dropped_projectiles == 0;
+                && failed_orders == 0 && battle.geometry_errors == 0 && battle.dropped_projectiles == 0
+                && snapshots.Count >= 6 && snapshots.All(sample => sample.minimum_spacing_ratio >= .999f);
             if (game.exploder_fixture) passed &= battle.blasts == battle.dead_zombies && peak_explosion_events > 0
                 && peak_charging_zombies>0 && peak_attacking_zombies>0 && game.explosions.emitted_splashes>0;
             var report = new Report { hardware = SystemInfo.processorType + "; " + SystemInfo.graphicsDeviceName,
-                scope = "Production combat/navigation/fog/HP/ammo and silent purple slime; full-detail Tripo animation DRAFT; shared sampled meshes; frustum culling; no terrain/obstacles/buildings. Larger shared native collision footprints, no custom separation solver. All enemies charge lane-front humans, stop when none survive. No stat overrides or resupply. First 2s/setup excluded. Combat FPS only while both sides survive after first shot. Screenshot/diagnostic costs included. Player step 1.2 units, original cooldown and overkill preserved.",
-                result = passed ? "PASS combat/retreat only; spacing is diagnostic, NOT a hard-separation pass; animation pending review" : "FAIL see counters",
+                scope = "Production combat/navigation/fog/HP/ammo and silent purple slime; full-detail Tripo animation DRAFT; shared sampled meshes; frustum culling; no terrain/obstacles/buildings. Native routing/avoidance plus swept-disc clipping for zombie-zombie and zombie-human pairs only; native human-human avoidance unchanged. Six zombie-contact spacing samples (not an exhaustive every-frame assertion). All enemies charge lane-front humans, stop when none survive. No stat overrides or resupply. First 2s/setup excluded. Combat FPS only while both sides survive after first shot. Screenshot/diagnostic costs included. Player step 1.2 units, original cooldown and overkill preserved.",
+                result = passed ? "PASS combat/retreat and sampled spacing; animation pending review" : "FAIL see counters",
                 width = Screen.width, height = Screen.height, triangles = game.archer_frames.poses[0].frames[0].triangles.Length / 3,
                 zombies = battle.zombie_count, zombie_triangles = game.exploder_fixture ? game.exploder_frames.poses[0].frames[0].triangles.Length / 3 : 0,
                 blasts = battle.blasts, peak_explosion_events = peak_explosion_events, focused_frames = focused_frames, frames = frame_ms.Count,

@@ -38,6 +38,7 @@ namespace ZombieGame.Combat
             : Mathf.Max(stats_for(source).attack_range, contact_distance(source, target) + .05f);
         public float human_target_range(int source, int target) => Mathf.Max(human_range(source), contact_distance(source, target) + .05f);
         public readonly NativeNavMeshCrowd crowd;
+        public readonly UnitContactConstraints contacts;
         public readonly bool assault;
         public readonly bool playable;
         public readonly Vector3[] soldier_facing;
@@ -152,6 +153,7 @@ namespace ZombieGame.Combat
             var navigation_stats=new UnitStats[total_count];
             for(int i=0;i<total_count;i++)navigation_stats[i]=stats_for(i);
             crowd = new NativeNavMeshCrowd(positions, obstacles, UnitBalance.runner,navigation_stats);
+            contacts = new UnitContactConstraints(crowd,navigation_stats);
             for (int i = 0; i < total_count; i++)
             {
                 fuse[i] = float.PositiveInfinity;
@@ -170,6 +172,7 @@ namespace ZombieGame.Combat
                     if(!recruited[i]){health[i]=0;crowd.agents[i].enabled=false;}
                 }
             }
+            contacts.resolve(health);
             refresh_positions(); rebuild_grids();
         }
 
@@ -215,6 +218,7 @@ namespace ZombieGame.Combat
 
         public void step(float now, float delta)
         {
+            contacts.resolve(health);
             refresh_positions();
             if (now >= next_tick)
             {

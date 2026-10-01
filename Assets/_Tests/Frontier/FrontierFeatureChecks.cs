@@ -116,7 +116,7 @@ namespace ZombieGame.FrontierTests
                 fixture.ammunition[0]=0;fixture.positions[0]=new Vector3(-5,0,0);
                 require(fixture.issue_order(0,SoldierOrder.AttackTarget,fixture.positions[1],1),"dry infantry can chase");
                 fixture.step(0,.1f);require(fixture.crowd.agents[0].hasPath&&!fixture.crowd.agents[0].isStopped,"empty gun does not idle at gun range");
-                fixture.crowd.agents[1].enabled=true;require(fixture.crowd.agents[1].Warp(new Vector3(-4.1f,0,0)),"melee fixture warp");fixture.crowd.agents[1].isStopped=true;
+                fixture.crowd.agents[1].enabled=true;require(fixture.contacts.warp_fixture(1,new Vector3(-5+fixture.contact_distance(0,1)+.01f,0,0)),"melee fixture warp");fixture.crowd.agents[1].isStopped=true;
                 fixture.step(.2f,.1f);require(fixture.melee_strikes==1&&fixture.health[1]==UnitBalance.runner.health-10,"knife deals 10");
                 int attack_alerts=0;foreach(var alert in fixture.attack_alerts)if(alert.expires>.2f)attack_alerts++;
                 require(fixture.health[0]<fixture.stats_for(0).health&&attack_alerts==1,"human bitten produces one minimap alarm");

@@ -35,7 +35,7 @@ namespace ZombieGame.FrontierTests
             var headquarters=game.structures.headquarters;
             Vector3 position=new Vector3(headquarters.bounds.min.x-1,0,headquarters.bounds.center.z);
             var agent=game.current.crowd.agents[walker];agent.enabled=true;
-            require(agent.Warp(position),"fixture walker warp beside HQ");agent.isStopped=true;
+            require(game.current.contacts.warp_fixture(walker,position),"fixture walker warp beside HQ");agent.isStopped=true;
             yield return new WaitForSeconds(2.5f);
             Debug.Log($"[SettlementSmoke] attack fixture hp={headquarters.health} zombie={game.current.positions[walker]} path={agent.hasPath} stopped={agent.isStopped}");
             require(headquarters.health<500&&headquarters.health>0,"ordinary zombie actually damages HQ");

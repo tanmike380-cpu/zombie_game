@@ -218,3 +218,29 @@ explosion events only, respects fog, and cannot emit damage or attraction noise.
 2.5 seconds; repeats do not duplicate emissions. The model file is
 `art/models/tripo-exploder/TripoExploder.blend`; review render is local at
 `Builds/ArtReview/TripoExploder/charge-draft.png`.
+
+## Zombie contact constraint review
+
+The user approved hard contacts for zombie-zombie and zombie-human pairs only. Human-human
+navigation remains native; no art, explosion effects, damage, speed or ammunition balance changed
+in this revision. The shared production solver clips swept motion and preserves tangential sliding
+without replacing NavMesh paths. Fixed centers are 1.1 tiles for two zombies (including giants)
+and 1.15 tiles for a human and zombie. The human radius remains 0.6 tiles.
+
+The final 400-crossbow versus 4000-exploder run on M2 Pro at 1440×900 measured **24.47 combat FPS**,
+76.27 ms combat P95 and 13.25 FPS in the first recorded dense window. At that sample the contact
+solver took 9.31 ms. All six sampled zombie-contact ratios were at least 1.0, with no geometry errors,
+failed orders or dropped projectiles. This is sampled evidence, not an every-frame proof: humans
+died at 14.64 seconds, so only the 5-second spacing sample was during live combat. The 55.09 overall
+FPS is inflated by the post-defeat period and must not be presented as battle performance.
+
+Small regressions passed swept crossing, fixed giant spacing, dead-body release, newly living
+unit registration, mixed radii and unchanged human-human native motion. Rear pursuit after front
+death advanced 10.26 tiles in three seconds without another gunshot. The formal world smoke suite
+passed recruitment, ammunition/melee, placement, minimap and map geometry. Exact human formation
+settling remains a separately recorded failure: all 128 crossed the wall, but 121/128 stayed within
+the existing six-slot-distance limit. The assertion remains in place; no claim of a fully green suite.
+
+Raw final report and screenshots are local in `Builds/ArtReview/TripoExploder/zombie-contacts-400-4000/`.
+Performance and exact human settling remain open; the current patch prioritizes the approved
+zombie overlap correction and leaves the soldier control scheme unchanged.

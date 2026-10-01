@@ -126,7 +126,9 @@ namespace ZombieGame.Combat
         {
             var filter=new NavMeshQueryFilter{agentTypeID=crowd.agents[0].agentTypeID,areaMask=NavMesh.AllAreas};
             if(!NavMesh.SamplePosition(point,out var hit,.7f,filter))return false;
-            for(int i=0;i<total_count;i++)if(health[i]>0&&(positions[i]-hit.position).sqrMagnitude<.8f*.8f)return false;
+            float spawn_radius=UnitBalance.navigation_radius(UnitBalance.get("walker"));
+            for(int i=0;i<total_count;i++)if(health[i]>0&&(positions[i]-hit.position).sqrMagnitude<
+                Mathf.Pow(spawn_radius+UnitBalance.navigation_radius(stats_for(i))+.01f,2))return false;
             for(int i=soldier_count;i<total_count;i++)
             {
                 if(zombie_deployed[i-soldier_count])continue;

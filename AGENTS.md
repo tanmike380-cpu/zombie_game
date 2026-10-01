@@ -13,6 +13,11 @@
   under `Assets/_Game`. Preserve the shared humanoid/musket test models across test scenes.
 - NavMesh owns routing/avoidance. Formation destination assignment must not preserve empty gaps
   between separated squads; regression-test regrouping as well as obstacle detours.
+- User-approved contact constraints may clip native movement to prevent body overlap. They must
+  preserve NavMesh routes and attack-move intent, never warp units through terrain or add timed
+  crowd-wide holds. Contact radii still come exclusively from UnitBalance.
+  Apply hard contacts only to zombie-zombie and zombie-human pairs; preserve native human-human
+  avoidance and formation feel (user confirmed after testing). Human radius remains 0.6 tiles.
 - Formation commands fill radial bands from the mouse target outward, assigning nearer units
   to inner bands before farther units. Match approach directions within each band to reduce
   crossing. Do not revert to unit-index-priority assignment or stagger command start times.

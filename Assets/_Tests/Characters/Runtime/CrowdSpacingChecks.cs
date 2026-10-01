@@ -13,7 +13,7 @@ namespace ZombieGame.CharacterTests
     /// <summary>Non-mutating spacing diagnostics and a disposable navigation/effect regression fixture.</summary>
     public static class CrowdSpacingChecks
     {
-        public static float minimum_ratio(BattleSimulation battle)
+        public static float minimum_ratio(BattleSimulation battle, bool zombie_contacts_only=false)
         {
             float cell_size = 0;
             for (int i = 0; i < battle.total_count; i++)
@@ -30,6 +30,7 @@ namespace ZombieGame.CharacterTests
                         if (cells.TryGetValue(key + new Vector2Int(x,z), out var neighbors))
                             foreach (int neighbor in neighbors)
                             {
+                                if(zombie_contacts_only && i<battle.soldier_count && neighbor<battle.soldier_count)continue;
                                 float ratio=Vector3.Distance(point,battle.positions[neighbor]) / battle.contact_distance(i,neighbor);
                                 if(ratio<minimum && ratio<.5f)
                                     Debug.Log($"[CrowdSpacingPair] {i}/{neighbor} ratio={ratio:F3} type={battle.stats_for(i).id}/{battle.stats_for(neighbor).id} stopped={battle.crowd.agents[i].isStopped}/{battle.crowd.agents[neighbor].isStopped} point={point}");
@@ -43,6 +44,7 @@ namespace ZombieGame.CharacterTests
 
         public static IEnumerator run()
         {
+            yield return check_swept_contacts();
             yield return check_slime();
             yield return check_chase_recovery();
             // No health/speed/warp overrides: the fixture owns and disposes its complete simulation.
@@ -81,8 +83,10 @@ namespace ZombieGame.CharacterTests
                     }
                     float ratio = minimum_ratio(battle);
                     Debug.Log($"[CrowdSpacingChecks] goal={goal} near_assigned_slot={arrived}/128 compact={compact}/128 accepted={accepted}/128 crossed_wall={crossed_wall}/128 moving={moving} separation_ratio={ratio:F3} detour={detour}");
+                    if(accepted<128 || crossed_wall<128)
+                        for(int i=0;i<12;i++)Debug.Log($"[ContactRouteDiagnostic] unit={i} at={battle.positions[i]} goal={slots[i]} velocity={battle.crowd.agents[i].velocity} desired={battle.crowd.agents[i].desiredVelocity}");
                     require(accepted==128 && crossed_wall==128 && detour && battle.geometry_errors == 0, "regroup / obstacle detour");
-                    require(ratio >= .93f, "native collision footprint collapsed");
+                    require(ratio >= .93f, "native human avoidance footprint collapsed");
                 }
             }
             yield return check_building_contact();
@@ -92,10 +96,58 @@ namespace ZombieGame.CharacterTests
 
         public static IEnumerator run_chase()
         {
+            yield return check_swept_contacts();
             yield return check_slime();
             yield return check_chase_recovery();
             Debug.Log("[ChaseRecoveryChecks] PASS");
             Application.Quit(0);
+        }
+
+        private static IEnumerator check_swept_contacts()
+        {
+            using(var battle=new BattleSimulation(new[] {new Vector3(-2,0,0),new Vector3(2,0,0)},2,new bool[2],Array.Empty<Bounds>()))
+            {
+                var human=battle.crowd.agents[0];human.isStopped=false;human.nextPosition=new Vector3(3,0,0);
+                Vector3 proposal=human.nextPosition;battle.contacts.resolve(battle.health);
+                require(Vector3.Distance(proposal,human.nextPosition)<.001f,"contact layer changed native human-human movement");
+                Debug.Log("[ContactConstraintChecks] PASS human-human native movement preserved");
+            }
+            using(var battle=new BattleSimulation(new[] {new Vector3(-2,0,0),new Vector3(2,0,0)},1,new bool[2],Array.Empty<Bounds>()))
+            {
+                // Disposable swept-proposal fixture: a full crossing in one frame must not tunnel through a living body.
+                var agent=battle.crowd.agents[0];agent.isStopped=false;
+                agent.nextPosition=new Vector3(3,0,0);
+                battle.contacts.resolve(battle.health);
+                float distance=Vector3.Distance(battle.crowd.transforms[0].position,battle.crowd.transforms[1].position);
+                require(distance>=1.149f && battle.crowd.transforms[0].position.x<1,"swept movement tunnels through body");
+                require(agent.hasPath==false,"contact layer invented a path");
+                Debug.Log($"[ContactConstraintChecks] PASS swept crossing blocked; separation={distance:F3}");
+            }
+            // Disposable death/reactivation and giant-size fixture; authored stats stay untouched.
+            using(var battle=new BattleSimulation(new[] {new Vector3(-8,0,0),new Vector3(0,0,0),new Vector3(4,0,0)},
+                1,new bool[3],Array.Empty<Bounds>(),unit_ids:new[] {"firearm_infantry","runner","brute"}))
+            {
+                var mover=battle.crowd.agents[1];mover.enabled=true;mover.isStopped=false;
+                mover.nextPosition=new Vector3(5,0,0);battle.contacts.resolve(battle.health);
+                require(Mathf.Abs(Vector3.Distance(mover.nextPosition,battle.crowd.transforms[2].position)-1.101f)<.002f,"giant must keep fixed 1.1 tile contact");
+                battle.health[2]=0;battle.crowd.agents[2].enabled=false;
+                Vector3 before_release=mover.nextPosition;
+                mover.nextPosition=new Vector3(5,0,0);
+                Vector3 native_proposal=mover.nextPosition;
+                battle.contacts.resolve(battle.health);
+                require(Vector3.Distance(mover.nextPosition,native_proposal)<.01f && mover.nextPosition.x>before_release.x,
+                    $"dead body still blocks contact: before={before_release} proposed={native_proposal} actual={mover.nextPosition}");
+                battle.crowd.transforms[2].position=new Vector3(8,0,0);battle.health[2]=battle.stats_for(2).health;
+                battle.contacts.resolve(battle.health);
+                mover.nextPosition=new Vector3(9,0,0);battle.contacts.resolve(battle.health);
+                require(mover.nextPosition.x<7 && mover.nextPosition.x>6.8f,"newly alive body not registered");
+                require(battle.contacts.warp_fixture(0,new Vector3(4,0,0)),"explicit human relocation fixture");
+                var human=battle.crowd.agents[0];human.isStopped=false;human.nextPosition=new Vector3(8,0,0);
+                battle.contacts.resolve(battle.health);
+                require(Vector3.Distance(human.nextPosition,mover.nextPosition)>=1.149f,"mixed human zombie contact");
+                Debug.Log("[ContactConstraintChecks] PASS fixed giant size/dead body release/newly alive body/mixed radii/fixture relocation");
+            }
+            yield return null;
         }
 
         private static float wall_far_edge(Bounds obstacle) => obstacle.max.z + ZombieGame.Balance.UnitBalance.config.unit_navigation_radius;

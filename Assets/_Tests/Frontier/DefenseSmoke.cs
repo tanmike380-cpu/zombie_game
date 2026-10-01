@@ -64,7 +64,7 @@ namespace ZombieGame.FrontierTests
             yield return new WaitForSeconds(2.5f);
             require(headquarters.health<before,"new sound cannot pull committed zombie away from HQ");
             var agent=objective_fixture.crowd.agents[1];
-            require(agent.Warp(new Vector3(12,0,0)),"fixture relocate after path reset");agent.ResetPath();
+            require(objective_fixture.contacts.warp_fixture(1,new Vector3(12,0,0)),"fixture relocate after path reset");agent.ResetPath();
             before=headquarters.health;deadline=Time.time+8;
             while(headquarters.health==before&&Time.time<deadline)yield return null;
             require(headquarters.health<before,"lost path retries and resumes silent HQ attack");
@@ -90,8 +90,8 @@ namespace ZombieGame.FrontierTests
             require((objective_fixture.zombie_navigation_goal(3)-objective_fixture.positions[0]).sqrMagnitude<.1f,"encountered nearby human interrupts siege");
             // Disposable death fixture: the blocking soldier dies; other soldiers leave sight.
             objective_fixture.health[0]=0;objective_fixture.crowd.agents[0].enabled=false;
-            require(objective_fixture.crowd.agents[1].Warp(new Vector3(-65,0,-60)),"first bystander disengage fixture");
-            require(objective_fixture.crowd.agents[2].Warp(new Vector3(-65,0,-65)),"second bystander disengage fixture");
+            require(objective_fixture.contacts.warp_fixture(1,new Vector3(-65,0,-60)),"first bystander disengage fixture");
+            require(objective_fixture.contacts.warp_fixture(2,new Vector3(-65,0,-65)),"second bystander disengage fixture");
             float deadline=Time.time+15;
             while(headquarters.health==headquarters.max_health&&Time.time<deadline)yield return null;
             require(headquarters.health<headquarters.max_health,"dead blocking soldier resumes silent headquarters attack");
@@ -110,7 +110,7 @@ namespace ZombieGame.FrontierTests
             objective_fixture.emit_gun_noise(sound_origin,Time.time);
             yield return new WaitForSeconds(1);
             require((objective_fixture.zombie_navigation_goal(1)-objective_fixture.positions[0]).sqrMagnitude<.1f,"ordinary sight overrides simultaneous audible sound");
-            require(objective_fixture.crowd.agents[0].Warp(new Vector3(-65,0,-65)),"ordinary visual loss fixture");
+            require(objective_fixture.contacts.warp_fixture(0,new Vector3(-65,0,-65)),"ordinary visual loss fixture");
             yield return new WaitForSeconds(.3f);
             require((objective_fixture.zombie_navigation_goal(1)-sound_origin).sqrMagnitude<.1f,"visual loss restores latest unfinished sound, not old chase point");
             yield return new WaitForSeconds(4);

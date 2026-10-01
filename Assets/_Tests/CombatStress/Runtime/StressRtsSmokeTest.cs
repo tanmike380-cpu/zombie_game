@@ -70,7 +70,7 @@ namespace ZombieGame.CombatStressTests
             input.issue_selected(SoldierOrder.Stop,Vector3.zero);
             input.select_all();
             for (int i=0;i<400;i++)
-                require(s.crowd.agents[i].Warp(new Vector3(-115+i%20*.8f,0,(i<200 ? -40 : 32)+(i%200)/20*.8f)),"Split squad fixture warp");
+                require(s.contacts.warp_fixture(i,new Vector3(-115+i%20*UnitBalance.config.formation_spacing,0,(i<200 ? -40 : 32)+(i%200)/20*UnitBalance.config.formation_spacing)),"Split squad fixture warp");
             yield return null;
             Vector3 regroup = new Vector3(-107,0,0);
             require(input.issue_selected(SoldierOrder.Move,regroup)==400,"Split squads rejected regroup");
@@ -105,19 +105,19 @@ namespace ZombieGame.CombatStressTests
             input.issue_selected(SoldierOrder.Stop,Vector3.zero);
             Debug.Log("[RegroupSmoke] PASS 400 soldiers in two 200-unit squads, >64-tile empty gap removed; all reached within 13 tiles of click");
 
-            require(s.crowd.agents[0].Warp(new Vector3(-100,0,-55)),"Fog fixture warp A");
+            require(s.contacts.warp_fixture(0,new Vector3(-100,0,-55)),"Fog fixture warp A");
             yield return new WaitForSeconds(.3f);
             require(game.current_fog.is_visible(new Vector3(-100,0,-55)),"Fog did not follow soldier");
-            require(s.crowd.agents[0].Warp(new Vector3(-80,0,-55)),"Fog fixture warp B");
+            require(s.contacts.warp_fixture(0,new Vector3(-80,0,-55)),"Fog fixture warp B");
             yield return new WaitForSeconds(.3f);
             require(!game.current_fog.is_visible(new Vector3(-100,0,-55)) && game.current_fog.is_explored(new Vector3(-100,0,-55)),"Explored memory");
             require(game.current_fog.is_visible(new Vector3(-70.5f,0,-55)) && !game.current_fog.is_visible(new Vector3(-69,0,-55)),"Human 10-tile sight");
 
-            require(s.crowd.agents[0].Warp(new Vector3(-15,0,0)),"Attack fixture soldier warp");
+            require(s.contacts.warp_fixture(0,new Vector3(-15,0,0)),"Attack fixture soldier warp");
             // Move-only fixture prevents the new 100-damage gun auto-killing the target before the explicit attack assertion.
             require(s.issue_order(0,SoldierOrder.Move,new Vector3(-15,0,-20)),"Attack fixture firing hold via move order");
             s.crowd.agents[401].enabled = true;
-            require(s.crowd.agents[401].Warp(new Vector3(-10,0,0)),"Attack fixture zombie warp");
+            require(s.contacts.warp_fixture(401,new Vector3(-10,0,0)),"Attack fixture zombie warp");
             yield return new WaitForSeconds(.3f);
             require(s.issue_order(0,SoldierOrder.AttackTarget,s.positions[401],401),"Visible target rejected");
             yield return new WaitForSeconds(2.5f);
@@ -133,8 +133,8 @@ namespace ZombieGame.CombatStressTests
             game.reset_playable(); yield return null;
             var simulation=game.current;
             Vector3 occupied=new Vector3(-110,0,-70);
-            require(simulation.crowd.agents[0].Warp(occupied),"Occupied arrival fixture");
-            require(simulation.crowd.agents[1].Warp(occupied+Vector3.left*3),"Blocked mover fixture");
+            require(simulation.contacts.warp_fixture(0,occupied),"Occupied arrival fixture");
+            require(simulation.contacts.warp_fixture(1,occupied+Vector3.left*3),"Blocked mover fixture");
             yield return null;
             require(simulation.issue_order(1,SoldierOrder.Move,occupied),"Occupied goal rejected");
             yield return new WaitForSeconds(5);
@@ -151,7 +151,7 @@ namespace ZombieGame.CombatStressTests
             yield return new WaitForSeconds(1);
             require(Vector3.Distance(settled,simulation.positions[1])>.8f,"Settled unit ignored new move");
             simulation.issue_order(1,SoldierOrder.Stop,Vector3.zero);
-            require(simulation.crowd.agents[1].Warp(occupied+Vector3.left*3),"Patrol arrival fixture");
+            require(simulation.contacts.warp_fixture(1,occupied+Vector3.left*3),"Patrol arrival fixture");
             yield return null;
             require(simulation.issue_order(1,SoldierOrder.Patrol,occupied),"Occupied patrol rejected");
             yield return new WaitForSeconds(5);
@@ -170,7 +170,7 @@ namespace ZombieGame.CombatStressTests
             int listener = 401;
             var agent = simulation.crowd.agents[listener];
             agent.enabled = true;
-            require(agent.Warp(new Vector3(-100,0,-90)), "Retarget listener fixture warp");
+            require(simulation.contacts.warp_fixture(listener,new Vector3(-100,0,-90)), "Retarget listener fixture warp");
             yield return new WaitForSeconds(.2f);
             Vector3 first = new Vector3(-100,0,-80), second = new Vector3(-112,0,-90), third = new Vector3(-100,0,-100);
             simulation.emit_gun_noise(first, Time.time);
@@ -189,7 +189,7 @@ namespace ZombieGame.CombatStressTests
             require(!agent.isStopped && Vector3.Distance(agent.destination,third)<.2f, "Settled zombie did not wake for new source");
             // Explicit temporary warp fixture: visible human must override an audible source.
             Vector3 human = agent.transform.position + Vector3.right * 2.5f;
-            require(simulation.crowd.agents[0].Warp(human), "Visual priority human warp");
+            require(simulation.contacts.warp_fixture(0,human), "Visual priority human warp");
             require(simulation.issue_order(0,SoldierOrder.Move,human+Vector3.forward*10), "Visual priority move");
             simulation.emit_gun_noise(agent.transform.position,Time.time);
             yield return new WaitForSeconds(.3f);
@@ -203,7 +203,7 @@ namespace ZombieGame.CombatStressTests
             game.reset_playable(); yield return null;
             var simulation = game.current;
             Vector3 source = new Vector3(-95,0,-70);
-            require(simulation.crowd.agents[0].Warp(source),"Noise source fixture warp");
+            require(simulation.contacts.warp_fixture(0,source),"Noise source fixture warp");
             Vector3[] directions = { Vector3.right,Vector3.left,Vector3.forward,Vector3.back };
             float radius = UnitBalance.human_noise(UnitBalance.human);
             float listener_distance = (UnitBalance.config.human_sight+radius)*.5f;
@@ -211,12 +211,12 @@ namespace ZombieGame.CombatStressTests
             {
                 int index = 401+i;
                 simulation.crowd.agents[index].enabled=true;
-                require(simulation.crowd.agents[index].Warp(source+directions[i]*listener_distance),"Four-direction listener warp");
+                require(simulation.contacts.warp_fixture(index,source+directions[i]*listener_distance),"Four-direction listener warp");
             }
             simulation.crowd.agents[405].enabled=true;
-            require(simulation.crowd.agents[405].Warp(source+Vector3.left*(radius+1)),"Outside listener warp");
+            require(simulation.contacts.warp_fixture(405,source+Vector3.left*(radius+1)),"Outside listener warp");
             simulation.crowd.agents[406].enabled=true;
-            require(simulation.crowd.agents[406].Warp(source+Vector3.right*(UnitBalance.human.attack_range-.5f)),"Gun target fixture warp");
+            require(simulation.contacts.warp_fixture(406,source+Vector3.right*(UnitBalance.human.attack_range-.5f)),"Gun target fixture warp");
             yield return new WaitForSeconds(.3f);
             for (int i=0;i<4;i++) require(!game.current_fog.is_visible(simulation.positions[401+i]),"Noise listener was inside human sight");
             yield return new WaitForSeconds(listener_distance/UnitBalance.config.noise_propagation_speed+.8f);
@@ -239,7 +239,7 @@ namespace ZombieGame.CombatStressTests
             {
                 int index = indices[lane]; var agent = simulation.crowd.agents[index];
                 agent.enabled = true;
-                require(agent.Warp(new Vector3(-115,0,-100-lane*6)),"Speed fixture warp");
+                require(simulation.contacts.warp_fixture(index,new Vector3(-115,0,-100-lane*6)),"Speed fixture warp");
                 require(Mathf.Approximately(agent.speed,simulation.stats_for(index).move_speed),"Agent ignored shared balance");
                 if (index == 0) require(simulation.issue_order(index,SoldierOrder.Move,new Vector3(-85,0,-100)),"Human speed route");
                 else require(simulation.crowd.investigate_position(index,new Vector3(-85,0,-100-lane*6)),"Zombie speed route");
@@ -258,8 +258,8 @@ namespace ZombieGame.CombatStressTests
             require(measured[1]>measured[0] && measured[2]>measured[0],"Combat zombies not faster in actual movement");
             Debug.Log($"[SpeedSmoke] PASS measured tiles/s human={measured[0]:F3} runner={measured[1]:F3} exploder={measured[2]:F3} balance_hash={UnitBalance.source_hash}");
             foreach (int index in indices) { simulation.crowd.agents[index].isStopped=true; simulation.crowd.agents[index].ResetPath(); }
-            require(simulation.crowd.agents[0].Warp(new Vector3(-105,0,-100)),"Chase human warp");
-            require(simulation.crowd.agents[401].Warp(new Vector3(-108.5f,0,-100)),"Chase runner warp");
+            require(simulation.contacts.warp_fixture(0,new Vector3(-105,0,-100)),"Chase human warp");
+            require(simulation.contacts.warp_fixture(401,new Vector3(-108.5f,0,-100)),"Chase runner warp");
             require(simulation.issue_order(0,SoldierOrder.Move,new Vector3(-85,0,-100)),"Chase human move");
             yield return new WaitForSeconds(2);
             float gap = Vector3.Distance(simulation.crowd.transforms[0].position,simulation.crowd.transforms[401].position);
