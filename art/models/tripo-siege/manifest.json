@@ -5,13 +5,14 @@
   "scenes": {
     "01_AllModels_Grounded": "Seven source model hierarchies grounded; source XY preserved; Greek Fire stabilizers removed",
     "02_GreekFire_Preview": "Original 25-bone rig; complete rigid upper turret and nozzle rotate together independently of chassis; moving wheels and spray placeholder",
-    "03_Headbutter_Preview": "Original 67-bone rig and skin; right foot advances during anticipation, then left foot; both planted before heavy ram; sequential recovery"
+    "03_Headbutter_Preview": "Original 67-bone rig and skin; early right step; larger forward drive and articulated neck/head extension; sequential recovery",
+    "04_GreekFire_Movement": "Original 25-bone rig; eight world directions, forward/reverse, turn-before-travel, rolling wheels; 576-frame root-motion draft"
   },
   "lighting": "Original packed textures retained; previews use flat textured Workbench without new lights",
   "gameplay_balance": "No changes. Animation timing is a draft choreography, not gameplay attack timing.",
   "authoring_script": "tools/art/tripo_siege.py",
   "verification_script": "tools/art/verify_siege_animation.py",
-  "local_exports": ["GreekFireAnimationDraft.fbx", "HeadbutterAnimationDraft.fbx"],
+  "local_exports": ["GreekFireAnimationDraft.fbx", "HeadbutterAnimationDraft.fbx", "GreekFireMovementAnimationDraft.fbx"],
   "preview": "Builds/ArtReview/TripoSiege/review.html",
-  "revision": "2026-10-02: early right-foot anticipation step; rigid whole-upper-assembly Greek Fire yaw"
+  "revision": "2026-10-02: extended head ram and eight-direction Greek Fire locomotion; fixed chassis brackets no longer rotate with wheels"
 }

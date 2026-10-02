@@ -91,17 +91,18 @@ def create_headbutt(rig):
                                          (60, .44), (62, .44), (69, .20), (82, .12), (112, 0), (120, 0)])
         brace = interpolate_keys(frame, [(1, 0), (42, 1), (63, 1), (95, 0), (120, 0)])
         hip_y = interpolate_keys(frame, [(1, 0), (12, 0), (28, .12), (42, .03), (51, 0),
-                                         (60, -.18), (63, -.18), (72, -.09), (84, -.09), (112, 0), (120, 0)])
+                                         (60, -.26), (63, -.26), (72, -.12), (84, -.09), (112, 0), (120, 0)])
         hip_z = interpolate_keys(frame, [(1, 0), (39, -.03), (51, -.03),
-                                         (60, -.04), (69, -.05), (84, -.035), (112, 0), (120, 0)])
+                                         (60, -.015), (69, -.035), (84, -.035), (112, 0), (120, 0)])
         hips = rig.pose.bones["Hips"]
         hips.location = hips.bone.matrix_local.to_3x3().inverted() @ Vector((0, hip_y, hip_z))
         hips.keyframe_insert("location", frame=frame)
         rotate_bone(rig, "Spine", drive * .55)
         rotate_bone(rig, "Chest", drive * .30)
         rotate_bone(rig, "UpperChest", drive * .15)
-        rotate_bone(rig, "Neck", -drive * .30)
-        rotate_bone(rig, "Head", -drive * .25)
+        reach = interpolate_keys(frame, [(1, 0), (48, 0), (60, 1), (63, 1), (84, 0), (120, 0)])
+        rotate_bone(rig, "Neck", -drive * .30 - reach * .24)
+        rotate_bone(rig, "Head", -drive * .25 - reach * .10)
         for side in ("Left", "Right"):
             rotate_bone(rig, side + "_UpperArm", -drive * .95 + brace * 1.10)
             rotate_bone(rig, side + "_LowerArm", -brace * 1.80)
@@ -144,7 +145,8 @@ def assign_rigid_turret(mesh, source_audit):
         wheel_indices = []
         for part in source_audit["components"]:
             low, high = part["min"], part["max"]
-            if (low[2] >= .009 and high[2] <= .29 and
+            is_outboard = low[0] > .19 if center_x > 0 else high[0] < -.19
+            if (is_outboard and low[2] >= .009 and high[2] <= .29 and
                     low[0] > center_x-.055 and high[0] < center_x+.055 and
                     low[1] > center_y-.135 and high[1] < center_y+.135):
                 wheel_indices.extend(part["indices"])

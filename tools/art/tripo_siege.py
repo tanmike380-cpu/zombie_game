@@ -10,7 +10,8 @@ sys.path.insert(0, str(Path(__file__).parent))
 from scene_grounding import collect_model_roots, collect_meshes, ground_models, measure_bounds
 from tripo_model_io import audit_model, setup_render, point_at
 from siege_motion import create_headbutt, create_greek_fire, assign_rigid_turret, remove_support_feet, measure_rig_signature, FRAME_END
-from siege_preview import create_stage, create_flame_preview, set_preview_workspace
+from siege_preview import create_stage, create_flame_preview, set_preview_workspace, create_material, add_fixture_cube
+from siege_locomotion import create_directional_movement, DIRECTIONS, MOVEMENT_END, SEGMENT_FRAMES
 
 ROOT = Path(__file__).resolve().parents[2]
 REVIEW = ROOT / "Builds/ArtReview/TripoSiege"
@@ -131,7 +132,9 @@ def render_video_frames():
     """Render preview frames with an optional kind argument for inexpensive iteration."""
     arguments = sys.argv[sys.argv.index("--") + 1:]
     kind = arguments[arguments.index("--video") + 1]
-    scene = bpy.data.scenes["02_GreekFire_Preview" if kind == "GreekFire" else "03_Headbutter_Preview"]
+    scene_names = {"GreekFire": "02_GreekFire_Preview", "Headbutter": "03_Headbutter_Preview",
+                   "GreekFireMovement": "04_GreekFire_Movement"}
+    scene = bpy.data.scenes[scene_names[kind]]
     bpy.context.window.scene = scene
     scene.render.resolution_percentage = 75
     scene.cycles.samples = 8
@@ -212,6 +215,56 @@ def update_greek_fire_preview():
     print("Updated Greek Fire: rigid upper assembly yaw; chassis, lights and textures preserved", flush=True)
 
 
+def update_movement_preview():
+    """Add reusable eight-direction motion without changing the existing spray demonstration."""
+    source_scene = bpy.data.scenes["02_GreekFire_Preview"]
+    bpy.context.window.scene = source_scene
+    source_scene.frame_set(1)
+    source = next(obj for obj in source_scene.objects if obj.type == "ARMATURE")
+    scene = bpy.data.scenes.get("04_GreekFire_Movement")
+    if scene is None:
+        scene = bpy.data.scenes.new("04_GreekFire_Movement")
+        bpy.context.window.scene = scene
+        rig = duplicate_model(source, scene)
+        create_stage(scene, "GreekFire")
+        grid_material = create_material("Movement preview grid", (.22, .26, .29))
+        for index in range(-4, 5):
+            for axis in (0, 1):
+                location = [0, 0, -.003]
+                location[axis] = index*.25
+                scale = [.003, 2, .001] if axis == 0 else [2, .003, .001]
+                add_fixture_cube("Movement grid — not exported", location, scale, grid_material)
+        scene.camera.location = (2, 2.5, 2)
+        scene.camera.data.ortho_scale = 2.8
+        point_at(scene.camera, (0, 0, .35))
+    else:
+        bpy.context.window.scene = scene
+        scene.frame_set(1)
+        rig = next(obj for obj in scene.objects if obj.type == "ARMATURE")
+    mesh = collect_meshes(rig)[0]
+    movement_audit = audit_model(rig, mesh, REVIEW / "greek-movement-audit.json")
+    assign_rigid_turret(mesh, movement_audit)
+    action = create_directional_movement(rig)
+    scene.frame_start, scene.frame_end = 1, MOVEMENT_END
+    scene.timeline_markers.clear()
+    for index, (name, _, _) in enumerate(DIRECTIONS):
+        scene.timeline_markers.new(name, frame=index*SEGMENT_FRAMES+1)
+    scene.frame_set(1)
+    export_animation(rig, "GreekFireMovement")
+    scene.frame_set(33)
+    scene.render.filepath = str(REVIEW / "GreekFireMovement-impact.png")
+    bpy.ops.render.render(write_still=True)
+    report_path = REVIEW / "animation-report.json"
+    report = json.loads(report_path.read_text())
+    report["models"]["GreekFireMovement"] = {"action": action.name, "fps": 24,
+        "frames": [1, MOVEMENT_END], "directions": [name for name, _, _ in DIRECTIONS],
+        "scope": "Blender root-motion direction showcase; not Unity routing or gameplay speed"}
+    report_path.write_text(json.dumps(report, ensure_ascii=False, indent=2))
+    scene.frame_set(1)
+    bpy.ops.wm.save_as_mainfile(filepath=str(MODELS / "SiegeAnimations.blend"))
+    print("Eight-direction Greek Fire movement scene and FBX ready", flush=True)
+
+
 def render_reference():
     """Render imported assets without changing their mesh, materials or rest skeleton."""
     setup_render()
@@ -268,6 +321,8 @@ if __name__ == "__main__":
         update_headbutt_preview()
     elif "--greek-fire" in sys.argv:
         update_greek_fire_preview()
+    elif "--movement" in sys.argv:
+        update_movement_preview()
     elif "--build" in sys.argv:
         build_previews()
     elif "--video" in sys.argv:

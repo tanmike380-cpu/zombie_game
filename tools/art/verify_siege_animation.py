@@ -10,6 +10,7 @@ import numpy as np
 sys.path.insert(0, str(Path(__file__).parent))
 from scene_grounding import collect_model_roots, collect_meshes, measure_bounds
 from siege_motion import measure_rig_signature
+from siege_locomotion import DIRECTIONS, MOVEMENT_END, SEGMENT_FRAMES, sample_vehicle_motion
 
 ROOT = Path(__file__).resolve().parents[2]
 REVIEW = ROOT / "Builds/ArtReview/TripoSiege"
@@ -52,6 +53,47 @@ def group_indices(mesh, name):
     index = mesh.vertex_groups[name].index
     return [vertex.index for vertex in mesh.data.vertices
             if any(group.group == index and group.weight > .99 for group in vertex.groups)]
+
+
+def verify_directional_movement(signature):
+    """Check every movement frame, eight headings, reverse travel, wheel rolling and return."""
+    from bpy_extras.object_utils import world_to_camera_view
+    from mathutils import Vector
+    scene = bpy.data.scenes["04_GreekFire_Movement"]
+    bpy.context.window.scene = scene
+    rig = next(obj for obj in scene.objects if obj.type == "ARMATURE")
+    mesh = collect_meshes(rig)[0]
+    assert measure_rig_signature(rig) == signature, "Movement changed source rest bones"
+    assert not any(obj.type == "LIGHT" for obj in scene.objects), "Movement preview added lights"
+    scene.frame_set(1)
+    baseline = measure_edge_lengths(mesh)
+    for frame in range(1, MOVEMENT_END+1):
+        scene.frame_set(frame)
+        lengths = measure_edge_lengths(mesh)
+        valid = baseline > 1e-6
+        assert np.max(np.abs(lengths[valid]/baseline[valid]-1)) < .003, f"Movement distorts metal at {frame}"
+        low, high = measure_bounds(rig)
+        assert abs(low[2]) < .015, f"Movement ground drift at {frame}"
+        _, yaw, distance = sample_vehicle_motion(frame)
+        assert abs(rig.rotation_euler.z-yaw) < 1e-5, f"Incorrect heading at {frame}"
+        assert abs(rig.location.x+np.sin(yaw)*distance) < 1e-5
+        assert abs(rig.location.y-np.cos(yaw)*distance) < 1e-5
+        assert abs(rig.pose.bones["tripo::Head_0"].rotation_quaternion.angle) < 1e-5, "Turret shifted relative to moving chassis"
+        for x in (low[0], high[0]):
+            for y in (low[1], high[1]):
+                for z in (low[2], high[2]):
+                    projected = world_to_camera_view(scene, scene.camera, Vector((x, y, z)))
+                    assert 0 < projected.x < 1 and 0 < projected.y < 1, f"Movement cropped at {frame}"
+    for index, (name, _, sign) in enumerate(DIRECTIONS):
+        scene.frame_set(index*SEGMENT_FRAMES+33)
+        assert rig.location.xy.length > .54, f"Missing visible travel: {name}"
+        if sign < 0:
+            assert rig.location.y < -.54 and abs(rig.rotation_euler.z) < 1e-5, "Backward is not reversing"
+        assert rig.pose.bones["bone_12"].rotation_quaternion.angle > .1, f"Wheels not rolling: {name}"
+    scene.frame_set(MOVEMENT_END)
+    assert rig.location.xy.length < 1e-6 and abs(rig.rotation_euler.z) < 1e-6, "Movement loop did not return"
+    return {"frames_checked": MOVEMENT_END, "directions": [name for name, _, _ in DIRECTIONS],
+            "metal_rigid": True, "all_directions_in_frame": True, "loop_returns_to_origin": True}
 
 
 def verify_saved_models():
@@ -129,7 +171,7 @@ def verify_saved_models():
             assert forward_step > .28 and foot_lift > .09, "Lead foot did not visibly step"
             assert right_foot_samples[23][1] < right_foot_samples[0][1] - .04, "Right foot starts too late"
             assert right_foot_samples[23][2] > right_foot_samples[0][2] + .06, "Right foot not lifted during anticipation"
-            assert head_travel > .25, "Heavy ram has insufficient whole-body travel"
+            assert head_travel > .36, "Extended head ram has insufficient forward travel"
             for bone in rig.pose.bones:
                 assert max(abs(value) for row in bone.matrix-rest_pose[bone.name] for value in row) < 1e-4, f"Loop discontinuity: {bone.name}"
             results["clips"][source].update(forward_step=forward_step, foot_lift=foot_lift,
@@ -138,8 +180,9 @@ def verify_saved_models():
         else:
             results["clips"][source].update(rigid_upper_vertices=len(turret_indices),
                 upper_displacement=upper_displacement, chassis_independent=True)
+    results["clips"]["GreekFireMovement"] = verify_directional_movement(signatures["Greek Fire siege"])
     (REVIEW / "verification.json").write_text(json.dumps(results, ensure_ascii=False, indent=2))
-    print("PASS: original textures, seven grounded hierarchies, 240 frames, original rigs, rigid machine", flush=True)
+    print(f"PASS: original textures, grounded imports, {240+MOVEMENT_END} animation frames, eight directions", flush=True)
 
 
 if __name__ == "__main__":
