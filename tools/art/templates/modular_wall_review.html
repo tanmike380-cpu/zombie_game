@@ -7,6 +7,7 @@ body{margin:0;background:#171c22;color:#eee9df;font:16px system-ui}main{max-widt
 <h1>用你导入的原城墙，拼成连续防线</h1>
 <p>墙宽固定 2 格，长度从 2 格起，每次增加 1 格；奇数、偶数都支持。两端石墩大小不变，中间连续接墙，不拉长砖纹。原模型、贴图和灯光保持不变。</p>
 <aside>已确认：2×2、2×3、2×4、2×5……均可；不足 2×2 不可建。不再处理小数占地。这是 Blender 拼接评审，尚未接入 Unity 拖拽建墙。</aside>
+<p>新增：炮塔、箭塔、火塔统一按 2×2 替换墙身。两端墙墩所在格保留，已有塔位不可重叠；不是把塔和墙叠放。以下塔模型采用你已导入的炮塔，箭塔和火塔只验证共用规则，不代造外观。</p>
 <nav id="cases"></nav><h2 id="case-title"></h2><p id="caption" class="caption"></p><img id="preview" alt="原石墙模型拼接示例">
 <p>接入游戏时：从起点按住拖动，预览连续墙身；终点先检查完整占地。靠障碍或边界时回退终点；不足以放下两端石墩则提示不可建。中间逻辑上仍需分段计算受损／拆墙，不能把整个长城墙当成只有一条血量的单体。</p>
 <p><a href="../../../art/models/modular-stone-wall/ModularStoneWall.blend">打开 Blender 模块文件</a> · <a href="verification.json">查看布局检查</a> · <a href="../TripoSiege/review.html">返回动作评审</a></p>
@@ -21,8 +22,15 @@ const cases = [
  ['2×7','04_Integer_2x7.png','总长 7 格；末段墙身适配整数终点，两端石墩不变形。'],
  ['树林旁收尾','05_Forest_Stop.png','绿色方块是 1×1 格树林占地。目标 8 格，遇树林停在第 6 格的边界，不额外留小数缝。'],
  ['地图边缘','06_Map_Edge.png','红线是 7 格处的地图边界；完整墙体停在边界内。'],
- ['空间不够','07_NotEnoughSpace.png','只有 1 格可用，不满足 2×2 最小占地：不可建，不缩小石墩或穿越障碍。']
+ ['空间不够','07_NotEnoughSpace.png','只有 1 格可用，不满足 2×2 最小占地：不可建，不缩小石墩或穿越障碍。'],
+ ['炮塔替换墙身','10_Tower_Middle.png','10 格长墙，中间 2×2 墙身被炮塔替换，塔下面没有残留墙体，两端石墩保留。'],
+ ['奇数格塔位','11_Tower_OddCell.png','从第 3 格开始覆盖 2 格，不限于偶数格起点。'],
+ ['最短可插塔长墙','12_Tower_MinimumRun.png','4 格长墙：两端各保留墙墩所在格，中间 2 格放塔。2 或 3 格长墙没有足够的非墙墩位置。'],
+ ['左墙墩不可覆盖','13_Tower_LeftPierRejected.png','红框覆盖了左端墙墩所在格：拒绝建塔，原墙保持不变。'],
+ ['右墙墩不可覆盖','14_Tower_RightPierRejected.png','红框覆盖了右端墙墩所在格：拒绝建塔，原墙保持不变。'],
+ ['多个炮塔','15_Tower_Multiple.png','一条长墙可以放多个不重叠的塔，各替换自己的 2×2 墙身。'],
+ ['塔位重叠不可建','16_Tower_OverlapRejected.png','两个 2×2 塔位有重叠：拒绝这组布局，不把塔叠在一起。']
 ];
 function select_case(index){const entry=cases[index];document.getElementById('case-title').textContent=entry[0];document.getElementById('caption').textContent=entry[2];document.getElementById('preview').src=entry[1]+'?integer-v2';document.querySelectorAll('button').forEach((button,i)=>button.setAttribute('aria-pressed',i===index));}
-cases.forEach((entry,index)=>{const button=document.createElement('button');button.textContent=entry[0];button.onclick=()=>select_case(index);document.getElementById('cases').append(button);});select_case(3);
+cases.forEach((entry,index)=>{const button=document.createElement('button');button.textContent=entry[0];button.onclick=()=>select_case(index);document.getElementById('cases').append(button);});select_case(10);
 </script></main></html>

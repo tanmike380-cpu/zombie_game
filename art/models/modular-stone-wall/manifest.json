@@ -15,6 +15,13 @@
     "note": "Grid reservation is confirmed. Native art proportions are preserved; final Unity collision geometry is not yet implemented. One-cell internal spans are not independently placeable walls."
   },
   "integer_end_rule": "Reject fractional placement inputs. Stop exactly at the first blocked cell or integer map boundary. Reject the full run if fewer than two cells remain. Repeating middle mesh can be trimmed to the integer endpoint without stretching end piers.",
+  "tower_replacement": {
+    "shared_types": ["cannon", "arrow", "flame"],
+    "footprint_cells": [2, 2],
+    "rule": "Replace occupied middle-wall geometry, do not overlap meshes. Snap to any integer start cell. Protect the first and last cell occupied by the end piers. Reject overlapping existing tower slots.",
+    "preview_asset": "Original imported cannon tower; arrow/flame appearances not yet supplied",
+    "scope": "Blender placement-policy and art preview, not Unity runtime construction"
+  },
   "pending_runtime_work": ["Unity drag input and terrain queries", "fog / outpost coverage / resource checks", "per-section building damage, destruction and NavMesh carving", "corner and gate joins"],
   "combat_balance": "No HP, cost or build-time values introduced. Do not activate stone-wall combat until shared balance is authored and validated.",
   "authoring_script": "tools/art/modular_stone_wall.py",

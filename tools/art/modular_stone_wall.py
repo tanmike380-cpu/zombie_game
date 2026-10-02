@@ -13,6 +13,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 from siege_preview import create_stage, create_material, add_fixture_cube, set_preview_workspace
 from tripo_model_io import point_at
 from wall_layout import plan_wall, verify_layout
+from wall_tower_preview import add_tower_examples, verify_tower_meshes
 
 ROOT = Path(__file__).resolve().parents[2]
 REVIEW = ROOT / "Builds/ArtReview/ModularStoneWall"
@@ -178,7 +179,8 @@ def build_wall_kit():
         bpy.ops.render.render(write_still=True)
         report["examples"][name] = {**plan.to_dict(), "piers": 2 if plan.valid else 0,
                                    "body_pieces": max(0, len(objects)-2), "pier_scale_unchanged": True}
-    bpy.context.window.scene = bpy.data.scenes["03_Long_2x6"]
+    report["tower_replacement"] = add_tower_examples(ROOT,REVIEW,parts,build_run,create_wall_stage,clip_mesh,add_piece)
+    bpy.context.window.scene = bpy.data.scenes["10_Tower_Middle"]
     set_preview_workspace(bpy.context.scene)
     bpy.ops.file.pack_all()
     bpy.ops.outliner.orphans_purge(do_recursive=True)
@@ -217,6 +219,8 @@ def verify_saved_kit():
         end = modules[-1].location.x+max(vertex.co.x for vertex in modules[-1].data.vertices)
         assert abs(end-result["length"]*MODEL_UNITS_PER_TILE) < 1e-5, "Endpoint exceeds approved space"
     assert not any("Fractional" in scene.name for scene in bpy.data.scenes)
+    tower_tests = verify_tower_meshes(report["tower_replacement"])
+    print(f"PASS: {tower_tests['cases']} shared tower placement checks, 7 replacement previews",flush=True)
     print(f"PASS: {len(report['examples'])} wall cases, {verify_layout()['cases']} layout checks, original textures and invariant piers", flush=True)
 
 

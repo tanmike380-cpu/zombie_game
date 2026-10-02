@@ -81,3 +81,42 @@ def verify_layout():
         else:
             raise AssertionError("Non-integer placement was accepted")
     return {"passed": True, "cases": cases, "scope": "art footprint preview, not Unity gameplay"}
+
+
+def plan_tower_slots(wall, slots):
+    """Replace integer 2x2 middle cells, reserving each end pier's occupied grid cell."""
+    placements = []
+    if not wall.valid:
+        return {"valid": False, "reason": "wall is not placeable", "slots": []}
+    for kind, start in slots:
+        start = require_integer(start, "tower start cell")
+        if kind not in ("cannon", "arrow", "flame"):
+            raise ValueError(f"Unsupported wall-mounted tower type: {kind}")
+        if start < 1 or start+2 > wall.length-1:
+            return {"valid": False, "reason": "end-pier cell is protected", "slots": []}
+        if any(start < previous["end"] and start+2 > previous["start"] for previous in placements):
+            return {"valid": False, "reason": "tower footprint already occupied", "slots": []}
+        placements.append({"kind": kind, "start": start, "end": start+2, "depth": 2})
+    return {"valid": True, "reason": "replace wall body; retain end piers",
+            "slots": sorted(placements,key=lambda entry: entry["start"])}
+
+
+def verify_tower_slots():
+    """All three tower types share the same integer replacement and endpoint rules."""
+    cases = 0
+    for kind in ("cannon", "arrow", "flame"):
+        for length in range(2,33):
+            for start in range(-1,length+1):
+                result = plan_tower_slots(plan_wall(length),((kind,start),))
+                assert result["valid"] == (1 <= start and start+2 <= length-1)
+                cases += 1
+    assert plan_tower_slots(plan_wall(8),(("arrow",1),("flame",3),("cannon",5)))["valid"]
+    assert not plan_tower_slots(plan_wall(8),(("arrow",2),("flame",3)))["valid"]
+    assert not plan_tower_slots(plan_wall(8),(("cannon",2),("cannon",2)))["valid"]
+    try:
+        plan_tower_slots(plan_wall(8),(("cannon",2.5),))
+    except ValueError:
+        pass
+    else:
+        raise AssertionError("Fractional tower placement accepted")
+    return {"passed": True, "cases": cases+4, "scope": "Blender integer occupancy preview, not Unity construction"}
