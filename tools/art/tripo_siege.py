@@ -9,7 +9,7 @@ from mathutils import Vector
 sys.path.insert(0, str(Path(__file__).parent))
 from scene_grounding import collect_model_roots, collect_meshes, ground_models, measure_bounds
 from tripo_model_io import audit_model, setup_render, point_at
-from siege_motion import create_headbutt, create_greek_fire, assign_rigid_nozzle, remove_support_feet, measure_rig_signature, FRAME_END
+from siege_motion import create_headbutt, create_greek_fire, assign_rigid_turret, remove_support_feet, measure_rig_signature, FRAME_END
 from siege_preview import create_stage, create_flame_preview, set_preview_workspace
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -82,7 +82,7 @@ def build_previews():
         rig = duplicate_model(source, scene)
         if kind == "GreekFire":
             audit = json.loads((REVIEW / "source-0.json").read_text())
-            assign_rigid_nozzle(collect_meshes(rig)[0], audit)
+            assign_rigid_turret(collect_meshes(rig)[0], audit)
             remove_support_feet(collect_meshes(rig)[0], audit)
             ground_models([rig])
             action = create_greek_fire(rig)
@@ -101,7 +101,7 @@ def build_previews():
         report["models"][kind] = {"source": rig_name, "source_bones_preserved": len(signature),
                                   "action": action.name, "frames": [1, FRAME_END], "fps": 24,
                                   "grounding_samples": samples,
-                                  "weights": "rigid nozzle/base/wheels in preview copy" if kind == "GreekFire" else "unchanged Tripo weights"}
+                                  "weights": "rigid upper assembly/chassis/wheels in preview copy" if kind == "GreekFire" else "unchanged Tripo weights"}
         scene.frame_set(60)
         scene.render.filepath = str(REVIEW / f"{kind}-impact.png")
         bpy.ops.render.render(write_still=True)
@@ -153,8 +153,9 @@ def update_headbutt_preview():
     samples = validate_motion(rig, "Headbutter", signature)
     export_animation(rig, "Headbutter")
     scene.timeline_markers.clear()
-    for frame, name in [(12, "Wind-up"), (40, "Lift lead foot"), (56, "Plant lead foot"),
-                        (60, "HEAVY HEAD IMPACT"), (69, "Recoil"), (84, "Step back"), (112, "Rest")]:
+    for frame, name in [(12, "Wind-up"), (16, "Right foot advances"), (32, "Right foot planted"),
+                        (48, "Left foot planted"), (60, "HEAVY HEAD IMPACT"), (69, "Recoil"),
+                        (80, "Step back"), (112, "Rest")]:
         scene.timeline_markers.new(name, frame=frame)
     # Match the demonstration wall to the forehead contact; lighting remains untouched.
     scene.frame_set(60)
@@ -174,11 +175,41 @@ def update_headbutt_preview():
     report_path = REVIEW / "animation-report.json"
     report = json.loads(report_path.read_text())
     report["models"]["Headbutter"].update(action=action.name, grounding_samples=samples,
-        choreography="Lead foot steps 0.29 model units; hip drives forward; fast strike and recoil; slow recovery")
+        choreography="Right foot advances during anticipation (16-32); left foot plants at 48 before impact at 60; both feet planted during strike")
     report_path.write_text(json.dumps(report, ensure_ascii=False, indent=2))
     scene.frame_set(1)
     bpy.ops.wm.save_as_mainfile(filepath=str(MODELS / "SiegeAnimations.blend"))
     print("Updated headbutter only: step, heavy ram, recoil; materials and lights unchanged", flush=True)
+
+
+def update_greek_fire_preview():
+    """Turn the existing whole upper assembly without rebuilding the model or scene."""
+    scene = bpy.data.scenes["02_GreekFire_Preview"]
+    bpy.context.window.scene = scene
+    scene.frame_set(1)
+    rig = next(obj for obj in scene.objects if obj.type == "ARMATURE")
+    signature = measure_rig_signature(rig)
+    mesh = collect_meshes(rig)[0]
+    audit = audit_model(rig, mesh, REVIEW / "greek-current-audit.json")
+    turret_count = assign_rigid_turret(mesh, audit)
+    action = create_greek_fire(rig)
+    samples = validate_motion(rig, "GreekFire", signature)
+    export_animation(rig, "GreekFire")
+    for obj in list(scene.objects):
+        if obj.name.startswith("PreviewFlame_") and obj.get("review_fixture"):
+            bpy.data.objects.remove(obj, do_unlink=True)
+    create_flame_preview(rig)
+    scene.frame_set(60)
+    scene.render.filepath = str(REVIEW / "GreekFire-impact.png")
+    bpy.ops.render.render(write_still=True)
+    report_path = REVIEW / "animation-report.json"
+    report = json.loads(report_path.read_text())
+    report["models"]["GreekFire"].update(action=action.name, grounding_samples=samples,
+        weights="Rigid complete upper assembly / chassis / four wheels", turret_vertices=turret_count)
+    report_path.write_text(json.dumps(report, ensure_ascii=False, indent=2))
+    scene.frame_set(1)
+    bpy.ops.wm.save_as_mainfile(filepath=str(MODELS / "SiegeAnimations.blend"))
+    print("Updated Greek Fire: rigid upper assembly yaw; chassis, lights and textures preserved", flush=True)
 
 
 def render_reference():
@@ -235,6 +266,8 @@ def save_audit():
 if __name__ == "__main__":
     if "--headbutt" in sys.argv:
         update_headbutt_preview()
+    elif "--greek-fire" in sys.argv:
+        update_greek_fire_preview()
     elif "--build" in sys.argv:
         build_previews()
     elif "--video" in sys.argv:

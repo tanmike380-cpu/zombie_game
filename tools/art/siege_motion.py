@@ -8,6 +8,7 @@ from mathutils import Matrix, Quaternion, Vector
 FRAME_END = 120
 WHEELS = [("bone_12", -.225, .145), ("bone_13", .225, .145),
           ("bone_14", -.225, -.26), ("bone_22", .225, -.26)]
+TURRET_PIVOT = (0, -.19, .35)
 
 
 def interpolate_keys(frame, keys):
@@ -89,7 +90,7 @@ def create_headbutt(rig):
         drive = interpolate_keys(frame, [(1, 0), (12, 0), (39, -.32), (51, -.32),
                                          (60, .44), (62, .44), (69, .20), (82, .12), (112, 0), (120, 0)])
         brace = interpolate_keys(frame, [(1, 0), (42, 1), (63, 1), (95, 0), (120, 0)])
-        hip_y = interpolate_keys(frame, [(1, 0), (12, 0), (39, .15), (51, .15),
+        hip_y = interpolate_keys(frame, [(1, 0), (12, 0), (28, .12), (42, .03), (51, 0),
                                          (60, -.18), (63, -.18), (72, -.09), (84, -.09), (112, 0), (120, 0)])
         hip_z = interpolate_keys(frame, [(1, 0), (39, -.03), (51, -.03),
                                          (60, -.04), (69, -.05), (84, -.035), (112, 0), (120, 0)])
@@ -105,11 +106,14 @@ def create_headbutt(rig):
             rotate_bone(rig, side + "_UpperArm", -drive * .95 + brace * 1.10)
             rotate_bone(rig, side + "_LowerArm", -brace * 1.80)
         key_pose(rig, frame, names)
-        step_y = interpolate_keys(frame, [(1, 0), (40, 0), (56, -.29), (84, -.29), (108, 0), (120, 0)])
-        step_z = interpolate_keys(frame, [(1, 0), (40, 0), (48, .095), (56, 0),
-                                          (84, 0), (96, .075), (108, 0), (120, 0)])
+        step_y = interpolate_keys(frame, [(1, 0), (30, 0), (48, -.29), (94, -.29), (112, 0), (120, 0)])
+        step_z = interpolate_keys(frame, [(1, 0), (30, 0), (39, .095), (48, 0),
+                                          (94, 0), (103, .075), (112, 0), (120, 0)])
+        rear_y = interpolate_keys(frame, [(1, 0), (16, 0), (32, -.12), (80, -.12), (94, 0), (120, 0)])
+        rear_z = interpolate_keys(frame, [(1, 0), (16, 0), (24, .075), (32, 0),
+                                          (80, 0), (87, .065), (94, 0), (120, 0)])
         pose_leg_step(rig, "Left", (0, step_y, step_z))
-        pose_leg_step(rig, "Right", (0, 0, 0))
+        pose_leg_step(rig, "Right", (0, rear_y, rear_z))
         for name in leg_names:
             bone = rig.pose.bones[name]
             bone.keyframe_insert("location", frame=frame)
@@ -117,8 +121,8 @@ def create_headbutt(rig):
     return action
 
 
-def assign_rigid_nozzle(mesh, source_audit):
-    """Bind the existing separate nozzle island rigidly; keep every triangle and UV."""
+def assign_rigid_turret(mesh, source_audit):
+    """Bind complete upper islands to one rigid turret; preserve chassis and all UVs."""
     nozzle = source_audit["components"][0]
     if not (nozzle["count"] == 316 and nozzle["max"][1] > .49):
         raise ValueError("Unexpected Greek-fire topology; re-audit nozzle island before binding")
@@ -129,9 +133,13 @@ def assign_rigid_nozzle(mesh, source_audit):
     nozzle_group = mesh.vertex_groups.get("tripo::Head_0")
     if root_group is None or nozzle_group is None:
         raise ValueError("Expected original Tripo mechanical source groups not found")
-    nozzle_indices = set(nozzle["indices"])
-    root_group.add([index for index in all_indices if index not in nozzle_indices], 1, "REPLACE")
-    nozzle_group.add(list(nozzle_indices), 1, "REPLACE")
+    turret_indices = {index for part in source_audit["components"]
+                      if part["min"][2] > .27 and part["max"][2] > .42
+                      for index in part["indices"]}
+    if not set(nozzle["indices"]).issubset(turret_indices) or len(turret_indices) < 1000:
+        raise ValueError("Upper turret selection must include the boiler, nozzle and fittings")
+    root_group.add([index for index in all_indices if index not in turret_indices], 1, "REPLACE")
+    nozzle_group.add(list(turret_indices), 1, "REPLACE")
     for name, center_x, center_y in WHEELS:
         wheel_indices = []
         for part in source_audit["components"]:
@@ -144,20 +152,25 @@ def assign_rigid_nozzle(mesh, source_audit):
             raise ValueError(f"Wheel identification failed for {name}")
         root_group.remove(wheel_indices)
         mesh.vertex_groups[name].add(wheel_indices, 1, "REPLACE")
-    return len(nozzle_indices)
+    return len(turret_indices)
 
 
 def create_greek_fire(rig):
     """Demonstrate tracking, acquiring a target, firing and returning to center."""
-    action = start_action(rig, "GreekFire_TrackAndSpray_Draft")
+    action = start_action(rig, "GreekFire_UpperTurretTrackAndSpray_Draft")
     for frame in range(1, FRAME_END + 1):
         travel = interpolate_keys(frame, [(1, 0), (18, 0), (90, .22), (100, .22), (120, 0)])
         rig.location.y = travel
         rig.keyframe_insert("location", frame=frame)
-        yaw = interpolate_keys(frame, [(1, 0), (20, .20), (42, -.20),
-                                      (55, .08), (91, .08), (108, 0), (120, 0)])
-        rotate_bone(rig, "tripo::Head_0", yaw, (0, 0, 1))
-        key_pose(rig, frame, ["tripo::Head_0"])
+        yaw = interpolate_keys(frame, [(1, 0), (20, .26), (42, -.26),
+                                      (55, .12), (91, .12), (108, 0), (120, 0)])
+        turret = rig.pose.bones["tripo::Head_0"]
+        pivot = Vector(TURRET_PIVOT)
+        turret.matrix = (Matrix.Translation(pivot) @ Matrix.Rotation(yaw, 4, "Z")
+                         @ Matrix.Translation(-pivot) @ turret.bone.matrix_local)
+        bpy.context.view_layer.update()
+        turret.keyframe_insert("location", frame=frame)
+        turret.keyframe_insert("rotation_quaternion", frame=frame)
         for name, center_x, center_y in WHEELS:
             bone = rig.pose.bones[name]
             center = Vector((center_x, center_y, .137))
