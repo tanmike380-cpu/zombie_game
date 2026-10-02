@@ -19,6 +19,10 @@ namespace ZombieGame.FrontierTests
         }
         private static void check_focus(FrontierGame game)
         {
+            require(RtsCameraPan.frame_seconds(10)==.05f,"loading hitch does not jump camera across map");
+            require(RtsCameraPan.frame_seconds(.016f)==.016f,"normal edge pan delta preserved");
+            require(!FrontierHud.show_building_health(new BattleBuilding{health=300,max_health=300}),"full building health hidden");
+            require(FrontierHud.show_building_health(new BattleBuilding{health=200,max_health=300}),"damaged building health retained");
             var positions=new Vector3[30];var health=new float[30];var selected=new bool[30];
             for(int i=0;i<30;i++){positions[i]=i<24?new Vector3(i%6,0,i/6):new Vector3(50+i*2,0,60);health[i]=100;selected[i]=true;}
             require(SelectionFocus.find(positions,health,selected,30).x<6,"main cluster beats distant reinforcements");

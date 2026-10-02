@@ -21,6 +21,8 @@ namespace ZombieGame.Combat
         private readonly bool[] recruited;
         public bool is_reserve(int index) => index<soldier_count?!recruited[index]:!zombie_deployed[index-soldier_count];
         public Func<int, int> forced_target;
+        // Authored friendly parapets permit ranged defense, never melee or enemy vision.
+        public readonly System.Collections.Generic.HashSet<Bounds> friendly_parapets = new System.Collections.Generic.HashSet<Bounds>();
         // Optional economy gate. Benchmarks without an economy retain their existing behaviour.
         public Func<int, bool> try_supply_shot;
         public readonly Vector3[] positions;
@@ -260,7 +262,7 @@ namespace ZombieGame.Combat
                 if (health[i] > 0) (i < soldier_count ? soldier_grid : zombie_grid).insert(i, positions[i]);
         }
 
-        private int nearest(CombatSpatialGrid grid, Vector3 origin, float radius)
+        private int nearest(CombatSpatialGrid grid, Vector3 origin, float radius, bool ranged = false)
         {
             int best = -1; float squared = radius * radius;
             for (int z = CombatSpatialGrid.cell(origin.z - radius); z <= CombatSpatialGrid.cell(origin.z + radius); z++)
@@ -269,18 +271,26 @@ namespace ZombieGame.Combat
                     {
                         if (health[i] <= 0) continue;
                         float length = (positions[i] - origin).sqrMagnitude;
-                        if (length <= squared && visible(origin, positions[i])) { squared = length; best = i; }
+                        if (length <= squared && visible(origin, positions[i], ranged)) { squared = length; best = i; }
                     }
             return best;
         }
 
-        private bool visible(Vector3 from, Vector3 to)
+        public bool ranged_line_clear(Vector3 from, Vector3 to) => visible(from, to, true);
+
+        private bool human_line_clear(int index, Vector3 to) => visible(positions[index], to, !uses_melee(index));
+
+        private bool visible(Vector3 from, Vector3 to, bool ranged = false)
         {
             from.y = to.y = 1;
             Vector3 delta = to - from; float distance = delta.magnitude;
             if (distance < .001f) return true;
             var ray = new Ray(from, delta / distance);
-            foreach (var wall in crowd.walls) if (wall.IntersectRay(ray, out float hit) && hit <= distance) return false;
+            foreach (var wall in crowd.walls)
+            {
+                if (ranged && friendly_parapets.Contains(wall)) continue;
+                if (wall.IntersectRay(ray, out float hit) && hit <= distance) return false;
+            }
             return true;
         }
 
@@ -289,7 +299,7 @@ namespace ZombieGame.Combat
             for (int i = 0; i < soldier_count; i++)
             {
                 if (health[i] <= 0) continue;
-                int target = playable ? update_player_order(i, now) : nearest(zombie_grid, positions[i], human_range(i));
+                int target = playable ? update_player_order(i, now) : nearest(zombie_grid, positions[i], human_range(i), !uses_melee(i));
                 if (target >= 0) soldier_facing[i] = positions[target] - positions[i];
                 if (target < 0 || now < next_attack[i]) continue;
                 if(uses_melee(i))
@@ -376,7 +386,7 @@ namespace ZombieGame.Combat
                 Shot shot = projectiles[i];
                 if (health[shot.target] <= 0) { projectiles[i].active = false; continue; }
                 Vector3 next = Vector3.MoveTowards(shot.position, positions[shot.target] + Vector3.up, stats_for(shot.source).projectile_speed * delta);
-                if (!visible(shot.position, next)) { projectiles[i].active = false; continue; }
+                if (!ranged_line_clear(shot.position, next)) { projectiles[i].active = false; continue; }
                 if ((next - positions[shot.target] - Vector3.up).sqrMagnitude <= .04f)
                 { hits++; last_combat_time = now; apply_human_projectile(shot,now); projectiles[i].active = false; }
                 else { shot.position = next; projectiles[i] = shot; }

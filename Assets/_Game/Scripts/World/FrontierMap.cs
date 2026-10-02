@@ -26,7 +26,7 @@ namespace ZombieGame.World
     }
 
     /// <summary>Deterministic 256-tile frontier. Visual regions and navigation blockers share one geometry source.</summary>
-    public sealed class FrontierMap
+    public sealed partial class FrontierMap
     {
         public const int SIZE = 256, SOLDIERS = 400, HUMAN_CAPACITY = 600, ZOMBIES = 5000;
         public readonly List<LandscapeRegion> regions = new List<LandscapeRegion>();
@@ -38,9 +38,20 @@ namespace ZombieGame.World
         public readonly string[] unit_ids = new string[HUMAN_CAPACITY+ZOMBIES];
         public Bounds[] blockers;
         public readonly ResourceSite[] resource_sites;
+        public readonly bool coastal;
 
-        public FrontierMap()
+        public FrontierMap(bool coastal=false)
         {
+            this.coastal=coastal;
+            if(coastal)
+            {
+                spawns=new Vector3[HUMAN_CAPACITY+2000];explosive=new bool[spawns.Length];unit_ids=new string[spawns.Length];
+                build_coastal_regions();
+                resource_sites=ResourceDistribution.populate(this);
+                blockers=regions.ConvertAll(region=>region.bounds).ToArray();
+                spawn_coastal_units();
+                return;
+            }
             // A connected meandering river stops short of the north edge: no bridge or invisible crossing.
             for (int z=-128;z<=76;z+=4)
                 regions.Add(new LandscapeRegion(-24+Mathf.Sin(z*.035f)*12,z,13,4.05f,.35f,LandscapeKind.River));

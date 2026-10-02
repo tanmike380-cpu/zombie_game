@@ -6,6 +6,8 @@ namespace ZombieGame.Controls
     /// not the editor or desktop bounds. Thin physical edges remain active over the RTS HUD.</summary>
     public static class RtsCameraPan
     {
+        /// <summary>Loading stalls must not turn one edge contact into a map-sized camera jump.</summary>
+        public static float frame_seconds(float delta)=>Mathf.Clamp(delta,0,.05f);
         public static Vector2 edge_direction(Vector2 mouse,Vector2 size,bool focused,float edge_pixels=16)
         {
             // Native right/top edge coordinates can equal the drawable width/height.

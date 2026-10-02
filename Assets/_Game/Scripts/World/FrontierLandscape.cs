@@ -16,6 +16,7 @@ namespace ZombieGame.World
         private readonly System.Random random=new System.Random(20260920);
         private readonly VisualStyle style=VisualStyles.current;
         private readonly FreeEnvironmentArt environment_art;
+        private readonly bool imported_architecture;
         private Color GRASS=>style.color(style.grass);
         private Color WATER=>style.id=="fortress"?new Color(.12f,.27f,.32f):style.id=="dusk"?new Color(.19f,.29f,.25f):new Color(.23f,.38f,.39f);
         private Color TIMBER=>style.color(style.timber);
@@ -24,11 +25,13 @@ namespace ZombieGame.World
 
         public FrontierLandscape(FrontierMap map, Transform parent, Shader shader)
         {
+            imported_architecture=map.coastal;
             environment_art=new FreeEnvironmentArt(shader);
             root=new GameObject("Frontier landscape - Eastern settlement");root.transform.SetParent(parent,false);
             var primitive=GameObject.CreatePrimitive(PrimitiveType.Cube);cube=primitive.GetComponent<MeshFilter>().sharedMesh;
             Object.Destroy(primitive);cone=build_cone();roof=build_roof();owned_meshes.Add(cone);owned_meshes.Add(roof);
             rock=build_rock();owned_meshes.Add(rock);
+            if(map.coastal)add(cube,new Vector3(0,-.24f,0),new Vector3(700,.02f,700),WATER);
             for(int z=-124;z<128;z+=8) for(int x=-124;x<128;x+=8)
                 add(cube,new Vector3(x,-.18f,z),new Vector3(8,.35f,8),GRASS);
             // Settlement roads are purely visual and do not restrict player commands.
@@ -37,12 +40,13 @@ namespace ZombieGame.World
             foreach(var region in map.regions)if(!region.label.StartsWith("BUILT:"))
             {
                 if(region.kind!=LandscapeKind.Building){build_region(region);continue;}
+                if(map.coastal){building_models[region.bounds]=ImportedArchitecture.place(region,root.transform);continue;}
                 flush(shader);
                 var building=new GameObject(region.label);building.transform.SetParent(root.transform,false);
                 build_region(region);flush(shader,building.transform);building_models[region.bounds]=building;
             }
             // Established farm and exposed resource seams; throughput is documented in the scenario economy config.
-            for(int i=0;i<12;i++) add(cube,new Vector3(-115+i*.65f,.04f,-112),new Vector3(.3f,.09f,12),new Color(.57f,.49f,.20f));
+            if(!map.coastal)for(int i=0;i<12;i++) add(cube,new Vector3(-115+i*.65f,.04f,-112),new Vector3(.3f,.09f,12),new Color(.57f,.49f,.20f));
             foreach(var site in map.resource_sites)
             {
                 if(site.kind=="Stone"&&!environment_art.place_rocks(root.transform,site.position,site.radius*1.8f))
@@ -59,12 +63,15 @@ namespace ZombieGame.World
                 if(map.blocked(p,.3f))continue;
                 add(rock,p,new Vector3(.12f,.06f,.2f),i%2==0?STONE*.7f:GRASS*.8f);
             }
-            add_settlement_details();flush(shader);
+            if(map.coastal)ImportedArchitecture.place_equipment_display(root.transform);
+            else add_settlement_details();
+            flush(shader);
         }
 
         public readonly Dictionary<Bounds,GameObject> building_models=new Dictionary<Bounds,GameObject>();
         public GameObject create_facility(string id,Vector2 size,Shader shader)
         {
+            if(imported_architecture)return ImportedArchitecture.place(new LandscapeRegion(0,0,size.x,size.y,3,LandscapeKind.Building,id=="food"?"PASTURE":id=="wood"?"LUMBER CAMP":"WORKSHOP"),root.transform);
             var model=new GameObject("Placed "+id);model.transform.SetParent(root.transform,false);
             build_facility_geometry(new Bounds(new Vector3(0,1.5f,0),new Vector3(size.x,3,size.y)),id);
             flush(shader,model.transform);return model;

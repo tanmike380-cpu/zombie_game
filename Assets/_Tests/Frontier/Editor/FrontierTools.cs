@@ -19,7 +19,7 @@ namespace ZombieGame.EditorTools
             CharacterBake.ensure_models();
             if(File.Exists(SCENE))EditorSceneManager.OpenScene(SCENE);else create_scene();
         }
-        public static void create_scene()
+        public static void create_scene(string output_path=SCENE)
         {
             Directory.CreateDirectory(Path.GetDirectoryName(SCENE));
             var scene=EditorSceneManager.NewScene(NewSceneSetup.EmptyScene,NewSceneMode.Single);
@@ -34,7 +34,7 @@ namespace ZombieGame.EditorTools
             const string material_path="Assets/_Game/Resources/FrontierFog.mat";
             game.fog_template=AssetDatabase.LoadAssetAtPath<Material>(material_path);
             if(game.fog_template==null){game.fog_template=new Material(Shader.Find("ZombieGame/WorldFog"));AssetDatabase.CreateAsset(game.fog_template,material_path);}
-            EditorSceneManager.SaveScene(scene,SCENE);AssetDatabase.SaveAssets();
+            EditorSceneManager.SaveScene(scene,output_path);AssetDatabase.SaveAssets();
         }
         public static void build_player()
         {

@@ -40,7 +40,7 @@ namespace ZombieGame.Combat
             patrol_starts[index] = positions[index]; patrol_ends[index] = goal;
             soldier_repath_at[index] = 0;
             if (order == SoldierOrder.Stop) return true;
-            if (order == SoldierOrder.AttackTarget && (goal - positions[index]).sqrMagnitude <= Mathf.Pow(human_target_range(index,target),2) && visible(positions[index], goal)) return true;
+            if (order == SoldierOrder.AttackTarget && (goal - positions[index]).sqrMagnitude <= Mathf.Pow(human_target_range(index,target),2) && human_line_clear(index, goal)) return true;
             if (walk_soldier(index, goal, .15f, true)) return true;
             orders[index] = SoldierOrder.Stop; return false;
         }
@@ -83,10 +83,10 @@ namespace ZombieGame.Combat
                 { follow_soldier_route(index); return -1; }
                 order_goals[index] = positions[target];
             }
-            else target = nearest(zombie_grid, positions[index], order == SoldierOrder.Stop&&!uses_melee(index) ? human_range(index) : UnitBalance.config.human_sight);
+            else target = nearest(zombie_grid, positions[index], order == SoldierOrder.Stop&&!uses_melee(index) ? human_range(index) : UnitBalance.config.human_sight, !uses_melee(index));
             if (target >= 0)
             {
-                bool line_clear = visible(positions[index], positions[target]);
+                bool line_clear = human_line_clear(index, positions[target]);
                 float target_range = human_target_range(index,target);
                 if ((positions[index] - positions[target]).sqrMagnitude <= target_range * target_range && line_clear)
                 { stop_soldier(index); return target; }

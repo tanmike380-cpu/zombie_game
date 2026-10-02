@@ -98,7 +98,7 @@ namespace ZombieGame.EditorTools
             finally { UnityEngine.Object.DestroyImmediate(model); }
         }
 
-        private static void bake_model(GameObject model, Texture2D texture, string model_path = MODEL_PATH, string frame_path = FRAME_PATH, bool use_pbr = true)
+        public static void bake_model(GameObject model, Texture2D texture, string model_path = MODEL_PATH, string frame_path = FRAME_PATH, bool use_pbr = true, bool imported_colour=false, bool exploder_motion=false)
         {
             foreach (var animator in model.GetComponentsInChildren<Animator>()) animator.enabled = false;
             var clips = AssetDatabase.LoadAllAssetsAtPath(model_path).OfType<AnimationClip>()
@@ -120,24 +120,27 @@ namespace ZombieGame.EditorTools
             frames.material = use_pbr ? TripoPbrMaterial.create(texture, "Assets/_Game/Art/TripoCrossbow/Textures")
                 : new Material(Shader.Find("Standard")) { name = "Tripo exploder original color", mainTexture = texture, enableInstancing = true };
             if (!use_pbr) frames.material.SetFloat("_Glossiness", .15f);
+            if(imported_colour)frames.material.shader=Shader.Find("ZombieGame/ImportedColour");
             AssetDatabase.AddObjectToAsset(frames.material, frames);
-            bool exploder = frame_path == EXPLODER_PATH;
+            bool exploder = exploder_motion || frame_path == EXPLODER_PATH;
             frames.poses = new PoseFrames[exploder ? 8 : 7];
             // Melee slots are explicit presentation fallbacks, not a new melee animation.
             string[] names = exploder ? new[] { "Idle", "Walk", "Attack", "Idle", "Attack", "Idle", "Walk", "Run" }
                 : new[] { "Idle", "Run", "Attack", "Idle", "Attack", "Idle", "Run" };
             float normalization = 1;
             var transforms = model.GetComponentsInChildren<Transform>();
-            Vector3 forward = (transforms.First(item => item.name == "Left_Eye").position + transforms.First(item => item.name == "Right_Eye").position) * .5f
-                - transforms.First(item => item.name == "Head").position;
+            var left_eye=transforms.FirstOrDefault(item=>item.name=="Left_Eye");
+            var right_eye=transforms.FirstOrDefault(item=>item.name=="Right_Eye");
+            var head=transforms.FirstOrDefault(item=>item.name=="Head");
+            Vector3 forward=left_eye!=null&&right_eye!=null&&head!=null?(left_eye.position+right_eye.position)*.5f-head.position:Vector3.forward;
             forward.y = 0;
             var facing = Quaternion.FromToRotation(forward.normalized, Vector3.forward);
             Debug.Log("[TripoArcher] authored facing=" + forward.normalized);
-            Transform bow = transforms.First(item => item.name == "Right_Hand");
+            Transform bow = transforms.FirstOrDefault(item => item.name == "Right_Hand")??model.transform;
             for (int pose = 0; pose < names.Length; pose++)
             {
                 if (pose >= 4 && pose < 7) { frames.poses[pose] = frames.poses[pose == 4 ? 2 : pose == 5 ? 0 : 1]; continue; }
-                var clip = clips.FirstOrDefault(item => item.name == names[pose] || item.name.EndsWith("|" + names[pose]));
+                var clip = clips.FirstOrDefault(item => item.name == names[pose] || item.name.EndsWith("|" + names[pose]) || item.name.EndsWith("_"+names[pose]));
                 if (clip == null) throw new InvalidOperationException("Missing Tripo clip: " + names[pose]);
                 var sequence = new PoseFrames { source_clip = clip.name, duration = clip.length,
                     frames = new Mesh[24], muzzle_positions = new Vector3[24] };

@@ -11,6 +11,7 @@ namespace ZombieGame.World
         private FrontierLandscape landscape;
         private readonly Dictionary<BattleBuilding,PlacedFacility> placed=new Dictionary<BattleBuilding,PlacedFacility>();
         private readonly Dictionary<BattleBuilding,GameObject> ruins=new Dictionary<BattleBuilding,GameObject>();
+        private readonly Dictionary<BattleBuilding,GameObject> navigation_obstacles=new Dictionary<BattleBuilding,GameObject>();
         private readonly Material ruin_material;
         public BattleBuilding headquarters {get;private set;}
         public FrontierStructures(FrontierGame game,FrontierLandscape landscape,Shader shader)
@@ -21,6 +22,8 @@ namespace ZombieGame.World
             {
                 if(region.kind!=LandscapeKind.Building)continue;
                 var building=game.current.add_building_target(region.bounds,region.label,region.label=="COMMAND HALL");
+                if(game.map.coastal)navigation_obstacles.Add(building,game.current.crowd.add_building(region.bounds));
+                if(game.map.coastal&&region.label.Contains("WALL"))game.current.friendly_parapets.Add(region.bounds);
                 if(building.headquarters)headquarters=building;
             }
             game.current.building_infected=infect_building;
@@ -46,6 +49,13 @@ namespace ZombieGame.World
         private void infect_building(BattleBuilding building)
         {
             hide_model(building);
+            game.current.friendly_parapets.Remove(building.bounds);
+            if(navigation_obstacles.TryGetValue(building,out var obstacle))
+            {
+                game.current.crowd.remove_building(building.bounds,obstacle);navigation_obstacles.Remove(building);
+                game.map.regions.RemoveAll(region=>region.bounds==building.bounds);
+                game.map.blockers=game.map.regions.ConvertAll(region=>region.bounds).ToArray();
+            }
             var ruin=GameObject.CreatePrimitive(PrimitiveType.Cube);ruin.name="Infected ruin: "+building.label;
             Object.Destroy(ruin.GetComponent<Collider>());ruin.transform.SetParent(game.transform,false);
             ruin.transform.position=new Vector3(building.bounds.center.x,.3f,building.bounds.center.z);

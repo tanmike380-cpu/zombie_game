@@ -20,7 +20,7 @@ namespace ZombieGame.World
         {
             foreach(var building in game.current.buildings)
             {
-                if(building.health<=0&&!building.infected)continue;
+                if(!show_building_health(building))continue;
                 var point=building.bounds.center;
                 if(!game.reveal_map&&!game.current_fog.is_visible(point)&&!building.headquarters)continue;
                 point.y=building.bounds.max.y+1;
@@ -35,6 +35,8 @@ namespace ZombieGame.World
             var area=new Rect(Screen.width/2-280*scale,55*scale,560*scale,64*scale);panel(area);
             GUI.Label(area,"镇守府失守 · 防守失败\n可继续移动镜头观察战场；重新开始请重启本局",new GUIStyle(title){alignment=TextAnchor.MiddleCenter});
         }
+        public static bool show_building_health(ZombieGame.Combat.BattleBuilding building)
+            =>building.infected||(building.health>0&&building.health<building.max_health);
         private void draw_resource_labels()
         {
             foreach(var site in game.map.resource_sites)

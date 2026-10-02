@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -8,6 +9,7 @@ namespace ZombieGame.Presentation
     public sealed class CharacterCrowdRenderer
     {
         private readonly CharacterFrames[] characters;
+        private readonly Dictionary<string,int> imported_indices=new Dictionary<string,int>();
         private readonly Matrix4x4[][] matrices;
         private readonly int[] counts;
         private readonly int frames_per_pose;
@@ -18,10 +20,12 @@ namespace ZombieGame.Presentation
         public int submitted { get; private set; }
         public int culled { get; private set; }
 
-        public CharacterCrowdRenderer(int capacity,string style=null,CharacterFrames archer_override=null,string override_unit="archer",CharacterFrames exploder_override=null)
+        public CharacterCrowdRenderer(int capacity,string style=null,CharacterFrames archer_override=null,string override_unit="archer",CharacterFrames exploder_override=null,ImportedRoster roster=null)
         {
             if(capacity<1)throw new ArgumentOutOfRangeException(nameof(capacity));this.capacity=capacity;
-            characters = new CharacterFrames[8];set_style(style);
+            characters = new CharacterFrames[8+(roster==null?0:roster.units.Length)];set_style(style);
+            if(roster!=null)for(int i=0;i<roster.units.Length;i++)
+            {if(roster.units[i].frames==null)throw new InvalidOperationException("Missing imported animation: "+roster.units[i].unit_id);imported_indices.Add(roster.units[i].unit_id,8+i);characters[8+i]=roster.units[i].frames;}
             if(archer_override!=null)characters[human_index(override_unit)]=archer_override;
             if(exploder_override!=null)characters[2]=exploder_override;
             if (Array.Exists(characters,c=>c==null)) throw new InvalidOperationException("Bake character models before enabling animated crowd");
@@ -60,10 +64,12 @@ namespace ZombieGame.Presentation
             if(cull_to_view)GeometryUtility.CalculateFrustumPlanes(view,view_planes);
         }
 
-        public void add(bool human, CharacterPose pose, float age, Vector3 position, Quaternion rotation, bool explosive = false,float model_scale=1,string human_id=null)
+        public void add(bool human, CharacterPose pose, float age, Vector3 position, Quaternion rotation, bool explosive = false,float model_scale=1,string human_id=null,float attack_window=0)
         {
-            int character = human ? human_index(human_id) : explosive ? 2 : 1;
+            int character = human_id!=null&&imported_indices.TryGetValue(human_id,out int imported)?imported:human ? human_index(human_id) : explosive ? 2 : 1;
             if((int)pose>=characters[character].poses.Length) pose=CharacterPose.Run;
+            if(character>=8&&attack_window>0&&(pose==CharacterPose.Attack||pose==CharacterPose.MeleeAttack))
+                age*=characters[character].poses[(int)pose].duration/attack_window;
             int frame = characters[character].frame_index(pose, age);
             Matrix4x4 matrix = Matrix4x4.TRS(position, rotation, Vector3.one*model_scale);
             if(cull_to_view&&!is_visible(characters[character].poses[(int)pose].frames[frame].bounds,matrix))

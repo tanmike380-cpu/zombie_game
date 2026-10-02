@@ -78,7 +78,7 @@ namespace ZombieGame.Combat
             Vector3 destination=point+outward.normalized*(UnitBalance.navigation_radius(stats)+.25f);
             if(building_targets[index]!=best||(memories[index]-destination).sqrMagnitude>1||
                 (!needs_path[index]&&agent.enabled&&agent.isOnNavMesh&&!agent.pathPending&&now>=zombie_repath_at[index]&&
-                    (!agent.hasPath||agent.pathStatus!=NavMeshPathStatus.PathComplete||agent.remainingDistance<=agent.stoppingDistance+.1f)))
+                    (!agent.hasPath||agent.pathStatus==NavMeshPathStatus.PathInvalid||agent.remainingDistance<=agent.stoppingDistance+.1f)))
             {
                 var filter=new NavMeshQueryFilter{agentTypeID=agent.agentTypeID,areaMask=NavMesh.AllAreas};
                 if(NavMesh.SamplePosition(destination,out var hit,3,filter))destination=hit.position;

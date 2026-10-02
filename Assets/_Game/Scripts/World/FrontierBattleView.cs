@@ -20,9 +20,9 @@ namespace ZombieGame.World
         private readonly int[] counts=new int[5];
         private readonly float[] seen_shots,death_started;
 
-        public FrontierBattleView(int capacity,Transform parent,Shader shader)
+        public FrontierBattleView(int capacity,Transform parent,Shader shader,ImportedRoster roster=null)
         {
-            characters=new CharacterCrowdRenderer(capacity,VisualStyles.current.id);effects=new MusketEffects(parent);
+            characters=new CharacterCrowdRenderer(capacity,VisualStyles.current.id,roster:roster);effects=new MusketEffects(parent);
             explosions=new ExplosionFeedback(shader);
             seen_shots=new float[capacity];death_started=new float[capacity];
             for(int i=0;i<capacity;i++) seen_shots[i]=float.NegativeInfinity;
@@ -33,7 +33,7 @@ namespace ZombieGame.World
         public void set_style(){characters.set_style(VisualStyles.current.id);}
         public void draw(BattleSimulation battle,CombatFog fog,bool reveal)
         {
-            characters.begin_frame();Array.Clear(counts,0,counts.Length);
+            characters.begin_frame(Camera.main);Array.Clear(counts,0,counts.Length);
             for(int i=0;i<battle.total_count;i++)
             {
                 if(battle.is_reserve(i))continue;
@@ -54,7 +54,8 @@ namespace ZombieGame.World
                 var pose=moving?CharacterPose.Run:age<.4f?CharacterPose.Attack:CharacterPose.Idle;
                 if(!human) pose=ZombieAnimation.choose_pose(battle,i,Time.time);
                 if(human&&battle.uses_melee(i))pose=moving?CharacterPose.MeleeRun:age<.55f&&battle.last_attack_melee[i]?CharacterPose.MeleeAttack:CharacterPose.MeleeIdle;
-                characters.add(human,pose,pose==CharacterPose.Attack||pose==CharacterPose.MeleeAttack?age:Time.time+i*.137f,battle.positions[i],rotation,battle.exploder[i],model_scale,battle.stats_for(i).id);
+                float attack_window=human?(battle.uses_melee(i)?.55f:.4f):battle.exploder[i]?battle.stats_for(i).fuse_seconds:Mathf.Min(.65f,battle.stats_for(i).attack_interval);
+                characters.add(human,pose,pose==CharacterPose.Attack||pose==CharacterPose.MeleeAttack?age:Time.time+i*.137f,battle.positions[i],rotation,battle.exploder[i],model_scale,battle.stats_for(i).id,attack_window);
                 if(human&&battle.stats_for(i).ammunition_type=="gunpowder"&&!battle.last_attack_melee[i]&&battle.attack_started_at[i]>seen_shots[i])
                 { seen_shots[i]=battle.attack_started_at[i];effects.fire(characters.human_muzzle(battle.positions[i],rotation),rotation*Vector3.forward); }
             }
