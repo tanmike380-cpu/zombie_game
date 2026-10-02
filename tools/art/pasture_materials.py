@@ -53,12 +53,12 @@ def add_crop_stalk(vertices, faces, shades, base, rng, height):
 
 
 def is_crop_surface(hit, normal):
-    """Mask only the existing raised plateau; reject paths, fences, roofs and props."""
-    if hit is None or normal.z <= .95:
+    """Include raised bed shoulders, but reject low paths, roofs and fence faces."""
+    if hit is None or normal.z <= .25:
         return False
-    main_bed = -.36 < hit.x < .15 and -.35 < hit.y < .25 and .0720 < hit.z < .0745
-    front_bed = -.25 < hit.x < .06 and -.405 < hit.y < -.35 and .060 < hit.z < .075
-    return (main_bed or front_bed) and (hit.y+.43) % .095 > .009
+    main_bed = -.38 < hit.x < .18 and -.35 < hit.y < .27 and .025 < hit.z < .075
+    front_bed = -.27 < hit.x < .08 and -.42 < hit.y < -.35 and .025 < hit.z < .075
+    return main_bed or front_bed
 
 
 def add_straw_cover(obj):
@@ -66,15 +66,20 @@ def add_straw_cover(obj):
     rng = random.Random(2042)
     tree = BVHTree.FromPolygons([v.co for v in obj.data.vertices], [list(p.vertices) for p in obj.data.polygons])
     vertices, faces, shades, roots = [], [], [], []
-    for row in range(106):
-        for column in range(82):
-            x = -.36+column*.0062+rng.uniform(-.002,.002)
-            y = -.41+row*.0062+rng.uniform(-.002,.002)
+    slope_count = 0
+    for row in range(113):
+        for column in range(91):
+            x = -.38+column*.0062+rng.uniform(-.002,.002)
+            y = -.42+row*.0062+rng.uniform(-.002,.002)
             hit, normal, _, _ = tree.ray_cast(Vector((x,y,.6)), Vector((0,0,-1)))
             if not is_crop_surface(hit, normal):
                 continue
             # Closely spaced planted rows, with gently correlated canopy height.
-            height = .024+.005*math.sin(x*32+y*16)+rng.uniform(-.004,.004)
+            slope = normal.z < .95 or hit.z < .071
+            if slope and rng.random() < .12:
+                continue
+            height = (.014 if slope else .024)+.003*math.sin(x*32+y*16)+rng.uniform(-.003,.003)
+            slope_count += int(slope)
             add_crop_stalk(vertices,faces,shades,hit+Vector((0,0,.0004)),rng,height)
             roots.append(tuple(hit))
     if not roots:
@@ -100,5 +105,6 @@ def add_straw_cover(obj):
         polygon.material_index = shade
     straw["stalk_count"] = len(roots)
     straw["crop_only"] = True
+    straw["slope_stalk_count"] = slope_count
     straw["root_z_range"] = [min(p[2] for p in roots),max(p[2] for p in roots)]
     return straw

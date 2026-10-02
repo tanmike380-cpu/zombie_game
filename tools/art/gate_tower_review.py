@@ -200,6 +200,7 @@ def build_pasture_scene(source):
                    "straw_triangles": sum(len(p.vertices)-2 for p in straw.data.polygons),
                    "source_geometry_unchanged": True, "source_materials_unchanged": True,
                    "stalk_count": straw["stalk_count"], "root_z_range": list(straw["root_z_range"]),
+                   "slope_stalk_count": straw["slope_stalk_count"],
                    "source_texture_hashes": texture_hashes(source)}
 
 
@@ -340,7 +341,8 @@ def verify_saved_review():
     assert [tuple(v.co) for v in obj.data.vertices] == [tuple(v.co) for v in original.data.vertices]
     assert list(obj.data.materials) == list(original.data.materials)
     assert texture_hashes(obj) == report["pasture"]["source_texture_hashes"]
-    assert report["pasture"]["root_z_range"][0] > .060
+    assert .025 < report["pasture"]["root_z_range"][0] < .060
+    assert report["pasture"]["slope_stalk_count"] > 100
     assert report["pasture"]["root_z_range"][1] < .075
     print(f"PASS: {verify_passage()['cases']} permission checks, {FRAME_END} frames, unchanged tower texture and pasture geometry", flush=True)
 
