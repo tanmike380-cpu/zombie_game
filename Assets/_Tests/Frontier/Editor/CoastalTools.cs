@@ -33,6 +33,16 @@ namespace ZombieGame.EditorTools
             if(report.summary.result!=BuildResult.Succeeded)throw new InvalidOperationException("Coastal defense build failed");
             Debug.Log("[CoastalBuild] PASS imported roster, original colour, shared game systems");
         }
+        public static void build_regressions()
+        {
+            var scene=EditorSceneManager.NewScene(NewSceneSetup.DefaultGameObjects,NewSceneMode.Single);
+            new GameObject("Coastal regressions").AddComponent<ZombieGame.FrontierTests.CoastalRegressionChecks>();
+            const string scene_path="Assets/_Tests/Frontier/Scenes/CoastalRegressions.unity";
+            EditorSceneManager.SaveScene(scene,scene_path);
+            var report=BuildPipeline.BuildPlayer(new BuildPlayerOptions{scenes=new[]{scene_path},locationPathName="Builds/CoastalRegressions.app",target=BuildTarget.StandaloneOSX});
+            if(report.summary.result!=BuildResult.Succeeded)throw new InvalidOperationException("Coastal regression build failed");
+        }
+        public static void build_verified_players(){rebuild_player();build_regressions();}
 
         public static void import_assets()
         {
@@ -55,7 +65,7 @@ namespace ZombieGame.EditorTools
                     if(record.id=="GreekFire")
                     {
                         foreach(var animator in model.GetComponentsInChildren<Animator>())animator.enabled=false;
-                        model.AddComponent<ImportedAnimationDisplay>().clip=AssetDatabase.LoadAllAssetsAtPath(path).OfType<AnimationClip>().First(clip=>clip.name=="Attack");
+                        AssetDatabase.LoadAllAssetsAtPath(path).OfType<AnimationClip>().First(clip=>clip.name=="Attack").SampleAnimation(model,0);
                     }
                     PrefabUtility.SaveAsPrefabAsset(model,$"{GENERATED}/{record.id}.prefab");
                     string unit_id=unit_for(record.id);
@@ -108,7 +118,14 @@ namespace ZombieGame.EditorTools
                 var material=AssetDatabase.LoadAssetAtPath<Material>(path);
                 if(material==null){material=new Material(Shader.Find("ZombieGame/ImportedColour"));AssetDatabase.CreateAsset(material,path);}
                 material.enableInstancing=true;material.shader=Shader.Find("ZombieGame/ImportedColour");
-                if(!string.IsNullOrEmpty(item.texture)){material.mainTexture=AssetDatabase.LoadAssetAtPath<Texture2D>($"{SOURCE}/{record.id}/{item.texture}");material.color=Color.white;}
+                if(!string.IsNullOrEmpty(item.texture))
+                {
+                    string texture_path=$"{SOURCE}/{record.id}/{item.texture}";
+                    var importer=(TextureImporter)AssetImporter.GetAtPath(texture_path);
+                    if(importer.textureCompression!=TextureImporterCompression.Uncompressed||importer.maxTextureSize!=8192)
+                    {importer.textureCompression=TextureImporterCompression.Uncompressed;importer.maxTextureSize=8192;importer.anisoLevel=8;importer.filterMode=FilterMode.Trilinear;importer.SaveAndReimport();}
+                    material.mainTexture=AssetDatabase.LoadAssetAtPath<Texture2D>(texture_path);material.color=Color.white;
+                }
                 else material.color=new Color(item.color[0],item.color[1],item.color[2],1);
                 EditorUtility.SetDirty(material);materials[item.name]=material;
             }

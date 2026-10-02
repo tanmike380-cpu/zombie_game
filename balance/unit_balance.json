@@ -12,6 +12,9 @@
   "zombie_attack_move_follow_through": 4,
   "ammunition_depot_radius": 20,
   "chase_repath_seconds": 0.15,
+  "zombie_queue_probe_seconds": 0.15,
+  "zombie_queue_hold_seconds": 0.35,
+  "zombie_queue_clearance": 0.18,
   "units": [
     {
       "id": "firearm_infantry",
@@ -284,19 +287,57 @@
       "map_revealed": true
     },
     {
+      "id": "greek_fire",
+      "name_zh": "希腊火（临时平衡）",
+      "implemented": true,
+      "provisional": true,
+      "health": 300,
+      "move_speed": 1.8,
+      "acceleration": 20,
+      "attack_range": 6,
+      "damage": 12,
+      "attack_interval": 0.2,
+      "cone_angle": 36,
+      "projectile_speed": 20,
+      "ammunition_type": "gunpowder",
+      "ammunition_cost": 1,
+      "ammunition_capacity": 100,
+      "model_scale": 1.3
+    },
+    {
       "id": "arrow_tower",
       "name_zh": "箭塔（待实现）",
       "attack_range": 5
     },
     {
       "id": "cannon_bastion",
-      "name_zh": "铁炮要塞（待实现）",
-      "attack_range": 10
+      "name_zh": "炮楼（临时平衡）",
+      "implemented": true,
+      "provisional": true,
+      "stationary": true,
+      "health": 300,
+      "attack_range": 10,
+      "damage": 90,
+      "attack_interval": 2.5,
+      "projectile_speed": 20,
+      "splash_radius": 2,
+      "ammunition_type": "gunpowder",
+      "ammunition_cost": 3
     },
     {
       "id": "flame_bastion",
-      "name_zh": "喷火要塞（待实现）",
-      "attack_range": 4
+      "name_zh": "火塔（临时平衡）",
+      "implemented": true,
+      "provisional": true,
+      "stationary": true,
+      "health": 300,
+      "attack_range": 6,
+      "damage": 15,
+      "attack_interval": 0.25,
+      "cone_angle": 45,
+      "projectile_speed": 20,
+      "ammunition_type": "gunpowder",
+      "ammunition_cost": 1
     }
   ],
   "buildings": {

@@ -26,6 +26,7 @@ namespace ZombieGame.Combat
         // Optional economy gate. Benchmarks without an economy retain their existing behaviour.
         public Func<int, bool> try_supply_shot;
         public readonly Vector3[] positions;
+        public readonly Vector3[] observed_velocity,attack_facing;
         public readonly float[] health;
         public readonly bool[] activated;
         public readonly bool[] exploder;
@@ -33,7 +34,7 @@ namespace ZombieGame.Combat
         public readonly int[] ammunition;
         public readonly bool[] manual_melee,last_attack_melee;
         public int melee_strikes;
-        public bool uses_melee(int index) => manual_melee[index]||ammunition[index]<stats_for(index).ammunition_cost;
+        public bool uses_melee(int index) => stats_for(index).id!="greek_fire"&&(manual_melee[index]||ammunition[index]<stats_for(index).ammunition_cost);
         public float human_range(int index) => uses_melee(index)?stats_for(index).melee_range:stats_for(index).attack_range;
         public float contact_distance(int source, int target) => UnitBalance.navigation_radius(stats_for(source)) + UnitBalance.navigation_radius(stats_for(target));
         public float zombie_attack_range(int source, int target) => stats_for(source).id == "spitter" ? stats_for(source).attack_range
@@ -119,6 +120,7 @@ namespace ZombieGame.Combat
             recruited=new bool[human_count];reserve_soldiers=human_count-initial_humans;
             path_cursor = soldier_count;
             positions = new Vector3[total_count];
+            observed_velocity=new Vector3[total_count];attack_facing=new Vector3[total_count];
             health = new float[total_count];
             ammunition=new int[soldier_count];manual_melee=new bool[soldier_count];last_attack_melee=new bool[soldier_count];
             poisoned_until=new float[soldier_count];poison_dps=new float[soldier_count];
@@ -225,9 +227,9 @@ namespace ZombieGame.Combat
             if (now >= next_tick)
             {
                 next_tick = now + .1f; // No unlimited catch-up loop after a slow frame.
-                rebuild_grids(); update_soldiers(now); noise.advance(now); update_zombies(now);
+                rebuild_grids(); update_soldiers(now); update_defense_weapons(now); noise.advance(now); update_zombies(now);
             }
-            process_paths(); update_projectiles(now, delta);update_poison(now,delta);update_enemy_projectiles(now,delta);update_building_infection();
+            process_paths();update_zombie_queues(now); update_projectiles(now, delta);update_defense_projectiles(now,delta);update_poison(now,delta);update_enemy_projectiles(now,delta);update_building_infection();
             peak_active = Math.Max(peak_active, active_now); peak_moving = Math.Max(peak_moving, moving_now);
         }
 
@@ -237,7 +239,9 @@ namespace ZombieGame.Combat
             for (int i = 0; i < total_count; i++)
             {
                 if (health[i] <= 0) continue;
-                positions[i] = crowd.transforms[i].position;
+                Vector3 accepted=crowd.transforms[i].position;
+                observed_velocity[i]=(accepted-positions[i])/Mathf.Max(.0001f,Time.deltaTime);
+                positions[i] = accepted;
                 // Ignore tiny avoidance corrections when choosing visual facing; firing still aims at its target.
                 if (i < soldier_count && crowd.agents[i].velocity.sqrMagnitude > Mathf.Pow(stats_for(i).move_speed*.2f,2))
                     soldier_facing[i] = crowd.agents[i].velocity;
@@ -309,9 +313,12 @@ namespace ZombieGame.Combat
                     damage(target,stats_for(i).melee_damage,now);continue;
                 }
                 if (try_supply_shot != null && !try_supply_shot(i)) continue;
+                if(ammunition[i]<stats_for(i).ammunition_cost)continue;
                 ammunition[i]-=stats_for(i).ammunition_cost;last_attack_melee[i]=false;
                 next_attack[i] = now + stats_for(i).attack_interval; shots++; last_combat_time = now;
                 attack_started_at[i] = now;
+                if(stats_for(i).id=="greek_fire")
+                {fire_flame(positions[i],positions[target]-positions[i],stats_for(i),now,i);emit_gun_noise(positions[i],now,stats_for(i));continue;}
                 bool allocated = false;
                 for (int attempt = 0; attempt < projectiles.Length; attempt++)
                 {

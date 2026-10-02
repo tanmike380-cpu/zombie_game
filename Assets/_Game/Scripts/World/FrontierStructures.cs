@@ -13,20 +13,27 @@ namespace ZombieGame.World
         private readonly Dictionary<BattleBuilding,GameObject> ruins=new Dictionary<BattleBuilding,GameObject>();
         private readonly Dictionary<BattleBuilding,GameObject> navigation_obstacles=new Dictionary<BattleBuilding,GameObject>();
         private readonly Material ruin_material;
+        private readonly Material collapsed_material;
         public BattleBuilding headquarters {get;private set;}
         public FrontierStructures(FrontierGame game,FrontierLandscape landscape,Shader shader)
         {
             this.game=game;this.landscape=landscape;
             ruin_material=new Material(shader){color=new Color(.24f,.12f,.15f)};
+            collapsed_material=new Material(shader){color=new Color(.36f,.34f,.30f)};
             foreach(var region in game.map.regions)
             {
                 if(region.kind!=LandscapeKind.Building)continue;
                 var building=game.current.add_building_target(region.bounds,region.label,region.label=="COMMAND HALL");
                 if(game.map.coastal)navigation_obstacles.Add(building,game.current.crowd.add_building(region.bounds));
-                if(game.map.coastal&&region.label.Contains("WALL"))game.current.friendly_parapets.Add(region.bounds);
+                if(game.map.coastal&&building.fortification)game.current.friendly_parapets.Add(region.bounds);
+                if(region.label=="GATE TOWER"||region.label=="FIRE TOWER")
+                {
+                    building.weapon_id=region.label=="FIRE TOWER"?"flame_bastion":"cannon_bastion";
+                    building.health=building.max_health=ZombieGame.Balance.UnitBalance.get(building.weapon_id).health;
+                }
                 if(building.headquarters)headquarters=building;
             }
-            game.current.building_infected=infect_building;
+            game.current.building_destroyed=destroy_building;
         }
         public void register_facility(PlacedFacility facility)
         {placed.Add(game.current.add_building_target(facility.region.bounds,facility.recipe.name),facility);}
@@ -39,14 +46,14 @@ namespace ZombieGame.World
         public void rebuild_visuals(FrontierLandscape replacement)
         {
             landscape=replacement;
-            foreach(var building in game.current.buildings)if(building.infected)hide_model(building);
+            foreach(var building in game.current.buildings)if(building.health<=0)hide_model(building);
         }
         private void hide_model(BattleBuilding building)
         {
             if(placed.TryGetValue(building,out var facility)){if(facility.model!=null)facility.model.SetActive(false);}
             else if(landscape.building_models.TryGetValue(building.bounds,out var model))model.SetActive(false);
         }
-        private void infect_building(BattleBuilding building)
+        private void destroy_building(BattleBuilding building)
         {
             hide_model(building);
             game.current.friendly_parapets.Remove(building.bounds);
@@ -56,11 +63,12 @@ namespace ZombieGame.World
                 game.map.regions.RemoveAll(region=>region.bounds==building.bounds);
                 game.map.blockers=game.map.regions.ConvertAll(region=>region.bounds).ToArray();
             }
-            var ruin=GameObject.CreatePrimitive(PrimitiveType.Cube);ruin.name="Infected ruin: "+building.label;
+            var ruin=GameObject.CreatePrimitive(PrimitiveType.Cube);ruin.name=(building.infected?"Infected ruin: ":"Collapsed defense: ")+building.label;
             Object.Destroy(ruin.GetComponent<Collider>());ruin.transform.SetParent(game.transform,false);
-            ruin.transform.position=new Vector3(building.bounds.center.x,.3f,building.bounds.center.z);
-            ruin.transform.localScale=new Vector3(building.bounds.size.x,.6f,building.bounds.size.z);
-            ruin.GetComponent<Renderer>().sharedMaterial=ruin_material;ruins[building]=ruin;
+            float height=building.fortification?.16f:.6f;
+            ruin.transform.position=new Vector3(building.bounds.center.x,height*.5f,building.bounds.center.z);
+            ruin.transform.localScale=new Vector3(building.bounds.size.x,height,building.bounds.size.z);
+            ruin.GetComponent<Renderer>().sharedMaterial=building.fortification?collapsed_material:ruin_material;ruins[building]=ruin;
             if(placed.TryGetValue(building,out var facility))game.construction.lose_facility(facility);
             else switch(building.label)
             {
@@ -73,6 +81,6 @@ namespace ZombieGame.World
             if(building.headquarters){game.production.operational=false;game.construction.cancel_preview();}
             Debug.Log($"[Building] infected={building.label} burst={building.infection_remaining} headquarters={building.headquarters}");
         }
-        public void Dispose(){foreach(var ruin in ruins.Values)if(ruin!=null)Object.Destroy(ruin);Object.Destroy(ruin_material);}
+        public void Dispose(){foreach(var ruin in ruins.Values)if(ruin!=null)Object.Destroy(ruin);Object.Destroy(ruin_material);Object.Destroy(collapsed_material);}
     }
 }

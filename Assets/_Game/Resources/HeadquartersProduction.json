@@ -130,6 +130,15 @@
       "wood": 100,
       "iron": 120,
       "seconds": 24
+    },
+    {
+      "id": "greek_fire",
+      "name": "制造希腊火（临时）",
+      "unit_id": "greek_fire",
+      "food": 80,
+      "wood": 120,
+      "iron": 100,
+      "seconds": 24
     }
   ]
 }

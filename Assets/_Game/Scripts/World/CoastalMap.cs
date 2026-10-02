@@ -37,8 +37,9 @@ namespace ZombieGame.World
         private void spawn_coastal_units()
         {
             float spacing=UnitBalance.config.formation_spacing;
-            int count=0;
-            for(float z=-59;z>-98&&count<HUMAN_CAPACITY;z-=spacing)
+            int count=4;
+            for(int i=0;i<4;i++){spawns[i]=new Vector3(-112+i*15,0,-59);unit_ids[i]="greek_fire";}
+            for(float z=-63;z>-106&&count<HUMAN_CAPACITY;z-=spacing)
                 for(float x=-119;x<-60&&count<HUMAN_CAPACITY;x+=spacing)
                 {
                     var point=new Vector3(x,0,z);

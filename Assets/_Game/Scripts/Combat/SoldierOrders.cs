@@ -72,7 +72,11 @@ namespace ZombieGame.Combat
         private int update_player_order(int index, float now)
         {
             SoldierOrder order = orders[index];
-            if (order == SoldierOrder.Move) { follow_soldier_route(index); return -1; }
+            if (order == SoldierOrder.Move)
+            {
+                follow_soldier_route(index);
+                return stats_for(index).id=="greek_fire"?nearest(zombie_grid,positions[index],human_range(index),true):-1;
+            }
             int target;
             if (order == SoldierOrder.AttackTarget)
             {
@@ -102,7 +106,10 @@ namespace ZombieGame.Combat
             if (route_settled[index])
             {
                 // Patrol keeps its endpoint and resumes when the local obstruction clears.
-                if (orders[index] != SoldierOrder.Patrol || has_arrival_blocker(index)) return;
+                // Native avoidance may displace an already-settled soldier; do not freeze it outside the accepted band.
+                float settled_radius=UnitBalance.config.formation_spacing*6+.05f;
+                bool still_near=(positions[index]-order_goals[index]).sqrMagnitude<=settled_radius*settled_radius;
+                if (still_near&&(orders[index] != SoldierOrder.Patrol || has_arrival_blocker(index))) return;
                 reset_route_progress(index, order_goals[index]);
             }
             if (try_settle_crowded_arrival(index)) return;
@@ -113,7 +120,13 @@ namespace ZombieGame.Combat
                 if (orders[index] == SoldierOrder.Patrol)
                     order_goals[index] = (order_goals[index] - patrol_ends[index]).sqrMagnitude < .1f
                         ? patrol_starts[index] : patrol_ends[index];
-                else { orders[index] = SoldierOrder.Stop; stop_soldier(index); return; }
+                else
+                {
+                    // Arrival is not an explicit Stop command: retain attack-move and its recovery goal.
+                    stop_soldier(index);
+                    route_settled[index] = true;
+                    return;
+                }
             }
             walk_soldier(index, order_goals[index], .15f);
         }

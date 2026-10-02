@@ -5,14 +5,15 @@ namespace ZombieGame.Presentation
 {
     public static class ZombieAnimation
     {
+        public static float attack_duration(ZombieGame.Balance.UnitStats stats,bool explosive)
+            =>explosive?stats.fuse_seconds:Mathf.Min(stats.id=="giant"||stats.id=="boss"?1.65f:.85f,stats.attack_interval);
         /// <summary>Attack beats tiny avoidance movement; alerted pursuit uses a distinct charge clip.</summary>
         public static CharacterPose choose_pose(BattleSimulation battle,int index,float now)
         {
             var stats=battle.stats_for(index);
-            float attack_duration=battle.exploder[index]?stats.fuse_seconds:Mathf.Min(.65f,stats.attack_interval);
-            if(now-battle.attack_started_at[index]<attack_duration) return CharacterPose.Attack;
+            if(now-battle.attack_started_at[index]<attack_duration(stats,battle.exploder[index])) return CharacterPose.Attack;
             var agent=battle.crowd.agents[index];
-            if(agent.enabled && agent.velocity.sqrMagnitude>.04f)
+            if(agent.enabled && !battle.is_zombie_queued(index) && battle.observed_velocity[index].sqrMagnitude>.04f)
                 return battle.activated[index]?CharacterPose.Charge:CharacterPose.Run;
             return CharacterPose.Idle;
         }

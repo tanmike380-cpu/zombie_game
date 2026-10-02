@@ -84,7 +84,9 @@ namespace ZombieGame.CharacterTests
                     float ratio = minimum_ratio(battle);
                     Debug.Log($"[CrowdSpacingChecks] goal={goal} near_assigned_slot={arrived}/128 compact={compact}/128 accepted={accepted}/128 crossed_wall={crossed_wall}/128 moving={moving} separation_ratio={ratio:F3} detour={detour}");
                     if(accepted<128 || crossed_wall<128)
-                        for(int i=0;i<12;i++)Debug.Log($"[ContactRouteDiagnostic] unit={i} at={battle.positions[i]} goal={slots[i]} velocity={battle.crowd.agents[i].velocity} desired={battle.crowd.agents[i].desiredVelocity}");
+                        for(int i=0;i<128;i++)
+                            if(Vector3.Distance(battle.positions[i],slots[i])>spacing*6+.05f)
+                                Debug.Log($"[ContactRouteDiagnostic] unit={i} order={battle.orders[i]} at={battle.positions[i]} goal={slots[i]} velocity={battle.crowd.agents[i].velocity} desired={battle.crowd.agents[i].desiredVelocity}");
                     require(accepted==128 && crossed_wall==128 && detour && battle.geometry_errors == 0, "regroup / obstacle detour");
                     require(ratio >= .93f, "native human avoidance footprint collapsed");
                 }

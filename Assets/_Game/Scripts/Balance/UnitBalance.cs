@@ -13,6 +13,8 @@ namespace ZombieGame.Balance
         public float large_target_multiplier;
         public bool implemented;
         public bool provisional;
+        public bool stationary;
+        public float cone_angle;
         public int ammunition_cost, ammunition_capacity;
         public float melee_damage, melee_attack_interval, melee_range;
         public float health, move_speed, acceleration, attack_range, damage, attack_interval;
@@ -37,6 +39,7 @@ namespace ZombieGame.Balance
         public float human_sight, zombie_sight, noise_range_multiplier, noise_probe_radius, noise_propagation_speed, noise_pulse_duration;
         public float formation_spacing, chase_repath_seconds, unit_navigation_radius, zombie_navigation_radius, ammunition_depot_radius;
         public float zombie_attack_move_follow_through;
+        public float zombie_queue_probe_seconds,zombie_queue_hold_seconds,zombie_queue_clearance;
         public UnitStats[] units;
         public BuildingStats buildings;
     }
@@ -51,7 +54,7 @@ namespace ZombieGame.Balance
         public static UnitStats runner => get("runner");
         public static UnitStats exploder => get("exploder");
         public static readonly string[] zombie_ids={"walker","runner","brute","exploder","zombie_hound","spitter","giant","boss"};
-        public static readonly string[] human_ids={"firearm_infantry","archer","repeating_crossbowman","heavy_crossbowman","heavy_ballista","cannon"};
+        public static readonly string[] human_ids={"firearm_infantry","archer","repeating_crossbowman","heavy_crossbowman","heavy_ballista","cannon","greek_fire"};
         public static bool is_human(string id)=>Array.IndexOf(human_ids,id)>=0;
         public static float max_human_noise {get {float radius=0;foreach(string id in human_ids)if(get(id).implemented)radius=Mathf.Max(radius,human_noise(get(id)));return radius;}}
         public static bool is_zombie(string id)=>Array.IndexOf(zombie_ids,id)>=0;
@@ -79,6 +82,8 @@ namespace ZombieGame.Balance
                 || values.unit_navigation_radius<=0 || values.zombie_navigation_radius<=0 || values.zombie_attack_move_follow_through<=0 || values.ammunition_depot_radius<=0 || values.formation_spacing < values.unit_navigation_radius*2 || values.chase_repath_seconds <= 0)
                 throw new InvalidOperationException("Invalid balance/unit_balance.json globals/schema");
             var ids = new HashSet<string>();
+            foreach(float value in new[]{values.zombie_queue_probe_seconds,values.zombie_queue_hold_seconds,values.zombie_queue_clearance})
+                if(value<=0||float.IsNaN(value)||float.IsInfinity(value))throw new InvalidOperationException("Invalid zombie queue hysteresis");
             var buildings=values.buildings;
             if(buildings==null||buildings.normal_health<=0||buildings.headquarters_health<=0||
                 float.IsNaN(buildings.normal_health)||float.IsInfinity(buildings.normal_health)||float.IsNaN(buildings.headquarters_health)||float.IsInfinity(buildings.headquarters_health)||
@@ -90,13 +95,16 @@ namespace ZombieGame.Balance
                 if (stats.ammunition_cost < 0) throw new InvalidOperationException("Negative ammunition cost: " + stats.id);
                 foreach (float number in new[] {stats.health,stats.move_speed,stats.acceleration,stats.attack_range,stats.damage,stats.attack_interval,stats.projectile_speed,stats.explosion_radius,stats.fuse_seconds,stats.noise_radius,stats.melee_damage,stats.melee_attack_interval,stats.melee_range,stats.model_scale,stats.navigation_radius,stats.splash_radius,stats.poison_damage_per_second,stats.poison_duration})
                     if (float.IsNaN(number) || float.IsInfinity(number) || number < 0) throw new InvalidOperationException("Invalid numeric balance: " + stats.id);
-                if (stats.implemented && (stats.health <= 0 || stats.move_speed <= 0 || stats.acceleration <= 0 || stats.attack_range <= 0 || stats.damage <= 0 || stats.attack_interval <= 0))
+                if(float.IsNaN(stats.cone_angle)||float.IsInfinity(stats.cone_angle)||stats.cone_angle<0||stats.cone_angle>180)throw new InvalidOperationException("Invalid flame cone: "+stats.id);
+                if (stats.implemented && (stats.health <= 0 || (!stats.stationary&&(stats.move_speed <= 0 || stats.acceleration <= 0)) || stats.attack_range <= 0 || stats.damage <= 0 || stats.attack_interval <= 0))
                     throw new InvalidOperationException("Incomplete active unit balance: " + stats.id);
                 if(stats.implemented&&is_zombie(stats.id)&&(stats.threat_tier<1||stats.threat_tier>5||stats.model_scale<=0||stats.noise_radius!=0))
                     throw new InvalidOperationException("Zombie tier, presentation scale or silence invalid: "+stats.id);
                 if(stats.implemented&&is_human(stats.id)&&(stats.ammunition_capacity<stats.ammunition_cost||stats.ammunition_cost<1||
-                    (stats.ammunition_type!="arrows"&&stats.ammunition_type!="gunpowder")||stats.projectile_speed<=0||stats.melee_damage<=0||stats.melee_attack_interval<=0||stats.melee_range<=0))
+                    (stats.ammunition_type!="arrows"&&stats.ammunition_type!="gunpowder")||stats.projectile_speed<=0||(stats.id!="greek_fire"&&(stats.melee_damage<=0||stats.melee_attack_interval<=0||stats.melee_range<=0))))
                     throw new InvalidOperationException("Incomplete ranged human ammunition/melee stats: "+stats.id);
+                if(stats.implemented&&(stats.id=="greek_fire"||stats.id=="flame_bastion")&&stats.cone_angle<=0)throw new InvalidOperationException("Missing flame cone: "+stats.id);
+                if(stats.implemented&&stats.stationary&&(stats.ammunition_cost<1||stats.ammunition_type!="gunpowder"||stats.projectile_speed<=0))throw new InvalidOperationException("Incomplete defense weapon: "+stats.id);
                 if(stats.implemented&&stats.id=="spitter"&&(stats.projectile_speed<=0||stats.splash_radius<=0||stats.poison_damage_per_second<=0||stats.poison_duration<=0))
                     throw new InvalidOperationException("Incomplete spitter projectile/poison stats");
             }

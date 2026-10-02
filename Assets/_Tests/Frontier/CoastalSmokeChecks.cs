@@ -21,6 +21,9 @@ namespace ZombieGame.FrontierTests
             require(game.current!=null&&game.current.living_soldiers==400,"400 deployed soldiers");
             require(game.current.zombie_count==2000,"2000 zombies");
             require(game.imported_roster.units.Length>=7,"real character roster");
+            require(ImportedArchitecture.maximum_aspect_error<.001f,"original model proportions preserved with uniform scale");
+            int greek_count=0;for(int i=0;i<game.current.soldier_count;i++)if(game.current.health[i]>0&&game.current.stats_for(i).id=="greek_fire")greek_count++;
+            require(greek_count==4,"four controllable Greek fire units");
             int walls=0;
             foreach(var building in game.current.buildings)
             {
@@ -42,6 +45,10 @@ namespace ZombieGame.FrontierTests
                 var first=binding.frames.poses[1].frames[0];var middle=binding.frames.poses[1].frames[binding.frames.poses[1].frames.Length/4];
                 var a=first.vertices;var b=middle.vertices;float movement=0;for(int i=0;i<a.Length;i++)movement+=Vector3.Distance(a[i],b[i]);
                 require(movement>.01f,"non-static locomotion: "+binding.unit_id);
+                var strike_start=binding.frames.poses[2].frames[0].vertices;
+                var strike_end=binding.frames.poses[2].frames[12].vertices;float strike=0;
+                for(int i=0;i<strike_start.Length;i++)strike+=Vector3.Distance(strike_start[i],strike_end[i]);
+                require(strike>.01f,"visible attack motion: "+binding.unit_id);
             }
             var folder=new DirectoryInfo(Application.dataPath);
             while(folder!=null&&!folder.Name.EndsWith(".app"))folder=folder.Parent;
@@ -61,12 +68,22 @@ namespace ZombieGame.FrontierTests
             Debug.Log($"[CoastalSmoke] SCRIPT simulation_ms={simulation_ms/frames:F1} presentation_ms={presentation_ms/frames:F1}");
             require(damaged>0,"siege reaches and damages defenses");
             require(game.current.hits>0,"defenders projectiles hit attackers");
+            require(game.current.flame_hits>0&&game.current.defense_shots>0&&game.current.greek_fire_pulses>0,"Greek fire and defense weapons damage real enemies");
+            Debug.Log($"[CoastalSmoke] WEAPONS flames={game.current.flame_hits} greek_pulses={game.current.greek_fire_pulses} tower_shots={game.current.defense_shots} queued={game.current.queued_zombies} releases={game.current.queue_releases}");
             int breached=0;
             foreach(var building in game.current.buildings)
-                if(building.infected&&building.label.Contains("WALL")&&NavMesh.SamplePosition(new Vector3(building.bounds.center.x,0,building.bounds.center.z),out var opening,.25f,NavMesh.AllAreas))breached++;
+            {
+                if(building.fortification)require(!building.infected&&building.infection_remaining==0&&building.spawned==0,"defenses collapse without infection burst");
+                if(building.health<=0&&building.label.Contains("WALL")&&NavMesh.SamplePosition(new Vector3(building.bounds.center.x,0,building.bounds.center.z),out var opening,.25f,NavMesh.AllAreas))breached++;
+            }
             require(breached>0,"destroyed wall opens native navigation");
             Debug.Log("[CoastalSmoke] BREACH PASS opened_wall_cells="+breached);
             require(game.current.geometry_errors==0,"no terrain intrusion");
+            float separation=ZombieGame.CharacterTests.CrowdSpacingChecks.minimum_ratio(game.current,true);
+            require(separation>=.999f,"frozen zombie minimum spacing retained");
+            Debug.Log("[CoastalSmoke] SEPARATION minimum_ratio="+separation);
+            camera_fixture=false;Camera.main.orthographicSize=12;game.focus_camera(game.current.positions[0]);
+            yield return new WaitForEndOfFrame();ScreenCapture.CaptureScreenshot(Path.Combine(output,"greek-fire-combat.png"));
             Debug.Log("[CoastalSmoke] COMPLETE");camera_fixture=false;yield return new WaitForSecondsRealtime(1);Application.Quit(0);
         }
         private static void require(bool passed,string message)

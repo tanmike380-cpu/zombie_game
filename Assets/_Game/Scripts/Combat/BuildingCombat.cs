@@ -11,6 +11,9 @@ namespace ZombieGame.Combat
         public Bounds bounds;
         public string label;
         public bool headquarters,infected;
+        public bool fortification;
+        public string weapon_id;
+        public float next_attack;
         public float health,max_health;
         public int infection_remaining,spawned;
     }
@@ -18,11 +21,20 @@ namespace ZombieGame.Combat
     {
         public readonly List<BattleBuilding> buildings=new List<BattleBuilding>();
         public Action<BattleBuilding> building_infected;
+        public Action<BattleBuilding> building_destroyed;
+        public static bool is_fortification(string label)
+        {
+            string name=(label??string.Empty).ToUpperInvariant();
+            foreach(string token in new[]{"WALL","TOWER","BASTION","FORTRESS","OUTPOST","PALISADE","GATE","城墙","木墙","石墙","塔","城门","哨站"})
+                if(name.Contains(token))return true;
+            return false;
+        }
         private int[] building_targets;
         public BattleBuilding add_building_target(Bounds bounds,string label,bool headquarters=false)
         {
             var stats=UnitBalance.config.buildings;
             var building=new BattleBuilding{bounds=bounds,label=label,headquarters=headquarters,
+                fortification=!headquarters&&is_fortification(label),
                 health=headquarters?stats.headquarters_health:stats.normal_health,max_health=headquarters?stats.headquarters_health:stats.normal_health};
             buildings.Add(building);return building;
         }
@@ -61,6 +73,8 @@ namespace ZombieGame.Combat
             var agent=crowd.agents[index];var target=buildings[best];
             if(distance<=building_attack_range(index)&&building_visible(positions[index],target,point))
             {
+                attack_facing[index]=point-positions[index];
+                building_targets[index]=best;
                 if(!agent.enabled)agent.enabled=true;
                 if(agent.isOnNavMesh)agent.isStopped=true;
                 needs_path[index]=false;attack_started_at[index]=now<next_attack[index]?attack_started_at[index]:now;
@@ -94,9 +108,10 @@ namespace ZombieGame.Combat
             report_attack(building.bounds.center,now);
             building.health=Mathf.Max(0,building.health-amount);
             if(building.health>0)return;
-            building.infected=true;
-            building.infection_remaining=building.headquarters?UnitBalance.config.buildings.headquarters_infection_count:UnitBalance.config.buildings.normal_infection_count;
-            building_infected?.Invoke(building);
+            building.infected=!building.fortification;
+            building.infection_remaining=building.fortification?0:building.headquarters?UnitBalance.config.buildings.headquarters_infection_count:UnitBalance.config.buildings.normal_infection_count;
+            building_destroyed?.Invoke(building);
+            if(building.infected)building_infected?.Invoke(building);
         }
         private void damage_buildings_in_radius(Vector3 origin,float radius,float amount,float now)
         {

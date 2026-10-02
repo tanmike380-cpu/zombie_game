@@ -19,11 +19,15 @@ namespace ZombieGame.World
         private readonly Matrix4x4[][] matrices=new Matrix4x4[5][];
         private readonly int[] counts=new int[5];
         private readonly float[] seen_shots,death_started;
+        private readonly Quaternion[] stable_rotations;
+        private readonly GreekFireView equipment;
+        private readonly FlameEffects flames;
 
         public FrontierBattleView(int capacity,Transform parent,Shader shader,ImportedRoster roster=null)
         {
             characters=new CharacterCrowdRenderer(capacity,VisualStyles.current.id,roster:roster);effects=new MusketEffects(parent);
             explosions=new ExplosionFeedback(shader);
+            equipment=new GreekFireView(parent);flames=new FlameEffects(parent);stable_rotations=new Quaternion[capacity];for(int i=0;i<capacity;i++)stable_rotations[i]=Quaternion.identity;
             seen_shots=new float[capacity];death_started=new float[capacity];
             for(int i=0;i<capacity;i++) seen_shots[i]=float.NegativeInfinity;
             var primitive=GameObject.CreatePrimitive(PrimitiveType.Cube);cube=primitive.GetComponent<MeshFilter>().sharedMesh;UnityEngine.Object.Destroy(primitive);
@@ -37,12 +41,16 @@ namespace ZombieGame.World
             for(int i=0;i<battle.total_count;i++)
             {
                 if(battle.is_reserve(i))continue;
+                if(battle.stats_for(i).id=="greek_fire")continue;
                 bool human=i<battle.soldier_count;
                 float model_scale=human?1:battle.stats_for(i).model_scale;
                 if(!human&&!reveal&&!fog.is_visible(battle.positions[i])) continue;
                 var agent=battle.crowd.agents[i];
-                Vector3 facing=human?battle.soldier_facing[i]:agent.enabled?agent.velocity:Vector3.zero;
-                Quaternion rotation=facing.sqrMagnitude>.001f?Quaternion.LookRotation(facing):battle.crowd.transforms[i].rotation;
+                bool attacking=!human&&Time.time-battle.attack_started_at[i]<ZombieAnimation.attack_duration(battle.stats_for(i),battle.exploder[i]);
+                Vector3 facing=human?battle.soldier_facing[i]:attacking?battle.attack_facing[i]:battle.observed_velocity[i];facing.y=0;
+                if(facing.sqrMagnitude>(attacking||human?.001f:.09f))
+                    stable_rotations[i]=human?Quaternion.LookRotation(facing):Quaternion.RotateTowards(stable_rotations[i],Quaternion.LookRotation(facing),240*Time.deltaTime);
+                Quaternion rotation=stable_rotations[i];
                 if(battle.health[i]<=0)
                 {
                     if(death_started[i]==0)death_started[i]=Time.time;
@@ -50,21 +58,23 @@ namespace ZombieGame.World
                     continue;
                 }
                 float age=Time.time-battle.attack_started_at[i];
-                bool moving=agent.enabled&&agent.velocity.sqrMagnitude>.04f;
+                bool moving=agent.enabled&&battle.observed_velocity[i].sqrMagnitude>.04f;
                 var pose=moving?CharacterPose.Run:age<.4f?CharacterPose.Attack:CharacterPose.Idle;
                 if(!human) pose=ZombieAnimation.choose_pose(battle,i,Time.time);
                 if(human&&battle.uses_melee(i))pose=moving?CharacterPose.MeleeRun:age<.55f&&battle.last_attack_melee[i]?CharacterPose.MeleeAttack:CharacterPose.MeleeIdle;
-                float attack_window=human?(battle.uses_melee(i)?.55f:.4f):battle.exploder[i]?battle.stats_for(i).fuse_seconds:Mathf.Min(.65f,battle.stats_for(i).attack_interval);
+                float attack_window=human?(battle.uses_melee(i)?.55f:.4f):ZombieAnimation.attack_duration(battle.stats_for(i),battle.exploder[i]);
                 characters.add(human,pose,pose==CharacterPose.Attack||pose==CharacterPose.MeleeAttack?age:Time.time+i*.137f,battle.positions[i],rotation,battle.exploder[i],model_scale,battle.stats_for(i).id,attack_window);
                 if(human&&battle.stats_for(i).ammunition_type=="gunpowder"&&!battle.last_attack_melee[i]&&battle.attack_started_at[i]>seen_shots[i])
                 { seen_shots[i]=battle.attack_started_at[i];effects.fire(characters.human_muzzle(battle.positions[i],rotation),rotation*Vector3.forward); }
             }
             foreach(var shot in battle.projectiles) if(shot.active&&(reveal||fog.is_visible(shot.position))) add(2,shot.position,Vector3.one*.13f);
+            foreach(var shot in battle.defense_projectiles)if(reveal||fog.is_visible(shot.position))add(2,shot.position,Vector3.one*.3f);
             foreach(var shot in battle.enemy_projectiles)if(shot.active&&(reveal||fog.is_visible(shot.position)))add(0,shot.position,Vector3.one*.28f);
             foreach(var impact in battle.enemy_impacts)if(impact.expires>Time.time&&(reveal||fog.is_visible(impact.origin)))
                 for(int i=0;i<32;i++)add(impact.acid?0:2,impact.origin+new Vector3(Mathf.Cos(i*Mathf.PI/16)*impact.radius,.12f,Mathf.Sin(i*Mathf.PI/16)*impact.radius),new Vector3(.18f,.08f,.18f));
             explosions.draw(battle,fog,reveal);
             characters.draw();
+            equipment.draw(battle);flames.draw(battle,equipment);
             feedback.draw(battle,fog,reveal,Camera.main);
             for(int i=0;i<materials.Length;i++)
             {
@@ -74,6 +84,6 @@ namespace ZombieGame.World
         }
         private void add(int group,Vector3 point,Vector3 size)
         { if(counts[group]<matrices[group].Length)matrices[group][counts[group]++]=Matrix4x4.TRS(point,Quaternion.identity,size); }
-        public void Dispose() { feedback.Dispose();effects.Dispose();explosions.Dispose();foreach(var material in materials)UnityEngine.Object.Destroy(material); }
+        public void Dispose() { equipment.Dispose();flames.Dispose();feedback.Dispose();effects.Dispose();explosions.Dispose();foreach(var material in materials)UnityEngine.Object.Destroy(material); }
     }
 }

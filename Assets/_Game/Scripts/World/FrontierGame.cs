@@ -70,6 +70,11 @@ namespace ZombieGame.World
             var navigation_regions=coastal_defense?map.regions.FindAll(region=>region.kind!=LandscapeKind.Building).ConvertAll(region=>region.bounds).ToArray():map.blockers;
             current=new BattleSimulation(map.spawns,FrontierMap.HUMAN_CAPACITY,map.explosive,navigation_regions,initial_humans:FrontierMap.SOLDIERS,unit_ids:map.unit_ids,infection_reserve:1024);
             economy=new FrontierEconomy(JsonUtility.FromJson<FrontierEconomyConfig>(Resources.Load<TextAsset>("FrontierEconomy").text));
+            current.try_supply_defense_shot=stats=>
+            {
+                if(economy.gunpowder<stats.ammunition_cost)return false;
+                economy.gunpowder-=stats.ammunition_cost;return true;
+            };
             production=new HeadquartersProduction(economy,JsonUtility.FromJson<HeadquartersConfig>(Resources.Load<TextAsset>("HeadquartersProduction").text));
             supply=new AmmunitionSupply(economy);supply.depots.Add(map.initial_depot);
             current_fog=new CombatFog(fog_template,.08f,true);
@@ -175,7 +180,7 @@ namespace ZombieGame.World
         {
             bool use_knife=false;
             for(int i=0;i<current.soldier_count;i++)if(current.selected[i]&&current.health[i]>0&&!current.manual_melee[i]){use_knife=true;break;}
-            for(int i=0;i<current.soldier_count;i++)if(current.selected[i]&&current.health[i]>0)current.manual_melee[i]=use_knife;
+            for(int i=0;i<current.soldier_count;i++)if(current.selected[i]&&current.health[i]>0&&current.stats_for(i).id!="greek_fire")current.manual_melee[i]=use_knife;
         }
         public void switch_visual_style(int index)
         {

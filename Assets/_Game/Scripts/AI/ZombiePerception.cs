@@ -6,6 +6,17 @@ namespace ZombieGame.Combat
     {
         /// <summary>Current navigation intent for regression diagnostics.</summary>
         public Vector3 zombie_navigation_goal(int index)=>memories[index];
+        private int choose_zombie_target(int index)
+        {
+            int nearest_target=nearest(soldier_grid,positions[index],UnitBalance.config.zombie_sight);
+            int current_target=path_target[index];
+            if(current_target<0||health[current_target]<=0||
+                Vector3.Distance(positions[index],positions[current_target])>UnitBalance.config.zombie_sight||!visible(positions[index],positions[current_target]))return nearest_target;
+            // Prefer immediate contact, otherwise retain a still-visible target instead of flipping every tick.
+            if(Vector3.Distance(positions[index],positions[current_target])<=zombie_attack_range(index,current_target))return current_target;
+            if(nearest_target>=0&&Vector3.Distance(positions[index],positions[nearest_target])<=zombie_attack_range(index,nearest_target))return nearest_target;
+            return current_target;
+        }
         private void update_zombies(float now)
         {
             for (int i = soldier_count; i < total_count; i++)
@@ -23,7 +34,7 @@ namespace ZombieGame.Combat
                 }
                 if (fuse[i] < float.PositiveInfinity)
                 { if (now >= fuse[i]) damage(i, health[i], now); continue; }
-                int target = nearest(soldier_grid, positions[i], UnitBalance.config.zombie_sight);
+                int target = choose_zombie_target(i);
                 bool new_sound = noise.try_hear(i, out var signal) && sound_memories[i].accept(signal);
                 if(target<0&&sound_memories[i].pending&&(positions[i]-sound_memories[i].origin).sqrMagnitude<.64f)
                     sound_memories[i].finish_investigation();
@@ -61,6 +72,7 @@ namespace ZombieGame.Combat
                     float distance = (positions[i] - positions[target]).magnitude;
                     if (distance <= zombie_attack_range(i,target))
                     {
+                        attack_facing[i]=positions[target]-positions[i];
                         memories[i]=positions[target];path_target[i]=target;
                         needs_path[i]=false;
                         if (crowd.agents[i].enabled) crowd.agents[i].isStopped = true;
