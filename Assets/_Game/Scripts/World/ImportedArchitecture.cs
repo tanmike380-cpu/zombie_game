@@ -5,6 +5,7 @@ namespace ZombieGame.World
     /// <summary>Fits original textured imports to authored footprints without adding colliders or statistics.</summary>
     public static class ImportedArchitecture
     {
+        public static float maximum_aspect_error {get;private set;}
         public static GameObject place(LandscapeRegion region,Transform parent)
         {
             string id=asset_for(region.label);
@@ -17,13 +18,12 @@ namespace ZombieGame.World
             var renderers=model.GetComponentsInChildren<Renderer>();
             foreach(var renderer in renderers){renderer.shadowCastingMode=UnityEngine.Rendering.ShadowCastingMode.Off;renderer.receiveShadows=false;}
             var bounds=renderers[0].bounds;foreach(var renderer in renderers)bounds.Encapsulate(renderer.bounds);
-            bool wall=region.label.Contains("WALL");
-            float original_y_scale=model.transform.localScale.y;
+            Vector3 original_size=bounds.size;
             float scale=Mathf.Min(region.bounds.size.x/bounds.size.x,region.bounds.size.z/bounds.size.z);
             model.transform.localScale*=scale;
-            if(wall)model.transform.localScale=new Vector3(model.transform.localScale.x,original_y_scale*3.2f/bounds.size.y,model.transform.localScale.z);
-            if(region.label.Contains("TOWER")||region.label=="OUTPOST")model.transform.localScale=new Vector3(model.transform.localScale.x,original_y_scale*4.2f/bounds.size.y,model.transform.localScale.z);
             bounds=renderers[0].bounds;foreach(var renderer in renderers)bounds.Encapsulate(renderer.bounds);
+            float x_ratio=bounds.size.x/original_size.x,y_ratio=bounds.size.y/original_size.y,z_ratio=bounds.size.z/original_size.z;
+            maximum_aspect_error=Mathf.Max(maximum_aspect_error,Mathf.Abs(x_ratio-y_ratio)/scale,Mathf.Abs(x_ratio-z_ratio)/scale);
             model.transform.position+=new Vector3(-bounds.center.x,-bounds.min.y,-bounds.center.z);
             root.transform.position=new Vector3(region.bounds.center.x,0,region.bounds.center.z);
             return root;
@@ -43,10 +43,6 @@ namespace ZombieGame.World
                 case "BARRACKS":return "Barrier";
                 default:return "Workshop";
             }
-        }
-        public static void place_equipment_display(Transform parent)
-        {
-            place(new LandscapeRegion(-94,-83,3,4,3,LandscapeKind.Building,"GREEK FIRE — ANIMATION DISPLAY"),parent);
         }
     }
 }

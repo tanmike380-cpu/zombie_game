@@ -102,6 +102,8 @@ def export_model(obj, identity, actions=None, extras=()):
     bpy.ops.object.select_all(action='DESELECT')
     obj.select_set(True)
     for mesh in meshes: mesh.select_set(True)
+    for child in obj.children:
+        if child.type=='EMPTY':child.select_set(True)
     bpy.context.view_layer.objects.active=obj
     if actions:
         obj.animation_data_clear()
@@ -161,6 +163,9 @@ def main():
     records.extend([{'id':'Crossbow','source':'TripoCrossbow/ByzantineCrossbow.fbx','reuse':True},
                     {'id':'Exploder','source':'TripoExploder/TripoExploder.fbx','reuse':True}])
     (OUTPUT/'manifest.json').write_text(json.dumps({'models':records},indent=2))
+    # Keep the accepted heavy gait / mechanical pivots on every future full export too.
+    from coastal_motion_revision import main as revise_motions
+    revise_motions()
     print('COASTAL EXPORT PASS',len(records),'models; live source untouched',flush=True)
 
 

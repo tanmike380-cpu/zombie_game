@@ -63,8 +63,7 @@ namespace ZombieGame.World
                 if(map.blocked(p,.3f))continue;
                 add(rock,p,new Vector3(.12f,.06f,.2f),i%2==0?STONE*.7f:GRASS*.8f);
             }
-            if(map.coastal)ImportedArchitecture.place_equipment_display(root.transform);
-            else add_settlement_details();
+            if(!map.coastal)add_settlement_details();
             flush(shader);
         }
 
