@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>原模型城墙 · 模块化拼接评审</title>
+<style>
+body{margin:0;background:#171c22;color:#eee9df;font:16px system-ui}main{max-width:1240px;margin:auto;padding:30px}h1{font-size:27px}p{line-height:1.8}nav{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0}button{padding:11px 16px;background:#303943;color:#eae7df;border:1px solid #53616d;border-radius:6px;cursor:pointer}button[aria-pressed=true]{background:#765928;border-color:#dbb96d}img{display:block;width:100%;border-radius:9px}aside{padding:12px 18px;background:#393021;border-left:3px solid #cda860}a{color:#bcdcf2}.caption{min-height:58px}
+</style><main>
+<h1>用你导入的原城墙，拼成连续防线</h1>
+<p>墙宽固定 2 格，长度从 2 格起，每次增加 1 格；奇数、偶数都支持。两端石墩大小不变，中间连续接墙，不拉长砖纹。原模型、贴图和灯光保持不变。</p>
+<aside>已确认：2×2、2×3、2×4、2×5……均可；不足 2×2 不可建。不再处理小数占地。这是 Blender 拼接评审，尚未接入 Unity 拖拽建墙。</aside>
+<nav id="cases"></nav><h2 id="case-title"></h2><p id="caption" class="caption"></p><img id="preview" alt="原石墙模型拼接示例">
+<p>接入游戏时：从起点按住拖动，预览连续墙身；终点先检查完整占地。靠障碍或边界时回退终点；不足以放下两端石墩则提示不可建。中间逻辑上仍需分段计算受损／拆墙，不能把整个长城墙当成只有一条血量的单体。</p>
+<p><a href="../../../art/models/modular-stone-wall/ModularStoneWall.blend">打开 Blender 模块文件</a> · <a href="verification.json">查看布局检查</a> · <a href="../TripoSiege/review.html">返回动作评审</a></p>
+<script>
+const cases = [
+ ['原始模型','source-wall.png','你导入的 stone wall。以下预览沿用这套模型和纹理，不重新生成外观。'],
+ ['2×2 短墙','01_Short_2x2.png','最小完整占地：两端完整石墩，中间保留原墙面。'],
+ ['2×3 延长','02_Continuous_2x3.png','总长 3 格，只有首尾两个石墩；中间不重复塞入大石墩。'],
+ ['2×6 长墙','03_Long_2x6.png','连续拉长：只重复中间墙身，端部大小不随长度变化。'],
+ ['2×4','08_Integer_2x4.png','总长 4 格，只有两端石墩。'],
+ ['2×5','09_Integer_2x5.png','奇数 5 格也可建，不要求长度是 2 的倍数。'],
+ ['2×7','04_Integer_2x7.png','总长 7 格；末段墙身适配整数终点，两端石墩不变形。'],
+ ['树林旁收尾','05_Forest_Stop.png','绿色方块是 1×1 格树林占地。目标 8 格，遇树林停在第 6 格的边界，不额外留小数缝。'],
+ ['地图边缘','06_Map_Edge.png','红线是 7 格处的地图边界；完整墙体停在边界内。'],
+ ['空间不够','07_NotEnoughSpace.png','只有 1 格可用，不满足 2×2 最小占地：不可建，不缩小石墩或穿越障碍。']
+];
+function select_case(index){const entry=cases[index];document.getElementById('case-title').textContent=entry[0];document.getElementById('caption').textContent=entry[2];document.getElementById('preview').src=entry[1]+'?integer-v2';document.querySelectorAll('button').forEach((button,i)=>button.setAttribute('aria-pressed',i===index));}
+cases.forEach((entry,index)=>{const button=document.createElement('button');button.textContent=entry[0];button.onclick=()=>select_case(index);document.getElementById('cases').append(button);});select_case(3);
+</script></main></html>

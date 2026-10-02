@@ -2,6 +2,7 @@
 import json
 import hashlib
 import sys
+import shutil
 from pathlib import Path
 
 import bpy
@@ -185,6 +186,7 @@ def build_wall_kit():
         mesh.name = name
     bpy.ops.wm.save_as_mainfile(filepath=str(MODELS / "ModularStoneWall.blend"))
     (REVIEW / "verification.json").write_text(json.dumps(report, ensure_ascii=False, indent=2))
+    shutil.copyfile(Path(__file__).parent / "templates/modular_wall_review.html", REVIEW / "review.html")
     print("Wall kit ready: preserved piers, integer lengths and exact cell-boundary stops", flush=True)
 
 
