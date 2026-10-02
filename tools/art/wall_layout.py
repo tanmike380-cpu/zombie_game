@@ -5,9 +5,9 @@ from dataclasses import asdict, dataclass
 
 @dataclass(frozen=True)
 class WallPlan:
-    requested_length: float
-    length: float
-    depth: float
+    requested_length: int
+    length: int
+    depth: int
     valid: bool
     reason: str
     spans: tuple
@@ -16,49 +16,68 @@ class WallPlan:
         return asdict(self)
 
 
-def plan_wall(requested_length, *, depth=2., minimum_length=2.,
-              map_end=math.inf, obstacles=(), safety_gap=.05):
+def require_integer(value, field):
+    """Validate authored cell coordinates; mouse snapping belongs to future runtime input."""
+    if isinstance(value, bool) or not math.isfinite(value) or value != int(value):
+        raise ValueError(f"{field} must be a finite integer cell coordinate: {value}")
+    return int(value)
+
+
+def plan_wall(requested_length, *, map_end=None, obstacles=()):
     """Plan along local +X; obstacle rectangles use wall-local tile coordinates.
 
     Footprints cover the entire strip including both end piers. Stop at the first
     obstacle intersecting the strip, never skip over a blocked gap to place more wall.
     This art preview does not implement Unity terrain queries, build costs or health.
     """
-    if not math.isfinite(requested_length) or requested_length <= 0:
-        raise ValueError("Requested wall length must be finite and positive")
-    if depth <= 0 or minimum_length <= 0 or safety_gap < 0 or math.isnan(map_end):
-        raise ValueError("Invalid wall footprint settings")
-    length = min(requested_length, map_end)
+    requested_length = require_integer(requested_length, "requested_length")
+    if requested_length <= 0:
+        raise ValueError("Requested wall length must be positive")
+    depth, minimum_length = 2, 2
+    length = requested_length if map_end is None else min(requested_length, require_integer(map_end, "map_end"))
     reason = "requested endpoint" if length == requested_length else "map edge"
     for x_min, y_min, x_max, y_max in obstacles:
+        x_min, y_min, x_max, y_max = (require_integer(value, "obstacle bound")
+                                    for value in (x_min, y_min, x_max, y_max))
         if x_min > x_max or y_min > y_max:
             raise ValueError("Obstacle bounds must be ordered")
         if y_max <= -depth/2 or y_min >= depth/2 or x_max <= 0:
             continue
-        stop = max(0., x_min-safety_gap)
+        stop = max(0, x_min)
         if stop < length:
             length, reason = stop, "obstacle clearance"
-    length = max(0., length)
-    if length < minimum_length-1e-6:
+    length = max(0, length)
+    if length < minimum_length:
         return WallPlan(requested_length, length, depth, False, "insufficient space for two intact end piers", ())
-    # Logical damage/construction spans are independent of decorative mesh repeats.
-    count = max(1, math.ceil((length-1e-6)/2))
-    spans = tuple((index*2., min(2., length-index*2.)) for index in range(count))
+    # Odd runs may end in a one-cell internal span, never a standalone 2x1 wall.
+    spans = tuple((start, min(2, length-start)) for start in range(0, length, 2))
     return WallPlan(requested_length, length, depth, True, reason, spans)
 
 
 def verify_layout():
-    """Cover fractional endpoints, strip-wide obstacle checks and too-short remainders."""
-    for length in (2., 3., 6., 7.3):
+    """Cover every integer length through 256, odd runs, cell obstacles and invalid input."""
+    cases = 0
+    for length in range(2, 257):
         plan = plan_wall(length)
-        assert plan.valid and abs(sum(width for _, width in plan.spans)-length) < 1e-6
-    edge = plan_wall(8, map_end=7.3)
-    assert edge.valid and edge.length == 7.3
-    forest = plan_wall(8, obstacles=((5.7, .75, 8, 2),))
-    assert forest.valid and abs(forest.length-5.65) < 1e-6
-    assert plan_wall(8, obstacles=((5, 1.01, 8, 2),)).length == 8
-    assert not plan_wall(8, obstacles=((1.9, -.5, 3, .5),)).valid
-    assert not plan_wall(8, obstacles=((-1, -.1, .5, .1),)).valid
-    assert not plan_wall(8, map_end=1.9).valid
-    assert plan_wall(8, obstacles=((6, -.5, 7, .5), (4, -.5, 5, .5))).length == 3.95
-    return {"passed": True, "cases": 11, "scope": "art footprint preview, not Unity gameplay"}
+        assert plan.valid and sum(width for _, width in plan.spans) == length
+        assert plan.length == length and all(isinstance(width, int) for _, width in plan.spans)
+        cases += 1
+    checks = [plan_wall(8, map_end=7).length == 7,
+              plan_wall(8, obstacles=((6, 0, 7, 1),)).length == 6,
+              plan_wall(8, obstacles=((5, 1, 6, 2),)).length == 8,
+              not plan_wall(8, obstacles=((1, 0, 2, 1),)).valid,
+              not plan_wall(8, obstacles=((-1, 0, 1, 1),)).valid,
+              not plan_wall(8, map_end=1).valid,
+              not plan_wall(1).valid,
+              plan_wall(8, obstacles=((6, 0, 7, 1), (4, -1, 5, 0))).length == 4]
+    assert all(checks)
+    cases += len(checks)
+    for request, kwargs in ((7.3, {}), (8, {"map_end": 7.3}),
+                            (8, {"obstacles": ((5.7, 0, 6, 1),)}), (float("nan"), {})):
+        try:
+            plan_wall(request, **kwargs)
+        except ValueError:
+            cases += 1
+        else:
+            raise AssertionError("Non-integer placement was accepted")
+    return {"passed": True, "cases": cases, "scope": "art footprint preview, not Unity gameplay"}

@@ -76,7 +76,7 @@ def build_run(scene, plan, parts, body_cache):
 
 
 def create_wall_stage(scene, plan):
-    """Show a provisional two-tile placement corridor without changing imported lighting/materials."""
+    """Show the two-tile integer corridor without changing imported lighting/materials."""
     create_stage(scene, "GreekFire")
     scene.render.resolution_x, scene.render.resolution_y = 1400, 800
     scene.render.resolution_percentage = 100
@@ -139,12 +139,13 @@ def build_wall_kit():
     export_kit(kit_scene, kit_objects)
     examples = [
         ("01_Short_2x2", plan_wall(2)), ("02_Continuous_2x3", plan_wall(3)),
-        ("03_Long_2x6", plan_wall(6)), ("04_Fractional_2x7.3", plan_wall(7.3)),
-        ("05_Forest_Stop", plan_wall(8, obstacles=((5.7, .75, 8, 2),))),
-        ("06_Map_Edge", plan_wall(8, map_end=7.3)),
-        ("07_NotEnoughSpace", plan_wall(8, obstacles=((1.9, -.5, 3, .5),))),
+        ("03_Long_2x6", plan_wall(6)), ("04_Integer_2x7", plan_wall(7)),
+        ("05_Forest_Stop", plan_wall(8, obstacles=((6, 0, 7, 1),))),
+        ("06_Map_Edge", plan_wall(8, map_end=7)),
+        ("07_NotEnoughSpace", plan_wall(8, obstacles=((1, 0, 2, 1),))),
+        ("08_Integer_2x4", plan_wall(4)), ("09_Integer_2x5", plan_wall(5)),
     ]
-    report = {"assumption": "PROVISIONAL: complete short wall reserves 2x2 tiles; awaiting user confirmation",
+    report = {"footprint": "Confirmed: depth 2 cells, integer lengths >=2; no fractional placement",
               "source": "user's stone wall mesh from 60728_autosave.blend; no material edits",
               "integration": "Blender art / footprint preview only; Unity drag placement not implemented",
               "layout_tests": verify_layout(), "source_texture_hashes": texture_hashes, "examples": {}}
@@ -156,13 +157,13 @@ def build_wall_kit():
         create_wall_stage(scene, plan)
         if not plan.valid:
             material = create_material("Invalid footprint", (.65, .12, .10))
-            add_fixture_cube("Cannot fit intact piers", (.475, 0, .004), (.95, 1, .008), material)
+            add_fixture_cube("Cannot fit intact piers", (.25, 0, .004), (.5, 1, .008), material)
         elif "Forest" in name:
             material = create_material("Obstacle footprint placeholder", (.16, .32, .19))
-            add_fixture_cube("Forest footprint — placeholder only", (3.425, .6875, .18), (1.15, .625, .36), material)
+            add_fixture_cube("Forest footprint — one cell", (3.25, .25, .18), (.5, .5, .36), material)
         elif "Map_Edge" in name:
             material = create_material("Map boundary", (.62, .18, .12))
-            add_fixture_cube("Map edge limit", (3.65, 0, .004), (.008, 1.3, .008), material)
+            add_fixture_cube("Map edge limit", (3.5, 0, .004), (.008, 1.3, .008), material)
         bpy.context.view_layer.update()
         if plan.valid:
             assert sum(obj.name.startswith("Pier_") for obj in objects) == 2
@@ -184,7 +185,7 @@ def build_wall_kit():
         mesh.name = name
     bpy.ops.wm.save_as_mainfile(filepath=str(MODELS / "ModularStoneWall.blend"))
     (REVIEW / "verification.json").write_text(json.dumps(report, ensure_ascii=False, indent=2))
-    print("Wall kit ready: preserved piers, repeating middle, fractional ends and safe obstacle stops", flush=True)
+    print("Wall kit ready: preserved piers, integer lengths and exact cell-boundary stops", flush=True)
 
 
 def verify_saved_kit():
@@ -195,6 +196,7 @@ def verify_saved_kit():
         assert image and image.packed_file, f"Source texture missing: {name}"
         assert hashlib.sha256(image.packed_file.data).hexdigest() == digest, f"Texture changed: {name}"
     for name, result in report["examples"].items():
+        assert all(isinstance(result[key], int) for key in ("requested_length", "length", "depth"))
         scene = bpy.data.scenes[name]
         bpy.context.window.scene = scene
         modules = sorted((obj for obj in scene.objects if obj.get("wall_module")), key=lambda obj: obj.location.x)
@@ -212,7 +214,8 @@ def verify_saved_kit():
             assert abs(end-start) < 1e-5, "Open longitudinal seam"
         end = modules[-1].location.x+max(vertex.co.x for vertex in modules[-1].data.vertices)
         assert abs(end-result["length"]*MODEL_UNITS_PER_TILE) < 1e-5, "Endpoint exceeds approved space"
-    print("PASS: seven wall cases, eleven layout checks, original textures and invariant piers", flush=True)
+    assert not any("Fractional" in scene.name for scene in bpy.data.scenes)
+    print(f"PASS: {len(report['examples'])} wall cases, {verify_layout()['cases']} layout checks, original textures and invariant piers", flush=True)
 
 
 def inspect_wall():

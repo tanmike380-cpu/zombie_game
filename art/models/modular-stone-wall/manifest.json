@@ -6,15 +6,15 @@
   "materials": "Original packed Tripo textures; no new lighting on the wall",
   "modules": ["StonePier_Left", "StoneWall_Middle", "StonePier_Right"],
   "joining_rule": "Exactly two intact end piers for one continuous straight run, repeated center mesh and cropped last center piece; no mesh or UV stretching",
-  "provisional_footprint": {
-    "interpretation": "Awaiting user confirmation: one complete short wall reserves 2x2 tiles, not one pier",
+  "integer_footprint": {
+    "interpretation": "Confirmed: complete runs reserve 2 x N integer cells, N >= 2; odd lengths are supported",
     "minimum_run_length_tiles": 2,
     "reserved_depth_tiles": 2,
     "logical_section_length_tiles": 2,
     "model_units_per_tile_in_review": 0.5,
-    "note": "Grid is a provisional reservation corridor. Native art proportions are preserved; final Unity model scale and collision geometry are not locked."
+    "note": "Grid reservation is confirmed. Native art proportions are preserved; final Unity collision geometry is not yet implemented. One-cell internal spans are not independently placeable walls."
   },
-  "fractional_end_rule": "Shorten only center geometry. Check the entire corridor including end piers. Clamp before map edge / first obstacle; reject if intact ends cannot fit. Never silently overlap obstacles or skip across a blocked gap.",
+  "integer_end_rule": "Reject fractional placement inputs. Stop exactly at the first blocked cell or integer map boundary. Reject the full run if fewer than two cells remain. Repeating middle mesh can be trimmed to the integer endpoint without stretching end piers.",
   "pending_runtime_work": ["Unity drag input and terrain queries", "fog / outpost coverage / resource checks", "per-section building damage, destruction and NavMesh carving", "corner and gate joins"],
   "combat_balance": "No HP, cost or build-time values introduced. Do not activate stone-wall combat until shared balance is authored and validated.",
   "authoring_script": "tools/art/modular_stone_wall.py",
