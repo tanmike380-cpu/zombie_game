@@ -5,6 +5,18 @@ import bpy
 from mathutils import Vector
 
 
+def resolve_humanoid_bone(rig, name):
+    """Resolve compatible Tripo/Mixamo channels without renaming or rebuilding bones."""
+    if name in rig.pose.bones:
+        return rig.pose.bones[name]
+    aliases={'Chest':'Spine1','UpperChest':'Spine2'}
+    mapped=aliases.get(name,name).replace('_UpperLeg','UpLeg').replace('_LowerLeg','Leg').replace('_UpperArm','Arm').replace('_LowerArm','ForeArm')
+    candidate='mixamorig:'+mapped
+    if candidate not in rig.pose.bones:
+        raise ValueError(f'{rig.name}: missing humanoid channel {name}')
+    return rig.pose.bones[candidate]
+
+
 def import_model(folder):
     bpy.ops.object.select_all(action="SELECT")
     bpy.ops.object.delete(use_global=False)

@@ -56,6 +56,13 @@ sysinfo.txt
 /Assets/_Game/Resources/TripoCrossbow.meta
 /Assets/_Game/Resources/TripoExploder/
 /Assets/_Game/Resources/TripoExploder.meta
+/Assets/_Game/Resources/CoastalBuildings/
+/Assets/_Game/Resources/CoastalBuildings.meta
+/Assets/_Game/Resources/CoastalUnits/
+/Assets/_Game/Resources/CoastalUnits.meta
+# Exporter-generated duplicate texture copies; authored PNGs and the manifest sit beside each FBX.
+/Assets/_Game/Art/CoastalImports/**/*.fbm/
+/Assets/_Game/Art/CoastalImports/**/*.fbm.meta
 /Assets/_Game/Art/TripoCrossbow/UnityMetallicSmoothness.png
 /Assets/_Game/Art/TripoCrossbow/UnityMetallicSmoothness.png.meta
 /Assets/_Game/ArtGenerated/

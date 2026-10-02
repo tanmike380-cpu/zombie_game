@@ -1,0 +1,431 @@
+{
+  "models": [
+    {
+      "id": "Barrier",
+      "source": "BZT barrier",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_a5c8e126",
+          "texture": "tripo_image_a5c8e126_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Workshop",
+      "source": "BZT wooden workshop",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_24a2e25a",
+          "texture": "tripo_image_24a2e25a_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Headquarters",
+      "source": "BZT Main base1",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_b9b5ab31",
+          "texture": "tripo_image_b9b5ab31_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Wall",
+      "source": "stone wall",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "GateTower",
+      "source": "stone fortress 3d model",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_6a319d87",
+          "texture": "tripo_image_6a319d87_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Pasture",
+      "source": "farmhouse",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_87142fc2",
+          "texture": "tripo_image_87142fc2_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        },
+        {
+          "name": "Crop natural tone 0",
+          "texture": "",
+          "color": [
+            0.17000000178813934,
+            0.15000000596046448,
+            0.027000000700354576,
+            1.0
+          ]
+        },
+        {
+          "name": "Crop natural tone 1",
+          "texture": "",
+          "color": [
+            0.25999999046325684,
+            0.23000000417232513,
+            0.041999999433755875,
+            1.0
+          ]
+        },
+        {
+          "name": "Crop natural tone 2",
+          "texture": "",
+          "color": [
+            0.3400000035762787,
+            0.30000001192092896,
+            0.054999999701976776,
+            1.0
+          ]
+        },
+        {
+          "name": "Crop natural tone 3",
+          "texture": "",
+          "color": [
+            0.4300000071525574,
+            0.36000001430511475,
+            0.07400000095367432,
+            1.0
+          ]
+        },
+        {
+          "name": "Crop natural tone 4",
+          "texture": "",
+          "color": [
+            0.44999998807907104,
+            0.30000001192092896,
+            0.05000000074505806,
+            1.0
+          ]
+        },
+        {
+          "name": "Crop natural tone 5",
+          "texture": "",
+          "color": [
+            0.550000011920929,
+            0.38999998569488525,
+            0.07999999821186066,
+            1.0
+          ]
+        },
+        {
+          "name": "Crop natural tone 6",
+          "texture": "",
+          "color": [
+            0.6499999761581421,
+            0.4699999988079071,
+            0.11999999731779099,
+            1.0
+          ]
+        },
+        {
+          "name": "Crop natural tone 7",
+          "texture": "",
+          "color": [
+            0.7300000190734863,
+            0.550000011920929,
+            0.17000000178813934,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "FireTower",
+      "source": "fire siege tower",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_bb19cb10",
+          "texture": "tripo_image_bb19cb10_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WalkerUnrigged",
+      "source": "common zombie",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_d7bcf248",
+          "texture": "tripo_image_d7bcf248_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallMiddle",
+      "source": "Continuous wall middle",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "GreekFire",
+      "source": "Greek Fire siege.001",
+      "rig_bones": 25,
+      "clips": [
+        "Attack"
+      ],
+      "materials": [
+        {
+          "name": "tripo_mat_bdfaf021.001",
+          "texture": "tripo_image_bdfaf021_0.001.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Archer",
+      "source": "BZT archer Elite",
+      "rig_bones": 67,
+      "clips": [
+        "Idle",
+        "Run",
+        "Attack"
+      ],
+      "materials": [
+        {
+          "name": "tripo_mat_7889d5ea",
+          "texture": "tripo_image_7889d5ea_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Headbutter",
+      "source": "Hammer zombie",
+      "rig_bones": 67,
+      "clips": [
+        "Idle",
+        "Run",
+        "Attack"
+      ],
+      "materials": [
+        {
+          "name": "tripo_mat_e045e363",
+          "texture": "tripo_image_e045e363_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Hound",
+      "source": "Hunger Dog",
+      "rig_bones": 34,
+      "clips": [
+        "Idle",
+        "Run",
+        "Attack"
+      ],
+      "materials": [
+        {
+          "name": "tripo_mat_bc12e490",
+          "texture": "tripo_image_bc12e490_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CageBoss",
+      "source": "wooden cage zombie",
+      "rig_bones": 67,
+      "clips": [
+        "Idle",
+        "Run",
+        "Attack"
+      ],
+      "materials": [
+        {
+          "name": "tripo_mat_4117b66f",
+          "texture": "tripo_image_4117b66f_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Soldier",
+      "source": "medieval soldier 3d model",
+      "rig_bones": 65,
+      "clips": [
+        "Idle",
+        "Run",
+        "Attack"
+      ],
+      "materials": [
+        {
+          "name": "tripo_mat_eff2ff04",
+          "texture": "tripo_image_eff2ff04_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Walker",
+      "source": "zombie 3d model",
+      "rig_bones": 65,
+      "clips": [
+        "Idle",
+        "Run",
+        "Attack"
+      ],
+      "materials": [
+        {
+          "name": "tripo_mat_de1e5706",
+          "texture": "tripo_image_de1e5706_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ExploderLatest",
+      "source": "Explode zombie",
+      "rig_bones": 65,
+      "clips": [
+        "Idle",
+        "Walk",
+        "Run",
+        "Attack"
+      ],
+      "materials": [
+        {
+          "name": "tripo_mat_376469e8",
+          "texture": "tripo_image_376469e8_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Crossbow",
+      "source": "TripoCrossbow/ByzantineCrossbow.fbx",
+      "reuse": true
+    },
+    {
+      "id": "Exploder",
+      "source": "TripoExploder/TripoExploder.fbx",
+      "reuse": true
+    }
+  ]
+}

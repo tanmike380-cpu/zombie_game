@@ -7,7 +7,7 @@ import numpy as np
 from mathutils import Quaternion, Vector
 
 sys.path.insert(0, str(Path(__file__).parent))
-from tripo_model_io import import_model, audit_model, setup_render
+from tripo_model_io import import_model, audit_model, setup_render, resolve_humanoid_bone
 
 ROOT = Path(__file__).resolve().parents[2]
 REVIEW = ROOT / "Builds/ArtReview/TripoExploder"
@@ -94,7 +94,7 @@ def expand_pustule_coverage(mesh, size, pigment):
 
 
 def rotate_bone(rig, name, angle):
-    bone = rig.pose.bones[name]
+    bone = resolve_humanoid_bone(rig,name)
     axis = bone.bone.matrix_local.to_quaternion().inverted() @ Vector((1, 0, 0))
     bone.rotation_quaternion = Quaternion(axis, angle)
 
@@ -124,7 +124,7 @@ def create_actions(rig):
                     rotate_bone(rig, side + "_LowerLeg", max(0, -swing) * (.95 if charging else .36))
                     rotate_bone(rig, side + "_UpperArm", (-.55 if charging else 0) - swing * (.28 if charging else .13))
                     rotate_bone(rig, side + "_LowerArm", -.55 if charging else -.12)
-                rig.pose.bones["Hips"].location.y = abs(math.sin(phase)) * (.026 if charging else .008)
+                resolve_humanoid_bone(rig,"Hips").location.y = abs(math.sin(phase)) * (.026 if charging else .008)
             elif name == "Attack":
                 # Contract, then wrench the torso open: a self-detonation, not an ordinary walking/punch loop.
                 progress = frame / duration
