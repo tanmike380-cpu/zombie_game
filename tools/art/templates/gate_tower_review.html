@@ -1,0 +1,13 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>炮楼通行 · 牧场稻草</title><style>
+body{margin:0;background:#151b21;color:#eee7db;font:16px system-ui;line-height:1.7}main{max-width:1160px;margin:auto;padding:32px}h1{font-size:30px}h2{margin-top:35px}p{color:#c6ccc9}a{color:#9bd7ec}video,img{width:100%;display:block;border-radius:10px;background:#303b46}.pair{display:grid;grid-template-columns:1fr 1fr;gap:16px}aside{border-left:3px solid #b59252;padding:14px 20px;background:#302a21}.label{font-size:13px;letter-spacing:2px;color:#cfb57b}figure{margin:0}figcaption{padding:10px 0;color:#c5ccc9}@media(max-width:650px){.pair{grid-template-columns:1fr}}
+</style><main>
+<span class="label">原模型 · BLENDER 评审</span><h1>炮楼 2×2：友军穿行，敌军阻挡</h1>
+<aside>这是 Blender 通行规则和视觉演示，尚未接入 Unity 正式寻路。门不播放开关动画；炮楼原模型和贴图保留。</aside>
+<p>弩手沿正门方向往返；进入炮楼时，建筑临时淡化，士兵显示蓝色轮廓。紫色自爆僵尸停在占地外。网格框为 2×2；不允许从两侧墙面横穿。</p>
+<video controls loop playsinline preload="metadata" poster="tower-040.png"><source src="tower-passage.mp4" type="video/mp4"></video>
+<div class="pair"><figure><img src="tower-001.png"><figcaption>未进入：炮楼保持原来外观</figcaption></figure><figure><img src="tower-040.png"><figcaption>穿行中：淡化建筑，显示士兵轮廓</figcaption></figure></div>
+<h2>牧场：金黄色连续稻草层</h2><p>导入的牧场目前是无颜色贴图的白模。这版补了基础颜色和纹理稿；连续草层是独立可编辑对象，可以调整高度、密度或删除，不改原模型拓扑。房屋、围栏材质仍是初稿，并非最终美术。</p>
+<div class="pair"><figure><img src="pasture-shape.png"><figcaption>原白模：此图只用于查看几何结构</figcaption></figure><figure><img src="pasture-001.png"><figcaption>基础材质与连续草层</figcaption></figure></div>
+<p><a href="../../../art/models/gate-tower-pasture/GateTowerPasture.blend">Blender 评审文件</a> · <a href="verification.json">检查结果</a> · <a href="../ModularStoneWall/review.html">整数格城墙</a></p>
+</main></html>
