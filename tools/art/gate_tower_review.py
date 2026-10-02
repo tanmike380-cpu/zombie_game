@@ -11,7 +11,7 @@ from mathutils import Vector
 
 sys.path.insert(0, str(Path(__file__).parent))
 from gate_passage import GatePassage, verify_passage
-from pasture_materials import color_pasture, add_straw_cover, bake_base_color
+from pasture_materials import add_straw_cover
 from siege_preview import create_stage, set_preview_workspace, create_material, add_fixture_cube
 from tripo_model_io import point_at
 
@@ -186,19 +186,65 @@ def build_tower_scene(source):
 
 
 def build_pasture_scene(source):
-    """Keep source topology, add editable material and separate continuous straw cover."""
+    """Keep the new source mesh/materials exactly; only dress raised crop surfaces."""
     scene = bpy.data.scenes.new("02_Pasture_StrawMaterial")
     bpy.context.window.scene = scene
-    obj = copy_mesh(source, "Pasture — original mesh with new palette")
-    material = color_pasture(obj)
+    obj = copy_mesh(source, "Pasture — original mesh and textures unchanged")
     straw = add_straw_cover(obj)
-    setup_unlit_stage(scene, (0,0,.13), (1.5,-2,1.5), 1.42)
-    bake_base_color(obj, material, MODELS / "Pasture_BaseColor.png")
-    scene.cycles.samples = 8
+    create_stage(scene, "GreekFire")
+    scene.camera.location = (1.5,-2,1.5)
+    scene.camera.data.ortho_scale = 1.42
+    point_at(scene.camera, (0,0,.13))
     assert len(obj.data.vertices) == len(source.data.vertices)
     return scene, {"source_vertices": len(source.data.vertices),
                    "straw_triangles": sum(len(p.vertices)-2 for p in straw.data.polygons),
-                   "source_geometry_unchanged": True, "new_texture_resolution": [1024,1024]}
+                   "source_geometry_unchanged": True, "source_materials_unchanged": True,
+                   "stalk_count": straw["stalk_count"], "root_z_range": list(straw["root_z_range"]),
+                   "source_texture_hashes": texture_hashes(source)}
+
+
+def texture_hashes(obj):
+    """Hash packed pixels so non-crop areas cannot silently be repainted."""
+    return {node.image.name: hashlib.sha256(node.image.packed_file.data).hexdigest()
+            for mat in obj.data.materials for node in mat.node_tree.nodes
+            if node.type == "TEX_IMAGE" and node.image and node.image.packed_file}
+
+
+def replace_pasture():
+    """Replace only the rejected pasture scene, leaving tower assets and animation intact."""
+    snapshot = REVIEW / "ImportedPastureV2Snapshot.blend"
+    with bpy.data.libraries.load(str(snapshot)) as (available, loaded):
+        loaded.objects = ["medieval farmhouse 3d model"]
+    source = loaded.objects[0]
+    if not texture_hashes(source):
+        raise ValueError("The new pasture must include its packed original texture")
+    archive = bpy.data.scenes["00_OriginalArchitecture_Preserved"]
+    bpy.context.window.scene = archive
+    old_scene = bpy.data.scenes["02_Pasture_StrawMaterial"]
+    for obj in list(old_scene.objects):
+        bpy.data.objects.remove(obj, do_unlink=True)
+    bpy.data.scenes.remove(old_scene)
+    old_original = bpy.data.objects.get("Original — medieval farmhouse 3d model")
+    if old_original:
+        bpy.data.objects.remove(old_original, do_unlink=True)
+    copy_mesh(source, "Original — medieval farmhouse 3d model")
+    scene, report = build_pasture_scene(source)
+    for suffix, visible in (("before",False),("001",True)):
+        straw = next(o for o in scene.objects if o.get("crop_only"))
+        straw.hide_render = not visible
+        scene.render.filepath = str(REVIEW / f"pasture-{suffix}.png")
+        bpy.ops.render.render(write_still=True)
+    bpy.data.objects.remove(source, do_unlink=True)
+    verification = json.loads((REVIEW / "verification.json").read_text())
+    verification["pasture"] = report
+    verification["lighting"] = "Source textures unchanged; no lights added. Crop-only geometry overlay."
+    (REVIEW / "verification.json").write_text(json.dumps(verification,indent=2))
+    shutil.copyfile(Path(__file__).parent / "templates/gate_tower_review.html", REVIEW / "review.html")
+    set_preview_workspace(scene)
+    bpy.ops.file.pack_all()
+    bpy.ops.outliner.orphans_purge(do_recursive=True)
+    bpy.ops.wm.save_as_mainfile(filepath=str(MODELS / "GateTowerPasture.blend"))
+    print(f"PASS: replaced pasture only, {report['stalk_count']} crop stalks on raised beds; source textures preserved",flush=True)
 
 
 def build_review():
@@ -289,15 +335,20 @@ def verify_saved_review():
         assert all(shell.hide_render != row["ghost"] for shell in shells)
     for scene in bpy.data.scenes:
         assert not any(o.type == "LIGHT" for o in scene.objects)
-    obj = bpy.data.objects["Pasture — original mesh with new palette"]
+    obj = bpy.data.objects["Pasture — original mesh and textures unchanged"]
     original = bpy.data.objects["Original — medieval farmhouse 3d model"]
     assert [tuple(v.co) for v in obj.data.vertices] == [tuple(v.co) for v in original.data.vertices]
-    assert bpy.data.images["Pasture_BaseColor_1024"].packed_file
+    assert list(obj.data.materials) == list(original.data.materials)
+    assert texture_hashes(obj) == report["pasture"]["source_texture_hashes"]
+    assert report["pasture"]["root_z_range"][0] > .060
+    assert report["pasture"]["root_z_range"][1] < .075
     print(f"PASS: {verify_passage()['cases']} permission checks, {FRAME_END} frames, unchanged tower texture and pasture geometry", flush=True)
 
 
 if __name__ == "__main__":
-    if "--verify" in sys.argv:
+    if "--replace-pasture" in sys.argv:
+        replace_pasture()
+    elif "--verify" in sys.argv:
         verify_saved_review()
     elif "--video" in sys.argv:
         render_video()
