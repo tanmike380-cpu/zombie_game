@@ -8,17 +8,17 @@ namespace ZombieGame.World
         public static float maximum_aspect_error {get;private set;}
         public static GameObject place(LandscapeRegion region,Transform parent)
         {
-            string id=asset_for(region.label);
+            string id=region.art_id??asset_for(region.label);
             if(id==null)return null;
             var prefab=Resources.Load<GameObject>("CoastalBuildings/"+id);
             if(prefab==null)throw new System.InvalidOperationException("Missing imported architecture: "+id);
             var root=new GameObject(region.label);root.transform.SetParent(parent,false);
             var model=Object.Instantiate(prefab,root.transform);model.name=id;
             // Keep the FBX's axis conversion; yaw is additional, not a replacement rest rotation.
-            if(region.label=="STONE WALL SIDE"||region.label=="FORTRESS WALL SIDE")
+            if(region.art_sideways||region.label=="STONE WALL SIDE"||region.label=="FORTRESS WALL SIDE")
                 model.transform.localRotation=Quaternion.Euler(0,90,0)*model.transform.localRotation;
             var renderers=model.GetComponentsInChildren<Renderer>();
-            foreach(var renderer in renderers){renderer.shadowCastingMode=UnityEngine.Rendering.ShadowCastingMode.Off;renderer.receiveShadows=false;}
+            foreach(var renderer in renderers){renderer.shadowCastingMode=UnityEngine.Rendering.ShadowCastingMode.On;renderer.receiveShadows=true;}
             var bounds=renderers[0].bounds;foreach(var renderer in renderers)bounds.Encapsulate(renderer.bounds);
             Vector3 original_size=bounds.size;
             float scale=Mathf.Min(region.bounds.size.x/bounds.size.x,region.bounds.size.z/bounds.size.z);
@@ -26,7 +26,7 @@ namespace ZombieGame.World
             bounds=renderers[0].bounds;foreach(var renderer in renderers)bounds.Encapsulate(renderer.bounds);
             float x_ratio=bounds.size.x/original_size.x,y_ratio=bounds.size.y/original_size.y,z_ratio=bounds.size.z/original_size.z;
             maximum_aspect_error=Mathf.Max(maximum_aspect_error,Mathf.Abs(x_ratio-y_ratio)/scale,Mathf.Abs(x_ratio-z_ratio)/scale);
-            model.transform.position+=new Vector3(-bounds.center.x,-bounds.min.y,-bounds.center.z);
+            model.transform.position+=new Vector3(-bounds.center.x,region.art_id==null?-bounds.min.y:0,-bounds.center.z);
             root.transform.position=new Vector3(region.bounds.center.x,0,region.bounds.center.z);
             return root;
         }

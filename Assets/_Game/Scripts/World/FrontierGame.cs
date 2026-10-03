@@ -69,7 +69,8 @@ namespace ZombieGame.World
             map=new FrontierMap(coastal_defense,session_config);
             landscape=new FrontierLandscape(map,transform,landscape_shader);
             var navigation_regions=coastal_defense?map.regions.FindAll(region=>region.kind!=LandscapeKind.Building).ConvertAll(region=>region.bounds).ToArray():map.blockers;
-            current=new BattleSimulation(map.spawns,FrontierMap.HUMAN_CAPACITY,map.explosive,navigation_regions,initial_humans:map.initial_humans,unit_ids:map.unit_ids,infection_reserve:1024);
+            var gate_bounds=coastal_defense?map.regions.FindAll(region=>region.label=="GATE TOWER").ConvertAll(region=>region.bounds).ToArray():null;
+            current=new BattleSimulation(map.spawns,FrontierMap.HUMAN_CAPACITY,map.explosive,navigation_regions,initial_humans:map.initial_humans,unit_ids:map.unit_ids,infection_reserve:1024,friendly_gates:gate_bounds);
             economy=new FrontierEconomy(JsonUtility.FromJson<FrontierEconomyConfig>(Resources.Load<TextAsset>("FrontierEconomy").text));
             current.try_supply_defense_shot=stats=>
             {
@@ -84,6 +85,7 @@ namespace ZombieGame.World
             current_fog.explore_area(new Rect(-124,-124,76,76));
             current_fog.update_visibility(current);current.player_visibility=current_fog.is_visible;
             battle_view=new FrontierBattleView(current.total_count,transform,landscape_shader,imported_roster,coastal_skirmish);
+            current.projectile_muzzle=index=>battle_view.projectile_origin(current,index);
             battle_audio=new BattleAudio(current.total_count,transform);
             game_cursor=new RtsCursor();
             input=gameObject.AddComponent<RtsBattleInput>();input.game=this;input.custom_command_panel=true;input.select_all();
@@ -101,7 +103,7 @@ namespace ZombieGame.World
             input.intercept_world_input=construction.handle_input;
             hud=new FrontierHud(this);
             configure_lighting();
-            if(coastal_defense){QualitySettings.antiAliasing=4;QualitySettings.globalTextureMipmapLimit=0;QualitySettings.shadows=UnityEngine.ShadowQuality.Disable;}
+            if(coastal_defense)CoastalLighting.configure(transform);
             Camera.main.orthographicSize=coastal_defense&&!coastal_skirmish?34:24;focus_camera(coastal_defense?new Vector3(-91,0,-93):new Vector3(-99,0,-92));
             if(coastal_defense&&System.Array.IndexOf(arguments,"-coastalPaused")>=0){paused=true;Time.timeScale=0;}
             if(coastal_skirmish){paused=true;Time.timeScale=0;validate_imported_units();}
@@ -148,6 +150,7 @@ namespace ZombieGame.World
             if(pan.sqrMagnitude>0)focus_camera(camera_focus+RtsCameraPan.world_direction(pan,Camera.main.transform.rotation)*Camera.main.orthographicSize*RtsCameraPan.frame_seconds(Time.unscaledDeltaTime));
             construction.update();
             battle_audio.update(current,current_fog,reveal_map,camera_focus,Camera.main,paused);
+            structures.update_gate_feedback();
             battle_view.draw(current,current_fog,reveal_map);
             if(!reveal_map)current_fog.draw();
             last_presentation_ms=(System.Diagnostics.Stopwatch.GetTimestamp()-presentation_started)*1000d/System.Diagnostics.Stopwatch.Frequency;

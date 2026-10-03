@@ -37,6 +37,11 @@ namespace ZombieGame.World
             for(int i=0;i<materials.Length;i++) { materials[i]=new Material(shader){color=colors[i],enableInstancing=true};matrices[i]=new Matrix4x4[capacity+4096]; }
         }
         public void set_style(){characters.set_style(VisualStyles.current.id);}
+        public Vector3 projectile_origin(BattleSimulation battle,int index)
+        {
+            var forward=battle.soldier_facing[index];forward.y=0;
+            return characters.unit_muzzle(battle.stats_for(index).id,battle.positions[index],forward.sqrMagnitude>.0001f?Quaternion.LookRotation(forward):Quaternion.identity);
+        }
         public void draw(BattleSimulation battle,CombatFog fog,bool reveal)
         {
             characters.begin_frame(Camera.main);Array.Clear(counts,0,counts.Length);
@@ -62,18 +67,28 @@ namespace ZombieGame.World
                 }
                 float age=Time.time-battle.attack_started_at[i];
                 bool moving=agent.enabled&&battle.observed_velocity[i].sqrMagnitude>.04f;
-                var pose=moving?CharacterPose.Run:age<.4f?CharacterPose.Attack:CharacterPose.Idle;
+                float ranged_window=human?Mathf.Max(.4f,battle.stats_for(i).attack_interval*.95f):.4f;
+                var pose=moving?CharacterPose.Run:age<ranged_window?CharacterPose.Attack:CharacterPose.Idle;
                 if(!human) pose=ZombieAnimation.choose_pose(battle,i,Time.time);
                 if(human&&battle.uses_melee(i))pose=moving?CharacterPose.MeleeRun:age<.55f&&battle.last_attack_melee[i]?CharacterPose.MeleeAttack:CharacterPose.MeleeIdle;
-                float attack_window=human?(battle.uses_melee(i)?.55f:.4f):ZombieAnimation.attack_duration(battle.stats_for(i),battle.exploder[i]);
+                float attack_window=human?(battle.uses_melee(i)?.55f:ranged_window):ZombieAnimation.attack_duration(battle.stats_for(i),battle.exploder[i]);
                 float animation_age=Time.time+i*.137f;
                 if(pose==CharacterPose.Run||pose==CharacterPose.MeleeRun)
                     animation_age=characters.locomotion_time(battle.stats_for(i).id,travelled[i],model_scale,animation_age);
-                characters.add(human,pose,pose==CharacterPose.Attack||pose==CharacterPose.MeleeAttack?age:animation_age,battle.positions[i],rotation,battle.exploder[i],model_scale,battle.stats_for(i).id,attack_window);
+                bool gate_outline=false;
+                if(human)foreach(var building in battle.buildings)
+                    if(building.health>0&&building.label=="GATE TOWER"&&building.bounds.Contains(battle.positions[i]+Vector3.up))gate_outline=true;
+                characters.add(human,pose,pose==CharacterPose.Attack||pose==CharacterPose.MeleeAttack?age:animation_age,battle.positions[i],rotation,battle.exploder[i],model_scale,battle.stats_for(i).id,attack_window,gate_outline);
                 if(human&&battle.stats_for(i).ammunition_type=="gunpowder"&&!battle.last_attack_melee[i]&&battle.attack_started_at[i]>seen_shots[i])
                 { seen_shots[i]=battle.attack_started_at[i];effects.fire(characters.human_muzzle(battle.positions[i],rotation),rotation*Vector3.forward); }
             }
-            foreach(var shot in battle.projectiles) if(shot.active&&(reveal||fog.is_visible(shot.position))) add(2,shot.position,Vector3.one*.13f);
+            foreach(var shot in battle.projectiles) if(shot.active&&(reveal||fog.is_visible(shot.position)))
+            {
+                Vector3 direction=battle.positions[shot.target]+Vector3.up-shot.position;
+                if(battle.stats_for(shot.source).ammunition_type=="arrows"&&direction.sqrMagnitude>.0001f)
+                    add_arrow(shot.position,Quaternion.LookRotation(direction));
+                else add(2,shot.position,Vector3.one*.13f);
+            }
             foreach(var shot in battle.defense_projectiles)if(reveal||fog.is_visible(shot.position))add(2,shot.position,Vector3.one*.3f);
             foreach(var shot in battle.enemy_projectiles)if(shot.active&&(reveal||fog.is_visible(shot.position)))add(0,shot.position,Vector3.one*.28f);
             foreach(var impact in battle.enemy_impacts)if(impact.expires>Time.time&&(reveal||fog.is_visible(impact.origin)))
@@ -81,7 +96,7 @@ namespace ZombieGame.World
             explosions.draw(battle,fog,reveal);
             characters.draw();
             equipment.draw(battle);flames.draw(battle,equipment);
-            feedback.draw(battle,fog,reveal,Camera.main);
+            feedback.draw(battle,fog,reveal,Camera.main,equipment.selection_radius,equipment.head_height);
             for(int i=0;i<materials.Length;i++)
             {
                 var parameters=new RenderParams(materials[i]){worldBounds=new Bounds(Vector3.zero,new Vector3(260,30,260)),shadowCastingMode=ShadowCastingMode.Off};
@@ -90,6 +105,12 @@ namespace ZombieGame.World
         }
         private void add(int group,Vector3 point,Vector3 size)
         { if(counts[group]<matrices[group].Length)matrices[group][counts[group]++]=Matrix4x4.TRS(point,Quaternion.identity,size); }
-        public void Dispose() { equipment.Dispose();flames.Dispose();feedback.Dispose();effects.Dispose();explosions.Dispose();foreach(var material in materials)UnityEngine.Object.Destroy(material); }
+        private void add_arrow(Vector3 point,Quaternion rotation)
+        {
+            if(counts[1]>=matrices[1].Length||counts[2]>=matrices[2].Length)return;
+            matrices[1][counts[1]++]=Matrix4x4.TRS(point,rotation,new Vector3(.035f,.035f,.65f));
+            matrices[2][counts[2]++]=Matrix4x4.TRS(point+rotation*new Vector3(0,0,-.24f),rotation,new Vector3(.13f,.03f,.14f));
+        }
+        public void Dispose() { characters.Dispose();equipment.Dispose();flames.Dispose();feedback.Dispose();effects.Dispose();explosions.Dispose();foreach(var material in materials)UnityEngine.Object.Destroy(material); }
     }
 }

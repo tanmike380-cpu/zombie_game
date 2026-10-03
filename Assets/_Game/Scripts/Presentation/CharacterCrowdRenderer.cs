@@ -6,12 +6,15 @@ using UnityEngine.Rendering;
 namespace ZombieGame.Presentation
 {
     /// <summary>Shared sampled meshes, grouped by character/pose/frame. No per-unit skeleton or Animator.</summary>
-    public sealed class CharacterCrowdRenderer
+    public sealed class CharacterCrowdRenderer:IDisposable
     {
         private readonly CharacterFrames[] characters;
         private readonly Dictionary<string,int> imported_indices=new Dictionary<string,int>();
         private readonly Matrix4x4[][] matrices;
         private readonly int[] counts;
+        private readonly int[] silhouette_counts;
+        private readonly Matrix4x4[][] silhouette_matrices;
+        private readonly Material silhouette;
         private readonly int frames_per_pose;
         private readonly int pose_count;
         private readonly int capacity;
@@ -45,6 +48,8 @@ namespace ZombieGame.Presentation
             frames_per_pose=maximum_frames;
             int buckets = characters.Length * pose_count * frames_per_pose;
             matrices = new Matrix4x4[buckets][]; counts = new int[buckets];
+            silhouette_counts=new int[buckets];silhouette_matrices=new Matrix4x4[buckets][];
+            silhouette=new Material(Resources.Load<Shader>("GateSilhouette")){enableInstancing=true};
             for (int i = 0; i < buckets; i++) matrices[i] = new Matrix4x4[Math.Min(capacity,128)];
         }
         public void set_style(string style)
@@ -69,11 +74,12 @@ namespace ZombieGame.Presentation
         public void begin_frame(Camera view=null)
         {
             Array.Clear(counts, 0, counts.Length); submitted = culled = 0;
+            Array.Clear(silhouette_counts,0,silhouette_counts.Length);
             cull_to_view = view != null;
             if(cull_to_view)GeometryUtility.CalculateFrustumPlanes(view,view_planes);
         }
 
-        public void add(bool human, CharacterPose pose, float age, Vector3 position, Quaternion rotation, bool explosive = false,float model_scale=1,string human_id=null,float attack_window=0)
+        public void add(bool human, CharacterPose pose, float age, Vector3 position, Quaternion rotation, bool explosive = false,float model_scale=1,string human_id=null,float attack_window=0,bool gate_outline=false)
         {
             if(strict_imports&&(human_id==null||!imported_indices.ContainsKey(human_id)))
                 throw new InvalidOperationException("Procedural art fallback forbidden for this scenario: "+human_id);
@@ -89,6 +95,11 @@ namespace ZombieGame.Presentation
             if(counts[bucket]>=capacity)throw new InvalidOperationException("Crowd frame exceeds declared capacity");
             if(counts[bucket]==matrices[bucket].Length)Array.Resize(ref matrices[bucket],Math.Min(capacity,matrices[bucket].Length*2));
             matrices[bucket][counts[bucket]++] = matrix;
+            if(human&&gate_outline)
+            {
+                if(silhouette_matrices[bucket]==null)silhouette_matrices[bucket]=new Matrix4x4[capacity];
+                silhouette_matrices[bucket][silhouette_counts[bucket]++]=matrix;
+            }
             submitted++;
         }
 
@@ -108,14 +119,25 @@ namespace ZombieGame.Presentation
             {
                 if (counts[bucket] == 0) continue;
                 int character = bucket / (pose_count * frames_per_pose), pose = bucket / frames_per_pose % pose_count, frame = bucket % frames_per_pose;
-                var parameters = new RenderParams(characters[character].material) { worldBounds = new Bounds(Vector3.zero,new Vector3(260,30,260)), shadowCastingMode = character==0?ShadowCastingMode.On:ShadowCastingMode.Off, receiveShadows = true };
+                var parameters = new RenderParams(characters[character].material) { worldBounds = new Bounds(Vector3.zero,new Vector3(260,30,260)), shadowCastingMode = character==0||character>=8?ShadowCastingMode.On:ShadowCastingMode.Off, receiveShadows = true };
                 for (int start = 0; start < counts[bucket]; start += 1023)
                     Graphics.RenderMeshInstanced(parameters, characters[character].poses[pose].frames[frame], 0,
                         matrices[bucket], Math.Min(1023, counts[bucket]-start), start);
+                // Only units physically inside a gate use this pass. A normal draw avoids
+                // relying on runtime-only shader instancing variants stripped from players.
+                for(int i=0;i<silhouette_counts[bucket];i++)
+                    Graphics.DrawMesh(characters[character].poses[pose].frames[frame],silhouette_matrices[bucket][i],silhouette,
+                        0,null,0,null,ShadowCastingMode.Off,false);
             }
         }
 
         public Vector3 human_muzzle(Vector3 position, Quaternion rotation) => position + rotation * characters[0].poses[2].muzzle_positions[0];
+        public Vector3 unit_muzzle(string unit_id,Vector3 position,Quaternion rotation)
+        {
+            int index=imported_indices.TryGetValue(unit_id,out int imported)?imported:human_index(unit_id);
+            return position+rotation*characters[index].poses[(int)CharacterPose.Attack].muzzle_positions[0];
+        }
+        public void Dispose(){UnityEngine.Object.Destroy(silhouette);}
         private static int human_index(string id)
         {
             switch(id){case "archer":return 3;case "repeating_crossbowman":return 4;case "heavy_crossbowman":return 5;case "heavy_ballista":return 6;case "cannon":return 7;default:return 0;}

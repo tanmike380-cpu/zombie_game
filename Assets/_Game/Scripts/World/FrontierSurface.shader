@@ -32,7 +32,15 @@ Shader "ZombieGame/FrontierSurface"
             if(_TextureMode>.5)
             {
                 float2 uv=_TextureMode>1.5?i.uv_MainTex:p*_TextureScale;
-                o.Albedo=tex2D(_MainTex,uv).rgb*_Color.rgb;
+                fixed3 colour=tex2D(_MainTex,uv).rgb;
+                if(_SurfaceKind<.5&&_TextureMode<1.5)
+                {
+                    float blend=smoothstep(.25,.75,noise(p*.12));
+                    colour=lerp(colour,tex2D(_MainTex,uv+float2(.37,.61)).rgb,blend*.55);
+                    colour*=.9+.14*noise(p*.055);
+                    o.Normal=normalize(lerp(float3(0,0,1),UnpackNormal(tex2D(_BumpMap,uv)),.45));
+                }
+                o.Albedo=colour*_Color.rgb;
                 o.Smoothness=(1-tex2D(_RoughTex,uv).r)*.35;
                 o.Metallic=0;o.Occlusion=1;
                 if(_TextureMode>1.5)o.Normal=UnpackNormal(tex2D(_BumpMap,uv));

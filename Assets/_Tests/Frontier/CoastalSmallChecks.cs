@@ -12,7 +12,9 @@ namespace ZombieGame.FrontierTests
     {
         private FrontierGame game;
         private bool camera_fixture;
-        private void LateUpdate(){if(camera_fixture){Camera.main.orthographicSize=34;game.focus_camera(new Vector3(-91,0,-87));}}
+        private Vector3 fixture_focus=new Vector3(-91,0,-87);
+        private float fixture_zoom=34;
+        private void LateUpdate(){if(camera_fixture){Camera.main.orthographicSize=fixture_zoom;game.focus_camera(fixture_focus);}}
         private IEnumerator Start()
         {
             if(Array.IndexOf(Environment.GetCommandLineArgs(),"-coastalSmallSmoke")<0)yield break;
@@ -31,11 +33,13 @@ namespace ZombieGame.FrontierTests
             while(app_folder!=null&&!app_folder.Name.EndsWith(".app"))app_folder=app_folder.Parent;
             if(app_folder==null)throw new InvalidOperationException("Small smoke requires standalone app");
             string folder=Path.Combine(app_folder.Parent.FullName,"ArtReview/CoastalSkirmish");Directory.CreateDirectory(folder);
+            yield return check_rendered_shadows();
             yield return new WaitForEndOfFrame();ScreenCapture.CaptureScreenshot(Path.Combine(folder,"briefing.png"));
             game.begin_session();require(game.can_control&&!game.is_paused,"start enables player controls");
             camera_fixture=false;Camera.main.orthographicSize=12;game.focus_camera(new Vector3(-91,0,-72));
             yield return new WaitForEndOfFrame();ScreenCapture.CaptureScreenshot(Path.Combine(folder,"detail.png"));
             yield return null;camera_fixture=true;
+            yield return check_gate_presentation(folder);
             int recruit=Array.FindIndex(game.production.config.recipes,recipe=>recipe.recruit_id=="heavy_crossbowman");
             require(game.production.enqueue(recruit,game.current.reserve_soldiers),"recruit queue accepts supported archer");
             game.production.step(game.production.config.recipes[recruit].seconds+.1f,game.finish_production);
@@ -75,6 +79,62 @@ namespace ZombieGame.FrontierTests
             camera_fixture=false;yield return new WaitForSecondsRealtime(1);Application.Quit(0);
         }
         private ZombieGame.Combat.BattleSimulation current_battle()=>game.current;
+        private IEnumerator check_gate_presentation(string folder)
+        {
+            var gate=game.current.buildings.Find(building=>building.label=="GATE TOWER");
+            int unit=-1;float nearest=float.PositiveInfinity;
+            for(int i=0;i<game.current.soldier_count;i++)
+            {
+                if(game.current.is_reserve(i)||game.current.stats_for(i).id!="heavy_crossbowman")continue;
+                float distance=(game.current.positions[i]-gate.bounds.center).sqrMagnitude;
+                if(distance<nearest){nearest=distance;unit=i;}
+            }
+            require(unit>=0,"gate visual fixture has original infantry");
+            var start=game.current.positions[unit];
+            camera_fixture=true;fixture_zoom=12;fixture_focus=gate.bounds.center;
+            require(game.current.issue_order(unit,ZombieGame.Combat.SoldierOrder.Move,gate.bounds.center+Vector3.forward*10),"gate visual route accepted");
+            bool captured=false;
+            for(float end=Time.time+15;Time.time<end;)
+            {
+                yield return null;
+                if(!gate.bounds.Contains(game.current.positions[unit]+Vector3.up)||Mathf.Abs(game.current.positions[unit].z-gate.bounds.center.z)>1)continue;
+                yield return new WaitForEndOfFrame();
+                ScreenCapture.CaptureScreenshot(Path.Combine(folder,"friendly-gate.png"));
+                var pixels=new Texture2D(Screen.width,Screen.height,TextureFormat.RGB24,false);
+                pixels.ReadPixels(new Rect(0,0,Screen.width,Screen.height),0,0);pixels.Apply();
+                var point=Camera.main.WorldToScreenPoint(game.current.positions[unit]+Vector3.up);
+                int blue=0;
+                for(int y=Mathf.Max(0,(int)point.y-45);y<Mathf.Min(Screen.height,(int)point.y+45);y++)
+                    for(int x=Mathf.Max(0,(int)point.x-35);x<Mathf.Min(Screen.width,(int)point.x+35);x++)
+                    {var colour=pixels.GetPixel(x,y);if(colour.b>colour.r+.15f&&colour.g>colour.r+.12f)blue++;}
+                Destroy(pixels);require(blue>8,"occluded friendly has actual blue silhouette pixels");
+                captured=true;Debug.Log("[CoastalGateVisual] PASS blue silhouette pixels="+blue);break;
+            }
+            require(captured,"friendly reaches real tower in time");
+            game.current.issue_order(unit,ZombieGame.Combat.SoldierOrder.Move,start);
+            fixture_focus=new Vector3(-91,0,-87);fixture_zoom=34;camera_fixture=true;
+        }
+        private IEnumerator check_rendered_shadows()
+        {
+            require(QualitySettings.shadowDistance>Vector3.Distance(Camera.main.transform.position,game.camera_focus),"shadow distance includes ground at RTS camera depth");
+            yield return new WaitForEndOfFrame();
+            var pixels=new Texture2D(Screen.width,Screen.height,TextureFormat.RGB24,false);
+            pixels.ReadPixels(new Rect(0,0,Screen.width,Screen.height),0,0);pixels.Apply();var with_shadows=pixels.GetPixels32();
+            var saved=QualitySettings.shadows;
+            try
+            {
+                QualitySettings.shadows=ShadowQuality.Disable;
+                yield return null;yield return new WaitForEndOfFrame();
+                pixels.ReadPixels(new Rect(0,0,Screen.width,Screen.height),0,0);pixels.Apply();var without=pixels.GetPixels32();
+                int changed=0;
+                for(int i=0;i<without.Length;i++)
+                    if(without[i].r>with_shadows[i].r+5&&without[i].g>with_shadows[i].g+5)changed++;
+                require(changed>100,"real framebuffer must contain visible cast shadows");
+                Debug.Log("[CoastalShadows] PASS rendered shadow pixels="+changed);
+            }
+            finally{QualitySettings.shadows=saved;Destroy(pixels);}
+            yield return null;
+        }
         private static void check_outcomes()
         {
             var session=new CoastalSession();session.begin();

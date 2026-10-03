@@ -22,20 +22,24 @@ namespace ZombieGame.World
             add_building(-107,-79,2,2,"OUTPOST");
             add_building(-86,-80,2,2,"OUTPOST");
             add_building(-65,-80,2,2,"OUTPOST");
-            // Whole original walls scaled uniformly: 18-cell bays, not a stretched 2-cell facade.
-            // Larger blocking footprints follow their real thickness; existing wall-building rules are separate.
-            foreach(int x in new[]{-114,-90,-66})add_building(x,-55,18,5,"FORTRESS WALL");
-            add_building(-102,-55,6,5,"GATE TOWER");
-            add_building(-78,-55,6,5,"GATE TOWER");
-            for(int z=-118;z<=-64;z+=18)
-            {
-                add_building(-124,z,5,18,"FORTRESS WALL SIDE");
-                add_building(-56,z,5,18,"FORTRESS WALL SIDE");
-            }
+            add_authored_wall_runs();
+            add_building(-102,-55,10,9,"GATE TOWER");
+            add_building(-78,-55,10,9,"GATE TOWER");
             add_building(-61,-83,4,4,"FIRE TOWER");
             add_forest(-40,5,20,24);add_forest(35,-55,20,22);
             add_forest(55,60,28,20);add_forest(-90,85,26,22);
             regions.Add(new LandscapeRegion(90,12,20,24,5,LandscapeKind.Cliff));
+        }
+
+        [Serializable] private sealed class WallSection {public string asset;public float x,z,width,depth;public bool sideways,pier;}
+        [Serializable] private sealed class WallAssembly {public WallSection[] regions;}
+        private void add_authored_wall_runs()
+        {
+            var source=Resources.Load<TextAsset>("CoastalWallLayout");
+            if(source==null)throw new InvalidOperationException("Export the accepted Blender modular wall assembly first");
+            foreach(var section in JsonUtility.FromJson<WallAssembly>(source.text).regions)
+                regions.Add(new LandscapeRegion(section.x,section.z,section.width,section.depth,3,LandscapeKind.Building,
+                    section.pier?"FORTRESS END WALL":"FORTRESS BODY WALL"){art_id=section.asset,art_sideways=section.sideways});
         }
 
         private void spawn_coastal_units()

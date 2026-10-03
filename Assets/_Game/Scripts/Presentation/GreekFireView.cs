@@ -18,6 +18,9 @@ namespace ZombieGame.Presentation
             public float yaw;
             public Quaternion turret_rotation;
             public Vector3 previous_position;
+            public Vector3[] previous_axles;
+            public float radius;
+            public float visual_radius,visual_height;
         }
         private readonly Dictionary<int,Vehicle> vehicles=new Dictionary<int,Vehicle>();
         private readonly Transform parent;
@@ -39,6 +42,7 @@ namespace ZombieGame.Presentation
             model.transform.localScale*=3.9f/bounds.size.y;
             bounds=renderers[0].bounds;foreach(var renderer in renderers)bounds.Encapsulate(renderer.bounds);
             model.transform.position-=new Vector3(bounds.center.x,bounds.min.y,bounds.center.z);
+            root.transform.position=position;
             Transform turret=null;var wheels=new List<Transform>();var axles=new List<Transform>();
             foreach(var bone in model.GetComponentsInChildren<Transform>())
             {
@@ -48,13 +52,18 @@ namespace ZombieGame.Presentation
             }
             if(turret==null)throw new InvalidOperationException("Greek fire turret bone missing");
             var vehicle=new Vehicle{root=root,turret=turret,wheels=wheels.ToArray(),axles=axles.ToArray(),turret_position=turret.localPosition,
-                turret_rotation=turret.localRotation,pivot=Array.Find(transforms,item=>item.name=="TurretPivot"),muzzle=muzzle,previous_position=position};
+                turret_rotation=turret.localRotation,pivot=Array.Find(transforms,item=>item.name=="TurretPivot"),muzzle=muzzle,previous_position=position,
+                radius=.125f*axles[0].lossyScale.x,previous_axles=axles.ConvertAll(axle=>axle.position).ToArray(),
+                visual_radius=Mathf.Max(bounds.size.x,bounds.size.z)*.5f,visual_height=bounds.size.y};
             vehicles.Add(index,vehicle);return vehicle;
         }
         public Vector3 muzzle(int source,Vector3 fallback)
         {
-            return vehicles.TryGetValue(source,out var vehicle)?vehicle.pivot.position+Quaternion.AngleAxis(vehicle.yaw,Vector3.up)*(vehicle.muzzle.position-vehicle.pivot.position):fallback+Vector3.up*1.6f;
+            return vehicles.TryGetValue(source,out var vehicle)?vehicle.muzzle.position:fallback+Vector3.up*1.6f;
         }
+        public float selection_radius(int index)=>vehicles.TryGetValue(index,out var vehicle)?vehicle.visual_radius:.52f;
+        public float head_height(int index)=>vehicles.TryGetValue(index,out var vehicle)?vehicle.visual_height+.25f:2.35f;
+        public static float rolling_degrees(float signed_distance,float radius)=>signed_distance/Mathf.Max(.001f,radius)*Mathf.Rad2Deg;
         public void draw(BattleSimulation battle)
         {
             for(int i=0;i<battle.soldier_count;i++)
@@ -70,7 +79,13 @@ namespace ZombieGame.Presentation
                 float yaw=Vector3.SignedAngle(vehicle.root.transform.forward,direction,Vector3.up);vehicle.yaw=yaw;
                 vehicle.turret.localPosition=vehicle.turret_position;vehicle.turret.localRotation=vehicle.turret_rotation;
                 vehicle.turret.RotateAround(vehicle.pivot.position,Vector3.up,yaw);
-                for(int wheel=0;wheel<vehicle.wheels.Length;wheel++)vehicle.wheels[wheel].RotateAround(vehicle.axles[wheel].position,vehicle.root.transform.right,-motion.magnitude*150);
+                for(int wheel=0;wheel<vehicle.wheels.Length;wheel++)
+                {
+                    Vector3 axle_position=vehicle.axles[wheel].position;
+                    float distance=Vector3.Dot(axle_position-vehicle.previous_axles[wheel],vehicle.root.transform.forward);
+                    vehicle.wheels[wheel].RotateAround(axle_position,vehicle.root.transform.right,rolling_degrees(distance,vehicle.radius));
+                    vehicle.previous_axles[wheel]=axle_position;
+                }
             }
         }
         public void Dispose(){foreach(var vehicle in vehicles.Values)UnityEngine.Object.Destroy(vehicle.root);}

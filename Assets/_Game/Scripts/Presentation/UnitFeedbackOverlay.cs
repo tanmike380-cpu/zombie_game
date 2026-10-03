@@ -29,7 +29,7 @@ namespace ZombieGame.Presentation
             if(shader==null)throw new InvalidOperationException("Missing UnitFeedback shader");
             material=new Material(shader);mesh.MarkDynamic();
         }
-        public void draw(BattleSimulation battle,CombatFog fog,bool reveal,Camera view)
+        public void draw(BattleSimulation battle,CombatFog fog,bool reveal,Camera view,Func<int,float> visual_radius=null,Func<int,float> visual_height=null)
         {
             camera=view;vertices.Clear();colors.Clear();triangles.Clear();
             health_bars=ammunition_bars=selection_rings=0;
@@ -45,10 +45,10 @@ namespace ZombieGame.Presentation
                 if(!show_health&&!show_ammunition&&!show_ring)continue;
                 Vector3 foot=camera.WorldToScreenPoint(battle.positions[i]);
                 if(foot.z<=0||foot.x<0||foot.x>camera.pixelWidth||foot.y<0||foot.y>camera.pixelHeight)continue;
-                if(show_ring){draw_ring(battle.positions[i],foot);selection_rings++;}
+                if(show_ring){draw_ring(battle.positions[i],foot,visual_radius?.Invoke(i)??.52f);selection_rings++;}
                 if(!show_health&&!show_ammunition)continue;
                 float scale=human?1:stats.model_scale;
-                Vector3 head=camera.WorldToScreenPoint(battle.positions[i]+Vector3.up*2.35f*scale);
+                Vector3 head=camera.WorldToScreenPoint(battle.positions[i]+Vector3.up*(human&&visual_height!=null?visual_height(i):2.35f*scale));
                 float width=Mathf.Clamp(camera.pixelHeight/camera.orthographicSize*.9f,24,44);
                 float y=Mathf.Max(head.y,foot.y+14)+7;
                 if(show_health){draw_bar(new Rect(head.x-width/2,y,width,6),battle.health[i]/stats.health,HEALTH);health_bars++;}
@@ -70,21 +70,21 @@ namespace ZombieGame.Presentation
             float right=rect.x+rect.width*Mathf.Clamp01(fraction);
             if(right>rect.x)add_quad(new Vector2(rect.x,rect.y),new Vector2(right,rect.y),new Vector2(right,rect.yMax),new Vector2(rect.x,rect.yMax),color);
         }
-        private void draw_ring(Vector3 origin,Vector3 centre)
+        private void draw_ring(Vector3 origin,Vector3 centre,float radius)
         {
             const int SEGMENTS=32;
             for(int i=0;i<SEGMENTS;i++)
             {
-                Vector2 a=ring_point(origin,centre,i*2*Mathf.PI/SEGMENTS);
-                Vector2 b=ring_point(origin,centre,(i+1)*2*Mathf.PI/SEGMENTS);
+                Vector2 a=ring_point(origin,centre,i*2*Mathf.PI/SEGMENTS,radius);
+                Vector2 b=ring_point(origin,centre,(i+1)*2*Mathf.PI/SEGMENTS,radius);
                 Vector2 normal=new Vector2(-(b-a).y,(b-a).x).normalized;
                 add_quad(a-normal*2,b-normal*2,b+normal*2,a+normal*2,BACKGROUND);
                 add_quad(a-normal,b-normal,b+normal,a+normal,HEALTH);
             }
         }
-        private Vector2 ring_point(Vector3 origin,Vector3 centre,float angle)
+        private Vector2 ring_point(Vector3 origin,Vector3 centre,float angle,float radius)
         {
-            Vector3 projected=camera.WorldToScreenPoint(origin+new Vector3(Mathf.Cos(angle)*.52f,.06f,Mathf.Sin(angle)*.52f));
+            Vector3 projected=camera.WorldToScreenPoint(origin+new Vector3(Mathf.Cos(angle)*radius,.06f,Mathf.Sin(angle)*radius));
             Vector2 offset=(Vector2)(projected-centre);
             return (Vector2)centre+offset.normalized*Mathf.Max(5,offset.magnitude);
         }

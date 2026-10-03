@@ -263,8 +263,8 @@ namespace ZombieGame.World
                 if(imported_architecture&&batch.Key==GRASS&&environment_art.ready)
                 {
                     // Ground-only presentation adjustment; leave authored model colours and lighting alone.
-                    material.color=new Color(.72f,.77f,.64f);
-                    material.SetFloat("_TextureScale",.24f);
+                    material.color=new Color(.88f,.92f,.79f);
+                    material.SetFloat("_TextureScale",.32f);
                 }
                 var group=new GameObject("Landscape material batch");group.transform.SetParent(parent==null?root.transform:parent,false);
                 group.AddComponent<MeshFilter>().sharedMesh=mesh;

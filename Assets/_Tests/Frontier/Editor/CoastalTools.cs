@@ -136,7 +136,7 @@ namespace ZombieGame.EditorTools
                 material.enableInstancing=true;material.shader=Shader.Find("ZombieGame/ImportedColour");
                 if(!string.IsNullOrEmpty(item.texture))
                 {
-                    string texture_path=$"{SOURCE}/{record.id}/{item.texture}";
+                    string texture_path=Path.GetRelativePath(Directory.GetCurrentDirectory(),Path.GetFullPath($"{SOURCE}/{record.id}/{item.texture}")).Replace('\\','/');
                     var importer=(TextureImporter)AssetImporter.GetAtPath(texture_path);
                     if(importer.textureCompression!=TextureImporterCompression.Uncompressed||importer.maxTextureSize!=8192)
                     {importer.textureCompression=TextureImporterCompression.Uncompressed;importer.maxTextureSize=8192;importer.anisoLevel=8;importer.filterMode=FilterMode.Trilinear;importer.SaveAndReimport();}

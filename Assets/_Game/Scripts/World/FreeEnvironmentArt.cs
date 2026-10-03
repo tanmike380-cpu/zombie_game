@@ -8,7 +8,7 @@ namespace ZombieGame.World
     public sealed class FreeEnvironmentArt:IDisposable
     {
         private const string ROOT="FreeEnvironment/";
-        private readonly Texture2D ground,ground_rough,wall,wall_rough;
+        private readonly Texture2D ground,ground_rough,ground_normal,wall,wall_rough;
         private readonly GameObject rock_set;
         private readonly Material rock_material;
         private int rock_groups;
@@ -18,6 +18,7 @@ namespace ZombieGame.World
         {
             if(Array.IndexOf(Environment.GetCommandLineArgs(),"-legacyEnvironment")>=0)return;
             ground=load_texture("grass_path_2","diff");ground_rough=load_texture("grass_path_2","rough");
+            ground_normal=load_texture("grass_path_2","nor_gl");
             wall=load_texture("plastered_stone_wall","diff");wall_rough=load_texture("plastered_stone_wall","rough");
             rock_set=Resources.Load<GameObject>(ROOT+"rock_moss_set_01/rock_moss_set_01_1k");
             var diffuse=load_texture("rock_moss_set_01","diff");
@@ -38,6 +39,7 @@ namespace ZombieGame.World
             if(!ready||(!is_ground&&!is_wall))return;
             material.color=is_ground?new Color(.95f,1,.9f):new Color(.92f,.89f,.81f);
             configure_material(material,is_ground?ground:wall,is_ground?ground_rough:wall_rough,1,is_ground?.16f:.35f);
+            if(is_ground&&ground_normal!=null)material.SetTexture("_BumpMap",ground_normal);
         }
 
         private static void configure_material(Material material,Texture2D diffuse,Texture2D rough,float mode,float scale)

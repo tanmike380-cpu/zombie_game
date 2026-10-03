@@ -14,6 +14,19 @@ namespace ZombieGame.World
         private readonly Dictionary<BattleBuilding,GameObject> navigation_obstacles=new Dictionary<BattleBuilding,GameObject>();
         private readonly Material ruin_material;
         private readonly Material collapsed_material;
+        private readonly MaterialPropertyBlock gate_tint=new MaterialPropertyBlock();
+        public void update_gate_feedback()
+        {
+            foreach(var building in game.current.buildings)
+            {
+                if(building.label!="GATE TOWER"||building.health<=0||!landscape.building_models.TryGetValue(building.bounds,out var model))continue;
+                bool occupied=false;
+                for(int i=0;i<game.current.soldier_count;i++)
+                    if(game.current.health[i]>0&&!game.current.is_reserve(i)&&building.bounds.Contains(game.current.positions[i]+Vector3.up)) {occupied=true;break;}
+                gate_tint.SetFloat("_GateVisibility",occupied?.30f:1);
+                foreach(var renderer in model.GetComponentsInChildren<Renderer>())renderer.SetPropertyBlock(gate_tint);
+            }
+        }
         public BattleBuilding headquarters {get;private set;}
         public FrontierStructures(FrontierGame game,FrontierLandscape landscape,Shader shader)
         {
@@ -24,7 +37,8 @@ namespace ZombieGame.World
             {
                 if(region.kind!=LandscapeKind.Building)continue;
                 var building=game.current.add_building_target(region.bounds,region.label,region.label=="COMMAND HALL");
-                if(game.map.coastal)navigation_obstacles.Add(building,game.current.crowd.add_building(region.bounds));
+                if(game.map.coastal)navigation_obstacles.Add(building,region.label=="GATE TOWER"
+                    ?game.current.crowd.add_friendly_gate(region.bounds):game.current.crowd.add_building(region.bounds));
                 if(game.map.coastal&&building.fortification)game.current.friendly_parapets.Add(region.bounds);
                 if(region.label=="GATE TOWER"||region.label=="FIRE TOWER")
                 {
