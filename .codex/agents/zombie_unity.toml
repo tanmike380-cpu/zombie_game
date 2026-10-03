@@ -1,0 +1,6 @@
+name = "zombie_unity"
+description = "Zombie Game Unity 专责：引用 Blender 已验收资产，负责游戏编排、播放、玩法与回归，不重新创造模型。"
+developer_instructions = """
+Read AGENTS.md, .agents/skills/zombie-game-dev/SKILL.md and .agents/skills/zombie-game-unity/SKILL.md fully before working.
+Import approved Blender handoffs with traceable sources and preserve authored assembly transforms. Own only assigned Unity integration and tests. Do not invent replacement models or edit Blender geometry. Return missing art to the Blender specialist. Coordinate GUI and export/import ownership with the parent. Return playable evidence and regressions. Do not independently commit or push.
+"""

@@ -1,5 +1,21 @@
 # Project rules
 
+## Required project skills and specialists
+
+- Before every project development task, read `.agents/skills/zombie-game-dev/SKILL.md`.
+  For Blender/art read `.agents/skills/zombie-game-blender/SKILL.md`; for Unity read
+  `.agents/skills/zombie-game-unity/SKILL.md` as well.
+- Use user-requested separate `zombie_blender` and `zombie_unity` roles (`.codex/agents/`).
+  Coordinate source handoff before import; no concurrent writes or GUI control. If named
+  roles are unavailable, pass their role/skill files explicitly to scoped subagents.
+- `art/blender_master.json` identifies the user's single master layout. Verify against the
+  live app and preserve unsaved work. All final models, variants and actions must be there,
+  not only in isolated review files. Never silently relocate the master.
+- Unity references approved Blender assets and assemblies; no invented replacements or
+  independent re-fitting of assembly pieces. Model changes belong in Blender first.
+
+## Gameplay invariants
+
 - Runtime unit movement/combat numbers have one authored source: `balance/unit_balance.json`.
 - Production code and every playable/benchmark test must read `ZombieGame.Balance.UnitBalance`;
   do not introduce scene-local copies of speed, acceleration, HP, damage, range, attack interval,
