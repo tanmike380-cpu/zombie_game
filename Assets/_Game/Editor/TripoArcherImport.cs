@@ -133,19 +133,20 @@ namespace ZombieGame.EditorTools
             var right_eye=transforms.FirstOrDefault(item=>item.name=="Right_Eye");
             var head=transforms.FirstOrDefault(item=>item.name=="Head");
             Vector3 forward=left_eye!=null&&right_eye!=null&&head!=null?(left_eye.position+right_eye.position)*.5f-head.position:Vector3.forward;
-            var forward_origin=transforms.FirstOrDefault(item=>item.name=="ForwardOrigin");
-            var forward_aim=transforms.FirstOrDefault(item=>item.name=="ForwardAim");
-            var stride_end=transforms.FirstOrDefault(item=>item.name=="StrideEnd");
-            var stature_top=transforms.FirstOrDefault(item=>item.name=="StatureTop");
+            var forward_origin=find_marker(transforms,"ForwardOrigin");
+            var forward_aim=find_marker(transforms,"ForwardAim");
+            var stride_end=find_marker(transforms,"StrideEnd");
+            var stature_top=find_marker(transforms,"StatureTop");
             if(forward_origin!=null&&forward_aim!=null)forward=forward_aim.position-forward_origin.position;
             forward.y = 0;
             var facing = Quaternion.FromToRotation(forward.normalized, Vector3.forward);
             Debug.Log("[TripoArcher] authored facing=" + forward.normalized);
-            Transform bow = transforms.FirstOrDefault(item => item.name == "Right_Hand")??model.transform;
+            Transform bow = find_marker(transforms,"Muzzle")??transforms.FirstOrDefault(item => item.name == "Right_Hand")??model.transform;
             for (int pose = 0; pose < names.Length; pose++)
             {
                 if (pose >= 4 && pose < 7) { frames.poses[pose] = frames.poses[pose == 4 ? 2 : pose == 5 ? 0 : 1]; continue; }
-                var clip = clips.FirstOrDefault(item => item.name == names[pose] || item.name.EndsWith("|" + names[pose]) || item.name.EndsWith("_"+names[pose]));
+                var clip = clips.FirstOrDefault(item => item.name == names[pose] || item.name.EndsWith("|" + names[pose]))
+                    ?? clips.FirstOrDefault(item => !item.name.Contains("Archived")&&item.name.EndsWith("_"+names[pose]));
                 if (clip == null) throw new InvalidOperationException("Missing Tripo clip: " + names[pose]);
                 var sequence = new PoseFrames { source_clip = clip.name, duration = clip.length,
                     frames = new Mesh[24], muzzle_positions = new Vector3[24] };
@@ -166,7 +167,8 @@ namespace ZombieGame.EditorTools
                     for (int vertex = 0; vertex < vertices.Length; vertex++) vertices[vertex] *= normalization;
                     mesh.vertices = vertices;
                     mesh.RecalculateBounds();
-                    sequence.muzzle_positions[frame] = facing * bow.position * 2;
+                    sequence.muzzle_positions[frame] = facing * bow.position * (2*normalization);
+                    if(pose==0&&frame==0)Debug.Log($"[WeaponOrigin] {model_path} world={bow.position} normalized={sequence.muzzle_positions[frame]} mesh={mesh.bounds} normalization={normalization} rendererScale={renderers[0].transform.lossyScale}");
                     AssetDatabase.AddObjectToAsset(sequence.frames[frame], frames);
                 }
                 frames.poses[pose] = sequence;
@@ -185,8 +187,11 @@ namespace ZombieGame.EditorTools
                 var baked = new Mesh();
                 renderers[i].BakeMesh(baked);
                 // Infer imported forward from the eyes; do not assume FBX axis conversion.
+                // BakeMesh already includes imported skin scale. Applying the FBX renderer's
+                // scale again made geometry and weapon markers disagree by 100x.
+                var renderer_transform=renderers[i].transform;
                 combine[i] = new CombineInstance { mesh = baked, transform = Matrix4x4.TRS(Vector3.zero,
-                    facing, Vector3.one * 2) * renderers[i].transform.localToWorldMatrix };
+                    facing, Vector3.one * 2) * Matrix4x4.TRS(renderer_transform.position,renderer_transform.rotation,Vector3.one) };
             }
             var mesh = new Mesh { name = name };
             mesh.CombineMeshes(combine, true, true);
@@ -194,5 +199,6 @@ namespace ZombieGame.EditorTools
             mesh.RecalculateBounds();
             return mesh;
         }
+        private static Transform find_marker(Transform[] transforms,string name)=>transforms.FirstOrDefault(item=>item.name==name||item.name.StartsWith(name+"."));
     }
 }

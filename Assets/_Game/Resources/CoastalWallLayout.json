@@ -1,0 +1,853 @@
+{
+  "source_blend": "art/models/modular-stone-wall/ModularStoneWall.blend",
+  "uniform_source_scale": 18,
+  "note": "Fortress-scale footprint; original end piers protected; no wall mesh beneath tower slots.",
+  "regions": [
+    {
+      "asset": "WallRunFront_00",
+      "x": -125.5,
+      "z": -55,
+      "width": 3,
+      "depth": 5,
+      "sideways": false,
+      "pier": true
+    },
+    {
+      "asset": "WallRunFront_01",
+      "x": -123.0,
+      "z": -55,
+      "width": 2,
+      "depth": 5,
+      "sideways": false,
+      "pier": false
+    },
+    {
+      "asset": "WallRunFront_02",
+      "x": -121.0,
+      "z": -55,
+      "width": 2,
+      "depth": 5,
+      "sideways": false,
+      "pier": false
+    },
+    {
+      "asset": "WallRunFront_03",
+      "x": -119.0,
+      "z": -55,
+      "width": 2,
+      "depth": 5,
+      "sideways": false,
+      "pier": false
+    },
+    {
+      "asset": "WallRunFront_04",
+      "x": -117.0,
+      "z": -55,
+      "width": 2,
+      "depth": 5,
+      "sideways": false,
+      "pier": false
+    },
+    {
+      "asset": "WallRunFront_05",
+      "x": -115.0,
+      "z": -55,
+      "width": 2,
+      "depth": 5,
+      "sideways": false,
+      "pier": false
+    },
+    {
+      "asset": "WallRunFront_06",
+      "x": -113.0,
+      "z": -55,
+      "width": 2,
+      "depth": 5,
+      "sideways": false,
+      "pier": false
+    },
+    {
+      "asset": "WallRunFront_07",
+      "x": -111.0,
+      "z": -55,
+      "width": 2,
+      "depth": 5,
+      "sideways": false,
+      "pier": false
+    },
+    {
+      "asset": "WallRunFront_08",
+      "x": -109.0,
+      "z": -55,
+      "width": 2,
+      "depth": 5,
+      "sideways": false,
+      "pier": false
+    },
+    {
+      "asset": "WallRunFront_09",
+      "x": -107.5,
+      "z": -55,
+      "width": 1,
+      "depth": 5,
+      "sideways": false,
+      "pier": false
+    },
+    {
+      "asset": "WallRunFront_16",
+      "x": -96.5,
+      "z": -55,
+      "width": 1,
+      "depth": 5,
+      "sideways": false,
+      "pier": false
+    },
+    {
+      "asset": "WallRunFront_17",
+      "x": -95.0,
+      "z": -55,
+      "width": 2,
+      "depth": 5,
+      "sideways": false,
+      "pier": false
+    },
+    {
+      "asset": "WallRunFront_18",
+      "x": -93.0,
+      "z": -55,
+      "width": 2,
+      "depth": 5,
+      "sideways": false,
+      "pier": false
+    },
+    {
+      "asset": "WallRunFront_19",
+      "x": -91.0,
+      "z": -55,
+      "width": 2,
+      "depth": 5,
+      "sideways": false,
+      "pier": false
+    },
+    {
+      "asset": "WallRunFront_20",
+      "x": -89.0,
+      "z": -55,
+      "width": 2,
+      "depth": 5,
+      "sideways": false,
+      "pier": false
+    },
+    {
+      "asset": "WallRunFront_21",
+      "x": -87.0,
+      "z": -55,
+      "width": 2,
+      "depth": 5,
+      "sideways": false,
+      "pier": false
+    },
+    {
+      "asset": "WallRunFront_22",
+      "x": -85.0,
+      "z": -55,
+      "width": 2,
+      "depth": 5,
+      "sideways": false,
+      "pier": false
+    },
+    {
+      "asset": "WallRunFront_23",
+      "x": -83.5,
+      "z": -55,
+      "width": 1,
+      "depth": 5,
+      "sideways": false,
+      "pier": false
+    },
+    {
+      "asset": "WallRunFront_30",
+      "x": -72.5,
+      "z": -55,
+      "width": 1,
+      "depth": 5,
+      "sideways": false,
+      "pier": false
+    },
+    {
+      "asset": "WallRunFront_31",
+      "x": -71.0,
+      "z": -55,
+      "width": 2,
+      "depth": 5,
+      "sideways": false,
+      "pier": false
+    },
+    {
+      "asset": "WallRunFront_32",
+      "x": -69.0,
+      "z": -55,
+      "width": 2,
+      "depth": 5,
+      "sideways": false,
+      "pier": false
+    },
+    {
+      "asset": "WallRunFront_33",
+      "x": -67.0,
+      "z": -55,
+      "width": 2,
+      "depth": 5,
+      "sideways": false,
+      "pier": false
+    },
+    {
+      "asset": "WallRunFront_34",
+      "x": -65.0,
+      "z": -55,
+      "width": 2,
+      "depth": 5,
+      "sideways": false,
+      "pier": false
+    },
+    {
+      "asset": "WallRunFront_35",
+      "x": -63.0,
+      "z": -55,
+      "width": 2,
+      "depth": 5,
+      "sideways": false,
+      "pier": false
+    },
+    {
+      "asset": "WallRunFront_36",
+      "x": -61.0,
+      "z": -55,
+      "width": 2,
+      "depth": 5,
+      "sideways": false,
+      "pier": false
+    },
+    {
+      "asset": "WallRunFront_37",
+      "x": -59.0,
+      "z": -55,
+      "width": 2,
+      "depth": 5,
+      "sideways": false,
+      "pier": false
+    },
+    {
+      "asset": "WallRunFront_38",
+      "x": -57.0,
+      "z": -55,
+      "width": 2,
+      "depth": 5,
+      "sideways": false,
+      "pier": false
+    },
+    {
+      "asset": "WallRunFront_39",
+      "x": -54.5,
+      "z": -55,
+      "width": 3,
+      "depth": 5,
+      "sideways": false,
+      "pier": true
+    },
+    {
+      "asset": "WallRunLeft_00",
+      "x": -124.5,
+      "z": -123.0,
+      "width": 5,
+      "depth": 3,
+      "sideways": true,
+      "pier": true
+    },
+    {
+      "asset": "WallRunLeft_01",
+      "x": -124.5,
+      "z": -120.5,
+      "width": 5,
+      "depth": 2,
+      "sideways": true,
+      "pier": false
+    },
+    {
+      "asset": "WallRunLeft_02",
+      "x": -124.5,
+      "z": -118.5,
+      "width": 5,
+      "depth": 2,
+      "sideways": true,
+      "pier": false
+    },
+    {
+      "asset": "WallRunLeft_03",
+      "x": -124.5,
+      "z": -116.5,
+      "width": 5,
+      "depth": 2,
+      "sideways": true,
+      "pier": false
+    },
+    {
+      "asset": "WallRunLeft_04",
+      "x": -124.5,
+      "z": -114.5,
+      "width": 5,
+      "depth": 2,
+      "sideways": true,
+      "pier": false
+    },
+    {
+      "asset": "WallRunLeft_05",
+      "x": -124.5,
+      "z": -112.5,
+      "width": 5,
+      "depth": 2,
+      "sideways": true,
+      "pier": false
+    },
+    {
+      "asset": "WallRunLeft_06",
+      "x": -124.5,
+      "z": -110.5,
+      "width": 5,
+      "depth": 2,
+      "sideways": true,
+      "pier": false
+    },
+    {
+      "asset": "WallRunLeft_07",
+      "x": -124.5,
+      "z": -108.5,
+      "width": 5,
+      "depth": 2,
+      "sideways": true,
+      "pier": false
+    },
+    {
+      "asset": "WallRunLeft_08",
+      "x": -124.5,
+      "z": -106.5,
+      "width": 5,
+      "depth": 2,
+      "sideways": true,
+      "pier": false
+    },
+    {
+      "asset": "WallRunLeft_09",
+      "x": -124.5,
+      "z": -104.5,
+      "width": 5,
+      "depth": 2,
+      "sideways": true,
+      "pier": false
+    },
+    {
+      "asset": "WallRunLeft_10",
+      "x": -124.5,
+      "z": -102.5,
+      "width": 5,
+      "depth": 2,
+      "sideways": true,
+      "pier": false
+    },
+    {
+      "asset": "WallRunLeft_11",
+      "x": -124.5,
+      "z": -100.5,
+      "width": 5,
+      "depth": 2,
+      "sideways": true,
+      "pier": false
+    },
+    {
+      "asset": "WallRunLeft_12",
+      "x": -124.5,
+      "z": -98.5,
+      "width": 5,
+      "depth": 2,
+      "sideways": true,
+      "pier": false
+    },
+    {
+      "asset": "WallRunLeft_13",
+      "x": -124.5,
+      "z": -96.5,
+      "width": 5,
+      "depth": 2,
+      "sideways": true,
+      "pier": false
+    },
+    {
+      "asset": "WallRunLeft_14",
+      "x": -124.5,
+      "z": -94.5,
+      "width": 5,
+      "depth": 2,
+      "sideways": true,
+      "pier": false
+    },
+    {
+      "asset": "WallRunLeft_15",
+      "x": -124.5,
+      "z": -92.5,
+      "width": 5,
+      "depth": 2,
+      "sideways": true,
+      "pier": false
+    },
+    {
+      "asset": "WallRunLeft_16",
+      "x": -124.5,
+      "z": -90.5,
+      "width": 5,
+      "depth": 2,
+      "sideways": true,
+      "pier": false
+    },
+    {
+      "asset": "WallRunLeft_17",
+      "x": -124.5,
+      "z": -88.5,
+      "width": 5,
+      "depth": 2,
+      "sideways": true,
+      "pier": false
+    },
+    {
+      "asset": "WallRunLeft_18",
+      "x": -124.5,
+      "z": -86.5,
+      "width": 5,
+      "depth": 2,
+      "sideways": true,
+      "pier": false
+    },
+    {
+      "asset": "WallRunLeft_19",
+      "x": -124.5,
+      "z": -84.5,
+      "width": 5,
+      "depth": 2,
+      "sideways": true,
+      "pier": false
+    },
+    {
+      "asset": "WallRunLeft_20",
+      "x": -124.5,
+      "z": -82.5,
+      "width": 5,
+      "depth": 2,
+      "sideways": true,
+      "pier": false
+    },
+    {
+      "asset": "WallRunLeft_21",
+      "x": -124.5,
+      "z": -80.5,
+      "width": 5,
+      "depth": 2,
+      "sideways": true,
+      "pier": false
+    },
+    {
+      "asset": "WallRunLeft_22",
+      "x": -124.5,
+      "z": -78.5,
+      "width": 5,
+      "depth": 2,
+      "sideways": true,
+      "pier": false
+    },
+    {
+      "asset": "WallRunLeft_23",
+      "x": -124.5,
+      "z": -76.5,
+      "width": 5,
+      "depth": 2,
+      "sideways": true,
+      "pier": false
+    },
+    {
+      "asset": "WallRunLeft_24",
+      "x": -124.5,
+      "z": -74.5,
+      "width": 5,
+      "depth": 2,
+      "sideways": true,
+      "pier": false
+    },
+    {
+      "asset": "WallRunLeft_25",
+      "x": -124.5,
+      "z": -72.5,
+      "width": 5,
+      "depth": 2,
+      "sideways": true,
+      "pier": false
+    },
+    {
+      "asset": "WallRunLeft_26",
+      "x": -124.5,
+      "z": -70.5,
+      "width": 5,
+      "depth": 2,
+      "sideways": true,
+      "pier": false
+    },
+    {
+      "asset": "WallRunLeft_27",
+      "x": -124.5,
+      "z": -68.5,
+      "width": 5,
+      "depth": 2,
+      "sideways": true,
+      "pier": false
+    },
+    {
+      "asset": "WallRunLeft_28",
+      "x": -124.5,
+      "z": -66.5,
+      "width": 5,
+      "depth": 2,
+      "sideways": true,
+      "pier": false
+    },
+    {
+      "asset": "WallRunLeft_29",
+      "x": -124.5,
+      "z": -64.5,
+      "width": 5,
+      "depth": 2,
+      "sideways": true,
+      "pier": false
+    },
+    {
+      "asset": "WallRunLeft_30",
+      "x": -124.5,
+      "z": -62.5,
+      "width": 5,
+      "depth": 2,
+      "sideways": true,
+      "pier": false
+    },
+    {
+      "asset": "WallRunLeft_31",
+      "x": -124.5,
+      "z": -61.0,
+      "width": 5,
+      "depth": 1,
+      "sideways": true,
+      "pier": false
+    },
+    {
+      "asset": "WallRunLeft_32",
+      "x": -124.5,
+      "z": -59.0,
+      "width": 5,
+      "depth": 3,
+      "sideways": true,
+      "pier": true
+    },
+    {
+      "asset": "WallRunRight_00",
+      "x": -55.5,
+      "z": -123.0,
+      "width": 5,
+      "depth": 3,
+      "sideways": true,
+      "pier": true
+    },
+    {
+      "asset": "WallRunRight_01",
+      "x": -55.5,
+      "z": -120.5,
+      "width": 5,
+      "depth": 2,
+      "sideways": true,
+      "pier": false
+    },
+    {
+      "asset": "WallRunRight_02",
+      "x": -55.5,
+      "z": -118.5,
+      "width": 5,
+      "depth": 2,
+      "sideways": true,
+      "pier": false
+    },
+    {
+      "asset": "WallRunRight_03",
+      "x": -55.5,
+      "z": -116.5,
+      "width": 5,
+      "depth": 2,
+      "sideways": true,
+      "pier": false
+    },
+    {
+      "asset": "WallRunRight_04",
+      "x": -55.5,
+      "z": -114.5,
+      "width": 5,
+      "depth": 2,
+      "sideways": true,
+      "pier": false
+    },
+    {
+      "asset": "WallRunRight_05",
+      "x": -55.5,
+      "z": -112.5,
+      "width": 5,
+      "depth": 2,
+      "sideways": true,
+      "pier": false
+    },
+    {
+      "asset": "WallRunRight_06",
+      "x": -55.5,
+      "z": -110.5,
+      "width": 5,
+      "depth": 2,
+      "sideways": true,
+      "pier": false
+    },
+    {
+      "asset": "WallRunRight_07",
+      "x": -55.5,
+      "z": -108.5,
+      "width": 5,
+      "depth": 2,
+      "sideways": true,
+      "pier": false
+    },
+    {
+      "asset": "WallRunRight_08",
+      "x": -55.5,
+      "z": -106.5,
+      "width": 5,
+      "depth": 2,
+      "sideways": true,
+      "pier": false
+    },
+    {
+      "asset": "WallRunRight_09",
+      "x": -55.5,
+      "z": -104.5,
+      "width": 5,
+      "depth": 2,
+      "sideways": true,
+      "pier": false
+    },
+    {
+      "asset": "WallRunRight_10",
+      "x": -55.5,
+      "z": -102.5,
+      "width": 5,
+      "depth": 2,
+      "sideways": true,
+      "pier": false
+    },
+    {
+      "asset": "WallRunRight_11",
+      "x": -55.5,
+      "z": -100.5,
+      "width": 5,
+      "depth": 2,
+      "sideways": true,
+      "pier": false
+    },
+    {
+      "asset": "WallRunRight_12",
+      "x": -55.5,
+      "z": -98.5,
+      "width": 5,
+      "depth": 2,
+      "sideways": true,
+      "pier": false
+    },
+    {
+      "asset": "WallRunRight_13",
+      "x": -55.5,
+      "z": -96.5,
+      "width": 5,
+      "depth": 2,
+      "sideways": true,
+      "pier": false
+    },
+    {
+      "asset": "WallRunRight_14",
+      "x": -55.5,
+      "z": -94.5,
+      "width": 5,
+      "depth": 2,
+      "sideways": true,
+      "pier": false
+    },
+    {
+      "asset": "WallRunRight_15",
+      "x": -55.5,
+      "z": -92.5,
+      "width": 5,
+      "depth": 2,
+      "sideways": true,
+      "pier": false
+    },
+    {
+      "asset": "WallRunRight_16",
+      "x": -55.5,
+      "z": -90.5,
+      "width": 5,
+      "depth": 2,
+      "sideways": true,
+      "pier": false
+    },
+    {
+      "asset": "WallRunRight_17",
+      "x": -55.5,
+      "z": -88.5,
+      "width": 5,
+      "depth": 2,
+      "sideways": true,
+      "pier": false
+    },
+    {
+      "asset": "WallRunRight_18",
+      "x": -55.5,
+      "z": -86.5,
+      "width": 5,
+      "depth": 2,
+      "sideways": true,
+      "pier": false
+    },
+    {
+      "asset": "WallRunRight_19",
+      "x": -55.5,
+      "z": -84.5,
+      "width": 5,
+      "depth": 2,
+      "sideways": true,
+      "pier": false
+    },
+    {
+      "asset": "WallRunRight_20",
+      "x": -55.5,
+      "z": -82.5,
+      "width": 5,
+      "depth": 2,
+      "sideways": true,
+      "pier": false
+    },
+    {
+      "asset": "WallRunRight_21",
+      "x": -55.5,
+      "z": -80.5,
+      "width": 5,
+      "depth": 2,
+      "sideways": true,
+      "pier": false
+    },
+    {
+      "asset": "WallRunRight_22",
+      "x": -55.5,
+      "z": -78.5,
+      "width": 5,
+      "depth": 2,
+      "sideways": true,
+      "pier": false
+    },
+    {
+      "asset": "WallRunRight_23",
+      "x": -55.5,
+      "z": -76.5,
+      "width": 5,
+      "depth": 2,
+      "sideways": true,
+      "pier": false
+    },
+    {
+      "asset": "WallRunRight_24",
+      "x": -55.5,
+      "z": -74.5,
+      "width": 5,
+      "depth": 2,
+      "sideways": true,
+      "pier": false
+    },
+    {
+      "asset": "WallRunRight_25",
+      "x": -55.5,
+      "z": -72.5,
+      "width": 5,
+      "depth": 2,
+      "sideways": true,
+      "pier": false
+    },
+    {
+      "asset": "WallRunRight_26",
+      "x": -55.5,
+      "z": -70.5,
+      "width": 5,
+      "depth": 2,
+      "sideways": true,
+      "pier": false
+    },
+    {
+      "asset": "WallRunRight_27",
+      "x": -55.5,
+      "z": -68.5,
+      "width": 5,
+      "depth": 2,
+      "sideways": true,
+      "pier": false
+    },
+    {
+      "asset": "WallRunRight_28",
+      "x": -55.5,
+      "z": -66.5,
+      "width": 5,
+      "depth": 2,
+      "sideways": true,
+      "pier": false
+    },
+    {
+      "asset": "WallRunRight_29",
+      "x": -55.5,
+      "z": -64.5,
+      "width": 5,
+      "depth": 2,
+      "sideways": true,
+      "pier": false
+    },
+    {
+      "asset": "WallRunRight_30",
+      "x": -55.5,
+      "z": -62.5,
+      "width": 5,
+      "depth": 2,
+      "sideways": true,
+      "pier": false
+    },
+    {
+      "asset": "WallRunRight_31",
+      "x": -55.5,
+      "z": -61.0,
+      "width": 5,
+      "depth": 1,
+      "sideways": true,
+      "pier": false
+    },
+    {
+      "asset": "WallRunRight_32",
+      "x": -55.5,
+      "z": -59.0,
+      "width": 5,
+      "depth": 3,
+      "sideways": true,
+      "pier": true
+    }
+  ]
+}

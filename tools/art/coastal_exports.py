@@ -78,7 +78,7 @@ def create_basic_actions(rig, identity):
     return actions
 
 
-def export_model(obj, identity, actions=None, extras=()):
+def export_model(obj, identity, actions=None, extras=(), shared_texture=None):
     """Write one asset and original textures; normalize root translation only."""
     folder=OUTPUT/identity
     folder.mkdir(parents=True,exist_ok=True)
@@ -94,10 +94,12 @@ def export_model(obj, identity, actions=None, extras=()):
             image=next((n.image for n in material.node_tree.nodes if n.type=='TEX_IMAGE' and n.image),None) if material.use_nodes else None
             texture_name=''
             if image:
-                texture_name=image.name.replace('/','_')+'.png'
-                image.filepath_raw=str(folder/texture_name)
-                image.file_format='PNG'
-                image.save()
+                texture_name=shared_texture or image.name.replace('/','_')+'.png'
+                if not shared_texture:
+                    image.filepath_raw=str(folder/texture_name)
+                    image.file_format='PNG'
+                    image.save()
+                else:image.filepath=str((folder/shared_texture).resolve())
             materials.append({'name':material.name,'texture':texture_name,'color':color})
     bpy.ops.object.select_all(action='DESELECT')
     obj.select_set(True)
@@ -115,7 +117,7 @@ def export_model(obj, identity, actions=None, extras=()):
     bpy.ops.export_scene.fbx(filepath=str(folder/(identity+'.fbx')),use_selection=True,
         add_leaf_bones=False,bake_anim=bool(actions),bake_anim_use_nla_strips=True,
         bake_anim_use_all_actions=False,bake_anim_simplify_factor=0,
-        path_mode='COPY',embed_textures=False,axis_forward='-Z',axis_up='Y')
+        path_mode='RELATIVE' if shared_texture else 'COPY',embed_textures=False,axis_forward='-Z',axis_up='Y')
     if actions: obj.animation_data_clear()
     return {'id':identity,'source':obj.name,'rig_bones':len(obj.data.bones) if obj.type=='ARMATURE' else 0,
             'clips':list(actions or {}),'materials':materials}
@@ -167,6 +169,9 @@ def main():
     from coastal_motion_revision import main as revise_motions
     revise_motions()
     restore_authored_polish()
+    restore_infantry_motion()
+    from integrate_modular_wall import main as integrate_walls
+    integrate_walls()
     print('COASTAL EXPORT PASS',len(records),'models; live source untouched',flush=True)
 
 
@@ -192,6 +197,22 @@ def restore_authored_polish():
     manifest = json.loads((OUTPUT/'manifest.json').read_text())
     manifest['models'] = [replacements.get(record['id'], record) for record in manifest['models']]
     (OUTPUT/'manifest.json').write_text(json.dumps(manifest, indent=2))
+
+
+def restore_infantry_motion():
+    """Re-export the saved, reviewed archer instead of regenerating draft lateral motion."""
+    source=ROOT/'art/models/coastal-polish/InfantryMotion.blend'
+    if not source.exists():raise FileNotFoundError('Missing reviewed infantry animation source')
+    with bpy.data.libraries.load(str(source)) as (available,loaded):
+        loaded.objects=list(available.objects)
+        loaded.actions=['Archer_Idle','Archer_Run','Archer_Attack']
+    for obj in loaded.objects:bpy.context.scene.collection.objects.link(obj)
+    rig=next(obj for obj in loaded.objects if obj.type=='ARMATURE')
+    actions=dict(zip(('Idle','Run','Attack'),loaded.actions))
+    record=export_model(rig,'Archer',actions)
+    manifest=json.loads((OUTPUT/'manifest.json').read_text())
+    manifest['models']=[record if item['id']=='Archer' else item for item in manifest['models']]
+    (OUTPUT/'manifest.json').write_text(json.dumps(manifest,indent=2))
 
 
 if __name__=='__main__': main()

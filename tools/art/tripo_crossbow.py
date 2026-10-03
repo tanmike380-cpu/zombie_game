@@ -137,13 +137,10 @@ def create_actions(rig):
             return weapon_pose(rig, .65, tilt=.35, reload_reach=math.sin((t - .55) / .17 * math.pi) * .8)
         return weapon_pose(rig, .65 + .35 * (t - .72) / .28, tilt=.35 * (1 - (t - .72) / .28))
     def run(t):
-        phase = t * math.tau
-        for side, sign in [("Left", 1), ("Right", -1)]:
-            for part, angle in [("UpperLeg", math.sin(phase) * .3 * sign), ("LowerLeg", max(0, -math.sin(phase) * sign) * .55)]:
-                bone = rig.pose.bones[side + "_" + part]
-                bone.rotation_quaternion = Quaternion(Vector((1, 0, 0)), angle)
-        bpy.context.view_layer.update()
-        return weapon_pose(rig, .18, bob=.004 * math.cos(phase * 2))
+        from humanoid_gait import pose_gait
+        error = weapon_pose(rig, .18, bob=.002 * math.cos(t*math.tau*2))
+        pose_gait(rig, t)
+        return error
     actions = {}
     for name, duration, pose in [("Idle", 60, idle), ("Run", 24, run), ("Aim", 30, aim), ("Attack", 54, attack)]:
         rig.animation_data_create()
@@ -169,6 +166,9 @@ def main():
     changed_vertices = weapon_weights(mesh, report)
     repaired_waist = 0
     actions, max_reach_error = create_actions(rig)
+    from humanoid_gait import add_motion_markers, STANCE
+    stride=(rig.pose.bones['Left_UpperLeg'].length+rig.pose.bones['Left_LowerLeg'].length)*.55/STANCE
+    add_motion_markers(rig,stride)
     if original_bones != [(b.name, list(b.head_local), list(b.tail_local)) for b in rig.data.bones]:
         raise ValueError("Source skeleton was changed")
     setup_render()
@@ -190,6 +190,8 @@ def main():
     bpy.ops.object.select_all(action="DESELECT")
     rig.select_set(True)
     mesh.select_set(True)
+    for child in rig.children:
+        if child.type=='EMPTY':child.select_set(True)
     bpy.context.view_layer.objects.active = rig
     bpy.ops.export_scene.fbx(filepath=str(output / "ByzantineCrossbow.fbx"), use_selection=True, add_leaf_bones=False,
                             bake_anim=True, bake_anim_use_nla_strips=False, bake_anim_use_all_actions=True,

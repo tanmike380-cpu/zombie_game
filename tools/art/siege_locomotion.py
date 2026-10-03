@@ -16,6 +16,12 @@ DIRECTIONS = [
 MOVEMENT_END = SEGMENT_FRAMES * len(DIRECTIONS)
 
 
+def wheel_roll_angle(distance, lateral_offset, yaw, radius=.125):
+    """Blender is Z-up, chassis forward +Y: bottom of a forward-rolling wheel moves -Y."""
+    if radius<=0:raise ValueError('Wheel radius must be positive')
+    return -(distance+lateral_offset*yaw)/radius
+
+
 def sample_vehicle_motion(frame):
     """Return yaw and signed path distance; turn while stopped, then roll out and back."""
     segment = min((frame-1)//SEGMENT_FRAMES, len(DIRECTIONS)-1)
@@ -41,7 +47,7 @@ def create_directional_movement(rig):
         for name, center_x, center_y in WHEELS:
             bone = rig.pose.bones[name]
             pivot = Vector((center_x, center_y, .137))
-            wheel_angle = -(distance + center_x*yaw)/.125
+            wheel_angle = wheel_roll_angle(distance,center_x,yaw)
             bone.matrix = (Matrix.Translation(pivot) @ Matrix.Rotation(wheel_angle, 4, "X")
                            @ Matrix.Translation(-pivot) @ bone.bone.matrix_local)
             bpy.context.view_layer.update()

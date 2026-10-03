@@ -268,8 +268,8 @@
       "rig_bones": 67,
       "clips": [
         "Idle",
-        "Run",
-        "Attack"
+        "Attack",
+        "Run"
       ],
       "materials": [
         {
@@ -427,6 +427,1698 @@
       "id": "Exploder",
       "source": "TripoExploder/TripoExploder.fbx",
       "reuse": true
+    },
+    {
+      "id": "WallRunFront_00",
+      "source": "Imported wall section",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunFront_01",
+      "source": "Imported wall section.001",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunFront_02",
+      "source": "Imported wall section.002",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunFront_03",
+      "source": "Imported wall section.003",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunFront_04",
+      "source": "Imported wall section.004",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunFront_05",
+      "source": "Imported wall section.005",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunFront_06",
+      "source": "Imported wall section.006",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunFront_07",
+      "source": "Imported wall section.007",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunFront_08",
+      "source": "Imported wall section.008",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunFront_09",
+      "source": "Imported wall section.009",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunFront_16",
+      "source": "Imported wall section.010",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunFront_17",
+      "source": "Imported wall section.011",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunFront_18",
+      "source": "Imported wall section.012",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunFront_19",
+      "source": "Imported wall section.013",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunFront_20",
+      "source": "Imported wall section.014",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunFront_21",
+      "source": "Imported wall section.015",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunFront_22",
+      "source": "Imported wall section.016",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunFront_23",
+      "source": "Imported wall section.017",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunFront_30",
+      "source": "Imported wall section.018",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunFront_31",
+      "source": "Imported wall section.019",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunFront_32",
+      "source": "Imported wall section.020",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunFront_33",
+      "source": "Imported wall section.021",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunFront_34",
+      "source": "Imported wall section.022",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunFront_35",
+      "source": "Imported wall section.023",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunFront_36",
+      "source": "Imported wall section.024",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunFront_37",
+      "source": "Imported wall section.025",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunFront_38",
+      "source": "Imported wall section.026",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunFront_39",
+      "source": "Imported wall section.027",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunLeft_00",
+      "source": "Imported wall section.028",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunLeft_01",
+      "source": "Imported wall section.029",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunLeft_02",
+      "source": "Imported wall section.030",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunLeft_03",
+      "source": "Imported wall section.031",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunLeft_04",
+      "source": "Imported wall section.032",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunLeft_05",
+      "source": "Imported wall section.033",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunLeft_06",
+      "source": "Imported wall section.034",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunLeft_07",
+      "source": "Imported wall section.035",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunLeft_08",
+      "source": "Imported wall section.036",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunLeft_09",
+      "source": "Imported wall section.037",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunLeft_10",
+      "source": "Imported wall section.038",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunLeft_11",
+      "source": "Imported wall section.039",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunLeft_12",
+      "source": "Imported wall section.040",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunLeft_13",
+      "source": "Imported wall section.041",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunLeft_14",
+      "source": "Imported wall section.042",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunLeft_15",
+      "source": "Imported wall section.043",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunLeft_16",
+      "source": "Imported wall section.044",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunLeft_17",
+      "source": "Imported wall section.045",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunLeft_18",
+      "source": "Imported wall section.046",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunLeft_19",
+      "source": "Imported wall section.047",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunLeft_20",
+      "source": "Imported wall section.048",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunLeft_21",
+      "source": "Imported wall section.049",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunLeft_22",
+      "source": "Imported wall section.050",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunLeft_23",
+      "source": "Imported wall section.051",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunLeft_24",
+      "source": "Imported wall section.052",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunLeft_25",
+      "source": "Imported wall section.053",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunLeft_26",
+      "source": "Imported wall section.054",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunLeft_27",
+      "source": "Imported wall section.055",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunLeft_28",
+      "source": "Imported wall section.056",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunLeft_29",
+      "source": "Imported wall section.057",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunLeft_30",
+      "source": "Imported wall section.058",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunLeft_31",
+      "source": "Imported wall section.059",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunLeft_32",
+      "source": "Imported wall section.060",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunRight_00",
+      "source": "Imported wall section.061",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunRight_01",
+      "source": "Imported wall section.062",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunRight_02",
+      "source": "Imported wall section.063",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunRight_03",
+      "source": "Imported wall section.064",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunRight_04",
+      "source": "Imported wall section.065",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunRight_05",
+      "source": "Imported wall section.066",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunRight_06",
+      "source": "Imported wall section.067",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunRight_07",
+      "source": "Imported wall section.068",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunRight_08",
+      "source": "Imported wall section.069",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunRight_09",
+      "source": "Imported wall section.070",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunRight_10",
+      "source": "Imported wall section.071",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunRight_11",
+      "source": "Imported wall section.072",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunRight_12",
+      "source": "Imported wall section.073",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunRight_13",
+      "source": "Imported wall section.074",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunRight_14",
+      "source": "Imported wall section.075",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunRight_15",
+      "source": "Imported wall section.076",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunRight_16",
+      "source": "Imported wall section.077",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunRight_17",
+      "source": "Imported wall section.078",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunRight_18",
+      "source": "Imported wall section.079",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunRight_19",
+      "source": "Imported wall section.080",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunRight_20",
+      "source": "Imported wall section.081",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunRight_21",
+      "source": "Imported wall section.082",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunRight_22",
+      "source": "Imported wall section.083",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunRight_23",
+      "source": "Imported wall section.084",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunRight_24",
+      "source": "Imported wall section.085",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunRight_25",
+      "source": "Imported wall section.086",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunRight_26",
+      "source": "Imported wall section.087",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunRight_27",
+      "source": "Imported wall section.088",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunRight_28",
+      "source": "Imported wall section.089",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunRight_29",
+      "source": "Imported wall section.090",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunRight_30",
+      "source": "Imported wall section.091",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunRight_31",
+      "source": "Imported wall section.092",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WallRunRight_32",
+      "source": "Imported wall section.093",
+      "rig_bones": 0,
+      "clips": [],
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7",
+          "texture": "../Wall/tripo_image_2a6beea7_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
+        }
+      ]
     }
   ]
 }
