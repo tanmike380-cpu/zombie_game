@@ -260,6 +260,12 @@ namespace ZombieGame.World
                 var material=new Material(shader){color=batch.Key};material.SetFloat("_Glossiness",batch.Key==WATER?.65f:style.roughness);
                 material.SetFloat("_SurfaceKind",batch.Key==GRASS?0:batch.Key==TIMBER?1:batch.Key==STONE?2:batch.Key==TILE?3:batch.Key==WATER?4:5);owned_materials.Add(material);
                 environment_art.apply_surface(material,batch.Key==GRASS,batch.Key==style.color(style.plaster));
+                if(imported_architecture&&batch.Key==GRASS&&environment_art.ready)
+                {
+                    // Ground-only presentation adjustment; leave authored model colours and lighting alone.
+                    material.color=new Color(.72f,.77f,.64f);
+                    material.SetFloat("_TextureScale",.24f);
+                }
                 var group=new GameObject("Landscape material batch");group.transform.SetParent(parent==null?root.transform:parent,false);
                 group.AddComponent<MeshFilter>().sharedMesh=mesh;
                 var renderer=group.AddComponent<MeshRenderer>();renderer.sharedMaterial=material;

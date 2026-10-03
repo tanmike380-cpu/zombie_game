@@ -19,6 +19,7 @@ namespace ZombieGame.World
         private readonly Matrix4x4[][] matrices=new Matrix4x4[5][];
         private readonly int[] counts=new int[5];
         private readonly float[] seen_shots,death_started;
+        private readonly float[] travelled;
         private readonly Quaternion[] stable_rotations;
         private readonly GreekFireView equipment;
         private readonly FlameEffects flames;
@@ -29,6 +30,7 @@ namespace ZombieGame.World
             explosions=new ExplosionFeedback(shader);
             equipment=new GreekFireView(parent);flames=new FlameEffects(parent);stable_rotations=new Quaternion[capacity];for(int i=0;i<capacity;i++)stable_rotations[i]=Quaternion.identity;
             seen_shots=new float[capacity];death_started=new float[capacity];
+            travelled=new float[capacity];
             for(int i=0;i<capacity;i++) seen_shots[i]=float.NegativeInfinity;
             var primitive=GameObject.CreatePrimitive(PrimitiveType.Cube);cube=primitive.GetComponent<MeshFilter>().sharedMesh;UnityEngine.Object.Destroy(primitive);
             Color[] colors={new Color(.47f,.65f,.24f),new Color(.09f,.08f,.045f),new Color(1,.8f,.2f),new Color(.6f,.2f,.4f),new Color(.12f,.52f,1f)};
@@ -41,6 +43,7 @@ namespace ZombieGame.World
             for(int i=0;i<battle.total_count;i++)
             {
                 if(battle.is_reserve(i))continue;
+                travelled[i]+=battle.observed_velocity[i].magnitude*Time.deltaTime;
                 if(battle.stats_for(i).id=="greek_fire")continue;
                 bool human=i<battle.soldier_count;
                 float model_scale=human?1:battle.stats_for(i).model_scale;
@@ -63,7 +66,10 @@ namespace ZombieGame.World
                 if(!human) pose=ZombieAnimation.choose_pose(battle,i,Time.time);
                 if(human&&battle.uses_melee(i))pose=moving?CharacterPose.MeleeRun:age<.55f&&battle.last_attack_melee[i]?CharacterPose.MeleeAttack:CharacterPose.MeleeIdle;
                 float attack_window=human?(battle.uses_melee(i)?.55f:.4f):ZombieAnimation.attack_duration(battle.stats_for(i),battle.exploder[i]);
-                characters.add(human,pose,pose==CharacterPose.Attack||pose==CharacterPose.MeleeAttack?age:Time.time+i*.137f,battle.positions[i],rotation,battle.exploder[i],model_scale,battle.stats_for(i).id,attack_window);
+                float animation_age=Time.time+i*.137f;
+                if(pose==CharacterPose.Run||pose==CharacterPose.MeleeRun)
+                    animation_age=characters.locomotion_time(battle.stats_for(i).id,travelled[i],model_scale,animation_age);
+                characters.add(human,pose,pose==CharacterPose.Attack||pose==CharacterPose.MeleeAttack?age:animation_age,battle.positions[i],rotation,battle.exploder[i],model_scale,battle.stats_for(i).id,attack_window);
                 if(human&&battle.stats_for(i).ammunition_type=="gunpowder"&&!battle.last_attack_melee[i]&&battle.attack_started_at[i]>seen_shots[i])
                 { seen_shots[i]=battle.attack_started_at[i];effects.fire(characters.human_muzzle(battle.positions[i],rotation),rotation*Vector3.forward); }
             }

@@ -22,13 +22,17 @@ namespace ZombieGame.World
             add_building(-107,-79,2,2,"OUTPOST");
             add_building(-86,-80,2,2,"OUTPOST");
             add_building(-65,-80,2,2,"OUTPOST");
-            for(int x=-123;x<=-57;x+=2)
-                add_building(x,-55,2,2,x==-123||x==-57?"WALL PIER":x==-99||x==-79?"GATE TOWER":"STONE WALL");
-            for(int z=-113;z<-55;z+=2)
+            // Whole original walls scaled uniformly: 18-cell bays, not a stretched 2-cell facade.
+            // Larger blocking footprints follow their real thickness; existing wall-building rules are separate.
+            foreach(int x in new[]{-114,-90,-66})add_building(x,-55,18,5,"FORTRESS WALL");
+            add_building(-102,-55,6,5,"GATE TOWER");
+            add_building(-78,-55,6,5,"GATE TOWER");
+            for(int z=-118;z<=-64;z+=18)
             {
-                add_building(-123,z,2,2,"STONE WALL SIDE");
-                add_building(-57,z,2,2,z==-83?"FIRE TOWER":"STONE WALL SIDE");
+                add_building(-124,z,5,18,"FORTRESS WALL SIDE");
+                add_building(-56,z,5,18,"FORTRESS WALL SIDE");
             }
+            add_building(-61,-83,4,4,"FIRE TOWER");
             add_forest(-40,5,20,24);add_forest(35,-55,20,22);
             add_forest(55,60,28,20);add_forest(-90,85,26,22);
             regions.Add(new LandscapeRegion(90,12,20,24,5,LandscapeKind.Cliff));
@@ -38,8 +42,8 @@ namespace ZombieGame.World
         {
             float spacing=UnitBalance.config.formation_spacing;
             int count=4;
-            for(int i=0;i<4;i++){spawns[i]=new Vector3(-112+i*15,0,-59);unit_ids[i]="greek_fire";}
-            for(float z=-63;z>-106&&count<HUMAN_CAPACITY;z-=spacing)
+            for(int i=0;i<4;i++){spawns[i]=new Vector3(-112+i*15,0,-62);unit_ids[i]="greek_fire";}
+            for(float z=-67;z>-106&&count<HUMAN_CAPACITY;z-=spacing)
                 for(float x=-119;x<-60&&count<HUMAN_CAPACITY;x+=spacing)
                 {
                     var point=new Vector3(x,0,z);

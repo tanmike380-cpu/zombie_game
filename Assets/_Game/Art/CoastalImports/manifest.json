@@ -226,7 +226,7 @@
     },
     {
       "id": "WallMiddle",
-      "source": "Continuous wall middle",
+      "source": "Fortress wall middle",
       "rig_bones": 0,
       "clips": [],
       "materials": [
@@ -326,7 +326,8 @@
             1.0
           ]
         }
-      ]
+      ],
+      "stride_source": 0.37931034482758624
     },
     {
       "id": "CageBoss",

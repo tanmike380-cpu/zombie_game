@@ -43,6 +43,7 @@ namespace ZombieGame.EditorTools
             if(report.summary.result!=BuildResult.Succeeded)throw new InvalidOperationException("Coastal regression build failed");
         }
         public static void build_verified_players(){rebuild_player();build_regressions();}
+        public static void build_polished_players(){import_assets();build_small_player();build_regressions();}
         public static void build_small_player()
         {
             const string scene_path="Assets/_Tests/Frontier/Scenes/CoastalSkirmish.unity";

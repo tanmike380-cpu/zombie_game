@@ -59,6 +59,13 @@ namespace ZombieGame.Presentation
             }
         }
 
+        public float locomotion_time(string unit_id,float travelled,float scale,float fallback)
+        {
+            if(!imported_indices.TryGetValue(unit_id,out int index))return fallback;
+            var art=characters[index];
+            return art.locomotion_stride>0?travelled/(art.locomotion_stride*scale)*art.poses[(int)CharacterPose.Run].duration:fallback;
+        }
+
         public void begin_frame(Camera view=null)
         {
             Array.Clear(counts, 0, counts.Length); submitted = culled = 0;

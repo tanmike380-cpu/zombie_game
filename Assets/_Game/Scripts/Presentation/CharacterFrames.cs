@@ -18,6 +18,8 @@ namespace ZombieGame.Presentation
     {
         public Material material;
         public int visual_revision;
+        // Art-space distance travelled per locomotion cycle; zero keeps legacy timing.
+        public float locomotion_stride;
         public PoseFrames[] poses;
         public int frame_index(CharacterPose pose, float age)
         {

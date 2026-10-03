@@ -36,7 +36,7 @@ namespace ZombieGame.Presentation
             model.transform.rotation=Quaternion.FromToRotation(authored_forward,Vector3.forward)*model.transform.rotation;
             var renderers=model.GetComponentsInChildren<Renderer>();
             var bounds=renderers[0].bounds;foreach(var renderer in renderers)bounds.Encapsulate(renderer.bounds);
-            model.transform.localScale*=2.6f/bounds.size.y;
+            model.transform.localScale*=3.9f/bounds.size.y;
             bounds=renderers[0].bounds;foreach(var renderer in renderers)bounds.Encapsulate(renderer.bounds);
             model.transform.position-=new Vector3(bounds.center.x,bounds.min.y,bounds.center.z);
             Transform turret=null;var wheels=new List<Transform>();var axles=new List<Transform>();

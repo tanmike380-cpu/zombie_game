@@ -12,6 +12,8 @@ namespace ZombieGame.FrontierTests
         private IEnumerator Start()
         {
             Application.runInBackground=true;Application.targetFrameRate=60;
+            try{CoastalArtChecks.run();}
+            catch(Exception error){Debug.LogException(error);Application.Quit(1);yield break;}
             yield return check_defenses();
             yield return CrowdSpacingChecks.run();
             Debug.Log("[CoastalRegression] PASS defenses, cone, ammo, frozen contacts and chase recovery");
@@ -26,7 +28,7 @@ namespace ZombieGame.FrontierTests
                 var stats=UnitBalance.get("greek_fire");
                 require(BattleSimulation.inside_flame(Vector3.zero,Vector3.forward,points[1],stats),"cone front");
                 require(!BattleSimulation.inside_flame(Vector3.zero,Vector3.forward,points[3],stats),"cone excludes rear");
-                foreach(string label in new[]{"STONE WALL","WOODEN WALL","GATE TOWER","FIRE TOWER","箭塔","炮塔","石墙","木墙"})
+                foreach(string label in new[]{"STONE WALL","FORTRESS WALL","FORTRESS WALL SIDE","WOODEN WALL","GATE TOWER","FIRE TOWER","箭塔","炮塔","石墙","木墙"})
                 {
                     var structure=battle.add_building_target(new Bounds(new Vector3(40,1,40),Vector3.one*2),label);
                     battle.damage_building(structure,structure.max_health,Time.time);

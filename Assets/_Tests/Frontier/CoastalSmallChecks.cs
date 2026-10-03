@@ -18,6 +18,8 @@ namespace ZombieGame.FrontierTests
             if(Array.IndexOf(Environment.GetCommandLineArgs(),"-coastalSmallSmoke")<0)yield break;
             game=GetComponent<FrontierGame>();camera_fixture=true;
             yield return new WaitForSecondsRealtime(2);
+            require(QualitySettings.globalTextureMipmapLimit==0&&QualitySettings.antiAliasing>=4,"full texture resolution and edge antialiasing");
+            CoastalArtChecks.run();
             require(game.is_paused&&game.session.outcome==CoastalOutcome.Preparing,"starts paused in briefing");
             require(game.current.living_soldiers==120&&game.current.zombie_count==360,"small authored population");
             require(game.map.regions.TrueForAll(region=>region.kind!=LandscapeKind.Forest&&region.kind!=LandscapeKind.Cliff),"no procedural props or invisible forest blockers");
@@ -31,6 +33,9 @@ namespace ZombieGame.FrontierTests
             string folder=Path.Combine(app_folder.Parent.FullName,"ArtReview/CoastalSkirmish");Directory.CreateDirectory(folder);
             yield return new WaitForEndOfFrame();ScreenCapture.CaptureScreenshot(Path.Combine(folder,"briefing.png"));
             game.begin_session();require(game.can_control&&!game.is_paused,"start enables player controls");
+            camera_fixture=false;Camera.main.orthographicSize=12;game.focus_camera(new Vector3(-91,0,-72));
+            yield return new WaitForEndOfFrame();ScreenCapture.CaptureScreenshot(Path.Combine(folder,"detail.png"));
+            yield return null;camera_fixture=true;
             int recruit=Array.FindIndex(game.production.config.recipes,recipe=>recipe.recruit_id=="heavy_crossbowman");
             require(game.production.enqueue(recruit,game.current.reserve_soldiers),"recruit queue accepts supported archer");
             game.production.step(game.production.config.recipes[recruit].seconds+.1f,game.finish_production);
@@ -48,14 +53,25 @@ namespace ZombieGame.FrontierTests
             require(game.siege.waves==3&&game.siege.last_wave_units==160&&game.siege.all_waves_sent,"final cohort committed to HQ");
             game.siege.step(999,current_battle(),game.construction,game.map.base_center);
             require(game.siege.waves==3,"finite game never adds a fourth wave");
-            float started=Time.realtimeSinceStartup;int frames=0;
-            while(Time.realtimeSinceStartup-started<50){frames++;yield return null;}
+            float started=Time.realtimeSinceStartup;int frames=0;bool captured_flame=false;
+            while(Time.realtimeSinceStartup-started<50)
+            {
+                frames++;
+                if(!captured_flame&&game.current.flame_bursts.Exists(burst=>burst.source>=0&&burst.expires>Time.time))
+                {
+                    var burst=game.current.flame_bursts.Find(item=>item.source>=0&&item.expires>Time.time);
+                    camera_fixture=false;Camera.main.orthographicSize=12;game.focus_camera(burst.origin+burst.direction*2);
+                    yield return new WaitForEndOfFrame();ScreenCapture.CaptureScreenshot(Path.Combine(folder,"greek-fire.png"));
+                    yield return null;camera_fixture=true;captured_flame=true;
+                }
+                yield return null;
+            }
             require(game.current.hits>0&&game.current.dead_zombies>0,"real defensive battle damages and kills enemies");
             require(game.current.geometry_errors==0,"no terrain intrusion");
             require(CrowdSpacingChecks.minimum_ratio(game.current,true)>=.999f,"approved zombie spacing preserved");
             require(ImportedArchitecture.maximum_aspect_error<.001f,"source proportions preserved");
             yield return new WaitForEndOfFrame();ScreenCapture.CaptureScreenshot(Path.Combine(folder,"battle.png"));
-            Debug.Log($"[CoastalSmall] PASS start, cohort pacing, original art, recruitment, construction, outcomes; framebuffer={Screen.width}x{Screen.height} fps={frames/(Time.realtimeSinceStartup-started):F1} kills={game.current.dead_zombies} humans={game.current.living_soldiers} geometry={game.current.geometry_errors}");
+            Debug.Log($"[CoastalSmall] PASS start, cohort pacing, original art, recruitment, construction, outcomes; framebuffer={Screen.width}x{Screen.height} fps={frames/(Time.realtimeSinceStartup-started):F1} kills={game.current.dead_zombies} humans={game.current.living_soldiers} geometry={game.current.geometry_errors} greek_pulses={game.current.greek_fire_pulses} flame_capture={captured_flame}");
             camera_fixture=false;yield return new WaitForSecondsRealtime(1);Application.Quit(0);
         }
         private ZombieGame.Combat.BattleSimulation current_battle()=>game.current;

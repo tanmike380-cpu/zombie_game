@@ -166,7 +166,32 @@ def main():
     # Keep the accepted heavy gait / mechanical pivots on every future full export too.
     from coastal_motion_revision import main as revise_motions
     revise_motions()
+    restore_authored_polish()
     print('COASTAL EXPORT PASS',len(records),'models; live source untouched',flush=True)
+
+
+def restore_authored_polish():
+    """Keep the reviewed original-model wall scale and grounded hound after a full roster export."""
+    source = ROOT/'art/models/coastal-polish/CoastalPolish.blend'
+    if not source.exists():
+        return
+    with bpy.data.libraries.load(str(source)) as (_, loaded):
+        loaded.objects = ['Hunger Dog', 'tripo_node_bc12e490', 'stone wall', 'Fortress wall middle',
+                          'ForwardOrigin', 'ForwardAim', 'StrideEnd', 'StatureTop']
+        loaded.actions = ['Hound_Planted_Idle', 'Hound_Planted_Run', 'Hound_Planted_Attack']
+    dog, mesh, wall, middle, *markers = loaded.objects
+    for obj in loaded.objects:
+        if obj is None:
+            raise ValueError('Incomplete saved coastal polish source')
+        bpy.context.scene.collection.objects.link(obj)
+    actions = dict(zip(('Idle', 'Run', 'Attack'), loaded.actions))
+    replacements = {'Hound': export_model(dog, 'Hound', actions),
+                    'Wall': export_model(wall, 'Wall'), 'WallMiddle': export_model(middle, 'WallMiddle')}
+    from hound_motion import STRIDE
+    replacements['Hound']['stride_source'] = STRIDE
+    manifest = json.loads((OUTPUT/'manifest.json').read_text())
+    manifest['models'] = [replacements.get(record['id'], record) for record in manifest['models']]
+    (OUTPUT/'manifest.json').write_text(json.dumps(manifest, indent=2))
 
 
 if __name__=='__main__': main()

@@ -14,7 +14,9 @@ namespace ZombieGame.World
             if(prefab==null)throw new System.InvalidOperationException("Missing imported architecture: "+id);
             var root=new GameObject(region.label);root.transform.SetParent(parent,false);
             var model=Object.Instantiate(prefab,root.transform);model.name=id;
-            if(region.label=="STONE WALL SIDE")model.transform.rotation=Quaternion.Euler(0,90,0);
+            // Keep the FBX's axis conversion; yaw is additional, not a replacement rest rotation.
+            if(region.label=="STONE WALL SIDE"||region.label=="FORTRESS WALL SIDE")
+                model.transform.localRotation=Quaternion.Euler(0,90,0)*model.transform.localRotation;
             var renderers=model.GetComponentsInChildren<Renderer>();
             foreach(var renderer in renderers){renderer.shadowCastingMode=UnityEngine.Rendering.ShadowCastingMode.Off;renderer.receiveShadows=false;}
             var bounds=renderers[0].bounds;foreach(var renderer in renderers)bounds.Encapsulate(renderer.bounds);
@@ -35,6 +37,7 @@ namespace ZombieGame.World
                 case "COMMAND HALL":return "Headquarters";
                 case "PASTURE":return "Pasture";
                 case "STONE WALL":case "STONE WALL SIDE":return "WallMiddle";
+                case "FORTRESS WALL":case "FORTRESS WALL SIDE":return "Wall";
                 case "WALL PIER":return "Wall";
                 case "GATE TOWER":return "GateTower";
                 case "OUTPOST":return "GateTower";

@@ -133,6 +133,11 @@ namespace ZombieGame.EditorTools
             var right_eye=transforms.FirstOrDefault(item=>item.name=="Right_Eye");
             var head=transforms.FirstOrDefault(item=>item.name=="Head");
             Vector3 forward=left_eye!=null&&right_eye!=null&&head!=null?(left_eye.position+right_eye.position)*.5f-head.position:Vector3.forward;
+            var forward_origin=transforms.FirstOrDefault(item=>item.name=="ForwardOrigin");
+            var forward_aim=transforms.FirstOrDefault(item=>item.name=="ForwardAim");
+            var stride_end=transforms.FirstOrDefault(item=>item.name=="StrideEnd");
+            var stature_top=transforms.FirstOrDefault(item=>item.name=="StatureTop");
+            if(forward_origin!=null&&forward_aim!=null)forward=forward_aim.position-forward_origin.position;
             forward.y = 0;
             var facing = Quaternion.FromToRotation(forward.normalized, Vector3.forward);
             Debug.Log("[TripoArcher] authored facing=" + forward.normalized);
@@ -153,6 +158,9 @@ namespace ZombieGame.EditorTools
                     {
                         if (mesh.bounds.size.y <= 0) throw new InvalidOperationException("Empty Tripo mesh");
                         normalization = 2f / mesh.bounds.size.y;
+                        // Ratios cancel FBX centimetre/armature scale; BakeMesh scale must not be applied to markers twice.
+                        frames.locomotion_stride=stride_end!=null&&forward_origin!=null&&stature_top!=null
+                            ?2*Vector3.Distance(stride_end.position,forward_origin.position)/Vector3.Distance(stature_top.position,forward_origin.position):0;
                     }
                     var vertices = mesh.vertices;
                     for (int vertex = 0; vertex < vertices.Length; vertex++) vertices[vertex] *= normalization;

@@ -101,8 +101,8 @@ namespace ZombieGame.World
             input.intercept_world_input=construction.handle_input;
             hud=new FrontierHud(this);
             configure_lighting();
-            if(coastal_defense){QualitySettings.antiAliasing=2;QualitySettings.shadows=UnityEngine.ShadowQuality.Disable;}
-            Camera.main.orthographicSize=coastal_defense?34:24;focus_camera(coastal_defense?new Vector3(-91,0,-93):new Vector3(-99,0,-92));
+            if(coastal_defense){QualitySettings.antiAliasing=4;QualitySettings.globalTextureMipmapLimit=0;QualitySettings.shadows=UnityEngine.ShadowQuality.Disable;}
+            Camera.main.orthographicSize=coastal_defense&&!coastal_skirmish?34:24;focus_camera(coastal_defense?new Vector3(-91,0,-93):new Vector3(-99,0,-92));
             if(coastal_defense&&System.Array.IndexOf(arguments,"-coastalPaused")>=0){paused=true;Time.timeScale=0;}
             if(coastal_skirmish){paused=true;Time.timeScale=0;validate_imported_units();}
             Debug.Log($"[Frontier] READY map=256x256 soldiers={current.living_soldiers} reserve={current.reserve_soldiers} zombies={current.zombie_count} blockers={map.blockers.Length} framebuffer={Screen.width}x{Screen.height}; eight zombie roles; new role balance provisional");
