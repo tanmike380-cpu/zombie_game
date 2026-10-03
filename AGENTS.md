@@ -13,6 +13,10 @@
   not only in isolated review files. Never silently relocate the master.
 - Unity references approved Blender assets and assemblies; no invented replacements or
   independent re-fitting of assembly pieces. Model changes belong in Blender first.
+- Terrain/environment work must also read `.agents/skills/zombie-game-unity/references/terrain-art.md`.
+  Use the user-specified six-layer PBR ground workflow, compatible with the verified render
+  pipeline; reuse or source licensed free assets, never silently return to single-grass ground
+  or migrate the whole render pipeline. Keep navigation and accepted unit presentation intact.
 
 ## Gameplay invariants
 

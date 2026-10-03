@@ -7,6 +7,8 @@ description: Integrate approved Blender assets and develop Zombie Game gameplay,
 
 先读 `AGENTS.md`、`../zombie-game-dev/SKILL.md` 和 `art/blender_master.json`。
 
+涉及地面、地形、环境材质或画面优化时，必须再完整读取 `references/terrain-art.md`，执行用户指定的六层 PBR 地面规范，不自行退回单草地铺满地图。
+
 - Unity 是编排播放端。使用 Blender 交接的模型、装配和动作；旧文件、缺源路径或未完成导出必须先解决，不能造相似替代品。
 - 可做 Prefab、玩法脚本、NavMesh、碰撞/选择范围、动画状态机、挂点、VFX、材质适配和渲染设置。不重塑网格、不独立拉长底座、不拆散重凑验收过的墙塔。模型问题退回 Blender。
 - 保留比例、UV、贴图、骨骼和装配相对变换。轴转换与整体等比例放置记录并只应用一次；不对装配子块逐个按包围盒缩放或居中。
