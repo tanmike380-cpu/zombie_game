@@ -43,6 +43,21 @@ namespace ZombieGame.EditorTools
             if(report.summary.result!=BuildResult.Succeeded)throw new InvalidOperationException("Coastal regression build failed");
         }
         public static void build_verified_players(){rebuild_player();build_regressions();}
+        public static void build_small_player()
+        {
+            const string scene_path="Assets/_Tests/Frontier/Scenes/CoastalSkirmish.unity";
+            if(AssetDatabase.LoadAssetAtPath<ImportedRoster>(FRAMES+"/Roster.asset")==null)
+            {CharacterBake.ensure_models();import_assets();}
+            FrontierTools.create_scene(scene_path);
+            var game=UnityEngine.Object.FindFirstObjectByType<FrontierGame>();
+            game.coastal_defense=true;game.coastal_skirmish=true;
+            game.imported_roster=AssetDatabase.LoadAssetAtPath<ImportedRoster>(FRAMES+"/Roster.asset");
+            game.gameObject.AddComponent<ZombieGame.FrontierTests.CoastalSmallChecks>();
+            EditorSceneManager.SaveScene(game.gameObject.scene,scene_path);AssetDatabase.SaveAssets();
+            var report=BuildPipeline.BuildPlayer(new BuildPlayerOptions{scenes=new[]{scene_path},locationPathName="Builds/CoastalSkirmish.app",target=BuildTarget.StandaloneOSX});
+            if(report.summary.result!=BuildResult.Succeeded)throw new InvalidOperationException("Coastal skirmish build failed");
+            Debug.Log("[CoastalSmallBuild] PASS authored models and three-wave session");
+        }
 
         public static void import_assets()
         {

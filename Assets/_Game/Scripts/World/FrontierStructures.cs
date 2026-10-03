@@ -63,12 +63,15 @@ namespace ZombieGame.World
                 game.map.regions.RemoveAll(region=>region.bounds==building.bounds);
                 game.map.blockers=game.map.regions.ConvertAll(region=>region.bounds).ToArray();
             }
-            var ruin=GameObject.CreatePrimitive(PrimitiveType.Cube);ruin.name=(building.infected?"Infected ruin: ":"Collapsed defense: ")+building.label;
-            Object.Destroy(ruin.GetComponent<Collider>());ruin.transform.SetParent(game.transform,false);
-            float height=building.fortification?.16f:.6f;
-            ruin.transform.position=new Vector3(building.bounds.center.x,height*.5f,building.bounds.center.z);
-            ruin.transform.localScale=new Vector3(building.bounds.size.x,height,building.bounds.size.z);
-            ruin.GetComponent<Renderer>().sharedMaterial=building.fortification?collapsed_material:ruin_material;ruins[building]=ruin;
+            if(!game.coastal_skirmish)
+            {
+                var ruin=GameObject.CreatePrimitive(PrimitiveType.Cube);ruin.name=(building.infected?"Infected ruin: ":"Collapsed defense: ")+building.label;
+                Object.Destroy(ruin.GetComponent<Collider>());ruin.transform.SetParent(game.transform,false);
+                float height=building.fortification?.16f:.6f;
+                ruin.transform.position=new Vector3(building.bounds.center.x,height*.5f,building.bounds.center.z);
+                ruin.transform.localScale=new Vector3(building.bounds.size.x,height,building.bounds.size.z);
+                ruin.GetComponent<Renderer>().sharedMaterial=building.fortification?collapsed_material:ruin_material;ruins[building]=ruin;
+            }
             if(placed.TryGetValue(building,out var facility))game.construction.lose_facility(facility);
             else switch(building.label)
             {

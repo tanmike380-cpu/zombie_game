@@ -51,3 +51,8 @@
   Do not add timed retaliation memory or repeatedly reset valid combat paths. HQ destruction
   completes the strategic objective, not a global building sweep.
 - Art direction: coherent low-poly presentation with Eastern architecture and matchlock infantry.
+- Playable art must use the user's authored Blender/Tripo models in `Assets/_Game/Art`.
+  Do not generate replacement soldiers, monsters, buildings, trees or props. If an authored model
+  is missing, hide that optional content or request the asset; never silently use procedural art.
+  Preserve source proportions, textures and accepted rigs. Basic ground/water surfaces and combat
+  UI/VFX are presentation infrastructure, not permission to invent replacement world models.

@@ -44,14 +44,14 @@ namespace ZombieGame.World
                 {
                     var point=new Vector3(x,0,z);
                     if(blocked(point,UnitBalance.config.unit_navigation_radius+.15f))continue;
-                    spawns[count]=point;unit_ids[count]=count<320?"heavy_crossbowman":"archer";count++;
+                    spawns[count]=point;unit_ids[count]=count<initial_humans*.8f?"heavy_crossbowman":"archer";count++;
                 }
             if(count!=HUMAN_CAPACITY)throw new InvalidOperationException("Coastal muster cannot fit shared unit spacing");
             var cells=new List<Vector3>();
             float gap=UnitBalance.config.zombie_navigation_radius*2+.08f;
             int row=0;
-            for(float z=-37;z<123;z+=gap*.8660254f,row++)
-                for(float x=-120+(row%2)*gap*.5f;x<123;x+=gap)
+            for(float z=imported_only?-24:-37;z<(imported_only?55:123);z+=gap*.8660254f,row++)
+                for(float x=-120+(row%2)*gap*.5f;x<(imported_only?-51:123);x+=gap)
                 {var point=new Vector3(x,0,z);if(!blocked(point,1))cells.Add(point);}
             var random=new System.Random(20261002);
             for(int i=0;i<cells.Count;i++){int swap=random.Next(i,cells.Count);var point=cells[i];cells[i]=cells[swap];cells[swap]=point;}

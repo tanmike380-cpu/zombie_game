@@ -7,7 +7,7 @@ using ZombieGame.Presentation;
 namespace ZombieGame.World
 {
     /// <summary>Playable world slice; no dependency on benchmark or test assemblies.</summary>
-    public sealed class FrontierGame : MonoBehaviour, IRtsBattleView
+    public sealed partial class FrontierGame : MonoBehaviour, IRtsBattleView
     {
         public Material fog_template;
         public Shader landscape_shader;
@@ -42,7 +42,7 @@ namespace ZombieGame.World
         public double last_presentation_ms {get;private set;}
         private float next_fog;
         private bool paused;
-        public bool pointer_over_ui(Vector2 point) => FrontierHud.contains(point,hud!=null&&hud.show_roster);
+        public bool pointer_over_ui(Vector2 point) => session_overlay || FrontierHud.contains(point,hud!=null&&hud.show_roster);
         public Color32 obstacle_color(int index)
         {
             var kind=LandscapeKind.Building;
@@ -65,22 +65,25 @@ namespace ZombieGame.World
             var arguments=System.Environment.GetCommandLineArgs();
             int style_argument=System.Array.IndexOf(arguments,"-artStyle");
             if(style_argument>=0&&style_argument+1<arguments.Length&&int.TryParse(arguments[style_argument+1],out int requested_style))VisualStyles.select(requested_style);
-            map=new FrontierMap(coastal_defense);
+            if(coastal_skirmish){session_config=CoastalSessionConfig.load();session=new CoastalSession();coastal_defense=true;}
+            map=new FrontierMap(coastal_defense,session_config);
             landscape=new FrontierLandscape(map,transform,landscape_shader);
             var navigation_regions=coastal_defense?map.regions.FindAll(region=>region.kind!=LandscapeKind.Building).ConvertAll(region=>region.bounds).ToArray():map.blockers;
-            current=new BattleSimulation(map.spawns,FrontierMap.HUMAN_CAPACITY,map.explosive,navigation_regions,initial_humans:FrontierMap.SOLDIERS,unit_ids:map.unit_ids,infection_reserve:1024);
+            current=new BattleSimulation(map.spawns,FrontierMap.HUMAN_CAPACITY,map.explosive,navigation_regions,initial_humans:map.initial_humans,unit_ids:map.unit_ids,infection_reserve:1024);
             economy=new FrontierEconomy(JsonUtility.FromJson<FrontierEconomyConfig>(Resources.Load<TextAsset>("FrontierEconomy").text));
             current.try_supply_defense_shot=stats=>
             {
                 if(economy.gunpowder<stats.ammunition_cost)return false;
                 economy.gunpowder-=stats.ammunition_cost;return true;
             };
-            production=new HeadquartersProduction(economy,JsonUtility.FromJson<HeadquartersConfig>(Resources.Load<TextAsset>("HeadquartersProduction").text));
+            var production_config=JsonUtility.FromJson<HeadquartersConfig>(Resources.Load<TextAsset>("HeadquartersProduction").text);
+            if(coastal_skirmish)filter_imported_recipes(production_config);
+            production=new HeadquartersProduction(economy,production_config);
             supply=new AmmunitionSupply(economy);supply.depots.Add(map.initial_depot);
             current_fog=new CombatFog(fog_template,.08f,true);
             current_fog.explore_area(new Rect(-124,-124,76,76));
             current_fog.update_visibility(current);current.player_visibility=current_fog.is_visible;
-            battle_view=new FrontierBattleView(current.total_count,transform,landscape_shader,imported_roster);
+            battle_view=new FrontierBattleView(current.total_count,transform,landscape_shader,imported_roster,coastal_skirmish);
             battle_audio=new BattleAudio(current.total_count,transform);
             game_cursor=new RtsCursor();
             input=gameObject.AddComponent<RtsBattleInput>();input.game=this;input.custom_command_panel=true;input.select_all();
@@ -90,7 +93,9 @@ namespace ZombieGame.World
             construction=new FrontierConstruction(this,landscape,landscape_shader);
             structures=new FrontierStructures(this,landscape,landscape_shader);
             current_fog.update_visibility(current);
-            siege=new FrontierSiege(JsonUtility.FromJson<SiegeConfig>(Resources.Load<TextAsset>("SiegeConfig").text));
+            var siege_config=JsonUtility.FromJson<SiegeConfig>(Resources.Load<TextAsset>("SiegeConfig").text);
+            if(coastal_skirmish)configure_session_siege(siege_config);
+            siege=new FrontierSiege(siege_config);
             previous_navigation_iterations=UnityEngine.AI.NavMesh.pathfindingIterationsPerFrame;
             UnityEngine.AI.NavMesh.pathfindingIterationsPerFrame=siege.config.navigation_iterations_per_frame;
             input.intercept_world_input=construction.handle_input;
@@ -99,6 +104,7 @@ namespace ZombieGame.World
             if(coastal_defense){QualitySettings.antiAliasing=2;QualitySettings.shadows=UnityEngine.ShadowQuality.Disable;}
             Camera.main.orthographicSize=coastal_defense?34:24;focus_camera(coastal_defense?new Vector3(-91,0,-93):new Vector3(-99,0,-92));
             if(coastal_defense&&System.Array.IndexOf(arguments,"-coastalPaused")>=0){paused=true;Time.timeScale=0;}
+            if(coastal_skirmish){paused=true;Time.timeScale=0;validate_imported_units();}
             Debug.Log($"[Frontier] READY map=256x256 soldiers={current.living_soldiers} reserve={current.reserve_soldiers} zombies={current.zombie_count} blockers={map.blockers.Length} framebuffer={Screen.width}x{Screen.height}; eight zombie roles; new role balance provisional");
         }
         public void focus_camera(Vector3 point)
@@ -111,11 +117,13 @@ namespace ZombieGame.World
         {
             if(current==null)return;
             long simulation_started=System.Diagnostics.Stopwatch.GetTimestamp();
-            if(Input.GetKeyDown(KeyCode.F5))switch_visual_style(0);
-            if(Input.GetKeyDown(KeyCode.F6))switch_visual_style(1);
-            if(Input.GetKeyDown(KeyCode.F7))switch_visual_style(2);
-            if(Input.GetKeyDown(KeyCode.Space)) { paused=!paused;Time.timeScale=paused?0:1; }
+            if(!coastal_skirmish&&Input.GetKeyDown(KeyCode.F5))switch_visual_style(0);
+            if(!coastal_skirmish&&Input.GetKeyDown(KeyCode.F6))switch_visual_style(1);
+            if(!coastal_skirmish&&Input.GetKeyDown(KeyCode.F7))switch_visual_style(2);
+            if(Input.GetKeyDown(KeyCode.Return)&&session?.outcome==CoastalOutcome.Preparing)begin_session();
+            if(Input.GetKeyDown(KeyCode.Space)&&!session_overlay) { paused=!paused;Time.timeScale=paused?0:1; }
             if(!paused) { economy.step(Time.deltaTime);production.step(Time.deltaTime,finish_production);supply.step(current);siege.step(Time.deltaTime,current,construction,map.base_center);current.step(Time.time,Time.deltaTime); }
+            evaluate_session();
             last_simulation_ms=(System.Diagnostics.Stopwatch.GetTimestamp()-simulation_started)*1000d/System.Diagnostics.Stopwatch.Frequency;
             long presentation_started=System.Diagnostics.Stopwatch.GetTimestamp();
             if(Time.time>=next_fog) { next_fog=Time.time+.1f;current_fog.update_visibility(current); }
@@ -127,11 +135,12 @@ namespace ZombieGame.World
             if(Input.GetKeyDown(KeyCode.C)){Camera.main.orthographicSize=22;focus_camera(input.selection_center());}
             if(Input.GetKeyDown(KeyCode.Home)){Camera.main.orthographicSize=27;focus_camera(map.base_center);}
             if(Input.GetKeyDown(KeyCode.F)){Camera.main.orthographicSize=140;focus_camera(Vector3.zero);}
-            Camera.main.orthographicSize=Mathf.Clamp(Camera.main.orthographicSize-Input.mouseScrollDelta.y*2,8,145);
+            Camera.main.orthographicSize=Mathf.Clamp(Camera.main.orthographicSize-Input.mouseScrollDelta.y*2,8,coastal_skirmish?42:145);
             Vector2 pan=new Vector2((Input.GetKey(KeyCode.RightArrow)?1:0)-(Input.GetKey(KeyCode.LeftArrow)?1:0),
                 (Input.GetKey(KeyCode.UpArrow)?1:0)-(Input.GetKey(KeyCode.DownArrow)?1:0));
             Vector2 pointer=has_gui_pointer?gui_pointer:(Vector2)Input.mousePosition;
             Vector2 edge=RtsCameraPan.edge_direction(pointer,new Vector2(Screen.width,Screen.height),Application.isFocused);
+            if(session_overlay){edge=Vector2.zero;pan=Vector2.zero;}
             if(input.minimap_dragging||input.pointer_over_minimap(pointer))edge=Vector2.zero;
             game_cursor.update(edge,Application.isFocused,input.pending=="Attack");
             pan+=edge;

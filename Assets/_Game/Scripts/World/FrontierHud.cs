@@ -44,14 +44,15 @@ namespace ZombieGame.World
         public void draw()
         {
             prepare_styles();GUI.matrix=Matrix4x4.identity;GUI.depth=1;
-            draw_threat_intelligence();draw_building_health();draw_resource_labels();
+            draw_threat_intelligence();draw_building_health();if(!game.coastal_skirmish)draw_resource_labels();
             if(game.siege!=null)
             {
                 var siege=game.siege;
                 string countdown=siege.remaining>0?$"{Mathf.CeilToInt(siege.remaining)/60:00}:{Mathf.CeilToInt(siege.remaining)%60:00}":"进攻中";
                 string label=siege.config.defense_test?$"防守测试 · {countdown} · {(siege.waves==0?"全图尸群来袭":"守住阵地")}":$"尸潮 {siege.waves} · 下一波 {countdown}";
+                if(game.coastal_skirmish)label=$"海岸坚守 · 第 {siege.waves}/{game.session_config.wave_counts.Length} 波 · "+(siege.all_waves_sent?"消灭剩余尸群":$"下一波 {countdown}");
                 panel(new Rect(Screen.width/2-240*scale,8*scale,480*scale,38*scale));
-                GUI.Label(new Rect(Screen.width/2-230*scale,10*scale,460*scale,34*scale),label+$" · 压力 {siege.pressure:P0}",title);
+                GUI.Label(new Rect(Screen.width/2-230*scale,10*scale,460*scale,34*scale),label+(game.coastal_skirmish?"":$" · 压力 {siege.pressure:P0}"),title);
             }
             float s=scale,y=Screen.height-190*s;
             panel(new Rect(0,Screen.height-242*s,224*s,242*s));
@@ -62,7 +63,7 @@ namespace ZombieGame.World
             if(game.headquarters_selected){draw_headquarters(selection_area);draw_production_commands(command_area);}
             else {draw_selection(selection_area);draw_commands(command_area);}
             draw_resources(new Rect(resources_x,y,190*s,190*s));
-            draw_style_toolbar();
+            if(game.coastal_skirmish)draw_session_toolbar();else draw_style_toolbar();
             if(game.construction.active)
             {
                 var hint=new Rect(Mathf.Clamp(Input.mousePosition.x+18*s,8*s,Screen.width-520*s),Mathf.Clamp(Screen.height-Input.mousePosition.y-64*s,8*s,Screen.height-260*s),505*s,54*s);
@@ -76,6 +77,7 @@ namespace ZombieGame.World
                 GUI.Label(new Rect(28*s,130*s,575*s,28*s),"Ctrl + 数字保存编队 · 数字/卡片召回 · 双击聚焦",text);
                 GUI.Label(new Rect(28*s,160*s,575*s,28*s),"贴边 / 方向键移镜头 · Z 尸群图鉴 · 滚轮缩放 · H 隐藏",small);
             }
+            if(game.session_overlay)draw_session_overlay();
         }
         private void draw_style_toolbar()
         {

@@ -4,6 +4,28 @@
 
 ## 启动
 
+### 小型三波试玩 · 2026-10-03
+
+- `Builds/CoastalSkirmish.app`；场景 `Assets/_Tests/Frontier/Scenes/CoastalSkirmish.unity`。
+- 打开先显示简报，不自动消耗准备时间；点击开始或 Enter。120 友军（92 弩手、24 弓箭手、4 希腊火），360 僵尸，60 秒准备，三波依次 80 / 120 / 160，间隔 75 秒。
+- 守住主基地并清除全部活僵尸（含民用建筑感染新增的僵尸）获胜；主基地失守即失败。结算暂停，底部或结算窗口可重新开局。
+- B 主基地只提供有 Blender 导入外观的弓手、弩手、希腊火，以及农田、箭坊、火药坊、弹药库。建筑共用现有原模型：农田使用 Pasture，其余工坊设施使用 Workshop，不伪称每种设施已有独立美术。
+- 没有对应原模型的兵种不显示；渲染器严格拒绝程序化角色替代。移除本小场景的程序化树、悬崖、矿块、小石块和方块废墟；地面、水面、UI 和基础战斗特效保留。原 Blender/FBX/PNG 未修改。
+- 小局人口/波次来源 `Assets/_Game/Resources/CoastalSkirmish.json`，只是关卡配置；所有单位战斗数值仍唯一取自 `balance/unit_balance.json`。旧大规模海岸试玩及接触冻结逻辑保留。
+- 重建：`ZombieGame.EditorTools.CoastalTools.build_small_player`。检查参数：`-coastalSmallSmoke`；只在该独立检查中提前下达三波、加速生产等待，退出后全部丢弃，不修改平衡数值。
+- 自动检查涵盖简报暂停、开始、来源模型限制、招募、补给库建造、三波数量、不得产生第四波、胜负优先级、待感染队列防止提前获胜，以及真实交战/最小间距/等比例模型。
+
+### 手机继续开发（不是将 Unity 编辑器迁到云端）
+
+- 推荐 Codex Remote：手机发任务，家里的 Mac 继续运行本地项目、Unity 和 Blender。电脑必须开机、联网且保持唤醒；不需要复制或重新上传全部模型。
+- 桌面端设置搜索“连接”时，选地球图标的顶层“连接”，不是“插件”的连接。进入 Control this Mac / 控制此 Mac，由本人批准访问并用自己的手机扫码，登录同一 ChatGPT 账号/工作区。
+- 手机 Codex / Remote 选择本机项目 `zombie game`，路径 `/Users/tankaixi/Documents/ChatGPT/zombie game`。不要误选 `zombie game_2`（另一工作副本）。优先继续现有任务，配对后发消息验证；未收到手机端验证前不能宣称配置完成。
+- Remote 是任务控制、审批和代码审查，不保证能在手机上直接交互游玩 Mac 游戏。实际视觉验收可让本机生成截图/录屏；Unity/Blender GUI 操作还取决于本机权限和会话状态。
+- Codex Cloud 则使用独立云端环境，可以在本机休眠时继续工作，但不会自动继承本机的 Unity/Blender、编辑器状态、授权、未提交模型和忽略的构建资源。若改用纯云端，须另行配置环境、模型同步与 Unity 授权/测试能力，不应把代码编辑成功当成已完成游戏验证。
+- 官方说明（核实日期 2026-10-03）：[Remote](https://learn.chatgpt.com/docs/remote)、[Cloud](https://learn.chatgpt.com/docs/cloud)。当前仅提供并核对设置路径；远程授权由用户本人完成，没有修改安全设置或把本地编辑器端口暴露到公网。
+
+### 原大规模海岸场景
+
 - 本地试玩：`Builds/CoastalDefense.app`。Unity 场景：`Assets/_Tests/Frontier/Scenes/CoastalDefense.unity`。
 - 400 个友方单位（316 弩手、80 弓箭手、4 辆希腊火）、2000 只僵尸。60 秒准备后总攻；海在营地后方。
 - 鼠标框选、右键移动、A 再左键攻击、S 停止、空格暂停、滚轮缩放、Home 回基地。

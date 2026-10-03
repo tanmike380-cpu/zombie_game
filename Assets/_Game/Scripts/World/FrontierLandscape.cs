@@ -47,7 +47,7 @@ namespace ZombieGame.World
             }
             // Established farm and exposed resource seams; throughput is documented in the scenario economy config.
             if(!map.coastal)for(int i=0;i<12;i++) add(cube,new Vector3(-115+i*.65f,.04f,-112),new Vector3(.3f,.09f,12),new Color(.57f,.49f,.20f));
-            foreach(var site in map.resource_sites)
+            if(!map.imported_only)foreach(var site in map.resource_sites)
             {
                 if(site.kind=="Stone"&&!environment_art.place_rocks(root.transform,site.position,site.radius*1.8f))
                     add_deposit(site.position,site.tier==3?new Color(.30f,.67f,.66f):new Color(.62f,.58f,.46f));
@@ -57,7 +57,7 @@ namespace ZombieGame.World
                     add(cube,site.position+Vector3.up*.035f,new Vector3(site.radius*2,.05f,site.radius*2),new Color(.46f,.48f,.22f));
             }
             // Rubble, dry vegetation and wheel-ruts break up flat ground without changing walkability.
-            for(int i=0;i<2400;i++)
+            for(int i=0;i<(map.imported_only?0:2400);i++)
             {
                 var p=new Vector3(-126+(float)random.NextDouble()*252,.03f,-126+(float)random.NextDouble()*252);
                 if(map.blocked(p,.3f))continue;

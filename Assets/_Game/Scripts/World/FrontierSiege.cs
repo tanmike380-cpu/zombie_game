@@ -14,6 +14,7 @@ namespace ZombieGame.World
         public float safe_radius,frontier_radius,territory_cell_size,distance_weight,area_weight;
         public int territory_cells_for_full_pressure;
         public float low_pressure_wave_fraction,high_pressure_wave_fraction;
+        public int[] finite_wave_counts;
     }
     /// <summary>Scenario pacing, separate from authored unit balance. No spawning or stat overrides.</summary>
     public sealed class FrontierSiege
@@ -24,6 +25,8 @@ namespace ZombieGame.World
         public float pressure {get;private set;}
         public int waves {get;private set;}
         public int last_wave_units {get;private set;}
+        public bool finite=>config.finite_wave_counts!=null&&config.finite_wave_counts.Length>0;
+        public bool all_waves_sent=>finite&&waves>=config.finite_wave_counts.Length;
         public float interval=>Mathf.Lerp(config.low_pressure_interval_seconds,config.high_pressure_interval_seconds,pressure);
         public float remaining=>waves==0?Mathf.Max(0,(config.defense_test?config.preparation_seconds:config.campaign_first_wave_seconds)-elapsed):config.defense_test?0:(1-progress)*interval;
         public FrontierSiege(SiegeConfig config)
@@ -47,6 +50,7 @@ namespace ZombieGame.World
         }
         public void step(float delta,BattleSimulation battle,FrontierConstruction construction,Vector3 home)
         {
+            if(all_waves_sent)return;
             elapsed+=Mathf.Max(0,delta);
             if(elapsed>=scan_at)
             {
@@ -62,7 +66,7 @@ namespace ZombieGame.World
         }
         private void send_wave(BattleSimulation battle,Vector3 home)
         {
-            int count=config.defense_test?battle.zombie_count:Mathf.CeilToInt(battle.zombie_count*Mathf.Lerp(config.low_pressure_wave_fraction,config.high_pressure_wave_fraction,pressure));
+            int count=finite?config.finite_wave_counts[waves]:config.defense_test?battle.zombie_count:Mathf.CeilToInt(battle.zombie_count*Mathf.Lerp(config.low_pressure_wave_fraction,config.high_pressure_wave_fraction,pressure));
             // BattleSimulation resolves the living HQ; the old rally offset must not become a final stop.
             last_wave_units=battle.order_siege(home,count);waves++;
             Debug.Log($"[Siege] wave={waves} ordered={last_wave_units} pressure={pressure:P0} defense_test={config.defense_test}");

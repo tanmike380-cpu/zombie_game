@@ -1,0 +1,7 @@
+{
+  "initial_humans": 120,
+  "zombies": 360,
+  "preparation_seconds": 60,
+  "wave_interval_seconds": 75,
+  "wave_counts": [80, 120, 160]
+}

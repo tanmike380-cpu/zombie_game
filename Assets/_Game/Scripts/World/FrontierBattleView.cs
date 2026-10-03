@@ -23,9 +23,9 @@ namespace ZombieGame.World
         private readonly GreekFireView equipment;
         private readonly FlameEffects flames;
 
-        public FrontierBattleView(int capacity,Transform parent,Shader shader,ImportedRoster roster=null)
+        public FrontierBattleView(int capacity,Transform parent,Shader shader,ImportedRoster roster=null,bool strict_imports=false)
         {
-            characters=new CharacterCrowdRenderer(capacity,VisualStyles.current.id,roster:roster);effects=new MusketEffects(parent);
+            characters=new CharacterCrowdRenderer(capacity,VisualStyles.current.id,roster:roster,strict_imports:strict_imports);effects=new MusketEffects(parent);
             explosions=new ExplosionFeedback(shader);
             equipment=new GreekFireView(parent);flames=new FlameEffects(parent);stable_rotations=new Quaternion[capacity];for(int i=0;i<capacity;i++)stable_rotations[i]=Quaternion.identity;
             seen_shots=new float[capacity];death_started=new float[capacity];

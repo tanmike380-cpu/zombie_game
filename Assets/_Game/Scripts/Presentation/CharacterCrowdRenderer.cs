@@ -17,11 +17,13 @@ namespace ZombieGame.Presentation
         private readonly int capacity;
         private readonly Plane[] view_planes = new Plane[6];
         private bool cull_to_view;
+        private readonly bool strict_imports;
         public int submitted { get; private set; }
         public int culled { get; private set; }
 
-        public CharacterCrowdRenderer(int capacity,string style=null,CharacterFrames archer_override=null,string override_unit="archer",CharacterFrames exploder_override=null,ImportedRoster roster=null)
+        public CharacterCrowdRenderer(int capacity,string style=null,CharacterFrames archer_override=null,string override_unit="archer",CharacterFrames exploder_override=null,ImportedRoster roster=null,bool strict_imports=false)
         {
+            this.strict_imports=strict_imports;
             if(capacity<1)throw new ArgumentOutOfRangeException(nameof(capacity));this.capacity=capacity;
             characters = new CharacterFrames[8+(roster==null?0:roster.units.Length)];set_style(style);
             if(roster!=null)for(int i=0;i<roster.units.Length;i++)
@@ -66,6 +68,8 @@ namespace ZombieGame.Presentation
 
         public void add(bool human, CharacterPose pose, float age, Vector3 position, Quaternion rotation, bool explosive = false,float model_scale=1,string human_id=null,float attack_window=0)
         {
+            if(strict_imports&&(human_id==null||!imported_indices.ContainsKey(human_id)))
+                throw new InvalidOperationException("Procedural art fallback forbidden for this scenario: "+human_id);
             int character = human_id!=null&&imported_indices.TryGetValue(human_id,out int imported)?imported:human ? human_index(human_id) : explosive ? 2 : 1;
             if((int)pose>=characters[character].poses.Length) pose=CharacterPose.Run;
             if(character>=8&&attack_window>0&&(pose==CharacterPose.Attack||pose==CharacterPose.MeleeAttack))

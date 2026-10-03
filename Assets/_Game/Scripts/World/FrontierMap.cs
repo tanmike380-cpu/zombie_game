@@ -39,15 +39,20 @@ namespace ZombieGame.World
         public Bounds[] blockers;
         public readonly ResourceSite[] resource_sites;
         public readonly bool coastal;
+        public readonly bool imported_only;
+        public readonly int initial_humans;
 
-        public FrontierMap(bool coastal=false)
+        public FrontierMap(bool coastal=false,CoastalSessionConfig session=null)
         {
             this.coastal=coastal;
+            imported_only=session!=null;initial_humans=session?.initial_humans??SOLDIERS;
             if(coastal)
             {
-                spawns=new Vector3[HUMAN_CAPACITY+2000];explosive=new bool[spawns.Length];unit_ids=new string[spawns.Length];
+                spawns=new Vector3[HUMAN_CAPACITY+(session?.zombies??2000)];explosive=new bool[spawns.Length];unit_ids=new string[spawns.Length];
                 build_coastal_regions();
                 resource_sites=ResourceDistribution.populate(this);
+                // No invented trees/cliffs or invisible forest collisions in the authored-model demo.
+                if(imported_only)regions.RemoveAll(region=>region.kind==LandscapeKind.Forest||region.kind==LandscapeKind.Cliff);
                 blockers=regions.ConvertAll(region=>region.bounds).ToArray();
                 spawn_coastal_units();
                 return;
