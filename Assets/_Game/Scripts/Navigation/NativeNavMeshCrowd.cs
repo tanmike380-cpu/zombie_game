@@ -19,7 +19,7 @@ namespace ZombieGame.Navigation
         private readonly Vector3[] spawn_positions;
         private readonly UnitStats stats;
 
-        public NativeNavMeshCrowd(Vector3[] spawn_positions, Bounds[] obstacles, UnitStats stats = null,UnitStats[] agent_stats=null)
+        public NativeNavMeshCrowd(Vector3[] spawn_positions, Bounds[] obstacles, UnitStats stats = null,UnitStats[] agent_stats=null,Bounds[] friendly_gates=null,int human_count=0)
         {
             if (spawn_positions == null || obstacles == null) throw new ArgumentException("Navigation requires explicit spawns and map obstacles");
             int count = spawn_positions.Length;
@@ -30,6 +30,7 @@ namespace ZombieGame.Navigation
             var sources = new List<NavMeshBuildSource>();
             sources.Add(box_source(new Bounds(new Vector3(0, -.5f, 0), new Vector3(256, 1, 256)), 0));
             foreach (Bounds wall in walls) sources.Add(box_source(wall, 1));
+            append_gate_areas(sources,friendly_gates);
             NavMeshBuildSettings settings = NavMesh.GetSettingsByIndex(0);
             settings.agentRadius = UnitBalance.config.unit_navigation_radius;
             settings.agentHeight = 1.2f;
@@ -49,6 +50,7 @@ namespace ZombieGame.Navigation
                 float radius=agent_stats==null?UnitBalance.config.unit_navigation_radius:UnitBalance.navigation_radius(agent_stats[i]);
                 int agent_type=radius<=UnitBalance.config.unit_navigation_radius?settings.agentTypeID:ensure_large_profile(radius,sources);
                 spawn_agent(i,agent_type,radius);
+                if(i>=human_count)agents[i].areaMask&=~gate_area_mask;
             }
             timer.Stop();
             setup_ms = timer.Elapsed.TotalMilliseconds;
@@ -115,6 +117,7 @@ namespace ZombieGame.Navigation
         public void remove_building(Bounds bounds,GameObject obstacle)
         {
             if(obstacle==null)return;
+            open_destroyed_gate(bounds);
             obstacle.SetActive(false);UnityEngine.Object.Destroy(obstacle);
             var updated=new List<Bounds>(walls);updated.Remove(bounds);walls=updated.ToArray();
         }

@@ -15,6 +15,7 @@ namespace ZombieGame.FrontierTests
             try{CoastalArtChecks.run();}
             catch(Exception error){Debug.LogException(error);Application.Quit(1);yield break;}
             yield return check_defenses();
+            yield return CoastalOrderChecks.run();
             yield return CrowdSpacingChecks.run();
             Debug.Log("[CoastalRegression] PASS defenses, cone, ammo, frozen contacts and chase recovery");
             Application.Quit(0);

@@ -94,7 +94,7 @@ namespace ZombieGame.Combat
                 (!needs_path[index]&&agent.enabled&&agent.isOnNavMesh&&!agent.pathPending&&now>=zombie_repath_at[index]&&
                     (!agent.hasPath||agent.pathStatus==NavMeshPathStatus.PathInvalid||agent.remainingDistance<=agent.stoppingDistance+.1f)))
             {
-                var filter=new NavMeshQueryFilter{agentTypeID=agent.agentTypeID,areaMask=NavMesh.AllAreas};
+                var filter=new NavMeshQueryFilter{agentTypeID=agent.agentTypeID,areaMask=agent.areaMask};
                 if(NavMesh.SamplePosition(destination,out var hit,3,filter))destination=hit.position;
                 building_targets[index]=best;memories[index]=destination;path_target[index]=-1;needs_path[index]=true;
                 zombie_repath_at[index]=now+1;
@@ -139,7 +139,10 @@ namespace ZombieGame.Combat
         }
         private bool try_spawn_infection(Vector3 point)
         {
-            var filter=new NavMeshQueryFilter{agentTypeID=crowd.agents[0].agentTypeID,areaMask=NavMesh.AllAreas};
+            int reserve=Array.FindIndex(zombie_deployed,deployed=>!deployed);
+            if(reserve<0)return false;
+            var spawn_agent=crowd.agents[soldier_count+reserve];
+            var filter=new NavMeshQueryFilter{agentTypeID=spawn_agent.agentTypeID,areaMask=spawn_agent.areaMask};
             if(!NavMesh.SamplePosition(point,out var hit,.7f,filter))return false;
             float spawn_radius=UnitBalance.navigation_radius(UnitBalance.get("walker"));
             for(int i=0;i<total_count;i++)if(health[i]>0&&(positions[i]-hit.position).sqrMagnitude<

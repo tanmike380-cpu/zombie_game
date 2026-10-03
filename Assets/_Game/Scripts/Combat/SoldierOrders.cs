@@ -31,7 +31,8 @@ namespace ZombieGame.Combat
             if (order != SoldierOrder.Stop)
             {
                 if (Mathf.Abs(goal.x) > 127.5f || Mathf.Abs(goal.z) > 127.5f ||
-                    !NavMesh.SamplePosition(goal, out var hit, .6f, NavMesh.AllAreas)) return false;
+                    !NavMesh.SamplePosition(goal, out var hit, 8f,
+                        new NavMeshQueryFilter {agentTypeID=crowd.agents[index].agentTypeID,areaMask=crowd.agents[index].areaMask})) return false;
                 goal = hit.position;
             }
             stop_soldier(index);
@@ -60,11 +61,17 @@ namespace ZombieGame.Combat
             route_settled[index] = false;
             agent.stoppingDistance = stopping_distance;
             if (!immediate && Time.time < soldier_repath_at[index]) return true;
-            if (!immediate && agent.hasPath && (last_soldier_goal[index] - goal).sqrMagnitude < .25f)
+            if (!immediate && agent.hasPath && !agent.isPathStale &&
+                (last_soldier_goal[index] - goal).sqrMagnitude < .25f &&
+                (agent.pathStatus == NavMeshPathStatus.PathComplete || agent.remainingDistance > .3f))
             { agent.isStopped = false; return true; }
             soldier_repath_at[index] = Time.time + .25f;
-            if (!agent.CalculatePath(goal, soldier_path) || soldier_path.status != NavMeshPathStatus.PathComplete || !agent.SetPath(soldier_path))
+            // A sealed wall is a partial route, not a cancelled command. Unity supplies its
+            // reachable endpoint; retain the strategic goal and retry after a breach opens.
+            if (!agent.CalculatePath(goal, soldier_path) || soldier_path.status == NavMeshPathStatus.PathInvalid || !agent.SetPath(soldier_path))
             { stop_soldier(index); return false; }
+            if (soldier_path.status == NavMeshPathStatus.PathPartial)
+                soldier_repath_at[index] = Time.time + 1f;
             last_soldier_goal[index] = goal; agent.isStopped = false; return true;
         }
 

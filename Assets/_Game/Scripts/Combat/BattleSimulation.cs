@@ -21,6 +21,7 @@ namespace ZombieGame.Combat
         private readonly bool[] recruited;
         public bool is_reserve(int index) => index<soldier_count?!recruited[index]:!zombie_deployed[index-soldier_count];
         public Func<int, int> forced_target;
+        public Func<int,Vector3> projectile_muzzle;
         // Authored friendly parapets permit ranged defense, never melee or enemy vision.
         public readonly System.Collections.Generic.HashSet<Bounds> friendly_parapets = new System.Collections.Generic.HashSet<Bounds>();
         // Optional economy gate. Benchmarks without an economy retain their existing behaviour.
@@ -81,7 +82,7 @@ namespace ZombieGame.Combat
         private float next_tick;
 
         public BattleSimulation(Vector3[] spawn_positions, int human_count, bool[] explosive_units,
-            Bounds[] obstacles, bool global_assault = false, bool player_controlled = true, int initial_humans = -1, string[] unit_ids = null, int infection_reserve = 0)
+            Bounds[] obstacles, bool global_assault = false, bool player_controlled = true, int initial_humans = -1, string[] unit_ids = null, int infection_reserve = 0,Bounds[] friendly_gates=null)
         {
             if (spawn_positions == null || explosive_units == null || obstacles == null ||
                 human_count < 1 || human_count > spawn_positions.Length || explosive_units.Length != spawn_positions.Length)
@@ -156,7 +157,7 @@ namespace ZombieGame.Combat
             assault = global_assault; playable = player_controlled;
             var navigation_stats=new UnitStats[total_count];
             for(int i=0;i<total_count;i++)navigation_stats[i]=stats_for(i);
-            crowd = new NativeNavMeshCrowd(positions, obstacles, UnitBalance.runner,navigation_stats);
+            crowd = new NativeNavMeshCrowd(positions, obstacles, UnitBalance.runner,navigation_stats,friendly_gates,soldier_count);
             contacts = new UnitContactConstraints(crowd,navigation_stats);
             for (int i = 0; i < total_count; i++)
             {
@@ -324,7 +325,7 @@ namespace ZombieGame.Combat
                 {
                     int slot = shot_cursor++ % projectiles.Length;
                     if (projectiles[slot].active) continue;
-                    projectiles[slot] = new Shot { active = true, position = positions[i] + Vector3.up, target = target, source=i };
+                    projectiles[slot] = new Shot { active = true, position = projectile_muzzle?.Invoke(i)??positions[i] + Vector3.up, target = target, source=i };
                     allocated = true; break;
                 }
                 if (!allocated) dropped_projectiles++;
@@ -380,7 +381,7 @@ namespace ZombieGame.Combat
             Vector3 direction=contact-positions[index];direction.y=0;
             if(direction.sqrMagnitude<.01f)return contact;
             Vector3 proposed=contact+direction.normalized*UnitBalance.config.zombie_attack_move_follow_through;
-            var filter=new NavMeshQueryFilter {agentTypeID=crowd.agents[index].agentTypeID,areaMask=NavMesh.AllAreas};
+            var filter=new NavMeshQueryFilter {agentTypeID=crowd.agents[index].agentTypeID,areaMask=crowd.agents[index].areaMask};
             if(!NavMesh.SamplePosition(proposed,out var hit,.25f,filter)||NavMesh.Raycast(contact,hit.position,out _,filter))return contact;
             advancing=true;return hit.position;
         }

@@ -21,7 +21,7 @@ namespace ZombieGame.Movement
             var timer = System.Diagnostics.Stopwatch.StartNew();
             last_assignment_ms = 0; destinations.Clear(); slots.Clear();
             if (origins.Count == 0 || Mathf.Abs(center.x) > 127.5f || Mathf.Abs(center.z) > 127.5f
-                || !NavMesh.SamplePosition(center,out var anchor,.6f,NavMesh.AllAreas)) return false;
+                || !NavMesh.SamplePosition(center,out var anchor,16f,NavMesh.AllAreas)) return false;
             if (!collect_slots(anchor.position,origins.Count)) return false;
             assign_radial_bands(anchor.position,origins,destinations);
             last_assignment_ms = timer.Elapsed.TotalMilliseconds;
