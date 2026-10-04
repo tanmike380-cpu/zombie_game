@@ -28,9 +28,10 @@ namespace ZombieGame.FrontierTests
             foreach(var building in game.current.buildings)
             {
                 if(building.label.Contains("WALL"))walls++;
-                require(!NavMesh.SamplePosition(new Vector3(building.bounds.center.x,0,building.bounds.center.z),out var hit,.1f,NavMesh.AllAreas),"building footprint blocked "+building.label);
+                int navigation_mask=building.label=="GATE TOWER"?game.current.crowd.agents[game.current.soldier_count].areaMask:NavMesh.AllAreas;
+                require(!NavMesh.SamplePosition(new Vector3(building.bounds.center.x,0,building.bounds.center.z),out var hit,.1f,navigation_mask),"building footprint blocks enemies "+building.label);
             }
-            require(walls>60,"walled camp");
+            require(walls>=6&&walls==game.map.regions.FindAll(region=>region.label.Contains("WALL")).Count,"all source-authored wall regions participate in defense");
             var wall_center=new Vector3(-109,0,-55);
             require(game.current.ranged_line_clear(wall_center+Vector3.back*2,wall_center+Vector3.forward*2),"ranged defenders fire across friendly parapet");
             require(!game.current.ranged_line_clear(game.map.headquarters_position+Vector3.left*8,game.map.headquarters_position+Vector3.right*8),"ordinary buildings still block fire");

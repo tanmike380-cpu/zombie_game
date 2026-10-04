@@ -23,31 +23,56 @@ namespace ZombieGame.World
             add_building(-86,-80,2,2,"OUTPOST");
             add_building(-65,-80,2,2,"OUTPOST");
             add_authored_wall_runs();
-            add_building(-102,-55,10,9,"GATE TOWER");
-            add_building(-78,-55,10,9,"GATE TOWER");
             add_building(-61,-83,4,4,"FIRE TOWER");
             add_forest(-40,5,20,24);add_forest(35,-55,20,22);
             add_forest(55,60,28,20);add_forest(-90,85,26,22);
             regions.Add(new LandscapeRegion(90,12,20,24,5,LandscapeKind.Cliff));
         }
 
-        [Serializable] private sealed class WallSection {public string asset;public float x,z,width,depth;public bool sideways,pier;}
-        [Serializable] private sealed class WallAssembly {public WallSection[] regions;}
+        [Serializable] private sealed class WallSection
+        {
+            public string asset,label;
+            public float x,z,width,depth,height,yaw,scale,wall_contact_width;
+            public bool sideways,pier;
+            public Vector3 position;
+            public Vector3 expected_bounds_min,expected_bounds_max;
+        }
+        [Serializable] private sealed class WallAssembly {public int schema_version;public WallSection[] regions;}
         private void add_authored_wall_runs()
         {
             var source=Resources.Load<TextAsset>("CoastalWallLayout");
             if(source==null)throw new InvalidOperationException("Export the accepted Blender modular wall assembly first");
-            foreach(var section in JsonUtility.FromJson<WallAssembly>(source.text).regions)
-                regions.Add(new LandscapeRegion(section.x,section.z,section.width,section.depth,3,LandscapeKind.Building,
-                    section.pier?"FORTRESS END WALL":"FORTRESS BODY WALL"){art_id=section.asset,art_sideways=section.sideways});
+            var assembly=JsonUtility.FromJson<WallAssembly>(source.text);
+            if(assembly==null||assembly.schema_version!=2||assembly.regions==null)
+                throw new InvalidOperationException("Coastal wall handoff must use schema 2 authored transforms; re-export from the Blender master");
+            foreach(var section in assembly.regions)
+            {
+                if(string.IsNullOrEmpty(section.asset)||string.IsNullOrEmpty(section.label)||section.scale<=0||
+                    section.width<=0||section.depth<=0||section.height<=0)
+                    throw new InvalidOperationException("Invalid authored coastal wall section: "+section.asset);
+                regions.Add(new LandscapeRegion(section.x,section.z,section.width,section.depth,section.height,LandscapeKind.Building,section.label)
+                {
+                    art_id=section.asset,art_sideways=section.sideways,art_authored_transform=true,
+                    art_position=section.position,art_yaw=section.yaw,art_scale=section.scale,
+                    art_wall_contact_width=section.wall_contact_width,
+                    art_expected_bounds=new Bounds((section.expected_bounds_min+section.expected_bounds_max)*.5f,
+                        section.expected_bounds_max-section.expected_bounds_min)
+                });
+            }
         }
 
         private void spawn_coastal_units()
         {
             float spacing=UnitBalance.config.formation_spacing;
             int count=4;
-            for(int i=0;i<4;i++){spawns[i]=new Vector3(-112+i*15,0,-62);unit_ids[i]="greek_fire";}
-            for(float z=-67;z>-106&&count<HUMAN_CAPACITY;z-=spacing)
+            for(int i=0;i<4;i++)
+            {
+                var point=new Vector3(-112+i*15,0,-67);
+                if(blocked(point,UnitBalance.navigation_radius(UnitBalance.get("greek_fire"))+.15f))
+                    throw new InvalidOperationException("Coastal Greek fire muster overlaps the authored fortress footprint: "+point);
+                spawns[i]=point;unit_ids[i]="greek_fire";
+            }
+            for(float z=-71;z>-106&&count<HUMAN_CAPACITY;z-=spacing)
                 for(float x=-119;x<-60&&count<HUMAN_CAPACITY;x+=spacing)
                 {
                     var point=new Vector3(x,0,z);

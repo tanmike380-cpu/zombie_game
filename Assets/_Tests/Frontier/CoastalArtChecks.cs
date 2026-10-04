@@ -48,19 +48,7 @@ namespace ZombieGame.FrontierTests
                     var muzzle=character.poses[(int)CharacterPose.Attack].muzzle_positions[0];
                     require(muzzle.y>1&&muzzle.y<2.5f&&muzzle.magnitude<3,"projectile origin uses normalized original weapon: "+id+" "+muzzle);
                 }
-                var map=new FrontierMap(true,CoastalSessionConfig.load());
-                int sections=0,piers=0;
-                foreach(var section in map.regions)
-                {
-                    if(section.art_id==null)continue;
-                    sections++;if(section.label.Contains("END"))piers++;
-                    require(Resources.Load<GameObject>("CoastalBuildings/"+section.art_id)!=null,"accepted wall section imported");
-                    foreach(var tower in map.regions)
-                        if(tower.label=="GATE TOWER")require(!section.bounds.Intersects(tower.bounds)||
-                            Mathf.Abs(section.bounds.max.x-tower.bounds.min.x)<.001f||Mathf.Abs(section.bounds.min.x-tower.bounds.max.x)<.001f,
-                            "no middle-wall mesh retained under tower");
-                }
-                require(sections>30&&piers==6,"three continuous runs have exactly six end-pier sections");
+                CoastalAssemblyChecks.run(parent.transform);
                 Debug.Log($"[CoastalArt] PASS grounded hound, stride={hound.locomotion_stride:F3}, wall={bounds.size.y:F2}, headbutter={giant_height:F2}, original proportions, flame resource");
             }
             finally{UnityEngine.Object.Destroy(parent);}

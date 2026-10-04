@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using ZombieGame.Combat;
 using ZombieGame.Movement;
+using ZombieGame.World;
 
 namespace ZombieGame.FrontierTests
 {
@@ -33,36 +34,42 @@ namespace ZombieGame.FrontierTests
             }
             yield return null;
             yield return check_corners();
-            yield return check_gate();
+            yield return check_gate(new Vector3(10,2,9));
+            var map=new FrontierMap(true,CoastalSessionConfig.load());
+            var gate=map.regions.Find(region=>region.label=="GATE TOWER");
+            require(gate.art_authored_transform,"large gate fixture reads the Blender handoff");
+            yield return check_gate(gate.bounds.size);
             Debug.Log("[CoastalOrders] PASS partial A routes, breach recovery, four corner formations");
         }
-        private static IEnumerator check_gate()
+        private static IEnumerator check_gate(Vector3 size)
         {
-            var gate=new Bounds(new Vector3(0,1,0),new Vector3(10,2,9));
-            var walls=new[]{new Bounds(new Vector3(-67,1,0),new Vector3(124,2,9)),
-                new Bounds(new Vector3(67,1,0),new Vector3(124,2,9))};
-            using(var battle=new BattleSimulation(new[]{new Vector3(0,0,-12),new Vector3(2,0,14)},1,new bool[2],walls,
+            var gate=new Bounds(new Vector3(0,size.y*.5f,0),size);
+            float wall_width=128-size.x*.5f,wall_center=size.x*.5f+wall_width*.5f;
+            float travel=size.z*.5f+8;
+            var walls=new[]{new Bounds(new Vector3(-wall_center,1,0),new Vector3(wall_width,2,size.z)),
+                new Bounds(new Vector3(wall_center,1,0),new Vector3(wall_width,2,size.z))};
+            using(var battle=new BattleSimulation(new[]{new Vector3(0,0,-travel),new Vector3(2,0,travel)},1,new bool[2],walls,
                 unit_ids:new[]{"heavy_crossbowman","walker"},friendly_gates:new[]{gate}))
             {
                 var carving=battle.crowd.add_friendly_gate(gate);
                 yield return new WaitForSeconds(.5f);
                 var path=new NavMeshPath();var enemy=battle.crowd.agents[1];
                 enemy.enabled=true;
-                require(enemy.CalculatePath(new Vector3(2,0,-14),path)&&path.status==NavMeshPathStatus.PathPartial,"enemy cannot cross living gate");
+                require(enemy.CalculatePath(new Vector3(2,0,-travel),path)&&path.status==NavMeshPathStatus.PathPartial,"enemy cannot cross living gate");
                 enemy.isStopped=true;enemy.enabled=false; // Disposable noncombat gate-permission fixture.
                 float fixture_enemy_health=battle.health[1];battle.health[1]=0; // Isolate faction routing from fighting; restored below and simulation disposed.
-                require(battle.issue_order(0,SoldierOrder.Move,new Vector3(0,0,12)),"friendly gate route issued");
-                for(float end=Time.time+12;Time.time<end;){battle.step(Time.time,Time.deltaTime);yield return null;}
-                require(battle.positions[0].z>9,"friendly physically crosses northbound without warping");
-                require(battle.issue_order(0,SoldierOrder.Move,new Vector3(0,0,-12)),"southbound gate route issued");
-                for(float end=Time.time+12;Time.time<end;){battle.step(Time.time,Time.deltaTime);yield return null;}
-                require(battle.positions[0].z< -9,"friendly physically crosses southbound");
+                require(battle.issue_order(0,SoldierOrder.Move,new Vector3(0,0,travel)),"friendly gate route issued");
+                for(float end=Time.time+15;Time.time<end;){battle.step(Time.time,Time.deltaTime);yield return null;}
+                require(battle.positions[0].z>travel-3,"friendly physically crosses northbound without warping");
+                require(battle.issue_order(0,SoldierOrder.Move,new Vector3(0,0,-travel)),"southbound gate route issued");
+                for(float end=Time.time+15;Time.time<end;){battle.step(Time.time,Time.deltaTime);yield return null;}
+                require(battle.positions[0].z< -travel+3,"friendly physically crosses southbound");
                 battle.crowd.remove_building(gate,carving);yield return new WaitForSeconds(.5f);
                 battle.health[1]=fixture_enemy_health;
                 enemy.enabled=true;
-                require(enemy.CalculatePath(new Vector3(2,0,-14),path)&&path.status==NavMeshPathStatus.PathComplete,"destroyed gate opens to enemies");
+                require(enemy.CalculatePath(new Vector3(2,0,-travel),path)&&path.status==NavMeshPathStatus.PathComplete,"destroyed gate opens to enemies");
             }
-            Debug.Log("[CoastalGate] PASS friendly two-way passage, enemy filter, destruction opens route");
+            Debug.Log("[CoastalGate] PASS friendly two-way passage, enemy filter, destruction opens route; footprint="+size);
         }
         private static IEnumerator check_corners()
         {

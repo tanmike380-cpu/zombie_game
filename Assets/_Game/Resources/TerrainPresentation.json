@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "alphamap_resolution": 512,
+  "base_map_distance": 500,
+  "macro_patch_size": 28,
+  "road_half_width": 1.4,
+  "road_edge_width": 1.2,
+  "shore_width": 7,
+  "layers": [
+    {"id":"Grass_A","source":"grass_path_2","tile_size":5,"normal_strength":0.5,"smoothness_scale":0.3},
+    {"id":"Grass_Dry","source":"withered_grass","tile_size":5.5,"normal_strength":0.45,"smoothness_scale":0.22},
+    {"id":"Dirt","source":"dirt","tile_size":4,"normal_strength":0.45,"smoothness_scale":0.3},
+    {"id":"Mud","source":"brown_mud","tile_size":4,"normal_strength":0.5,"smoothness_scale":0.55},
+    {"id":"Stone","source":"rocky_terrain","tile_size":5,"normal_strength":0.55,"smoothness_scale":0.3},
+    {"id":"Road","source":"cobblestone_floor_02","tile_size":3,"normal_strength":0.45,"smoothness_scale":0.28}
+  ]
+}

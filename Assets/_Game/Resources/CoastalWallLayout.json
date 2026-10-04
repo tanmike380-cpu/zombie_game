@@ -1,853 +1,767 @@
 {
-  "source_blend": "art/models/modular-stone-wall/ModularStoneWall.blend",
-  "uniform_source_scale": 18,
-  "note": "Fortress-scale footprint; original end piers protected; no wall mesh beneath tower slots.",
+  "schema_version": 2,
+  "source_blend": "art/Blender\u4e3b\u6587\u4ef6/ZombieGame.blend",
+  "source_collection": "\u57ce\u5899 \u00b7 15_Tower_Multiple",
+  "uniform_source_scale": 18.0,
+  "note": "Approved 15_Tower_Multiple, shared registration; no per-piece Unity fitting.",
   "regions": [
     {
-      "asset": "WallRunFront_00",
-      "x": -125.5,
-      "z": -55,
-      "width": 3,
-      "depth": 5,
+      "asset": "WallRunFrontTower_00",
+      "label": "GATE TOWER",
+      "x": -55.0,
+      "z": -55.0,
+      "width": 18,
+      "depth": 16,
+      "height": 14.254030227661133,
       "sideways": false,
-      "pier": true
+      "pier": false,
+      "position": {
+        "x": -19,
+        "y": 0,
+        "z": -55
+      },
+      "yaw": 0,
+      "scale": 1,
+      "expected_bounds_min": {
+        "x": -61.69614028930664,
+        "y": 0.0,
+        "z": -62.78651809692383
+      },
+      "expected_bounds_max": {
+        "x": -48.30385971069336,
+        "y": 14.254030227661133,
+        "z": -47.21348190307617
+      },
+      "wall_contact_width": 11.975847580432893
     },
     {
-      "asset": "WallRunFront_01",
-      "x": -123.0,
-      "z": -55,
-      "width": 2,
-      "depth": 5,
+      "asset": "WallRunFrontTower_01",
+      "label": "GATE TOWER",
+      "x": -91.0,
+      "z": -55.0,
+      "width": 18,
+      "depth": 16,
+      "height": 14.254030227661133,
       "sideways": false,
-      "pier": false
+      "pier": false,
+      "position": {
+        "x": -19,
+        "y": 0,
+        "z": -55
+      },
+      "yaw": 0,
+      "scale": 1,
+      "expected_bounds_min": {
+        "x": -97.69613647460938,
+        "y": 0.0,
+        "z": -62.78651809692383
+      },
+      "expected_bounds_max": {
+        "x": -84.30386352539062,
+        "y": 14.254030227661133,
+        "z": -47.21348190307617
+      },
+      "wall_contact_width": 11.975847580432893
     },
     {
       "asset": "WallRunFront_02",
-      "x": -121.0,
-      "z": -55,
-      "width": 2,
+      "label": "FORTRESS END WALL",
+      "x": -125.56219482421875,
+      "z": -55.0,
+      "width": 2.8756027221679688,
       "depth": 5,
+      "height": 6.99609375,
       "sideways": false,
-      "pier": false
+      "pier": true,
+      "position": {
+        "x": -19,
+        "y": 0,
+        "z": -55
+      },
+      "yaw": 0,
+      "scale": 1,
+      "expected_bounds_min": {
+        "x": -127.0,
+        "y": 0.6767578125,
+        "z": -57.26318359375
+      },
+      "expected_bounds_max": {
+        "x": -124.12439727783203,
+        "y": 7.6728515625,
+        "z": -52.73681640625
+      }
     },
     {
       "asset": "WallRunFront_03",
-      "x": -119.0,
-      "z": -55,
-      "width": 2,
+      "label": "FORTRESS END WALL",
+      "x": -20.437801361083984,
+      "z": -55.0,
+      "width": 2.8756046295166016,
       "depth": 5,
+      "height": 6.732421875,
       "sideways": false,
-      "pier": false
+      "pier": true,
+      "position": {
+        "x": -19,
+        "y": 0,
+        "z": -55
+      },
+      "yaw": 0,
+      "scale": 1,
+      "expected_bounds_min": {
+        "x": -21.8756046295166,
+        "y": 0.6767578125,
+        "z": -57.26318359375
+      },
+      "expected_bounds_max": {
+        "x": -19.0,
+        "y": 7.4091796875,
+        "z": -52.73681640625
+      }
     },
     {
       "asset": "WallRunFront_04",
-      "x": -117.0,
-      "z": -55,
-      "width": 2,
+      "label": "FORTRESS WALL BODY",
+      "x": -27.99560546875,
+      "z": -55.2109375,
+      "width": 12.239999771118164,
       "depth": 5,
+      "height": 6.4951171875,
       "sideways": false,
-      "pier": false
+      "pier": false,
+      "position": {
+        "x": -19,
+        "y": 0,
+        "z": -55
+      },
+      "yaw": 0,
+      "scale": 1,
+      "expected_bounds_min": {
+        "x": -34.115604400634766,
+        "y": 0.0,
+        "z": -57.24560546875
+      },
+      "expected_bounds_max": {
+        "x": -21.8756046295166,
+        "y": 6.4951171875,
+        "z": -53.17626953125
+      }
     },
     {
       "asset": "WallRunFront_05",
-      "x": -115.0,
-      "z": -55,
-      "width": 2,
+      "label": "FORTRESS WALL BODY",
+      "x": -113.67559814453125,
+      "z": -55.2109375,
+      "width": 12.239997863769531,
       "depth": 5,
+      "height": 6.4951171875,
       "sideways": false,
-      "pier": false
+      "pier": false,
+      "position": {
+        "x": -19,
+        "y": 0,
+        "z": -55
+      },
+      "yaw": 0,
+      "scale": 1,
+      "expected_bounds_min": {
+        "x": -119.79560089111328,
+        "y": 0.0,
+        "z": -57.24560546875
+      },
+      "expected_bounds_max": {
+        "x": -107.55560302734375,
+        "y": 6.4951171875,
+        "z": -53.17626953125
+      }
     },
     {
       "asset": "WallRunFront_06",
-      "x": -113.0,
-      "z": -55,
-      "width": 2,
+      "label": "FORTRESS WALL BODY",
+      "x": -121.95999145507812,
+      "z": -55.2109375,
+      "width": 4.328788757324219,
       "depth": 5,
+      "height": 6.4423828125,
       "sideways": false,
-      "pier": false
+      "pier": false,
+      "position": {
+        "x": -19,
+        "y": 0,
+        "z": -55
+      },
+      "yaw": 0,
+      "scale": 1,
+      "expected_bounds_min": {
+        "x": -124.1243896484375,
+        "y": 0.0,
+        "z": -57.24560546875
+      },
+      "expected_bounds_max": {
+        "x": -119.79560089111328,
+        "y": 6.4423828125,
+        "z": -53.17626953125
+      }
     },
     {
       "asset": "WallRunFront_07",
-      "x": -111.0,
-      "z": -55,
-      "width": 2,
+      "label": "FORTRESS WALL BODY",
+      "x": -41.5638427734375,
+      "z": -55.2109375,
+      "width": 14.896472930908203,
       "depth": 5,
+      "height": 6.4951171875,
       "sideways": false,
-      "pier": false
+      "pier": false,
+      "position": {
+        "x": -19,
+        "y": 0,
+        "z": -55
+      },
+      "yaw": 0,
+      "scale": 1,
+      "expected_bounds_min": {
+        "x": -49.01207733154297,
+        "y": 0.0,
+        "z": -57.24560546875
+      },
+      "expected_bounds_max": {
+        "x": -34.115604400634766,
+        "y": 6.4951171875,
+        "z": -53.17626953125
+      }
     },
     {
       "asset": "WallRunFront_08",
-      "x": -109.0,
-      "z": -55,
-      "width": 2,
+      "label": "FORTRESS WALL BODY",
+      "x": -65.91175842285156,
+      "z": -55.123046875,
+      "width": 9.847679138183594,
       "depth": 5,
+      "height": 6.4951171875,
       "sideways": false,
-      "pier": false
+      "pier": false,
+      "position": {
+        "x": -19,
+        "y": 0,
+        "z": -55
+      },
+      "yaw": 0,
+      "scale": 1,
+      "expected_bounds_min": {
+        "x": -70.83560180664062,
+        "y": 0.0,
+        "z": -57.06982421875
+      },
+      "expected_bounds_max": {
+        "x": -60.98792266845703,
+        "y": 6.4951171875,
+        "z": -53.17626953125
+      }
     },
     {
       "asset": "WallRunFront_09",
-      "x": -107.5,
-      "z": -55,
-      "width": 1,
+      "label": "FORTRESS WALL BODY",
+      "x": -77.92384338378906,
+      "z": -55.2109375,
+      "width": 14.176467895507812,
       "depth": 5,
+      "height": 6.4951171875,
       "sideways": false,
-      "pier": false
+      "pier": false,
+      "position": {
+        "x": -19,
+        "y": 0,
+        "z": -55
+      },
+      "yaw": 0,
+      "scale": 1,
+      "expected_bounds_min": {
+        "x": -85.01207733154297,
+        "y": 0.0,
+        "z": -57.24560546875
+      },
+      "expected_bounds_max": {
+        "x": -70.83560943603516,
+        "y": 6.4951171875,
+        "z": -53.17626953125
+      }
     },
     {
-      "asset": "WallRunFront_16",
-      "x": -96.5,
-      "z": -55,
-      "width": 1,
+      "asset": "WallRunFront_10",
+      "label": "FORTRESS WALL BODY",
+      "x": -102.27176666259766,
+      "z": -55.193359375,
+      "width": 10.56768798828125,
       "depth": 5,
+      "height": 6.4951171875,
       "sideways": false,
-      "pier": false
-    },
-    {
-      "asset": "WallRunFront_17",
-      "x": -95.0,
-      "z": -55,
-      "width": 2,
-      "depth": 5,
-      "sideways": false,
-      "pier": false
-    },
-    {
-      "asset": "WallRunFront_18",
-      "x": -93.0,
-      "z": -55,
-      "width": 2,
-      "depth": 5,
-      "sideways": false,
-      "pier": false
-    },
-    {
-      "asset": "WallRunFront_19",
-      "x": -91.0,
-      "z": -55,
-      "width": 2,
-      "depth": 5,
-      "sideways": false,
-      "pier": false
-    },
-    {
-      "asset": "WallRunFront_20",
-      "x": -89.0,
-      "z": -55,
-      "width": 2,
-      "depth": 5,
-      "sideways": false,
-      "pier": false
-    },
-    {
-      "asset": "WallRunFront_21",
-      "x": -87.0,
-      "z": -55,
-      "width": 2,
-      "depth": 5,
-      "sideways": false,
-      "pier": false
-    },
-    {
-      "asset": "WallRunFront_22",
-      "x": -85.0,
-      "z": -55,
-      "width": 2,
-      "depth": 5,
-      "sideways": false,
-      "pier": false
-    },
-    {
-      "asset": "WallRunFront_23",
-      "x": -83.5,
-      "z": -55,
-      "width": 1,
-      "depth": 5,
-      "sideways": false,
-      "pier": false
-    },
-    {
-      "asset": "WallRunFront_30",
-      "x": -72.5,
-      "z": -55,
-      "width": 1,
-      "depth": 5,
-      "sideways": false,
-      "pier": false
-    },
-    {
-      "asset": "WallRunFront_31",
-      "x": -71.0,
-      "z": -55,
-      "width": 2,
-      "depth": 5,
-      "sideways": false,
-      "pier": false
-    },
-    {
-      "asset": "WallRunFront_32",
-      "x": -69.0,
-      "z": -55,
-      "width": 2,
-      "depth": 5,
-      "sideways": false,
-      "pier": false
-    },
-    {
-      "asset": "WallRunFront_33",
-      "x": -67.0,
-      "z": -55,
-      "width": 2,
-      "depth": 5,
-      "sideways": false,
-      "pier": false
-    },
-    {
-      "asset": "WallRunFront_34",
-      "x": -65.0,
-      "z": -55,
-      "width": 2,
-      "depth": 5,
-      "sideways": false,
-      "pier": false
-    },
-    {
-      "asset": "WallRunFront_35",
-      "x": -63.0,
-      "z": -55,
-      "width": 2,
-      "depth": 5,
-      "sideways": false,
-      "pier": false
-    },
-    {
-      "asset": "WallRunFront_36",
-      "x": -61.0,
-      "z": -55,
-      "width": 2,
-      "depth": 5,
-      "sideways": false,
-      "pier": false
-    },
-    {
-      "asset": "WallRunFront_37",
-      "x": -59.0,
-      "z": -55,
-      "width": 2,
-      "depth": 5,
-      "sideways": false,
-      "pier": false
-    },
-    {
-      "asset": "WallRunFront_38",
-      "x": -57.0,
-      "z": -55,
-      "width": 2,
-      "depth": 5,
-      "sideways": false,
-      "pier": false
-    },
-    {
-      "asset": "WallRunFront_39",
-      "x": -54.5,
-      "z": -55,
-      "width": 3,
-      "depth": 5,
-      "sideways": false,
-      "pier": true
+      "pier": false,
+      "position": {
+        "x": -19,
+        "y": 0,
+        "z": -55
+      },
+      "yaw": 0,
+      "scale": 1,
+      "expected_bounds_min": {
+        "x": -107.55561065673828,
+        "y": 0.0,
+        "z": -57.21044921875
+      },
+      "expected_bounds_max": {
+        "x": -96.98792266845703,
+        "y": 6.4951171875,
+        "z": -53.17626953125
+      }
     },
     {
       "asset": "WallRunLeft_00",
+      "label": "FORTRESS END WALL",
       "x": -124.5,
-      "z": -123.0,
+      "z": -56.43780517578125,
       "width": 5,
-      "depth": 3,
+      "depth": 2.8756065368652344,
+      "height": 6.732421875,
       "sideways": true,
-      "pier": true
+      "pier": true,
+      "position": {
+        "x": -124.5,
+        "y": 0,
+        "z": -55
+      },
+      "yaw": 270,
+      "scale": 1,
+      "expected_bounds_min": {
+        "x": -126.76318359375,
+        "y": 0.6767578125,
+        "z": -57.875606536865234
+      },
+      "expected_bounds_max": {
+        "x": -122.23681640625,
+        "y": 7.4091796875,
+        "z": -55.0
+      }
     },
     {
       "asset": "WallRunLeft_01",
-      "x": -124.5,
-      "z": -120.5,
+      "label": "FORTRESS WALL BODY",
+      "x": -124.2890625,
+      "z": -63.99560546875,
       "width": 5,
-      "depth": 2,
+      "depth": 12.240001678466797,
+      "height": 6.4951171875,
       "sideways": true,
-      "pier": false
+      "pier": false,
+      "position": {
+        "x": -124.5,
+        "y": 0,
+        "z": -55
+      },
+      "yaw": 270,
+      "scale": 1,
+      "expected_bounds_min": {
+        "x": -126.32373046875,
+        "y": 0.0,
+        "z": -70.11560821533203
+      },
+      "expected_bounds_max": {
+        "x": -122.25439453125,
+        "y": 6.4951171875,
+        "z": -57.875606536865234
+      }
     },
     {
       "asset": "WallRunLeft_02",
-      "x": -124.5,
-      "z": -118.5,
+      "label": "FORTRESS WALL BODY",
+      "x": -124.2890625,
+      "z": -76.23561096191406,
       "width": 5,
-      "depth": 2,
+      "depth": 12.239997863769531,
+      "height": 6.4951171875,
       "sideways": true,
-      "pier": false
+      "pier": false,
+      "position": {
+        "x": -124.5,
+        "y": 0,
+        "z": -55
+      },
+      "yaw": 270,
+      "scale": 1,
+      "expected_bounds_min": {
+        "x": -126.32373046875,
+        "y": 0.0,
+        "z": -82.35560607910156
+      },
+      "expected_bounds_max": {
+        "x": -122.25439453125,
+        "y": 6.4951171875,
+        "z": -70.11560821533203
+      }
     },
     {
       "asset": "WallRunLeft_03",
-      "x": -124.5,
-      "z": -116.5,
+      "label": "FORTRESS WALL BODY",
+      "x": -124.2890625,
+      "z": -88.47560119628906,
       "width": 5,
-      "depth": 2,
+      "depth": 12.239997863769531,
+      "height": 6.4951171875,
       "sideways": true,
-      "pier": false
+      "pier": false,
+      "position": {
+        "x": -124.5,
+        "y": 0,
+        "z": -55
+      },
+      "yaw": 270,
+      "scale": 1,
+      "expected_bounds_min": {
+        "x": -126.32373046875,
+        "y": 0.0,
+        "z": -94.5956039428711
+      },
+      "expected_bounds_max": {
+        "x": -122.25439453125,
+        "y": 6.4951171875,
+        "z": -82.35560607910156
+      }
     },
     {
       "asset": "WallRunLeft_04",
-      "x": -124.5,
-      "z": -114.5,
+      "label": "FORTRESS WALL BODY",
+      "x": -124.2890625,
+      "z": -100.71560668945312,
       "width": 5,
-      "depth": 2,
+      "depth": 12.239997863769531,
+      "height": 6.4951171875,
       "sideways": true,
-      "pier": false
+      "pier": false,
+      "position": {
+        "x": -124.5,
+        "y": 0,
+        "z": -55
+      },
+      "yaw": 270,
+      "scale": 1,
+      "expected_bounds_min": {
+        "x": -126.32373046875,
+        "y": 0.0,
+        "z": -106.83560180664062
+      },
+      "expected_bounds_max": {
+        "x": -122.25439453125,
+        "y": 6.4951171875,
+        "z": -94.5956039428711
+      }
     },
     {
       "asset": "WallRunLeft_05",
-      "x": -124.5,
-      "z": -112.5,
+      "label": "FORTRESS WALL BODY",
+      "x": -124.2890625,
+      "z": -112.95560455322266,
       "width": 5,
-      "depth": 2,
+      "depth": 12.240005493164062,
+      "height": 6.4951171875,
       "sideways": true,
-      "pier": false
+      "pier": false,
+      "position": {
+        "x": -124.5,
+        "y": 0,
+        "z": -55
+      },
+      "yaw": 270,
+      "scale": 1,
+      "expected_bounds_min": {
+        "x": -126.32373046875,
+        "y": 0.0,
+        "z": -119.07560729980469
+      },
+      "expected_bounds_max": {
+        "x": -122.25439453125,
+        "y": 6.4951171875,
+        "z": -106.83560180664062
+      }
     },
     {
       "asset": "WallRunLeft_06",
-      "x": -124.5,
-      "z": -110.5,
+      "label": "FORTRESS WALL BODY",
+      "x": -124.26708984375,
+      "z": -120.35000610351562,
       "width": 5,
-      "depth": 2,
+      "depth": 2.5487899780273438,
+      "height": 6.3896484375,
       "sideways": true,
-      "pier": false
+      "pier": false,
+      "position": {
+        "x": -124.5,
+        "y": 0,
+        "z": -55
+      },
+      "yaw": 270,
+      "scale": 1,
+      "expected_bounds_min": {
+        "x": -126.27978515625,
+        "y": 0.0,
+        "z": -121.62439727783203
+      },
+      "expected_bounds_max": {
+        "x": -122.25439453125,
+        "y": 6.3896484375,
+        "z": -119.07560729980469
+      }
     },
     {
       "asset": "WallRunLeft_07",
+      "label": "FORTRESS END WALL",
       "x": -124.5,
-      "z": -108.5,
+      "z": -123.06219482421875,
       "width": 5,
-      "depth": 2,
+      "depth": 2.8756027221679688,
+      "height": 6.99609375,
       "sideways": true,
-      "pier": false
-    },
-    {
-      "asset": "WallRunLeft_08",
-      "x": -124.5,
-      "z": -106.5,
-      "width": 5,
-      "depth": 2,
-      "sideways": true,
-      "pier": false
-    },
-    {
-      "asset": "WallRunLeft_09",
-      "x": -124.5,
-      "z": -104.5,
-      "width": 5,
-      "depth": 2,
-      "sideways": true,
-      "pier": false
-    },
-    {
-      "asset": "WallRunLeft_10",
-      "x": -124.5,
-      "z": -102.5,
-      "width": 5,
-      "depth": 2,
-      "sideways": true,
-      "pier": false
-    },
-    {
-      "asset": "WallRunLeft_11",
-      "x": -124.5,
-      "z": -100.5,
-      "width": 5,
-      "depth": 2,
-      "sideways": true,
-      "pier": false
-    },
-    {
-      "asset": "WallRunLeft_12",
-      "x": -124.5,
-      "z": -98.5,
-      "width": 5,
-      "depth": 2,
-      "sideways": true,
-      "pier": false
-    },
-    {
-      "asset": "WallRunLeft_13",
-      "x": -124.5,
-      "z": -96.5,
-      "width": 5,
-      "depth": 2,
-      "sideways": true,
-      "pier": false
-    },
-    {
-      "asset": "WallRunLeft_14",
-      "x": -124.5,
-      "z": -94.5,
-      "width": 5,
-      "depth": 2,
-      "sideways": true,
-      "pier": false
-    },
-    {
-      "asset": "WallRunLeft_15",
-      "x": -124.5,
-      "z": -92.5,
-      "width": 5,
-      "depth": 2,
-      "sideways": true,
-      "pier": false
-    },
-    {
-      "asset": "WallRunLeft_16",
-      "x": -124.5,
-      "z": -90.5,
-      "width": 5,
-      "depth": 2,
-      "sideways": true,
-      "pier": false
-    },
-    {
-      "asset": "WallRunLeft_17",
-      "x": -124.5,
-      "z": -88.5,
-      "width": 5,
-      "depth": 2,
-      "sideways": true,
-      "pier": false
-    },
-    {
-      "asset": "WallRunLeft_18",
-      "x": -124.5,
-      "z": -86.5,
-      "width": 5,
-      "depth": 2,
-      "sideways": true,
-      "pier": false
-    },
-    {
-      "asset": "WallRunLeft_19",
-      "x": -124.5,
-      "z": -84.5,
-      "width": 5,
-      "depth": 2,
-      "sideways": true,
-      "pier": false
-    },
-    {
-      "asset": "WallRunLeft_20",
-      "x": -124.5,
-      "z": -82.5,
-      "width": 5,
-      "depth": 2,
-      "sideways": true,
-      "pier": false
-    },
-    {
-      "asset": "WallRunLeft_21",
-      "x": -124.5,
-      "z": -80.5,
-      "width": 5,
-      "depth": 2,
-      "sideways": true,
-      "pier": false
-    },
-    {
-      "asset": "WallRunLeft_22",
-      "x": -124.5,
-      "z": -78.5,
-      "width": 5,
-      "depth": 2,
-      "sideways": true,
-      "pier": false
-    },
-    {
-      "asset": "WallRunLeft_23",
-      "x": -124.5,
-      "z": -76.5,
-      "width": 5,
-      "depth": 2,
-      "sideways": true,
-      "pier": false
-    },
-    {
-      "asset": "WallRunLeft_24",
-      "x": -124.5,
-      "z": -74.5,
-      "width": 5,
-      "depth": 2,
-      "sideways": true,
-      "pier": false
-    },
-    {
-      "asset": "WallRunLeft_25",
-      "x": -124.5,
-      "z": -72.5,
-      "width": 5,
-      "depth": 2,
-      "sideways": true,
-      "pier": false
-    },
-    {
-      "asset": "WallRunLeft_26",
-      "x": -124.5,
-      "z": -70.5,
-      "width": 5,
-      "depth": 2,
-      "sideways": true,
-      "pier": false
-    },
-    {
-      "asset": "WallRunLeft_27",
-      "x": -124.5,
-      "z": -68.5,
-      "width": 5,
-      "depth": 2,
-      "sideways": true,
-      "pier": false
-    },
-    {
-      "asset": "WallRunLeft_28",
-      "x": -124.5,
-      "z": -66.5,
-      "width": 5,
-      "depth": 2,
-      "sideways": true,
-      "pier": false
-    },
-    {
-      "asset": "WallRunLeft_29",
-      "x": -124.5,
-      "z": -64.5,
-      "width": 5,
-      "depth": 2,
-      "sideways": true,
-      "pier": false
-    },
-    {
-      "asset": "WallRunLeft_30",
-      "x": -124.5,
-      "z": -62.5,
-      "width": 5,
-      "depth": 2,
-      "sideways": true,
-      "pier": false
-    },
-    {
-      "asset": "WallRunLeft_31",
-      "x": -124.5,
-      "z": -61.0,
-      "width": 5,
-      "depth": 1,
-      "sideways": true,
-      "pier": false
-    },
-    {
-      "asset": "WallRunLeft_32",
-      "x": -124.5,
-      "z": -59.0,
-      "width": 5,
-      "depth": 3,
-      "sideways": true,
-      "pier": true
+      "pier": true,
+      "position": {
+        "x": -124.5,
+        "y": 0,
+        "z": -55
+      },
+      "yaw": 270,
+      "scale": 1,
+      "expected_bounds_min": {
+        "x": -126.76318359375,
+        "y": 0.6767578125,
+        "z": -124.5
+      },
+      "expected_bounds_max": {
+        "x": -122.23681640625,
+        "y": 7.6728515625,
+        "z": -121.62439727783203
+      }
     },
     {
       "asset": "WallRunRight_00",
-      "x": -55.5,
-      "z": -123.0,
+      "label": "FORTRESS END WALL",
+      "x": -21.5,
+      "z": -123.06219482421875,
       "width": 5,
-      "depth": 3,
+      "depth": 2.8756027221679688,
+      "height": 6.732421875,
       "sideways": true,
-      "pier": true
+      "pier": true,
+      "position": {
+        "x": -21.5,
+        "y": 0,
+        "z": -124.5
+      },
+      "yaw": 90,
+      "scale": 1,
+      "expected_bounds_min": {
+        "x": -23.76318359375,
+        "y": 0.6767578125,
+        "z": -124.5
+      },
+      "expected_bounds_max": {
+        "x": -19.23681640625,
+        "y": 7.4091796875,
+        "z": -121.62439727783203
+      }
     },
     {
       "asset": "WallRunRight_01",
-      "x": -55.5,
-      "z": -120.5,
+      "label": "FORTRESS WALL BODY",
+      "x": -21.7109375,
+      "z": -115.50439453125,
       "width": 5,
-      "depth": 2,
+      "depth": 12.240005493164062,
+      "height": 6.4951171875,
       "sideways": true,
-      "pier": false
+      "pier": false,
+      "position": {
+        "x": -21.5,
+        "y": 0,
+        "z": -124.5
+      },
+      "yaw": 90,
+      "scale": 1,
+      "expected_bounds_min": {
+        "x": -23.74560546875,
+        "y": 0.0,
+        "z": -121.62439727783203
+      },
+      "expected_bounds_max": {
+        "x": -19.67626953125,
+        "y": 6.4951171875,
+        "z": -109.38439178466797
+      }
     },
     {
       "asset": "WallRunRight_02",
-      "x": -55.5,
-      "z": -118.5,
+      "label": "FORTRESS WALL BODY",
+      "x": -21.7109375,
+      "z": -103.26438903808594,
       "width": 5,
-      "depth": 2,
+      "depth": 12.239997863769531,
+      "height": 6.4951171875,
       "sideways": true,
-      "pier": false
+      "pier": false,
+      "position": {
+        "x": -21.5,
+        "y": 0,
+        "z": -124.5
+      },
+      "yaw": 90,
+      "scale": 1,
+      "expected_bounds_min": {
+        "x": -23.74560546875,
+        "y": 0.0,
+        "z": -109.38439178466797
+      },
+      "expected_bounds_max": {
+        "x": -19.67626953125,
+        "y": 6.4951171875,
+        "z": -97.14439392089844
+      }
     },
     {
       "asset": "WallRunRight_03",
-      "x": -55.5,
-      "z": -116.5,
+      "label": "FORTRESS WALL BODY",
+      "x": -21.7109375,
+      "z": -91.02439880371094,
       "width": 5,
-      "depth": 2,
+      "depth": 12.239997863769531,
+      "height": 6.4951171875,
       "sideways": true,
-      "pier": false
+      "pier": false,
+      "position": {
+        "x": -21.5,
+        "y": 0,
+        "z": -124.5
+      },
+      "yaw": 90,
+      "scale": 1,
+      "expected_bounds_min": {
+        "x": -23.74560546875,
+        "y": 0.0,
+        "z": -97.14439392089844
+      },
+      "expected_bounds_max": {
+        "x": -19.67626953125,
+        "y": 6.4951171875,
+        "z": -84.9043960571289
+      }
     },
     {
       "asset": "WallRunRight_04",
-      "x": -55.5,
-      "z": -114.5,
+      "label": "FORTRESS WALL BODY",
+      "x": -21.7109375,
+      "z": -78.78439331054688,
       "width": 5,
-      "depth": 2,
+      "depth": 12.239997863769531,
+      "height": 6.4951171875,
       "sideways": true,
-      "pier": false
+      "pier": false,
+      "position": {
+        "x": -21.5,
+        "y": 0,
+        "z": -124.5
+      },
+      "yaw": 90,
+      "scale": 1,
+      "expected_bounds_min": {
+        "x": -23.74560546875,
+        "y": 0.0,
+        "z": -84.9043960571289
+      },
+      "expected_bounds_max": {
+        "x": -19.67626953125,
+        "y": 6.4951171875,
+        "z": -72.66439819335938
+      }
     },
     {
       "asset": "WallRunRight_05",
-      "x": -55.5,
-      "z": -112.5,
+      "label": "FORTRESS WALL BODY",
+      "x": -21.7109375,
+      "z": -66.54439544677734,
       "width": 5,
-      "depth": 2,
+      "depth": 12.240005493164062,
+      "height": 6.4951171875,
       "sideways": true,
-      "pier": false
+      "pier": false,
+      "position": {
+        "x": -21.5,
+        "y": 0,
+        "z": -124.5
+      },
+      "yaw": 90,
+      "scale": 1,
+      "expected_bounds_min": {
+        "x": -23.74560546875,
+        "y": 0.0,
+        "z": -72.66439819335938
+      },
+      "expected_bounds_max": {
+        "x": -19.67626953125,
+        "y": 6.4951171875,
+        "z": -60.42439270019531
+      }
     },
     {
       "asset": "WallRunRight_06",
-      "x": -55.5,
-      "z": -110.5,
+      "label": "FORTRESS WALL BODY",
+      "x": -21.73291015625,
+      "z": -59.14999771118164,
       "width": 5,
-      "depth": 2,
+      "depth": 2.5487899780273438,
+      "height": 6.3896484375,
       "sideways": true,
-      "pier": false
+      "pier": false,
+      "position": {
+        "x": -21.5,
+        "y": 0,
+        "z": -124.5
+      },
+      "yaw": 90,
+      "scale": 1,
+      "expected_bounds_min": {
+        "x": -23.74560546875,
+        "y": 0.0,
+        "z": -60.42439270019531
+      },
+      "expected_bounds_max": {
+        "x": -19.72021484375,
+        "y": 6.3896484375,
+        "z": -57.87560272216797
+      }
     },
     {
       "asset": "WallRunRight_07",
-      "x": -55.5,
-      "z": -108.5,
+      "label": "FORTRESS END WALL",
+      "x": -21.5,
+      "z": -56.437801361083984,
       "width": 5,
-      "depth": 2,
+      "depth": 2.8756027221679688,
+      "height": 6.99609375,
       "sideways": true,
-      "pier": false
-    },
-    {
-      "asset": "WallRunRight_08",
-      "x": -55.5,
-      "z": -106.5,
-      "width": 5,
-      "depth": 2,
-      "sideways": true,
-      "pier": false
-    },
-    {
-      "asset": "WallRunRight_09",
-      "x": -55.5,
-      "z": -104.5,
-      "width": 5,
-      "depth": 2,
-      "sideways": true,
-      "pier": false
-    },
-    {
-      "asset": "WallRunRight_10",
-      "x": -55.5,
-      "z": -102.5,
-      "width": 5,
-      "depth": 2,
-      "sideways": true,
-      "pier": false
-    },
-    {
-      "asset": "WallRunRight_11",
-      "x": -55.5,
-      "z": -100.5,
-      "width": 5,
-      "depth": 2,
-      "sideways": true,
-      "pier": false
-    },
-    {
-      "asset": "WallRunRight_12",
-      "x": -55.5,
-      "z": -98.5,
-      "width": 5,
-      "depth": 2,
-      "sideways": true,
-      "pier": false
-    },
-    {
-      "asset": "WallRunRight_13",
-      "x": -55.5,
-      "z": -96.5,
-      "width": 5,
-      "depth": 2,
-      "sideways": true,
-      "pier": false
-    },
-    {
-      "asset": "WallRunRight_14",
-      "x": -55.5,
-      "z": -94.5,
-      "width": 5,
-      "depth": 2,
-      "sideways": true,
-      "pier": false
-    },
-    {
-      "asset": "WallRunRight_15",
-      "x": -55.5,
-      "z": -92.5,
-      "width": 5,
-      "depth": 2,
-      "sideways": true,
-      "pier": false
-    },
-    {
-      "asset": "WallRunRight_16",
-      "x": -55.5,
-      "z": -90.5,
-      "width": 5,
-      "depth": 2,
-      "sideways": true,
-      "pier": false
-    },
-    {
-      "asset": "WallRunRight_17",
-      "x": -55.5,
-      "z": -88.5,
-      "width": 5,
-      "depth": 2,
-      "sideways": true,
-      "pier": false
-    },
-    {
-      "asset": "WallRunRight_18",
-      "x": -55.5,
-      "z": -86.5,
-      "width": 5,
-      "depth": 2,
-      "sideways": true,
-      "pier": false
-    },
-    {
-      "asset": "WallRunRight_19",
-      "x": -55.5,
-      "z": -84.5,
-      "width": 5,
-      "depth": 2,
-      "sideways": true,
-      "pier": false
-    },
-    {
-      "asset": "WallRunRight_20",
-      "x": -55.5,
-      "z": -82.5,
-      "width": 5,
-      "depth": 2,
-      "sideways": true,
-      "pier": false
-    },
-    {
-      "asset": "WallRunRight_21",
-      "x": -55.5,
-      "z": -80.5,
-      "width": 5,
-      "depth": 2,
-      "sideways": true,
-      "pier": false
-    },
-    {
-      "asset": "WallRunRight_22",
-      "x": -55.5,
-      "z": -78.5,
-      "width": 5,
-      "depth": 2,
-      "sideways": true,
-      "pier": false
-    },
-    {
-      "asset": "WallRunRight_23",
-      "x": -55.5,
-      "z": -76.5,
-      "width": 5,
-      "depth": 2,
-      "sideways": true,
-      "pier": false
-    },
-    {
-      "asset": "WallRunRight_24",
-      "x": -55.5,
-      "z": -74.5,
-      "width": 5,
-      "depth": 2,
-      "sideways": true,
-      "pier": false
-    },
-    {
-      "asset": "WallRunRight_25",
-      "x": -55.5,
-      "z": -72.5,
-      "width": 5,
-      "depth": 2,
-      "sideways": true,
-      "pier": false
-    },
-    {
-      "asset": "WallRunRight_26",
-      "x": -55.5,
-      "z": -70.5,
-      "width": 5,
-      "depth": 2,
-      "sideways": true,
-      "pier": false
-    },
-    {
-      "asset": "WallRunRight_27",
-      "x": -55.5,
-      "z": -68.5,
-      "width": 5,
-      "depth": 2,
-      "sideways": true,
-      "pier": false
-    },
-    {
-      "asset": "WallRunRight_28",
-      "x": -55.5,
-      "z": -66.5,
-      "width": 5,
-      "depth": 2,
-      "sideways": true,
-      "pier": false
-    },
-    {
-      "asset": "WallRunRight_29",
-      "x": -55.5,
-      "z": -64.5,
-      "width": 5,
-      "depth": 2,
-      "sideways": true,
-      "pier": false
-    },
-    {
-      "asset": "WallRunRight_30",
-      "x": -55.5,
-      "z": -62.5,
-      "width": 5,
-      "depth": 2,
-      "sideways": true,
-      "pier": false
-    },
-    {
-      "asset": "WallRunRight_31",
-      "x": -55.5,
-      "z": -61.0,
-      "width": 5,
-      "depth": 1,
-      "sideways": true,
-      "pier": false
-    },
-    {
-      "asset": "WallRunRight_32",
-      "x": -55.5,
-      "z": -59.0,
-      "width": 5,
-      "depth": 3,
-      "sideways": true,
-      "pier": true
+      "pier": true,
+      "position": {
+        "x": -21.5,
+        "y": 0,
+        "z": -124.5
+      },
+      "yaw": 90,
+      "scale": 1,
+      "expected_bounds_min": {
+        "x": -23.76318359375,
+        "y": 0.6767578125,
+        "z": -57.87560272216797
+      },
+      "expected_bounds_max": {
+        "x": -19.23681640625,
+        "y": 7.6728515625,
+        "z": -55.0
+      }
     }
   ]
 }

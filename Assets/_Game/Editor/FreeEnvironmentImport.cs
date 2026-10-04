@@ -8,7 +8,7 @@ namespace ZombieGame.EditorTools
         private bool is_environment=>assetPath.StartsWith("Assets/_Game/Resources/FreeEnvironment/");
         private void OnPreprocessTexture()
         {
-            if(!is_environment)return;
+            if(!is_environment||assetPath.Contains("/TerrainGenerated/"))return;
             var importer=(TextureImporter)assetImporter;
             importer.maxTextureSize=1024;importer.mipmapEnabled=true;importer.anisoLevel=4;
             importer.wrapMode=TextureWrapMode.Repeat;importer.isReadable=false;

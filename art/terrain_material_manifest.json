@@ -1,0 +1,27 @@
+{
+  "provider": "Poly Haven",
+  "license": "CC0-1.0",
+  "license_url": "https://polyhaven.com/license",
+  "verified_on": "2026-10-04",
+  "resolution": 1024,
+  "download_root": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k",
+  "destination": "Assets/_Game/Resources/FreeEnvironment",
+  "authors": {
+    "grass_path_2": "Rob Tuytel",
+    "withered_grass": "Charlotte Baglioni",
+    "dirt": "Charlotte Baglioni",
+    "brown_mud": "Rob Tuytel",
+    "rocky_terrain": "Amal Kumar",
+    "cobblestone_floor_02": "Rob Tuytel"
+  },
+  "channels": ["diff", "nor_gl", "rough"],
+  "notes": "Official api.polyhaven.com/files/{id} checksums. Normal is OpenGL. Ground is nonmetal. Height/AO not downloaded; do not infer scanned height from color.",
+  "packs": [
+    {"id":"grass_path_2","source":"https://polyhaven.com/a/grass_path_2","md5":["48cebe95af233211c9469a9bfe2f42f2","aa04d930b6af2bd7e3252e31776822bd","a3f245c716d0f2bbdece65a38b1bcd4a"]},
+    {"id":"withered_grass","source":"https://polyhaven.com/a/withered_grass","md5":["a6e00946839a9ab1975457ae4a39823b","1d86c19a4dd4826eeb6db9653f8736bb","bd4219a20ed41f88098166497cdbc05d"]},
+    {"id":"dirt","source":"https://polyhaven.com/a/dirt","md5":["cb37e24797597b1dd1ae3819fa80f076","362610edf09fd31735958eecec823a84","d936d6760ce0f899b131d30626d52ce9"]},
+    {"id":"brown_mud","source":"https://polyhaven.com/a/brown_mud","md5":["b141af27b413db140818d0a4998c394c","62df05266fa5a0adc7733a7184a15dea","fb4d5d8ef98ebee6a402955b99103a3a"]},
+    {"id":"rocky_terrain","source":"https://polyhaven.com/a/rocky_terrain","md5":["306ae62c38ab1942a63e831a534875ab","4d42a558317f1d52c9080c73372d125a","8c6721a31face834aee1616d2f8da3f7"]},
+    {"id":"cobblestone_floor_02","source":"https://polyhaven.com/a/cobblestone_floor_02","md5":["59e545f5aefa797ae8bf69fcee7c97c7","f77017e6de48e5e9d98a7bc08284126d","4acdc1ec3e095c2c45831fa640ba7e2e"]}
+  ]
+}

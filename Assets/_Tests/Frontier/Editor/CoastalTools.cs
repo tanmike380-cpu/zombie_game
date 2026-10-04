@@ -21,6 +21,20 @@ namespace ZombieGame.EditorTools
         [Serializable] private sealed class ModelRecord { public string id,source; public int rig_bones; public bool reuse; public MaterialRecord[] materials; }
         [Serializable] private sealed class Manifest { public ModelRecord[] models; }
 
+        public static void audit_authored_axes()
+        {
+            var model=UnityEngine.Object.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>(GENERATED+"/WallRunFront_01.prefab"));
+            try
+            {
+                var renderer=model.GetComponentInChildren<Renderer>();
+                Debug.Log($"[AuthoredAxes] bounds min={renderer.bounds.min.ToString("F6")} max={renderer.bounds.max.ToString("F6")}");
+                var mesh=model.GetComponentInChildren<MeshFilter>();
+                foreach(var vertex in mesh.sharedMesh.vertices.Take(5))
+                    Debug.Log($"[AuthoredAxes] mesh={vertex.ToString("F6")} world={mesh.transform.TransformPoint(vertex).ToString("F6")}");
+            }
+            finally{UnityEngine.Object.DestroyImmediate(model);}
+        }
+
         public static void build_player()
         {
             CharacterBake.ensure_models();
@@ -62,6 +76,7 @@ namespace ZombieGame.EditorTools
 
         public static void import_assets()
         {
+            TerrainLayerImport.prepare_layers();
             Directory.CreateDirectory(GENERATED);Directory.CreateDirectory(FRAMES);AssetDatabase.Refresh();
             var records=JsonUtility.FromJson<Manifest>(File.ReadAllText(SOURCE+"/manifest.json")).models;
             var bindings=new List<ImportedUnitArt>();

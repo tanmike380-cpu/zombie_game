@@ -23,8 +23,19 @@ namespace ZombieGame.World
         public string label;
         public string art_id;
         public bool art_sideways;
+        public bool art_authored_transform;
+        public Vector3 art_position;
+        public float art_yaw,art_scale;
+        public Bounds art_expected_bounds;
+        public float art_wall_contact_width;
         public LandscapeRegion(float x, float z, float width, float depth, float height, LandscapeKind kind, string label = "")
-        { bounds = new Bounds(new Vector3(x,height*.5f,z),new Vector3(width,height,depth)); this.kind=kind; this.label=label;art_id=null;art_sideways=false; }
+        {
+            bounds = new Bounds(new Vector3(x,height*.5f,z),new Vector3(width,height,depth));
+            this.kind=kind; this.label=label;art_id=null;art_sideways=false;
+            art_authored_transform=false;art_position=Vector3.zero;art_yaw=0;art_scale=1;
+            art_expected_bounds=default;
+            art_wall_contact_width=0;
+        }
     }
 
     /// <summary>Deterministic 256-tile frontier. Visual regions and navigation blockers share one geometry source.</summary>

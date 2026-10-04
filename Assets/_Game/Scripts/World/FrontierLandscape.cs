@@ -16,6 +16,7 @@ namespace ZombieGame.World
         private readonly System.Random random=new System.Random(20260920);
         private readonly VisualStyle style=VisualStyles.current;
         private readonly FreeEnvironmentArt environment_art;
+        private readonly LayeredTerrain layered_terrain;
         private readonly bool imported_architecture;
         private Color GRASS=>style.color(style.grass);
         private Color WATER=>style.id=="fortress"?new Color(.12f,.27f,.32f):style.id=="dusk"?new Color(.19f,.29f,.25f):new Color(.23f,.38f,.39f);
@@ -32,11 +33,7 @@ namespace ZombieGame.World
             Object.Destroy(primitive);cone=build_cone();roof=build_roof();owned_meshes.Add(cone);owned_meshes.Add(roof);
             rock=build_rock();owned_meshes.Add(rock);
             if(map.coastal)add(cube,new Vector3(0,-.24f,0),new Vector3(700,.02f,700),WATER);
-            for(int z=-124;z<128;z+=8) for(int x=-124;x<128;x+=8)
-                add(cube,new Vector3(x,-.18f,z),new Vector3(8,.35f,8),GRASS);
-            // Settlement roads are purely visual and do not restrict player commands.
-            add(cube,new Vector3(-94,.005f,-99),new Vector3(36,.015f,1.4f),new Color(.48f,.40f,.28f));
-            add(cube,new Vector3(-100,.005f,-89),new Vector3(1.4f,.015f,29),new Color(.48f,.40f,.28f));
+            layered_terrain=new LayeredTerrain(map,root.transform);
             foreach(var region in map.regions)if(!region.label.StartsWith("BUILT:"))
             {
                 if(region.kind!=LandscapeKind.Building){build_region(region);continue;}
@@ -336,6 +333,6 @@ namespace ZombieGame.World
             var mesh=new Mesh{name="Shared irregular foliage and stone"};mesh.SetVertices(vertices);mesh.SetTriangles(triangles,0);mesh.RecalculateNormals();return mesh;
         }
         public void Dispose()
-        { root.SetActive(false);Object.Destroy(root);environment_art.Dispose();foreach(var mesh in owned_meshes) Object.Destroy(mesh);foreach(var material in owned_materials) Object.Destroy(material); }
+        { root.SetActive(false);layered_terrain.Dispose();Object.Destroy(root);environment_art.Dispose();foreach(var mesh in owned_meshes) Object.Destroy(mesh);foreach(var material in owned_materials) Object.Destroy(material); }
     }
 }

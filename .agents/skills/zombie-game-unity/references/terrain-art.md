@@ -37,6 +37,8 @@ Unity AI Material Generator 是可选补材途径，不是必需。需 Unity Clo
 
 ## 验收
 
+如果 Terrain 全部在运行时创建，构建列表内的场景仍须包含至少一个序列化 Terrain 组件，以保留 Unity 专用渲染资源；可以使用停用且无碰撞的占位物，不参与玩法。不能用 `Shader.Find` 成功或 TerrainData 检查通过替代打包验证。本项目维护 `TerrainLayerImport.ensure_scene_placeholder()`，玩家测试还要做同帧 Terrain 显示／隐藏像素对比，发现地形没有真正贡献画面时立即失败，不把露出的底海误认为地面颜色问题。
+
 保存同视角、同曝光、同分辨率的前后截图：基地近景、战斗中景、远景、水边和道路接缝。检查层次、重复、油亮/发白、远景闪烁、材质尺度、单位/建筑辨识及雾遮蔽。
 
 报告六层实际接入情况、哪些着色功能实现/延后/缺素材、素材许可证与源路径。测相同单位数且战斗进行中的帧时间/帧率，附机器/分辨率/视野，不以战后高帧率代替压力结果。多pass、shader错误/粉色、接缝、导航/着地或UI回归失败时不能称验收完成。
@@ -45,3 +47,4 @@ Unity AI Material Generator 是可选补材途径，不是必需。需 Unity Clo
 
 - https://unity.com/blog/unity-ai-material-generator ：可平铺PBR生成、通道、Cloud/条款/credits前置条件；不是已为本项目启用的证明。
 - https://docs.unity.com/en-us/engine/6000.3/manual/creating-environments/script-terrain/terrain-shader-graph ：URP/HDRP Terrain Graph、细节/重复打散/高度混合及采样成本。后续版本实施前复核对应版本支持。
+- https://docs.unity.com/en-us/engine/6000.3/manual/creating-environments/script-terrain/terrain-runtime ：运行时 Terrain 的构建资源依赖、允许停用的场景占位组件。

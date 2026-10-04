@@ -16,13 +16,16 @@ namespace ZombieGame.EditorTools
         {
             if(EditorApplication.isPlaying){Debug.LogWarning("Stop Play before opening Frontier");return;}
             if(!EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())return;
+            TerrainLayerImport.prepare_layers();
             CharacterBake.ensure_models();
             if(File.Exists(SCENE))EditorSceneManager.OpenScene(SCENE);else create_scene();
         }
         public static void create_scene(string output_path=SCENE)
         {
+            TerrainLayerImport.prepare_layers();
             Directory.CreateDirectory(Path.GetDirectoryName(SCENE));
             var scene=EditorSceneManager.NewScene(NewSceneSetup.EmptyScene,NewSceneMode.Single);
+            TerrainLayerImport.ensure_scene_placeholder();
             var camera_object=new GameObject("Main Camera");camera_object.tag="MainCamera";
             var camera=camera_object.AddComponent<Camera>();camera.orthographic=true;camera.orthographicSize=27;
             camera.farClipPlane=500;camera.backgroundColor=new Color(.12f,.17f,.20f);camera.allowHDR=false;

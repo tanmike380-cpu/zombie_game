@@ -12,8 +12,8 @@ namespace ZombieGame.FrontierTests
     {
         private FrontierGame game;
         private bool camera_fixture;
-        private Vector3 fixture_focus=new Vector3(-91,0,-87);
-        private float fixture_zoom=34;
+        private Vector3 fixture_focus=new Vector3(-73,0,-87);
+        private float fixture_zoom=40;
         private void LateUpdate(){if(camera_fixture){Camera.main.orthographicSize=fixture_zoom;game.focus_camera(fixture_focus);}}
         private IEnumerator Start()
         {
@@ -22,6 +22,8 @@ namespace ZombieGame.FrontierTests
             yield return new WaitForSecondsRealtime(2);
             require(QualitySettings.globalTextureMipmapLimit==0&&QualitySettings.antiAliasing>=4,"full texture resolution and edge antialiasing");
             CoastalArtChecks.run();
+            TerrainArtChecks.run();
+            TerrainArtChecks.check_rendered_surface();
             require(game.is_paused&&game.session.outcome==CoastalOutcome.Preparing,"starts paused in briefing");
             require(game.current.living_soldiers==120&&game.current.zombie_count==360,"small authored population");
             require(game.map.regions.TrueForAll(region=>region.kind!=LandscapeKind.Forest&&region.kind!=LandscapeKind.Cliff),"no procedural props or invisible forest blockers");
@@ -75,7 +77,7 @@ namespace ZombieGame.FrontierTests
             require(CrowdSpacingChecks.minimum_ratio(game.current,true)>=.999f,"approved zombie spacing preserved");
             require(ImportedArchitecture.maximum_aspect_error<.001f,"source proportions preserved");
             yield return new WaitForEndOfFrame();ScreenCapture.CaptureScreenshot(Path.Combine(folder,"battle.png"));
-            Debug.Log($"[CoastalSmall] PASS start, cohort pacing, original art, recruitment, construction, outcomes; framebuffer={Screen.width}x{Screen.height} fps={frames/(Time.realtimeSinceStartup-started):F1} kills={game.current.dead_zombies} humans={game.current.living_soldiers} geometry={game.current.geometry_errors} greek_pulses={game.current.greek_fire_pulses} flame_capture={captured_flame}");
+            Debug.Log($"[CoastalSmall] PASS start, cohort pacing, original art, recruitment, construction, outcomes; framebuffer={Screen.width}x{Screen.height} overview_ortho=40 fps={frames/(Time.realtimeSinceStartup-started):F1} kills={game.current.dead_zombies} humans={game.current.living_soldiers} geometry={game.current.geometry_errors} greek_pulses={game.current.greek_fire_pulses} flame_capture={captured_flame}");
             camera_fixture=false;yield return new WaitForSecondsRealtime(1);Application.Quit(0);
         }
         private ZombieGame.Combat.BattleSimulation current_battle()=>game.current;
@@ -91,8 +93,11 @@ namespace ZombieGame.FrontierTests
             }
             require(unit>=0,"gate visual fixture has original infantry");
             var start=game.current.positions[unit];
-            camera_fixture=true;fixture_zoom=12;fixture_focus=gate.bounds.center;
-            require(game.current.issue_order(unit,ZombieGame.Combat.SoldierOrder.Move,gate.bounds.center+Vector3.forward*10),"gate visual route accepted");
+            camera_fixture=true;fixture_zoom=Mathf.Max(12,gate.bounds.size.x*.85f);fixture_focus=gate.bounds.center;
+            yield return null;yield return new WaitForEndOfFrame();
+            ScreenCapture.CaptureScreenshot(Path.Combine(folder,"wall-tower-joins.png"));
+            require(game.current.issue_order(unit,ZombieGame.Combat.SoldierOrder.Move,
+                gate.bounds.center+Vector3.forward*(gate.bounds.extents.z+4)),"gate visual route accepted");
             bool captured=false;
             for(float end=Time.time+15;Time.time<end;)
             {
@@ -112,7 +117,7 @@ namespace ZombieGame.FrontierTests
             }
             require(captured,"friendly reaches real tower in time");
             game.current.issue_order(unit,ZombieGame.Combat.SoldierOrder.Move,start);
-            fixture_focus=new Vector3(-91,0,-87);fixture_zoom=34;camera_fixture=true;
+            fixture_focus=new Vector3(-73,0,-87);fixture_zoom=40;camera_fixture=true;
         }
         private IEnumerator check_rendered_shadows()
         {
