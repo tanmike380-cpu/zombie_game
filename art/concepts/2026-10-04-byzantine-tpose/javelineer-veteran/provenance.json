@@ -1,0 +1,44 @@
+{
+  "date": "2026-10-04",
+  "tool": "built-in image_gen.imagegen",
+  "unit": "byzantine/javelineer/veteran",
+  "visual_qa": "All three visually inspected. Anatomical T pose, strict profile arm foreshortening, leather gloves and leather torso armor preserved. Held spear and shield detached from figure; back javelin carrier retained.",
+  "entries": [
+    {
+      "view": "front",
+      "original": "Builds/ArtReview/ByzantineTPoseBackup/javelineer/veteran/front.png",
+      "target": "art/concepts/tripo/humans/byzantine/javelineer/veteran/front.png",
+      "generated_source": "art/concepts/2026-10-04-byzantine-tpose/javelineer-veteran/generated/front.png",
+      "builtin_source": "/Users/tankaixi/.codex/generated_images/01a10726-b40b-7ec1-a942-93909dc3d9d8/exec-e1fbbd85-99d2-454a-9c68-5adbadc87c83.png",
+      "prompt": "Use case: precise-object-edit. Edit supplied original Byzantine VETERAN JAVELINEER into neutral full-body straight-on FRONT T-pose for 3D modeling. Preserve identity, plain pointed riveted helmet, engraved brown LEATHER torso armor and shoulderpads and skirt tabs, purple gold diamond long tunic, LEATHER GLOVES, brown diagonal strap and back javelin carrier containing three spears, belt pouch, gray trousers and tall boots. No elite metal torso armor. Only change pose and placement of held equipment: both arms straight horizontal out sideways at shoulder height, open hands palm down, wrists straight, feet slightly apart. The held long spear AND purple oval shield both detached, placed separately beside character with visible gaps and no contact/overlap with his hands or body. Keep original spear and shield design, purple shield pale vertical band and steel boss. Wide canvas to include fingertips, spear tip and boots. One character one front view only, plain neutral gray studio, realistic original materials/colors, no text, no collage.",
+      "original_sha256": "ad7a90983878f036d6500f6fe3c1df24513bc20012f514bbfb8ea2a4d7da1ff3",
+      "output_sha256": "29176cad934b1e6f2dec2d8d1b276b093491ed47c7636315acf07e4bd24348f0",
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "view": "side",
+      "original": "Builds/ArtReview/ByzantineTPoseBackup/javelineer/veteran/side.png",
+      "target": "art/concepts/tripo/humans/byzantine/javelineer/veteran/side.png",
+      "generated_source": "art/concepts/2026-10-04-byzantine-tpose/javelineer-veteran/generated/side.png",
+      "builtin_source": "/Users/tankaixi/.codex/generated_images/01a10726-b40b-7ec1-a942-93909dc3d9d8/exec-e76f5899-e606-422a-ba33-1e5589576b24.png",
+      "prompt": "Use case: precise-object-edit. Image1 original SIDE costume reference; Image2 approved front T-pose. Make ONE strict right-facing SIDE PROFILE of same Byzantine VETERAN JAVELINEER in anatomical T pose. Preserve engraved brown LEATHER torso/skirt armor, LEATHER GLOVES, plain pointed riveted helmet, purple gold diamond long tunic, brown diagonal strap, back tube holding three spare javelins, belt pouch, gray pants, tall brown boots. Anatomical T seen exactly side-on: arms spread laterally along shoulder axis perpendicular to image plane, near hand/forearm foreshortened TOWARD CAMERA centered over shoulder; far arm points directly away and is FULLY HIDDEN by torso/near arm. No hand or sleeve pointing forward screen-right, no zombie reach. Face and feet point right, feet slightly apart. Spear and purple oval shield detached and displayed separately to side in empty backdrop without touching or overlapping figure, same detailed weapon/shield designs as Image2. One full person one profile only, plain gray studio, realistic original colors/materials, no text, no collage.",
+      "original_sha256": "7f2e5b9549709fdc1e4ded3dc486e2e3b2af4175c54af724c570350924c14327",
+      "output_sha256": "b7ca30e4cde38b7d89f2ebe25211624708767256769264c445293433e8d571cb",
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "view": "back",
+      "original": "Builds/ArtReview/ByzantineTPoseBackup/javelineer/veteran/back.png",
+      "target": "art/concepts/tripo/humans/byzantine/javelineer/veteran/back.png",
+      "generated_source": "art/concepts/2026-10-04-byzantine-tpose/javelineer-veteran/generated/back.png",
+      "builtin_source": "/Users/tankaixi/.codex/generated_images/01a10726-b40b-7ec1-a942-93909dc3d9d8/exec-407c2197-30ad-4aad-9886-6cfecc16a9d0.png",
+      "prompt": "Use case: precise-object-edit. Image1 original rear costume/back equipment authority, Image2 approved same veteran front T-pose. Produce one straight-on BACK full body T-pose Byzantine VETERAN JAVELINEER. Arms straight horizontal sideways at shoulder height, straight elbows/wrists, LEATHER GLOVES palms down, feet slightly apart. Preserve original plain pointed riveted helmet, brown engraved LEATHER back cuirass with laces and leather skirt tabs, purple gold diamond long tunic, back javelin carrier with three spears rising above right shoulder (image-right) and diagonal strap, belt/pouches, gray pants and tall boots. Held spear and purple oval shield removed from hands and displayed separately in free background beside character with clear gaps, keep original shield purple pale central stripe metal boss, same spear. Single full character one back view no insets no text. Wide canvas fit fingertips/feet/spear tip, neutral gray background original realistic texture quality.",
+      "original_sha256": "d4a0d1633c863fa9b73ddc4174657f3f6c35e49bc959de1224cc99cf12142d8a",
+      "output_sha256": "a9a24122a0edd3ba7cf3c2f63e5aa8badfee187d9545848d2b5a9905cc535a2e",
+      "width": 1536,
+      "height": 1024
+    }
+  ]
+}

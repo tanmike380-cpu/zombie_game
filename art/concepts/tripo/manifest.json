@@ -36407,46 +36407,31 @@
       "id": "humans/byzantine/javelineer/elite",
       "label": "投矛手",
       "category": "human",
-      "projection": "front / side / back concept",
+      "projection": "individual front / right profile / back T-pose concept; AI reference, not calibrated orthographic capture",
       "views": [
         {
           "name": "front",
-          "source": "2026-09-28-factions/01-roman-javelineer.png",
-          "box": [
-            5,
-            35,
-            500,
-            940
-          ],
-          "width": 535,
-          "height": 945,
-          "sha256": "b3de55e4d7583e46ab32b463de2698bf890d3eb91777a5da9da12c5e78eb6202"
+          "source": "2026-10-04-byzantine-tpose/javelineer-elite/generated/front.png",
+          "copy_source": true,
+          "width": 1536,
+          "height": 1024,
+          "sha256": "db992d4c3a4cc63526be152a8d0ee4ac59cb8019504bdbb45b90a1eb7cabaa65"
         },
         {
           "name": "side",
-          "source": "2026-09-28-factions/01-roman-javelineer.png",
-          "box": [
-            510,
-            35,
-            1010,
-            940
-          ],
-          "width": 540,
-          "height": 945,
-          "sha256": "20f351944dac3b61692b1b1d2ffc8fcf70c17bd75c4cda081935745b8b0242c7"
+          "source": "2026-10-04-byzantine-tpose/javelineer-elite/generated/side.png",
+          "copy_source": true,
+          "width": 1145,
+          "height": 1374,
+          "sha256": "4ad9c1dd1a59f629c21c2657e99ea8b174ca8adb0ba57e1990a2767ba456f7ae"
         },
         {
           "name": "back",
-          "source": "2026-09-28-factions/01-roman-javelineer.png",
-          "box": [
-            1020,
-            35,
-            1531,
-            940
-          ],
-          "width": 551,
-          "height": 945,
-          "sha256": "9cbbe8146b546eeb74326f35c619de3f16e5c58fb5f653d852c74f20732a6b8e"
+          "source": "2026-10-04-byzantine-tpose/javelineer-elite/generated/back.png",
+          "copy_source": true,
+          "width": 1536,
+          "height": 1024,
+          "sha256": "b8036e32847253460c309ec71ef8df7a06eb7e4214e93fa37329b2a644f04603"
         }
       ]
     },
@@ -36454,46 +36439,31 @@
       "id": "humans/byzantine/archer/elite",
       "label": "弓箭手",
       "category": "human",
-      "projection": "front / side / back concept",
+      "projection": "individual front / right profile / back T-pose concept; AI reference, not calibrated orthographic capture",
       "views": [
         {
           "name": "front",
-          "source": "2026-09-28-factions/02-roman-archer.png",
-          "box": [
-            5,
-            80,
-            495,
-            940
-          ],
-          "width": 530,
-          "height": 900,
-          "sha256": "a0444d5e00a50c107811389e074d394f69963f5d8eb1c5eeabbb4ce8e5df02cd"
+          "source": "2026-10-04-byzantine-tpose/archer/elite/front.png",
+          "copy_source": true,
+          "width": 1385,
+          "height": 1136,
+          "sha256": "44c67c1f62bbbd2fa14eaf892177890920bcd1528d07d90cd2e59b7a8e6549ff"
         },
         {
           "name": "side",
-          "source": "2026-09-28-factions/02-roman-archer.png",
-          "box": [
-            505,
-            80,
-            1025,
-            940
-          ],
-          "width": 560,
-          "height": 900,
-          "sha256": "2b04ca4fc25db74ff019e5cd54642717eae36400a7f09953104b2c13bd1bb380"
+          "source": "2026-10-04-byzantine-tpose/archer/elite/side.png",
+          "copy_source": true,
+          "width": 1385,
+          "height": 1136,
+          "sha256": "d664d823c345bbc6b41455b69d261c08426344f69235a0779601c29e63f0bb31"
         },
         {
           "name": "back",
-          "source": "2026-09-28-factions/02-roman-archer.png",
-          "box": [
-            1035,
-            80,
-            1531,
-            940
-          ],
-          "width": 536,
-          "height": 900,
-          "sha256": "142ac5dc72e8cd5a65cb51aeeac4b9906edb3905b0d76b6065cf260f9f5f8fe7"
+          "source": "2026-10-04-byzantine-tpose/archer/elite/back.png",
+          "copy_source": true,
+          "width": 1385,
+          "height": 1136,
+          "sha256": "94591f0785c1714a763392ca29df32c0762bacbd3e039cca58307f7fceb3c016"
         }
       ]
     },
@@ -36501,46 +36471,31 @@
       "id": "humans/byzantine/crossbowman/elite",
       "label": "弩手",
       "category": "human",
-      "projection": "front / side / back concept",
+      "projection": "individual front / right profile / back T-pose concept; AI reference, not calibrated orthographic capture",
       "views": [
         {
           "name": "front",
-          "source": "2026-09-28-factions/03-roman-crossbowman.png",
-          "box": [
-            60,
-            72,
-            513,
-            920
-          ],
-          "width": 493,
-          "height": 888,
-          "sha256": "4d2a8255c67d281dfe504396d8f897873bd274190a0900f4dc47d5bbfb6be854"
+          "source": "2026-10-04-byzantine-tpose/crossbowman/generated/elite/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "29c86e0ac3b0db4bdb366e9aae4459eb878dfae0f9ffcffcff7509afc4bfa6ad"
         },
         {
           "name": "side",
-          "source": "2026-09-28-factions/03-roman-crossbowman.png",
-          "box": [
-            605,
-            72,
-            957,
-            920
-          ],
-          "width": 392,
-          "height": 888,
-          "sha256": "af11acbe7b9976a95a31e5791a22d0917d98fb32dcbc0032373764acbd9e8aa6"
+          "source": "2026-10-04-byzantine-tpose/crossbowman/generated/elite/side.png",
+          "copy_source": true,
+          "width": 1024,
+          "height": 1536,
+          "sha256": "2a6beed8b838a9d3416571f0fc5a72c27176abfa6e99b74bf85d1261f97487df"
         },
         {
           "name": "back",
-          "source": "2026-09-28-factions/03-roman-crossbowman.png",
-          "box": [
-            1020,
-            80,
-            1531,
-            930
-          ],
-          "width": 551,
-          "height": 890,
-          "sha256": "bdae8cc9ef74dd546f94ca09690cd983411241d9ba9e5e2d980182e75555af3d"
+          "source": "2026-10-04-byzantine-tpose/crossbowman/generated/elite/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "29a2d11627ef5a5dbc63cf401b281c4b1947ce44bc2579455d49683fa551c742"
         }
       ]
     },
@@ -36548,46 +36503,31 @@
       "id": "humans/byzantine/musketeer/elite",
       "label": "火枪手",
       "category": "human",
-      "projection": "front / side / back concept",
+      "projection": "individual front / right profile / back T-pose concept; AI reference, not calibrated orthographic capture",
       "views": [
         {
           "name": "front",
-          "source": "2026-09-28-factions/04-roman-musketeer.png",
-          "box": [
-            5,
-            80,
-            500,
-            940
-          ],
-          "width": 535,
-          "height": 900,
-          "sha256": "1e0d6066fc3c0726b5ea92fbc89a5185d75f3a446544b0b7ab35266f679b62ea"
+          "source": "2026-10-04-byzantine-tpose/musketeer/generated/elite-front.png",
+          "copy_source": true,
+          "width": 1024,
+          "height": 1536,
+          "sha256": "40bb6069ab45b59f0a6d7ac54f70c2c36c5e0cea6051efb25dc316666762ca7c"
         },
         {
           "name": "side",
-          "source": "2026-09-28-factions/04-roman-musketeer.png",
-          "box": [
-            510,
-            80,
-            1020,
-            940
-          ],
-          "width": 550,
-          "height": 900,
-          "sha256": "eeeff5ca135edcc16406bc1e929202034a64936750d319fb2a11cf1d3620760e"
+          "source": "2026-10-04-byzantine-tpose/musketeer/generated/elite-side.png",
+          "copy_source": true,
+          "width": 1024,
+          "height": 1536,
+          "sha256": "affe5bf9b3ef237ee9aa911a6a93257f47c42b71591d28ba5b83eaaf388669d4"
         },
         {
           "name": "back",
-          "source": "2026-09-28-factions/04-roman-musketeer.png",
-          "box": [
-            1030,
-            80,
-            1531,
-            940
-          ],
-          "width": 541,
-          "height": 900,
-          "sha256": "5381928db87fd0164164390949d167ba54407eaebbc85a65880627db1b6a8ea4"
+          "source": "2026-10-04-byzantine-tpose/musketeer/generated/elite-back.png",
+          "copy_source": true,
+          "width": 1024,
+          "height": 1536,
+          "sha256": "3919bffe7c30d11366ee0962ddad6077eb3c994f71215f4a0208713597c6e297"
         }
       ]
     },
@@ -37324,46 +37264,31 @@
       "id": "humans/byzantine/javelineer/militia",
       "label": "humans/byzantine/javelineer/militia",
       "category": "human",
-      "projection": "AI reference views; not a calibrated orthographic reconstruction",
+      "projection": "individual front / right profile / back T-pose concept; AI reference, not calibrated orthographic capture",
       "views": [
         {
           "name": "front",
-          "source": "2026-09-30-turnarounds/humans--byzantine--javelineer--militia.png",
-          "box": [
-            2,
-            0,
-            510,
-            1024
-          ],
-          "width": 548,
-          "height": 1064,
-          "sha256": "9c6b3e91d3b2559baaca4c578e9714e18d6a59e75408fd0b139535a459ff3a14"
+          "source": "2026-10-04-byzantine-tpose/javelineer/militia/front.png",
+          "copy_source": true,
+          "width": 1374,
+          "height": 1145,
+          "sha256": "c7e3309d5844282008a6eb0b45ab02e1fcc61ff2ad36abedbb9eb0a1ef9c0d6a"
         },
         {
           "name": "side",
-          "source": "2026-09-30-turnarounds/humans--byzantine--javelineer--militia.png",
-          "box": [
-            514,
-            0,
-            1022,
-            1024
-          ],
-          "width": 548,
-          "height": 1064,
-          "sha256": "bbaabeb03495f1a27188f2740aba578e6763a7b8866801ba9969c7fedac134da"
+          "source": "2026-10-04-byzantine-tpose/javelineer/militia/side.png",
+          "copy_source": true,
+          "width": 1145,
+          "height": 1374,
+          "sha256": "dd3d7002bddb32273b1da764c4a7af3d60c556e4e55d756cbbf069d17ba8d742"
         },
         {
           "name": "back",
-          "source": "2026-09-30-turnarounds/humans--byzantine--javelineer--militia.png",
-          "box": [
-            1026,
-            0,
-            1534,
-            1024
-          ],
-          "width": 548,
-          "height": 1064,
-          "sha256": "e27661679ebfc8bc2990a23ca11e28d4a65d700024299237b2e22d76f721fc74"
+          "source": "2026-10-04-byzantine-tpose/javelineer/militia/back.png",
+          "copy_source": true,
+          "width": 1374,
+          "height": 1145,
+          "sha256": "e6a4f02f41357638291fe93f3571d838c9742aca7d69d9428de64ba0a11ed4a6"
         }
       ]
     },
@@ -37371,46 +37296,31 @@
       "id": "humans/byzantine/archer/militia",
       "label": "humans/byzantine/archer/militia",
       "category": "human",
-      "projection": "AI reference views; not a calibrated orthographic reconstruction",
+      "projection": "individual front / right profile / back T-pose concept; AI reference, not calibrated orthographic capture",
       "views": [
         {
           "name": "front",
-          "source": "2026-09-30-turnarounds/humans--byzantine--archer--militia.png",
-          "box": [
-            2,
-            0,
-            510,
-            1024
-          ],
-          "width": 548,
-          "height": 1064,
-          "sha256": "a8696751f2228ce95a74ff577208c2d7f9f02118fae66c0619a9d25e8efa11ed"
+          "source": "2026-10-04-byzantine-tpose/archer/militia/front.png",
+          "copy_source": true,
+          "width": 1312,
+          "height": 1199,
+          "sha256": "9f3ebfe5de4363dcb7403b8722112f276c2824d732350c5d0faed646f02a8ff3"
         },
         {
           "name": "side",
-          "source": "2026-09-30-turnarounds/humans--byzantine--archer--militia.png",
-          "box": [
-            514,
-            0,
-            1022,
-            1024
-          ],
-          "width": 548,
-          "height": 1064,
-          "sha256": "bbb09408e4ec8dac5767e021ab95b459e50df87738fe2e3aa416aeb85fcf2c68"
+          "source": "2026-10-04-byzantine-tpose/archer/militia/side.png",
+          "copy_source": true,
+          "width": 1076,
+          "height": 1461,
+          "sha256": "0f1f82d0633698fe6a43a17b622de4b56a38fc5481a94e91acfb69a5fa11e232"
         },
         {
           "name": "back",
-          "source": "2026-09-30-turnarounds/humans--byzantine--archer--militia.png",
-          "box": [
-            1026,
-            0,
-            1534,
-            1024
-          ],
-          "width": 548,
-          "height": 1064,
-          "sha256": "ca915c1c2e3dfa283608ea13ded47b484477dc5c371976b9bbd2e6da6bbe066b"
+          "source": "2026-10-04-byzantine-tpose/archer/militia/back.png",
+          "copy_source": true,
+          "width": 1312,
+          "height": 1199,
+          "sha256": "9254d0b38cb3f802e2c17093a283f9d3c88b1dc8796e027f64c90164fd619409"
         }
       ]
     },
@@ -37418,46 +37328,31 @@
       "id": "humans/byzantine/crossbowman/militia",
       "label": "humans/byzantine/crossbowman/militia",
       "category": "human",
-      "projection": "AI reference views; not a calibrated orthographic reconstruction",
+      "projection": "individual front / right profile / back T-pose concept; AI reference, not calibrated orthographic capture",
       "views": [
         {
           "name": "front",
-          "source": "2026-09-30-turnarounds/humans--byzantine--crossbowman--militia.png",
-          "box": [
-            2,
-            0,
-            510,
-            1024
-          ],
-          "width": 548,
-          "height": 1064,
-          "sha256": "386643950381696aa3de7cd854de3d744ba3093c70c0e46ffe87e68afb09df4a"
+          "source": "2026-10-04-byzantine-tpose/crossbowman/generated/militia/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "726d75b69b84ea9e74ac6161c05de7900f4714d71ba904d5be6ba356331948f6"
         },
         {
           "name": "side",
-          "source": "2026-09-30-turnarounds/humans--byzantine--crossbowman--militia.png",
-          "box": [
-            514,
-            0,
-            1022,
-            1024
-          ],
-          "width": 548,
-          "height": 1064,
-          "sha256": "85813503aa2f9c7fa36ebfd35a6267803053f2a84b01e8ab7717c949e6962fc3"
+          "source": "2026-10-04-byzantine-tpose/crossbowman/generated/militia/side.png",
+          "copy_source": true,
+          "width": 1024,
+          "height": 1536,
+          "sha256": "5f2f089f9069e7338b7c05b7680674300015e94cbe8572f025f94ffcb769ee0e"
         },
         {
           "name": "back",
-          "source": "2026-09-30-turnarounds/humans--byzantine--crossbowman--militia.png",
-          "box": [
-            1026,
-            0,
-            1534,
-            1024
-          ],
-          "width": 548,
-          "height": 1064,
-          "sha256": "49088f6fb3ef35eb0fa7bbb7fb535f883f8f1be27644386fb9d7124c9dd1a2ff"
+          "source": "2026-10-04-byzantine-tpose/crossbowman/generated/militia/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "03a1b4f79d39c6b21fbea8bb70a534d4d87bcb31ac30cfe2c0cc7f499c12c42e"
         }
       ]
     },
@@ -37465,46 +37360,31 @@
       "id": "humans/byzantine/musketeer/militia",
       "label": "humans/byzantine/musketeer/militia",
       "category": "human",
-      "projection": "AI reference views; not a calibrated orthographic reconstruction",
+      "projection": "individual front / right profile / back T-pose concept; AI reference, not calibrated orthographic capture",
       "views": [
         {
           "name": "front",
-          "source": "2026-09-30-turnarounds/humans--byzantine--musketeer--militia.png",
-          "box": [
-            2,
-            0,
-            510,
-            1024
-          ],
-          "width": 548,
-          "height": 1064,
-          "sha256": "0eecf9331777a56fa21364a315c9d7f97d127a2828a0f83f3e8b2a3f23dca75d"
+          "source": "2026-10-04-byzantine-tpose/musketeer/generated/militia-front.png",
+          "copy_source": true,
+          "width": 1145,
+          "height": 1374,
+          "sha256": "85c6dd9a751fbcb0cc9d9a91d2d35b2717243f45c68223f80aed730cbcd8ad45"
         },
         {
           "name": "side",
-          "source": "2026-09-30-turnarounds/humans--byzantine--musketeer--militia.png",
-          "box": [
-            514,
-            0,
-            1022,
-            1024
-          ],
-          "width": 548,
-          "height": 1064,
-          "sha256": "5c7b71bc2529f9c7b63358bc922242b0f5ae93b084c6df3191a5173f43d42e06"
+          "source": "2026-10-04-byzantine-tpose/musketeer/generated/militia-side.png",
+          "copy_source": true,
+          "width": 1145,
+          "height": 1374,
+          "sha256": "8f7497140abb3ff9f714a3fd9df5f00720f3d75e46c085e43449e111d6a85ebe"
         },
         {
           "name": "back",
-          "source": "2026-09-30-turnarounds/humans--byzantine--musketeer--militia.png",
-          "box": [
-            1026,
-            0,
-            1534,
-            1024
-          ],
-          "width": 548,
-          "height": 1064,
-          "sha256": "d9dc2e0e5dad6a3eaf4b256d9ed764d00223f9c3876ff30d0314df8585ca0c8d"
+          "source": "2026-10-04-byzantine-tpose/musketeer/generated/militia-back.png",
+          "copy_source": true,
+          "width": 1145,
+          "height": 1374,
+          "sha256": "1b67a1628b82e918f2f1cc777ceec08c4f0f51a708a09b3ec3d4a7e4c6629369"
         }
       ]
     },
@@ -37512,46 +37392,31 @@
       "id": "humans/byzantine/javelineer/veteran",
       "label": "humans/byzantine/javelineer/veteran",
       "category": "human",
-      "projection": "AI reference views; not a calibrated orthographic reconstruction",
+      "projection": "individual front / right profile / back T-pose concept; AI reference, not calibrated orthographic capture",
       "views": [
         {
           "name": "front",
-          "source": "2026-09-30-turnarounds/humans--byzantine--javelineer--veteran.png",
-          "box": [
-            2,
-            0,
-            510,
-            1024
-          ],
-          "width": 548,
-          "height": 1064,
-          "sha256": "ad7a90983878f036d6500f6fe3c1df24513bc20012f514bbfb8ea2a4d7da1ff3"
+          "source": "2026-10-04-byzantine-tpose/javelineer-veteran/generated/front.png",
+          "copy_source": true,
+          "width": 1536,
+          "height": 1024,
+          "sha256": "29176cad934b1e6f2dec2d8d1b276b093491ed47c7636315acf07e4bd24348f0"
         },
         {
           "name": "side",
-          "source": "2026-09-30-turnarounds/humans--byzantine--javelineer--veteran.png",
-          "box": [
-            514,
-            0,
-            1022,
-            1024
-          ],
-          "width": 548,
-          "height": 1064,
-          "sha256": "7f2e5b9549709fdc1e4ded3dc486e2e3b2af4175c54af724c570350924c14327"
+          "source": "2026-10-04-byzantine-tpose/javelineer-veteran/generated/side.png",
+          "copy_source": true,
+          "width": 1536,
+          "height": 1024,
+          "sha256": "b7ca30e4cde38b7d89f2ebe25211624708767256769264c445293433e8d571cb"
         },
         {
           "name": "back",
-          "source": "2026-09-30-turnarounds/humans--byzantine--javelineer--veteran.png",
-          "box": [
-            1026,
-            0,
-            1534,
-            1024
-          ],
-          "width": 548,
-          "height": 1064,
-          "sha256": "d4a0d1633c863fa9b73ddc4174657f3f6c35e49bc959de1224cc99cf12142d8a"
+          "source": "2026-10-04-byzantine-tpose/javelineer-veteran/generated/back.png",
+          "copy_source": true,
+          "width": 1536,
+          "height": 1024,
+          "sha256": "a9a24122a0edd3ba7cf3c2f63e5aa8badfee187d9545848d2b5a9905cc535a2e"
         }
       ]
     },
@@ -37559,46 +37424,31 @@
       "id": "humans/byzantine/archer/veteran",
       "label": "humans/byzantine/archer/veteran",
       "category": "human",
-      "projection": "AI reference views; not a calibrated orthographic reconstruction",
+      "projection": "individual front / right profile / back T-pose concept; AI reference, not calibrated orthographic capture",
       "views": [
         {
           "name": "front",
-          "source": "2026-09-30-turnarounds/humans--byzantine--archer--veteran.png",
-          "box": [
-            2,
-            0,
-            510,
-            1024
-          ],
-          "width": 548,
-          "height": 1064,
-          "sha256": "21745e5c0f3df49ab3bff8a6ee3773764d1fd7fc486ffb5bd3997e5532d91f8d"
+          "source": "2026-10-04-byzantine-tpose/archer/veteran/front.png",
+          "copy_source": true,
+          "width": 1024,
+          "height": 1536,
+          "sha256": "bffd443b486b5bf47cd8236e1cbd247f6cf4fac093360e0326757508523fbcad"
         },
         {
           "name": "side",
-          "source": "2026-09-30-turnarounds/humans--byzantine--archer--veteran.png",
-          "box": [
-            514,
-            0,
-            1022,
-            1024
-          ],
-          "width": 548,
-          "height": 1064,
-          "sha256": "36393daeba21b5c51076ce185eaa5a7651fdd4630aa859af43f3d49f4a41fc84"
+          "source": "2026-10-04-byzantine-tpose/archer/veteran/side.png",
+          "copy_source": true,
+          "width": 1024,
+          "height": 1536,
+          "sha256": "e47d1379fdef85ba6175f89aace59e1e77ebdbed8cfffc7f18ed4870fd7f8c77"
         },
         {
           "name": "back",
-          "source": "2026-09-30-turnarounds/humans--byzantine--archer--veteran.png",
-          "box": [
-            1026,
-            0,
-            1534,
-            1024
-          ],
-          "width": 548,
-          "height": 1064,
-          "sha256": "a0c49aa017b609294ae44738706b66928be310d63270e3a949ba718cf37f0775"
+          "source": "2026-10-04-byzantine-tpose/archer/veteran/back.png",
+          "copy_source": true,
+          "width": 1024,
+          "height": 1536,
+          "sha256": "228a88c7cbcfe377d39e72a98143640c76a36a466e697c13bc8cf9703c200815"
         }
       ]
     },
@@ -37606,46 +37456,31 @@
       "id": "humans/byzantine/crossbowman/veteran",
       "label": "humans/byzantine/crossbowman/veteran",
       "category": "human",
-      "projection": "AI reference views; not a calibrated orthographic reconstruction",
+      "projection": "individual front / right profile / back T-pose concept; AI reference, not calibrated orthographic capture",
       "views": [
         {
           "name": "front",
-          "source": "2026-09-30-turnarounds/humans--byzantine--crossbowman--veteran.png",
-          "box": [
-            2,
-            0,
-            556,
-            1024
-          ],
-          "width": 594,
-          "height": 1064,
-          "sha256": "75ceb56ab761e5f0928ec76c00e6a2b59ce82f1ba28d89bcbf256060a7efa371"
+          "source": "2026-10-04-byzantine-tpose/crossbowman/generated/veteran/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "cf329b038e688e27d837cbf2247328ee5d291e55118fc35e81355adcae53b1fc"
         },
         {
           "name": "side",
-          "source": "2026-09-30-turnarounds/humans--byzantine--crossbowman--veteran.png",
-          "box": [
-            560,
-            0,
-            1022,
-            1024
-          ],
-          "width": 502,
-          "height": 1064,
-          "sha256": "14dfbbf9c70c860a69f4fba75ebf4f9dbf68a4173477e96ae29011b19178e82f"
+          "source": "2026-10-04-byzantine-tpose/crossbowman/generated/veteran/side.png",
+          "copy_source": true,
+          "width": 1024,
+          "height": 1536,
+          "sha256": "dfcd11aba4b876997aa3d9d34b536305823aa9a896ff2b7da4e033069fceb056"
         },
         {
           "name": "back",
-          "source": "2026-09-30-turnarounds/humans--byzantine--crossbowman--veteran.png",
-          "box": [
-            1026,
-            0,
-            1534,
-            1024
-          ],
-          "width": 548,
-          "height": 1064,
-          "sha256": "63daec5cbec51f54a3dfcfee1c806933ca563a8600bd53ed397911cfacd87a42"
+          "source": "2026-10-04-byzantine-tpose/crossbowman/generated/veteran/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "554c7b5fe0c469b40dd5f1f5831c95ac992bb0f8144ce1ba0be95c58cb6dfc33"
         }
       ]
     },
@@ -37653,46 +37488,31 @@
       "id": "humans/byzantine/musketeer/veteran",
       "label": "humans/byzantine/musketeer/veteran",
       "category": "human",
-      "projection": "AI reference views; not a calibrated orthographic reconstruction",
+      "projection": "individual front / right profile / back T-pose concept; AI reference, not calibrated orthographic capture",
       "views": [
         {
           "name": "front",
-          "source": "2026-09-30-turnarounds/humans--byzantine--musketeer--veteran.png",
-          "box": [
-            2,
-            0,
-            510,
-            1024
-          ],
-          "width": 548,
-          "height": 1064,
-          "sha256": "d76dc8e49900dffb5a5d5f48b7921d5028504b99d084106efddfafd79e936ea9"
+          "source": "2026-10-04-byzantine-tpose/musketeer/generated/veteran-front.png",
+          "copy_source": true,
+          "width": 1374,
+          "height": 1145,
+          "sha256": "0a7492486610d4458b942e8e07233ceae685df98d2ae9c457b9b97c955324a78"
         },
         {
           "name": "side",
-          "source": "2026-09-30-turnarounds/humans--byzantine--musketeer--veteran.png",
-          "box": [
-            514,
-            0,
-            1022,
-            1024
-          ],
-          "width": 548,
-          "height": 1064,
-          "sha256": "ebbb1afe656f26393e135e15f0b8f2152c0c1b193c8d4ff63b7b742aa2a0eb75"
+          "source": "2026-10-04-byzantine-tpose/musketeer/generated/veteran-side.png",
+          "copy_source": true,
+          "width": 1374,
+          "height": 1145,
+          "sha256": "aca45b44010fb3747a80d93d5977583d595565090e6efaa8a59c39fe2adcb21c"
         },
         {
           "name": "back",
-          "source": "2026-09-30-turnarounds/humans--byzantine--musketeer--veteran.png",
-          "box": [
-            1026,
-            0,
-            1534,
-            1024
-          ],
-          "width": 548,
-          "height": 1064,
-          "sha256": "5c30f419cbde34cb8fa46d6b89b0c2c78e1aa7b09a3869ac633daacfef5a2bdc"
+          "source": "2026-10-04-byzantine-tpose/musketeer/generated/veteran-back.png",
+          "copy_source": true,
+          "width": 1374,
+          "height": 1145,
+          "sha256": "056461af33c35bdeda8c955466d0a672f5cdfb13ece4158c6239fd4c0cba7259"
         }
       ]
     },

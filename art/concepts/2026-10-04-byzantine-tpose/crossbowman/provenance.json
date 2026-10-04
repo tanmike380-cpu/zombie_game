@@ -1,0 +1,141 @@
+{
+  "date": "2026-10-04",
+  "tool": "built-in image_gen.imagegen",
+  "unit": "byzantine/crossbowman",
+  "policy": "Original replacement authorized; originals backed up before edits. No Blender/Unity/code/model changes. Each image single full-body front/profile/back T pose with detached crossbow; militia bare hands, veteran leather gloves, elite chainmail gloves.",
+  "visual_qa": "All 9 visually inspected. Elite profile re-edited to remove erroneous forward far arm. Original outfit/tier materials and purple accents retained.",
+  "entries": [
+    {
+      "tier": "militia",
+      "view": "front",
+      "original": "Builds/ArtReview/ByzantineTPoseBackup/crossbowman/militia/front.png",
+      "target": "art/concepts/tripo/humans/byzantine/crossbowman/militia/front.png",
+      "generated_source": "art/concepts/2026-10-04-byzantine-tpose/crossbowman/generated/militia/front.png",
+      "builtin_source": "/Users/tankaixi/.codex/generated_images/01a10726-b40b-7ec1-a942-93909dc3d9d8/exec-d8519655-e204-4fea-be18-172cc95f9a39.png",
+      "prompt": "Use case: precise-object-edit. Asset: single-view game character modeling reference for Tripo. Edit the reference image, preserving exactly this Byzantine MILITIA CROSSBOWMAN's identity, brown cloth cap, worn gray-brown quilted long coat and trousers, faded purple diagonal sash and waist sash, bolt quiver, boots and BARE hands. Do not upgrade armor. Change only pose and weapon placement: strict straight-on FRONT full-body neutral anatomical T-pose, both arms perfectly horizontal outward sideways at shoulder height, elbows and wrists straight, relaxed open hands palm down; feet slightly apart. One character only. Place his original wooden crossbow as a separate complete object beside the lower body, clear gap, not held, retain stock, steel prod, trigger and string. Plain neutral gray studio background and original realistic material detail, soft even light. Landscape/square canvas wide enough for fingertips; no crop, no labels, no extra props, no collage, no alternate views. Preserve costume and colors exactly; no modern equipment.",
+      "iterations": [],
+      "original_sha256": "386643950381696aa3de7cd854de3d744ba3093c70c0e46ffe87e68afb09df4a",
+      "output_sha256": "726d75b69b84ea9e74ac6161c05de7900f4714d71ba904d5be6ba356331948f6",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "tier": "militia",
+      "view": "side",
+      "original": "Builds/ArtReview/ByzantineTPoseBackup/crossbowman/militia/side.png",
+      "target": "art/concepts/tripo/humans/byzantine/crossbowman/militia/side.png",
+      "generated_source": "art/concepts/2026-10-04-byzantine-tpose/crossbowman/generated/militia/side.png",
+      "builtin_source": "/Users/tankaixi/.codex/generated_images/01a10726-b40b-7ec1-a942-93909dc3d9d8/exec-77456089-40a6-4cb6-b95b-2aa33fc460fb.png",
+      "prompt": "Use case: precise-object-edit. One single full-body STRICT RIGHT-FACING SIDE PROFILE of the SAME militia Byzantine crossbowman. Image1 is original side costume/back equipment authority; image2 is approved FRONT T-pose identity/pose reference. Preserve gray brown ragged quilted coat, brown cap, purple sash, BARE HANDS, bolt quiver, belt pouch, trousers, leg wraps and boots. Rotate the exact anatomical T-pose to SIDE VIEW: face and feet point screen-right; both arms remain extended LATERALLY along body's left-right shoulder axis, perpendicular to image plane, with NEAR ARM pointing straight AT CAMERA and far arm straight AWAY. Therefore near hand/forearm is strongly foreshortened over shoulder, far arm largely hidden. Absolutely DO NOT extend arms screen-right in front of face (not zombie pose), do not lower arms. Feet modestly apart sideways. Original wooden CROSSBOW displayed separately beside the figure in free background, never touching hands/body, complete with prod and string. Neutral gray background, realistic original rendering and subdued colors. Single character single profile only, no front inset, no text.",
+      "iterations": [],
+      "original_sha256": "85813503aa2f9c7fa36ebfd35a6267803053f2a84b01e8ab7717c949e6962fc3",
+      "output_sha256": "5f2f089f9069e7338b7c05b7680674300015e94cbe8572f025f94ffcb769ee0e",
+      "width": 1024,
+      "height": 1536
+    },
+    {
+      "tier": "militia",
+      "view": "back",
+      "original": "Builds/ArtReview/ByzantineTPoseBackup/crossbowman/militia/back.png",
+      "target": "art/concepts/tripo/humans/byzantine/crossbowman/militia/back.png",
+      "generated_source": "art/concepts/2026-10-04-byzantine-tpose/crossbowman/generated/militia/back.png",
+      "builtin_source": "/Users/tankaixi/.codex/generated_images/01a10726-b40b-7ec1-a942-93909dc3d9d8/exec-94bad545-a67f-4a9a-8035-c5e4a6d5cb27.png",
+      "prompt": "Use case: precise-object-edit. Image1 is original BACK costume authority; Image2 approved front T-pose identity and pose. Repose SAME Byzantine militia CROSSBOWMAN into exact straight-on BACK full-body anatomical T-pose: both arms horizontal sideways at shoulder height, straight elbows and wrists, relaxed BARE hands palm-down, feet slightly apart. Preserve exact brown cap, worn gray-brown quilted coat, ragged hem, purple shoulder and waist sash, brown diagonal leather back strap, bolt quiver on right side of image, leg wraps and boots. No armor upgrades, no gloves. Crossbow removed from hands and displayed separately next to lower body with clear gap, complete wooden stock steel prod and string, matching Image2. Wide square canvas so fingertips and toes fully visible. One character one rear view only. Neutral gray background, detailed realistic existing materials and lighting, no text, no collage, no extra items.",
+      "iterations": [],
+      "original_sha256": "49088f6fb3ef35eb0fa7bbb7fb535f883f8f1be27644386fb9d7124c9dd1a2ff",
+      "output_sha256": "03a1b4f79d39c6b21fbea8bb70a534d4d87bcb31ac30cfe2c0cc7f499c12c42e",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "tier": "veteran",
+      "view": "front",
+      "original": "Builds/ArtReview/ByzantineTPoseBackup/crossbowman/veteran/front.png",
+      "target": "art/concepts/tripo/humans/byzantine/crossbowman/veteran/front.png",
+      "generated_source": "art/concepts/2026-10-04-byzantine-tpose/crossbowman/generated/veteran/front.png",
+      "builtin_source": "/Users/tankaixi/.codex/generated_images/01a10726-b40b-7ec1-a942-93909dc3d9d8/exec-04157b3e-d46f-498b-b443-5c1cd919827e.png",
+      "prompt": "Use case: precise-object-edit. Single-view Tripo character reference. Edit SAME Byzantine VETERAN CROSSBOWMAN in source, preserve face/beard, plain pointed riveted metal helmet, brown engraved LEATHER cuirass with laces and shoulder pads and leather skirt tabs, purple long-sleeved gold diamond patterned tunic, LEATHER GLOVES, belt pouch, bolt quiver, gray trousers and tall brown boots. No elite metal torso armor or chainmail gloves. Change ONLY pose and weapon placement: full-body straight-on FRONT anatomical T-pose, arms straight horizontal at shoulder height sideways, palms down, feet modestly apart. Display his exact wooden crossbow separately beside lower body with clear gap, stock steel prod string and square stirrup intact. Plain gray studio background, original realistic textured finish. Wide square image fitting entire fingertips and boots. One character one frontal view, no labels, no collage, no redesign.",
+      "iterations": [],
+      "original_sha256": "75ceb56ab761e5f0928ec76c00e6a2b59ce82f1ba28d89bcbf256060a7efa371",
+      "output_sha256": "cf329b038e688e27d837cbf2247328ee5d291e55118fc35e81355adcae53b1fc",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "tier": "veteran",
+      "view": "side",
+      "original": "Builds/ArtReview/ByzantineTPoseBackup/crossbowman/veteran/side.png",
+      "target": "art/concepts/tripo/humans/byzantine/crossbowman/veteran/side.png",
+      "generated_source": "art/concepts/2026-10-04-byzantine-tpose/crossbowman/generated/veteran/side.png",
+      "builtin_source": "/Users/tankaixi/.codex/generated_images/01a10726-b40b-7ec1-a942-93909dc3d9d8/exec-7bfa354a-1178-4b16-a701-4177624be5e5.png",
+      "prompt": "Use case: precise-object-edit. Image1 original side costume authority, Image2 approved front T-pose pose and identity. Make one strict RIGHT-FACING SIDE PROFILE full body of exactly SAME Byzantine VETERAN CROSSBOWMAN. Preserve purple gold diamond long tunic, brown engraved leather cuirass and leather skirt tabs, pointed plain riveted helmet, LEATHER GLOVES, gray trousers, tall boots, belt pouch and bolt quiver. Correct anatomical T-pose viewed exactly from side: face/feet point screen-right but both arms stick out LATERALLY across shoulder axis perpendicular to image plane, near arm straight TOWARD CAMERA and far arm straight AWAY; hand and forearm foreshortened covering shoulder, far arm mostly occluded. Never arms stretched forward to screen-right, not zombie pose, no lowered arm. Feet modestly apart. Original crossbow detached beside lower body in gray empty backdrop, complete stock/prod/string/square stirrup, no body contact. Realistic textures, neutral even studio lighting. One person one profile no text or collage.",
+      "iterations": [],
+      "original_sha256": "14dfbbf9c70c860a69f4fba75ebf4f9dbf68a4173477e96ae29011b19178e82f",
+      "output_sha256": "dfcd11aba4b876997aa3d9d34b536305823aa9a896ff2b7da4e033069fceb056",
+      "width": 1024,
+      "height": 1536
+    },
+    {
+      "tier": "veteran",
+      "view": "back",
+      "original": "Builds/ArtReview/ByzantineTPoseBackup/crossbowman/veteran/back.png",
+      "target": "art/concepts/tripo/humans/byzantine/crossbowman/veteran/back.png",
+      "generated_source": "art/concepts/2026-10-04-byzantine-tpose/crossbowman/generated/veteran/back.png",
+      "builtin_source": "/Users/tankaixi/.codex/generated_images/01a10726-b40b-7ec1-a942-93909dc3d9d8/exec-25e2872c-38d0-4fcf-a790-86a4590d6a0e.png",
+      "prompt": "Use case: precise-object-edit. One strict straight-on REAR full body view of SAME Byzantine VETERAN CROSSBOWMAN. Image1 original back costume authority; Image2 front T pose identity. Change only pose and weapon placement. Both arms extended straight sideways horizontally at shoulder height forming anatomical T, wrists straight and LEATHER GLOVES palms down, feet slightly apart. Keep plain pointed riveted helmet, brown engraved leather back cuirass side laces and leather skirt tabs, purple gold diamond patterned long tunic, belt, bolt quiver on image-right hip, gray pants and tall leather boots EXACTLY. No chainmail/metal armor upgrades. Crossbow separate beside lower body with gap, complete wood stock/prod/string/stirrup matching Image2. Wide canvas fitting fingertips and feet, one character one rear view, neutral gray background and original realistic materials, no text/no collage.",
+      "iterations": [],
+      "original_sha256": "63daec5cbec51f54a3dfcfee1c806933ca563a8600bd53ed397911cfacd87a42",
+      "output_sha256": "554c7b5fe0c469b40dd5f1f5831c95ac992bb0f8144ce1ba0be95c58cb6dfc33",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "tier": "elite",
+      "view": "front",
+      "original": "Builds/ArtReview/ByzantineTPoseBackup/crossbowman/elite/front.png",
+      "target": "art/concepts/tripo/humans/byzantine/crossbowman/elite/front.png",
+      "generated_source": "art/concepts/2026-10-04-byzantine-tpose/crossbowman/generated/elite/front.png",
+      "builtin_source": "/Users/tankaixi/.codex/generated_images/01a10726-b40b-7ec1-a942-93909dc3d9d8/exec-55302809-ca4d-4906-9b71-9d63e1ff5c3f.png",
+      "prompt": "Use case: precise-object-edit. Repose exactly this ELITE Byzantine CROSSBOWMAN in supplied source. Preserve same face, dome iron helmet gold rivets cheek guards mail neck, purple long sleeves and purple-gold eagle embroidered skirt, steel/gold lamellar armor chest shoulders skirt, gray pants tall brown boots, leather belt/pouches, and CHAINMAIL GLOVES. Change only pose and weapon placement: straight-on FRONT full body anatomical T-pose, arms exactly horizontal sideways at shoulder height, straight elbows/wrists, relaxed palms down, feet slightly apart. Detach his original CROSSBOW and place it as a complete separate object beside lower body with a clear gap, preserve its wood stock, steel prod, string, stirrup. One character one front view, no insets. Wide square canvas includes full fingertips/feet, gray neutral studio backdrop, same realistic material quality/colors no redesign, no text.",
+      "iterations": [],
+      "original_sha256": "4d2a8255c67d281dfe504396d8f897873bd274190a0900f4dc47d5bbfb6be854",
+      "output_sha256": "29c86e0ac3b0db4bdb366e9aae4459eb878dfae0f9ffcffcff7509afc4bfa6ad",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "tier": "elite",
+      "view": "side",
+      "original": "Builds/ArtReview/ByzantineTPoseBackup/crossbowman/elite/side.png",
+      "target": "art/concepts/tripo/humans/byzantine/crossbowman/elite/side.png",
+      "generated_source": "art/concepts/2026-10-04-byzantine-tpose/crossbowman/generated/elite/side.png",
+      "builtin_source": "/Users/tankaixi/.codex/generated_images/01a10726-b40b-7ec1-a942-93909dc3d9d8/exec-9cf7e82b-6086-4128-bc3c-3b67cd10a06e.png",
+      "prompt": "Precise correction to this modeling reference. KEEP every costume part, face, helmet, armor, quiver, gloves, body, feet, crossbow and background unchanged. Correct ONLY T-pose projection: character is strict right-facing SIDE view. Both shoulder-to-hand directions must lie on ONE straight left-right anatomical axis aimed exactly into/out of camera. Near arm remains foreshortened toward camera as already shown. The FAR ARM MUST BE FULLY OCCLUDED behind the near arm and torso: REMOVE the erroneous purple sleeve and chainmail hand that protrudes toward screen-right from the chest. Do not change near arm. No arm reaching forward in face direction. Result single clean exact profile, no inset, no text.",
+      "iterations": [
+        {
+          "prompt": "Use case: precise-object-edit. Image1 original SIDE costume authority, Image2 same crossbowman's front T-pose. Make exact RIGHT-FACING PROFILE full body of this ELITE Byzantine CROSSBOWMAN. Preserve dome iron gold rivet helmet cheek plates and mail nape, layered steel/gold lamellar shoulder/body armor, purple gold embroidered eagle skirt and sleeve cuffs, gray pants leather boots belt pouch and bolt quiver, CHAINMAIL GLOVES. Exact anatomical T-pose rotated to side: face and feet to screen-right, arms spread LATERALLY along body left-right shoulder axis perpendicular to image plane; NEAR ARM points straight toward viewer, far arm away, near hand and forearm strongly foreshortened over shoulder. NOT arms reaching screen-right in front of body, not zombie pose, not arms down. Feet slightly apart. Detach original crossbow beside lower body with gap, keep stock prod string stirrup consistent Image2. One character one profile, soft gray studio backdrop, realistic matching original textures, no text/collage/cropped limbs.",
+          "generated_source": "/Users/tankaixi/.codex/generated_images/01a10726-b40b-7ec1-a942-93909dc3d9d8/exec-e282bea9-dc70-4056-a21d-8c7692f1d59e.png",
+          "rejected_reason": "Far arm projects screen-right instead of being occluded in exact profile; corrected in final."
+        }
+      ],
+      "original_sha256": "af11acbe7b9976a95a31e5791a22d0917d98fb32dcbc0032373764acbd9e8aa6",
+      "output_sha256": "2a6beed8b838a9d3416571f0fc5a72c27176abfa6e99b74bf85d1261f97487df",
+      "width": 1024,
+      "height": 1536
+    },
+    {
+      "tier": "elite",
+      "view": "back",
+      "original": "Builds/ArtReview/ByzantineTPoseBackup/crossbowman/elite/back.png",
+      "target": "art/concepts/tripo/humans/byzantine/crossbowman/elite/back.png",
+      "generated_source": "art/concepts/2026-10-04-byzantine-tpose/crossbowman/generated/elite/back.png",
+      "builtin_source": "/Users/tankaixi/.codex/generated_images/01a10726-b40b-7ec1-a942-93909dc3d9d8/exec-f8d7eaf2-4156-40aa-83c4-494bb4325d01.png",
+      "prompt": "Use case: precise-object-edit. Image1 original rear costume authority; Image2 same elite crossbowman front T-pose. Produce single exact straight-on REAR full body anatomical T-pose of SAME ELITE Byzantine CROSSBOWMAN. Both arms straight sideways horizontal at shoulder height, wrists straight, CHAINMAIL GLOVES palms down; feet slightly apart. Preserve dome iron helmet gold rivets and mail neck flap, steel/gold lamellar back cuirass shoulder armor and skirt, purple gold embroidered eagle coat and sleeves, gray trousers, tall brown leather boots, belt/bolt quiver on image-right. Remove weapon from hands and place original crossbow separately beside lower body with complete stock/prod/string/stirrup, clear gap matching Image2. No redesign, no added gear. Wide square canvas includes fingertips/feet, neutral gray studio background, original detailed realistic materials and lighting. One character one back view only, no text or collage.",
+      "iterations": [],
+      "original_sha256": "bdae8cc9ef74dd546f94ca09690cd983411241d9ba9e5e2d980182e75555af3d",
+      "output_sha256": "29a2d11627ef5a5dbc63cf401b281c4b1947ce44bc2579455d49683fa551c742",
+      "width": 1254,
+      "height": 1254
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "date": "2026-10-04",
+  "tool": "built-in image_gen",
+  "unit": "javelineer",
+  "views": [
+    {
+      "view": "front",
+      "unit": "javelineer",
+      "tier": "militia",
+      "prompt": "Use case: precise-object-edit. Image1 original FRONT Byzantine militia javelineer, Image2/3 his side/back. Change ONLY pose: ONE fullbody directly front-facing soldier in neutral rigorous T-pose, straight arms extended sideways horizontal at shoulder level, bare open relaxed hands palms down, neutral straight wrists, upright spine and straight legs slightly apart. Preserve exact original grey brown patched quilted coat/trousers cloth cap, dark beard, purple sash, back javelin bundle, leather pouches, legwraps/boots. Militia BARE HANDS no gloves no armor upgrade. Detach BOTH spear and oval wooden purple-striped shield from hands/arms, place original spear standing well to side beyond fingertips and shield beside lower legs with visible air gaps; never overlap or touch the body. Preserve original weapon/shield designs incl pointed iron tip and round shield boss. Same neutral grey softly lit background, realistic game concept style. Wide frame generously fits full character fingertips/head/feet and separated gear; ONE character ONE FRONT view no collage/text/watermark. No redesign.",
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a1025d-bf93-7163-b2b8-78b6e6ac6296/exec-bcdfdf06-2cc8-4326-b16d-b5b1d1964c7c.png",
+      "target": "art/concepts/tripo/humans/byzantine/javelineer/militia/front.png",
+      "original_backup": "Builds/ArtReview/ByzantineTPoseBackup/javelineer/militia/front.png",
+      "source": "art/concepts/2026-10-04-byzantine-tpose/javelineer/militia/front.png",
+      "original_sha256": "9c6b3e91d3b2559baaca4c578e9714e18d6a59e75408fd0b139535a459ff3a14",
+      "sha256": "c7e3309d5844282008a6eb0b45ab02e1fcc61ff2ad36abedbb9eb0a1ef9c0d6a",
+      "width": 1374,
+      "height": 1145
+    },
+    {
+      "view": "side",
+      "unit": "javelineer",
+      "tier": "militia",
+      "prompt": "Use case: precise-object-edit. Image1 FRONT T-pose Byzantine militia javelineer anchors exact identity/pose; Image2 original side supplies clothing/back-javelin/shield detail. Produce ONE exact RIGHT PROFILE fullbody view facing image RIGHT of same man in same neutral T-pose. Arms extend sideways from torso at shoulder height, near bare hand pointing toward camera and foreshortened, far arm hidden behind; DO NOT extend forward in front of chest. Keep original worn grey brown quilted coat and patch trousers, cloth cap, dark hair, purple sash, leather pouches back javelin bundle legwraps boots. Bare hands no gloves, no new armor. BOTH original spear and oval wood purple-striped shield are detached separate props beside figure with clear air gap from arms/body, no overlap; show shield side thickness consistent with camera. Keep original iron tip and shield boss design. Grey studio soft even light, full head feet hands and spear tip visible with padding, one person one view no text/collage/redesign.",
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a1025d-bf93-7163-b2b8-78b6e6ac6296/exec-a39d9a51-85ea-429a-8902-ba9010a9ee5e.png",
+      "target": "art/concepts/tripo/humans/byzantine/javelineer/militia/side.png",
+      "original_backup": "Builds/ArtReview/ByzantineTPoseBackup/javelineer/militia/side.png",
+      "source": "art/concepts/2026-10-04-byzantine-tpose/javelineer/militia/side.png",
+      "original_sha256": "bbaabeb03495f1a27188f2740aba578e6763a7b8866801ba9969c7fedac134da",
+      "sha256": "dd3d7002bddb32273b1da764c4a7af3d60c556e4e55d756cbbf069d17ba8d742",
+      "width": 1145,
+      "height": 1374
+    },
+    {
+      "view": "back",
+      "unit": "javelineer",
+      "tier": "militia",
+      "prompt": "Use case: precise-object-edit. Image1 FRONT T-pose Byzantine militia javelineer anchors exact identity/pose; Image2 original back supplies clothing/back-javelin/shield detail. Produce ONE direct BACK fullbody view, no face of same man in same neutral T-pose. Both arms straight horizontal at shoulder height left/right, palms down. Keep original worn grey brown quilted coat and patch trousers, cloth cap, dark hair, purple sash, leather pouches back javelin bundle legwraps boots. Bare hands no gloves, no new armor. BOTH original spear and oval wood purple-striped shield are detached separate props beside figure with clear air gap from arms/body, no overlap; show back of shield with leather straps consistent with camera. Keep original iron tip and shield boss design. Grey studio soft even light, full head feet hands and spear tip visible with padding, one person one view no text/collage/redesign.",
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a1025d-bf93-7163-b2b8-78b6e6ac6296/exec-ee9b66b5-57d3-4fb9-8a82-c99050c74703.png",
+      "target": "art/concepts/tripo/humans/byzantine/javelineer/militia/back.png",
+      "original_backup": "Builds/ArtReview/ByzantineTPoseBackup/javelineer/militia/back.png",
+      "source": "art/concepts/2026-10-04-byzantine-tpose/javelineer/militia/back.png",
+      "original_sha256": "e27661679ebfc8bc2990a23ca11e28d4a65d700024299237b2e22d76f721fc74",
+      "sha256": "e6a4f02f41357638291fe93f3571d838c9742aca7d69d9428de64ba0a11ed4a6",
+      "width": 1374,
+      "height": 1145
+    }
+  ],
+  "validation": "Each output visually inspected, one character and one view, neutral T-pose with detached weapon. AI references not metrically calibrated; Tripo generation and rigging not tested."
+}

@@ -1,0 +1,55 @@
+{
+  "date": "2026-10-04",
+  "unit": "byzantine/javelineer/elite",
+  "mode": "built-in imagegen one independent image per view; no post-editing",
+  "records": [
+    {
+      "view": "front",
+      "output": "art/concepts/tripo/humans/byzantine/javelineer/elite/front.png",
+      "generated_source": "art/concepts/2026-10-04-byzantine-tpose/javelineer-elite/generated/front.png",
+      "generator_output": "/Users/tankaixi/.codex/generated_images/01a10727-6e8e-7031-9a5e-54045cdec48e/exec-81bbefc7-984c-455b-9d14-1efce0dbdbe5.png",
+      "original_backup": "Builds/ArtReview/ByzantineTPoseBackup/javelineer/elite/front.png",
+      "sha256": "db992d4c3a4cc63526be152a8d0ee4ac59cb8019504bdbb45b90a1eb7cabaa65",
+      "original_sha256": "b3de55e4d7583e46ab32b463de2698bf890d3eb91777a5da9da12c5e78eb6202",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "prompt": "Use case: precise-object-edit. Edit reference Byzantine ELITE JAVELINEER into one full-body exact FRONT orthographic T-pose reference for Tripo. Preserve same face/beard, round steel/gold-riveted historical helmet with cheekguards and chainmail neck, purple long sleeve gold-pattern tunic and eagle embroidered skirt, layered steel/gold lamellar torso/shoulder/skirt plates, FULL CHAINMAIL GLOVES, gray pants, brown boots, crossed brown torso strap/belt/pouches. Change only pose and hand-held prop placement: arms perfectly straight horizontal sideways at shoulder height palms down, straight symmetrical neutral body and feet shoulder-width apart. Put his same long wood-shaft iron-point javelin AND large oval purple/gold eagle shield separately beside character in empty space below/outside hands, no overlap/contact with character OR each other, full shapes visible. No handheld objects, no weapon across torso. Preserve original equipment, no new outfit. Neutral gray studio backdrop soft even light realistic original style, widen canvas for fingertips plus equipment margins. One person one front view only, remove all Chinese text/labels/borders/watermark.",
+      "tool": "image_gen.imagegen",
+      "qa": "Viewed full image: single character, correct T-pose projection, elite chainmail gloves, spear and shield detached; side profile arms point toward/away camera."
+    },
+    {
+      "view": "side",
+      "output": "art/concepts/tripo/humans/byzantine/javelineer/elite/side.png",
+      "generated_source": "art/concepts/2026-10-04-byzantine-tpose/javelineer-elite/generated/side.png",
+      "generator_output": "/Users/tankaixi/.codex/generated_images/01a10727-6e8e-7031-9a5e-54045cdec48e/exec-034d8088-cd44-448a-aa48-87210a01bce8.png",
+      "original_backup": "Builds/ArtReview/ByzantineTPoseBackup/javelineer/elite/side.png",
+      "sha256": "4ad9c1dd1a59f629c21c2657e99ea8b174ca8adb0ba57e1990a2767ba456f7ae",
+      "original_sha256": "20f351944dac3b61692b1b1d2ffc8fcf70c17bd75c4cda081935745b8b0242c7",
+      "dimensions": [
+        1145,
+        1374
+      ],
+      "prompt": "Use case: precise-object-edit. Image1 original Byzantine ELITE JAVELINEER side outfit; image2 new front T-pose identity and equipment anchor. Make one full-body exact RIGHT-FACING SIDE PROFILE orthographic view in same true anatomical T-pose. Arms straight laterally from shoulders toward/away camera, near chainmail hand seen end-on at shoulder height; arms overlap/foreshorten, NOT extending forward screen-right, no zombie pose. Profile head torso pelvis legs all face right; feet neutral. Preserve round steel/gold helmet cheekguards/neck chainmail, layered steel/gold lamellar, purple/gold long sleeve tunic/eagle skirt, full chainmail gloves, brown belts gray pants boots and original back-mounted spare-javelin carrier with its visible spare shafts. Detach the formerly hand-held long wood-shaft iron javelin and oval purple eagle shield, each entirely separate in clear empty space beside character, NO overlap with body/hands or each other. Shield can show slim profile with readable back handle and edge, spear whole. Same realistic materials/colors as references, neutral gray background soft even light. Full body/props margins, one character one side view, no text labels frame or watermark.",
+      "tool": "image_gen.imagegen",
+      "qa": "Viewed full image: single character, correct T-pose projection, elite chainmail gloves, spear and shield detached; side profile arms point toward/away camera."
+    },
+    {
+      "view": "back",
+      "output": "art/concepts/tripo/humans/byzantine/javelineer/elite/back.png",
+      "generated_source": "art/concepts/2026-10-04-byzantine-tpose/javelineer-elite/generated/back.png",
+      "generator_output": "/Users/tankaixi/.codex/generated_images/01a10727-6e8e-7031-9a5e-54045cdec48e/exec-8cebfd1c-acc9-4225-b335-786ef5a55b86.png",
+      "original_backup": "Builds/ArtReview/ByzantineTPoseBackup/javelineer/elite/back.png",
+      "sha256": "b8036e32847253460c309ec71ef8df7a06eb7e4214e93fa37329b2a644f04603",
+      "original_sha256": "9cbbe8146b546eeb74326f35c619de3f16e5c58fb5f653d852c74f20732a6b8e",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "prompt": "Use case: precise-object-edit. Image1 original Byzantine ELITE JAVELINEER back outfit; image2 approved new front T-pose character. Produce ONE full-body exact BACK orthographic modeling reference in neutral symmetrical T-pose: arms perfectly straight horizontal sideways at shoulder height, palms down, FULL CHAINMAIL gloves, straight legs feet shoulder-width apart, only rear of head. Preserve original round steel/gold riveted helmet and neck chainmail, layered steel/gold back/shoulder/skirt lamellar plates, purple gold embroidered sleeve bands and eagle skirt, belts pouches, gray pants/brown boots, original waist/back-mounted cylindrical spare-javelin carrier on character right rear with spare shafts. Detach hand-held javelin and shield completely: whole wood-shaft iron-point spear standing separately at image left with clear gap beyond hands, oval shield separately at right showing brown wooden interior leather straps/metal rim as in original rear view, no overlap with body/hands or each other. Keep exact outfit/colors/tier, original detailed realistic render style, soft neutral gray studio background. Generous margins all fingertips and props; no text labels/frame/watermark; one character one rear view.",
+      "tool": "image_gen.imagegen",
+      "qa": "Viewed full image: single character, correct T-pose projection, elite chainmail gloves, spear and shield detached; side profile arms point toward/away camera."
+    }
+  ]
+}
