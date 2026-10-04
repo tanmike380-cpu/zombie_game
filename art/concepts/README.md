@@ -1,5 +1,11 @@
 # 游戏概念图总册
 
+## 防御塔实心石墩修订 · 2026-10-05
+
+两国箭塔、炮塔，天朝长城／蜂巢炮塔和拜占庭喷火塔的当前参考改为 **18 张独立视图**。下部是垂直平直的长方体石墩，无门、窗、梯子、阶梯、外棚或下部装饰；保留顶部平台、屋顶、武器与两国配色。防御塔及墙身阻挡双方地面单位，防线通行仅通过木门、石门，取消此前“友军穿过炮楼”的方案。长城保持长条底面，其余塔为方形底面；顶部楼阁的门或台阶不代表地面通路。
+
+本页下方六种塔展示新版独立主视图，侧面／背面分别链接。旧的 2026-09-28 合并母版保留作历史记录，不再定义当前塔楼外观或通行规则。[Tripo 最新导入入口](tripo/README.md) · [天朝生成源和提示词](2026-10-05-solid-towers/tianchao/) · [拜占庭生成源和提示词](2026-10-05-solid-towers/byzantine/)。
+
 ## 手部等级修订 · 2026-09-30
 
 当前所有人类兵种统一按等级区分手部：**民兵裸手，老兵棕色皮革手套，精英锁子甲手套**。天朝精英采用锁甲底手套配小型叠片覆手甲、短红边袖口，属于东方题材游戏化设计，不宣称为某朝高阶军官的制式复原。仅修改手部，身体甲胄、头盔、阵营配色和武器类别保持原方案。拜占庭弓箭手不再手持散箭，弓、弦及箭筒内箭束保留。
@@ -378,27 +384,39 @@
 
 ### 天朝 · 箭塔 · 防御 · 1 时代
 
-![天朝 · 箭塔](2026-09-28-buildings/tianchao/26-arrow-tower.png)
+![天朝 · 箭塔](tripo/buildings/tianchao/26-arrow-tower/front-perspective.png)
+
+[独立侧面](tripo/buildings/tianchao/26-arrow-tower/side.png) · [独立背面](tripo/buildings/tianchao/26-arrow-tower/rear-perspective.png)
 
 ### 拜占庭 · 箭塔 · 防御 · 1 时代
 
-![拜占庭 · 箭塔](2026-09-28-buildings/byzantine/26-arrow-tower.png)
+![拜占庭 · 箭塔](tripo/buildings/byzantine/26-arrow-tower/front-perspective.png)
+
+[独立侧面](tripo/buildings/byzantine/26-arrow-tower/side.png) · [独立背面](tripo/buildings/byzantine/26-arrow-tower/rear-perspective.png)
 
 ### 天朝 · 炮塔 · 防御 · 2 时代
 
-![天朝 · 炮塔](2026-09-28-buildings/tianchao/27-cannon-tower.png)
+![天朝 · 炮塔](tripo/buildings/tianchao/27-cannon-tower/front-perspective.png)
+
+[独立侧面](tripo/buildings/tianchao/27-cannon-tower/side.png) · [独立背面](tripo/buildings/tianchao/27-cannon-tower/rear-perspective.png)
 
 ### 拜占庭 · 炮塔 · 防御 · 2 时代
 
-![拜占庭 · 炮塔](2026-09-28-buildings/byzantine/27-cannon-tower.png)
+![拜占庭 · 炮塔](tripo/buildings/byzantine/27-cannon-tower/front-perspective.png)
+
+[独立侧面](tripo/buildings/byzantine/27-cannon-tower/side.png) · [独立背面](tripo/buildings/byzantine/27-cannon-tower/rear-perspective.png)
 
 ### 天朝 · 长城·蜂巢炮 · 防御 · 3 时代
 
-![天朝 · 长城·蜂巢炮](2026-09-28-buildings/tianchao/28-great-wall.png)
+![天朝 · 长城·蜂巢炮](tripo/buildings/tianchao/28-great-wall/front-perspective.png)
+
+[独立侧面](tripo/buildings/tianchao/28-great-wall/side.png) · [独立背面](tripo/buildings/tianchao/28-great-wall/rear-perspective.png)
 
 ### 拜占庭 · 喷火塔 · 防御 · 3 时代
 
-![拜占庭 · 喷火塔](2026-09-28-buildings/byzantine/29-flame-tower.png)
+![拜占庭 · 喷火塔](tripo/buildings/byzantine/29-flame-tower/front-perspective.png)
+
+[独立侧面](tripo/buildings/byzantine/29-flame-tower/side.png) · [独立背面](tripo/buildings/byzantine/29-flame-tower/rear-perspective.png)
 
 ### 已移除的旧建筑稿
 
@@ -406,4 +424,4 @@
 
 ## 保存与修改约定
 
-总册为唯一入口；Tripo 使用独立视图目录，每个单位、等级、视角分别保存。修订历史由 Git 追溯，不用测试脚本覆盖已确认正式模型。生成底稿保留用于追溯；导入图只做裁切、背景遮罩和留边，不把低分辨率侧视图放大冒充高清图。裁切记录及图片校验和见 `tripo/manifest.json`。
+总册为唯一入口；Tripo 使用独立视图目录，每个单位、等级、视角分别保存。修订历史由 Git 追溯，不用测试脚本覆盖已确认正式模型。生成底稿保留用于追溯；旧合并底稿的导入处理只做裁切、背景遮罩和留边，用户明确要求的图像编辑则保留日期化独立源与提示词，导出器直接复制最终单视图。不把低分辨率侧视图放大冒充高清图。源路径、裁切／复制方式及图片校验和见 `tripo/manifest.json`。

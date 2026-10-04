@@ -1,0 +1,79 @@
+{
+  "tool": "built-in image_gen",
+  "date": "2026-10-05",
+  "request": "Existing upper tower retained; lower body plain solid rectangular stone; no door, ladder, decoration",
+  "entries": [
+    {
+      "kind": "26-arrow-tower",
+      "view": "front-perspective",
+      "source": "art/concepts/2026-10-05-solid-towers/tianchao/26-arrow-tower/front-perspective.png",
+      "target": "art/concepts/tripo/buildings/tianchao/26-arrow-tower/front-perspective.png",
+      "generated_file": "/Users/tankaixi/.codex/generated_images/01a0b065-006f-78f2-8269-19a4b6e193b4/exec-e2dfb5ab-edd0-4a05-b70e-b41555d87536.png",
+      "prompt": "Use case: precise-object-edit. Edit the supplied approved Tianchao RTS 26-arrow-tower concept, a single front three-quarter view. Change ONLY its entire lower supporting body to a plain solid RECTANGULAR PRISM of weathered grey stone blocks, vertical parallel sides, square footprint for the arrow/cannon tower, preserve the original long rectangular footprint for Great Wall. No taper, buttresses, doorway, tunnel, windows, slit, stair, ladder, awning, banners, red posts, railing or trim on the lower stone body. Clean flat stone masonry faces from ground to top platform. Remove all loose props around the base. KEEP the entire existing upper fighting platform, tiled Eastern roof, upper wooden pavilion, weapons, ammunition on the top platform, top flags and cultural colors precisely as original. Upper decoration may remain; the bottom stone pedestal must be absolutely plain and sealed. Preserve original height, perspective, realistic hand-painted material quality and neutral beige background. One building only, full building visible, no labels, no inset views. This is the same tower with a solid rectangular stone base, not a new design."
+    },
+    {
+      "kind": "26-arrow-tower",
+      "view": "side",
+      "source": "art/concepts/2026-10-05-solid-towers/tianchao/26-arrow-tower/side.png",
+      "target": "art/concepts/tripo/buildings/tianchao/26-arrow-tower/side.png",
+      "generated_file": "/Users/tankaixi/.codex/generated_images/01a0b065-006f-78f2-8269-19a4b6e193b4/exec-dd5a294f-441a-45aa-ac61-3d68b73549a0.png",
+      "prompt": "Use case: precise-object-edit. Image1 is original SIDE VIEW of approved Tianchao 26-arrow-tower; Image2 is revised FRONT VIEW for consistency. Produce ONE independent SIDE VIEW of the same building. Keep Image1 camera direction and original entire UPPER fighting platform, roof, pavilion, cannon/arrow racks/nest-of-bees weapons and top flags. Match Image2 new lower body exactly: entire lower support is a plain solid vertical RECTANGULAR PRISM of grey stone blocks, no taper or buttresses. No doors, openings, slit windows, tunnels, stairs, ramps, ladders, banners, wooden posts, side sheds, trim or props on/beside lower body. Upper rooftop contents retained unchanged. Arrow/cannon footprint square, Great Wall long rectangle. Same realistic painterly materials, beige background. Full single building no texts, no triptych."
+    },
+    {
+      "kind": "26-arrow-tower",
+      "view": "rear-perspective",
+      "source": "art/concepts/2026-10-05-solid-towers/tianchao/26-arrow-tower/rear-perspective.png",
+      "target": "art/concepts/tripo/buildings/tianchao/26-arrow-tower/rear-perspective.png",
+      "generated_file": "/Users/tankaixi/.codex/generated_images/01a0b065-006f-78f2-8269-19a4b6e193b4/exec-4cc48ede-01f2-46c2-9467-1996538b9691.png",
+      "prompt": "Use case: precise-object-edit. Image1 is original REAR three-quarter VIEW of approved Tianchao 26-arrow-tower; Image2 is revised FRONT VIEW for consistency. Produce ONE independent REAR three-quarter VIEW of the exact same building. Preserve the REAR camera orientation of Image1, and original entire UPPER fighting platform, tiled roof, pavilion, cannon/arrow racks/nest-of-bees weapons and top flags. Match Image2 new lower body: entire lower support is a plain solid vertical RECTANGULAR PRISM of grey stone blocks, no taper/buttresses. No doors, openings, slit windows, tunnels, stairs, ramps, ladders, banners, wooden posts, side sheds, trim or props on or beside lower body. Upper rooftop contents retained unchanged; rooftop pavilion door may remain. Arrow/cannon square footprint, Great Wall long rectangular footprint. Neutral beige background and realistic painterly materials, full building visible. No text/caption, no triptych, one building only."
+    },
+    {
+      "kind": "27-cannon-tower",
+      "view": "front-perspective",
+      "source": "art/concepts/2026-10-05-solid-towers/tianchao/27-cannon-tower/front-perspective.png",
+      "target": "art/concepts/tripo/buildings/tianchao/27-cannon-tower/front-perspective.png",
+      "generated_file": "/Users/tankaixi/.codex/generated_images/01a0b065-006f-78f2-8269-19a4b6e193b4/exec-6abe82d7-1c40-404a-89f6-f4fd95d84789.png",
+      "prompt": "Use case: precise-object-edit. Edit the supplied approved Tianchao RTS 27-cannon-tower concept, a single front three-quarter view. Change ONLY its entire lower supporting body to a plain solid RECTANGULAR PRISM of weathered grey stone blocks, vertical parallel sides, square footprint for the arrow/cannon tower, preserve the original long rectangular footprint for Great Wall. No taper, buttresses, doorway, tunnel, windows, slit, stair, ladder, awning, banners, red posts, railing or trim on the lower stone body. Clean flat stone masonry faces from ground to top platform. Remove all loose props around the base. KEEP the entire existing upper fighting platform, tiled Eastern roof, upper wooden pavilion, weapons, ammunition on the top platform, top flags and cultural colors precisely as original. Upper decoration may remain; the bottom stone pedestal must be absolutely plain and sealed. Preserve original height, perspective, realistic hand-painted material quality and neutral beige background. One building only, full building visible, no labels, no inset views. This is the same tower with a solid rectangular stone base, not a new design."
+    },
+    {
+      "kind": "27-cannon-tower",
+      "view": "side",
+      "source": "art/concepts/2026-10-05-solid-towers/tianchao/27-cannon-tower/side.png",
+      "target": "art/concepts/tripo/buildings/tianchao/27-cannon-tower/side.png",
+      "generated_file": "/Users/tankaixi/.codex/generated_images/01a0b065-006f-78f2-8269-19a4b6e193b4/exec-b4734d8f-ccd7-41e9-9d21-d9d948857556.png",
+      "prompt": "Use case: precise-object-edit. Image1 is original SIDE VIEW of approved Tianchao 27-cannon-tower; Image2 is revised FRONT VIEW for consistency. Produce ONE independent SIDE VIEW of the same building. Keep Image1 camera direction and original entire UPPER fighting platform, roof, pavilion, cannon/arrow racks/nest-of-bees weapons and top flags. Match Image2 new lower body exactly: entire lower support is a plain solid vertical RECTANGULAR PRISM of grey stone blocks, no taper or buttresses. No doors, openings, slit windows, tunnels, stairs, ramps, ladders, banners, wooden posts, side sheds, trim or props on/beside lower body. Upper rooftop contents retained unchanged. Arrow/cannon footprint square, Great Wall long rectangle. Same realistic painterly materials, beige background. Full single building no texts, no triptych."
+    },
+    {
+      "kind": "27-cannon-tower",
+      "view": "rear-perspective",
+      "source": "art/concepts/2026-10-05-solid-towers/tianchao/27-cannon-tower/rear-perspective.png",
+      "target": "art/concepts/tripo/buildings/tianchao/27-cannon-tower/rear-perspective.png",
+      "generated_file": "/Users/tankaixi/.codex/generated_images/01a0b065-006f-78f2-8269-19a4b6e193b4/exec-9e1dfea4-61cc-4b9b-88bd-0935fb568184.png",
+      "prompt": "Use case: precise-object-edit. Image1 is original REAR three-quarter VIEW of approved Tianchao 27-cannon-tower; Image2 is revised FRONT VIEW for consistency. Produce ONE independent REAR three-quarter VIEW of the exact same building. Preserve the REAR camera orientation of Image1, and original entire UPPER fighting platform, tiled roof, pavilion, cannon/arrow racks/nest-of-bees weapons and top flags. Match Image2 new lower body: entire lower support is a plain solid vertical RECTANGULAR PRISM of grey stone blocks, no taper/buttresses. No doors, openings, slit windows, tunnels, stairs, ramps, ladders, banners, wooden posts, side sheds, trim or props on or beside lower body. Upper rooftop contents retained unchanged; rooftop pavilion door may remain. Arrow/cannon square footprint, Great Wall long rectangular footprint. Neutral beige background and realistic painterly materials, full building visible. No text/caption, no triptych, one building only."
+    },
+    {
+      "kind": "28-great-wall",
+      "view": "front-perspective",
+      "source": "art/concepts/2026-10-05-solid-towers/tianchao/28-great-wall/front-perspective.png",
+      "target": "art/concepts/tripo/buildings/tianchao/28-great-wall/front-perspective.png",
+      "generated_file": "/Users/tankaixi/.codex/generated_images/01a0b065-006f-78f2-8269-19a4b6e193b4/exec-869edf8a-0255-4cda-a489-403a02f2950f.png",
+      "prompt": "Use case: precise-object-edit. Edit the supplied approved Tianchao RTS 28-great-wall concept, a single front three-quarter view. Change ONLY its entire lower supporting body to a plain solid RECTANGULAR PRISM of weathered grey stone blocks, vertical parallel sides, square footprint for the arrow/cannon tower, preserve the original long rectangular footprint for Great Wall. No taper, buttresses, doorway, tunnel, windows, slit, stair, ladder, awning, banners, red posts, railing or trim on the lower stone body. Clean flat stone masonry faces from ground to top platform. Remove all loose props around the base. KEEP the entire existing upper fighting platform, tiled Eastern roof, upper wooden pavilion, weapons, ammunition on the top platform, top flags and cultural colors precisely as original. Upper decoration may remain; the bottom stone pedestal must be absolutely plain and sealed. Preserve original height, perspective, realistic hand-painted material quality and neutral beige background. One building only, full building visible, no labels, no inset views. This is the same tower with a solid rectangular stone base, not a new design."
+    },
+    {
+      "kind": "28-great-wall",
+      "view": "side",
+      "source": "art/concepts/2026-10-05-solid-towers/tianchao/28-great-wall/side.png",
+      "target": "art/concepts/tripo/buildings/tianchao/28-great-wall/side.png",
+      "generated_file": "/Users/tankaixi/.codex/generated_images/01a0b065-006f-78f2-8269-19a4b6e193b4/exec-63bc5199-7586-4594-a7cb-051f6d06ffd5.png",
+      "prompt": "Use case: precise-object-edit. Image1 is original SIDE VIEW of approved Tianchao 28-great-wall; Image2 is revised FRONT VIEW for consistency. Produce ONE independent SIDE VIEW of the same building. Keep Image1 camera direction and original entire UPPER fighting platform, roof, pavilion, cannon/arrow racks/nest-of-bees weapons and top flags. Match Image2 new lower body exactly: entire lower support is a plain solid vertical RECTANGULAR PRISM of grey stone blocks, no taper or buttresses. No doors, openings, slit windows, tunnels, stairs, ramps, ladders, banners, wooden posts, side sheds, trim or props on/beside lower body. Upper rooftop contents retained unchanged. Arrow/cannon footprint square, Great Wall long rectangle. Same realistic painterly materials, beige background. Full single building no texts, no triptych."
+    },
+    {
+      "kind": "28-great-wall",
+      "view": "rear-perspective",
+      "source": "art/concepts/2026-10-05-solid-towers/tianchao/28-great-wall/rear-perspective.png",
+      "target": "art/concepts/tripo/buildings/tianchao/28-great-wall/rear-perspective.png",
+      "generated_file": "/Users/tankaixi/.codex/generated_images/01a0b065-006f-78f2-8269-19a4b6e193b4/exec-093d9ee7-4c44-4b81-ae06-2735beb17cd3.png",
+      "prompt": "Use case: precise-object-edit. Image1 is original REAR three-quarter VIEW of approved Tianchao 28-great-wall; Image2 is revised FRONT VIEW for consistency. Produce ONE independent REAR three-quarter VIEW of the exact same building. Preserve the REAR camera orientation of Image1, and original entire UPPER fighting platform, tiled roof, pavilion, cannon/arrow racks/nest-of-bees weapons and top flags. Match Image2 new lower body: entire lower support is a plain solid vertical RECTANGULAR PRISM of grey stone blocks, no taper/buttresses. No doors, openings, slit windows, tunnels, stairs, ramps, ladders, banners, wooden posts, side sheds, trim or props on or beside lower body. Upper rooftop contents retained unchanged; rooftop pavilion door may remain. Arrow/cannon square footprint, Great Wall long rectangular footprint. Neutral beige background and realistic painterly materials, full building visible. No text/caption, no triptych, one building only."
+    }
+  ]
+}
