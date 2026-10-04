@@ -1,0 +1,627 @@
+{
+  "master_blend": "art/Blender主文件/ZombieGame.blend",
+  "master_sha256": "607f38b2ff9124082cc18b418d873f880b9cb6d74abc886c1b66866c85dc0c70",
+  "protected_objects_verified": 389,
+  "original_user_objects": 33,
+  "scene_objects": 439,
+  "reference_collection": "动画参考 · Unity现用资产",
+  "reference_groups": 10,
+  "actions_in_master": 66,
+  "rig_clips": 32,
+  "archived_rig_clips": 1,
+  "solid_tower_collection": "防御塔 · 实心方正石墩",
+  "playable_collection": "城防实装 · 连续墙＋双炮塔",
+  "playable_meshes": 27,
+  "sealed_join_rays": 4060,
+  "arrow_tower_status": "Missing authored source; no replacement invented",
+  "tower_verification": {
+    "source_master_sha256": "362b1c26fd1265482106fecfeda6fe698e99ed809f30e55b0588447b77a133d8",
+    "towers": {
+      "GateTower": {
+        "protected_upper_vertices": 2427,
+        "closed_surface_rays": 1444,
+        "base_bounds": [
+          -0.341,
+          0.341,
+          -0.25,
+          0.32
+        ],
+        "base_height": 0.395
+      },
+      "FireTower": {
+        "protected_upper_vertices": 3243,
+        "closed_surface_rays": 1444,
+        "base_bounds": [
+          -0.252,
+          0.443,
+          -0.26,
+          0.45
+        ],
+        "base_height": 0.345
+      }
+    },
+    "gallery_towers_updated": 5,
+    "join_rays": 4060,
+    "original_objects_unchanged": 33,
+    "backup": "Builds/ArtReview/SolidDefenseTowers/master-before-solid-towers-20261005-010841.blend",
+    "master_sha256": "7a724f3787ab10874fd0cd3a6d4a612307487075418c61db9fd80dee3840c27c"
+  },
+  "animation_references": [
+    {
+      "identity": "Archer",
+      "source": "Assets/_Game/Art/CoastalImports/Archer/Archer.fbx",
+      "source_sha256": "828458965fdb8b72bd366d7dc1394b07e9ef02481d1a2f9b4cf668a05c093333",
+      "collection": "动作参考 · Archer",
+      "rig": "Archer · BZT archer Elite.001",
+      "comparison": {
+        "compatible": false,
+        "maximum_rest_matrix_error": 1.3530254364013672e-05,
+        "hierarchy_equal": true
+      },
+      "clips": [
+        {
+          "action": "Archer::BZT archer Elite.001|Run",
+          "frames": [
+            1.0,
+            33.0
+          ],
+          "archived": false,
+          "finite_evaluation_samples": 3
+        },
+        {
+          "action": "Archer::BZT archer Elite.001|Attack",
+          "frames": [
+            1.0,
+            49.0
+          ],
+          "archived": false,
+          "finite_evaluation_samples": 3
+        },
+        {
+          "action": "Archer::BZT archer Elite.001|Idle",
+          "frames": [
+            1.0,
+            49.0
+          ],
+          "archived": false,
+          "finite_evaluation_samples": 3
+        }
+      ],
+      "all_actions": [
+        "Archer::ForwardAim|Run",
+        "Archer::StatureTop|Run",
+        "Archer::BZT archer Elite.001|Run",
+        "Archer::ForwardOrigin|Attack",
+        "Archer::ForwardAim|Attack",
+        "Archer::StrideEnd|Attack",
+        "Archer::StrideEnd|Idle",
+        "Archer::StatureTop|Attack",
+        "Archer::ForwardAim|Idle",
+        "Archer::ForwardOrigin|Idle",
+        "Archer::BZT archer Elite.001|Attack",
+        "Archer::BZT archer Elite.001|Idle",
+        "Archer::StrideEnd|Run",
+        "Archer::StatureTop|Idle",
+        "Archer::Muzzle|Attack",
+        "Archer::ForwardOrigin|Run",
+        "Archer::Muzzle|Run",
+        "Archer::Muzzle|Idle"
+      ],
+      "placement": [
+        33.88142204284668,
+        0,
+        0
+      ],
+      "objects": 7
+    },
+    {
+      "identity": "Soldier",
+      "source": "Assets/_Game/Art/CoastalImports/Soldier/Soldier.fbx",
+      "source_sha256": "8735b5f3f95273071377eed1c2256fc832703ce8d0b1a90c31b272460c4d1983",
+      "collection": "动作参考 · Soldier",
+      "rig": "Soldier · medieval soldier 3d model.001",
+      "comparison": {
+        "compatible": false,
+        "maximum_rest_matrix_error": 3.100186586380005e-05,
+        "hierarchy_equal": true
+      },
+      "clips": [
+        {
+          "action": "Soldier::medieval soldier 3d model.001|Run",
+          "frames": [
+            1.0,
+            25.0
+          ],
+          "archived": false,
+          "finite_evaluation_samples": 3
+        },
+        {
+          "action": "Soldier::medieval soldier 3d model.001|Attack",
+          "frames": [
+            1.0,
+            31.0
+          ],
+          "archived": false,
+          "finite_evaluation_samples": 3
+        },
+        {
+          "action": "Soldier::medieval soldier 3d model.001|Idle",
+          "frames": [
+            1.0,
+            41.0
+          ],
+          "archived": false,
+          "finite_evaluation_samples": 3
+        }
+      ],
+      "all_actions": [
+        "Soldier::medieval soldier 3d model.001|Run",
+        "Soldier::medieval soldier 3d model.001|Attack",
+        "Soldier::medieval soldier 3d model.001|Idle"
+      ],
+      "placement": [
+        37.88142204284668,
+        0,
+        0
+      ],
+      "objects": 2
+    },
+    {
+      "identity": "Walker",
+      "source": "Assets/_Game/Art/CoastalImports/Walker/Walker.fbx",
+      "source_sha256": "a02b60316597f1459ed85e97ecb11259dcf5380fb43f432eeee9816fe9200d97",
+      "collection": "动作参考 · Walker",
+      "rig": "Walker · zombie 3d model.002",
+      "comparison": {
+        "compatible": false,
+        "maximum_rest_matrix_error": 1.1473894119262695e-05,
+        "hierarchy_equal": true
+      },
+      "clips": [
+        {
+          "action": "Walker::zombie 3d model.002|Attack",
+          "frames": [
+            1.0,
+            31.0
+          ],
+          "archived": false,
+          "finite_evaluation_samples": 3
+        },
+        {
+          "action": "Walker::zombie 3d model.002|Run",
+          "frames": [
+            1.0,
+            25.0
+          ],
+          "archived": false,
+          "finite_evaluation_samples": 3
+        },
+        {
+          "action": "Walker::zombie 3d model.002|Idle",
+          "frames": [
+            1.0,
+            41.0
+          ],
+          "archived": false,
+          "finite_evaluation_samples": 3
+        }
+      ],
+      "all_actions": [
+        "Walker::zombie 3d model.002|Attack",
+        "Walker::zombie 3d model.002|Run",
+        "Walker::zombie 3d model.002|Idle"
+      ],
+      "placement": [
+        41.88142204284668,
+        0,
+        0
+      ],
+      "objects": 2
+    },
+    {
+      "identity": "ExploderLatest",
+      "source": "Assets/_Game/Art/CoastalImports/ExploderLatest/ExploderLatest.fbx",
+      "source_sha256": "c23dee4201a715ed51045badb74de68ce96e6a7a4f969391f98033b4b45bb282",
+      "collection": "动作参考 · ExploderLatest",
+      "rig": "ExploderLatest · Explode zombie.001",
+      "comparison": {
+        "compatible": true,
+        "maximum_rest_matrix_error": 5.602836608886719e-06,
+        "hierarchy_equal": true
+      },
+      "clips": [
+        {
+          "action": "ExploderLatest::Explode zombie.001|Run",
+          "frames": [
+            1.0,
+            21.0
+          ],
+          "archived": false,
+          "finite_evaluation_samples": 3
+        },
+        {
+          "action": "ExploderLatest::Explode zombie.001|Walk",
+          "frames": [
+            1.0,
+            37.0
+          ],
+          "archived": false,
+          "finite_evaluation_samples": 3
+        },
+        {
+          "action": "ExploderLatest::Explode zombie.001|Idle",
+          "frames": [
+            1.0,
+            31.0
+          ],
+          "archived": false,
+          "finite_evaluation_samples": 3
+        },
+        {
+          "action": "ExploderLatest::Explode zombie.001|Attack",
+          "frames": [
+            1.0,
+            19.0
+          ],
+          "archived": false,
+          "finite_evaluation_samples": 3
+        }
+      ],
+      "all_actions": [
+        "ExploderLatest::Explode zombie.001|Run",
+        "ExploderLatest::Explode zombie.001|Walk",
+        "ExploderLatest::Explode zombie.001|Idle",
+        "ExploderLatest::Explode zombie.001|Attack"
+      ],
+      "placement": [
+        45.88142204284668,
+        0,
+        0
+      ],
+      "objects": 2
+    },
+    {
+      "identity": "Hound",
+      "source": "Assets/_Game/Art/CoastalImports/Hound/Hound.fbx",
+      "source_sha256": "6d9e0d848d590e5a42fec55021c6680d9c177e979cdd4aaf57a81f9d6248d769",
+      "collection": "动作参考 · Hound",
+      "rig": "Hound · Hunger Dog.001",
+      "comparison": {
+        "compatible": true,
+        "maximum_rest_matrix_error": 9.490928221111972e-07,
+        "hierarchy_equal": true
+      },
+      "clips": [
+        {
+          "action": "Hound::Hunger Dog.001|Attack",
+          "frames": [
+            1.0,
+            31.0
+          ],
+          "archived": false,
+          "finite_evaluation_samples": 3
+        },
+        {
+          "action": "Hound::Hunger Dog.001|Run",
+          "frames": [
+            1.0,
+            33.0
+          ],
+          "archived": false,
+          "finite_evaluation_samples": 3
+        },
+        {
+          "action": "Hound::Hunger Dog.001|Idle",
+          "frames": [
+            1.0,
+            49.0
+          ],
+          "archived": false,
+          "finite_evaluation_samples": 3
+        }
+      ],
+      "all_actions": [
+        "Hound::ForwardAim|Attack",
+        "Hound::StatureTop|Run",
+        "Hound::ForwardAim|Idle",
+        "Hound::Hunger Dog.001|Attack",
+        "Hound::ForwardOrigin|Run",
+        "Hound::Hunger Dog.001|Run",
+        "Hound::ForwardOrigin|Idle",
+        "Hound::StatureTop|Idle",
+        "Hound::StrideEnd|Idle",
+        "Hound::Hunger Dog.001|Idle",
+        "Hound::StrideEnd|Attack",
+        "Hound::StatureTop|Attack",
+        "Hound::StrideEnd|Run",
+        "Hound::ForwardAim|Run",
+        "Hound::ForwardOrigin|Attack"
+      ],
+      "placement": [
+        49.88142204284668,
+        0,
+        0
+      ],
+      "objects": 6
+    },
+    {
+      "identity": "Headbutter",
+      "source": "Assets/_Game/Art/CoastalImports/Headbutter/Headbutter.fbx",
+      "source_sha256": "5d0782a970e5a54322927f1290eadce3eb9885d56ddbf858879044a00263f93d",
+      "collection": "动作参考 · Headbutter",
+      "rig": "Headbutter · Hammer zombie.001",
+      "comparison": {
+        "compatible": true,
+        "maximum_rest_matrix_error": 3.2335519790649414e-06,
+        "hierarchy_equal": true
+      },
+      "clips": [
+        {
+          "action": "Headbutter::Hammer zombie.001|Run",
+          "frames": [
+            1.0,
+            49.0
+          ],
+          "archived": false,
+          "finite_evaluation_samples": 3
+        },
+        {
+          "action": "Headbutter::Hammer zombie.001|Attack",
+          "frames": [
+            1.0,
+            120.0
+          ],
+          "archived": false,
+          "finite_evaluation_samples": 3
+        },
+        {
+          "action": "Headbutter::Hammer zombie.001|Idle",
+          "frames": [
+            1.0,
+            41.0
+          ],
+          "archived": false,
+          "finite_evaluation_samples": 3
+        }
+      ],
+      "all_actions": [
+        "Headbutter::Hammer zombie.001|Run",
+        "Headbutter::Hammer zombie.001|Attack",
+        "Headbutter::Hammer zombie.001|Idle"
+      ],
+      "placement": [
+        33.88142204284668,
+        4,
+        0
+      ],
+      "objects": 2
+    },
+    {
+      "identity": "CageBoss",
+      "source": "Assets/_Game/Art/CoastalImports/CageBoss/CageBoss.fbx",
+      "source_sha256": "38a64ac7c31d8e388af2bf64e462f2d0d79188cbb5723ae403ed38dd1d2b0507",
+      "collection": "动作参考 · CageBoss",
+      "rig": "CageBoss · wooden cage zombie.001",
+      "comparison": {
+        "compatible": false,
+        "maximum_rest_matrix_error": 1.0341405868530273e-05,
+        "hierarchy_equal": true
+      },
+      "clips": [
+        {
+          "action": "CageBoss::wooden cage zombie.001|Run",
+          "frames": [
+            1.0,
+            49.0
+          ],
+          "archived": false,
+          "finite_evaluation_samples": 3
+        },
+        {
+          "action": "CageBoss::wooden cage zombie.001|Idle",
+          "frames": [
+            1.0,
+            41.0
+          ],
+          "archived": false,
+          "finite_evaluation_samples": 3
+        },
+        {
+          "action": "CageBoss::wooden cage zombie.001|Attack",
+          "frames": [
+            1.0,
+            31.0
+          ],
+          "archived": false,
+          "finite_evaluation_samples": 3
+        }
+      ],
+      "all_actions": [
+        "CageBoss::wooden cage zombie.001|Run",
+        "CageBoss::wooden cage zombie.001|Idle",
+        "CageBoss::wooden cage zombie.001|Attack"
+      ],
+      "placement": [
+        37.88142204284668,
+        4,
+        0
+      ],
+      "objects": 2
+    },
+    {
+      "identity": "GreekFire",
+      "source": "Assets/_Game/Art/CoastalImports/GreekFire/GreekFire.fbx",
+      "source_sha256": "20b318fe3f3faa5c5dc9fae8fa47882b6b92029132c8495d85ba3651c5ef6c8e",
+      "collection": "动作参考 · GreekFire",
+      "rig": "GreekFire · Greek Fire siege.001",
+      "comparison": {
+        "compatible": true,
+        "maximum_rest_matrix_error": 7.692032113482128e-07,
+        "hierarchy_equal": true
+      },
+      "clips": [
+        {
+          "action": "GreekFire::Greek Fire siege.001|Attack",
+          "frames": [
+            1.0,
+            120.0
+          ],
+          "archived": false,
+          "finite_evaluation_samples": 3
+        }
+      ],
+      "all_actions": [
+        "GreekFire::Axle_bone_22|Attack",
+        "GreekFire::MuzzleForward|Attack",
+        "GreekFire::Greek Fire siege.001|Attack",
+        "GreekFire::Axle_bone_12|Attack",
+        "GreekFire::TurretPivot|Attack",
+        "GreekFire::Muzzle|Attack",
+        "GreekFire::Axle_bone_13|Attack",
+        "GreekFire::Axle_bone_14|Attack"
+      ],
+      "placement": [
+        41.88142204284668,
+        4,
+        0
+      ],
+      "objects": 9
+    },
+    {
+      "identity": "Crossbow",
+      "source": "Assets/_Game/Art/TripoCrossbow/ByzantineCrossbow.fbx",
+      "source_sha256": "b7f5a127dcb5df3bf4bd600abf55d9add8620a15063d9a9e483d17fc16ff81fc",
+      "collection": "动作参考 · Crossbow",
+      "rig": "Crossbow · Armature",
+      "comparison": {
+        "compatible": false,
+        "maximum_rest_matrix_error": 3.8236379623413086e-05,
+        "hierarchy_equal": true
+      },
+      "clips": [
+        {
+          "action": "Crossbow::Armature|Armature|Idle",
+          "frames": [
+            1.0,
+            61.0
+          ],
+          "archived": false,
+          "finite_evaluation_samples": 3
+        },
+        {
+          "action": "Crossbow::Armature|Armature|Archived_Lateral_Run",
+          "frames": [
+            1.0,
+            25.0
+          ],
+          "archived": true,
+          "finite_evaluation_samples": 3
+        },
+        {
+          "action": "Crossbow::Armature|Armature|Run",
+          "frames": [
+            1.0,
+            33.0
+          ],
+          "archived": false,
+          "finite_evaluation_samples": 3
+        },
+        {
+          "action": "Crossbow::Armature|Armature|Aim",
+          "frames": [
+            1.0,
+            31.0
+          ],
+          "archived": false,
+          "finite_evaluation_samples": 3
+        },
+        {
+          "action": "Crossbow::Armature|Armature|Attack",
+          "frames": [
+            1.0,
+            55.0
+          ],
+          "archived": false,
+          "finite_evaluation_samples": 3
+        }
+      ],
+      "all_actions": [
+        "Crossbow::Armature|Armature|Idle",
+        "Crossbow::Armature|Armature|Archived_Lateral_Run",
+        "Crossbow::Armature|Armature|Run",
+        "Crossbow::Armature|Armature|Aim",
+        "Crossbow::Armature|Armature|Attack"
+      ],
+      "placement": [
+        45.88142204284668,
+        4,
+        0
+      ],
+      "objects": 6
+    },
+    {
+      "identity": "Exploder",
+      "source": "Assets/_Game/Art/TripoExploder/TripoExploder.fbx",
+      "source_sha256": "9b8e5fecdc519bf2a389d2ba94afea59fc6c9264ed0ee793c1b9e7bbe2515882",
+      "collection": "动作参考 · Exploder",
+      "rig": "Exploder · Armature",
+      "comparison": {
+        "compatible": false,
+        "reason": "bone_names_or_count_differ",
+        "original_bones": 65,
+        "imported_bones": 67
+      },
+      "clips": [
+        {
+          "action": "Exploder::Armature|Armature|Idle",
+          "frames": [
+            1.0,
+            31.0
+          ],
+          "archived": false,
+          "finite_evaluation_samples": 3
+        },
+        {
+          "action": "Exploder::Armature|Armature|Attack",
+          "frames": [
+            1.0,
+            19.0
+          ],
+          "archived": false,
+          "finite_evaluation_samples": 3
+        },
+        {
+          "action": "Exploder::Armature|Armature|Walk",
+          "frames": [
+            1.0,
+            37.0
+          ],
+          "archived": false,
+          "finite_evaluation_samples": 3
+        },
+        {
+          "action": "Exploder::Armature|Armature|Run",
+          "frames": [
+            1.0,
+            21.0
+          ],
+          "archived": false,
+          "finite_evaluation_samples": 3
+        }
+      ],
+      "all_actions": [
+        "Exploder::Armature|Armature|Idle",
+        "Exploder::Armature|Armature|Attack",
+        "Exploder::Armature|Armature|Walk",
+        "Exploder::Armature|Armature|Run"
+      ],
+      "placement": [
+        49.88142204284668,
+        4,
+        0
+      ],
+      "objects": 2
+    }
+  ],
+  "animation_backup": "Builds/ArtReview/RuntimeActionConsolidation/master-before-actions-20261005-011932.blend"
+}

@@ -77,7 +77,7 @@ namespace ZombieGame.World
                     animation_age=characters.locomotion_time(battle.stats_for(i).id,travelled[i],model_scale,animation_age);
                 bool gate_outline=false;
                 if(human)foreach(var building in battle.buildings)
-                    if(building.health>0&&building.label=="GATE TOWER"&&building.bounds.Contains(battle.positions[i]+Vector3.up))gate_outline=true;
+                    if(building.health>0&&BattleSimulation.is_friendly_gate(building.label)&&building.bounds.Contains(battle.positions[i]+Vector3.up))gate_outline=true;
                 characters.add(human,pose,pose==CharacterPose.Attack||pose==CharacterPose.MeleeAttack?age:animation_age,battle.positions[i],rotation,battle.exploder[i],model_scale,battle.stats_for(i).id,attack_window,gate_outline);
                 if(human&&battle.stats_for(i).ammunition_type=="gunpowder"&&!battle.last_attack_melee[i]&&battle.attack_started_at[i]>seen_shots[i])
                 { seen_shots[i]=battle.attack_started_at[i];effects.fire(characters.human_muzzle(battle.positions[i],rotation),rotation*Vector3.forward); }

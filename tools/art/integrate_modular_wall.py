@@ -82,6 +82,9 @@ def export_registered_piece(scene, mesh, identity, origin, yaw, source_name, tow
     bind_export_texture(mesh, texture, identity)
     record = export_model(obj, identity, shared_texture=texture)
     record["master_source_object"] = source_name
+    if tower:
+        record["friendly_passage"] = False
+        record["solid_defense_tower"] = True
     sideways = yaw in (90, 270)
     points = [map_unity_point(vertex.co, origin, yaw) for vertex in mesh.vertices]
     low = Vector(tuple(min(point[axis] for point in points) for axis in range(3)))
@@ -97,6 +100,9 @@ def export_registered_piece(scene, mesh, identity, origin, yaw, source_name, tow
               "yaw": yaw, "scale": 1,
               "expected_bounds_min": {"x": low.x, "y": low.y, "z": low.z},
               "expected_bounds_max": {"x": high.x, "y": high.y, "z": high.z}}
+    if tower:
+        region["friendly_passage"] = False
+        region["solid_defense_tower"] = True
     obj.location = (origin[0], origin[1], 0)
     obj.rotation_euler.z = math.radians(180 - yaw)
     obj["unity_asset"] = identity

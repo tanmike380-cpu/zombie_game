@@ -49,7 +49,7 @@ namespace ZombieGame.World
                 if(region.kind!=LandscapeKind.Building||is_wall(region.label)||region.label=="COMMAND HALL"||region.label=="OUTPOST")continue;
                 Vector3 destination=region.bounds.center;
                 roads.Add(new Vector4(headquarters.x,headquarters.z,destination.x,destination.z));
-                if(region.label=="GATE TOWER")
+                if(ZombieGame.Combat.BattleSimulation.is_friendly_gate(region.label))
                 {
                     var outward=destination-headquarters;outward.y=0;outward.Normalize();
                     roads.Add(new Vector4(destination.x,destination.z,destination.x+outward.x*18,destination.z+outward.z*18));

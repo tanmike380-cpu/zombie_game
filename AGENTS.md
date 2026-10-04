@@ -61,6 +61,10 @@
   Preserve minimap right-click movement and A-left-click attack; suppress edge pan over the minimap.
 - Friendly unit/building damage produces bounded, merging, expiring red minimap warnings.
   Enemy damage alone must not warn; warning presentation must never reveal fog or emit noise.
+- Defensive towers (arrow, cannon and flame towers) have solid rectangular stone pedestals.
+  Preserve their authored upper structures; no doorway, ladder or passage in the lower body.
+  Both factions are blocked by living towers. Friendly passage is restricted to stone and
+  wooden gates; do not restore the former gate-tower passage or interior silhouette feature.
 - All living zombies, including previously alerted or settled ones, may hear new gunshots.
   Newer audible emissions replace old sound memory; delayed older waves cannot restore old goals.
   Visible-human pursuit has priority. Zombie explosions never emit attraction noise.

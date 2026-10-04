@@ -19,7 +19,7 @@ namespace ZombieGame.World
         {
             foreach(var building in game.current.buildings)
             {
-                if(building.label!="GATE TOWER"||building.health<=0||!landscape.building_models.TryGetValue(building.bounds,out var model))continue;
+                if(!BattleSimulation.is_friendly_gate(building.label)||building.health<=0||!landscape.building_models.TryGetValue(building.bounds,out var model))continue;
                 bool occupied=false;
                 for(int i=0;i<game.current.soldier_count;i++)
                     if(game.current.health[i]>0&&!game.current.is_reserve(i)&&building.bounds.Contains(game.current.positions[i]+Vector3.up)) {occupied=true;break;}
@@ -37,7 +37,7 @@ namespace ZombieGame.World
             {
                 if(region.kind!=LandscapeKind.Building)continue;
                 var building=game.current.add_building_target(region.bounds,region.label,region.label=="COMMAND HALL");
-                if(game.map.coastal)navigation_obstacles.Add(building,region.label=="GATE TOWER"
+                if(game.map.coastal)navigation_obstacles.Add(building,BattleSimulation.is_friendly_gate(region.label)
                     ?game.current.crowd.add_friendly_gate(region.bounds):game.current.crowd.add_building(region.bounds));
                 if(game.map.coastal&&building.fortification)game.current.friendly_parapets.Add(region.bounds);
                 if(region.label=="GATE TOWER"||region.label=="FIRE TOWER")

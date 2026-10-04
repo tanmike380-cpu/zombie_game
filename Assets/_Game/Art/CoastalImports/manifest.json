@@ -74,7 +74,7 @@
     },
     {
       "id": "GateTower",
-      "source": "stone fortress 3d model",
+      "source": "\u70ae\u5854 \u00b7 \u5b9e\u5fc3\u65b9\u6b63\u77f3\u58a9",
       "rig_bones": 0,
       "clips": [],
       "materials": [
@@ -88,7 +88,12 @@
             1.0
           ]
         }
-      ]
+      ],
+      "master_source_object": "\u70ae\u5854 \u00b7 \u5b9e\u5fc3\u65b9\u6b63\u77f3\u58a9",
+      "source_original_object": "stone fortress 3d model",
+      "friendly_passage": false,
+      "source_master": "art/Blender\u4e3b\u6587\u4ef6/ZombieGame.blend",
+      "solid_defense_tower": true
     },
     {
       "id": "Pasture",
@@ -190,7 +195,7 @@
     },
     {
       "id": "FireTower",
-      "source": "fire siege tower",
+      "source": "\u55b7\u706b\u5854 \u00b7 \u5b9e\u5fc3\u65b9\u6b63\u77f3\u58a9",
       "rig_bones": 0,
       "clips": [],
       "materials": [
@@ -203,8 +208,23 @@
             0.800000011920929,
             1.0
           ]
+        },
+        {
+          "name": "tripo_mat_6a319d87",
+          "texture": "tripo_image_6a319d87_0.png",
+          "color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ]
         }
-      ]
+      ],
+      "master_source_object": "\u55b7\u706b\u5854 \u00b7 \u5b9e\u5fc3\u65b9\u6b63\u77f3\u58a9",
+      "source_original_object": "fire siege tower",
+      "friendly_passage": false,
+      "source_master": "art/Blender\u4e3b\u6587\u4ef6/ZombieGame.blend",
+      "solid_defense_tower": true
     },
     {
       "id": "WalkerUnrigged",
@@ -435,7 +455,7 @@
       "clips": [],
       "materials": [
         {
-          "name": "tripo_mat_6a319d87.002",
+          "name": "tripo_mat_6a319d87.001",
           "texture": "../GateTower/tripo_image_6a319d87_0.png",
           "color": [
             0.800000011920929,
@@ -446,6 +466,8 @@
         }
       ],
       "master_source_object": "15_Tower_Multiple \u00b7 CannonTower_2x2.003",
+      "friendly_passage": false,
+      "solid_defense_tower": true,
       "rectangular_lower_body": true,
       "master_blend": "art/Blender\u4e3b\u6587\u4ef6/ZombieGame.blend"
     },
@@ -456,7 +478,7 @@
       "clips": [],
       "materials": [
         {
-          "name": "tripo_mat_6a319d87.003",
+          "name": "tripo_mat_6a319d87.002",
           "texture": "../GateTower/tripo_image_6a319d87_0.png",
           "color": [
             0.800000011920929,
@@ -467,6 +489,8 @@
         }
       ],
       "master_source_object": "15_Tower_Multiple \u00b7 CannonTower_2x2.004",
+      "friendly_passage": false,
+      "solid_defense_tower": true,
       "rectangular_lower_body": true,
       "master_blend": "art/Blender\u4e3b\u6587\u4ef6/ZombieGame.blend"
     },

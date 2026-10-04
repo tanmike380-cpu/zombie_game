@@ -19,11 +19,15 @@ namespace ZombieGame.Combat
     }
     public partial class BattleSimulation
     {
+        /// <summary>Only authored doors grant friendly passage; defensive towers remain solid.</summary>
+        public static bool is_friendly_gate(string label)
+        {return label=="STONE GATE"||label=="WOODEN GATE"||label=="WOOD GATE"||label=="石门"||label=="木门";}
         public readonly List<BattleBuilding> buildings=new List<BattleBuilding>();
         public Action<BattleBuilding> building_infected;
         public Action<BattleBuilding> building_destroyed;
         public static bool is_fortification(string label)
         {
+            if(is_friendly_gate(label))return true;
             string name=(label??string.Empty).ToUpperInvariant();
             foreach(string token in new[]{"WALL","TOWER","BASTION","FORTRESS","OUTPOST","PALISADE","GATE","城墙","木墙","石墙","塔","城门","哨站"})
                 if(name.Contains(token))return true;

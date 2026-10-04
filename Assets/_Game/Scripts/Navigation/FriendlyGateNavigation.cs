@@ -28,7 +28,7 @@ namespace ZombieGame.Navigation
         {
             if(!gate_areas.ContainsKey(bounds))throw new ArgumentException("Gate was not included in the navigation bake");
             var root_object=new GameObject("Friendly gate corridor");root_object.transform.SetParent(root.transform,false);
-            // Same 72%-wide centre corridor as the accepted Blender preview, scaled with the original tower.
+            // Door-only corridor: caller filters stone/wood gates; defensive towers use solid carving.
             float jamb=bounds.size.x*.14f;
             foreach(float side in new[]{-1f,1f})
             {

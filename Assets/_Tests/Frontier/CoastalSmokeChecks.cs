@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using ZombieGame.World;
 using ZombieGame.Balance;
+using ZombieGame.Combat;
 
 namespace ZombieGame.FrontierTests
 {
@@ -28,7 +29,7 @@ namespace ZombieGame.FrontierTests
             foreach(var building in game.current.buildings)
             {
                 if(building.label.Contains("WALL"))walls++;
-                int navigation_mask=building.label=="GATE TOWER"?game.current.crowd.agents[game.current.soldier_count].areaMask:NavMesh.AllAreas;
+                int navigation_mask=BattleSimulation.is_friendly_gate(building.label)?game.current.crowd.agents[game.current.soldier_count].areaMask:NavMesh.AllAreas;
                 require(!NavMesh.SamplePosition(new Vector3(building.bounds.center.x,0,building.bounds.center.z),out var hit,.1f,navigation_mask),"building footprint blocks enemies "+building.label);
             }
             require(walls>=6&&walls==game.map.regions.FindAll(region=>region.label.Contains("WALL")).Count,"all source-authored wall regions participate in defense");

@@ -37,9 +37,42 @@ namespace ZombieGame.FrontierTests
             yield return check_gate(new Vector3(10,2,9));
             var map=new FrontierMap(true,CoastalSessionConfig.load());
             var gate=map.regions.Find(region=>region.label=="GATE TOWER");
-            require(gate.art_authored_transform,"large gate fixture reads the Blender handoff");
-            yield return check_gate(gate.bounds.size);
+            require(gate.art_authored_transform,"solid tower fixture reads the Blender handoff");
+            yield return check_solid_tower(gate.bounds.size);
             Debug.Log("[CoastalOrders] PASS partial A routes, breach recovery, four corner formations");
+        }
+        private static IEnumerator check_solid_tower(Vector3 size)
+        {
+            foreach(string label in new[]{"GATE TOWER","FIRE TOWER","ARROW TOWER","箭塔","炮塔","喷火塔"})
+                require(!BattleSimulation.is_friendly_gate(label),"tower cannot grant friendly passage: "+label);
+            foreach(string label in new[]{"STONE GATE","WOODEN GATE","石门","木门"})
+                require(BattleSimulation.is_friendly_gate(label)&&BattleSimulation.is_fortification(label),
+                    "ordinary door keeps friendly passage and noninfecting defense status: "+label);
+            var tower=new Bounds(new Vector3(0,size.y*.5f,0),size);
+            float wall_width=128-size.x*.5f,wall_center=size.x*.5f+wall_width*.5f,travel=size.z*.5f+8;
+            var walls=new[]{new Bounds(new Vector3(-wall_center,1,0),new Vector3(wall_width,2,size.z)),
+                new Bounds(new Vector3(wall_center,1,0),new Vector3(wall_width,2,size.z))};
+            using(var battle=new BattleSimulation(new[]{new Vector3(0,0,-travel),new Vector3(2,0,travel)},1,new bool[2],walls,
+                unit_ids:new[]{"heavy_crossbowman","walker"}))
+            {
+                var obstacle=battle.crowd.add_building(tower);
+                yield return new WaitForSeconds(.5f);
+                var path=new NavMeshPath();battle.crowd.agents[1].enabled=true;
+                for(int index=0;index<2;index++)
+                {
+                    var target=new Vector3(index*2,0,index==0?travel:-travel);
+                    require(battle.crowd.agents[index].CalculatePath(target,path)&&path.status==NavMeshPathStatus.PathPartial,
+                        "living solid tower blocks faction "+index);
+                }
+                battle.crowd.remove_building(tower,obstacle);yield return new WaitForSeconds(.5f);
+                for(int index=0;index<2;index++)
+                {
+                    var target=new Vector3(index*2,0,index==0?travel:-travel);
+                    require(battle.crowd.agents[index].CalculatePath(target,path)&&path.status==NavMeshPathStatus.PathComplete,
+                        "destroyed solid tower opens faction "+index);
+                }
+            }
+            Debug.Log("[CoastalSolidTower] PASS both factions blocked, destroyed tower opens, only wood/stone gates grant passage; footprint="+size);
         }
         private static IEnumerator check_gate(Vector3 size)
         {

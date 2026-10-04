@@ -69,7 +69,7 @@ namespace ZombieGame.World
             map=new FrontierMap(coastal_defense,session_config);
             landscape=new FrontierLandscape(map,transform,landscape_shader);
             var navigation_regions=coastal_defense?map.regions.FindAll(region=>region.kind!=LandscapeKind.Building).ConvertAll(region=>region.bounds).ToArray():map.blockers;
-            var gate_bounds=coastal_defense?map.regions.FindAll(region=>region.label=="GATE TOWER").ConvertAll(region=>region.bounds).ToArray():null;
+            var gate_bounds=coastal_defense?map.regions.FindAll(region=>BattleSimulation.is_friendly_gate(region.label)).ConvertAll(region=>region.bounds).ToArray():null;
             current=new BattleSimulation(map.spawns,FrontierMap.HUMAN_CAPACITY,map.explosive,navigation_regions,initial_humans:map.initial_humans,unit_ids:map.unit_ids,infection_reserve:1024,friendly_gates:gate_bounds);
             economy=new FrontierEconomy(JsonUtility.FromJson<FrontierEconomyConfig>(Resources.Load<TextAsset>("FrontierEconomy").text));
             current.try_supply_defense_shot=stats=>

@@ -37,11 +37,15 @@ namespace ZombieGame.FrontierTests
             string folder=Path.Combine(app_folder.Parent.FullName,"ArtReview/CoastalSkirmish");Directory.CreateDirectory(folder);
             yield return check_rendered_shadows();
             yield return new WaitForEndOfFrame();ScreenCapture.CaptureScreenshot(Path.Combine(folder,"briefing.png"));
+            CoastalControlChecks.check_briefing(game);
             game.begin_session();require(game.can_control&&!game.is_paused,"start enables player controls");
+            // Runtime carving updates after resuming; do not issue orders in the same paused frame.
+            yield return null;yield return null;
+            CoastalControlChecks.check_live_orders(game);
             camera_fixture=false;Camera.main.orthographicSize=12;game.focus_camera(new Vector3(-91,0,-72));
             yield return new WaitForEndOfFrame();ScreenCapture.CaptureScreenshot(Path.Combine(folder,"detail.png"));
             yield return null;camera_fixture=true;
-            yield return check_gate_presentation(folder);
+            yield return check_tower_presentation(folder);
             int recruit=Array.FindIndex(game.production.config.recipes,recipe=>recipe.recruit_id=="heavy_crossbowman");
             require(game.production.enqueue(recruit,game.current.reserve_soldiers),"recruit queue accepts supported archer");
             game.production.step(game.production.config.recipes[recruit].seconds+.1f,game.finish_production);
@@ -81,42 +85,16 @@ namespace ZombieGame.FrontierTests
             camera_fixture=false;yield return new WaitForSecondsRealtime(1);Application.Quit(0);
         }
         private ZombieGame.Combat.BattleSimulation current_battle()=>game.current;
-        private IEnumerator check_gate_presentation(string folder)
+        private IEnumerator check_tower_presentation(string folder)
         {
-            var gate=game.current.buildings.Find(building=>building.label=="GATE TOWER");
-            int unit=-1;float nearest=float.PositiveInfinity;
-            for(int i=0;i<game.current.soldier_count;i++)
-            {
-                if(game.current.is_reserve(i)||game.current.stats_for(i).id!="heavy_crossbowman")continue;
-                float distance=(game.current.positions[i]-gate.bounds.center).sqrMagnitude;
-                if(distance<nearest){nearest=distance;unit=i;}
-            }
-            require(unit>=0,"gate visual fixture has original infantry");
-            var start=game.current.positions[unit];
-            camera_fixture=true;fixture_zoom=Mathf.Max(12,gate.bounds.size.x*.85f);fixture_focus=gate.bounds.center;
+            var tower=game.current.buildings.Find(building=>building.label=="GATE TOWER");
+            require(!ZombieGame.Combat.BattleSimulation.is_friendly_gate(tower.label),"defensive tower is solid, not a friendly door");
+            camera_fixture=true;fixture_zoom=Mathf.Max(12,tower.bounds.size.x*.85f);fixture_focus=tower.bounds.center;
             yield return null;yield return new WaitForEndOfFrame();
             ScreenCapture.CaptureScreenshot(Path.Combine(folder,"wall-tower-joins.png"));
-            require(game.current.issue_order(unit,ZombieGame.Combat.SoldierOrder.Move,
-                gate.bounds.center+Vector3.forward*(gate.bounds.extents.z+4)),"gate visual route accepted");
-            bool captured=false;
-            for(float end=Time.time+15;Time.time<end;)
-            {
-                yield return null;
-                if(!gate.bounds.Contains(game.current.positions[unit]+Vector3.up)||Mathf.Abs(game.current.positions[unit].z-gate.bounds.center.z)>1)continue;
-                yield return new WaitForEndOfFrame();
-                ScreenCapture.CaptureScreenshot(Path.Combine(folder,"friendly-gate.png"));
-                var pixels=new Texture2D(Screen.width,Screen.height,TextureFormat.RGB24,false);
-                pixels.ReadPixels(new Rect(0,0,Screen.width,Screen.height),0,0);pixels.Apply();
-                var point=Camera.main.WorldToScreenPoint(game.current.positions[unit]+Vector3.up);
-                int blue=0;
-                for(int y=Mathf.Max(0,(int)point.y-45);y<Mathf.Min(Screen.height,(int)point.y+45);y++)
-                    for(int x=Mathf.Max(0,(int)point.x-35);x<Mathf.Min(Screen.width,(int)point.x+35);x++)
-                    {var colour=pixels.GetPixel(x,y);if(colour.b>colour.r+.15f&&colour.g>colour.r+.12f)blue++;}
-                Destroy(pixels);require(blue>8,"occluded friendly has actual blue silhouette pixels");
-                captured=true;Debug.Log("[CoastalGateVisual] PASS blue silhouette pixels="+blue);break;
-            }
-            require(captured,"friendly reaches real tower in time");
-            game.current.issue_order(unit,ZombieGame.Combat.SoldierOrder.Move,start);
+            require(!UnityEngine.AI.NavMesh.SamplePosition(new Vector3(tower.bounds.center.x,0,tower.bounds.center.z),
+                out _,.1f,UnityEngine.AI.NavMesh.AllAreas),"living defensive tower blocks both factions");
+            Debug.Log("[CoastalTowerVisual] PASS solid source tower, no friendly passage or transparency");
             fixture_focus=new Vector3(-73,0,-87);fixture_zoom=40;camera_fixture=true;
         }
         private IEnumerator check_rendered_shadows()
