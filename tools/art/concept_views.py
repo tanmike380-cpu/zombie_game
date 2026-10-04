@@ -7,6 +7,7 @@ are generated separately with image_gen, never fabricated by this exporter.
 import argparse
 import hashlib
 import json
+import shutil
 from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageOps
@@ -76,7 +77,14 @@ def export_manifest(manifest_path):
         for view in asset["views"]:
             source_path = CONCEPT_ROOT / view["source"]
             output_path = EXPORT_ROOT / asset["id"] / (view["name"] + ".png")
-            metadata = export_crop(source_path, output_path, view["box"], view.get("exclusions"), view.get("polygon"), view.get("erase"))
+            if view.get("copy_source"):
+                output_path.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copyfile(source_path, output_path)
+                with Image.open(output_path) as image:
+                    metadata = {"width": image.width, "height": image.height,
+                                "sha256": hashlib.sha256(output_path.read_bytes()).hexdigest()}
+            else:
+                metadata = export_crop(source_path, output_path, view["box"], view.get("exclusions"), view.get("polygon"), view.get("erase"))
             view.update(metadata)
             count += 1
     manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n")

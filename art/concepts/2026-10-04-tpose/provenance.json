@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-04",
+  "tool": "built-in image_gen",
+  "asset": "zombies/06-headram",
+  "purpose": "Replace three individual Tripo concept views with neutral T-pose binding references without redesigning the character",
+  "validation": "Images visually inspected; three individual views, no collage. AI views are not metrically calibrated; Tripo generation and rigging have not been tested.",
+  "views": [
+    {
+      "view": "front",
+      "generated_file": "exec-02621e9b-177b-47f7-a231-93ac62fd6da6.png",
+      "prompt": "Use case: precise-object-edit. Asset: single FRONT orthographic full-body T-POSE reference for Tripo automatic humanoid rigging. Images 1/2/3 are the same existing head-ram giant zombie front, side and back; preserve this EXACT character identity, original massive muscular proportions, huge blunt bone-plated forehead, pale mottled beige-grey skin, brown rope wrappings, ragged burgundy and ochre patterned cloth, stone-like shoulder knobs, bare feet and original texture realism. Change ONLY pose/camera: one character facing directly forward, torso upright neutral bind posture (not lunging or stooping), shoulders level, both upper arms and forearms straight horizontally extended at shoulder height into a clear T, palms down with hands open and gently separated fingers, relaxed straight wrists, legs straight shoulder width apart with space between them, both feet flat forward, head looking forward centered, retain the giant's thick neck and hunched anatomical shoulder mass but lift face clear of chest. Full silhouette including BOTH fingertips and feet entirely inside frame with ample padding. Single isolated creature ONLY, neutral light grey studio background, soft even lighting consistent with supplied references. NOT triptych, NOT a collage, no weapons, no new armor, no redesign, no labels, no text, no skeleton lines, no extra people. Preserve existing face/skull and all clothing and color details; no aggressive perspective. Landscape or square frame wide enough for the long T arms."
+    },
+    {
+      "view": "back",
+      "generated_file": "exec-e448dc07-f1de-4cc1-aba0-0c995f3daaf4.png",
+      "prompt": "Use case: precise-object-edit. Produce ONE isolated BACK orthographic full-body view of the exact head-ram giant zombie in Image 1's T-pose. Image 1 is approved front T-pose identity/proportions/pose; Image 2 is original BACK clothing/rope/skin reference. Rotate camera 180 degrees only, show the BACK, no face. Keep same body, massive muscular forearms, short sturdy legs, huge shoulders, mottled beige grey skin, dark red/ochre tattered cloth and heavy rope wrapping. Bind pose: upright, both arms completely straight extended horizontally at shoulder height, palms down, gently open fingers, straight neutral wrists, legs separated shoulder width with feet flat. Keep garments and back pattern from Image 2, do not redesign or add armor. Single character one view, neutral grey background, soft even light matching Image 1. Wide landscape frame fits all fingertips and feet with padding. No text, no collage, no second character, no skeleton, no action pose. Match frontal T-pose dimensions and proportions precisely."
+    },
+    {
+      "view": "side",
+      "generated_file": "exec-7529455e-76f0-4802-bc2a-312a87b2b942.png",
+      "prompt": "Use case: precise-object-edit. ONE exact RIGHT PROFILE / SIDE orthographic view of the head-ram giant from Image1 in identical upright neutral T-POSE, facing image RIGHT. Image1 is new FRONT T-pose identity and posture; Image2 supplies original SIDE skull/clothes/rope details, NOT its bent pose. Rotate camera 90 degrees around Image1 without changing posture: the arms remain extended sideways from body, meaning the near arm projects TOWARD the camera and the far arm projects AWAY and is hidden behind it. Show foreshortened near hand/arm at shoulder height, DO NOT extend arms forward in front of the chest (that would be a different pose). Straight relaxed wrists, palms down, torso upright, knees extended, feet flat aligned, same giant long arms/short stout legs/huge shoulder and thick head-ram skull, pale mottled skin, brown ropes, torn burgundy/ochre cloth. Preserve all shapes colors materials from references and original skull, no redesign. Full body, single character one view, grey studio background, neutral diffuse light, no perspective, no text, no diagram, no collage, no action, no crouch. Center figure on a square frame and keep complete feet/skull/hand visible."
+    }
+  ]
+}

@@ -37935,46 +37935,49 @@
       "id": "zombies/06-headram",
       "label": "zombies/06-headram",
       "category": "zombie",
-      "projection": "AI reference views; not a calibrated orthographic reconstruction",
+      "projection": "T-pose binding reference views; AI images, not calibrated orthographic reconstruction; rigging not yet tested",
       "views": [
         {
           "name": "front",
-          "source": "2026-09-30-turnarounds/zombies--06-headram.png",
+          "source": "2026-10-04-tpose/06-headram/front.png",
+          "copy_source": true,
           "box": [
-            2,
             0,
-            680,
-            768
+            0,
+            1536,
+            1024
           ],
-          "width": 718,
-          "height": 808,
-          "sha256": "d31afd2fb187b9a9a080a247803839c1bef4ba4210c977d36933a14ec24c7f39"
+          "width": 1536,
+          "height": 1024,
+          "sha256": "ad1933fa95a6ef100bb52b606ac0d132090dc6cf78682efc87ed08f34798a4f2"
         },
         {
           "name": "side",
-          "source": "2026-09-30-turnarounds/zombies--06-headram.png",
+          "source": "2026-10-04-tpose/06-headram/side.png",
+          "copy_source": true,
           "box": [
-            684,
             0,
-            1363,
-            768
+            0,
+            1254,
+            1254
           ],
-          "width": 719,
-          "height": 808,
-          "sha256": "868c858e677779c141beba7883a711f5469b22f0821b67a315ee4643a66dc98e"
+          "width": 1254,
+          "height": 1254,
+          "sha256": "f7dfef113416431c37e52e22d05400f13527f603e3435f8bd3ec40806ce01f37"
         },
         {
           "name": "back",
-          "source": "2026-09-30-turnarounds/zombies--06-headram.png",
+          "source": "2026-10-04-tpose/06-headram/back.png",
+          "copy_source": true,
           "box": [
-            1367,
             0,
-            2046,
-            768
+            0,
+            1536,
+            1024
           ],
-          "width": 719,
-          "height": 808,
-          "sha256": "1b78c4c08f3c1f00d55b2e4028e4f28f946216030e6fd99fd7c5f92f5529820c"
+          "width": 1536,
+          "height": 1024,
+          "sha256": "d57f8d2cfe2d8c9ab982455e2547b6468fd7e42d659ae5dc82e5e8a9676f12c1"
         }
       ]
     },
