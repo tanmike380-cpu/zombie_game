@@ -50,8 +50,15 @@ def check_asset_inventory(manifest):
         if {asset["id"] for asset in assets if asset["category"] == "weapon"} != expected_weapons:
             raise ValueError("Expected the eight authored faction weapon designs")
         archive = manifest.get("archived_assets", [])
-        if len(archive) != 24 or any(asset["category"] != "human" for asset in archive):
+        archive_counts = Counter(asset["category"] for asset in archive)
+        expected_archive = {"human": 24, "building": 6} if manifest.get("version", 1) >= 3 else {"human": 24}
+        if archive_counts != expected_archive:
             raise ValueError("Preserve all 24 prior human reference variants in the inactive archive")
+        if manifest.get("version", 1) >= 3:
+            from tools.art.tower_concepts import TOWER_FOOTPRINTS, check_tower_roster
+            if {asset["id"] for asset in archive if asset["category"] == "building"} != set(TOWER_FOOTPRINTS):
+                raise ValueError("Preserve all six prior tower variants in the inactive archive")
+            check_tower_roster([asset for asset in assets if "previous_id" in asset])
     all_assets = assets + manifest.get("archived_assets", [])
     if len({asset["id"] for asset in all_assets}) != len(all_assets):
         raise ValueError("Duplicate active/archive asset IDs")

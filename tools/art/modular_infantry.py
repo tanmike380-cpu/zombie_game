@@ -20,7 +20,7 @@ def build_manifest(current_manifest, bodies, weapons):
     archive_by_id = {asset["id"]: asset for asset in archive}
     retained_assets = [asset for asset in current_manifest["assets"]
                        if not asset["id"].startswith(("humans/", "weapons/"))]
-    updated_manifest = dict(current_manifest, version=2,
+    updated_manifest = dict(current_manifest, version=max(2, current_manifest.get("version", 1)),
                             assets=retained_assets + bodies + weapons,
                             archived_assets=list(archive_by_id.values()))
     check_asset_inventory(updated_manifest)

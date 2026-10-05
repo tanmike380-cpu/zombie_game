@@ -11,11 +11,14 @@ from PIL import Image
 
 from tools.art.concept_review import check_asset_inventory, check_asset_views, check_view_file
 from tools.art.modular_infantry import build_manifest
+from tools.art.tower_concepts import TOWER_FOOTPRINTS, build_tower_manifest
 
 
 def make_asset(identity, category):
     """Create metadata-only test fixtures; no concept artwork is generated."""
     names = ("reference",) if category == "weapon" else ("front", "side", "back")
+    if category == "building":
+        names = ("front-perspective", "side", "rear-perspective")
     return {"id": identity, "category": category, "views": [{"name": name} for name in names]}
 
 
@@ -34,7 +37,50 @@ def make_catalog():
     return {"version": 1, "assets": retained + archive}, bodies, weapons
 
 
+def make_tower_delivery():
+    """Create a modular fixture with real tower IDs and six footprint variants."""
+    previous, bodies, weapons = make_catalog()
+    manifest = build_manifest(previous, bodies, weapons)
+    building_assets = [asset for asset in manifest["assets"] if asset["category"] == "building"]
+    towers = []
+    for original, (identity, footprint) in zip(building_assets, TOWER_FOOTPRINTS.items()):
+        original["id"] = identity
+        tower = make_asset(identity + "-footprint-v2", "building")
+        tower.update(previous_id=identity, footprint_tiles=footprint.copy())
+        towers.append(tower)
+    return manifest, towers, bodies, weapons
+
+
 class ModularInfantryChecks(unittest.TestCase):
+    def test_tower_versions_preserve_originals_and_are_idempotent(self):
+        previous, towers, bodies, weapons = make_tower_delivery()
+        original_copy = copy.deepcopy(previous)
+        result = build_tower_manifest(previous, towers)
+        self.assertEqual(previous, original_copy)
+        self.assertEqual(len(result["assets"]), 81)
+        self.assertEqual(len(result["archived_assets"]), 30)
+        self.assertEqual(build_tower_manifest(result, towers), result)
+        republished = build_manifest(result, bodies, weapons)
+        self.assertEqual(republished["version"], 3)
+        self.assertEqual({asset["id"]: asset for asset in republished["assets"]},
+                         {asset["id"]: asset for asset in result["assets"]})
+        self.assertEqual(republished["archived_assets"], result["archived_assets"])
+
+    def test_tower_footprint_and_roster_are_required(self):
+        previous, towers, _, _ = make_tower_delivery()
+        with self.assertRaises(ValueError):
+            build_tower_manifest(previous, towers[:-1])
+        towers[0]["footprint_tiles"] = [2, 3]
+        with self.assertRaisesRegex(ValueError, "Wrong width/depth"):
+            build_tower_manifest(previous, towers)
+
+    def test_original_tower_archive_cannot_be_removed(self):
+        previous, towers, _, _ = make_tower_delivery()
+        result = build_tower_manifest(previous, towers)
+        result["archived_assets"].pop()
+        with self.assertRaises(ValueError):
+            check_asset_inventory(result)
+
     def test_archive_and_active_counts(self):
         previous, bodies, weapons = make_catalog()
         result = build_manifest(previous, bodies, weapons)
