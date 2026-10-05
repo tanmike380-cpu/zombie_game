@@ -1,0 +1,346 @@
+{
+  "date": "2026-10-05",
+  "task": "Modular faction base-body T-pose references",
+  "count": 18,
+  "scope": "Concept images only; existing class concepts preserved; no Blender or Unity assets modified.",
+  "visual_review": "All 18 images individually reviewed. One unarmed full-body character per image; six true-T-pose turnarounds; class weapons, quivers and ammunition props removed. Clothing and anatomy references are not a dimensional CAD turnaround; final generated model still needs inspection.",
+  "tripo_generation_validated": false,
+  "records": [
+    {
+      "id": "humans/tianchao/base/militia",
+      "view": "front",
+      "tool": "image_gen.imagegen",
+      "prompt": "Use case: precise-object-edit. Edit the supplied Tianchao militia archer into the SAME character's modular infantry BASE BODY, FRONT orthographic view. Preserve his face, black cloth cap, worn patched grey long-sleeved tunic and trousers, faded dark red sash, beige shin wraps, cloth shoes and realistic game-concept rendering exactly. Change to a true symmetrical T-pose: straight arms extended horizontally sideways at shoulder height, open relaxed complete BARE hands, thumbs and four fingers, head facing straight forward, legs straight hip-width apart. Remove ALL weaponry and class accessories completely: bow, arrows, quiver, diagonal quiver strap, belt pouch, gourd, scabbard, ammunition bags. Retain only plain universal waist belt and red cloth sash. No armor on militia hands. ONE full-body character only, centered on neutral light grey background. Square canvas with complete fingertips and feet visible, ample margin, figure crown at 8% image height and soles at 92%; natural adult human proportions, not chibi. No text, no floor grid, no reference panels, no props beside the body, no turnaround collage. This is a clean Tripo modeling reference, flat soft neutral studio lighting.",
+      "referenced_image_paths": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/tripo/humans/tianchao/archer/militia/front.png"
+      ],
+      "transparent_background": false,
+      "generated_file": "/Users/tankaixi/.codex/generated_images/01a1025d-bf93-7163-b2b8-78b6e6ac6296/exec-925135de-68ca-4b60-a620-2c083fb4df86.png",
+      "source": "art/concepts/2026-10-05-modular-infantry/bodies/tianchao/militia/front.png",
+      "destination": "art/concepts/tripo/humans/tianchao/base/militia/front.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "674ad487f7b0d78ce82081fcf9bc57f572430bd30962522b4c311f9e969c179b",
+      "visual_review_passed": true,
+      "tripo_generation_validated": false
+    },
+    {
+      "id": "humans/tianchao/base/militia",
+      "view": "side",
+      "tool": "image_gen.imagegen",
+      "prompt": "Use case: precise-object-edit. Image1 is the old sideview edit target; Image2 is the APPROVED NEW front base-body, authoritative design. Turn the NEW character into a single strict right-facing SIDE ORTHOGRAPHIC view maintaining his exact front-view outfit, black cloth cap, natural proportions, grey patched worn long-sleeve tunic/trousers, red waist sash, beige shinwraps, black cloth shoes and bare hands. The body remains in a TRUE T-pose in 3D: arms extended out to body's left/right sides at shoulder level; viewed from side these arms project straight TOWARD/AWAY from camera and are strongly foreshortened. Show near hand at shoulder screen-position pointing toward viewer, NOT a long horizontal arm pointing where his face points. Do NOT show forward-raised arms, A-pose, arms at sides or three-quarter body. Face points right; torso and both feet strict profile. Remove bow, arrows, quiver, belt pouch, ALL crossbody straps and class accessories; only waistbelt/sash remain. ONE character, empty neutral grey background, square canvas, full body same head-to-foot scale as Image2. No text, no separate weapon, no multiple figures.",
+      "referenced_image_paths": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/tripo/humans/tianchao/archer/militia/side.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/tripo/humans/tianchao/base/militia/front.png"
+      ],
+      "transparent_background": false,
+      "generated_file": "/Users/tankaixi/.codex/generated_images/01a1025d-bf93-7163-b2b8-78b6e6ac6296/exec-819dd617-d0c7-483e-8946-757e1db83938.png",
+      "source": "art/concepts/2026-10-05-modular-infantry/bodies/tianchao/militia/side.png",
+      "destination": "art/concepts/tripo/humans/tianchao/base/militia/side.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "8bdcd72852d9438960857f4ff2fcc41745561d775a942f2f394b25460c687158",
+      "visual_review_passed": true,
+      "tripo_generation_validated": false
+    },
+    {
+      "id": "humans/tianchao/base/militia",
+      "view": "back",
+      "tool": "image_gen.imagegen",
+      "prompt": "Use case: precise-object-edit. Image1 is old rear-view outfit reference to EDIT; Image2 is newly approved front modular body, the authoritative character design. Produce ONE full-body strict BACK ORTHOGRAPHIC view of Image2's character in identical true T-pose: arms straight out sideways horizontal at shoulders, elbows straight, empty open hands with fingers complete and palms facing the floor, legs straight hip-width apart. Rotate viewpoint only, preserve outfit/body/helmet/hair proportions and texture style. Remove completely EVERY bow, quiver, arrows, sword, gourd, ammo or belt pouch, diagonal shoulder equipment strap and dangling class accessories. ONLY universal belt/sash and clothing/armor remain. Square neutral light grey studio background with soft flat lighting, same crown-to-soles scale as Image2, complete hands and feet within image; no text or grid or other objects, no collage. Grey-brown patched tunic, black tied cloth cap, red waist sash, beige shinwraps and cloth shoes, BARE hands. Remove the old red shoulder scrap to match the NEW front, no straps.",
+      "referenced_image_paths": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/tripo/humans/tianchao/archer/militia/back.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/tripo/humans/tianchao/base/militia/front.png"
+      ],
+      "transparent_background": false,
+      "generated_file": "/Users/tankaixi/.codex/generated_images/01a1025d-bf93-7163-b2b8-78b6e6ac6296/exec-42027bbb-aa75-4a0e-90a3-485e2231e5a5.png",
+      "source": "art/concepts/2026-10-05-modular-infantry/bodies/tianchao/militia/back.png",
+      "destination": "art/concepts/tripo/humans/tianchao/base/militia/back.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "35a349da813ac79853a864729cb7993218a13c459288b35d2fb5f21420ce7a0a",
+      "visual_review_passed": true,
+      "tripo_generation_validated": false
+    },
+    {
+      "id": "humans/tianchao/base/veteran",
+      "view": "front",
+      "tool": "image_gen.imagegen",
+      "prompt": "Use case: precise-object-edit. Edit the referenced accepted infantry into a modular BASE BODY. One full-body FRONT orthographic character only in a true symmetrical T-pose, arms straight sideways at shoulder height, complete relaxed open hands palms down, head straight forward, legs straight hip-width apart. Completely remove all weapons, arrows, bow, quiver, cross-body equipment strap, ammo pouches, gourd, sword/scabbard, shields and any detached props. Keep only universal waist belt/sash and the original uniform. Preserve original face, proportions, historical headwear, fabric/armor design, colors and high-quality realistic game concept look. Square neutral light grey studio background, soft flat lighting, full fingertips and feet within frame, centered, crown at8% and soles92%. Natural adult human proportions, no chibi. No text/no panels/no multiple figures. Preserve historical black domed Chinese helmet with modest red tassel, plain brown LEATHER armor with NO metal torso plates, grey long sleeves and trousers, red waist sash, beige shinwraps, cloth shoes, brown LEATHER gloves. Only small historical helmet is metal.",
+      "referenced_image_paths": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/tripo/humans/tianchao/archer/veteran/front.png"
+      ],
+      "transparent_background": false,
+      "generated_file": "/Users/tankaixi/.codex/generated_images/01a1025d-bf93-7163-b2b8-78b6e6ac6296/exec-9d08d588-daa9-4a9b-ad04-4123c70e9aa0.png",
+      "source": "art/concepts/2026-10-05-modular-infantry/bodies/tianchao/veteran/front.png",
+      "destination": "art/concepts/tripo/humans/tianchao/base/veteran/front.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "53351f0421486f4654c677f05600495ed4ae83f2c9c46eb9ba293709570dfbc1",
+      "visual_review_passed": true,
+      "tripo_generation_validated": false
+    },
+    {
+      "id": "humans/tianchao/base/veteran",
+      "view": "side",
+      "tool": "image_gen.imagegen",
+      "prompt": "Use case: precise-object-edit. Image1 is the old sideview edit target; Image2 is the APPROVED NEW front modular body, authoritative design. Produce ONE strict right-facing SIDE ORTHOGRAPHIC view of the new character with same exact uniform, headwear, face, proportions, coloring and texture style. Body remains a TRUE T-pose in 3D: arms straight out to the body's left/right at shoulder level; from the side the arms point TOWARD/AWAY camera and are strongly FORESHORTENED. Near open empty hand projects at shoulder screen-position toward viewer. NOT arms raised forward in the direction of the face, NOT hanging arms or A pose. Face and feet point right in strict profile, straight legs. Remove ALL weapons/quiver/arrows/pouches/gourd/scabbard/diagonal equipment straps from body and background. Only universal waistbelt/sash and clothing/armor remain. Square neutral light grey background, soft flat studio lighting; same head-to-foot scale as Image2. Full body unclipped, one character, no text, no grids or detached props. Chinese black domed historical helmet/red tassel; brown plain LEATHER body armor, grey long sleeves/trousers, red sash, LEATHER gloves, beige shinwraps and cloth shoes. No metal torso plates.",
+      "referenced_image_paths": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/tripo/humans/tianchao/archer/veteran/side.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/tripo/humans/tianchao/base/veteran/front.png"
+      ],
+      "transparent_background": false,
+      "generated_file": "/Users/tankaixi/.codex/generated_images/01a1025d-bf93-7163-b2b8-78b6e6ac6296/exec-ee1916a4-4a41-4b6a-ad98-c4a9e0dce7ac.png",
+      "source": "art/concepts/2026-10-05-modular-infantry/bodies/tianchao/veteran/side.png",
+      "destination": "art/concepts/tripo/humans/tianchao/base/veteran/side.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "da0d20cd4c1cf9c5f2146415266843cd58dbdc2ca2da34f35aa4182906bd5625",
+      "visual_review_passed": true,
+      "tripo_generation_validated": false
+    },
+    {
+      "id": "humans/tianchao/base/veteran",
+      "view": "back",
+      "tool": "image_gen.imagegen",
+      "prompt": "Use case: precise-object-edit. Image1 is old rear-view outfit reference to EDIT; Image2 is newly approved front modular body, the authoritative character design. Produce ONE full-body strict BACK ORTHOGRAPHIC view of Image2's character in identical true T-pose: arms straight out sideways horizontal at shoulders, elbows straight, empty open hands with fingers complete and palms facing the floor, legs straight hip-width apart. Rotate viewpoint only, preserve outfit/body/helmet/hair proportions and texture style. Remove completely EVERY bow, quiver, arrows, sword, gourd, ammo or belt pouch, diagonal shoulder equipment strap and dangling class accessories. ONLY universal belt/sash and clothing/armor remain. Square neutral light grey studio background with soft flat lighting, same crown-to-soles scale as Image2, complete hands and feet within image; no text or grid or other objects, no collage. Historical domed Chinese metal helmet, modest red tassel and neck plates; brown plain LEATHER cuirass front and back, grey long sleeves/trousers, red sash, leather gloves, beige shinwraps, cloth shoes. No torso metal armor.",
+      "referenced_image_paths": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/tripo/humans/tianchao/archer/veteran/back.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/tripo/humans/tianchao/base/veteran/front.png"
+      ],
+      "transparent_background": false,
+      "generated_file": "/Users/tankaixi/.codex/generated_images/01a1025d-bf93-7163-b2b8-78b6e6ac6296/exec-f37cd414-371b-4dc4-b58d-df63c36077a7.png",
+      "source": "art/concepts/2026-10-05-modular-infantry/bodies/tianchao/veteran/back.png",
+      "destination": "art/concepts/tripo/humans/tianchao/base/veteran/back.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "a203696721b39c7172f1467d7ba25b21f6d8229a7202da75b5c6c07a26763ed9",
+      "visual_review_passed": true,
+      "tripo_generation_validated": false
+    },
+    {
+      "id": "humans/tianchao/base/elite",
+      "view": "front",
+      "tool": "image_gen.imagegen",
+      "prompt": "Use case: precise-object-edit. Edit the referenced accepted infantry into a modular BASE BODY. One full-body FRONT orthographic character only in a true symmetrical T-pose, arms straight sideways at shoulder height, complete relaxed open hands palms down, head straight forward, legs straight hip-width apart. Completely remove all weapons, arrows, bow, quiver, cross-body equipment strap, ammo pouches, gourd, sword/scabbard, shields and any detached props. Keep only universal waist belt/sash and the original uniform. Preserve original face, proportions, historical headwear, fabric/armor design, colors and high-quality realistic game concept look. Square neutral light grey studio background, soft flat lighting, full fingertips and feet within frame, centered, crown at8% and soles92%. Natural adult human proportions, no chibi. No text/no panels/no multiple figures. Preserve Chinese black domed helmet and red tassel, RED riveted brigandine coat armor, grey long sleeves/trousers, black belt, beige shinwraps, cloth shoes. Hands fully gloved with chainmail and small Chinese articulated plates covering the backs, not oversized gauntlets.",
+      "referenced_image_paths": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/tripo/humans/tianchao/archer/elite/front.png"
+      ],
+      "transparent_background": false,
+      "generated_file": "/Users/tankaixi/.codex/generated_images/01a1025d-bf93-7163-b2b8-78b6e6ac6296/exec-4fd63052-8574-4c2f-bae0-c0201d0fb7dd.png",
+      "source": "art/concepts/2026-10-05-modular-infantry/bodies/tianchao/elite/front.png",
+      "destination": "art/concepts/tripo/humans/tianchao/base/elite/front.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "dab1396084c1af3bfc807a2dfa08c7d901f9e3f7308af2e8c83e9a06b578bf78",
+      "visual_review_passed": true,
+      "tripo_generation_validated": false
+    },
+    {
+      "id": "humans/tianchao/base/elite",
+      "view": "side",
+      "tool": "image_gen.imagegen",
+      "prompt": "Use case: precise-object-edit. Image1 is the old sideview edit target; Image2 is the APPROVED NEW front modular body, authoritative design. Produce ONE strict right-facing SIDE ORTHOGRAPHIC view of the new character with same exact uniform, headwear, face, proportions, coloring and texture style. Body remains a TRUE T-pose in 3D: arms straight out to the body's left/right at shoulder level; from the side the arms point TOWARD/AWAY camera and are strongly FORESHORTENED. Near open empty hand projects at shoulder screen-position toward viewer. NOT arms raised forward in the direction of the face, NOT hanging arms or A pose. Face and feet point right in strict profile, straight legs. Remove ALL weapons/quiver/arrows/pouches/gourd/scabbard/diagonal equipment straps from body and background. Only universal waistbelt/sash and clothing/armor remain. Square neutral light grey background, soft flat studio lighting; same head-to-foot scale as Image2. Full body unclipped, one character, no text, no grids or detached props. Chinese black domed historical helmet/red tassel; red riveted brigandine coat, grey long sleeves/trousers, black belt, chainmail handgloves with small handback armor plates, beige shinwraps, cloth shoes.",
+      "referenced_image_paths": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/tripo/humans/tianchao/archer/elite/side.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/tripo/humans/tianchao/base/elite/front.png"
+      ],
+      "transparent_background": false,
+      "generated_file": "/Users/tankaixi/.codex/generated_images/01a1025d-bf93-7163-b2b8-78b6e6ac6296/exec-e9549e26-be39-4f70-a022-c22e1e612ea8.png",
+      "source": "art/concepts/2026-10-05-modular-infantry/bodies/tianchao/elite/side.png",
+      "destination": "art/concepts/tripo/humans/tianchao/base/elite/side.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "1ba9ccc5a4ecbbbf9d5f706d59e572a04ed319e7c7714449b6c06dcec7fd55c6",
+      "visual_review_passed": true,
+      "tripo_generation_validated": false
+    },
+    {
+      "id": "humans/tianchao/base/elite",
+      "view": "back",
+      "tool": "image_gen.imagegen",
+      "prompt": "Use case: precise-object-edit. Image1 is old rear-view outfit reference to EDIT; Image2 is newly approved front modular body, the authoritative character design. Produce ONE full-body strict BACK ORTHOGRAPHIC view of Image2's character in identical true T-pose: arms straight out sideways horizontal at shoulders, elbows straight, empty open hands with fingers complete and palms facing the floor, legs straight hip-width apart. Rotate viewpoint only, preserve outfit/body/helmet/hair proportions and texture style. Remove completely EVERY bow, quiver, arrows, sword, gourd, ammo or belt pouch, diagonal shoulder equipment strap and dangling class accessories. ONLY universal belt/sash and clothing/armor remain. Square neutral light grey studio background with soft flat lighting, same crown-to-soles scale as Image2, complete hands and feet within image; no text or grid or other objects, no collage. Chinese domed black helmet/red tassel, RED riveted brigandine coat continuing across back, grey longsleeves/trousers, black belt, beige shinwraps, black shoes; fine chainmail gloves with small articulated handback plates.",
+      "referenced_image_paths": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/tripo/humans/tianchao/archer/elite/back.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/tripo/humans/tianchao/base/elite/front.png"
+      ],
+      "transparent_background": false,
+      "generated_file": "/Users/tankaixi/.codex/generated_images/01a1025d-bf93-7163-b2b8-78b6e6ac6296/exec-16d4034f-276e-4856-8858-23160af1b506.png",
+      "source": "art/concepts/2026-10-05-modular-infantry/bodies/tianchao/elite/back.png",
+      "destination": "art/concepts/tripo/humans/tianchao/base/elite/back.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "120551fd85745fe5cb10952c6fdcbb64dd8f339ebce9e40a8bc52d56c44e2bad",
+      "visual_review_passed": true,
+      "tripo_generation_validated": false
+    },
+    {
+      "id": "humans/byzantine/base/militia",
+      "view": "front",
+      "tool": "image_gen.imagegen",
+      "prompt": "Use case: precise-object-edit. Edit the referenced accepted infantry into a modular BASE BODY. One full-body FRONT orthographic character only in a true symmetrical T-pose, arms straight sideways at shoulder height, complete relaxed open hands palms down, head straight forward, legs straight hip-width apart. Completely remove all weapons, arrows, bow, quiver, cross-body equipment strap, ammo pouches, gourd, sword/scabbard, shields and any detached props. Keep only universal waist belt/sash and the original uniform. Preserve original face, proportions, historical headwear, fabric/armor design, colors and high-quality realistic game concept look. Square neutral light grey studio background, soft flat lighting, full fingertips and feet within frame, centered, crown at8% and soles92%. Natural adult human proportions, no chibi. No text/no panels/no multiple figures. Preserve modest Byzantine grey-brown patched quilted long-sleeve tunic, wool cap, beard/face, muted purple cloth trim and purple waist sash, worn leggings/boots. Militia has fully BARE hands, no gloves/hand armor. Remove diagonal quiver strap without erasing the sewn purple fabric trim.",
+      "referenced_image_paths": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/tripo/humans/byzantine/archer/militia/front.png"
+      ],
+      "transparent_background": false,
+      "generated_file": "/Users/tankaixi/.codex/generated_images/01a1025d-bf93-7163-b2b8-78b6e6ac6296/exec-8bd235ce-5c0f-4760-a00e-2b8b45ea3c85.png",
+      "source": "art/concepts/2026-10-05-modular-infantry/bodies/byzantine/militia/front.png",
+      "destination": "art/concepts/tripo/humans/byzantine/base/militia/front.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "778b8e4ab9d9211aaa82ae01a4da945d46e1c58838f52e95f70f6e44afcbc3f1",
+      "visual_review_passed": true,
+      "tripo_generation_validated": false
+    },
+    {
+      "id": "humans/byzantine/base/militia",
+      "view": "side",
+      "tool": "image_gen.imagegen",
+      "prompt": "Use case: precise-object-edit. Image1 is the old sideview edit target; Image2 is the APPROVED NEW front modular body, authoritative design. Produce ONE strict right-facing SIDE ORTHOGRAPHIC view of the new character with same exact uniform, headwear, face, proportions, coloring and texture style. Body remains a TRUE T-pose in 3D: arms straight out to the body's left/right at shoulder level; from the side the arms point TOWARD/AWAY camera and are strongly FORESHORTENED. Near open empty hand projects at shoulder screen-position toward viewer. NOT arms raised forward in the direction of the face, NOT hanging arms or A pose. Face and feet point right in strict profile, straight legs. Remove ALL weapons/quiver/arrows/pouches/gourd/scabbard/diagonal equipment straps from body and background. Only universal waistbelt/sash and clothing/armor remain. Square neutral light grey background, soft flat studio lighting; same head-to-foot scale as Image2. Full body unclipped, one character, no text, no grids or detached props. Byzantine wool cap, bearded face, grey-brown patched quilted long-sleeve tunic, muted purple fabric trim/waist sash, grey-brown leggings and boots. Fully BARE hands.",
+      "referenced_image_paths": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/tripo/humans/byzantine/archer/militia/side.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/tripo/humans/byzantine/base/militia/front.png"
+      ],
+      "transparent_background": false,
+      "generated_file": "/Users/tankaixi/.codex/generated_images/01a1025d-bf93-7163-b2b8-78b6e6ac6296/exec-5085355f-a4bb-48c7-ac4f-83e425722cd7.png",
+      "source": "art/concepts/2026-10-05-modular-infantry/bodies/byzantine/militia/side.png",
+      "destination": "art/concepts/tripo/humans/byzantine/base/militia/side.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "119bd10a30f84178a8c1107beb4204043971f51f110d2c6def2c6cf2ad14de92",
+      "visual_review_passed": true,
+      "tripo_generation_validated": false
+    },
+    {
+      "id": "humans/byzantine/base/militia",
+      "view": "back",
+      "tool": "image_gen.imagegen",
+      "prompt": "Use case: precise-object-edit. Image1 is old rear-view outfit reference to EDIT; Image2 is newly approved front modular body, the authoritative character design. Produce ONE full-body strict BACK ORTHOGRAPHIC view of Image2's character in identical true T-pose: arms straight out sideways horizontal at shoulders, elbows straight, empty open hands with fingers complete and palms facing the floor, legs straight hip-width apart. Rotate viewpoint only, preserve outfit/body/helmet/hair proportions and texture style. Remove completely EVERY bow, quiver, arrows, sword, gourd, ammo or belt pouch, diagonal shoulder equipment strap and dangling class accessories. ONLY universal belt/sash and clothing/armor remain. Square neutral light grey studio background with soft flat lighting, same crown-to-soles scale as Image2, complete hands and feet within image; no text or grid or other objects, no collage. Byzantine grey-brown worn quilted long-sleeved tunic, wool cap, muted purple sewn fabric trim and waist sash, worn leggings/boots, BARE hands. No diagonal equipment strap.",
+      "referenced_image_paths": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/tripo/humans/byzantine/archer/militia/back.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/tripo/humans/byzantine/base/militia/front.png"
+      ],
+      "transparent_background": false,
+      "generated_file": "/Users/tankaixi/.codex/generated_images/01a1025d-bf93-7163-b2b8-78b6e6ac6296/exec-8f905064-7f39-48ef-9ac8-b72a48321615.png",
+      "source": "art/concepts/2026-10-05-modular-infantry/bodies/byzantine/militia/back.png",
+      "destination": "art/concepts/tripo/humans/byzantine/base/militia/back.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "c9d9b3f205e81002ff14ff0fc5c453886d0e770cfeb152624ea9ae9ff18ca8a7",
+      "visual_review_passed": true,
+      "tripo_generation_validated": false
+    },
+    {
+      "id": "humans/byzantine/base/veteran",
+      "view": "front",
+      "tool": "image_gen.imagegen",
+      "prompt": "Use case: precise-object-edit. Edit the referenced accepted infantry into a modular BASE BODY. One full-body FRONT orthographic character only in a true symmetrical T-pose, arms straight sideways at shoulder height, complete relaxed open hands palms down, head straight forward, legs straight hip-width apart. Completely remove all weapons, arrows, bow, quiver, cross-body equipment strap, ammo pouches, gourd, sword/scabbard, shields and any detached props. Keep only universal waist belt/sash and the original uniform. Preserve original face, proportions, historical headwear, fabric/armor design, colors and high-quality realistic game concept look. Square neutral light grey studio background, soft flat lighting, full fingertips and feet within frame, centered, crown at8% and soles92%. Natural adult human proportions, no chibi. No text/no panels/no multiple figures. Preserve Byzantine historical conical steel helmet, bearded face, plain brown LEATHER torso armor without metal body plates, purple long-sleeved tunic, grey trousers, brown boots and brown LEATHER gloves. Remove all quiver/bow/pouches; keep plain waistbelt.",
+      "referenced_image_paths": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/tripo/humans/byzantine/archer/veteran/front.png"
+      ],
+      "transparent_background": false,
+      "generated_file": "/Users/tankaixi/.codex/generated_images/01a1025d-bf93-7163-b2b8-78b6e6ac6296/exec-d7d948bb-51b0-49ce-9424-6db0a0f16710.png",
+      "source": "art/concepts/2026-10-05-modular-infantry/bodies/byzantine/veteran/front.png",
+      "destination": "art/concepts/tripo/humans/byzantine/base/veteran/front.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "57865ca0731df37439b9c381338f23ed6a81a3d7ca2124ed5809890f6614e38c",
+      "visual_review_passed": true,
+      "tripo_generation_validated": false
+    },
+    {
+      "id": "humans/byzantine/base/veteran",
+      "view": "side",
+      "tool": "image_gen.imagegen",
+      "prompt": "Use case: precise-object-edit. Image1 is the old sideview edit target; Image2 is the APPROVED NEW front modular body, authoritative design. Produce ONE strict right-facing SIDE ORTHOGRAPHIC view of the new character with same exact uniform, headwear, face, proportions, coloring and texture style. Body remains a TRUE T-pose in 3D: arms straight out to the body's left/right at shoulder level; from the side the arms point TOWARD/AWAY camera and are strongly FORESHORTENED. Near open empty hand projects at shoulder screen-position toward viewer. NOT arms raised forward in the direction of the face, NOT hanging arms or A pose. Face and feet point right in strict profile, straight legs. Remove ALL weapons/quiver/arrows/pouches/gourd/scabbard/diagonal equipment straps from body and background. Only universal waistbelt/sash and clothing/armor remain. Square neutral light grey background, soft flat studio lighting; same head-to-foot scale as Image2. Full body unclipped, one character, no text, no grids or detached props.  Byzantine veteran: plain brown leather body armor with no metal body plates, historical conical helmet, purple long sleeves and skirt, brown leather gloves/boots. Preserve exact newly approved front clothes.",
+      "referenced_image_paths": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/tripo/humans/byzantine/archer/veteran/side.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/tripo/humans/byzantine/base/veteran/front.png"
+      ],
+      "transparent_background": false,
+      "generated_file": "/Users/tankaixi/.codex/generated_images/01a1025d-bf93-7163-b2b8-78b6e6ac6296/exec-4c8ecad5-2563-477f-8236-c00f5d10bc4a.png",
+      "source": "art/concepts/2026-10-05-modular-infantry/bodies/byzantine/veteran/side.png",
+      "destination": "art/concepts/tripo/humans/byzantine/base/veteran/side.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "42eb13f4d76986366115697954d11bf76f8b4243a08dfd555b93ac1cc2913d7f",
+      "visual_review_passed": true,
+      "tripo_generation_validated": false
+    },
+    {
+      "id": "humans/byzantine/base/veteran",
+      "view": "back",
+      "tool": "image_gen.imagegen",
+      "prompt": "Use case: precise-object-edit. Image1 is old rear-view outfit reference to EDIT; Image2 is newly approved front modular body, the authoritative character design. Produce ONE full-body strict BACK ORTHOGRAPHIC view of Image2's character in identical true T-pose: arms straight out sideways horizontal at shoulders, elbows straight, empty open hands with fingers complete and palms facing the floor, legs straight hip-width apart. Rotate viewpoint only, preserve outfit/body/helmet/hair proportions and texture style. Remove completely EVERY bow, quiver, arrows, sword, gourd, ammo or belt pouch, diagonal shoulder equipment strap and dangling class accessories. ONLY universal belt/sash and clothing/armor remain. Square neutral light grey studio background with soft flat lighting, same crown-to-soles scale as Image2, complete hands and feet within image; no text or grid or other objects, no collage. Byzantine historical conical metal helmet; plain brown LEATHER cuirass with leather skirt strips, purple patterned long sleeves and skirt, grey trousers, brown boots and fully LEATHER gloves; NO metal torso plates.",
+      "referenced_image_paths": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/tripo/humans/byzantine/archer/veteran/back.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/tripo/humans/byzantine/base/veteran/front.png"
+      ],
+      "transparent_background": false,
+      "generated_file": "/Users/tankaixi/.codex/generated_images/01a1025d-bf93-7163-b2b8-78b6e6ac6296/exec-33bad549-23ea-469c-b87b-438db1878a90.png",
+      "source": "art/concepts/2026-10-05-modular-infantry/bodies/byzantine/veteran/back.png",
+      "destination": "art/concepts/tripo/humans/byzantine/base/veteran/back.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "2325db7000bb8d8895d6626c48e693f4d4c5d86f51505f25fa9f3a71f91acee8",
+      "visual_review_passed": true,
+      "tripo_generation_validated": false
+    },
+    {
+      "id": "humans/byzantine/base/elite",
+      "view": "front",
+      "tool": "image_gen.imagegen",
+      "prompt": "Use case: precise-object-edit. Edit the referenced accepted infantry into a modular BASE BODY. One full-body FRONT orthographic character only in a true symmetrical T-pose, arms straight sideways at shoulder height, complete relaxed open hands palms down, head straight forward, legs straight hip-width apart. Completely remove all weapons, arrows, bow, quiver, cross-body equipment strap, ammo pouches, gourd, sword/scabbard, shields and any detached props. Keep only universal waist belt/sash and the original uniform. Preserve original face, proportions, historical headwear, fabric/armor design, colors and high-quality realistic game concept look. Square neutral light grey studio background, soft flat lighting, full fingertips and feet within frame, centered, crown at8% and soles92%. Natural adult human proportions, no chibi. No text/no panels/no multiple figures. Preserve Byzantine gold-trimmed steel historical helmet, bearded face, metal lamellar armor with brass edging, purple gold-trim long-sleeved tunic and purple skirt with golden doubleheaded eagle, grey trousers and brown boots. Fully closed fine CHAINMAIL gloves. Remove all quiver, bow, dagger, pouches and ammunition. Keep plain universal waistbelt.",
+      "referenced_image_paths": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/tripo/humans/byzantine/archer/elite/front.png"
+      ],
+      "transparent_background": false,
+      "generated_file": "/Users/tankaixi/.codex/generated_images/01a1025d-bf93-7163-b2b8-78b6e6ac6296/exec-52b8eabf-5f06-48fb-a5c2-18d7882a74e5.png",
+      "source": "art/concepts/2026-10-05-modular-infantry/bodies/byzantine/elite/front.png",
+      "destination": "art/concepts/tripo/humans/byzantine/base/elite/front.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "0f58e4859831f45eb110cf6e52d333e08ec90e9976591343300a28d91d3e3ad9",
+      "visual_review_passed": true,
+      "tripo_generation_validated": false
+    },
+    {
+      "id": "humans/byzantine/base/elite",
+      "view": "side",
+      "tool": "image_gen.imagegen",
+      "prompt": "Use case: precise-object-edit. Image1 is the old sideview edit target; Image2 is the APPROVED NEW front modular body, authoritative design. Produce ONE strict right-facing SIDE ORTHOGRAPHIC view of the new character with same exact uniform, headwear, face, proportions, coloring and texture style. Body remains a TRUE T-pose in 3D: arms straight out to the body's left/right at shoulder level; from the side the arms point TOWARD/AWAY camera and are strongly FORESHORTENED. Near open empty hand projects at shoulder screen-position toward viewer. NOT arms raised forward in the direction of the face, NOT hanging arms or A pose. Face and feet point right in strict profile, straight legs. Remove ALL weapons/quiver/arrows/pouches/gourd/scabbard/diagonal equipment straps from body and background. Only universal waistbelt/sash and clothing/armor remain. Square neutral light grey background, soft flat studio lighting; same head-to-foot scale as Image2. Full body unclipped, one character, no text, no grids or detached props.  Byzantine elite: purple/gold cloth, gold-edged steel lamellar, historical helmet/cheek guards/mail neck, chainmail gloves, grey trousers/brown boots. Preserve exact newly approved front armor; no modern equipment.",
+      "referenced_image_paths": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/tripo/humans/byzantine/archer/elite/side.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/tripo/humans/byzantine/base/elite/front.png"
+      ],
+      "transparent_background": false,
+      "generated_file": "/Users/tankaixi/.codex/generated_images/01a1025d-bf93-7163-b2b8-78b6e6ac6296/exec-230197e0-eac4-4e72-8ad1-812ff86e4127.png",
+      "source": "art/concepts/2026-10-05-modular-infantry/bodies/byzantine/elite/side.png",
+      "destination": "art/concepts/tripo/humans/byzantine/base/elite/side.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "cd049ea20a14368e7b7cf733fea51c8a520c7141dcf82302c6b5d3d286a2e346",
+      "visual_review_passed": true,
+      "tripo_generation_validated": false
+    },
+    {
+      "id": "humans/byzantine/base/elite",
+      "view": "back",
+      "tool": "image_gen.imagegen",
+      "prompt": "Use case: precise-object-edit. Image1 is old rear-view outfit reference to EDIT; Image2 is newly approved front modular body, the authoritative character design. Produce ONE full-body strict BACK ORTHOGRAPHIC view of Image2's character in identical true T-pose: arms straight out sideways horizontal at shoulders, elbows straight, empty open hands with fingers complete and palms facing the floor, legs straight hip-width apart. Rotate viewpoint only, preserve outfit/body/helmet/hair proportions and texture style. Remove completely EVERY bow, quiver, arrows, sword, gourd, ammo or belt pouch, diagonal shoulder equipment strap and dangling class accessories. ONLY universal belt/sash and clothing/armor remain. Square neutral light grey studio background with soft flat lighting, same crown-to-soles scale as Image2, complete hands and feet within image; no text or grid or other objects, no collage. Byzantine gold-edged metal historical helmet with chainmail neckguard, gold-edged metal lamellar cuirass and skirt plates, purple/gold embroidered long-sleeved tunic/skirt with gold doubleheaded eagle on rear as original, brown boots, CHAINMAIL gloves.",
+      "referenced_image_paths": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/tripo/humans/byzantine/archer/elite/back.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/tripo/humans/byzantine/base/elite/front.png"
+      ],
+      "transparent_background": false,
+      "generated_file": "/Users/tankaixi/.codex/generated_images/01a1025d-bf93-7163-b2b8-78b6e6ac6296/exec-a22d5323-e047-42b9-9772-60cc47417b16.png",
+      "source": "art/concepts/2026-10-05-modular-infantry/bodies/byzantine/elite/back.png",
+      "destination": "art/concepts/tripo/humans/byzantine/base/elite/back.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "9a6dc9fc1f479079d7af8018acc758faade37aebdb486215721638ae2b0aecca",
+      "visual_review_passed": true,
+      "tripo_generation_validated": false
+    }
+  ]
+}

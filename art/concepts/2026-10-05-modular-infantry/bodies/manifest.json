@@ -1,0 +1,196 @@
+{
+  "assets": [
+    {
+      "id": "humans/tianchao/base/militia",
+      "category": "human",
+      "label": "天朝 · 民兵共用基础身体",
+      "projection": "orthographic_t_pose",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-05-modular-infantry/bodies/tianchao/militia/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "674ad487f7b0d78ce82081fcf9bc57f572430bd30962522b4c311f9e969c179b"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-05-modular-infantry/bodies/tianchao/militia/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "8bdcd72852d9438960857f4ff2fcc41745561d775a942f2f394b25460c687158"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-05-modular-infantry/bodies/tianchao/militia/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "35a349da813ac79853a864729cb7993218a13c459288b35d2fb5f21420ce7a0a"
+        }
+      ]
+    },
+    {
+      "id": "humans/tianchao/base/veteran",
+      "category": "human",
+      "label": "天朝 · 老兵共用基础身体",
+      "projection": "orthographic_t_pose",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-05-modular-infantry/bodies/tianchao/veteran/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "53351f0421486f4654c677f05600495ed4ae83f2c9c46eb9ba293709570dfbc1"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-05-modular-infantry/bodies/tianchao/veteran/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "da0d20cd4c1cf9c5f2146415266843cd58dbdc2ca2da34f35aa4182906bd5625"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-05-modular-infantry/bodies/tianchao/veteran/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "a203696721b39c7172f1467d7ba25b21f6d8229a7202da75b5c6c07a26763ed9"
+        }
+      ]
+    },
+    {
+      "id": "humans/tianchao/base/elite",
+      "category": "human",
+      "label": "天朝 · 精英共用基础身体",
+      "projection": "orthographic_t_pose",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-05-modular-infantry/bodies/tianchao/elite/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "dab1396084c1af3bfc807a2dfa08c7d901f9e3f7308af2e8c83e9a06b578bf78"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-05-modular-infantry/bodies/tianchao/elite/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "1ba9ccc5a4ecbbbf9d5f706d59e572a04ed319e7c7714449b6c06dcec7fd55c6"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-05-modular-infantry/bodies/tianchao/elite/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "120551fd85745fe5cb10952c6fdcbb64dd8f339ebce9e40a8bc52d56c44e2bad"
+        }
+      ]
+    },
+    {
+      "id": "humans/byzantine/base/militia",
+      "category": "human",
+      "label": "拜占庭 · 民兵共用基础身体",
+      "projection": "orthographic_t_pose",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-05-modular-infantry/bodies/byzantine/militia/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "778b8e4ab9d9211aaa82ae01a4da945d46e1c58838f52e95f70f6e44afcbc3f1"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-05-modular-infantry/bodies/byzantine/militia/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "119bd10a30f84178a8c1107beb4204043971f51f110d2c6def2c6cf2ad14de92"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-05-modular-infantry/bodies/byzantine/militia/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "c9d9b3f205e81002ff14ff0fc5c453886d0e770cfeb152624ea9ae9ff18ca8a7"
+        }
+      ]
+    },
+    {
+      "id": "humans/byzantine/base/veteran",
+      "category": "human",
+      "label": "拜占庭 · 老兵共用基础身体",
+      "projection": "orthographic_t_pose",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-05-modular-infantry/bodies/byzantine/veteran/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "57865ca0731df37439b9c381338f23ed6a81a3d7ca2124ed5809890f6614e38c"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-05-modular-infantry/bodies/byzantine/veteran/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "42eb13f4d76986366115697954d11bf76f8b4243a08dfd555b93ac1cc2913d7f"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-05-modular-infantry/bodies/byzantine/veteran/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "2325db7000bb8d8895d6626c48e693f4d4c5d86f51505f25fa9f3a71f91acee8"
+        }
+      ]
+    },
+    {
+      "id": "humans/byzantine/base/elite",
+      "category": "human",
+      "label": "拜占庭 · 精英共用基础身体",
+      "projection": "orthographic_t_pose",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-05-modular-infantry/bodies/byzantine/elite/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "0f58e4859831f45eb110cf6e52d333e08ec90e9976591343300a28d91d3e3ad9"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-05-modular-infantry/bodies/byzantine/elite/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "cd049ea20a14368e7b7cf733fea51c8a520c7141dcf82302c6b5d3d286a2e346"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-05-modular-infantry/bodies/byzantine/elite/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "9a6dc9fc1f479079d7af8018acc758faade37aebdb486215721638ae2b0aecca"
+        }
+      ]
+    }
+  ]
+}

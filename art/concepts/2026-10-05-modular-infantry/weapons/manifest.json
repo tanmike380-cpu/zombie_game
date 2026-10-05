@@ -1,0 +1,141 @@
+{
+  "version": 1,
+  "assets": [
+    {
+      "id": "weapons/tianchao/bow",
+      "label": "弓·天朝",
+      "category": "weapon",
+      "faction": "tianchao",
+      "projection": "single isolated object, broadside or near-orthographic three-quarter; not calibrated orthographic",
+      "views": [
+        {
+          "name": "reference",
+          "source": "2026-10-05-modular-infantry/weapons/tianchao/bow/reference.png",
+          "copy_source": true,
+          "width": 1024,
+          "height": 1536,
+          "sha256": "502342da967b4a67916a02b59f6387fddb82e0bacce11d888b334b05fb90f1d8"
+        }
+      ]
+    },
+    {
+      "id": "weapons/tianchao/repeating-crossbow",
+      "label": "诸葛连弩",
+      "category": "weapon",
+      "faction": "tianchao",
+      "projection": "single isolated object, broadside or near-orthographic three-quarter; not calibrated orthographic",
+      "views": [
+        {
+          "name": "reference",
+          "source": "2026-10-05-modular-infantry/weapons/tianchao/repeating-crossbow/reference.png",
+          "copy_source": true,
+          "width": 1536,
+          "height": 1024,
+          "sha256": "e931c595057195e70cc6efb8c5e61fefc15161f06d4f0cfcabc0f3e65ab886fd"
+        }
+      ]
+    },
+    {
+      "id": "weapons/tianchao/crossbow",
+      "label": "普通弩·天朝",
+      "category": "weapon",
+      "faction": "tianchao",
+      "projection": "single isolated object, broadside or near-orthographic three-quarter; not calibrated orthographic",
+      "views": [
+        {
+          "name": "reference",
+          "source": "2026-10-05-modular-infantry/weapons/tianchao/crossbow/reference.png",
+          "copy_source": true,
+          "width": 1536,
+          "height": 1024,
+          "sha256": "209a9add1cc734ec12381d79f22ac106767af636becfad57d656c781ca4e0b99"
+        }
+      ]
+    },
+    {
+      "id": "weapons/tianchao/three-eyed-handgun",
+      "label": "三眼神铳",
+      "category": "weapon",
+      "faction": "tianchao",
+      "projection": "single isolated object, broadside or near-orthographic three-quarter; not calibrated orthographic",
+      "views": [
+        {
+          "name": "reference",
+          "source": "2026-10-05-modular-infantry/weapons/tianchao/three-eyed-handgun/reference.png",
+          "copy_source": true,
+          "width": 1230,
+          "height": 1278,
+          "sha256": "69cb6178227dcfb50bca8f9c4b6f44269ba8ea743de35c89f886a3fe3061a118"
+        }
+      ]
+    },
+    {
+      "id": "weapons/byzantine/javelin",
+      "label": "投矛",
+      "category": "weapon",
+      "faction": "byzantine",
+      "projection": "single isolated object, broadside or near-orthographic three-quarter; not calibrated orthographic",
+      "views": [
+        {
+          "name": "reference",
+          "source": "2026-10-05-modular-infantry/weapons/byzantine/javelin/reference.png",
+          "copy_source": true,
+          "width": 1024,
+          "height": 1536,
+          "sha256": "379ae767ee3a2fdab150f24c50f1dbdb97d0b5dc3465d6eb8ae02985c9d0f910"
+        }
+      ]
+    },
+    {
+      "id": "weapons/byzantine/bow",
+      "label": "弓·拜占庭",
+      "category": "weapon",
+      "faction": "byzantine",
+      "projection": "single isolated object, broadside or near-orthographic three-quarter; not calibrated orthographic",
+      "views": [
+        {
+          "name": "reference",
+          "source": "2026-10-05-modular-infantry/weapons/byzantine/bow/reference.png",
+          "copy_source": true,
+          "width": 1024,
+          "height": 1536,
+          "sha256": "b68872ebd39a79ff366c3012ea7ee3bb9922d9229b3a448271f9398dddae379c"
+        }
+      ]
+    },
+    {
+      "id": "weapons/byzantine/crossbow",
+      "label": "普通弩·拜占庭",
+      "category": "weapon",
+      "faction": "byzantine",
+      "projection": "single isolated object, broadside or near-orthographic three-quarter; not calibrated orthographic",
+      "views": [
+        {
+          "name": "reference",
+          "source": "2026-10-05-modular-infantry/weapons/byzantine/crossbow/reference.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "542d76c31578660445fba3e67cc880ed3f3df7af0bfdca6eef4eb1b8a37c073d"
+        }
+      ]
+    },
+    {
+      "id": "weapons/byzantine/matchlock",
+      "label": "单发火绳枪",
+      "category": "weapon",
+      "faction": "byzantine",
+      "projection": "single isolated object, broadside or near-orthographic three-quarter; not calibrated orthographic",
+      "views": [
+        {
+          "name": "reference",
+          "source": "2026-10-05-modular-infantry/weapons/byzantine/matchlock/reference.png",
+          "copy_source": true,
+          "width": 1024,
+          "height": 1536,
+          "sha256": "a822305295c4c8b19a226b92d3263e399c3bbad654a44ef765b58aeedfc6ea3b"
+        }
+      ]
+    }
+  ]
+}

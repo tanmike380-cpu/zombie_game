@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "assets": [
     {
       "id": "buildings/tianchao/01-hq-age1",
@@ -32744,6 +32744,950 @@
       ]
     },
     {
+      "id": "siege/byzantine/ballista",
+      "label": "巨型重弩",
+      "category": "siege",
+      "projection": "front / side / back concept",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-09-28-factions/05-roman-ballista.png",
+          "box": [
+            3,
+            175,
+            487,
+            790
+          ],
+          "width": 524,
+          "height": 655,
+          "sha256": "6d12dcd67a94302eef6feb15048df206a1e83b7bae9c140126ae8c704fc8fcd9"
+        },
+        {
+          "name": "side",
+          "source": "2026-09-28-factions/05-roman-ballista.png",
+          "box": [
+            493,
+            175,
+            1047,
+            790
+          ],
+          "width": 594,
+          "height": 655,
+          "sha256": "ecd9abda4268ead891d929c0f5a95c99d5d8a100f699586eb4883f88f85876ca"
+        },
+        {
+          "name": "back",
+          "source": "2026-09-28-factions/05-roman-ballista.png",
+          "box": [
+            1053,
+            175,
+            1533,
+            790
+          ],
+          "width": 520,
+          "height": 655,
+          "sha256": "056cfd177c2fe2709d9b4e0f6f7af18fd2717b87feab93e7d58b9a19f3b05d64"
+        }
+      ]
+    },
+    {
+      "id": "siege/byzantine/trebuchet",
+      "label": "投石机",
+      "category": "siege",
+      "projection": "front / side / back concept",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-09-28-factions/06-roman-trebuchet.png",
+          "box": [
+            3,
+            100,
+            457,
+            815
+          ],
+          "width": 494,
+          "height": 755,
+          "sha256": "bdd740bbb3f334a697185203405646b0ab28a467287a9b4803fe1871097750b5"
+        },
+        {
+          "name": "side",
+          "source": "2026-09-28-factions/06-roman-trebuchet.png",
+          "box": [
+            463,
+            100,
+            1097,
+            815
+          ],
+          "width": 674,
+          "height": 755,
+          "sha256": "f021af0b9a9eb356097a023db0fa309c216d71e2af1780eab41304f5baf39daa"
+        },
+        {
+          "name": "back",
+          "source": "2026-09-28-factions/06-roman-trebuchet.png",
+          "box": [
+            1103,
+            100,
+            1533,
+            815
+          ],
+          "width": 470,
+          "height": 755,
+          "sha256": "14a08f144ffec30746be404c34b113842ed35914266030bc3f27b2ed55413250"
+        }
+      ]
+    },
+    {
+      "id": "siege/byzantine/greek-fire",
+      "label": "希腊火",
+      "category": "siege",
+      "projection": "front / side / back concept",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-09-28-factions/07-roman-greek-fire.png",
+          "box": [
+            3,
+            150,
+            437,
+            800
+          ],
+          "width": 474,
+          "height": 690,
+          "sha256": "9a1ede161e08f8e4653df00ac5e539c6a4e18d23e49dfbbd0e80ea8d0d8ede38"
+        },
+        {
+          "name": "side",
+          "source": "2026-09-28-factions/07-roman-greek-fire.png",
+          "box": [
+            443,
+            150,
+            1077,
+            800
+          ],
+          "width": 674,
+          "height": 690,
+          "sha256": "07e2087d6fe012b8d94fc0d4f4347aab3fc3937cdc18a9c723093284b5250a87"
+        },
+        {
+          "name": "back",
+          "source": "2026-09-28-factions/07-roman-greek-fire.png",
+          "box": [
+            1083,
+            150,
+            1533,
+            800
+          ],
+          "width": 490,
+          "height": 690,
+          "sha256": "bbb6e582ec73059b1d5caa93ab25de0f6b38a529995258421400c5719ce7ac4c"
+        }
+      ]
+    },
+    {
+      "id": "zombies/01-common",
+      "label": "zombies/01-common",
+      "category": "zombie",
+      "projection": "AI reference views; not a calibrated orthographic reconstruction",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-09-30-turnarounds/zombies--01-common.png",
+          "box": [
+            2,
+            0,
+            510,
+            1024
+          ],
+          "width": 548,
+          "height": 1064,
+          "sha256": "54a6bce475453f0d64141102a7111152f26386dafdfe7a81dc41e905a159e1df"
+        },
+        {
+          "name": "side",
+          "source": "2026-09-30-turnarounds/zombies--01-common.png",
+          "box": [
+            514,
+            0,
+            1022,
+            1024
+          ],
+          "width": 548,
+          "height": 1064,
+          "sha256": "93335c7fe70d265702b8f368636ba2cf71365a438bfa1fb1d67df8851d3727df"
+        },
+        {
+          "name": "back",
+          "source": "2026-09-30-turnarounds/zombies--01-common.png",
+          "box": [
+            1026,
+            0,
+            1534,
+            1024
+          ],
+          "width": 548,
+          "height": 1064,
+          "sha256": "8ff64cf7f152032a62364328631bd3c68d004cf2f6ac4c6e452fadcc05fcd192"
+        }
+      ]
+    },
+    {
+      "id": "zombies/02-exploder",
+      "label": "zombies/02-exploder",
+      "category": "zombie",
+      "projection": "AI reference views; not a calibrated orthographic reconstruction",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-09-30-turnarounds/zombies--02-exploder.png",
+          "box": [
+            2,
+            0,
+            510,
+            1024
+          ],
+          "width": 548,
+          "height": 1064,
+          "sha256": "06dc9ab53f5424ae4f5dfed2de27f02232881cbe9af95bfb8ac6c13e35f48d15"
+        },
+        {
+          "name": "side",
+          "source": "2026-09-30-turnarounds/zombies--02-exploder.png",
+          "box": [
+            514,
+            0,
+            1022,
+            1024
+          ],
+          "width": 548,
+          "height": 1064,
+          "sha256": "38f39c4f154403aca693817f3c3c2b463ff7dc0860705b17e89f5e4f3af75fc8"
+        },
+        {
+          "name": "back",
+          "source": "2026-09-30-turnarounds/zombies--02-exploder.png",
+          "box": [
+            1026,
+            0,
+            1534,
+            1024
+          ],
+          "width": 548,
+          "height": 1064,
+          "sha256": "809c1c00e888b5c0e6ad4ee59713a4420ee5e94aa98935fe72fb5c482fa1b77d"
+        }
+      ]
+    },
+    {
+      "id": "zombies/03-hound",
+      "label": "zombies/03-hound",
+      "category": "zombie",
+      "projection": "AI reference views; not a calibrated orthographic reconstruction",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-09-30-turnarounds/zombies--03-hound.png",
+          "box": [
+            2,
+            0,
+            467,
+            836
+          ],
+          "width": 505,
+          "height": 876,
+          "sha256": "9cbbbfa244f89b849651c4cb885db1fdd0b24d078ce3e02cc313c06744a7ec44"
+        },
+        {
+          "name": "side",
+          "source": "2026-09-30-turnarounds/zombies--03-hound.png",
+          "box": [
+            471,
+            0,
+            1411,
+            836
+          ],
+          "width": 980,
+          "height": 876,
+          "sha256": "0e517ba2eb6540346b5359c9153640d705c575f2fb2c0e8c8a55cd2271419bef"
+        },
+        {
+          "name": "back",
+          "source": "2026-09-30-turnarounds/zombies--03-hound.png",
+          "box": [
+            1415,
+            0,
+            1879,
+            836
+          ],
+          "width": 504,
+          "height": 876,
+          "sha256": "5b00cefd6b8cc119b8a34f873906f84ac776cdc6ab76304e42b19019dda5dc71"
+        }
+      ]
+    },
+    {
+      "id": "zombies/04-fat",
+      "label": "zombies/04-fat",
+      "category": "zombie",
+      "projection": "AI reference views; not a calibrated orthographic reconstruction",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-09-30-turnarounds/zombies--04-fat.png",
+          "box": [
+            2,
+            0,
+            510,
+            1024
+          ],
+          "width": 548,
+          "height": 1064,
+          "sha256": "6a4cca3148c5a262d6e786eb34b0357eee8ed52eb7c894b93a589f0aa0a6a02e"
+        },
+        {
+          "name": "side",
+          "source": "2026-09-30-turnarounds/zombies--04-fat.png",
+          "box": [
+            514,
+            0,
+            1022,
+            1024
+          ],
+          "width": 548,
+          "height": 1064,
+          "sha256": "16f2b3a756bcbfd0c4ed095eebd481cae4c186689ef48c29b59b7b6e5a370d98"
+        },
+        {
+          "name": "back",
+          "source": "2026-09-30-turnarounds/zombies--04-fat.png",
+          "box": [
+            1026,
+            0,
+            1534,
+            1024
+          ],
+          "width": 548,
+          "height": 1064,
+          "sha256": "2f04fbc701e1f642c76b995648dfcafe97809050042c61cbb3d6e529e97ebf2f"
+        }
+      ]
+    },
+    {
+      "id": "zombies/05-venom",
+      "label": "zombies/05-venom",
+      "category": "zombie",
+      "projection": "AI reference views; not a calibrated orthographic reconstruction",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-09-30-turnarounds/zombies--05-venom.png",
+          "box": [
+            2,
+            0,
+            589,
+            887
+          ],
+          "width": 627,
+          "height": 927,
+          "sha256": "c1c155d719e4afe2daec8ca966e1cb6c5329668f780312ab7ff9e79f66d5944f"
+        },
+        {
+          "name": "side",
+          "source": "2026-09-30-turnarounds/zombies--05-venom.png",
+          "box": [
+            593,
+            0,
+            1180,
+            887
+          ],
+          "width": 627,
+          "height": 927,
+          "sha256": "d77cc28409450a31bca4509ca8c0346e4f29750f77f7bd979c3ef252d159556e"
+        },
+        {
+          "name": "back",
+          "source": "2026-09-30-turnarounds/zombies--05-venom.png",
+          "box": [
+            1184,
+            0,
+            1772,
+            887
+          ],
+          "width": 628,
+          "height": 927,
+          "sha256": "95fa157654e7c75ed7adfd4012754e7b7e7ae32d2ef80679199ee11402e59d88"
+        }
+      ]
+    },
+    {
+      "id": "zombies/06-headram",
+      "label": "zombies/06-headram",
+      "category": "zombie",
+      "projection": "T-pose binding reference views; AI images, not calibrated orthographic reconstruction; rigging not yet tested",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-04-tpose/06-headram/front.png",
+          "copy_source": true,
+          "box": [
+            0,
+            0,
+            1536,
+            1024
+          ],
+          "width": 1536,
+          "height": 1024,
+          "sha256": "ad1933fa95a6ef100bb52b606ac0d132090dc6cf78682efc87ed08f34798a4f2"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-04-tpose/06-headram/side.png",
+          "copy_source": true,
+          "box": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "width": 1254,
+          "height": 1254,
+          "sha256": "f7dfef113416431c37e52e22d05400f13527f603e3435f8bd3ec40806ce01f37"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-04-tpose/06-headram/back.png",
+          "copy_source": true,
+          "box": [
+            0,
+            0,
+            1536,
+            1024
+          ],
+          "width": 1536,
+          "height": 1024,
+          "sha256": "d57f8d2cfe2d8c9ab982455e2547b6468fd7e42d659ae5dc82e5e8a9676f12c1"
+        }
+      ]
+    },
+    {
+      "id": "zombies/07-carrier",
+      "label": "zombies/07-carrier",
+      "category": "zombie",
+      "projection": "AI reference views; not a calibrated orthographic reconstruction",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-09-30-turnarounds/zombies--07-carrier.png",
+          "box": [
+            2,
+            0,
+            508,
+            1024
+          ],
+          "width": 546,
+          "height": 1064,
+          "sha256": "267619338065df644203fed8b27152251cf442cb6f964629ba1e351aba788b06"
+        },
+        {
+          "name": "side",
+          "source": "2026-09-30-turnarounds/zombies--07-carrier.png",
+          "box": [
+            512,
+            0,
+            1073,
+            1024
+          ],
+          "width": 601,
+          "height": 1064,
+          "sha256": "35ce0676fd727cb3b4081e3c90a7ed0c53f62655217a1897dd2026bc31daa36a"
+        },
+        {
+          "name": "back",
+          "source": "2026-09-30-turnarounds/zombies--07-carrier.png",
+          "box": [
+            1077,
+            0,
+            1534,
+            1024
+          ],
+          "width": 497,
+          "height": 1064,
+          "sha256": "af25b4a812897aa28ecc61ac94ec0adfef6da7e51a48fe0ac69048011df44857"
+        }
+      ]
+    },
+    {
+      "id": "siege/tianchao/ballista",
+      "label": "siege/tianchao/ballista",
+      "category": "siege",
+      "projection": "AI reference views; not a calibrated orthographic reconstruction",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-09-30-turnarounds/siege--tianchao--ballista.png",
+          "box": [
+            2,
+            0,
+            488,
+            1024
+          ],
+          "width": 526,
+          "height": 1064,
+          "sha256": "d78916fd93a8ba04e2659b0418ef072dd68cf4fe52ff79e956014059ba8b933f"
+        },
+        {
+          "name": "side",
+          "source": "2026-09-30-turnarounds/siege--tianchao--ballista.png",
+          "box": [
+            492,
+            0,
+            1044,
+            1024
+          ],
+          "width": 592,
+          "height": 1064,
+          "sha256": "a7333d825322cd27087c7e615cf1dcecc3ca485fbea296a752401056f84525b7"
+        },
+        {
+          "name": "back",
+          "source": "2026-09-30-turnarounds/siege--tianchao--ballista.png",
+          "box": [
+            1048,
+            0,
+            1534,
+            1024
+          ],
+          "width": 526,
+          "height": 1064,
+          "sha256": "e3b88cb2b6cc0cd1fe09fcba2964e98de51c7eb2c6c7ba77f9d062ebd0a9b57b"
+        }
+      ]
+    },
+    {
+      "id": "siege/tianchao/trebuchet",
+      "label": "siege/tianchao/trebuchet",
+      "category": "siege",
+      "projection": "AI reference views; not a calibrated orthographic reconstruction",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-09-30-turnarounds/siege--tianchao--trebuchet.png",
+          "box": [
+            2,
+            0,
+            475,
+            1024
+          ],
+          "width": 513,
+          "height": 1064,
+          "sha256": "fc8fbb361589717eb795bafb7736cf4fbf1c7d2c7f853ddcab3623c16ff96daa"
+        },
+        {
+          "name": "side",
+          "source": "2026-09-30-turnarounds/siege--tianchao--trebuchet.png",
+          "box": [
+            479,
+            0,
+            1076,
+            1024
+          ],
+          "width": 637,
+          "height": 1064,
+          "sha256": "7b34eb9fbbe314e4eb8598db13ebdb29885f21fd251a2f1e3b6339b5d9ed83c3"
+        },
+        {
+          "name": "back",
+          "source": "2026-09-30-turnarounds/siege--tianchao--trebuchet.png",
+          "box": [
+            1080,
+            0,
+            1534,
+            1024
+          ],
+          "width": 494,
+          "height": 1064,
+          "sha256": "3fa0c23130139e630f1026486df782d75fc1a9bf353d7b453ccee8f9b9ab418c"
+        }
+      ]
+    },
+    {
+      "id": "siege/tianchao/nest-of-bees",
+      "label": "siege/tianchao/nest-of-bees",
+      "category": "siege",
+      "projection": "AI reference views; not a calibrated orthographic reconstruction",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-09-30-turnarounds/siege--tianchao--nest-of-bees.png",
+          "box": [
+            2,
+            0,
+            559,
+            887
+          ],
+          "width": 597,
+          "height": 927,
+          "sha256": "7991b7ab0244680dcc52631299226f0f176284ecfd68abc5696327199e9f938e"
+        },
+        {
+          "name": "side",
+          "source": "2026-09-30-turnarounds/siege--tianchao--nest-of-bees.png",
+          "box": [
+            563,
+            0,
+            1211,
+            887
+          ],
+          "width": 688,
+          "height": 927,
+          "sha256": "c1feaebc0984bd7af80a2b25bda90fb80b793cff18c6d6d54ee2717c8a89a2fd"
+        },
+        {
+          "name": "back",
+          "source": "2026-09-30-turnarounds/siege--tianchao--nest-of-bees.png",
+          "box": [
+            1215,
+            0,
+            1772,
+            887
+          ],
+          "width": 597,
+          "height": 927,
+          "sha256": "1073017bab13715b5e5d85ddff689390ae2cd67fcff69b25b9c5a19968bd58c7"
+        }
+      ]
+    },
+    {
+      "id": "humans/tianchao/base/militia",
+      "category": "human",
+      "label": "天朝 · 民兵共用基础身体",
+      "projection": "orthographic_t_pose",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-05-modular-infantry/bodies/tianchao/militia/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "674ad487f7b0d78ce82081fcf9bc57f572430bd30962522b4c311f9e969c179b"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-05-modular-infantry/bodies/tianchao/militia/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "8bdcd72852d9438960857f4ff2fcc41745561d775a942f2f394b25460c687158"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-05-modular-infantry/bodies/tianchao/militia/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "35a349da813ac79853a864729cb7993218a13c459288b35d2fb5f21420ce7a0a"
+        }
+      ]
+    },
+    {
+      "id": "humans/tianchao/base/veteran",
+      "category": "human",
+      "label": "天朝 · 老兵共用基础身体",
+      "projection": "orthographic_t_pose",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-05-modular-infantry/bodies/tianchao/veteran/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "53351f0421486f4654c677f05600495ed4ae83f2c9c46eb9ba293709570dfbc1"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-05-modular-infantry/bodies/tianchao/veteran/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "da0d20cd4c1cf9c5f2146415266843cd58dbdc2ca2da34f35aa4182906bd5625"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-05-modular-infantry/bodies/tianchao/veteran/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "a203696721b39c7172f1467d7ba25b21f6d8229a7202da75b5c6c07a26763ed9"
+        }
+      ]
+    },
+    {
+      "id": "humans/tianchao/base/elite",
+      "category": "human",
+      "label": "天朝 · 精英共用基础身体",
+      "projection": "orthographic_t_pose",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-05-modular-infantry/bodies/tianchao/elite/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "dab1396084c1af3bfc807a2dfa08c7d901f9e3f7308af2e8c83e9a06b578bf78"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-05-modular-infantry/bodies/tianchao/elite/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "1ba9ccc5a4ecbbbf9d5f706d59e572a04ed319e7c7714449b6c06dcec7fd55c6"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-05-modular-infantry/bodies/tianchao/elite/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "120551fd85745fe5cb10952c6fdcbb64dd8f339ebce9e40a8bc52d56c44e2bad"
+        }
+      ]
+    },
+    {
+      "id": "humans/byzantine/base/militia",
+      "category": "human",
+      "label": "拜占庭 · 民兵共用基础身体",
+      "projection": "orthographic_t_pose",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-05-modular-infantry/bodies/byzantine/militia/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "778b8e4ab9d9211aaa82ae01a4da945d46e1c58838f52e95f70f6e44afcbc3f1"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-05-modular-infantry/bodies/byzantine/militia/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "119bd10a30f84178a8c1107beb4204043971f51f110d2c6def2c6cf2ad14de92"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-05-modular-infantry/bodies/byzantine/militia/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "c9d9b3f205e81002ff14ff0fc5c453886d0e770cfeb152624ea9ae9ff18ca8a7"
+        }
+      ]
+    },
+    {
+      "id": "humans/byzantine/base/veteran",
+      "category": "human",
+      "label": "拜占庭 · 老兵共用基础身体",
+      "projection": "orthographic_t_pose",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-05-modular-infantry/bodies/byzantine/veteran/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "57865ca0731df37439b9c381338f23ed6a81a3d7ca2124ed5809890f6614e38c"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-05-modular-infantry/bodies/byzantine/veteran/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "42eb13f4d76986366115697954d11bf76f8b4243a08dfd555b93ac1cc2913d7f"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-05-modular-infantry/bodies/byzantine/veteran/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "2325db7000bb8d8895d6626c48e693f4d4c5d86f51505f25fa9f3a71f91acee8"
+        }
+      ]
+    },
+    {
+      "id": "humans/byzantine/base/elite",
+      "category": "human",
+      "label": "拜占庭 · 精英共用基础身体",
+      "projection": "orthographic_t_pose",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-05-modular-infantry/bodies/byzantine/elite/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "0f58e4859831f45eb110cf6e52d333e08ec90e9976591343300a28d91d3e3ad9"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-05-modular-infantry/bodies/byzantine/elite/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "cd049ea20a14368e7b7cf733fea51c8a520c7141dcf82302c6b5d3d286a2e346"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-05-modular-infantry/bodies/byzantine/elite/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "9a6dc9fc1f479079d7af8018acc758faade37aebdb486215721638ae2b0aecca"
+        }
+      ]
+    },
+    {
+      "id": "weapons/tianchao/bow",
+      "label": "弓·天朝",
+      "category": "weapon",
+      "faction": "tianchao",
+      "projection": "single isolated object, broadside or near-orthographic three-quarter; not calibrated orthographic",
+      "views": [
+        {
+          "name": "reference",
+          "source": "2026-10-05-modular-infantry/weapons/tianchao/bow/reference.png",
+          "copy_source": true,
+          "width": 1024,
+          "height": 1536,
+          "sha256": "502342da967b4a67916a02b59f6387fddb82e0bacce11d888b334b05fb90f1d8"
+        }
+      ]
+    },
+    {
+      "id": "weapons/tianchao/repeating-crossbow",
+      "label": "诸葛连弩",
+      "category": "weapon",
+      "faction": "tianchao",
+      "projection": "single isolated object, broadside or near-orthographic three-quarter; not calibrated orthographic",
+      "views": [
+        {
+          "name": "reference",
+          "source": "2026-10-05-modular-infantry/weapons/tianchao/repeating-crossbow/reference.png",
+          "copy_source": true,
+          "width": 1536,
+          "height": 1024,
+          "sha256": "e931c595057195e70cc6efb8c5e61fefc15161f06d4f0cfcabc0f3e65ab886fd"
+        }
+      ]
+    },
+    {
+      "id": "weapons/tianchao/crossbow",
+      "label": "普通弩·天朝",
+      "category": "weapon",
+      "faction": "tianchao",
+      "projection": "single isolated object, broadside or near-orthographic three-quarter; not calibrated orthographic",
+      "views": [
+        {
+          "name": "reference",
+          "source": "2026-10-05-modular-infantry/weapons/tianchao/crossbow/reference.png",
+          "copy_source": true,
+          "width": 1536,
+          "height": 1024,
+          "sha256": "209a9add1cc734ec12381d79f22ac106767af636becfad57d656c781ca4e0b99"
+        }
+      ]
+    },
+    {
+      "id": "weapons/tianchao/three-eyed-handgun",
+      "label": "三眼神铳",
+      "category": "weapon",
+      "faction": "tianchao",
+      "projection": "single isolated object, broadside or near-orthographic three-quarter; not calibrated orthographic",
+      "views": [
+        {
+          "name": "reference",
+          "source": "2026-10-05-modular-infantry/weapons/tianchao/three-eyed-handgun/reference.png",
+          "copy_source": true,
+          "width": 1230,
+          "height": 1278,
+          "sha256": "69cb6178227dcfb50bca8f9c4b6f44269ba8ea743de35c89f886a3fe3061a118"
+        }
+      ]
+    },
+    {
+      "id": "weapons/byzantine/javelin",
+      "label": "投矛",
+      "category": "weapon",
+      "faction": "byzantine",
+      "projection": "single isolated object, broadside or near-orthographic three-quarter; not calibrated orthographic",
+      "views": [
+        {
+          "name": "reference",
+          "source": "2026-10-05-modular-infantry/weapons/byzantine/javelin/reference.png",
+          "copy_source": true,
+          "width": 1024,
+          "height": 1536,
+          "sha256": "379ae767ee3a2fdab150f24c50f1dbdb97d0b5dc3465d6eb8ae02985c9d0f910"
+        }
+      ]
+    },
+    {
+      "id": "weapons/byzantine/bow",
+      "label": "弓·拜占庭",
+      "category": "weapon",
+      "faction": "byzantine",
+      "projection": "single isolated object, broadside or near-orthographic three-quarter; not calibrated orthographic",
+      "views": [
+        {
+          "name": "reference",
+          "source": "2026-10-05-modular-infantry/weapons/byzantine/bow/reference.png",
+          "copy_source": true,
+          "width": 1024,
+          "height": 1536,
+          "sha256": "b68872ebd39a79ff366c3012ea7ee3bb9922d9229b3a448271f9398dddae379c"
+        }
+      ]
+    },
+    {
+      "id": "weapons/byzantine/crossbow",
+      "label": "普通弩·拜占庭",
+      "category": "weapon",
+      "faction": "byzantine",
+      "projection": "single isolated object, broadside or near-orthographic three-quarter; not calibrated orthographic",
+      "views": [
+        {
+          "name": "reference",
+          "source": "2026-10-05-modular-infantry/weapons/byzantine/crossbow/reference.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "542d76c31578660445fba3e67cc880ed3f3df7af0bfdca6eef4eb1b8a37c073d"
+        }
+      ]
+    },
+    {
+      "id": "weapons/byzantine/matchlock",
+      "label": "单发火绳枪",
+      "category": "weapon",
+      "faction": "byzantine",
+      "projection": "single isolated object, broadside or near-orthographic three-quarter; not calibrated orthographic",
+      "views": [
+        {
+          "name": "reference",
+          "source": "2026-10-05-modular-infantry/weapons/byzantine/matchlock/reference.png",
+          "copy_source": true,
+          "width": 1024,
+          "height": 1536,
+          "sha256": "a822305295c4c8b19a226b92d3263e399c3bbad654a44ef765b58aeedfc6ea3b"
+        }
+      ]
+    }
+  ],
+  "archived_assets": [
+    {
       "id": "humans/byzantine/javelineer/elite",
       "label": "投矛手",
       "category": "human",
@@ -33080,147 +34024,6 @@
           "width": 465,
           "height": 880,
           "sha256": "f4a19970b0d5d2f0491952fd0a7dda100b3254f1323c1ec661efb9a84f157bda"
-        }
-      ]
-    },
-    {
-      "id": "siege/byzantine/ballista",
-      "label": "巨型重弩",
-      "category": "siege",
-      "projection": "front / side / back concept",
-      "views": [
-        {
-          "name": "front",
-          "source": "2026-09-28-factions/05-roman-ballista.png",
-          "box": [
-            3,
-            175,
-            487,
-            790
-          ],
-          "width": 524,
-          "height": 655,
-          "sha256": "6d12dcd67a94302eef6feb15048df206a1e83b7bae9c140126ae8c704fc8fcd9"
-        },
-        {
-          "name": "side",
-          "source": "2026-09-28-factions/05-roman-ballista.png",
-          "box": [
-            493,
-            175,
-            1047,
-            790
-          ],
-          "width": 594,
-          "height": 655,
-          "sha256": "ecd9abda4268ead891d929c0f5a95c99d5d8a100f699586eb4883f88f85876ca"
-        },
-        {
-          "name": "back",
-          "source": "2026-09-28-factions/05-roman-ballista.png",
-          "box": [
-            1053,
-            175,
-            1533,
-            790
-          ],
-          "width": 520,
-          "height": 655,
-          "sha256": "056cfd177c2fe2709d9b4e0f6f7af18fd2717b87feab93e7d58b9a19f3b05d64"
-        }
-      ]
-    },
-    {
-      "id": "siege/byzantine/trebuchet",
-      "label": "投石机",
-      "category": "siege",
-      "projection": "front / side / back concept",
-      "views": [
-        {
-          "name": "front",
-          "source": "2026-09-28-factions/06-roman-trebuchet.png",
-          "box": [
-            3,
-            100,
-            457,
-            815
-          ],
-          "width": 494,
-          "height": 755,
-          "sha256": "bdd740bbb3f334a697185203405646b0ab28a467287a9b4803fe1871097750b5"
-        },
-        {
-          "name": "side",
-          "source": "2026-09-28-factions/06-roman-trebuchet.png",
-          "box": [
-            463,
-            100,
-            1097,
-            815
-          ],
-          "width": 674,
-          "height": 755,
-          "sha256": "f021af0b9a9eb356097a023db0fa309c216d71e2af1780eab41304f5baf39daa"
-        },
-        {
-          "name": "back",
-          "source": "2026-09-28-factions/06-roman-trebuchet.png",
-          "box": [
-            1103,
-            100,
-            1533,
-            815
-          ],
-          "width": 470,
-          "height": 755,
-          "sha256": "14a08f144ffec30746be404c34b113842ed35914266030bc3f27b2ed55413250"
-        }
-      ]
-    },
-    {
-      "id": "siege/byzantine/greek-fire",
-      "label": "希腊火",
-      "category": "siege",
-      "projection": "front / side / back concept",
-      "views": [
-        {
-          "name": "front",
-          "source": "2026-09-28-factions/07-roman-greek-fire.png",
-          "box": [
-            3,
-            150,
-            437,
-            800
-          ],
-          "width": 474,
-          "height": 690,
-          "sha256": "9a1ede161e08f8e4653df00ac5e539c6a4e18d23e49dfbbd0e80ea8d0d8ede38"
-        },
-        {
-          "name": "side",
-          "source": "2026-09-28-factions/07-roman-greek-fire.png",
-          "box": [
-            443,
-            150,
-            1077,
-            800
-          ],
-          "width": 674,
-          "height": 690,
-          "sha256": "07e2087d6fe012b8d94fc0d4f4347aab3fc3937cdc18a9c723093284b5250a87"
-        },
-        {
-          "name": "back",
-          "source": "2026-09-28-factions/07-roman-greek-fire.png",
-          "box": [
-            1083,
-            150,
-            1533,
-            800
-          ],
-          "width": 490,
-          "height": 690,
-          "sha256": "bbb6e582ec73059b1d5caa93ab25de0f6b38a529995258421400c5719ce7ac4c"
         }
       ]
     },
@@ -33853,479 +34656,6 @@
           "width": 1374,
           "height": 1145,
           "sha256": "056461af33c35bdeda8c955466d0a672f5cdfb13ece4158c6239fd4c0cba7259"
-        }
-      ]
-    },
-    {
-      "id": "zombies/01-common",
-      "label": "zombies/01-common",
-      "category": "zombie",
-      "projection": "AI reference views; not a calibrated orthographic reconstruction",
-      "views": [
-        {
-          "name": "front",
-          "source": "2026-09-30-turnarounds/zombies--01-common.png",
-          "box": [
-            2,
-            0,
-            510,
-            1024
-          ],
-          "width": 548,
-          "height": 1064,
-          "sha256": "54a6bce475453f0d64141102a7111152f26386dafdfe7a81dc41e905a159e1df"
-        },
-        {
-          "name": "side",
-          "source": "2026-09-30-turnarounds/zombies--01-common.png",
-          "box": [
-            514,
-            0,
-            1022,
-            1024
-          ],
-          "width": 548,
-          "height": 1064,
-          "sha256": "93335c7fe70d265702b8f368636ba2cf71365a438bfa1fb1d67df8851d3727df"
-        },
-        {
-          "name": "back",
-          "source": "2026-09-30-turnarounds/zombies--01-common.png",
-          "box": [
-            1026,
-            0,
-            1534,
-            1024
-          ],
-          "width": 548,
-          "height": 1064,
-          "sha256": "8ff64cf7f152032a62364328631bd3c68d004cf2f6ac4c6e452fadcc05fcd192"
-        }
-      ]
-    },
-    {
-      "id": "zombies/02-exploder",
-      "label": "zombies/02-exploder",
-      "category": "zombie",
-      "projection": "AI reference views; not a calibrated orthographic reconstruction",
-      "views": [
-        {
-          "name": "front",
-          "source": "2026-09-30-turnarounds/zombies--02-exploder.png",
-          "box": [
-            2,
-            0,
-            510,
-            1024
-          ],
-          "width": 548,
-          "height": 1064,
-          "sha256": "06dc9ab53f5424ae4f5dfed2de27f02232881cbe9af95bfb8ac6c13e35f48d15"
-        },
-        {
-          "name": "side",
-          "source": "2026-09-30-turnarounds/zombies--02-exploder.png",
-          "box": [
-            514,
-            0,
-            1022,
-            1024
-          ],
-          "width": 548,
-          "height": 1064,
-          "sha256": "38f39c4f154403aca693817f3c3c2b463ff7dc0860705b17e89f5e4f3af75fc8"
-        },
-        {
-          "name": "back",
-          "source": "2026-09-30-turnarounds/zombies--02-exploder.png",
-          "box": [
-            1026,
-            0,
-            1534,
-            1024
-          ],
-          "width": 548,
-          "height": 1064,
-          "sha256": "809c1c00e888b5c0e6ad4ee59713a4420ee5e94aa98935fe72fb5c482fa1b77d"
-        }
-      ]
-    },
-    {
-      "id": "zombies/03-hound",
-      "label": "zombies/03-hound",
-      "category": "zombie",
-      "projection": "AI reference views; not a calibrated orthographic reconstruction",
-      "views": [
-        {
-          "name": "front",
-          "source": "2026-09-30-turnarounds/zombies--03-hound.png",
-          "box": [
-            2,
-            0,
-            467,
-            836
-          ],
-          "width": 505,
-          "height": 876,
-          "sha256": "9cbbbfa244f89b849651c4cb885db1fdd0b24d078ce3e02cc313c06744a7ec44"
-        },
-        {
-          "name": "side",
-          "source": "2026-09-30-turnarounds/zombies--03-hound.png",
-          "box": [
-            471,
-            0,
-            1411,
-            836
-          ],
-          "width": 980,
-          "height": 876,
-          "sha256": "0e517ba2eb6540346b5359c9153640d705c575f2fb2c0e8c8a55cd2271419bef"
-        },
-        {
-          "name": "back",
-          "source": "2026-09-30-turnarounds/zombies--03-hound.png",
-          "box": [
-            1415,
-            0,
-            1879,
-            836
-          ],
-          "width": 504,
-          "height": 876,
-          "sha256": "5b00cefd6b8cc119b8a34f873906f84ac776cdc6ab76304e42b19019dda5dc71"
-        }
-      ]
-    },
-    {
-      "id": "zombies/04-fat",
-      "label": "zombies/04-fat",
-      "category": "zombie",
-      "projection": "AI reference views; not a calibrated orthographic reconstruction",
-      "views": [
-        {
-          "name": "front",
-          "source": "2026-09-30-turnarounds/zombies--04-fat.png",
-          "box": [
-            2,
-            0,
-            510,
-            1024
-          ],
-          "width": 548,
-          "height": 1064,
-          "sha256": "6a4cca3148c5a262d6e786eb34b0357eee8ed52eb7c894b93a589f0aa0a6a02e"
-        },
-        {
-          "name": "side",
-          "source": "2026-09-30-turnarounds/zombies--04-fat.png",
-          "box": [
-            514,
-            0,
-            1022,
-            1024
-          ],
-          "width": 548,
-          "height": 1064,
-          "sha256": "16f2b3a756bcbfd0c4ed095eebd481cae4c186689ef48c29b59b7b6e5a370d98"
-        },
-        {
-          "name": "back",
-          "source": "2026-09-30-turnarounds/zombies--04-fat.png",
-          "box": [
-            1026,
-            0,
-            1534,
-            1024
-          ],
-          "width": 548,
-          "height": 1064,
-          "sha256": "2f04fbc701e1f642c76b995648dfcafe97809050042c61cbb3d6e529e97ebf2f"
-        }
-      ]
-    },
-    {
-      "id": "zombies/05-venom",
-      "label": "zombies/05-venom",
-      "category": "zombie",
-      "projection": "AI reference views; not a calibrated orthographic reconstruction",
-      "views": [
-        {
-          "name": "front",
-          "source": "2026-09-30-turnarounds/zombies--05-venom.png",
-          "box": [
-            2,
-            0,
-            589,
-            887
-          ],
-          "width": 627,
-          "height": 927,
-          "sha256": "c1c155d719e4afe2daec8ca966e1cb6c5329668f780312ab7ff9e79f66d5944f"
-        },
-        {
-          "name": "side",
-          "source": "2026-09-30-turnarounds/zombies--05-venom.png",
-          "box": [
-            593,
-            0,
-            1180,
-            887
-          ],
-          "width": 627,
-          "height": 927,
-          "sha256": "d77cc28409450a31bca4509ca8c0346e4f29750f77f7bd979c3ef252d159556e"
-        },
-        {
-          "name": "back",
-          "source": "2026-09-30-turnarounds/zombies--05-venom.png",
-          "box": [
-            1184,
-            0,
-            1772,
-            887
-          ],
-          "width": 628,
-          "height": 927,
-          "sha256": "95fa157654e7c75ed7adfd4012754e7b7e7ae32d2ef80679199ee11402e59d88"
-        }
-      ]
-    },
-    {
-      "id": "zombies/06-headram",
-      "label": "zombies/06-headram",
-      "category": "zombie",
-      "projection": "T-pose binding reference views; AI images, not calibrated orthographic reconstruction; rigging not yet tested",
-      "views": [
-        {
-          "name": "front",
-          "source": "2026-10-04-tpose/06-headram/front.png",
-          "copy_source": true,
-          "box": [
-            0,
-            0,
-            1536,
-            1024
-          ],
-          "width": 1536,
-          "height": 1024,
-          "sha256": "ad1933fa95a6ef100bb52b606ac0d132090dc6cf78682efc87ed08f34798a4f2"
-        },
-        {
-          "name": "side",
-          "source": "2026-10-04-tpose/06-headram/side.png",
-          "copy_source": true,
-          "box": [
-            0,
-            0,
-            1254,
-            1254
-          ],
-          "width": 1254,
-          "height": 1254,
-          "sha256": "f7dfef113416431c37e52e22d05400f13527f603e3435f8bd3ec40806ce01f37"
-        },
-        {
-          "name": "back",
-          "source": "2026-10-04-tpose/06-headram/back.png",
-          "copy_source": true,
-          "box": [
-            0,
-            0,
-            1536,
-            1024
-          ],
-          "width": 1536,
-          "height": 1024,
-          "sha256": "d57f8d2cfe2d8c9ab982455e2547b6468fd7e42d659ae5dc82e5e8a9676f12c1"
-        }
-      ]
-    },
-    {
-      "id": "zombies/07-carrier",
-      "label": "zombies/07-carrier",
-      "category": "zombie",
-      "projection": "AI reference views; not a calibrated orthographic reconstruction",
-      "views": [
-        {
-          "name": "front",
-          "source": "2026-09-30-turnarounds/zombies--07-carrier.png",
-          "box": [
-            2,
-            0,
-            508,
-            1024
-          ],
-          "width": 546,
-          "height": 1064,
-          "sha256": "267619338065df644203fed8b27152251cf442cb6f964629ba1e351aba788b06"
-        },
-        {
-          "name": "side",
-          "source": "2026-09-30-turnarounds/zombies--07-carrier.png",
-          "box": [
-            512,
-            0,
-            1073,
-            1024
-          ],
-          "width": 601,
-          "height": 1064,
-          "sha256": "35ce0676fd727cb3b4081e3c90a7ed0c53f62655217a1897dd2026bc31daa36a"
-        },
-        {
-          "name": "back",
-          "source": "2026-09-30-turnarounds/zombies--07-carrier.png",
-          "box": [
-            1077,
-            0,
-            1534,
-            1024
-          ],
-          "width": 497,
-          "height": 1064,
-          "sha256": "af25b4a812897aa28ecc61ac94ec0adfef6da7e51a48fe0ac69048011df44857"
-        }
-      ]
-    },
-    {
-      "id": "siege/tianchao/ballista",
-      "label": "siege/tianchao/ballista",
-      "category": "siege",
-      "projection": "AI reference views; not a calibrated orthographic reconstruction",
-      "views": [
-        {
-          "name": "front",
-          "source": "2026-09-30-turnarounds/siege--tianchao--ballista.png",
-          "box": [
-            2,
-            0,
-            488,
-            1024
-          ],
-          "width": 526,
-          "height": 1064,
-          "sha256": "d78916fd93a8ba04e2659b0418ef072dd68cf4fe52ff79e956014059ba8b933f"
-        },
-        {
-          "name": "side",
-          "source": "2026-09-30-turnarounds/siege--tianchao--ballista.png",
-          "box": [
-            492,
-            0,
-            1044,
-            1024
-          ],
-          "width": 592,
-          "height": 1064,
-          "sha256": "a7333d825322cd27087c7e615cf1dcecc3ca485fbea296a752401056f84525b7"
-        },
-        {
-          "name": "back",
-          "source": "2026-09-30-turnarounds/siege--tianchao--ballista.png",
-          "box": [
-            1048,
-            0,
-            1534,
-            1024
-          ],
-          "width": 526,
-          "height": 1064,
-          "sha256": "e3b88cb2b6cc0cd1fe09fcba2964e98de51c7eb2c6c7ba77f9d062ebd0a9b57b"
-        }
-      ]
-    },
-    {
-      "id": "siege/tianchao/trebuchet",
-      "label": "siege/tianchao/trebuchet",
-      "category": "siege",
-      "projection": "AI reference views; not a calibrated orthographic reconstruction",
-      "views": [
-        {
-          "name": "front",
-          "source": "2026-09-30-turnarounds/siege--tianchao--trebuchet.png",
-          "box": [
-            2,
-            0,
-            475,
-            1024
-          ],
-          "width": 513,
-          "height": 1064,
-          "sha256": "fc8fbb361589717eb795bafb7736cf4fbf1c7d2c7f853ddcab3623c16ff96daa"
-        },
-        {
-          "name": "side",
-          "source": "2026-09-30-turnarounds/siege--tianchao--trebuchet.png",
-          "box": [
-            479,
-            0,
-            1076,
-            1024
-          ],
-          "width": 637,
-          "height": 1064,
-          "sha256": "7b34eb9fbbe314e4eb8598db13ebdb29885f21fd251a2f1e3b6339b5d9ed83c3"
-        },
-        {
-          "name": "back",
-          "source": "2026-09-30-turnarounds/siege--tianchao--trebuchet.png",
-          "box": [
-            1080,
-            0,
-            1534,
-            1024
-          ],
-          "width": 494,
-          "height": 1064,
-          "sha256": "3fa0c23130139e630f1026486df782d75fc1a9bf353d7b453ccee8f9b9ab418c"
-        }
-      ]
-    },
-    {
-      "id": "siege/tianchao/nest-of-bees",
-      "label": "siege/tianchao/nest-of-bees",
-      "category": "siege",
-      "projection": "AI reference views; not a calibrated orthographic reconstruction",
-      "views": [
-        {
-          "name": "front",
-          "source": "2026-09-30-turnarounds/siege--tianchao--nest-of-bees.png",
-          "box": [
-            2,
-            0,
-            559,
-            887
-          ],
-          "width": 597,
-          "height": 927,
-          "sha256": "7991b7ab0244680dcc52631299226f0f176284ecfd68abc5696327199e9f938e"
-        },
-        {
-          "name": "side",
-          "source": "2026-09-30-turnarounds/siege--tianchao--nest-of-bees.png",
-          "box": [
-            563,
-            0,
-            1211,
-            887
-          ],
-          "width": 688,
-          "height": 927,
-          "sha256": "c1feaebc0984bd7af80a2b25bda90fb80b793cff18c6d6d54ee2717c8a89a2fd"
-        },
-        {
-          "name": "back",
-          "source": "2026-09-30-turnarounds/siege--tianchao--nest-of-bees.png",
-          "box": [
-            1215,
-            0,
-            1772,
-            887
-          ],
-          "width": 597,
-          "height": 927,
-          "sha256": "1073017bab13715b5e5d85ddff689390ae2cd67fcff69b25b9c5a19968bd58c7"
         }
       ]
     }
