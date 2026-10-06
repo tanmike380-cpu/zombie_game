@@ -1,0 +1,159 @@
+{
+  "version": 1,
+  "scope": "Byzantine three defensive tower concepts, nine independent images. Old Tripo originals not overwritten. No Blender/Unity changes.",
+  "footprint_tiles": [
+    2,
+    2
+  ],
+  "door_policy": "Plain closed rear-only personnel door, design target height 35–40% pedestal height / width 25–30% rear wall width; no passage.",
+  "dimensional_caveat": "Generated 2D concepts express square-plan intent but are not measured 3D geometry; enforce exact 2×2 tiles in eventual Blender model.",
+  "assets": [
+    {
+      "id": "buildings/byzantine/26-arrow-tower-footprint-v2",
+      "view": "front-perspective",
+      "tool": "image_gen.imagegen",
+      "source_images": [
+        "art/concepts/tripo/buildings/byzantine/26-arrow-tower/front-perspective.png",
+        "art/concepts/2026-10-05-square-towers/byzantine/26-arrow-tower/rear-perspective.png"
+      ],
+      "prompt": "Use case: precise-object-edit. Image1 old FRONT Byzantine arrow tower is edit target; image2 revised REAR view is canonical geometry. Render same arrow tower from FRONT-three-quarter. Lower pedestal STRICT 2x2 tiles SQUARE plan with equal width/depth, straight vertical rectangular stone faces and sharp right-angle corners, no taper/skirt/sloping/oblong footprint. Preserve original tall height, cream stone material, same terracotta pyramidal roof, wooden archer pavilion, bow-emblem purple-gold cloth and arrow storage. Fit same upper pavilion centered onto square pedestal. Visible front and side lower faces must be sealed uninterrupted stonework, no door. The only closed enlarged personnel door of image2 belongs to hidden REAR face and must NOT appear in this front view. Exact same tower identity, one full tower framed with margins on neutral beige studio backdrop. No lower ornaments/windows, no stair/ladder, no passage, no labels/dimensions/text. Keep rich realistic historical RTS architectural render.",
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a10c47-a814-7113-95e7-0e34cde0acd0/exec-f18d5467-6d57-417e-b8e8-6c93f9f886c6.png",
+      "output": "art/concepts/2026-10-05-square-towers/byzantine/26-arrow-tower/front-perspective.png",
+      "width": 1230,
+      "height": 1278,
+      "sha256": "b0346a566652be15c8af8c08233690e52d9f96dd0593e74044bf5a9d2730ed3a",
+      "visual_validation": "PASS: upper identity/materials retained, straight square-plan pedestal design, closed personnel door only on rear face, no front/side door or through-passage; flame tower has no fire/smoke VFX."
+    },
+    {
+      "id": "buildings/byzantine/26-arrow-tower-footprint-v2",
+      "view": "side",
+      "tool": "image_gen.imagegen",
+      "source_images": [
+        "art/concepts/tripo/buildings/byzantine/26-arrow-tower/side.png",
+        "art/concepts/2026-10-05-square-towers/byzantine/26-arrow-tower/rear-perspective.png"
+      ],
+      "prompt": "Use case: precise-object-edit. Image1 existing SIDE arrow tower concept is edit target; image2 revised REAR image is canonical square geometry. Produce ONE true SIDE elevation of exact same Byzantine arrow tower. Maintain strict SQUARE plan 2 tiles wide x 2 deep, equal width and depth, vertical straight rectangular stone pedestal, no slope/taper/skirt/oblong. Preserve original tall height and same upper timber archer pavilion, cream stone parapet with firing slits, terracotta pyramidal roof, gold finial, purple/gold bow-emblem hanging banners, arrow storage and realistic textured style. Fit pavilion centered over square plan without redesign. Visible lower SIDE wall entirely plain sealed stone; one closed large personnel door lives only on hidden REAR face and should not appear in side view. Entire one tower in frame with margin, neutral beige studio backdrop, no lower windows/ladder/stair/other decoration/passage, no text or measurements.",
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a10c47-a814-7113-95e7-0e34cde0acd0/exec-d74d43b5-ebb0-45dd-9beb-e256428706e1.png",
+      "output": "art/concepts/2026-10-05-square-towers/byzantine/26-arrow-tower/side.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "73d45be2e7533cc810b1845f229da85a992c407b7bedb37d0be345f57ce571ea",
+      "visual_validation": "PASS: upper identity/materials retained, straight square-plan pedestal design, closed personnel door only on rear face, no front/side door or through-passage; flame tower has no fire/smoke VFX."
+    },
+    {
+      "id": "buildings/byzantine/26-arrow-tower-footprint-v2",
+      "view": "rear-perspective",
+      "tool": "image_gen.imagegen",
+      "source_images": [
+        "art/concepts/tripo/buildings/byzantine/26-arrow-tower/rear-perspective.png"
+      ],
+      "prompt": "Use case: precise-object-edit. Edit target: accepted Byzantine arrow tower rear-three-quarter image. Change ONLY lower footprint and rear door size, retain whole original terracotta pyramidal tiled roof, wooden upper archer pavilion, stone parapet, arrows, purple-gold bow-emblem banners and cream stone textures. The lower pedestal is a STRICT 2 tiles by 2 tiles SQUARE plan with equal width and depth, four vertical plumb rectangular stone faces and right-angle corners, no elongated oblong, no taper, slope, trapezoid, skirt or foundation ledge. Keep rear-three-quarter camera. The ground-level personnel door on visible LEFT-HAND rear face is closed, plain wood with iron hinge straps; enlarge to height 38 percent of lower plain pedestal height and width 28 percent of rear face width, centered on that rear face. The visible RIGHT side face remains uninterrupted masonry. Exactly one personnel door, no tunnel or walk-through opening; FRONT remains sealed. Preserve original height and all upper features, trim upper plan only enough to fit square support, no tower redesign. Whole one tower framed on same neutral beige background, no stairs/ladders/front doors or added lower decoration, no text or dimensions.",
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a10c47-a814-7113-95e7-0e34cde0acd0/exec-a64520fa-c9bf-45d9-89d4-ca1aa2be8acb.png",
+      "output": "art/concepts/2026-10-05-square-towers/byzantine/26-arrow-tower/rear-perspective.png",
+      "width": 1230,
+      "height": 1279,
+      "sha256": "52146974b79c396e6b0304cf58bf4f25d0bde399e64ae90e767f4e728a955e37",
+      "visual_validation": "PASS: upper identity/materials retained, straight square-plan pedestal design, closed personnel door only on rear face, no front/side door or through-passage; flame tower has no fire/smoke VFX."
+    },
+    {
+      "id": "buildings/byzantine/27-cannon-tower-footprint-v2",
+      "view": "front-perspective",
+      "tool": "image_gen.imagegen",
+      "source_images": [
+        "art/concepts/tripo/buildings/byzantine/27-cannon-tower/front-perspective.png",
+        "art/concepts/2026-10-05-square-towers/byzantine/27-cannon-tower/rear-perspective.png"
+      ],
+      "prompt": "Use case: precise-object-edit. Image1 old FRONT tower view is edit target; Image2 revised REAR view gives canonical square footprint. Produce one FRONT-three-quarter concept of same Byzantine cannon tower. Pedestal and stone platform have STRICT 2x2 tiles SQUARE plan equal width/depth, vertical plumb four rectangular faces, sharp right-angle corners; reduce old excessive front-back length so NOT elongated, not tapered, no slope/skirt/ledge. Preserve same tall tower height, rich cream stonework, old ornate bronze cannon and wooden carriage, rear red-tiled shelter, barrels, purple/gold banners and flag. Fit cannon and shelter coherently on square top without new cannon or new architecture. Muzzle faces FRONT toward left as image1. Visible lower FRONT and SIDE are solid completely uninterrupted stonework, no doors. The one closed rear personnel door from image2 remains on hidden rear face OPPOSITE muzzle, MUST NOT show at front viewpoint. Entire tower on same beige studio background, no stairs/ladders/lower windows/through arch/text or dimension marks.",
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a10c47-a814-7113-95e7-0e34cde0acd0/exec-0b05ecea-14bd-4d06-b803-9549058d28d8.png",
+      "output": "art/concepts/2026-10-05-square-towers/byzantine/27-cannon-tower/front-perspective.png",
+      "width": 1279,
+      "height": 1230,
+      "sha256": "78a0a755f7751f0801c05324c9caaf3f2fbc5a9450700c3dd245c3ac7b70e9c2",
+      "visual_validation": "PASS: upper identity/materials retained, straight square-plan pedestal design, closed personnel door only on rear face, no front/side door or through-passage; flame tower has no fire/smoke VFX."
+    },
+    {
+      "id": "buildings/byzantine/27-cannon-tower-footprint-v2",
+      "view": "side",
+      "tool": "image_gen.imagegen",
+      "source_images": [
+        "art/concepts/tripo/buildings/byzantine/27-cannon-tower/side.png",
+        "art/concepts/2026-10-05-square-towers/byzantine/27-cannon-tower/rear-perspective.png"
+      ],
+      "prompt": "Use case: precise-object-edit. Image1 old SIDE cannon tower is edit target; image2 revised rear gives canonical square pedestal. Draw exact SIDE elevation of same Byzantine cannon tower with STRICT 2 tiles by 2 tiles square horizontal footprint, equal front-back and left-right extent. Reduce old excessive platform depth to square plan, vertical plumb stone rectangular face, no taper/sloped foundation/skirt/long oblong. Keep all approved upper bronze cannon with wooden carriage, terracotta rear shelter, barrels, flag and purple gold banners. Cannon points LEFT and rear roof at RIGHT. Same tall pedestal/cream stone texture, full one tower centered on beige neutral backdrop. Visible SIDE lower wall uninterrupted solid stone with NO DOOR. One closed personnel door exists only on hidden REAR face, opposite cannon muzzle, not on side. No open tunnel, no ladder/stairs/windows/ornaments under platform, no duplicates/text/dimensions. Preserve style and coherent apparatus layout from both sources, don't redesign weapon.",
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a10c47-a814-7113-95e7-0e34cde0acd0/exec-96392b04-21c9-4abf-b014-f1db4dcc88c8.png",
+      "output": "art/concepts/2026-10-05-square-towers/byzantine/27-cannon-tower/side.png",
+      "width": 1230,
+      "height": 1279,
+      "sha256": "2341fb58b94d76a4a6c017e82dc79381e51cb51a38f41df014019150ce5fb02f",
+      "visual_validation": "PASS: upper identity/materials retained, straight square-plan pedestal design, closed personnel door only on rear face, no front/side door or through-passage; flame tower has no fire/smoke VFX."
+    },
+    {
+      "id": "buildings/byzantine/27-cannon-tower-footprint-v2",
+      "view": "rear-perspective",
+      "tool": "image_gen.imagegen",
+      "source_images": [
+        "art/concepts/tripo/buildings/byzantine/27-cannon-tower/rear-perspective.png"
+      ],
+      "prompt": "Use case: precise-object-edit. Edit target: this rear-three-quarter Byzantine cannon tower concept. Revise ONLY footprint geometry and rear personnel-door size, preserve original cannon, wooden carriage, rear tiled shelter, purple-gold banners, flag, cream stone texture and render quality. Tower must stand on a STRICT square plan measuring 2 tiles wide by 2 tiles deep; it is one straight vertical rectangular stone prism with all four vertical faces plumb and all corners right angles. NO elongated oblong plan, no widening at bottom, no tapered/trapezoid/sloped foundation, no skirt/buttresses/steps. Compress excessive front-back length while fitting the SAME approved upper cannon and shelter onto the square top platform, do not add another cannon or change style. Camera sees the REAR face plus one SIDE, upper cannon still fires toward opposite FRONT away from rear door; its muzzle should be farther from camera. Center one CLOSED plain wood-and-iron personnel door at ground level on rear face, height 38 percent of the lower plain stone pedestal height, width 28 percent of pedestal rear face width. Door is flush on a solid tower, not a tunnel/arch/gate. Adjacent side completely plain. Preserve entire tower in frame and warm neutral studio background. No ladders, lower windows, front doorway, open door, through passage, dimensions, text or labels.",
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a10c47-a814-7113-95e7-0e34cde0acd0/exec-2ed61f30-c78e-4004-af0a-10b505c49cc3.png",
+      "output": "art/concepts/2026-10-05-square-towers/byzantine/27-cannon-tower/rear-perspective.png",
+      "width": 1374,
+      "height": 1145,
+      "sha256": "29eb99c928f1340dfc21ca2e8eb007caf81a28e70b94408de6a554d461b104c0",
+      "visual_validation": "PASS: upper identity/materials retained, straight square-plan pedestal design, closed personnel door only on rear face, no front/side door or through-passage; flame tower has no fire/smoke VFX.",
+      "revision_prompt": "Use case: precise-object-edit. Correct ONLY door placement in this tower image. The cannon muzzle fires LEFT; the REAR stone face opposite the firing direction is the visible RIGHT-HAND stone face beneath the tiled shelter and ammunition barrels. The newly drawn door is wrongly on the visible LEFT-HAND face. REMOVE that left-face door and fill its location with uninterrupted matching stone blocks. Put one same-sized closed plain wooden personnel door centered at ground level on the RIGHT-HAND visible stone face instead, under the back of the roof and barrels, opposite the cannon muzzle. Its height remains 38 percent of plain pedestal wall height and width 28 percent of rear wall width. No opening or tunnel. Keep entire strict 2x2 square vertical pedestal, upper cannon/roof/flags, dimensions, camera, background and textures otherwise exactly unchanged. Only ONE door in entire image. No text.",
+      "initial_generated_path": "/Users/tankaixi/.codex/generated_images/01a10c47-a814-7113-95e7-0e34cde0acd0/exec-cda02098-1ef7-4790-819d-abd84db244db.png",
+      "revision_reason": "Corrected door from wrong face to rear face opposite cannon muzzle."
+    },
+    {
+      "id": "buildings/byzantine/29-flame-tower-footprint-v2",
+      "view": "front-perspective",
+      "tool": "image_gen.imagegen",
+      "source_images": [
+        "art/concepts/tripo/buildings/byzantine/29-flame-tower/front-perspective.png",
+        "art/concepts/2026-10-05-square-towers/byzantine/29-flame-tower/rear-perspective.png"
+      ],
+      "prompt": "Use case: precise-object-edit. Image 1 is the old FRONT view to revise, Image 2 is the newly approved SQUARE footprint REAR view geometry reference. Render ONE FRONT-three-quarter view of the same Byzantine flame tower. Replace rounded/chamfered support and platform of image1 with the exact square vertical stone prism/plumb sharp right-angle corners of image2: strictly 2 tiles wide x 2 deep, no oblong/taper/flared skirt. Preserve original height, stonework, bronze lion-mouth Greek-fire nozzle, tanks/pipes, red tiled canopy, purple-gold flag and cloth. Fire apparatus faces toward FRONT, leftward in this front camera; keep original fiery spray as image1. Lower visible front and side are fully SEALED uninterrupted masonry; rear closed personnel door of image2 exists on hidden opposite face and MUST NOT appear at this front viewpoint. Adapt top layout coherently to square platform, same apparatus no redesign/duplicates. Entire one tower framed on neutral beige backdrop, no stairs/ladders/front door/lower windows/extra decorations/text/dimensions. Match image2's square base outline rather than image1's chamfered/octagonal base.",
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a10c47-a814-7113-95e7-0e34cde0acd0/exec-1c3d2a7c-f45c-44da-b682-fb88c1ecb9d6.png",
+      "output": "art/concepts/2026-10-05-square-towers/byzantine/29-flame-tower/front-perspective.png",
+      "width": 1199,
+      "height": 1312,
+      "sha256": "6936241120a484bed90548f940c1125518d67b680f6428f2f98f2290b5f2a175",
+      "visual_validation": "PASS: upper identity/materials retained, straight square-plan pedestal design, closed personnel door only on rear face, no front/side door or through-passage; flame tower has no fire/smoke VFX.",
+      "revision_prompt": "Use case: precise-object-edit. Change ONLY the visual-effects in this flame-tower concept image: REMOVE all orange/yellow emitted flame jet, floating sparks, embers and smoky plume extending left from lion-mouth nozzle. Fill removed area with same plain beige studio background. The bronze lion-head nozzle must remain unlit, closed/empty opening visible, entire machine retained. NO glow or orange light on floor. Preserve every tower detail, square vertical stone pedestal, stone material, top platform, tank, pipes, canopy, flags, camera, framing, ordinary soft floor shadow and lighting otherwise unchanged. No flame or smoke anywhere. Output one complete clean tower model reference for Tripo; no text.",
+      "initial_generated_path": "/Users/tankaixi/.codex/generated_images/01a10c47-a814-7113-95e7-0e34cde0acd0/exec-333528bc-a82a-4633-a6f2-f59e26c0199e.png",
+      "revision_reason": "Removed emitted flame and smoke so Tripo does not reconstruct VFX as geometry."
+    },
+    {
+      "id": "buildings/byzantine/29-flame-tower-footprint-v2",
+      "view": "side",
+      "tool": "image_gen.imagegen",
+      "source_images": [
+        "art/concepts/tripo/buildings/byzantine/29-flame-tower/side.png",
+        "art/concepts/2026-10-05-square-towers/byzantine/29-flame-tower/rear-perspective.png"
+      ],
+      "prompt": "Use case: precise-object-edit. Image1 old SIDE tower view is edit target; Image2 revised REAR view gives canonical square footprint. Produce one clean full SIDE elevation of exactly same Byzantine flame tower. Pedestal and upper stone platform have STRICT 2x2 tiles square plan, equal width/depth, four vertical rectangular faces, right-angle corners, NO round/chamfered/octagonal/tapered/sloped base or widening foot. Side face fully plain sealed stone, no door; there is one closed personnel door on rear face opposite lion-head nozzle, hidden in pure side elevation. Preserve same bronze lion-head nozzle pointing LEFT, tank/pipes under terracotta canopy at rear RIGHT, purple-gold banners and flag, rich materials and whole tower height. Fit original upper apparatus onto square top without inventing apparatus. Full tower centered with margins on neutral beige background, near-orthographic exact side view, no camera perspective showing rear entrance, no fire spray. No ladder, stair, lower ornaments/windows, open passage, people, measurements or text.",
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a10c47-a814-7113-95e7-0e34cde0acd0/exec-7edf0bae-5a5f-4c6c-9094-e3ae7ca8a0fb.png",
+      "output": "art/concepts/2026-10-05-square-towers/byzantine/29-flame-tower/side.png",
+      "width": 1199,
+      "height": 1312,
+      "sha256": "27f0ccc2b79c3e1028b49c68e80d0b1569cb074835cd3cfdefc8b2c6b12275bb",
+      "visual_validation": "PASS: upper identity/materials retained, straight square-plan pedestal design, closed personnel door only on rear face, no front/side door or through-passage; flame tower has no fire/smoke VFX."
+    },
+    {
+      "id": "buildings/byzantine/29-flame-tower-footprint-v2",
+      "view": "rear-perspective",
+      "tool": "image_gen.imagegen",
+      "source_images": [
+        "art/concepts/tripo/buildings/byzantine/29-flame-tower/rear-perspective.png"
+      ],
+      "prompt": "Use case: precise-object-edit. Edit target: this rear-three-quarter Byzantine flame tower concept. Change ONLY lower footprint geometry and rear personnel-door size. Preserve bronze Greek-fire lion-head nozzle, bronze tank and pipes, terracotta tiled canopy, purple-and-gold cloth and flag, cream stone texture and existing render quality. Replace lower support with a STRICT square-plan 2 tiles wide by 2 tiles deep vertical rectangular stone prism: equal width/depth, four plumb faces, right-angle corners, no rounded/octagonal chamfered plan, taper, trapezoid, widening foot or base skirt. Preserve tall pedestal height. Resize upper platform to square outline while keeping SAME fire apparatus and canopy, do not redesign weapon. Camera sees rear-three-quarter, nozzle points RIGHT away from the rear entrance. One CLOSED simple wooden door on visible LEFT-HAND REAR face (opposite nozzle) at ground level, centered, height 38 percent of lower plain stone pedestal height and width 28 percent of rear face width. Adjacent visible RIGHT-HAND side face completely sealed masonry. Door only visual flush entrance, not open passage. Keep one full tower in frame with warm neutral beige studio background. No ladders/stairs/front doors/lower decoration, no dimensions/labels or text.",
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a10c47-a814-7113-95e7-0e34cde0acd0/exec-e22f3acc-bdb8-4e07-9a9a-f68058248999.png",
+      "output": "art/concepts/2026-10-05-square-towers/byzantine/29-flame-tower/rear-perspective.png",
+      "width": 1199,
+      "height": 1312,
+      "sha256": "1f35f36ec9bae1779f59e27c39dbe495a1df6c2cd3e7da6627ff9d372943ebec",
+      "visual_validation": "PASS: upper identity/materials retained, straight square-plan pedestal design, closed personnel door only on rear face, no front/side door or through-passage; flame tower has no fire/smoke VFX."
+    }
+  ]
+}

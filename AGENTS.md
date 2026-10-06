@@ -62,7 +62,11 @@
 - Friendly unit/building damage produces bounded, merging, expiring red minimap warnings.
   Enemy damage alone must not warn; warning presentation must never reveal fog or emit noise.
 - Defensive towers (arrow, cannon and flame towers) have solid rectangular stone pedestals.
-  Preserve their authored upper structures; no doorway, ladder or passage in the lower body.
+  Latest concept footprints: arrow/cannon/flame towers are exactly 2×2 tiles viewed from
+  above; Tianchao hive-cannon/Great Wall tower is 3 wide × 2 deep. Pedestal sides are vertical,
+  not tapered. Keep new concept versions in new folders and preserve prior image files.
+  Preserve their authored upper structures. One closed, plain personnel door is allowed on
+  the rear (opposite the weapon firing direction); no front doorway, ladder or through-passage.
   Both factions are blocked by living towers. Friendly passage is restricted to stone and
   wooden gates; do not restore the former gate-tower passage or interior silhouette feature.
 - All living zombies, including previously alerted or settled ones, may hear new gunshots.

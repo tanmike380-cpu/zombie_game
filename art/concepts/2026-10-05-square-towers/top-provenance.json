@@ -1,0 +1,166 @@
+{
+  "date": "2026-10-06",
+  "task": "Six independent tower top-view concept references",
+  "scope": "Only six top.png files and this record. No other views, Blender geometry, Unity, manifests or gameplay occupancy changed.",
+  "limitations": [
+    "Generative illustrations are not calibrated orthographic drawings. Footprint tile values are design requirements, not verified geometry measurements.",
+    "Byzantine cannon square and Tianchao Great Wall 3:2 outline retain minor visual aspect deviations despite targeted corrections; enforce exact dimensions when modeling.",
+    "Roof overhang and weapon projections are not the pedestal footprint."
+  ],
+  "records": [
+    {
+      "id": "buildings/tianchao/26-arrow-tower",
+      "view": "top",
+      "source_reference": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-square-towers/tianchao/26-arrow-tower/rear-perspective.png",
+      "prompt": "Use case: precise-object-edit. Input Image1 is the approved tower design; create its ONE strict TOP ORTHOGRAPHIC plan view. Camera directly vertically overhead at 90 degrees looking straight down, zero perspective, NOT isometric or oblique. Preserve roof construction, weapon, materials, palette, flags and decorative identity of source, merely change camera and regularize ground footprint. Building axes horizontal/vertical in image, firing direction points toward top of image. Square neutral beige background, soft studio shading, one complete building centered with ample padding including any weapon protrusion; no cropping. No people, text, grid, rulers, dimension arrows or labels. Bottom stone pedestal sides vertical, not tapered. Do not stretch roof length artificially; modest eave overhang allowed. This is concept reference not a diagram. Footprint intention 2x2 tiles: stone pedestal outline from above must be perfectly SQUARE, width equal depth. Chinese arrow tower with intact grey-tiled hip-and-gable roof, elegantly upturned eaves, red-brown wood beams; no cannon. Roof obscures interior from overhead, do not make cutaway. Strictly 90 degree vertical overhead: no front/back/side wall elevation visible. Keep clear padding all around.",
+      "referenced_image_paths": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-square-towers/tianchao/26-arrow-tower/rear-perspective.png"
+      ],
+      "tool": "image_gen.imagegen",
+      "transparent_background": false,
+      "generated_file": "/Users/tankaixi/.codex/generated_images/01a1025d-bf93-7163-b2b8-78b6e6ac6296/exec-b98a0df0-4e97-4b89-a8c5-829369a30923.png",
+      "destination": "art/concepts/2026-10-05-square-towers/tianchao/26-arrow-tower/top.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "fdf70d9c15d682895ebfb1a22079b1d1bbe959530cc9cc8baa9de8e3dce7d340",
+      "intended_footprint_tiles": [
+        2,
+        2
+      ],
+      "visual_review": "Top-down concept view, subject complete, faction materials and roof preserved. Not calibrated dimensions.",
+      "dimension_accuracy_verified": false,
+      "blender_geometry_modified": false,
+      "tripo_generation_validated": false
+    },
+    {
+      "id": "buildings/tianchao/27-cannon-tower",
+      "view": "top",
+      "source_reference": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-square-towers/tianchao/27-cannon-tower/rear-perspective.png",
+      "prompt": "Use case: precise-object-edit. Input Image1 is the approved tower design; create its ONE strict TOP ORTHOGRAPHIC plan view. Camera directly vertically overhead at 90 degrees looking straight down, zero perspective, NOT isometric or oblique. Preserve roof construction, weapon, materials, palette, flags and decorative identity of source, merely change camera and regularize ground footprint. Building axes horizontal/vertical in image, firing direction points toward top of image. Square neutral beige background, soft studio shading, one complete building centered with ample padding including any weapon protrusion; no cropping. No people, text, grid, rulers, dimension arrows or labels. Bottom stone pedestal sides vertical, not tapered. Do not stretch roof length artificially; modest eave overhang allowed. This is concept reference not a diagram. Footprint intention 2x2 tiles: stone pedestal outline from above must be perfectly SQUARE, width equal depth. Chinese cannon tower, grey tiled gable roof over rear half, red timber and red flag, bronze cannon projecting from front half, grey stone parapet; preserve both distinct roof and uncovered front gun platform. Strictly 90 degree vertical overhead: no front/back/side wall elevation visible. Keep clear padding all around.",
+      "referenced_image_paths": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-square-towers/tianchao/27-cannon-tower/rear-perspective.png"
+      ],
+      "tool": "image_gen.imagegen",
+      "transparent_background": false,
+      "generated_file": "/Users/tankaixi/.codex/generated_images/01a1025d-bf93-7163-b2b8-78b6e6ac6296/exec-0fc9de94-3d76-4c3a-9dee-787262bd642e.png",
+      "destination": "art/concepts/2026-10-05-square-towers/tianchao/27-cannon-tower/top.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "8ecdedcda7b30b1934c7b431dbc5b607ad77b54b4a5b4ffe6950390298fdef5d",
+      "intended_footprint_tiles": [
+        2,
+        2
+      ],
+      "visual_review": "Top-down concept view, subject complete, faction materials and roof preserved. Not calibrated dimensions.",
+      "dimension_accuracy_verified": false,
+      "blender_geometry_modified": false,
+      "tripo_generation_validated": false
+    },
+    {
+      "id": "buildings/tianchao/28-great-wall",
+      "view": "top",
+      "source_reference": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-square-towers/tianchao/28-great-wall/rear-perspective.png",
+      "prompt": "Use case: precise-object-edit. Correct the camera of this tower reference to STRICT VERTICAL TOP-DOWN ORTHOGRAPHIC, like a satellite/map roof plan. Camera optical axis points exactly straight down. No front wall thickness/elevation or pavilion vertical door/wall can be visible. See ONLY roofs, floor, tops of parapet stones and tops of the two wooden rocket launchers. Remove perspective and raised-front-wall effect. Rectangular footprint must be width1.5 times depth (3:2), NOT the current nearly2:1 narrow horizontal rectangle; substantially increase its depth while retaining width. Keep pavilion centered, both rocket launchers left and right, dark grey Chinese tiled roof, pale grey stone, red pillars and banners. All horizontal world surface rectangles are undistorted rectangles in this plan. One building on square neutral beige image, padded all around. No text/grid/numbers/dimension marks. Weapon muzzles face top of image; no arrows sticking out. Do not redesign or add components. Buildings' vertical facades completely invisible from this exact overhead camera.",
+      "referenced_image_paths": [
+        "/Users/tankaixi/.codex/generated_images/01a1025d-bf93-7163-b2b8-78b6e6ac6296/exec-af2b1d57-a039-495c-ad62-be11e2feda18.png"
+      ],
+      "tool": "image_gen.imagegen",
+      "transparent_background": false,
+      "generated_file": "/Users/tankaixi/.codex/generated_images/01a1025d-bf93-7163-b2b8-78b6e6ac6296/exec-ecfc26a2-35f8-455c-88d5-494012fe2204.png",
+      "destination": "art/concepts/2026-10-05-square-towers/tianchao/28-great-wall/top.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "0d1d3a6ea7f7ad3f0e06954820634bdc7d66188495f66ed9ecc5963b866831cb",
+      "intended_footprint_tiles": [
+        3,
+        2
+      ],
+      "visual_review": "Top-down concept view, subject complete, faction materials and roof preserved. Not calibrated dimensions.",
+      "dimension_accuracy_verified": false,
+      "blender_geometry_modified": false,
+      "tripo_generation_validated": false,
+      "rejected_iteration": {
+        "prompt": "Use case: precise-object-edit. Input Image1 is the approved tower design; create its ONE strict TOP ORTHOGRAPHIC plan view. Camera directly vertically overhead at 90 degrees looking straight down, zero perspective, NOT isometric or oblique. Preserve roof construction, weapon, materials, palette, flags and decorative identity of source, merely change camera and regularize ground footprint. Building axes horizontal/vertical in image, firing direction points toward top of image. Square neutral beige background, soft studio shading, one complete building centered with ample padding including any weapon protrusion; no cropping. No people, text, grid, rulers, dimension arrows or labels. Bottom stone pedestal sides vertical, not tapered. Do not stretch roof length artificially; modest eave overhang allowed. This is concept reference not a diagram. IMPORTANT DIFFERENT FOOTPRINT: Tianchao Great Wall hive cannon tower is a WIDE RECTANGLE, width3 x depth2, width 1.5 TIMES height on image. Maintain this clearly rectangular plan, not square. Broad gray stone parapet rectangle around one centered small red/cream Chinese pavilion with dark grey upturned tiled roof; exactly two existing wooden hive rocket launchers one on each side of pavilion, same old wooden boxes/iron bands, red-gold flags near side corners. Back personnel door is toward bottom of image and not visible from straight overhead; both weapon firing ends face TOP, away from back door. Do not rotate launchers sideways or toward viewer. No arrows sticking outside launchers. No walls visibly tall from this 90degree top camera; one tower fully within frame.",
+        "generated_file": "/Users/tankaixi/.codex/generated_images/01a1025d-bf93-7163-b2b8-78b6e6ac6296/exec-af2b1d57-a039-495c-ad62-be11e2feda18.png",
+        "reason": "Oblique camera and excessively wide rectangle; corrected to top view."
+      }
+    },
+    {
+      "id": "buildings/byzantine/26-arrow-tower",
+      "view": "top",
+      "source_reference": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-square-towers/byzantine/26-arrow-tower/rear-perspective.png",
+      "prompt": "Use case: precise-object-edit. Input Image1 is the approved tower design; create its ONE strict TOP ORTHOGRAPHIC plan view. Camera directly vertically overhead at 90 degrees looking straight down, zero perspective, NOT isometric or oblique. Preserve roof construction, weapon, materials, palette, flags and decorative identity of source, merely change camera and regularize ground footprint. Building axes horizontal/vertical in image, firing direction points toward top of image. Square neutral beige background, soft studio shading, one complete building centered with ample padding including any weapon protrusion; no cropping. No people, text, grid, rulers, dimension arrows or labels. Bottom stone pedestal sides vertical, not tapered. Do not stretch roof length artificially; modest eave overhang allowed. This is concept reference not a diagram. Ground stone footprint is a perfect SQUARE in top plan, width exactly same as depth (2x2 design). Byzantine arrow tower: preserve terracotta pyramidal hipped roof with central finial, square timber gallery, pale sandstone, purple/gold bow banners. Roof is itself square with symmetric equal eave overhang all4 sides. Roof must remain intact (not cutaway). From a strict vertical top view it obscures most interior.",
+      "referenced_image_paths": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-square-towers/byzantine/26-arrow-tower/rear-perspective.png"
+      ],
+      "tool": "image_gen.imagegen",
+      "transparent_background": false,
+      "generated_file": "/Users/tankaixi/.codex/generated_images/01a1025d-bf93-7163-b2b8-78b6e6ac6296/exec-97cbc6b5-e549-41fe-9708-dcd2fc07ff36.png",
+      "destination": "art/concepts/2026-10-05-square-towers/byzantine/26-arrow-tower/top.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "e6444cdfae7b9a83962c07b4c47bae3aa342e4dc46dcf91e8d46ffb84aa1de90",
+      "intended_footprint_tiles": [
+        2,
+        2
+      ],
+      "visual_review": "Top-down concept view, subject complete, faction materials and roof preserved. Not calibrated dimensions.",
+      "dimension_accuracy_verified": false,
+      "blender_geometry_modified": false,
+      "tripo_generation_validated": false
+    },
+    {
+      "id": "buildings/byzantine/27-cannon-tower",
+      "view": "top",
+      "source_reference": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-square-towers/byzantine/27-cannon-tower/rear-perspective.png",
+      "prompt": "Use case: precise-object-edit. Correct ONLY the overall tower plan proportion in this already top-down reference. Its stone parapet footprint is currently taller than wide. Make the outer stone square: equal width and height, straight sides aligned canvas axes, top and bottom edges same distance apart as left and right edges. Enlarge width slightly or shorten depth to match; don't crop. Preserve cannon facing upward, red terracotta square canopy, pale sandstone blocks, woodwork and Byzantine purple/gold banners, neutral background, all material detail. True vertical 90-degree overhead orthographic view, not oblique. One complete building, generous padding for cannon. No text/grid/dimension labels. Roof remains intact; stone base plan visually 1:1 square, intended 2x2 tile footprint.",
+      "referenced_image_paths": [
+        "/Users/tankaixi/.codex/generated_images/01a1025d-bf93-7163-b2b8-78b6e6ac6296/exec-fd451174-027b-4955-9f49-61c50514aa93.png"
+      ],
+      "tool": "image_gen.imagegen",
+      "transparent_background": false,
+      "generated_file": "/Users/tankaixi/.codex/generated_images/01a1025d-bf93-7163-b2b8-78b6e6ac6296/exec-d0c68f2a-a99e-4a94-bf06-fb97716f88d1.png",
+      "destination": "art/concepts/2026-10-05-square-towers/byzantine/27-cannon-tower/top.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "acf582cd69a522c5367a4feb70d3a80e7204260bbd25148d6fcf45b106067296",
+      "intended_footprint_tiles": [
+        2,
+        2
+      ],
+      "visual_review": "Top-down concept view, subject complete, faction materials and roof preserved. Not calibrated dimensions.",
+      "dimension_accuracy_verified": false,
+      "blender_geometry_modified": false,
+      "tripo_generation_validated": false,
+      "rejected_iteration": {
+        "prompt": "Use case: precise-object-edit. Input Image1 is the approved tower design; create its ONE strict TOP ORTHOGRAPHIC plan view. Camera directly vertically overhead at 90 degrees looking straight down, zero perspective, NOT isometric or oblique. Preserve roof construction, weapon, materials, palette, flags and decorative identity of source, merely change camera and regularize ground footprint. Building axes horizontal/vertical in image, firing direction points toward top of image. Square neutral beige background, soft studio shading, one complete building centered with ample padding including any weapon protrusion; no cropping. No people, text, grid, rulers, dimension arrows or labels. Bottom stone pedestal sides vertical, not tapered. Do not stretch roof length artificially; modest eave overhang allowed. This is concept reference not a diagram. Ground stone footprint is precisely SQUARE in visual plan, equal X and Y extents, design intention 2 by 2 tiles. Byzantine cannon tower: red terracotta hipped canopy, timber frame, bronze cannon, pale stone parapet, purple/gold banners. From above roof obscures interior, cannon barrel visible extending beyond roof front. All outlines viewed from true vertical top.",
+        "generated_file": "/Users/tankaixi/.codex/generated_images/01a1025d-bf93-7163-b2b8-78b6e6ac6296/exec-fd451174-027b-4955-9f49-61c50514aa93.png",
+        "reason": "Stone outline visually too tall; requested square-plan correction."
+      }
+    },
+    {
+      "id": "buildings/byzantine/29-flame-tower",
+      "view": "top",
+      "source_reference": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-square-towers/byzantine/29-flame-tower/rear-perspective.png",
+      "prompt": "Use case: precise-object-edit. Input Image1 is the approved tower design; create its ONE strict TOP ORTHOGRAPHIC plan view. Camera directly vertically overhead at 90 degrees looking straight down, zero perspective, NOT isometric or oblique. Preserve roof construction, weapon, materials, palette, flags and decorative identity of source, merely change camera and regularize ground footprint. Building axes horizontal/vertical in image, firing direction points toward top of image. Square neutral beige background, soft studio shading, one complete building centered with ample padding including any weapon protrusion; no cropping. No people, text, grid, rulers, dimension arrows or labels. Bottom stone pedestal sides vertical, not tapered. Do not stretch roof length artificially; modest eave overhang allowed. This is concept reference not a diagram. Footprint intention 2x2 tiles: stone pedestal outline from above must be perfectly SQUARE, width equal depth. Byzantine Greek-fire tower, terracotta canopy with two gable edges, purple/gold banners, brass tanks and Greek-fire nozzle at front. Preserve its roof/tanks/weapon construction, visible brass machinery only outside roof coverage. Strictly 90 degree vertical overhead: no front/back/side wall elevation visible. Keep clear padding all around.",
+      "referenced_image_paths": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-square-towers/byzantine/29-flame-tower/rear-perspective.png"
+      ],
+      "tool": "image_gen.imagegen",
+      "transparent_background": false,
+      "generated_file": "/Users/tankaixi/.codex/generated_images/01a1025d-bf93-7163-b2b8-78b6e6ac6296/exec-b3a70af4-73ce-4cab-9a86-dd6f3e08893d.png",
+      "destination": "art/concepts/2026-10-05-square-towers/byzantine/29-flame-tower/top.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "6760f64adc74e663fe58cc9bae32b98233ee5a124e5d9f48e3ed9b0ec3eca07a",
+      "intended_footprint_tiles": [
+        2,
+        2
+      ],
+      "visual_review": "Top-down concept view, subject complete, faction materials and roof preserved. Not calibrated dimensions.",
+      "dimension_accuracy_verified": false,
+      "blender_geometry_modified": false,
+      "tripo_generation_validated": false
+    }
+  ]
+}

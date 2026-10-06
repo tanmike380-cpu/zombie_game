@@ -1,0 +1,156 @@
+{
+  "version": 1,
+  "scope": "tianchao three tower fragment only; top.png is authored separately",
+  "assets": [
+    {
+      "id": "buildings/tianchao/26-arrow-tower-footprint-v2",
+      "previous_id": "buildings/tianchao/26-arrow-tower",
+      "label": "箭塔",
+      "category": "building",
+      "footprint_tiles": [
+        2,
+        2
+      ],
+      "footprint_order": "width,depth",
+      "projection": "independent perspective/elevation concept references; dimensional target, not calibrated geometric proof",
+      "rear_door": {
+        "closed": true,
+        "visual_only": true,
+        "height_fraction_target": [
+          0.35,
+          0.4
+        ],
+        "width_fraction_target": [
+          0.25,
+          0.3
+        ]
+      },
+      "views": [
+        {
+          "name": "front-perspective",
+          "source": "2026-10-05-square-towers/tianchao/26-arrow-tower/front-perspective.png",
+          "copy_source": true,
+          "width": 1236,
+          "height": 1272,
+          "sha256": "4d4fad6303810e345d5c5150df6ae4d6370e456755021818ed7061da4dd28e4d"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-05-square-towers/tianchao/26-arrow-tower/side.png",
+          "copy_source": true,
+          "width": 1233,
+          "height": 1276,
+          "sha256": "582644d1b0a1a84ce9ef2feb23ec53e6b171efd11bb1481309cb5d4201658282"
+        },
+        {
+          "name": "rear-perspective",
+          "source": "2026-10-05-square-towers/tianchao/26-arrow-tower/rear-perspective.png",
+          "copy_source": true,
+          "width": 1236,
+          "height": 1272,
+          "sha256": "52be072871df18e1b1bc6268bdcadadbdcf45b1b62ae5aa47be7121e6cbc51c6"
+        }
+      ]
+    },
+    {
+      "id": "buildings/tianchao/27-cannon-tower-footprint-v2",
+      "previous_id": "buildings/tianchao/27-cannon-tower",
+      "label": "炮塔",
+      "category": "building",
+      "footprint_tiles": [
+        2,
+        2
+      ],
+      "footprint_order": "width,depth",
+      "projection": "independent perspective/elevation concept references; dimensional target, not calibrated geometric proof",
+      "rear_door": {
+        "closed": true,
+        "visual_only": true,
+        "height_fraction_target": [
+          0.35,
+          0.4
+        ],
+        "width_fraction_target": [
+          0.25,
+          0.3
+        ]
+      },
+      "views": [
+        {
+          "name": "front-perspective",
+          "source": "2026-10-05-square-towers/tianchao/27-cannon-tower/front-perspective.png",
+          "copy_source": true,
+          "width": 1327,
+          "height": 1186,
+          "sha256": "4ba688d0fae089d180aca10dc19f54060f44bd5791326cf3d0dc28d658ba688e"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-05-square-towers/tianchao/27-cannon-tower/side.png",
+          "copy_source": true,
+          "width": 1385,
+          "height": 1136,
+          "sha256": "34afb1b2a329e25a7be0bbed98f4300c4d9a0f42886219396e43cfce532ba11a"
+        },
+        {
+          "name": "rear-perspective",
+          "source": "2026-10-05-square-towers/tianchao/27-cannon-tower/rear-perspective.png",
+          "copy_source": true,
+          "width": 1430,
+          "height": 1100,
+          "sha256": "2db86478493bcf2682ae3fcacbcb0184c79af2e0cc602669ff189635a94e555d"
+        }
+      ]
+    },
+    {
+      "id": "buildings/tianchao/28-great-wall-footprint-v2",
+      "previous_id": "buildings/tianchao/28-great-wall",
+      "label": "长城·蜂巢炮",
+      "category": "building",
+      "footprint_tiles": [
+        3,
+        2
+      ],
+      "footprint_order": "width,depth",
+      "projection": "independent perspective/elevation concept references; dimensional target, not calibrated geometric proof",
+      "rear_door": {
+        "closed": true,
+        "visual_only": true,
+        "height_fraction_target": [
+          0.35,
+          0.4
+        ],
+        "width_fraction_target": [
+          0.25,
+          0.3
+        ]
+      },
+      "views": [
+        {
+          "name": "front-perspective",
+          "source": "2026-10-05-square-towers/tianchao/28-great-wall/front-perspective.png",
+          "copy_source": true,
+          "width": 1408,
+          "height": 1117,
+          "sha256": "16e9a294fbfde94b2da03aeddbc48d4d32b462eb0f3a4644530c1ff7cbf99e83"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-05-square-towers/tianchao/28-great-wall/side.png",
+          "copy_source": true,
+          "width": 1408,
+          "height": 1117,
+          "sha256": "3b3dbc88fb818cd3124eff4703ae6b5b873b3bcd51690690a3e884a289dbf44b"
+        },
+        {
+          "name": "rear-perspective",
+          "source": "2026-10-05-square-towers/tianchao/28-great-wall/rear-perspective.png",
+          "copy_source": true,
+          "width": 1408,
+          "height": 1117,
+          "sha256": "154fd1fb7b5a35a21be79a2bcfc4dd92392b3d2833e331fcb5d1cecd2d168a29"
+        }
+      ]
+    }
+  ]
+}

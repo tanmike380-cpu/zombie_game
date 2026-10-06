@@ -1,0 +1,125 @@
+{
+  "version": 1,
+  "assets": [
+    {
+      "id": "buildings/byzantine/26-arrow-tower-footprint-v2",
+      "previous_id": "buildings/byzantine/26-arrow-tower",
+      "label": "箭塔·拜占庭·方形占地修订",
+      "category": "building",
+      "footprint_tiles": [
+        2,
+        2
+      ],
+      "projection": "front/rear perspective concepts and side elevation; not metrically calibrated orthographic",
+      "closed_rear_door": true,
+      "door_height_ratio_target": 0.38,
+      "door_width_ratio_target": 0.28,
+      "views": [
+        {
+          "name": "front-perspective",
+          "source": "2026-10-05-square-towers/byzantine/26-arrow-tower/front-perspective.png",
+          "copy_source": true,
+          "width": 1230,
+          "height": 1278,
+          "sha256": "b0346a566652be15c8af8c08233690e52d9f96dd0593e74044bf5a9d2730ed3a"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-05-square-towers/byzantine/26-arrow-tower/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "73d45be2e7533cc810b1845f229da85a992c407b7bedb37d0be345f57ce571ea"
+        },
+        {
+          "name": "rear-perspective",
+          "source": "2026-10-05-square-towers/byzantine/26-arrow-tower/rear-perspective.png",
+          "copy_source": true,
+          "width": 1230,
+          "height": 1279,
+          "sha256": "52146974b79c396e6b0304cf58bf4f25d0bde399e64ae90e767f4e728a955e37"
+        }
+      ]
+    },
+    {
+      "id": "buildings/byzantine/27-cannon-tower-footprint-v2",
+      "previous_id": "buildings/byzantine/27-cannon-tower",
+      "label": "炮塔·拜占庭·方形占地修订",
+      "category": "building",
+      "footprint_tiles": [
+        2,
+        2
+      ],
+      "projection": "front/rear perspective concepts and side elevation; not metrically calibrated orthographic",
+      "closed_rear_door": true,
+      "door_height_ratio_target": 0.38,
+      "door_width_ratio_target": 0.28,
+      "views": [
+        {
+          "name": "front-perspective",
+          "source": "2026-10-05-square-towers/byzantine/27-cannon-tower/front-perspective.png",
+          "copy_source": true,
+          "width": 1279,
+          "height": 1230,
+          "sha256": "78a0a755f7751f0801c05324c9caaf3f2fbc5a9450700c3dd245c3ac7b70e9c2"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-05-square-towers/byzantine/27-cannon-tower/side.png",
+          "copy_source": true,
+          "width": 1230,
+          "height": 1279,
+          "sha256": "2341fb58b94d76a4a6c017e82dc79381e51cb51a38f41df014019150ce5fb02f"
+        },
+        {
+          "name": "rear-perspective",
+          "source": "2026-10-05-square-towers/byzantine/27-cannon-tower/rear-perspective.png",
+          "copy_source": true,
+          "width": 1374,
+          "height": 1145,
+          "sha256": "29eb99c928f1340dfc21ca2e8eb007caf81a28e70b94408de6a554d461b104c0"
+        }
+      ]
+    },
+    {
+      "id": "buildings/byzantine/29-flame-tower-footprint-v2",
+      "previous_id": "buildings/byzantine/29-flame-tower",
+      "label": "喷火塔·拜占庭·方形占地修订",
+      "category": "building",
+      "footprint_tiles": [
+        2,
+        2
+      ],
+      "projection": "front/rear perspective concepts and side elevation; not metrically calibrated orthographic",
+      "closed_rear_door": true,
+      "door_height_ratio_target": 0.38,
+      "door_width_ratio_target": 0.28,
+      "views": [
+        {
+          "name": "front-perspective",
+          "source": "2026-10-05-square-towers/byzantine/29-flame-tower/front-perspective.png",
+          "copy_source": true,
+          "width": 1199,
+          "height": 1312,
+          "sha256": "6936241120a484bed90548f940c1125518d67b680f6428f2f98f2290b5f2a175"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-05-square-towers/byzantine/29-flame-tower/side.png",
+          "copy_source": true,
+          "width": 1199,
+          "height": 1312,
+          "sha256": "27f0ccc2b79c3e1028b49c68e80d0b1569cb074835cd3cfdefc8b2c6b12275bb"
+        },
+        {
+          "name": "rear-perspective",
+          "source": "2026-10-05-square-towers/byzantine/29-flame-tower/rear-perspective.png",
+          "copy_source": true,
+          "width": 1199,
+          "height": 1312,
+          "sha256": "1f35f36ec9bae1779f59e27c39dbe495a1df6c2cd3e7da6627ff9d372943ebec"
+        }
+      ]
+    }
+  ]
+}

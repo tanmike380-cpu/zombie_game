@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 3,
   "assets": [
     {
       "id": "buildings/tianchao/01-hq-age1",
@@ -16994,102 +16994,6 @@
       ]
     },
     {
-      "id": "buildings/tianchao/26-arrow-tower",
-      "label": "箭塔",
-      "category": "building",
-      "projection": "2026-10-05 revised single-view concepts: solid rectangular stone base; perspective references, not calibrated orthographic blueprints",
-      "views": [
-        {
-          "name": "front-perspective",
-          "source": "2026-10-05-solid-towers/tianchao/26-arrow-tower/front-perspective.png",
-          "copy_source": true,
-          "width": 1236,
-          "height": 1272,
-          "sha256": "8b936065196a0928801eed979ef20a3e77bb1fe2f64d1e74b501183ac6049280"
-        },
-        {
-          "name": "side",
-          "source": "2026-10-05-solid-towers/tianchao/26-arrow-tower/side.png",
-          "copy_source": true,
-          "width": 1233,
-          "height": 1275,
-          "sha256": "509109be389cbb38a821544128057d0c154f037721107cf4773416b618371846"
-        },
-        {
-          "name": "rear-perspective",
-          "source": "2026-10-05-solid-towers/tianchao/26-arrow-tower/rear-perspective.png",
-          "copy_source": true,
-          "width": 1236,
-          "height": 1272,
-          "sha256": "115bafc63e49afd6688384a1a09bf1a9a7502ad7a38f2c60206485a1c2226432"
-        }
-      ]
-    },
-    {
-      "id": "buildings/tianchao/27-cannon-tower",
-      "label": "炮塔",
-      "category": "building",
-      "projection": "2026-10-05 revised single-view concepts: solid rectangular stone base; perspective references, not calibrated orthographic blueprints",
-      "views": [
-        {
-          "name": "front-perspective",
-          "source": "2026-10-05-solid-towers/tianchao/27-cannon-tower/front-perspective.png",
-          "copy_source": true,
-          "width": 1327,
-          "height": 1186,
-          "sha256": "2eebe91c08aeef8f0cd44ff22f5fd23602deaed08a9a663ea8cdc87e679283b0"
-        },
-        {
-          "name": "side",
-          "source": "2026-10-05-solid-towers/tianchao/27-cannon-tower/side.png",
-          "copy_source": true,
-          "width": 1385,
-          "height": 1136,
-          "sha256": "3f92f7efa7d2758ebc8f6ebd0041818b505f3ddb2d77fafce77245e87f2b2111"
-        },
-        {
-          "name": "rear-perspective",
-          "source": "2026-10-05-solid-towers/tianchao/27-cannon-tower/rear-perspective.png",
-          "copy_source": true,
-          "width": 1431,
-          "height": 1099,
-          "sha256": "b9caa0452a653f168f3c00afa7833646ce250b5f79e29566ba2881d68cd597ef"
-        }
-      ]
-    },
-    {
-      "id": "buildings/tianchao/28-great-wall",
-      "label": "长城·蜂巢炮",
-      "category": "building",
-      "projection": "2026-10-05 revised single-view concepts: solid rectangular stone base; perspective references, not calibrated orthographic blueprints",
-      "views": [
-        {
-          "name": "front-perspective",
-          "source": "2026-10-05-solid-towers/tianchao/28-great-wall/front-perspective.png",
-          "copy_source": true,
-          "width": 1341,
-          "height": 1173,
-          "sha256": "7da1b9417ea74147fb64a2b1df1ce72ba99ca96111613fab6431747ceacb625d"
-        },
-        {
-          "name": "side",
-          "source": "2026-10-05-solid-towers/tianchao/28-great-wall/side.png",
-          "copy_source": true,
-          "width": 1323,
-          "height": 1189,
-          "sha256": "49a994fa607dc00cd7ff56dbc65f90cbbfff2d7725448b99e4577fc5aac66c2b"
-        },
-        {
-          "name": "rear-perspective",
-          "source": "2026-10-05-solid-towers/tianchao/28-great-wall/rear-perspective.png",
-          "copy_source": true,
-          "width": 1411,
-          "height": 1115,
-          "sha256": "9cb992b9b5ed4540302f06fe733dd0f7eb9fa0b77f5b0bedcbf6cd5a0e12d8e4"
-        }
-      ]
-    },
-    {
       "id": "buildings/byzantine/01-hq-age1",
       "label": "主基地·时代一",
       "category": "building",
@@ -32648,102 +32552,6 @@
       ]
     },
     {
-      "id": "buildings/byzantine/26-arrow-tower",
-      "label": "箭塔",
-      "category": "building",
-      "projection": "2026-10-05 revised single-view concepts: solid rectangular stone base; perspective references, not calibrated orthographic blueprints",
-      "views": [
-        {
-          "name": "front-perspective",
-          "source": "2026-10-05-solid-towers/byzantine/26-arrow-tower/front-perspective.png",
-          "copy_source": true,
-          "width": 1254,
-          "height": 1254,
-          "sha256": "745fc8ad21753d9216829e6e3a7ee4e927b0304401d29b4824e47b5c855dada9"
-        },
-        {
-          "name": "side",
-          "source": "2026-10-05-solid-towers/byzantine/26-arrow-tower/side.png",
-          "copy_source": true,
-          "width": 1254,
-          "height": 1254,
-          "sha256": "869f52bf7b9a7fe7cf4291af6f3f492d40fad7aa198ee172026a908583a78248"
-        },
-        {
-          "name": "rear-perspective",
-          "source": "2026-10-05-solid-towers/byzantine/26-arrow-tower/rear-perspective.png",
-          "copy_source": true,
-          "width": 1230,
-          "height": 1279,
-          "sha256": "d16f9b68734b2c2c199bd7649b8f9c11678db2c1aec78ea192b4b047225b0ada"
-        }
-      ]
-    },
-    {
-      "id": "buildings/byzantine/27-cannon-tower",
-      "label": "炮塔",
-      "category": "building",
-      "projection": "2026-10-05 revised single-view concepts: solid rectangular stone base; perspective references, not calibrated orthographic blueprints",
-      "views": [
-        {
-          "name": "front-perspective",
-          "source": "2026-10-05-solid-towers/byzantine/27-cannon-tower/front-perspective.png",
-          "copy_source": true,
-          "width": 1279,
-          "height": 1230,
-          "sha256": "c668ed7d96f412c18a497e081dc0519b27a86594035d19bb27da95b6a7c7fb62"
-        },
-        {
-          "name": "side",
-          "source": "2026-10-05-solid-towers/byzantine/27-cannon-tower/side.png",
-          "copy_source": true,
-          "width": 1230,
-          "height": 1279,
-          "sha256": "f5c1167ada0c08aa625b3522c36c134dd079c375d0796dcdbabdd1f7756577df"
-        },
-        {
-          "name": "rear-perspective",
-          "source": "2026-10-05-solid-towers/byzantine/27-cannon-tower/rear-perspective.png",
-          "copy_source": true,
-          "width": 1374,
-          "height": 1145,
-          "sha256": "246abe0259ebd8f93f43cb793065ac276a203666b48057bb3aabaf609a4137aa"
-        }
-      ]
-    },
-    {
-      "id": "buildings/byzantine/29-flame-tower",
-      "label": "喷火塔",
-      "category": "building",
-      "projection": "2026-10-05 revised single-view concepts: solid rectangular stone base; perspective references, not calibrated orthographic blueprints",
-      "views": [
-        {
-          "name": "front-perspective",
-          "source": "2026-10-05-solid-towers/byzantine/29-flame-tower/front-perspective.png",
-          "copy_source": true,
-          "width": 1301,
-          "height": 1209,
-          "sha256": "a01d7f1f16e8152600571f3d61af58dd42af71776b34985447ee89cc730ee958"
-        },
-        {
-          "name": "side",
-          "source": "2026-10-05-solid-towers/byzantine/29-flame-tower/side.png",
-          "copy_source": true,
-          "width": 1301,
-          "height": 1209,
-          "sha256": "d8b76acd39bf66e0e00fd49c26cd01b299e54847370e4a902ece45ea51d28d7b"
-        },
-        {
-          "name": "rear-perspective",
-          "source": "2026-10-05-solid-towers/byzantine/29-flame-tower/rear-perspective.png",
-          "copy_source": true,
-          "width": 1199,
-          "height": 1312,
-          "sha256": "80d52d116b30b99e5299e1e941c0d1e5bbf6803fbaf4ff9532826f386ec7cf6b"
-        }
-      ]
-    },
-    {
       "id": "siege/byzantine/ballista",
       "label": "巨型重弩",
       "category": "siege",
@@ -33682,6 +33490,276 @@
           "width": 1024,
           "height": 1536,
           "sha256": "a822305295c4c8b19a226b92d3263e399c3bbad654a44ef765b58aeedfc6ea3b"
+        }
+      ]
+    },
+    {
+      "id": "buildings/tianchao/26-arrow-tower-footprint-v2",
+      "previous_id": "buildings/tianchao/26-arrow-tower",
+      "label": "箭塔",
+      "category": "building",
+      "footprint_tiles": [
+        2,
+        2
+      ],
+      "footprint_order": "width,depth",
+      "projection": "independent perspective/elevation concept references; dimensional target, not calibrated geometric proof",
+      "rear_door": {
+        "closed": true,
+        "visual_only": true,
+        "height_fraction_target": [
+          0.35,
+          0.4
+        ],
+        "width_fraction_target": [
+          0.25,
+          0.3
+        ]
+      },
+      "views": [
+        {
+          "name": "front-perspective",
+          "source": "2026-10-05-square-towers/tianchao/26-arrow-tower/front-perspective.png",
+          "copy_source": true,
+          "width": 1236,
+          "height": 1272,
+          "sha256": "4d4fad6303810e345d5c5150df6ae4d6370e456755021818ed7061da4dd28e4d"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-05-square-towers/tianchao/26-arrow-tower/side.png",
+          "copy_source": true,
+          "width": 1233,
+          "height": 1276,
+          "sha256": "582644d1b0a1a84ce9ef2feb23ec53e6b171efd11bb1481309cb5d4201658282"
+        },
+        {
+          "name": "rear-perspective",
+          "source": "2026-10-05-square-towers/tianchao/26-arrow-tower/rear-perspective.png",
+          "copy_source": true,
+          "width": 1236,
+          "height": 1272,
+          "sha256": "52be072871df18e1b1bc6268bdcadadbdcf45b1b62ae5aa47be7121e6cbc51c6"
+        }
+      ]
+    },
+    {
+      "id": "buildings/tianchao/27-cannon-tower-footprint-v2",
+      "previous_id": "buildings/tianchao/27-cannon-tower",
+      "label": "炮塔",
+      "category": "building",
+      "footprint_tiles": [
+        2,
+        2
+      ],
+      "footprint_order": "width,depth",
+      "projection": "independent perspective/elevation concept references; dimensional target, not calibrated geometric proof",
+      "rear_door": {
+        "closed": true,
+        "visual_only": true,
+        "height_fraction_target": [
+          0.35,
+          0.4
+        ],
+        "width_fraction_target": [
+          0.25,
+          0.3
+        ]
+      },
+      "views": [
+        {
+          "name": "front-perspective",
+          "source": "2026-10-05-square-towers/tianchao/27-cannon-tower/front-perspective.png",
+          "copy_source": true,
+          "width": 1327,
+          "height": 1186,
+          "sha256": "4ba688d0fae089d180aca10dc19f54060f44bd5791326cf3d0dc28d658ba688e"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-05-square-towers/tianchao/27-cannon-tower/side.png",
+          "copy_source": true,
+          "width": 1385,
+          "height": 1136,
+          "sha256": "34afb1b2a329e25a7be0bbed98f4300c4d9a0f42886219396e43cfce532ba11a"
+        },
+        {
+          "name": "rear-perspective",
+          "source": "2026-10-05-square-towers/tianchao/27-cannon-tower/rear-perspective.png",
+          "copy_source": true,
+          "width": 1430,
+          "height": 1100,
+          "sha256": "2db86478493bcf2682ae3fcacbcb0184c79af2e0cc602669ff189635a94e555d"
+        }
+      ]
+    },
+    {
+      "id": "buildings/tianchao/28-great-wall-footprint-v2",
+      "previous_id": "buildings/tianchao/28-great-wall",
+      "label": "长城·蜂巢炮",
+      "category": "building",
+      "footprint_tiles": [
+        3,
+        2
+      ],
+      "footprint_order": "width,depth",
+      "projection": "independent perspective/elevation concept references; dimensional target, not calibrated geometric proof",
+      "rear_door": {
+        "closed": true,
+        "visual_only": true,
+        "height_fraction_target": [
+          0.35,
+          0.4
+        ],
+        "width_fraction_target": [
+          0.25,
+          0.3
+        ]
+      },
+      "views": [
+        {
+          "name": "front-perspective",
+          "source": "2026-10-05-square-towers/tianchao/28-great-wall/front-perspective.png",
+          "copy_source": true,
+          "width": 1408,
+          "height": 1117,
+          "sha256": "16e9a294fbfde94b2da03aeddbc48d4d32b462eb0f3a4644530c1ff7cbf99e83"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-05-square-towers/tianchao/28-great-wall/side.png",
+          "copy_source": true,
+          "width": 1408,
+          "height": 1117,
+          "sha256": "3b3dbc88fb818cd3124eff4703ae6b5b873b3bcd51690690a3e884a289dbf44b"
+        },
+        {
+          "name": "rear-perspective",
+          "source": "2026-10-05-square-towers/tianchao/28-great-wall/rear-perspective.png",
+          "copy_source": true,
+          "width": 1408,
+          "height": 1117,
+          "sha256": "154fd1fb7b5a35a21be79a2bcfc4dd92392b3d2833e331fcb5d1cecd2d168a29"
+        }
+      ]
+    },
+    {
+      "id": "buildings/byzantine/26-arrow-tower-footprint-v2",
+      "previous_id": "buildings/byzantine/26-arrow-tower",
+      "label": "箭塔·拜占庭·方形占地修订",
+      "category": "building",
+      "footprint_tiles": [
+        2,
+        2
+      ],
+      "projection": "front/rear perspective concepts and side elevation; not metrically calibrated orthographic",
+      "closed_rear_door": true,
+      "door_height_ratio_target": 0.38,
+      "door_width_ratio_target": 0.28,
+      "views": [
+        {
+          "name": "front-perspective",
+          "source": "2026-10-05-square-towers/byzantine/26-arrow-tower/front-perspective.png",
+          "copy_source": true,
+          "width": 1230,
+          "height": 1278,
+          "sha256": "b0346a566652be15c8af8c08233690e52d9f96dd0593e74044bf5a9d2730ed3a"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-05-square-towers/byzantine/26-arrow-tower/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "73d45be2e7533cc810b1845f229da85a992c407b7bedb37d0be345f57ce571ea"
+        },
+        {
+          "name": "rear-perspective",
+          "source": "2026-10-05-square-towers/byzantine/26-arrow-tower/rear-perspective.png",
+          "copy_source": true,
+          "width": 1230,
+          "height": 1279,
+          "sha256": "52146974b79c396e6b0304cf58bf4f25d0bde399e64ae90e767f4e728a955e37"
+        }
+      ]
+    },
+    {
+      "id": "buildings/byzantine/27-cannon-tower-footprint-v2",
+      "previous_id": "buildings/byzantine/27-cannon-tower",
+      "label": "炮塔·拜占庭·方形占地修订",
+      "category": "building",
+      "footprint_tiles": [
+        2,
+        2
+      ],
+      "projection": "front/rear perspective concepts and side elevation; not metrically calibrated orthographic",
+      "closed_rear_door": true,
+      "door_height_ratio_target": 0.38,
+      "door_width_ratio_target": 0.28,
+      "views": [
+        {
+          "name": "front-perspective",
+          "source": "2026-10-05-square-towers/byzantine/27-cannon-tower/front-perspective.png",
+          "copy_source": true,
+          "width": 1279,
+          "height": 1230,
+          "sha256": "78a0a755f7751f0801c05324c9caaf3f2fbc5a9450700c3dd245c3ac7b70e9c2"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-05-square-towers/byzantine/27-cannon-tower/side.png",
+          "copy_source": true,
+          "width": 1230,
+          "height": 1279,
+          "sha256": "2341fb58b94d76a4a6c017e82dc79381e51cb51a38f41df014019150ce5fb02f"
+        },
+        {
+          "name": "rear-perspective",
+          "source": "2026-10-05-square-towers/byzantine/27-cannon-tower/rear-perspective.png",
+          "copy_source": true,
+          "width": 1374,
+          "height": 1145,
+          "sha256": "29eb99c928f1340dfc21ca2e8eb007caf81a28e70b94408de6a554d461b104c0"
+        }
+      ]
+    },
+    {
+      "id": "buildings/byzantine/29-flame-tower-footprint-v2",
+      "previous_id": "buildings/byzantine/29-flame-tower",
+      "label": "喷火塔·拜占庭·方形占地修订",
+      "category": "building",
+      "footprint_tiles": [
+        2,
+        2
+      ],
+      "projection": "front/rear perspective concepts and side elevation; not metrically calibrated orthographic",
+      "closed_rear_door": true,
+      "door_height_ratio_target": 0.38,
+      "door_width_ratio_target": 0.28,
+      "views": [
+        {
+          "name": "front-perspective",
+          "source": "2026-10-05-square-towers/byzantine/29-flame-tower/front-perspective.png",
+          "copy_source": true,
+          "width": 1199,
+          "height": 1312,
+          "sha256": "6936241120a484bed90548f940c1125518d67b680f6428f2f98f2290b5f2a175"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-05-square-towers/byzantine/29-flame-tower/side.png",
+          "copy_source": true,
+          "width": 1199,
+          "height": 1312,
+          "sha256": "27f0ccc2b79c3e1028b49c68e80d0b1569cb074835cd3cfdefc8b2c6b12275bb"
+        },
+        {
+          "name": "rear-perspective",
+          "source": "2026-10-05-square-towers/byzantine/29-flame-tower/rear-perspective.png",
+          "copy_source": true,
+          "width": 1199,
+          "height": 1312,
+          "sha256": "1f35f36ec9bae1779f59e27c39dbe495a1df6c2cd3e7da6627ff9d372943ebec"
         }
       ]
     }
@@ -34656,6 +34734,198 @@
           "width": 1374,
           "height": 1145,
           "sha256": "056461af33c35bdeda8c955466d0a672f5cdfb13ece4158c6239fd4c0cba7259"
+        }
+      ]
+    },
+    {
+      "id": "buildings/tianchao/26-arrow-tower",
+      "label": "箭塔",
+      "category": "building",
+      "projection": "2026-10-05 revised single-view concepts: solid rectangular stone base; perspective references, not calibrated orthographic blueprints",
+      "views": [
+        {
+          "name": "front-perspective",
+          "source": "2026-10-05-solid-towers/tianchao/26-arrow-tower/front-perspective.png",
+          "copy_source": true,
+          "width": 1236,
+          "height": 1272,
+          "sha256": "8b936065196a0928801eed979ef20a3e77bb1fe2f64d1e74b501183ac6049280"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-05-solid-towers/tianchao/26-arrow-tower/side.png",
+          "copy_source": true,
+          "width": 1233,
+          "height": 1275,
+          "sha256": "509109be389cbb38a821544128057d0c154f037721107cf4773416b618371846"
+        },
+        {
+          "name": "rear-perspective",
+          "source": "2026-10-05-solid-towers/tianchao/26-arrow-tower/rear-perspective.png",
+          "copy_source": true,
+          "width": 1236,
+          "height": 1272,
+          "sha256": "115bafc63e49afd6688384a1a09bf1a9a7502ad7a38f2c60206485a1c2226432"
+        }
+      ]
+    },
+    {
+      "id": "buildings/tianchao/27-cannon-tower",
+      "label": "炮塔",
+      "category": "building",
+      "projection": "2026-10-05 revised single-view concepts: solid rectangular stone base; perspective references, not calibrated orthographic blueprints",
+      "views": [
+        {
+          "name": "front-perspective",
+          "source": "2026-10-05-solid-towers/tianchao/27-cannon-tower/front-perspective.png",
+          "copy_source": true,
+          "width": 1327,
+          "height": 1186,
+          "sha256": "2eebe91c08aeef8f0cd44ff22f5fd23602deaed08a9a663ea8cdc87e679283b0"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-05-solid-towers/tianchao/27-cannon-tower/side.png",
+          "copy_source": true,
+          "width": 1385,
+          "height": 1136,
+          "sha256": "3f92f7efa7d2758ebc8f6ebd0041818b505f3ddb2d77fafce77245e87f2b2111"
+        },
+        {
+          "name": "rear-perspective",
+          "source": "2026-10-05-solid-towers/tianchao/27-cannon-tower/rear-perspective.png",
+          "copy_source": true,
+          "width": 1431,
+          "height": 1099,
+          "sha256": "b9caa0452a653f168f3c00afa7833646ce250b5f79e29566ba2881d68cd597ef"
+        }
+      ]
+    },
+    {
+      "id": "buildings/tianchao/28-great-wall",
+      "label": "长城·蜂巢炮",
+      "category": "building",
+      "projection": "2026-10-05 revised single-view concepts: solid rectangular stone base; perspective references, not calibrated orthographic blueprints",
+      "views": [
+        {
+          "name": "front-perspective",
+          "source": "2026-10-05-solid-towers/tianchao/28-great-wall/front-perspective.png",
+          "copy_source": true,
+          "width": 1341,
+          "height": 1173,
+          "sha256": "7da1b9417ea74147fb64a2b1df1ce72ba99ca96111613fab6431747ceacb625d"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-05-solid-towers/tianchao/28-great-wall/side.png",
+          "copy_source": true,
+          "width": 1323,
+          "height": 1189,
+          "sha256": "49a994fa607dc00cd7ff56dbc65f90cbbfff2d7725448b99e4577fc5aac66c2b"
+        },
+        {
+          "name": "rear-perspective",
+          "source": "2026-10-05-solid-towers/tianchao/28-great-wall/rear-perspective.png",
+          "copy_source": true,
+          "width": 1411,
+          "height": 1115,
+          "sha256": "9cb992b9b5ed4540302f06fe733dd0f7eb9fa0b77f5b0bedcbf6cd5a0e12d8e4"
+        }
+      ]
+    },
+    {
+      "id": "buildings/byzantine/26-arrow-tower",
+      "label": "箭塔",
+      "category": "building",
+      "projection": "2026-10-05 revised single-view concepts: solid rectangular stone base; perspective references, not calibrated orthographic blueprints",
+      "views": [
+        {
+          "name": "front-perspective",
+          "source": "2026-10-05-solid-towers/byzantine/26-arrow-tower/front-perspective.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "745fc8ad21753d9216829e6e3a7ee4e927b0304401d29b4824e47b5c855dada9"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-05-solid-towers/byzantine/26-arrow-tower/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "869f52bf7b9a7fe7cf4291af6f3f492d40fad7aa198ee172026a908583a78248"
+        },
+        {
+          "name": "rear-perspective",
+          "source": "2026-10-05-solid-towers/byzantine/26-arrow-tower/rear-perspective.png",
+          "copy_source": true,
+          "width": 1230,
+          "height": 1279,
+          "sha256": "d16f9b68734b2c2c199bd7649b8f9c11678db2c1aec78ea192b4b047225b0ada"
+        }
+      ]
+    },
+    {
+      "id": "buildings/byzantine/27-cannon-tower",
+      "label": "炮塔",
+      "category": "building",
+      "projection": "2026-10-05 revised single-view concepts: solid rectangular stone base; perspective references, not calibrated orthographic blueprints",
+      "views": [
+        {
+          "name": "front-perspective",
+          "source": "2026-10-05-solid-towers/byzantine/27-cannon-tower/front-perspective.png",
+          "copy_source": true,
+          "width": 1279,
+          "height": 1230,
+          "sha256": "c668ed7d96f412c18a497e081dc0519b27a86594035d19bb27da95b6a7c7fb62"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-05-solid-towers/byzantine/27-cannon-tower/side.png",
+          "copy_source": true,
+          "width": 1230,
+          "height": 1279,
+          "sha256": "f5c1167ada0c08aa625b3522c36c134dd079c375d0796dcdbabdd1f7756577df"
+        },
+        {
+          "name": "rear-perspective",
+          "source": "2026-10-05-solid-towers/byzantine/27-cannon-tower/rear-perspective.png",
+          "copy_source": true,
+          "width": 1374,
+          "height": 1145,
+          "sha256": "246abe0259ebd8f93f43cb793065ac276a203666b48057bb3aabaf609a4137aa"
+        }
+      ]
+    },
+    {
+      "id": "buildings/byzantine/29-flame-tower",
+      "label": "喷火塔",
+      "category": "building",
+      "projection": "2026-10-05 revised single-view concepts: solid rectangular stone base; perspective references, not calibrated orthographic blueprints",
+      "views": [
+        {
+          "name": "front-perspective",
+          "source": "2026-10-05-solid-towers/byzantine/29-flame-tower/front-perspective.png",
+          "copy_source": true,
+          "width": 1301,
+          "height": 1209,
+          "sha256": "a01d7f1f16e8152600571f3d61af58dd42af71776b34985447ee89cc730ee958"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-05-solid-towers/byzantine/29-flame-tower/side.png",
+          "copy_source": true,
+          "width": 1301,
+          "height": 1209,
+          "sha256": "d8b76acd39bf66e0e00fd49c26cd01b299e54847370e4a902ece45ea51d28d7b"
+        },
+        {
+          "name": "rear-perspective",
+          "source": "2026-10-05-solid-towers/byzantine/29-flame-tower/rear-perspective.png",
+          "copy_source": true,
+          "width": 1199,
+          "height": 1312,
+          "sha256": "80d52d116b30b99e5299e1e941c0d1e5bbf6803fbaf4ff9532826f386ec7cf6b"
         }
       ]
     }
