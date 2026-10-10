@@ -1,0 +1,74 @@
+{
+  "tool": "builtin image_gen",
+  "records": [
+    {
+      "slug": "06-pagoda-core",
+      "name": "感染多层佛塔",
+      "prompt": "Use case: precise-object-edit. Image 1 exact infected pagoda concept target. Change ONLY framing: zoom the virtual camera out about 18 percent so the ENTIRE TOP SPIRE and all roof tiers, corruption roots and bottom stair foundation are fully contained within image with generous gray space on ALL FOUR sides (at least 8% top margin). Reproduce same whole seven-tier historical Chinese infected pagoda, same shape proportions, tiled roofs, red brown timber, stone base, deep purple pustules, black roots, same neutral gray studio and lighting. Nothing cut off, do not remove spire, do not crop base, don't add or remove architecture. One whole building, no words, no people, no scenery, no new props. Render subject smaller centered in frame, top finial ending clearly well below frame boundary.",
+      "inputs": [
+        "/Users/tankaixi/.codex/generated_images/01a12635-f3fd-7f71-9092-f6ca1e47d0b3/exec-43449a27-0a9e-4366-a98d-b9022337bcea.png"
+      ],
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a12635-f3fd-7f71-9092-f6ca1e47d0b3/exec-fcefd9b0-4847-4ce3-9bd9-76f7e04c4b63.png",
+      "output": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-11-zombie-lairs/asia/06-pagoda-core/reference.png",
+      "width": 1145,
+      "height": 1374,
+      "sha256": "9a1728830f9d7d432e6c7c285f1f8f9582b986e4cba332656f0bb6f1df5ded7f",
+      "repair": true,
+      "previous": {
+        "slug": "06-pagoda-core",
+        "name": "感染多层佛塔",
+        "prompt": "Use case: stylized-concept. Asset type: dark historical RTS zombie-lair building modeling reference for Tripo. ONE isolated whole building only, three-quarter view from 35 degrees above, front and right facade visible, architectural perspective rather than flattened drawing. Entire roof, foundation and all attached corruption fully in frame with generous empty margin, plain neutral gray studio background and gray floor, soft contact shadow. Realistic weathered timber, stone, plaster and ceramic tiles, premium detailed game-concept 3D-render look, strong readable silhouette. Dark infected historical East Asian architecture, visible clustered saturated deep PURPLE pustule sacs and violet fungal mats spreading from the main entrance and broken roof, twisted charcoal-black corrupted root systems clinging to structure. Roots are infection, not an environment scene. Light enough to read material and structure, restrained purple not bright neon. No people, no zombies, no creatures, no text/labels/UI/logos, no landscape, no mountains/forest/river/water, no detached props, no modern elements, no toy or cartoon shapes. Subject: LARGE monumental infected Chinese multi-story pagoda, seven tapering octagonal tiers, stacked deep swept tiled eaves with upturned corners, weathered red-brown timber brackets and stone podium, distinctive tall vertical stepped silhouette. Remains architectural, not organic creature. Huge purple infection mass ruptures lower entrance and two upper roof corners, black roots spiral between levels, cracked gray-green roof tiles. Clear complete multi-level roof profile; not a small shrine or house.",
+        "inputs": [],
+        "generated_path": "/Users/tankaixi/.codex/generated_images/01a12635-f3fd-7f71-9092-f6ca1e47d0b3/exec-43449a27-0a9e-4366-a98d-b9022337bcea.png",
+        "output": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-11-zombie-lairs/asia/06-pagoda-core/reference.png",
+        "width": 1145,
+        "height": 1374,
+        "sha256": "3d2c1cc498fe718a815628695ec27285fdb61a9ccb549cd78585f180d887f913"
+      }
+    },
+    {
+      "slug": "07-courtyard-house",
+      "name": "感染四合院",
+      "prompt": "Use case: stylized-concept. Asset type: dark historical RTS zombie-lair building modeling reference for Tripo. ONE isolated whole building only, three-quarter view from 35 degrees above, front and right facade visible, architectural perspective rather than flattened drawing. Entire roof, foundation and all attached corruption fully in frame with generous empty margin, plain neutral gray studio background and gray floor, soft contact shadow. Realistic weathered timber, stone, plaster and ceramic tiles, premium detailed game-concept 3D-render look, strong readable silhouette. Dark infected historical East Asian architecture, visible clustered saturated deep PURPLE pustule sacs and violet fungal mats spreading from the main entrance and broken roof, twisted charcoal-black corrupted root systems clinging to structure. Roots are infection, not an environment scene. Light enough to read material and structure, restrained purple not bright neon. No people, no zombies, no creatures, no text/labels/UI/logos, no landscape, no mountains/forest/river/water, no detached props, no modern elements, no toy or cartoon shapes. Subject: SMALL compact low one-story traditional Chinese courtyard house, square ring of four tiled wings around an open central courtyard, raised gray-brick low plinth, modest plain timber gates and worn warm plaster walls, charcoal curved ceramic roofs. Strong broad horizontal square donut silhouette and visible courtyard from above, no tall tower. Purple fungal infection spills across courtyard from doorway and damaged rear roof, thin black roots creep up stone and across eaves. Keep recognizable small four-wing siheyuan structure.",
+      "inputs": [],
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a12635-f3fd-7f71-9092-f6ca1e47d0b3/exec-e576d237-7c4e-418e-bdb7-dc76a6870afc.png",
+      "output": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-11-zombie-lairs/asia/07-courtyard-house/reference.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "62d384c5116fea18533ce879dc68142d630c9a25f0549417cf869576213e3248"
+    },
+    {
+      "slug": "08-timber-shrine",
+      "name": "感染木祠堂",
+      "prompt": "Use case: stylized-concept. Asset type: dark historical RTS zombie-lair building modeling reference for Tripo. ONE isolated whole building only, three-quarter view from 35 degrees above, front and right facade visible, architectural perspective rather than flattened drawing. Entire roof, foundation and all attached corruption fully in frame with generous empty margin, plain neutral gray studio background and gray floor, soft contact shadow. Realistic weathered timber, stone, plaster and ceramic tiles, premium detailed game-concept 3D-render look, strong readable silhouette. Dark infected historical East Asian architecture, visible clustered saturated deep PURPLE pustule sacs and violet fungal mats spreading from the main entrance and broken roof, twisted charcoal-black corrupted root systems clinging to structure. Roots are infection, not an environment scene. Light enough to read material and structure, restrained purple not bright neon. No people, no zombies, no creatures, no text/labels/UI/logos, no landscape, no mountains/forest/river/water, no detached props, no modern elements, no toy or cartoon shapes. Subject: MEDIUM traditional East Asian timber ancestral shrine hall, one dominant wide gabled curved tile roof over heavy dark timber columns, deep open porch, layered wooden beam brackets, stone footing, a smaller low rear extension. Broad stout temple silhouette, not pagoda or courtyard ring. A massive ancient twisted BLACK corrupted root wraps one side pillar and crawls along ridge; grape-purple pustules and fungal mats push through broken tiles and empty entrance. Exposed wood grain, muted faded vermilion detailing. Whole single shrine, no additional trees or external scenery.",
+      "inputs": [],
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a12635-f3fd-7f71-9092-f6ca1e47d0b3/exec-998f9182-021c-4c22-8ff0-d467f076a4dc.png",
+      "output": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-11-zombie-lairs/asia/08-timber-shrine/reference.png",
+      "width": 1374,
+      "height": 1145,
+      "sha256": "6f5741607e2335bfe9179f123f2aaf3bc768e7c8b983e9f74cc3cacac6a88ff2"
+    },
+    {
+      "slug": "09-watch-hall",
+      "name": "感染东方瞭望楼",
+      "prompt": "Use case: stylized-concept. Asset type: dark historical RTS zombie-lair building modeling reference for Tripo. ONE isolated whole building only, three-quarter view from 35 degrees above, front and right facade visible, architectural perspective rather than flattened drawing. Entire roof, foundation and all attached corruption fully in frame with generous empty margin, plain neutral gray studio background and gray floor, soft contact shadow. Realistic weathered timber, stone, plaster and ceramic tiles, premium detailed game-concept 3D-render look, strong readable silhouette. Dark infected historical East Asian architecture, visible clustered saturated deep PURPLE pustule sacs and violet fungal mats spreading from the main entrance and broken roof, twisted charcoal-black corrupted root systems clinging to structure. Roots are infection, not an environment scene. Light enough to read material and structure, restrained purple not bright neon. No people, no zombies, no creatures, no text/labels/UI/logos, no landscape, no mountains/forest/river/water, no detached props, no modern elements, no toy or cartoon shapes. Subject: TALL NARROW rectangular historical Oriental watch hall, five close-set timber floors atop a small stone footing, vertical slatted observation galleries and small narrow tiled roofs, distinctly slender asymmetric rectangular silhouette with one upper projecting observation balcony. Not multi-tier octagonal pagoda, no broad courtyard, no European tower. Dark structural beams, faded pale plaster panels, gray brown tile eaves. Vertical black roots climb front wall and bulging violet infection pushes out lower doorway and one upper broken gallery, readable structure.",
+      "inputs": [],
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a12635-f3fd-7f71-9092-f6ca1e47d0b3/exec-49c733a6-ce1b-4c78-9dd0-18db7c9195dd.png",
+      "output": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-11-zombie-lairs/asia/09-watch-hall/reference.png",
+      "width": 1145,
+      "height": 1374,
+      "sha256": "47f15acd0c3fdc20f6980027ebf7997821f62f96a5aae33fdeca7c4cd046be65"
+    },
+    {
+      "slug": "10-stilt-house",
+      "name": "感染架空水乡棚屋",
+      "prompt": "Use case: stylized-concept. Asset type: dark historical RTS zombie-lair building modeling reference for Tripo. ONE isolated whole building only, three-quarter view from 35 degrees above, front and right facade visible, architectural perspective rather than flattened drawing. Entire roof, foundation and all attached corruption fully in frame with generous empty margin, plain neutral gray studio background and gray floor, soft contact shadow. Realistic weathered timber, stone, plaster and ceramic tiles, premium detailed game-concept 3D-render look, strong readable silhouette. Dark infected historical East Asian architecture, visible clustered saturated deep PURPLE pustule sacs and violet fungal mats spreading from the main entrance and broken roof, twisted charcoal-black corrupted root systems clinging to structure. Roots are infection, not an environment scene. Light enough to read material and structure, restrained purple not bright neon. No people, no zombies, no creatures, no text/labels/UI/logos, no landscape, no mountains/forest/river/water, no detached props, no modern elements, no toy or cartoon shapes. Subject: LOW small traditional East Asian waterside timber stilt house but NO WATER: squat irregular wood cabin with a broad sagging tile-and-thatch patchwork roof raised above ground on visible short wooden stilts, shallow wraparound wooden deck and one tiny side lean-to. Unique low horizontal irregular elevated silhouette, underside clearly visible, grounded to studio floor. Weathered unpainted boards and bamboo lattice. Purple pustules and fungal carpets cover doorway/deck and a torn patch of roof, black infected roots hang between stilts. One building only, no boats, nets, docks reaching out, river or landscape.",
+      "inputs": [],
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a12635-f3fd-7f71-9092-f6ca1e47d0b3/exec-2c513402-5936-489a-bbf3-501e4450c565.png",
+      "output": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-11-zombie-lairs/asia/10-stilt-house/reference.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "6549ef63251546c328c0131c9576127db2390d2678a02e676584b73570c30304"
+    }
+  ]
+}

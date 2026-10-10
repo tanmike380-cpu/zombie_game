@@ -1,0 +1,232 @@
+{
+  "version": 1,
+  "date": "2026-10-11",
+  "status": "15-concepts-awaiting-user-review; no-runtime-implementation",
+  "assets": [
+    {
+      "id": "zombie-lairs/europe/01-europe-cathedral",
+      "category": "zombie-lair",
+      "culture": "europe",
+      "views": [
+        {
+          "name": "reference",
+          "source": "2026-10-11-zombie-lairs/europe/01-europe-cathedral/reference.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "9063d11932df85e3f94bc18ecfd96376c5bb51b491b0248c143e85d26b0b8a79"
+        }
+      ]
+    },
+    {
+      "id": "zombie-lairs/europe/02-europe-tenement",
+      "category": "zombie-lair",
+      "culture": "europe",
+      "views": [
+        {
+          "name": "reference",
+          "source": "2026-10-11-zombie-lairs/europe/02-europe-tenement/reference.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "fcda1e8c51ce28b435d3e1f88a3cba45289c624706e2143447e630caeb8a69a1"
+        }
+      ]
+    },
+    {
+      "id": "zombie-lairs/europe/03-europe-watermill",
+      "category": "zombie-lair",
+      "culture": "europe",
+      "views": [
+        {
+          "name": "reference",
+          "source": "2026-10-11-zombie-lairs/europe/03-europe-watermill/reference.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "e3c9091b37c0feefdd9dcd83c941195fd258aa7f7ab84ad4a7de783d14ae5dd3"
+        }
+      ]
+    },
+    {
+      "id": "zombie-lairs/europe/04-europe-keep",
+      "category": "zombie-lair",
+      "culture": "europe",
+      "views": [
+        {
+          "name": "reference",
+          "source": "2026-10-11-zombie-lairs/europe/04-europe-keep/reference.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "1c28704ac0fd1b9322f8c0cc78707930d7c5a74947c6e0911cb7afb75e3b63e3"
+        }
+      ]
+    },
+    {
+      "id": "zombie-lairs/europe/05-europe-barn",
+      "category": "zombie-lair",
+      "culture": "europe",
+      "views": [
+        {
+          "name": "reference",
+          "source": "2026-10-11-zombie-lairs/europe/05-europe-barn/reference.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "5c1040530c2b5f0dec1ed8f25abe5c2cced7d8493261669dee62111f4067a593"
+        }
+      ]
+    },
+    {
+      "id": "zombie-lairs/asia/06-pagoda-core",
+      "category": "zombie-lair",
+      "culture": "asia",
+      "views": [
+        {
+          "name": "reference",
+          "source": "2026-10-11-zombie-lairs/asia/06-pagoda-core/reference.png",
+          "copy_source": true,
+          "width": 1145,
+          "height": 1374,
+          "sha256": "9a1728830f9d7d432e6c7c285f1f8f9582b986e4cba332656f0bb6f1df5ded7f"
+        }
+      ]
+    },
+    {
+      "id": "zombie-lairs/asia/07-courtyard-house",
+      "category": "zombie-lair",
+      "culture": "asia",
+      "views": [
+        {
+          "name": "reference",
+          "source": "2026-10-11-zombie-lairs/asia/07-courtyard-house/reference.png",
+          "copy_source": true,
+          "width": 1536,
+          "height": 1024,
+          "sha256": "62d384c5116fea18533ce879dc68142d630c9a25f0549417cf869576213e3248"
+        }
+      ]
+    },
+    {
+      "id": "zombie-lairs/asia/08-timber-shrine",
+      "category": "zombie-lair",
+      "culture": "asia",
+      "views": [
+        {
+          "name": "reference",
+          "source": "2026-10-11-zombie-lairs/asia/08-timber-shrine/reference.png",
+          "copy_source": true,
+          "width": 1374,
+          "height": 1145,
+          "sha256": "6f5741607e2335bfe9179f123f2aaf3bc768e7c8b983e9f74cc3cacac6a88ff2"
+        }
+      ]
+    },
+    {
+      "id": "zombie-lairs/asia/09-watch-hall",
+      "category": "zombie-lair",
+      "culture": "asia",
+      "views": [
+        {
+          "name": "reference",
+          "source": "2026-10-11-zombie-lairs/asia/09-watch-hall/reference.png",
+          "copy_source": true,
+          "width": 1145,
+          "height": 1374,
+          "sha256": "47f15acd0c3fdc20f6980027ebf7997821f62f96a5aae33fdeca7c4cd046be65"
+        }
+      ]
+    },
+    {
+      "id": "zombie-lairs/asia/10-stilt-house",
+      "category": "zombie-lair",
+      "culture": "asia",
+      "views": [
+        {
+          "name": "reference",
+          "source": "2026-10-11-zombie-lairs/asia/10-stilt-house/reference.png",
+          "copy_source": true,
+          "width": 1536,
+          "height": 1024,
+          "sha256": "6549ef63251546c328c0131c9576127db2390d2678a02e676584b73570c30304"
+        }
+      ]
+    },
+    {
+      "id": "zombie-lairs/middleeast/11-middleeast-cistern",
+      "category": "zombie-lair",
+      "culture": "middleeast",
+      "views": [
+        {
+          "name": "reference",
+          "source": "2026-10-11-zombie-lairs/middleeast/11-middleeast-cistern/reference.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "64f0e41e05585ea4a7527345cba9f59016ff6e7189ac331c9bf08d2d14e850cd"
+        }
+      ]
+    },
+    {
+      "id": "zombie-lairs/middleeast/12-middleeast-adobe",
+      "category": "zombie-lair",
+      "culture": "middleeast",
+      "views": [
+        {
+          "name": "reference",
+          "source": "2026-10-11-zombie-lairs/middleeast/12-middleeast-adobe/reference.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "b0cb29a75e9a0b0e7f14b7037304fb12f477b54f8393e0fbe60ee2ff7f77bf3c"
+        }
+      ]
+    },
+    {
+      "id": "zombie-lairs/middleeast/13-middleeast-caravanserai",
+      "category": "zombie-lair",
+      "culture": "middleeast",
+      "views": [
+        {
+          "name": "reference",
+          "source": "2026-10-11-zombie-lairs/middleeast/13-middleeast-caravanserai/reference.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "9f53e6777b51288bbc1d415c518eb2d77399b4fb09983c1d83988cff83689c59"
+        }
+      ]
+    },
+    {
+      "id": "zombie-lairs/middleeast/14-middleeast-basalt-house",
+      "category": "zombie-lair",
+      "culture": "middleeast",
+      "views": [
+        {
+          "name": "reference",
+          "source": "2026-10-11-zombie-lairs/middleeast/14-middleeast-basalt-house/reference.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "b2cb1084c8218d0a4d01950190f76aaaf58a7bb556b0884e21711e55e68f63c3"
+        }
+      ]
+    },
+    {
+      "id": "zombie-lairs/middleeast/15-middleeast-bazaar",
+      "category": "zombie-lair",
+      "culture": "middleeast",
+      "views": [
+        {
+          "name": "reference",
+          "source": "2026-10-11-zombie-lairs/middleeast/15-middleeast-bazaar/reference.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "e04a4533898a677a90e0165b8d35b17c4a6278e93c7dae23aa0823a899eccfc0"
+        }
+      ]
+    }
+  ]
+}

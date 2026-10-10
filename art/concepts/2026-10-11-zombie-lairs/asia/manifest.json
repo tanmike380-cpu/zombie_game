@@ -1,0 +1,84 @@
+{
+  "assets": [
+    {
+      "id": "zombie-lairs/asia/06-pagoda-core",
+      "category": "zombie-lair",
+      "culture": "asia",
+      "name": "感染多层佛塔",
+      "views": [
+        {
+          "name": "reference",
+          "source": "2026-10-11-zombie-lairs/asia/06-pagoda-core/reference.png",
+          "copy_source": true,
+          "width": 1145,
+          "height": 1374,
+          "sha256": "9a1728830f9d7d432e6c7c285f1f8f9582b986e4cba332656f0bb6f1df5ded7f"
+        }
+      ]
+    },
+    {
+      "id": "zombie-lairs/asia/07-courtyard-house",
+      "category": "zombie-lair",
+      "culture": "asia",
+      "name": "感染四合院",
+      "views": [
+        {
+          "name": "reference",
+          "source": "2026-10-11-zombie-lairs/asia/07-courtyard-house/reference.png",
+          "copy_source": true,
+          "width": 1536,
+          "height": 1024,
+          "sha256": "62d384c5116fea18533ce879dc68142d630c9a25f0549417cf869576213e3248"
+        }
+      ]
+    },
+    {
+      "id": "zombie-lairs/asia/08-timber-shrine",
+      "category": "zombie-lair",
+      "culture": "asia",
+      "name": "感染木祠堂",
+      "views": [
+        {
+          "name": "reference",
+          "source": "2026-10-11-zombie-lairs/asia/08-timber-shrine/reference.png",
+          "copy_source": true,
+          "width": 1374,
+          "height": 1145,
+          "sha256": "6f5741607e2335bfe9179f123f2aaf3bc768e7c8b983e9f74cc3cacac6a88ff2"
+        }
+      ]
+    },
+    {
+      "id": "zombie-lairs/asia/09-watch-hall",
+      "category": "zombie-lair",
+      "culture": "asia",
+      "name": "感染东方瞭望楼",
+      "views": [
+        {
+          "name": "reference",
+          "source": "2026-10-11-zombie-lairs/asia/09-watch-hall/reference.png",
+          "copy_source": true,
+          "width": 1145,
+          "height": 1374,
+          "sha256": "47f15acd0c3fdc20f6980027ebf7997821f62f96a5aae33fdeca7c4cd046be65"
+        }
+      ]
+    },
+    {
+      "id": "zombie-lairs/asia/10-stilt-house",
+      "category": "zombie-lair",
+      "culture": "asia",
+      "name": "感染架空水乡棚屋",
+      "views": [
+        {
+          "name": "reference",
+          "source": "2026-10-11-zombie-lairs/asia/10-stilt-house/reference.png",
+          "copy_source": true,
+          "width": 1536,
+          "height": 1024,
+          "sha256": "6549ef63251546c328c0131c9576127db2390d2678a02e676584b73570c30304"
+        }
+      ]
+    }
+  ]
+}
