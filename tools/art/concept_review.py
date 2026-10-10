@@ -36,29 +36,50 @@ def check_asset_inventory(manifest):
     assets = manifest["assets"]
     category_counts = Counter(asset["id"].split("/")[0] for asset in assets)
     is_modular = manifest.get("version", 1) >= 2
-    expected_counts = {"humans": 6, "weapons": 8, "zombies": 7, "siege": 6, "buildings": 54} if is_modular else {
+    has_infantry_kits = manifest.get("version", 1) >= 4
+    has_weapon_views = manifest.get("version", 1) >= 5
+    expected_humans = 24 if has_infantry_kits else 6
+    expected_counts = {"humans": expected_humans, "weapons": 8, "zombies": 7, "siege": 6, "buildings": 54} if is_modular else {
         "humans": 24, "zombies": 7, "siege": 6, "buildings": 54}
     if category_counts != expected_counts:
         raise ValueError(f"Wrong category totals: {category_counts}")
     if is_modular:
-        expected_bodies = {f"humans/{faction}/base/{rank}"
-                           for faction in ("tianchao", "byzantine") for rank in ("militia", "veteran", "elite")}
-        if {asset["id"] for asset in assets if asset["category"] == "human"} != expected_bodies:
-            raise ValueError("Expected six faction/rank base bodies, not weapon-specific people")
+        if has_infantry_kits:
+            from tools.art.infantry_kits import check_kit_roster, get_base_ids
+            check_kit_roster([asset for asset in assets if asset["category"] == "human"])
+        else:
+            expected_bodies = {f"humans/{faction}/base/{rank}"
+                               for faction in ("tianchao", "byzantine") for rank in ("militia", "veteran", "elite")}
+            if {asset["id"] for asset in assets if asset["category"] == "human"} != expected_bodies:
+                raise ValueError("Expected six faction/rank base bodies, not weapon-specific people")
         expected_weapons = {"weapons/tianchao/" + name for name in ("bow", "repeating-crossbow", "crossbow", "three-eyed-handgun")}
         expected_weapons |= {"weapons/byzantine/" + name for name in ("javelin", "bow", "crossbow", "matchlock")}
+        if has_weapon_views:
+            expected_weapons = {asset_id + "-views-v2" for asset_id in expected_weapons}
         if {asset["id"] for asset in assets if asset["category"] == "weapon"} != expected_weapons:
             raise ValueError("Expected the eight authored faction weapon designs")
         archive = manifest.get("archived_assets", [])
         archive_counts = Counter(asset["category"] for asset in archive)
         expected_archive = {"human": 24, "building": 6} if manifest.get("version", 1) >= 3 else {"human": 24}
+        if has_infantry_kits:
+            expected_archive = {"human": 30, "building": 6}
+            archived_base_ids = {asset["id"] for asset in archive if "/base/" in asset["id"]}
+            if archived_base_ids != get_base_ids():
+                raise ValueError("Preserve all six previous unarmed base bodies in the archive")
+        if has_weapon_views:
+            expected_archive["weapon"] = 8
+            from tools.art.weapon_views import check_weapon_roster, get_weapon_ids
+            check_weapon_roster([asset for asset in assets if asset["category"] == "weapon"])
+            if {asset["id"] for asset in archive if asset["category"] == "weapon"} != get_weapon_ids():
+                raise ValueError("Preserve all eight previous single-view weapons in the archive")
         if archive_counts != expected_archive:
             raise ValueError("Preserve all 24 prior human reference variants in the inactive archive")
         if manifest.get("version", 1) >= 3:
             from tools.art.tower_concepts import TOWER_FOOTPRINTS, check_tower_roster
             if {asset["id"] for asset in archive if asset["category"] == "building"} != set(TOWER_FOOTPRINTS):
                 raise ValueError("Preserve all six prior tower variants in the inactive archive")
-            check_tower_roster([asset for asset in assets if "previous_id" in asset])
+            check_tower_roster([asset for asset in assets
+                                if asset["category"] == "building" and "previous_id" in asset])
     all_assets = assets + manifest.get("archived_assets", [])
     if len({asset["id"] for asset in all_assets}) != len(all_assets):
         raise ValueError("Duplicate active/archive asset IDs")
@@ -68,7 +89,7 @@ def check_asset_inventory(manifest):
 def check_asset_views(asset):
     """Return the expected independent view names for one asset category."""
     if asset["category"] == "weapon":
-        expected_views = {"reference"}
+        expected_views = {"front", "side", "back"} if asset["id"].endswith("-views-v2") else {"reference"}
     elif asset["category"] == "building":
         expected_views = {"front-perspective", "side", "rear-perspective"}
     else:

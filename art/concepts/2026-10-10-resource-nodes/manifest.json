@@ -1,0 +1,101 @@
+{
+  "version": 1,
+  "status": "candidates-awaiting-selection",
+  "resources": [
+    "stone",
+    "iron",
+    "gold"
+  ],
+  "files": [
+    {
+      "path": "01-natural/gold/reference.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "fa8f68d8b3c00626f10df44de062371ae5da57d7dad54dfb9ec813caf854618b"
+    },
+    {
+      "path": "01-natural/iron/reference.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "e736873d8378fbe85816d3cc06218a9274dd8ea94ae9e72002c90cc00c34104b"
+    },
+    {
+      "path": "01-natural/stone/reference.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "6b4ca26b715022970c5f5a4e31bea628c4b81a8b938898fed92bba4d0b17471e"
+    },
+    {
+      "path": "02-painted/gold/reference.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "ac47f9d00a2f086c7f09dc9dce69c3f7838cd7399999a1ca0483624ef4760eb4"
+    },
+    {
+      "path": "02-painted/iron/reference.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "549c1ed373f38ca3919a150285763fae977e69f753754ea2ec4593d0251db249"
+    },
+    {
+      "path": "02-painted/stone/reference.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "927abe079881dcffff3a5bcd2a31b69975cbeab609858af268380f6e4d38f264"
+    },
+    {
+      "path": "03-dark/gold/reference.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "f173aa502ecd580bda35f60a786b1388c1adc0483073094d55c4a97556cebd56"
+    },
+    {
+      "path": "03-dark/iron/reference.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "33a575bbde86b59acd0ae49a1157ad6e2f4424deb63fab2d4a967ce7699011c2"
+    },
+    {
+      "path": "03-dark/stone/reference.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "e9cf6e1fb8bac0e072e12e967095860ed44d49d015ab7de60b2530e0052d4ecf"
+    },
+    {
+      "path": "04-quarry/gold/reference.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "2301b2ff0bd3c1199303bcbca37361d61ef0eaba1b8c656722d34c735edd0094"
+    },
+    {
+      "path": "04-quarry/iron/reference.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "eae9ff04108e73ac5443632a5ec66a29444a5801899f0194cbadd5299aa48790"
+    },
+    {
+      "path": "04-quarry/stone/reference.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "0ae765a276d4edf686ddd9b1b012dfca023a70088f513b9d04d04c6ecf134bd9"
+    },
+    {
+      "path": "05-crystalline/gold/reference.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "35dcf856f030b832cc44217485f04f4f8a0fcc69baf0cac3950b46b01ad54ee2"
+    },
+    {
+      "path": "05-crystalline/iron/reference.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "c0c3ff19103b8b8c88b16b8c2471e61d389cad6a6690def56f8ceb5dc6031ce4"
+    },
+    {
+      "path": "05-crystalline/stone/reference.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "25ad0104ebd88c3aa931ee1dae5fcde86f206a51aa6aac14a1fbcb303a66eb11"
+    }
+  ]
+}

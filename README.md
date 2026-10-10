@@ -4,6 +4,10 @@ A **1–2 player cooperative Survival RTS** set in a fictionalized ancient/medie
 
 ## Documentation
 
+- [Tripo → Unity combat-animation workflow / 新动画路线](docs/dev/TRIPO_UNITY_ANIMATION_WORKFLOW.md): character binding in Tripo, approved weapon assembly and complex combat-animation prototyping in Unity; Blender remains the source-model and skinning-repair workspace.
+
+- [Infantry roster and equipment / 步兵名单与装备](design/03_player_units.md): Tianchao and Byzantine each have four infantry types, each with militia, veteran and elite variants. Militia and veterans carry 30 rounds; elites carry **50 rounds total** and gain **one tile of attack range** over the same type's base range. Veteran/elite damage increases are intended but their amounts remain undecided; current damage is unchanged. These rules are authored only in `balance/unit_balance.json`; experience and promotion are not implemented by this documentation update.
+
 - [Buildings and ages / 建筑与三个时代](design/08_buildings_and_ages.md): current faction building roster, era unlocks, outpost coverage rules and concept-art scope.
 
 - [Concept art atlas / 概念图总册](art/concepts/README.md): versioned original images, faction/unit references, individual three-view sheets, and clearly separated historical drafts.
@@ -46,7 +50,7 @@ Current horde performance target:
 
 Important current combat rules:
 
-- Weapon Noise radius is currently twice attack range (contact explosions pending separate tuning).
+- Weapon Noise radius is currently three times attack range; zombie explosions never emit attraction noise.
 - The Archer can outrun slow/medium zombies, but Runner, Exploder, and Zombie Hound can catch it.
 - Exploders punish tightly packed ranged formations; soldiers killed by their AOE can immediately trigger infection conversion.
 - Defensive buildings share the same Arrow / Gunpowder economy as the field army.
@@ -58,6 +62,10 @@ Important current combat rules:
 这是一款以中国古代/中古代架空背景为基础的 **1–2 人合作 Survival RTS**。
 
 ## 文档规则
+
+最新步兵方案：天朝、拜占庭各4种，共8种步兵，每种分民兵／老兵／精英。民兵与老兵携弹上限均为30发；精英为**总计50发，不是额外50发**，同兵种基础射程增加1格。老兵、精英伤害递增方向已记录，具体加成待定，当前伤害不擅改。数值唯一来源为 `balance/unit_balance.json`；本轮不自动实现经验晋升或启用尚未完成的阵营单位。
+
+人物保持空手 T-Pose，箭筒／弩矢袋／连弩箭盒／葫芦或水囊随人物一起交给 Tripo；仅手持武器单独生成并在 Blender 装配。每个兵种每个等级的正、侧、背都是独立图片，新图版本单独存放，旧图保留。详见[兵种设计](design/03_player_units.md)。
 
 英文是主语言。每个 Markdown 文件只保留一份：上半部分英文，下半部分中文。
 
@@ -84,7 +92,7 @@ Important current combat rules:
 
 当前重要战斗规则：
 
-- 武器 Noise 声音吸引半径统一为射程两倍（贴脸爆炸单独待确认）。
+- 人类武器 Noise 声音吸引半径统一为射程三倍；僵尸爆炸永不产生引怪声音。
 - 弓箭手能跑过慢速/中速僵尸，但 Runner、爆裂尸、尸犬可以追上它。
 - 爆裂尸负责惩罚密集远程阵型；被其 AOE 炸死的我方士兵会立刻触发感染转化。
 - 防御建筑与野战军共享 Arrows / Gunpowder 军需库存。

@@ -14,6 +14,8 @@ def load_fragment(fragment_path):
 
 def build_manifest(current_manifest, bodies, weapons):
     """Replace active weapon-specific people with shared bodies; retain their archive."""
+    if current_manifest.get("version", 1) >= 4:
+        raise ValueError("Equipped infantry are current; do not republish the older base-only catalog")
     previous_humans = [asset for asset in current_manifest["assets"]
                        if asset["id"].startswith("humans/") and "/base/" not in asset["id"]]
     archive = current_manifest.get("archived_assets", []) + previous_humans

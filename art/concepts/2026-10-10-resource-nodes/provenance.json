@@ -1,0 +1,112 @@
+{
+  "date": "2026-10-10",
+  "tool": "builtin image_gen",
+  "status": "candidate; awaiting user selection",
+  "records": [
+    {
+      "style": "01-natural",
+      "resource": "gold",
+      "prompt": "Use case: stylized-concept. Create ONE isolated buildable game resource prop reference image for Zombie Game, GOLD ORE VEIN, intended for image-to-3D Tripo. A low compact natural outcrop of pale warm grey quartz/granite with visibly embedded rich metallic yellow-gold mineral seams and a few small golden nuggets, not a heap of gold ingots, not giant fantasy crystals. Premium historical RTS stylized realism, believable irregular stone strata, rough chipped mineral surface with restrained metal glints, readable broad shapes at RTS camera distance, no cartoon toy look. ONE object only centered, elevated three-quarter view showing top and two sides; flat subtly irregular square-shaped ground contact suitable for one grid tile and repetition into larger fields. No grids, no measurement text, no labels, no people, no buildings, no mining tools, no trees or vegetation, no scene or landscape. Plain light neutral grey studio backdrop, even diffuse neutral lighting with very soft minimal contact shadow, no cinematic bloom or depth of field, no hard directional baked lighting, not a texture swatch. The outline and mineral colors should remain readable without dramatic lights. Full object uncropped with wide margins, square canvas.",
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a0b065-006f-78f2-8269-19a4b6e193b4/exec-a2181055-ac9b-4347-a60c-d570f612bf8d.png",
+      "output": "01-natural/gold/reference.png"
+    },
+    {
+      "style": "01-natural",
+      "resource": "stone",
+      "prompt": "Use case: stylized-concept. Create ONE isolated game resource prop reference image for Zombie Game, STONE QUARRY OUTCROP, intended for image-to-3D Tripo. A low compact natural cluster of warm grey and pale beige limestone/granite blocks rooted into a continuous compact outcrop, visibly layered quarry stone with a few rough broken edges, not gold, not crystal, not a pile of neatly cut bricks. Premium historical RTS stylized realism with natural stone texture and strong readable broad shapes, believable mineral strata, no cartoon toy look. ONE object centered, elevated three-quarter view showing top and two sides; subtly irregular flat square-shaped ground contact suitable for one grid tile and repeating into larger resource fields; shallower than a cliff, a small extractable deposit. Plain light neutral grey studio background. Even soft neutral diffuse lighting, very soft minimal contact shadow, no cinematic bloom, no dramatic baked directional lights, no depth of field. No grid, no measurements, no text, no labels, no people, no buildings, no mining tools, no trees, no landscape or grass, no quarry excavation scene. Full object uncropped with wide margins. Square canvas. This is a model reference render, not a flat tileable texture.",
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a0b065-006f-78f2-8269-19a4b6e193b4/exec-9dcc819c-a0be-4139-96de-e7cf80a35e72.png",
+      "output": "01-natural/stone/reference.png"
+    },
+    {
+      "style": "01-natural",
+      "resource": "iron",
+      "prompt": "ONE isolated game resource model reference for Tripo, no multi-panel sheet, no text, no people, no tools, buildings or vegetation. Entire single prop centered uncropped with margins on plain pale grey background, elevated three-quarter view showing top and two sides, square canvas. Soft neutral diffuse lighting and tiny contact shadow, no bloom or depth of field. Readable premium historical RTS resource silhouette. Flat compact ground contact, no wide landscape. NATURAL REALISTIC IRON ORE OUTCROP: compact low rugged grey-brown mineral rock rooted in a roughly square base, exposed dark gunmetal hematite/magnetite seams, reddish-brown rust patches, subtle believable mineral glints, layered chipped gritty stone. No bright glowing crystals, no iron ingots, no gold seams. Geological irregularity and restrained physically believable texture; matches a pale grey natural limestone and quartz/gold-vein family.",
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a0b065-006f-78f2-8269-19a4b6e193b4/exec-61bc7f53-7edd-407e-a2e3-62972d4ed535.png",
+      "output": "01-natural/iron/reference.png"
+    },
+    {
+      "style": "02-painted",
+      "resource": "stone",
+      "prompt": "ONE isolated game resource model reference for Tripo, no multi-panel sheet, no text, no people, no tools, buildings or vegetation. Entire single prop centered uncropped with margins on plain pale grey background, elevated three-quarter view showing top and two sides, square canvas. Soft neutral diffuse lighting and tiny contact shadow, no bloom or depth of field. Readable premium historical RTS resource silhouette. Flat compact ground contact, no wide landscape. HAND-PAINTED CHUNKY FANTASY RTS STONE DEPOSIT: five or six large rounded chunky boulders crowded into an asymmetrical squat vertical mound, clear oversized cracks, warm cream limestone with cool blue-violet painted shadow surfaces and stylized brush highlights. Bold illustrated shapes and smooth painted surfaces instead of realistic micro texture. Cheerful vivid palette but not plastic or toy blocks. No ore metal or jewels. Clearly unlike a realistic natural quarry.",
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a0b065-006f-78f2-8269-19a4b6e193b4/exec-26b4f65b-1d4b-4e4c-acbd-a26fee083ff4.png",
+      "output": "02-painted/stone/reference.png"
+    },
+    {
+      "style": "02-painted",
+      "resource": "iron",
+      "prompt": "ONE isolated game resource model reference for Tripo, no multi-panel sheet, no text, no people, no tools, buildings or vegetation. Entire single prop centered uncropped with margins on plain pale grey background, elevated three-quarter view showing top and two sides, square canvas. Soft neutral diffuse lighting and tiny contact shadow, no bloom or depth of field. Readable premium historical RTS resource silhouette. Flat compact ground contact, no wide landscape. HAND-PAINTED CHUNKY FANTASY RTS IRON DEPOSIT: a broad squat mound of large bulbous blue-slate boulders embedded with big blunt dark steel mineral chunks and terracotta-red seam patches. Thick expressive cracks, cool indigo painted shadows, bold turquoise-blue highlights and restrained rusty orange accents. Hand-painted storybook game asset finish instead of photorealism; non-glowing, no gold or iron ingots. Bold rounded mushroom-like mound silhouette, not a natural stratified cliff.",
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a0b065-006f-78f2-8269-19a4b6e193b4/exec-7b41ad37-e62a-414b-9724-3265c53d8eb8.png",
+      "output": "02-painted/iron/reference.png"
+    },
+    {
+      "style": "02-painted",
+      "resource": "gold",
+      "prompt": "ONE isolated game resource model reference for Tripo, single object only, never a multi-panel sheet. No text, no people, no tools, buildings or vegetation. Entire prop centered uncropped with margins on plain neutral grey background, elevated three-quarter view showing top and two sides, square canvas. Neutral soft lighting, very small contact shadow, no depth of field. Flat compact ground contact suitable for a grid-based historical fantasy RTS. HAND-PAINTED CHUNKY GOLD DEPOSIT: squat asymmetrical mound of big rounded violet-brown boulders holding several large blunt amber-gold mineral chunks. Big expressive stylized cracks and broad hand-painted ochre highlights, purple shadows, vivid but restrained color contrast. Rich painterly cartoon-adjacent RTS asset finish, not a natural realistic outcrop, not plastic, not glowing or gold ingots. Rounded bulbous silhouette.",
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a0b065-006f-78f2-8269-19a4b6e193b4/exec-6d99ff82-777a-4895-be80-d5ff35844bc6.png",
+      "output": "02-painted/gold/reference.png"
+    },
+    {
+      "style": "03-dark",
+      "resource": "stone",
+      "prompt": "ONE isolated game resource model reference for Tripo, single object only, never a multi-panel sheet. No text, no people, no tools, buildings or vegetation. Entire prop centered uncropped with margins on plain neutral grey background, elevated three-quarter view showing top and two sides, square canvas. Neutral soft lighting, very small contact shadow, no depth of field. Flat compact ground contact suitable for a grid-based historical fantasy RTS. DARK GOTHIC BASALT STONE DEPOSIT: tall asymmetrical narrow crown of jagged columnar black volcanic stone spires, deep layered fractures and heavy charred coarse surfaces, a low dark rubble collar at base. Very angular threatening spearhead silhouette, muted coal black and ashen grey. Dark fantasy realism with detailed rock texture, no cartoon outlines, no colored crystals, no metal ores, no lava or emission; keep all silhouette visible with diffuse neutral lighting instead of hiding it in darkness.",
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a0b065-006f-78f2-8269-19a4b6e193b4/exec-bf329fe3-1852-482c-a4dd-3a160a17a7ed.png",
+      "output": "03-dark/stone/reference.png"
+    },
+    {
+      "style": "03-dark",
+      "resource": "iron",
+      "prompt": "ONE isolated game resource model reference for Tripo, single object only, never a multi-panel sheet. No text, no people, no tools, buildings or vegetation. Entire prop centered uncropped with margins on plain neutral grey background, elevated three-quarter view showing top and two sides, square canvas. Neutral soft lighting, very small contact shadow, no depth of field. Flat compact ground contact suitable for a grid-based historical fantasy RTS. DARK GOTHIC IRON ORE DEPOSIT: tall jagged jet-black rock spires surrounding exposed knotted burgundy-red hematite and dark cold steel ore faces, rust-dark orange scars through sharp black ridges. Brooding brutal dark fantasy realistic mineral textures, heavy cracked surfaces, asymmetrical spearhead crown silhouette, not natural warm low rocks, not round painted chunks. No glow, no gold, no ingots, no skeletons; make ore visibly distinguishable from stone under neutral lighting.",
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a0b065-006f-78f2-8269-19a4b6e193b4/exec-04e6d5e4-2794-44c9-87b1-af6f7b21b1e4.png",
+      "output": "03-dark/iron/reference.png"
+    },
+    {
+      "style": "03-dark",
+      "resource": "gold",
+      "prompt": "ONE isolated game resource model reference for Tripo, single object only, never a multi-panel sheet. No text, no people, no tools, buildings or vegetation. Entire prop centered uncropped with margins on plain neutral grey background, elevated three-quarter view showing top and two sides, square canvas. Neutral soft lighting, very small contact shadow, no depth of field. Flat compact ground contact suitable for a grid-based historical fantasy RTS. DARK GOTHIC GOLD ORE DEPOSIT: tall black jagged volcanic shard crown, broad old brass gold veins squeezed through fractured jet-black ridges and a few protruding rough gold mineral cores. Strong black-versus-antique-gold contrast, weathered gritty realistic dark fantasy textures, asymmetrical threatening vertical silhouette. No cartoon painting, no piles of bullion, no lava or magical glow. Soft studio fill must show the dark rock shapes clearly.",
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a0b065-006f-78f2-8269-19a4b6e193b4/exec-eabdd008-10fb-4570-8c9d-3c18e83f2819.png",
+      "output": "03-dark/gold/reference.png"
+    },
+    {
+      "style": "04-quarry",
+      "resource": "stone",
+      "prompt": "ONE isolated game resource model reference for Tripo, single object only, never a multi-panel sheet. No text, no people, no tools, buildings or vegetation. Entire prop centered uncropped with margins on plain neutral grey background, elevated three-quarter view showing top and two sides, square canvas. Neutral soft lighting, very small contact shadow, no depth of field. Flat compact ground contact suitable for a grid-based historical fantasy RTS. a small excavated limestone quarry tile, broad LOW SUNKEN BOWL with three stepped terraced benches, exposed cream-white limestone strata and pale stone blocks IN the pit, muted beige earth rim, horizontal dominant silhouette. Realistic crisp sculpted geology, no tall rocks. Entire single compact square module has a flat bottom and is visible as a cutaway open pit. Style 4: warm architectural excavation, distinctly different from an outcrop.",
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a0b065-006f-78f2-8269-19a4b6e193b4/exec-0c786d5b-4cf4-49e7-868f-5a996d94b4f2.png",
+      "output": "04-quarry/stone/reference.png"
+    },
+    {
+      "style": "04-quarry",
+      "resource": "iron",
+      "prompt": "ONE isolated game resource model reference for Tripo, single object only, never a multi-panel sheet. No text, no people, no tools, buildings or vegetation. Entire prop centered uncropped with margins on plain neutral grey background, elevated three-quarter view showing top and two sides, square canvas. Neutral soft lighting, very small contact shadow, no depth of field. Flat compact ground contact suitable for a grid-based historical fantasy RTS. a small excavated iron mine open-pit tile, broad LOW SUNKEN BOWL with three stepped terraced benches, rusty red clay strata with dark charcoal hematite seams on the inside cut walls, orange brown earth rim. Horizontal dominant silhouette, realistic crisp stratified geology, no tall rocks. Entire single compact square module has a flat bottom and is visible as a cutaway open pit. Style 4: warm architectural excavation, distinctly different from an outcrop.",
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a0b065-006f-78f2-8269-19a4b6e193b4/exec-c10556d1-bc5e-48fa-818f-bae12a9434d2.png",
+      "output": "04-quarry/iron/reference.png"
+    },
+    {
+      "style": "04-quarry",
+      "resource": "gold",
+      "prompt": "ONE isolated game resource model reference for Tripo, single object only, never a multi-panel sheet. No text, no people, no tools, buildings or vegetation. Entire prop centered uncropped with margins on plain neutral grey background, elevated three-quarter view showing top and two sides, square canvas. Neutral soft lighting, very small contact shadow, no depth of field. Flat compact ground contact suitable for a grid-based historical fantasy RTS. a small excavated gold mine open-pit tile, broad LOW SUNKEN BOWL with three stepped terraced benches, ochre earth strata and creamy quartz gold-bearing veins glinting on inside cut walls, warm tan earth rim. Gold recognizable but geological not bullion. Horizontal dominant silhouette, realistic crisp stratified geology, no tall rocks. Entire single compact square module has a flat bottom and is visible as a cutaway open pit. Style 4: warm architectural excavation, distinctly different from an outcrop.",
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a0b065-006f-78f2-8269-19a4b6e193b4/exec-d91fd153-2893-45c6-ae11-84fda442e14a.png",
+      "output": "04-quarry/gold/reference.png"
+    },
+    {
+      "style": "05-crystalline",
+      "resource": "stone",
+      "prompt": "ONE isolated game resource model reference for Tripo, single object only, never a multi-panel sheet. No text, no people, no tools, buildings or vegetation. Entire prop centered uncropped with margins on plain neutral grey background, elevated three-quarter view showing top and two sides, square canvas. Neutral soft lighting, very small contact shadow, no depth of field. Flat compact ground contact suitable for a grid-based historical fantasy RTS. Style 5: clean sculptural faceted mineral cluster, large orderly geometric quartz prisms on a flat square bed of tiny facets, cool ivory blue-grey palette, elegant stylized game geometry with crisp planes and broad graphic shading, several hexagonal tapering crystals angled outward, not jagged volcanic rubble, not painted rounded boulders. Stone deposit readable as pale rock, nonmagical no glow or neon.",
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a0b065-006f-78f2-8269-19a4b6e193b4/exec-5f2a72a8-2282-421a-a2d6-5eb11058654a.png",
+      "output": "05-crystalline/stone/reference.png"
+    },
+    {
+      "style": "05-crystalline",
+      "resource": "iron",
+      "prompt": "ONE isolated game resource model reference for Tripo, single object only, never a multi-panel sheet. No text, no people, no tools, buildings or vegetation. Entire prop centered uncropped with margins on plain neutral grey background, elevated three-quarter view showing top and two sides, square canvas. Neutral soft lighting, very small contact shadow, no depth of field. Flat compact ground contact suitable for a grid-based historical fantasy RTS. Style 5: clean sculptural faceted hematite cluster, large orderly dark metallic hexagonal mineral prisms on a flat square bed of tiny facets, cool graphite indigo and restrained silver plane edges, elegant stylized game geometry with crisp planes and broad graphic shading, crystals angled outward, not jagged volcanic rubble, not painted rounded boulders. Dark iron mineral not gold, no magical glow or neon.",
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a0b065-006f-78f2-8269-19a4b6e193b4/exec-5c671fcd-0f7b-404f-8c9a-abb10e687a83.png",
+      "output": "05-crystalline/iron/reference.png"
+    },
+    {
+      "style": "05-crystalline",
+      "resource": "gold",
+      "prompt": "ONE isolated game resource model reference for Tripo, single object only, never a multi-panel sheet. No text, no people, no tools, buildings or vegetation. Entire prop centered uncropped with margins on plain neutral grey background, elevated three-quarter view showing top and two sides, square canvas. Neutral soft lighting, very small contact shadow, no depth of field. Flat compact ground contact suitable for a grid-based historical fantasy RTS. Style 5: clean sculptural faceted gold-bearing mineral cluster, large orderly honey-gold angular mineral crystals with smoky-quartz facets on a flat square bed of tiny facets, rich amber cream and violet-grey palette, elegant stylized game geometry with crisp planes and broad graphic shading, crystals angled outward, not jagged volcanic rubble, not painted rounded boulders. Visually golden resource minerals, not bars or coins, nonmagical no glow or neon.",
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a0b065-006f-78f2-8269-19a4b6e193b4/exec-25f67185-2c2e-44a8-a191-9b5b8641c899.png",
+      "output": "05-crystalline/gold/reference.png"
+    }
+  ]
+}
