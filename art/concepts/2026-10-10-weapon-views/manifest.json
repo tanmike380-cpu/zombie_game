@@ -1,0 +1,209 @@
+{
+  "version": 1,
+  "assets": [
+    {
+      "id": "weapons/tianchao/bow-views-v2",
+      "category": "weapon",
+      "faction": "tianchao",
+      "weapon": "bow",
+      "previous_id": "weapons/tianchao/bow",
+      "projection": "independent 3D angle references; not CAD-calibrated orthographic",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-10-weapon-views/tianchao/bow/front.png",
+          "copy_source": true,
+          "width": 1024,
+          "height": 1536,
+          "sha256": "7512d51b8b2aec628ea267689279f420a00a0ac34daee0a0f5394b8a2c61e82b"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-10-weapon-views/tianchao/bow/side.png",
+          "copy_source": true,
+          "width": 1024,
+          "height": 1536,
+          "sha256": "1f16a06384e9fac10c0009649e0311fabf349631eecb048e8400563ee01c70fa"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-10-weapon-views/tianchao/bow/back.png",
+          "copy_source": true,
+          "width": 1024,
+          "height": 1536,
+          "sha256": "71fcd71822c3fe29678ece17ac71d64b173d0636fed7aa0c4901a2407de0fc5b"
+        }
+      ]
+    },
+    {
+      "id": "weapons/tianchao/repeating-crossbow-views-v2",
+      "category": "weapon",
+      "faction": "tianchao",
+      "weapon": "repeating-crossbow",
+      "previous_id": "weapons/tianchao/repeating-crossbow",
+      "projection": "independent 3D angle references; not CAD-calibrated orthographic",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-10-weapon-views/tianchao/repeating-crossbow/front.png",
+          "copy_source": true,
+          "width": 1536,
+          "height": 1024,
+          "sha256": "a0df470bbd3bcf814e30ffd5060e2d61386fe8b382123c3ce4b5271ac30e2a5c"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-10-weapon-views/tianchao/repeating-crossbow/side.png",
+          "copy_source": true,
+          "width": 2172,
+          "height": 724,
+          "sha256": "3ae3b50c431506f53bd55950f7cc6a66b59e814ec23cb858ca8ca5a0357d95a0"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-10-weapon-views/tianchao/repeating-crossbow/back.png",
+          "copy_source": true,
+          "width": 1536,
+          "height": 1024,
+          "sha256": "796451a06704216d6b53123b6ed6c23c6fe9f8436346ed47672c573c2033055b"
+        }
+      ]
+    },
+    {
+      "id": "weapons/tianchao/crossbow-views-v2",
+      "category": "weapon",
+      "faction": "tianchao",
+      "weapon": "crossbow",
+      "previous_id": "weapons/tianchao/crossbow",
+      "projection": "independent 3D angle references; not CAD-calibrated orthographic",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-10-weapon-views/tianchao/crossbow/front.png",
+          "copy_source": true,
+          "width": 1536,
+          "height": 1024,
+          "sha256": "475c0dd719256c573157125989dee0484ba7e1497fd596d9559f86028538e0d4"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-10-weapon-views/tianchao/crossbow/side.png",
+          "copy_source": true,
+          "width": 1881,
+          "height": 836,
+          "sha256": "9dea0ad7a835a974d9323c26ed10da423673da6ce07de685aae2eec46febc513"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-10-weapon-views/tianchao/crossbow/back.png",
+          "copy_source": true,
+          "width": 1536,
+          "height": 1024,
+          "sha256": "a8075b0ec94910219ae759319119d7fc89be6d8f0fb37a6f45d6ce2aff1513d3"
+        }
+      ]
+    },
+    {
+      "id": "weapons/tianchao/three-eyed-handgun-views-v2",
+      "category": "weapon",
+      "faction": "tianchao",
+      "weapon": "three-eyed-handgun",
+      "previous_id": "weapons/tianchao/three-eyed-handgun",
+      "projection": "independent 3D angle references; not CAD-calibrated orthographic",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-10-weapon-views/tianchao/three-eyed-handgun/front.png",
+          "copy_source": true,
+          "width": 1230,
+          "height": 1278,
+          "sha256": "b12bb7938308868e609c3efa2fdd86222f5c5afc4f74556ca6ace859bcbd650d"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-10-weapon-views/tianchao/three-eyed-handgun/side.png",
+          "copy_source": true,
+          "width": 1672,
+          "height": 941,
+          "sha256": "cceaedc771be37fc7080debbe3d1334cd78bf743ef9a218ba47bb33099b1e45f"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-10-weapon-views/tianchao/three-eyed-handgun/back.png",
+          "copy_source": true,
+          "width": 1230,
+          "height": 1278,
+          "sha256": "8cefab7fe35a4e14246f52f5ed91cf2a0cd16cd8fed4d4de8c05d6cc7a98e264"
+        }
+      ]
+    },
+    {
+      "id": "weapons/byzantine/javelin-views-v2",
+      "category": "weapon",
+      "faction": "byzantine",
+      "weapon": "javelin",
+      "previous_id": "weapons/byzantine/javelin",
+      "projection": "independent 3D angle references; not CAD-calibrated orthographic",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-10-weapon-views/byzantine/javelin/front.png",
+          "copy_source": true,
+          "width": 1024,
+          "height": 1536,
+          "sha256": "89867ee3eafe559db79c7390e11eb48ecb6ce958121f98eaae145bdb56a384e2"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-10-weapon-views/byzantine/javelin/side.png",
+          "copy_source": true,
+          "width": 1024,
+          "height": 1536,
+          "sha256": "c0adc01e80178b42115dff4d3586b6df1d82b237baea6e8403b7b9f4e221f8f7"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-10-weapon-views/byzantine/javelin/back.png",
+          "copy_source": true,
+          "width": 1024,
+          "height": 1536,
+          "sha256": "f221da4372586b8557ceb7e225d9c9ff0dfbd5b0475ed2134f4f23ba4d7cf8b5"
+        }
+      ]
+    },
+    {
+      "id": "weapons/byzantine/bow-views-v2",
+      "category": "weapon",
+      "faction": "byzantine",
+      "weapon": "bow",
+      "previous_id": "weapons/byzantine/bow",
+      "projection": "independent 3D angle references; not CAD-calibrated orthographic",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-10-weapon-views/byzantine/bow/front.png",
+          "copy_source": true,
+          "width": 1024,
+          "height": 1536,
+          "sha256": "39471ad4199c813e6a9d51927c56744d0051e7999f2441c5aa17c3c3f81206b1"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-10-weapon-views/byzantine/bow/side.png",
+          "copy_source": true,
+          "width": 1024,
+          "height": 1536,
+          "sha256": "3cb0a3bd4a4513b7bf178f03b0b962bec78e2509a99b5bf21746fa04f836f282"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-10-weapon-views/byzantine/bow/back.png",
+          "copy_source": true,
+          "width": 1024,
+          "height": 1536,
+          "sha256": "a2e689152e6ba834a14773bf0671858832c5fc86c9eed6527cf4a1c882a96510"
+        }
+      ]
+    }
+  ]
+}

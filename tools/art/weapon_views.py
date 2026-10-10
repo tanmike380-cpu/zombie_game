@@ -74,6 +74,7 @@ def publish_weapon_views():
     from tools.art.modular_infantry import load_fragment
 
     weapons = load_fragment(CONCEPT_ROOT / WEAPON_DIRECTORY / "manifest.json")
+    weapons.extend(load_fragment(CONCEPT_ROOT / WEAPON_DIRECTORY / "byzantine/manifest-additional.json"))
     manifest_path = EXPORT_ROOT / "manifest.json"
     result = build_weapon_manifest(json.loads(manifest_path.read_text()), weapons)
     check_weapon_sources(weapons, CONCEPT_ROOT)

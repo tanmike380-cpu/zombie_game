@@ -1,0 +1,93 @@
+{
+  "tool": "builtin image_gen",
+  "assets": [
+    {
+      "unit": "crossbow",
+      "view": "front",
+      "prompt": "Use case: identity-preserve. Image 1 is the approved Byzantine crossbow weapon geometry/material reference. Produce one isolated full-object FRONT THREE-QUARTER weapon reference render, viewed modestly from above so all construction is readable, for Tripo multi-view reconstruction. The exact SAME wooden straight rectangular tiller with a single continuous symmetric curved steel bow across the front, tan cord string, underside trigger lever, and rectangular metal cocking stirrup; no hole-shaped bow limbs; preserve source shape, proportions, wood grain, metal aging, fittings, mechanism and unadorned historical design, merely change camera/framing as needed. Neutral gray studio backdrop with soft light, center whole weapon without crop, clean margins. No human/hands, no pedestal, no text/logo/watermark, no labels, no arrows, no multi-view sheet, no duplicate weapon, no modern gun or redesigned ornament.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/weapons/byzantine/crossbow/reference.png"
+      ],
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a12654-febd-77b3-9552-4353c9008914/exec-e55a805c-7c13-479e-8db4-46614cfa1796.png",
+      "output": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-weapon-views/byzantine/crossbow/front.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "fb250552422ddd0d55726e172c4c6bf5b5e2fe00726a3455a43b46b11306d2ec",
+      "validation": "Visual output inspected: one complete historical weapon; no people/text; materials and mechanism retained."
+    },
+    {
+      "unit": "matchlock",
+      "view": "front",
+      "prompt": "Use case: identity-preserve. Image 1 is the approved Byzantine matchlock weapon geometry/material reference. Produce one isolated full-object FRONT THREE-QUARTER weapon reference render, viewed modestly from above so all construction is readable, for Tripo multi-view reconstruction. The exact SAME single-barrel historical matchlock musket, long aged-steel cylindrical barrel, full-length walnut fore-stock, three steel barrel bands, plain wooden shoulder stock, visible serpentine match holder, oval trigger guard and trigger; preserve source shape, proportions, wood grain, metal aging, fittings, mechanism and unadorned historical design, merely change camera/framing as needed. Neutral gray studio backdrop with soft light, center whole weapon without crop, clean margins. No human/hands, no pedestal, no text/logo/watermark, no labels, no arrows, no multi-view sheet, no duplicate weapon, no modern gun or redesigned ornament.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/weapons/byzantine/matchlock/reference.png"
+      ],
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a12654-febd-77b3-9552-4353c9008914/exec-938cb870-a306-4f78-a682-bde785e69b0f.png",
+      "output": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-weapon-views/byzantine/matchlock/front.png",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "290235e91dc487dc9b1a2cc66e3f332c144af1896a5392f188fe883fd2b0b456",
+      "validation": "Visual output inspected: one complete historical weapon; no people/text; materials and mechanism retained."
+    },
+    {
+      "unit": "crossbow",
+      "view": "side",
+      "prompt": "Use case: identity-preserve. Images 1 and 2 are the same approved Byzantine crossbow reference weapon, Image 2 anchors finished front view. Generate ONE independent side view of this EXACT object for Tripo, not a redesigned weapon. Camera: TRUE NEAR-ORTHOGRAPHIC RIGHT SIDE PROFILE, long wooden tiller horizontal with butt on left and bow/stirrup on right, underside trigger readable, bow foreshortened naturally. Preserve same straight walnut rectangular tiller, SINGLE continuous symmetric curved steel bow, tan bowstring, underside lever trigger, rectangular cocking stirrup, exact source fittings, proportions, construction, wood color/grain, aged-steel finish and fittings. Neutral gray studio background, soft even lighting, entire object centered with margins. No people/hands, no text/labels/arrows, no duplicates, no collage, no extra attachments, no modern mechanisms. Do not alter bow limbs into a keyhole or thick rings.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/weapons/byzantine/crossbow/reference.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-weapon-views/byzantine/crossbow/front.png"
+      ],
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a12654-febd-77b3-9552-4353c9008914/exec-3b4df85e-e638-48f3-a8a9-de13dc84f46b.png",
+      "output": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-weapon-views/byzantine/crossbow/side.png",
+      "width": 1774,
+      "height": 887,
+      "sha256": "020c560bdf0404dea0c0b31f4f6ff24ad8de86f69887031d6bc5b6b9eed5980a",
+      "validation": "Visual output inspected: one complete historical weapon; no people/text; materials and mechanism retained."
+    },
+    {
+      "unit": "crossbow",
+      "view": "back",
+      "prompt": "Use case: identity-preserve. Images 1 and 2 are the same approved Byzantine crossbow reference weapon, Image 2 anchors finished front view. Generate ONE independent back view of this EXACT object for Tripo, not a redesigned weapon. Camera: OPPOSITE REAR THREE-QUARTER VIEW, camera from butt end toward bow, showing the far face and underside rather than repeating front view; full stock, continuous curved steel bow, string and rectangular stirrup all visible. Preserve same straight walnut rectangular tiller, SINGLE continuous symmetric curved steel bow, tan bowstring, underside lever trigger, rectangular cocking stirrup, exact source fittings, proportions, construction, wood color/grain, aged-steel finish and fittings. Neutral gray studio background, soft even lighting, entire object centered with margins. No people/hands, no text/labels/arrows, no duplicates, no collage, no extra attachments, no modern mechanisms. Do not alter bow limbs into a keyhole or thick rings.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/weapons/byzantine/crossbow/reference.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-weapon-views/byzantine/crossbow/front.png"
+      ],
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a12654-febd-77b3-9552-4353c9008914/exec-183ad974-ddc3-490e-a48b-8c7bf10969b7.png",
+      "output": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-weapon-views/byzantine/crossbow/back.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "103fb1ceeac178533227117955195bc30763745c9297947f4dd24ad8605ac986",
+      "validation": "Visual output inspected: one complete historical weapon; no people/text; materials and mechanism retained."
+    },
+    {
+      "unit": "matchlock",
+      "view": "side",
+      "prompt": "Use case: identity-preserve. Images 1 and 2 are the same approved Byzantine matchlock reference weapon, Image 2 anchors finished front view. Generate ONE independent side view of this EXACT object for Tripo, not a redesigned weapon. Camera: TRUE NEAR-ORTHOGRAPHIC RIGHT SIDE PROFILE, musket lying horizontally, wooden butt on left and barrel muzzle on right, firing/serpentine lock and trigger/guard visible, full gun complete. Preserve same SINGLE long cylindrical steel barrel, walnut shoulder stock and full-length fore-stock, three steel bands, serpentine match holder and oval trigger guard, proportions, construction, wood color/grain, aged-steel finish and fittings. Neutral gray studio background, soft even lighting, entire object centered with margins. No people/hands, no text/labels/arrows, no duplicates, no collage, no extra attachments, no modern mechanisms. Do not alter bow limbs into a keyhole or thick rings.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/weapons/byzantine/matchlock/reference.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-weapon-views/byzantine/matchlock/front.png"
+      ],
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a12654-febd-77b3-9552-4353c9008914/exec-94dbdba4-fe6d-48cf-b09d-3b3a4585d0aa.png",
+      "output": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-weapon-views/byzantine/matchlock/side.png",
+      "width": 2172,
+      "height": 724,
+      "sha256": "281bc3a28a8598e247df9e0b5448e36cb0d1f8e5416268ba83ea54a1d819aa24",
+      "validation": "Visual output inspected: one complete historical weapon; no people/text; materials and mechanism retained."
+    },
+    {
+      "unit": "matchlock",
+      "view": "back",
+      "prompt": "Use case: identity-preserve. Images 1 and 2 show SAME approved Byzantine single-barrel historical matchlock musket. Produce ONE complete OPPOSITE REAR THREE-QUARTER view of exact weapon, camera from butt-end opposite side toward muzzle. Show metal buttplate, plain far-side wooden stock and full-length walnut fore-stock, long SINGLE aged steel cylindrical barrel, THREE steel barrel bands. Firing lock remains on original physical side (may be partially occluded); do not duplicate the mechanism on the opposite side or invent flintlock. Preserve exact proportions, wood grain/color, construction, serpentine match-holder and trigger/guard. Same gray neutral studio background, soft light, full object centered with margin, no crop, no people/hands/text/arrows/labels/collage, no extra weapon or ornament.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/weapons/byzantine/matchlock/reference.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-weapon-views/byzantine/matchlock/front.png"
+      ],
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a12654-febd-77b3-9552-4353c9008914/exec-62505bef-ca32-4a3d-b9fc-45ec1787033d.png",
+      "output": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-weapon-views/byzantine/matchlock/back.png",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "4c40fb9d6dd2b2cd2db045c175bb5e7b37c1f9d694a811143051fb265d57b094",
+      "validation": "Visual output inspected: one complete historical weapon; no people/text; materials and mechanism retained."
+    }
+  ]
+}

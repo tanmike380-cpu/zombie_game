@@ -1,0 +1,290 @@
+{
+  "generator": "builtin image_gen",
+  "status": "complete",
+  "expected_images": 18,
+  "completed_images": 18,
+  "records": [
+    {
+      "unit_kind": "archer",
+      "rank": "militia",
+      "view": "front",
+      "prompt": "Use case: precise-object-edit. Asset type: independent Tripo front-view T-pose concept. Image 1 is the EDIT TARGET. Change ONLY by adding a plain worn brown-leather archer quiver attached on the man's back/right side behind the right shoulder, angled slightly upward, top around shoulder level, with a modest small visible bundle of arrow shafts and feather fletching. Narrow shoulder strap and rear belt anchor. Keep it historically simple militia equipment, no gold decoration. Preserve the exact person, face, body proportions, patched clothes, muted red sash, bare hands, shoes, grey studio background, camera and complete empty-handed straight horizontal T-pose from Image 1. No bow, no handheld arrows, no weapons beside him, no other accessories, no text, no collage; ONE front-view character only. Clearly readable game accessory, realistic materials in matching existing render style. All parts including head, hands, feet fit in frame.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/tianchao/militia/front.png"
+      ],
+      "generated_source": "/Users/tankaixi/.codex/generated_images/01a12635-26a5-7af3-bb58-cd249ba31308/exec-4e29e51e-3b3e-4d13-a59d-bddb55fc720b.png",
+      "source": "2026-10-10-infantry-kits/tianchao/archer/militia/front.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "2b24bd193ca6fdfc1885617e254dd6881972bca0f5ec0e328ce84e97c39a43a5",
+      "visual_review": "accepted: single full-body empty-handed T-pose, original clothing/armor/gloves and camera retained; rear quiver clearly visible. Concept-level small leather seam/fitting variations across views, not CAD exact."
+    },
+    {
+      "unit_kind": "archer",
+      "rank": "militia",
+      "view": "side",
+      "prompt": "Use case: precise-object-edit. Independent Tripo SIDE-view character image. Image 1 is EDIT TARGET: keep this exact side profile, clothes, face, long sleeves, bare empty hands, horizontal T-pose arms aimed along depth, proportions, grey background and lighting. Image 2 is ONLY accessory reference from the SAME soldier's front view. Add the exact same worn brown leather back quiver and small bundle of arrow shafts and feathers, behind his right shoulder, with same shoulder strap and belt anchor. Side view must show the whole length of the back quiver behind his torso. Match reference quiver shape, size, finish and placement; do NOT copy Image 2 front camera. No other accessories, no handheld weapon, no bow, no loose weapon, no text, no collage. ONE person in the exact original side view only, full body and feet visible.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/tianchao/militia/side.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/tianchao/archer/militia/front.png"
+      ],
+      "generated_source": "/Users/tankaixi/.codex/generated_images/01a12635-26a5-7af3-bb58-cd249ba31308/exec-20b60fa3-933d-4dc7-be62-2f24c3424faf.png",
+      "source": "2026-10-10-infantry-kits/tianchao/archer/militia/side.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "e66f4dfee657ca57dd7929cdf5fe33d1642d0e523cfc68c8c2102ede5b828e51",
+      "visual_review": "accepted: single full-body empty-handed T-pose, original clothing/armor/gloves and camera retained; rear quiver clearly visible. Concept-level small leather seam/fitting variations across views, not CAD exact."
+    },
+    {
+      "unit_kind": "archer",
+      "rank": "militia",
+      "view": "back",
+      "prompt": "Use case: precise-object-edit. Independent Tripo BACK-view character image. Image 1 is EDIT TARGET: preserve the exact back view of this man, clothes, dark cloth hat, long sleeves, bare empty hands, horizontal T-pose, proportions, grey background, camera, feet and lighting. Image 2 is accessory reference ONLY: add the SAME worn brown leather long archer quiver and short visible bundle of arrow shafts/feathers on this man's back behind his RIGHT shoulder, descending diagonally toward his left rear hip, with same narrow leather shoulder strap and belt anchor. Back view shows entire quiver and attachment straps. Match Image 2 quiver size, shape and plain militia quality; do not change original apparel. No bow or handheld arrow, no other accessory, no loose weapons, no text or collage. ONE BACK-view full-body person only.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/tianchao/militia/back.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/tianchao/archer/militia/front.png"
+      ],
+      "generated_source": "/Users/tankaixi/.codex/generated_images/01a12635-26a5-7af3-bb58-cd249ba31308/exec-dfe0a084-fac1-4926-ad67-d75ed806f8b7.png",
+      "source": "2026-10-10-infantry-kits/tianchao/archer/militia/back.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "ca54c9fba144f45bdfc76cceb782f7f259acb2f64b0a39f86a70bdc28245d74c",
+      "visual_review": "accepted: single full-body empty-handed T-pose, original clothing/armor/gloves and camera retained; rear quiver clearly visible. Concept-level small leather seam/fitting variations across views, not CAD exact."
+    },
+    {
+      "unit_kind": "archer",
+      "rank": "veteran",
+      "view": "front",
+      "prompt": "Use case: precise-object-edit. Asset type: independent Tripo FRONT-view empty-handed T-pose. Image 1 is EDIT TARGET. Change ONLY by adding a neat dark brown-leather long archer quiver worn diagonally on the man's back, top behind his RIGHT shoulder, lower end near his LEFT rear hip, held by narrow shoulder strap and rear belt anchor. A modest bundle of arrow shafts and feather fletchings is visible above right shoulder; no need to draw thirty arrows. Veteran quality: well-maintained leather, simple reinforced rim, no lavish metal. Preserve exact identity, face, proportions, historical helmet, pure leather armor and gloves, muted red sash, long grey sleeves, shoes, full horizontal T-pose and grey background from Image 1. Both hands EMPTY. No bow, no hand-held arrows, no weapons beside him, no other accessories, no text or collage. ONE front-view character only, all head hands feet inside frame.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/tianchao/veteran/front.png"
+      ],
+      "generated_source": "/Users/tankaixi/.codex/generated_images/01a12635-26a5-7af3-bb58-cd249ba31308/exec-75209df5-7a56-4c24-b828-2c322d222faf.png",
+      "source": "2026-10-10-infantry-kits/tianchao/archer/veteran/front.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "6a53eefe7ca5087013832212995f034a520c8ec7173fefd3a0d8a6ef3792e7ca",
+      "visual_review": "accepted: single full-body empty-handed T-pose, original clothing/armor/gloves and camera retained; rear quiver clearly visible. Concept-level small leather seam/fitting variations across views, not CAD exact."
+    },
+    {
+      "unit_kind": "archer",
+      "rank": "veteran",
+      "view": "side",
+      "prompt": "Use case: precise-object-edit. Asset type: ONE independent Tripo SIDE-view empty-handed T-pose concept. Image 1 is EDIT TARGET. Change ONLY by adding a long brown leather archer quiver on the BACK, top behind RIGHT shoulder descending diagonally to LEFT rear hip; narrow leather shoulder strap and belt anchor; modest visible bundle of long arrow shafts and feather fletching. Equipment quality: neat well-maintained brown leather and plain wooden equipment, reinforced edges, modest quality with no fancy metal. Preserve EXACT original person/face, headgear, body proportions, all clothing/armor/gloves or bare hands, sleeves, footwear, original camera side view, complete horizontal T-pose, empty hands, full-body framing, grey studio background, original realistic rendering and lighting. Do not redesign any body clothes armor. No weapons held or standing beside him, no other accessories, no text, no collage. Entire head, hands and feet remain visible. Image 2 is ONLY the SAME tier/character accessory front reference. Match EXACT accessory shape, material, size, attachment and anatomical side from Image 2, now seen from side viewpoint. DO NOT change Image 1 into a front view. Show attached accessory clearly projecting behind body, not hidden or missing.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/tianchao/veteran/side.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/tianchao/archer/veteran/front.png"
+      ],
+      "generated_source": "/Users/tankaixi/.codex/generated_images/01a12635-26a5-7af3-bb58-cd249ba31308/exec-3c8917c9-6288-4fc8-a24f-4792451ca04e.png",
+      "source": "2026-10-10-infantry-kits/tianchao/archer/veteran/side.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "b78fe65803fa0d4b41062519f7dc2c11145f1aa0a6c128f8a28c4f63f3608eaf",
+      "visual_review": "accepted: single full-body empty-handed T-pose, original clothing/armor/gloves and camera retained; rear quiver clearly visible. Concept-level small leather seam/fitting variations across views, not CAD exact."
+    },
+    {
+      "unit_kind": "archer",
+      "rank": "veteran",
+      "view": "back",
+      "prompt": "Use case: precise-object-edit. Asset type: ONE independent Tripo BACK-view empty-handed T-pose concept. Image 1 is EDIT TARGET. Change ONLY by adding a long brown leather archer quiver on the BACK, top behind RIGHT shoulder descending diagonally to LEFT rear hip; narrow leather shoulder strap and belt anchor; modest visible bundle of long arrow shafts and feather fletching. Equipment quality: neat well-maintained brown leather and plain wooden equipment, reinforced edges, modest quality with no fancy metal. Preserve EXACT original person/face, headgear, body proportions, all clothing/armor/gloves or bare hands, sleeves, footwear, original camera back view, complete horizontal T-pose, empty hands, full-body framing, grey studio background, original realistic rendering and lighting. Do not redesign any body clothes armor. No weapons held or standing beside him, no other accessories, no text, no collage. Entire head, hands and feet remain visible. Image 2 is ONLY the SAME tier/character accessory front reference. Match EXACT accessory shape, material, size, attachment and anatomical side from Image 2, now seen from back viewpoint. DO NOT change Image 1 into a front view. Show accessory clearly from behind.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/tianchao/veteran/back.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/tianchao/archer/veteran/front.png"
+      ],
+      "generated_source": "/Users/tankaixi/.codex/generated_images/01a12635-26a5-7af3-bb58-cd249ba31308/exec-25d09f7b-0a65-4a20-a372-dd805d5aaf83.png",
+      "source": "2026-10-10-infantry-kits/tianchao/archer/veteran/back.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "8c34909251f2e384f0b071ea6abe05aaf0b33b13946b6e1f39288673725a156e",
+      "visual_review": "accepted: single full-body empty-handed T-pose, original clothing/armor/gloves and camera retained; rear quiver clearly visible. Concept-level small leather seam/fitting variations across views, not CAD exact."
+    },
+    {
+      "unit_kind": "archer",
+      "rank": "elite",
+      "view": "front",
+      "prompt": "Use case: precise-object-edit. Asset type: ONE independent Tripo FRONT-view empty-handed T-pose concept. Image 1 is EDIT TARGET. Change ONLY by adding a long brown leather archer quiver on the BACK, top behind RIGHT shoulder descending diagonally to LEFT rear hip; narrow leather shoulder strap and belt anchor; modest visible bundle of long arrow shafts and feather fletching. Equipment quality: high-quality polished leather / warm wood finish as appropriate, compact but clearly recognizable and modestly fuller capacity, restrained fittings, not oversized. Preserve EXACT original person/face, headgear, body proportions, all clothing/armor/gloves or bare hands, sleeves, footwear, original camera front view, complete horizontal T-pose, empty hands, full-body framing, grey studio background, original realistic rendering and lighting. Do not redesign any body clothes armor. No weapons held or standing beside him, no other accessories, no text, no collage. Entire head, hands and feet remain visible.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/tianchao/elite/front.png"
+      ],
+      "generated_source": "/Users/tankaixi/.codex/generated_images/01a12635-26a5-7af3-bb58-cd249ba31308/exec-df1d4184-2e72-4b6e-8933-4e24d19d0416.png",
+      "source": "2026-10-10-infantry-kits/tianchao/archer/elite/front.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "6797461453d0b99c4b2a0b1de9237296b5e2f1ffc5e6d90acce59a06989d4b13",
+      "visual_review": "accepted: single full-body empty-handed T-pose, original clothing/armor/gloves and camera retained; rear quiver clearly visible. Concept-level small leather seam/fitting variations across views, not CAD exact."
+    },
+    {
+      "unit_kind": "archer",
+      "rank": "elite",
+      "view": "side",
+      "prompt": "Use case: precise-object-edit. Asset type: ONE independent Tripo SIDE-view empty-handed T-pose concept. Image 1 is EDIT TARGET. Change ONLY by adding a long brown leather archer quiver on the BACK, top behind RIGHT shoulder descending diagonally to LEFT rear hip; narrow leather shoulder strap and belt anchor; modest visible bundle of long arrow shafts and feather fletching. Equipment quality: high-quality polished leather / warm wood finish as appropriate, compact but clearly recognizable and modestly fuller capacity, restrained fittings, not oversized. Preserve EXACT original person/face, headgear, body proportions, all clothing/armor/gloves or bare hands, sleeves, footwear, original camera side view, complete horizontal T-pose, empty hands, full-body framing, grey studio background, original realistic rendering and lighting. Do not redesign any body clothes armor. No weapons held or standing beside him, no other accessories, no text, no collage. Entire head, hands and feet remain visible. Image 2 is ONLY the SAME tier/character accessory front reference. Match EXACT accessory shape, material, size, attachment and anatomical side from Image 2, now seen from side viewpoint. DO NOT change Image 1 into a front view. Show attached accessory clearly projecting behind body, not hidden or missing.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/tianchao/elite/side.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/tianchao/archer/elite/front.png"
+      ],
+      "generated_source": "/Users/tankaixi/.codex/generated_images/01a12635-26a5-7af3-bb58-cd249ba31308/exec-0e2726ab-b75d-4487-85b9-ae8701254b29.png",
+      "source": "2026-10-10-infantry-kits/tianchao/archer/elite/side.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "bcbdd80d8655b2df7b79140a19b0cf93ddaefdc879d0e850d2e61e1d5ac5fd60",
+      "visual_review": "accepted: single full-body empty-handed T-pose, original clothing/armor/gloves and camera retained; rear quiver clearly visible. Concept-level small leather seam/fitting variations across views, not CAD exact."
+    },
+    {
+      "unit_kind": "archer",
+      "rank": "elite",
+      "view": "back",
+      "prompt": "Use case: precise-object-edit. Asset type: ONE independent Tripo BACK-view empty-handed T-pose concept. Image 1 is EDIT TARGET. Change ONLY by adding a long brown leather archer quiver on the BACK, top behind RIGHT shoulder descending diagonally to LEFT rear hip; narrow leather shoulder strap and belt anchor; modest visible bundle of long arrow shafts and feather fletching. Equipment quality: high-quality polished leather / warm wood finish as appropriate, compact but clearly recognizable and modestly fuller capacity, restrained fittings, not oversized. Preserve EXACT original person/face, headgear, body proportions, all clothing/armor/gloves or bare hands, sleeves, footwear, original camera back view, complete horizontal T-pose, empty hands, full-body framing, grey studio background, original realistic rendering and lighting. Do not redesign any body clothes armor. No weapons held or standing beside him, no other accessories, no text, no collage. Entire head, hands and feet remain visible. Image 2 is ONLY the SAME tier/character accessory front reference. Match EXACT accessory shape, material, size, attachment and anatomical side from Image 2, now seen from back viewpoint. DO NOT change Image 1 into a front view. Show accessory clearly from behind.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/tianchao/elite/back.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/tianchao/archer/elite/front.png"
+      ],
+      "generated_source": "/Users/tankaixi/.codex/generated_images/01a12635-26a5-7af3-bb58-cd249ba31308/exec-e5cca5d5-e94f-4a0e-91c1-e25f4c972a23.png",
+      "source": "2026-10-10-infantry-kits/tianchao/archer/elite/back.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "c4c7c7ffb6b62ff848d42481365ffd2441c89f788f34efef823010329e54a129",
+      "visual_review": "accepted: single full-body empty-handed T-pose, original clothing/armor/gloves and camera retained; rear quiver clearly visible. Concept-level small leather seam/fitting variations across views, not CAD exact."
+    },
+    {
+      "unit_kind": "repeating-crossbowman",
+      "rank": "militia",
+      "view": "front",
+      "prompt": "Use case: precise-object-edit. Asset type: ONE independent Tripo FRONT-view empty-handed T-pose concept. Image 1 is EDIT TARGET. Change ONLY by adding a clearly visible CLOSED rectangular wood-and-brown-leather repeating-crossbow ammunition BOX attached on the RIGHT rear waist/hip, hanging from belt loops; simple flat wooden lid, leather reinforcing strips and small fastening tab; NO visible arrows sticking out; NOT a quiver. Equipment quality: plain worn inexpensive equipment, simple and undecorated. Preserve EXACT original person/face, headgear, body proportions, all clothing/armor/gloves or bare hands, sleeves, footwear, original camera front view, complete horizontal T-pose, empty hands, full-body framing, grey studio background, original realistic rendering and lighting. Do not redesign any body clothes armor. No weapons held or standing beside him, no other accessories, no text, no collage. Entire head, hands and feet remain visible.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/tianchao/militia/front.png"
+      ],
+      "generated_source": "/Users/tankaixi/.codex/generated_images/01a12635-26a5-7af3-bb58-cd249ba31308/exec-defba762-2ff9-4a57-9d92-f669f2d1955b.png",
+      "source": "2026-10-10-infantry-kits/tianchao/repeating-crossbowman/militia/front.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "dabbb6e7b55e51f92f370d46284da4ecee68395b58c272d4007d457ed1028084",
+      "visual_review": "accepted: single full-body empty-handed T-pose with closed wood/leather belt ammunition box, no weapon; source clothing/armor/gloves and camera retained. Concept-level fitting/edge details vary slightly across views; not a CAD-exact turnaround."
+    },
+    {
+      "unit_kind": "repeating-crossbowman",
+      "rank": "militia",
+      "view": "side",
+      "prompt": "Use case: precise-object-edit. Asset type: ONE independent Tripo SIDE-view empty-handed T-pose concept. Image 1 is EDIT TARGET. Change ONLY by adding a clearly visible CLOSED rectangular wood-and-brown-leather repeating-crossbow ammunition BOX attached on the RIGHT rear waist/hip, hanging from belt loops; simple flat wooden lid, leather reinforcing strips and small fastening tab; NO visible arrows sticking out; NOT a quiver. Equipment quality: plain worn inexpensive equipment, simple and undecorated. Preserve EXACT original person/face, headgear, body proportions, all clothing/armor/gloves or bare hands, sleeves, footwear, original camera side view, complete horizontal T-pose, empty hands, full-body framing, grey studio background, original realistic rendering and lighting. Do not redesign any body clothes armor. No weapons held or standing beside him, no other accessories, no text, no collage. Entire head, hands and feet remain visible. Image 2 is ONLY the SAME tier/character accessory front reference. Match EXACT accessory shape, material, size, attachment and anatomical side from Image 2, now seen from side viewpoint. DO NOT change Image 1 into a front view. Show attached accessory clearly projecting behind body, not hidden or missing.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/tianchao/militia/side.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/tianchao/repeating-crossbowman/militia/front.png"
+      ],
+      "generated_source": "/Users/tankaixi/.codex/generated_images/01a12635-26a5-7af3-bb58-cd249ba31308/exec-09735ff5-9093-4e45-8bff-da4befcc4960.png",
+      "source": "2026-10-10-infantry-kits/tianchao/repeating-crossbowman/militia/side.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "5bcc88b90cc0920b40e04556f77633ddcc2bc529fec905af0739bec50a61e0f9",
+      "visual_review": "accepted: single full-body empty-handed T-pose with closed wood/leather belt ammunition box, no weapon; source clothing/armor/gloves and camera retained. Concept-level fitting/edge details vary slightly across views; not a CAD-exact turnaround."
+    },
+    {
+      "unit_kind": "repeating-crossbowman",
+      "rank": "militia",
+      "view": "back",
+      "prompt": "Use case: precise-object-edit. Asset type: ONE independent Tripo BACK-view empty-handed T-pose concept. Image 1 is EDIT TARGET. Change ONLY by adding a clearly visible CLOSED rectangular wood-and-brown-leather repeating-crossbow ammunition BOX attached on the RIGHT rear waist/hip, hanging from belt loops; simple flat wooden lid, leather reinforcing strips and small fastening tab; NO visible arrows sticking out; NOT a quiver. Equipment quality: plain worn inexpensive equipment, simple and undecorated. Preserve EXACT original person/face, headgear, body proportions, all clothing/armor/gloves or bare hands, sleeves, footwear, original camera back view, complete horizontal T-pose, empty hands, full-body framing, grey studio background, original realistic rendering and lighting. Do not redesign any body clothes armor. No weapons held or standing beside him, no other accessories, no text, no collage. Entire head, hands and feet remain visible. Image 2 is ONLY the SAME tier/character accessory front reference. Match EXACT accessory shape, material, size, attachment and anatomical side from Image 2, now seen from back viewpoint. DO NOT change Image 1 into a front view. Show accessory clearly from behind.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/tianchao/militia/back.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/tianchao/repeating-crossbowman/militia/front.png"
+      ],
+      "generated_source": "/Users/tankaixi/.codex/generated_images/01a12635-26a5-7af3-bb58-cd249ba31308/exec-e76eb843-de88-49cc-8a86-8a5520e30d88.png",
+      "source": "2026-10-10-infantry-kits/tianchao/repeating-crossbowman/militia/back.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "a6b17f48a5c4368e4631f466d5dca3c4edb146be3b8db1f7e4e6bddd29fe4fa4",
+      "visual_review": "accepted: single full-body empty-handed T-pose with closed wood/leather belt ammunition box, no weapon; source clothing/armor/gloves and camera retained. Concept-level fitting/edge details vary slightly across views; not a CAD-exact turnaround."
+    },
+    {
+      "unit_kind": "repeating-crossbowman",
+      "rank": "veteran",
+      "view": "front",
+      "prompt": "Use case: precise-object-edit. Asset type: ONE independent Tripo FRONT-view empty-handed T-pose concept. Image 1 is EDIT TARGET. Change ONLY by adding a clearly visible CLOSED rectangular wood-and-brown-leather repeating-crossbow ammunition BOX attached on the RIGHT rear waist/hip, hanging from belt loops; simple flat wooden lid, leather reinforcing strips and small fastening tab; NO visible arrows sticking out; NOT a quiver. Equipment quality: neat well-maintained brown leather and plain wooden equipment, reinforced edges, modest quality with no fancy metal. Preserve EXACT original person/face, headgear, body proportions, all clothing/armor/gloves or bare hands, sleeves, footwear, original camera front view, complete horizontal T-pose, empty hands, full-body framing, grey studio background, original realistic rendering and lighting. Do not redesign any body clothes armor. No weapons held or standing beside him, no other accessories, no text, no collage. Entire head, hands and feet remain visible.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/tianchao/veteran/front.png"
+      ],
+      "generated_source": "/Users/tankaixi/.codex/generated_images/01a12635-26a5-7af3-bb58-cd249ba31308/exec-838e5923-2abe-4e6f-96f7-fca922d18f8f.png",
+      "source": "2026-10-10-infantry-kits/tianchao/repeating-crossbowman/veteran/front.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "37423dc98eb33dadbe368cd3269a71398da142b4b5b666d0642c455450b23852",
+      "visual_review": "accepted: single full-body empty-handed T-pose with closed wood/leather belt ammunition box, no weapon; source clothing/armor/gloves and camera retained. Concept-level fitting/edge details vary slightly across views; not a CAD-exact turnaround."
+    },
+    {
+      "unit_kind": "repeating-crossbowman",
+      "rank": "veteran",
+      "view": "side",
+      "prompt": "Use case: precise-object-edit. Asset type: ONE independent Tripo SIDE-view empty-handed T-pose concept. Image 1 is EDIT TARGET. Change ONLY by adding a clearly visible CLOSED rectangular wood-and-brown-leather repeating-crossbow ammunition BOX attached on the RIGHT rear waist/hip, hanging from belt loops; simple flat wooden lid, leather reinforcing strips and small fastening tab; NO visible arrows sticking out; NOT a quiver. Equipment quality: neat well-maintained brown leather and plain wooden equipment, reinforced edges, modest quality with no fancy metal. Preserve EXACT original person/face, headgear, body proportions, all clothing/armor/gloves or bare hands, sleeves, footwear, original camera side view, complete horizontal T-pose, empty hands, full-body framing, grey studio background, original realistic rendering and lighting. Do not redesign any body clothes armor. No weapons held or standing beside him, no other accessories, no text, no collage. Entire head, hands and feet remain visible. Image 2 is ONLY the SAME tier/character accessory front reference. Match EXACT accessory shape, material, size, attachment and anatomical side from Image 2, now seen from side viewpoint. DO NOT change Image 1 into a front view. Show attached accessory clearly projecting behind body, not hidden or missing.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/tianchao/veteran/side.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/tianchao/repeating-crossbowman/veteran/front.png"
+      ],
+      "generated_source": "/Users/tankaixi/.codex/generated_images/01a12635-26a5-7af3-bb58-cd249ba31308/exec-9a61d849-def0-4a96-b36e-9e6966f6838c.png",
+      "source": "2026-10-10-infantry-kits/tianchao/repeating-crossbowman/veteran/side.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "09986467e83219c120493558abfda4c7fdeb6f61bb52db1288cdf3288948e989",
+      "visual_review": "accepted: single full-body empty-handed T-pose with closed wood/leather belt ammunition box, no weapon; source clothing/armor/gloves and camera retained. Concept-level fitting/edge details vary slightly across views; not a CAD-exact turnaround."
+    },
+    {
+      "unit_kind": "repeating-crossbowman",
+      "rank": "veteran",
+      "view": "back",
+      "prompt": "Use case: precise-object-edit. Asset type: ONE independent Tripo BACK-view empty-handed T-pose concept. Image 1 is EDIT TARGET. Change ONLY by adding a clearly visible CLOSED rectangular wood-and-brown-leather repeating-crossbow ammunition BOX attached on the RIGHT rear waist/hip, hanging from belt loops; simple flat wooden lid, leather reinforcing strips and small fastening tab; NO visible arrows sticking out; NOT a quiver. Equipment quality: neat well-maintained brown leather and plain wooden equipment, reinforced edges, modest quality with no fancy metal. Preserve EXACT original person/face, headgear, body proportions, all clothing/armor/gloves or bare hands, sleeves, footwear, original camera back view, complete horizontal T-pose, empty hands, full-body framing, grey studio background, original realistic rendering and lighting. Do not redesign any body clothes armor. No weapons held or standing beside him, no other accessories, no text, no collage. Entire head, hands and feet remain visible. Image 2 is ONLY the SAME tier/character accessory front reference. Match EXACT accessory shape, material, size, attachment and anatomical side from Image 2, now seen from back viewpoint. DO NOT change Image 1 into a front view. Show accessory clearly from behind.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/tianchao/veteran/back.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/tianchao/repeating-crossbowman/veteran/front.png"
+      ],
+      "generated_source": "/Users/tankaixi/.codex/generated_images/01a12635-26a5-7af3-bb58-cd249ba31308/exec-93e85e75-2ac9-4cf7-a4aa-3343a3cb1fc5.png",
+      "source": "2026-10-10-infantry-kits/tianchao/repeating-crossbowman/veteran/back.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "53ac076ea8c6964ab7b1e6d2c643efcc120f32e56307486fc71ed03259e6b5c1",
+      "visual_review": "accepted: single full-body empty-handed T-pose with closed wood/leather belt ammunition box, no weapon; source clothing/armor/gloves and camera retained. Concept-level fitting/edge details vary slightly across views; not a CAD-exact turnaround."
+    },
+    {
+      "unit_kind": "repeating-crossbowman",
+      "rank": "elite",
+      "view": "front",
+      "prompt": "Use case: precise-object-edit. Asset type: ONE independent Tripo FRONT-view empty-handed T-pose concept. Image 1 is EDIT TARGET. Change ONLY by adding a clearly visible CLOSED rectangular wood-and-brown-leather repeating-crossbow ammunition BOX attached on the RIGHT rear waist/hip, hanging from belt loops; simple flat wooden lid, leather reinforcing strips and small fastening tab; NO visible arrows sticking out; NOT a quiver. Equipment quality: high-quality polished leather / warm wood finish as appropriate, compact but clearly recognizable and modestly fuller capacity, restrained fittings, not oversized. Preserve EXACT original person/face, headgear, body proportions, all clothing/armor/gloves or bare hands, sleeves, footwear, original camera front view, complete horizontal T-pose, empty hands, full-body framing, grey studio background, original realistic rendering and lighting. Do not redesign any body clothes armor. No weapons held or standing beside him, no other accessories, no text, no collage. Entire head, hands and feet remain visible.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/tianchao/elite/front.png"
+      ],
+      "generated_source": "/Users/tankaixi/.codex/generated_images/01a12635-26a5-7af3-bb58-cd249ba31308/exec-0b8ba897-4806-4f4e-9c98-d9d5964ee9ac.png",
+      "source": "2026-10-10-infantry-kits/tianchao/repeating-crossbowman/elite/front.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "00d9c293e08d2eec4e6de0c80dd09c93b92a13bbcae3ea9931662518c1f90863",
+      "visual_review": "accepted: single full-body empty-handed T-pose with closed wood/leather belt ammunition box, no weapon; source clothing/armor/gloves and camera retained. Concept-level fitting/edge details vary slightly across views; not a CAD-exact turnaround."
+    },
+    {
+      "unit_kind": "repeating-crossbowman",
+      "rank": "elite",
+      "view": "side",
+      "prompt": "Use case: precise-object-edit. Asset type: ONE independent Tripo SIDE-view empty-handed T-pose concept. Image 1 is EDIT TARGET. Change ONLY by adding a clearly visible CLOSED rectangular wood-and-brown-leather repeating-crossbow ammunition BOX attached on the RIGHT rear waist/hip, hanging from belt loops; simple flat wooden lid, leather reinforcing strips and small fastening tab; NO visible arrows sticking out; NOT a quiver. Equipment quality: high-quality polished leather / warm wood finish as appropriate, compact but clearly recognizable and modestly fuller capacity, restrained fittings, not oversized. Preserve EXACT original person/face, headgear, body proportions, all clothing/armor/gloves or bare hands, sleeves, footwear, original camera side view, complete horizontal T-pose, empty hands, full-body framing, grey studio background, original realistic rendering and lighting. Do not redesign any body clothes armor. No weapons held or standing beside him, no other accessories, no text, no collage. Entire head, hands and feet remain visible. Image 2 is ONLY the SAME tier/character accessory front reference. Match EXACT accessory shape, material, size, attachment and anatomical side from Image 2, now seen from side viewpoint. DO NOT change Image 1 into a front view. Show attached accessory clearly projecting behind body, not hidden or missing.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/tianchao/elite/side.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/tianchao/repeating-crossbowman/elite/front.png"
+      ],
+      "generated_source": "/Users/tankaixi/.codex/generated_images/01a12635-26a5-7af3-bb58-cd249ba31308/exec-40acf5a7-4284-441b-9503-8eb19494517f.png",
+      "source": "2026-10-10-infantry-kits/tianchao/repeating-crossbowman/elite/side.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "8132a7130a8a3ebe6d09d83ea9fb4ff76077825abb405fc067c8377ae3222feb",
+      "visual_review": "accepted: single full-body empty-handed T-pose with closed wood/leather belt ammunition box, no weapon; source clothing/armor/gloves and camera retained. Concept-level fitting/edge details vary slightly across views; not a CAD-exact turnaround."
+    },
+    {
+      "unit_kind": "repeating-crossbowman",
+      "rank": "elite",
+      "view": "back",
+      "prompt": "Use case: precise-object-edit. Asset type: ONE independent Tripo BACK-view empty-handed T-pose concept. Image 1 is EDIT TARGET. Change ONLY by adding a clearly visible CLOSED rectangular wood-and-brown-leather repeating-crossbow ammunition BOX attached on the RIGHT rear waist/hip, hanging from belt loops; simple flat wooden lid, leather reinforcing strips and small fastening tab; NO visible arrows sticking out; NOT a quiver. Equipment quality: high-quality polished leather / warm wood finish as appropriate, compact but clearly recognizable and modestly fuller capacity, restrained fittings, not oversized. Preserve EXACT original person/face, headgear, body proportions, all clothing/armor/gloves or bare hands, sleeves, footwear, original camera back view, complete horizontal T-pose, empty hands, full-body framing, grey studio background, original realistic rendering and lighting. Do not redesign any body clothes armor. No weapons held or standing beside him, no other accessories, no text, no collage. Entire head, hands and feet remain visible. Image 2 is ONLY the SAME tier/character accessory front reference. Match EXACT accessory shape, material, size, attachment and anatomical side from Image 2, now seen from back viewpoint. DO NOT change Image 1 into a front view. Show accessory clearly from behind.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/tianchao/elite/back.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/tianchao/repeating-crossbowman/elite/front.png"
+      ],
+      "generated_source": "/Users/tankaixi/.codex/generated_images/01a12635-26a5-7af3-bb58-cd249ba31308/exec-d9be55d9-04a6-4c58-99af-589d85d3ca00.png",
+      "source": "2026-10-10-infantry-kits/tianchao/repeating-crossbowman/elite/back.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "8878bae4f4df9efc9569e9c00942279ecfb5bb7fae38687faeaf7d76392ac39d",
+      "visual_review": "accepted: single full-body empty-handed T-pose with closed wood/leather belt ammunition box, no weapon; source clothing/armor/gloves and camera retained. Concept-level fitting/edge details vary slightly across views; not a CAD-exact turnaround."
+    }
+  ]
+}

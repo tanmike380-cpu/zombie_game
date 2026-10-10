@@ -1,0 +1,567 @@
+{
+  "tool": "builtin image_gen",
+  "records": [
+    {
+      "slug": "archer",
+      "rank": "militia",
+      "view": "front",
+      "prompt": "Use case: precise-object-edit. Image 1 is the edit target. Produce ONE independent front-view full-body character image for Tripo, never a sheet. Preserve this exact Byzantine militia man's face, beard, body proportions, patched brown-purple quilted long-sleeved clothing, cap, bare hands, shoes, perfectly horizontal empty-handed T-pose, camera, neutral gray studio background and rendering. Change only this: equip him as an archer with one simple worn brown leather back quiver fixed diagonally on his back behind his right shoulder, angled so a small cluster of arrow feather ends is clearly visible over that shoulder and the quiver bottom is visible beside his right hip. One narrow plain leather carrying strap across chest. Practical and understated, no additional armor or bags. Do not hold a bow, do not put a loose arrow in a hand, do not add weapons beside him. Hands stay empty, unchanged. Quiver must not overlap or bind his horizontal arms. No text or labels.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/byzantine/militia/front.png"
+      ],
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a12635-f3fd-7f71-9092-f6ca1e47d0b3/exec-131ec350-fa2a-4541-afe6-0e5a88e2cb72.png",
+      "final": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/byzantine/archer/militia/front.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "2893e5e27c57c780cbdb08e0ce9b2ddab0238c34ffe88cbaa44efcf7230ee1f4"
+    },
+    {
+      "slug": "archer",
+      "rank": "militia",
+      "view": "side",
+      "prompt": "Use case: precise-object-edit. Image 1 is the exact SIDE VIEW edit target. Image 2 is ONLY a quiver placement/material reference for the same character, NOT camera/pose target. Output one full-body strict right-facing SIDE VIEW, as Image 1. Preserve exact face, beard, cap, patched brown-purple cloth, bare hands, body proportions, horizontal empty-handed T-pose, gray studio and framing of Image 1. Add only the same worn plain leather diagonally mounted BACK QUIVER and narrow chest strap seen in Image 2: feather ends above right shoulder, leather container down the back ending at opposite waist/hip. Quiver clearly visible behind torso in profile, not on the front or attached to arms. Hands empty. No bow, no held arrow, no weapons beside character, no labels. Match material and size from Image 2.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/byzantine/militia/side.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/byzantine/archer/militia/front.png"
+      ],
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a12635-f3fd-7f71-9092-f6ca1e47d0b3/exec-e223e732-f26e-44e8-851f-158041771d5a.png",
+      "final": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/byzantine/archer/militia/side.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "63ab29390f6808dff214b694de50ea077919b26eec4b2241a1b5793fc28c5ef4"
+    },
+    {
+      "slug": "archer",
+      "rank": "militia",
+      "view": "back",
+      "prompt": "Use case: precise-object-edit. Image 1 is the strict BACK VIEW edit target. Image 2 is front-view quiver reference, Image 3 side reference. Output ONE full-body BACK VIEW as Image 1, no sheet. Preserve exact horizontal empty-handed T-pose, body, cap, patched quilted brown-purple clothing, bare hands, gray background, camera and proportions. Add ONLY the same worn brown leather back quiver, diagonal across back with feather tips over character's RIGHT shoulder and bottom ending at LEFT waist, with matching plain narrow leather strap. Now rear viewer sees the full container crossing the back, matching other views. No clothing redesign, no armor, no held bow/arrow, no loose weapons, no text. Hands empty. Quiver remains behind body and below/clear of arms.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/byzantine/militia/back.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/byzantine/archer/militia/front.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/byzantine/archer/militia/side.png"
+      ],
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a12635-f3fd-7f71-9092-f6ca1e47d0b3/exec-6e6e5ed0-02a4-46b4-b435-cd04501ff84b.png",
+      "final": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/byzantine/archer/militia/back.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "c71712b8e5434e8173bbf9c73496317477a5f97f5df141503f032af3e3579ca2"
+    },
+    {
+      "slug": "archer",
+      "rank": "veteran",
+      "view": "front",
+      "prompt": "Use case: precise-object-edit. Image 1 edit target: one Byzantine veteran FRONT VIEW. Preserve exact face, body, traditional iron helmet, purple long sleeve outfit, PURE LEATHER brown armor (do not add mail or metal plates), leather gloves, boots, empty horizontal T-pose, studio lighting, gray background. Add ONLY one well-maintained plain brown leather back quiver diagonally fixed behind RIGHT shoulder down to LEFT waist, few arrow feather tips above shoulder, visible lower quiver beside opposite hip. Narrow brown leather chest strap. Practical veteran-quality leather with plain reinforcement, not ornate elite gear. Hands empty. No held bow, loose arrow, other weapons/bags, labels, new armor. One full-body front view, no contact sheet.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/byzantine/veteran/front.png"
+      ],
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a12635-f3fd-7f71-9092-f6ca1e47d0b3/exec-7ba14996-3c2d-4fcb-84d0-1d4dc1c1ec33.png",
+      "final": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/byzantine/archer/veteran/front.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "7626338ec6b34250096184bb163e37c274b198cacc5f420b3ca2a529128ba6cc"
+    },
+    {
+      "slug": "archer",
+      "rank": "veteran",
+      "view": "side",
+      "prompt": "Use case: precise-object-edit. Image 1 is exact right-facing SIDE VIEW edit target; Image 2 is ONLY accessory reference. Preserve all Image 1 character, iron helmet, purple long sleeve, PURE LEATHER brown veteran armor, leather gloves, proportions, empty-handed horizontal T-pose, side camera and gray studio. Add ONLY Image 2 matching diagonal brown leather BACK QUIVER, arrow feather ends over character's right shoulder, bottom at opposite left waist. Make quiver silhouette clearly visible behind torso in profile. Same narrow chest strap, plain reinforced leather. No camera rotation, no held bow or arrow, no new armor/bags, no labels. One independent full-body side view.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/byzantine/veteran/side.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/byzantine/archer/veteran/front.png"
+      ],
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a12635-f3fd-7f71-9092-f6ca1e47d0b3/exec-262e2a10-82fe-4c2b-9ae6-b9dd22fe5e97.png",
+      "final": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/byzantine/archer/veteran/side.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "a78a24c13062f04586649e7d08a6a49c49337b9ac52fd1f7830927ebf5a88335"
+    },
+    {
+      "slug": "archer",
+      "rank": "veteran",
+      "view": "back",
+      "prompt": "Precise accessory repair. Image 1 is this BACK VIEW edit target. Fix ONLY quiver: there must be ONE continuous long brown leather cylindrical quiver across his back, feathered arrows at right shoulder, uninterrupted leather tube diagonally down to left lower hip. Remove separate extra case on left hip and join that lower end naturally into the same ONE quiver tube. One quiver only, one mouth, one closed bottom. Keep T-pose, rear view, helmet, purple clothing, pure leather armor, gloves, whole character and studio exactly unchanged. No other edits.",
+      "inputs": [
+        "/Users/tankaixi/.codex/generated_images/01a12635-f3fd-7f71-9092-f6ca1e47d0b3/exec-02253fc2-5004-4816-82f5-3e359d577475.png"
+      ],
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a12635-f3fd-7f71-9092-f6ca1e47d0b3/exec-e249fa31-3b17-45c6-8d3b-411b06813603.png",
+      "final": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/byzantine/archer/veteran/back.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "6ce43e4e80b56d9fc76f9c0592c4b14642a0b0bd2b7d6edab9139e073d7d4dc4",
+      "previous": {
+        "slug": "archer",
+        "rank": "veteran",
+        "view": "back",
+        "prompt": "Use case: precise-object-edit. Image 1 exact BACK VIEW edit target. Image 2 front and Image 3 side accessory references. Output ONE independent full-body back view. Preserve every existing body/clothing/helmet/pure-leather armor/leather-glove detail, gray studio, framing, perfect empty-handed T-pose of Image 1. Add only same brown reinforced leather diagonal BACK QUIVER from references: feathered arrow ends at character RIGHT shoulder (right side to rear viewer), cylindrical leather case crosses back toward LEFT lower waist, same plain narrow carrying strap. Do not redesign armor or silhouette of clothing. No held arrow, bow, weapon beside character, labels. Hands empty horizontal.",
+        "inputs": [
+          "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/byzantine/veteran/back.png",
+          "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/byzantine/archer/veteran/front.png",
+          "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/byzantine/archer/veteran/side.png"
+        ],
+        "generated_path": "/Users/tankaixi/.codex/generated_images/01a12635-f3fd-7f71-9092-f6ca1e47d0b3/exec-02253fc2-5004-4816-82f5-3e359d577475.png",
+        "width": 1254,
+        "height": 1254,
+        "sha256": "e7af46d7f6c4b28ab28a420190e29b6fc92c017e653b37a2fae98c284a5e4388"
+      },
+      "repair": true
+    },
+    {
+      "slug": "archer",
+      "rank": "elite",
+      "view": "front",
+      "prompt": "Use case: precise-object-edit. Image 1 edit target Byzantine ELITE FRONT VIEW. Preserve exact face, proportions, traditional cheekguard iron helmet, purple gold-trimmed long sleeve uniform, metal lamellar armor, chainmail gloves, boots, empty-handed horizontal T-pose, gray studio and framing. Add ONLY one high-quality brown leather diagonal BACK QUIVER, arrow feather ends above RIGHT shoulder, long tube down to LEFT waist/hip, thin bronze rim bands and modest purple binding, narrow brown leather chest strap. Elite has larger capacity but do NOT draw 50 separate arrows: a readable small cluster is enough. No extra armor or bags, no bow/arrow held, no weapons beside, no text. One independent full-body FRONT VIEW.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/byzantine/elite/front.png"
+      ],
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a12635-f3fd-7f71-9092-f6ca1e47d0b3/exec-3af9f7bf-5211-4c94-88d7-523e50b2f418.png",
+      "final": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/byzantine/archer/elite/front.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "769f8a786ad16bb70eede32bdd03910f9a0ff669d8bd5fb5b7c97c89fc08b548"
+    },
+    {
+      "slug": "archer",
+      "rank": "elite",
+      "view": "side",
+      "prompt": "Precise-object-edit. Image 1 is exact right-facing SIDE VIEW target, Image 2 only accessory reference. Preserve Image 1 elite Byzantine face, helmet, purple-gold long sleeve, lamellar armor and chainmail gloves, full-body proportions, horizontal empty-handed T-pose, camera and gray studio. Add ONLY the single larger diagonal brown leather BACK QUIVER from Image 2, bronze rim bands and modest purple binding, arrow feather ends over right shoulder, bottom left waist. Clear visible quiver silhouette behind torso in side view, same narrow chest strap. No bow or arrow held, no other bags, no armor edits, no text. ONE independent SIDE VIEW, not sheet.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/byzantine/elite/side.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/byzantine/archer/elite/front.png"
+      ],
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a12635-f3fd-7f71-9092-f6ca1e47d0b3/exec-01daf081-3870-47cc-9355-23c998d7c475.png",
+      "final": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/byzantine/archer/elite/side.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "1551b3846d1a365bb620e9148c526510ea35cdc79311e85d130a2f60098d5c4d"
+    },
+    {
+      "slug": "archer",
+      "rank": "elite",
+      "view": "back",
+      "prompt": "Precise-object-edit. Image 1 BACK VIEW edit target; Image 2 front + Image 3 side ONLY references for the quiver. Preserve exact Byzantine elite rear helmet, chainmail neck and gloves, purple-gold uniform, metal armor, empty horizontal T-pose, body, gray studio and framing. Add ONLY ONE continuous diagonal long brown leather BACK QUIVER: arrow feather ends at RIGHT shoulder, bronze/purple rim accents, uninterrupted tube to LEFT hip, matching plain narrow strap. One container, one open mouth, one closed bottom; no separate extra hip case. No camera change, no added armor/bags, no held weapons/arrow or text. Independent one-person full-body BACK image.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/byzantine/elite/back.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/byzantine/archer/elite/front.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/byzantine/archer/elite/side.png"
+      ],
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a12635-f3fd-7f71-9092-f6ca1e47d0b3/exec-1ba16540-d62a-46b6-981e-b6cd24f29636.png",
+      "final": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/byzantine/archer/elite/back.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "484b006f2312fbbfae478403a3dc1ac95c962713d3451300b4a46149a26a378c"
+    },
+    {
+      "slug": "crossbowman",
+      "rank": "militia",
+      "view": "front",
+      "prompt": "Precise-object-edit. Image 1 exact FRONT VIEW target. Keep exact Byzantine militia man face, body proportions, cap, patched brown-purple quilted long-sleeved clothing, bare hands, boots, horizontal empty-handed T-pose, studio gray background, camera and framing. Add ONLY one simple worn brown leather SHORT CROSSBOW-BOLT CASE attached tightly to character LEFT rear-side hip on narrow waist belt. Case is short and rectangular, 25cm tall, small cluster of short wooden bolt shafts with small feathers just above its opening, clearly shorter than archer quiver. Carry case hangs close to hip and does not cross joints. No long back quiver, no new armor/bags, no held crossbow or loose arrow, no weapons next to him, no text. ONE full-body front-view image, no sheet.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/byzantine/militia/front.png"
+      ],
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a12635-f3fd-7f71-9092-f6ca1e47d0b3/exec-0cadcd2a-8b85-4df6-aeab-2a6c0afd4c52.png",
+      "final": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/byzantine/crossbowman/militia/front.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "3a274c2779e7b73e612ba85908f605702c5b2654dccad6b15e8c2d50b14dbcf3"
+    },
+    {
+      "slug": "crossbowman",
+      "rank": "militia",
+      "view": "side",
+      "prompt": "Precise-object-edit. Image 1 exact right-facing SIDE target. Image 2 accessory reference only. Preserve Image 1 man face, cap, brown-purple patched cloth, bare hands, empty T-pose, body proportion, gray studio and side camera. Add ONLY same worn brown short rectangular crossbow bolt case, narrow waist belt, at LEFT rear-side hip. This side image shows character's left side, so clearly show the same small 25cm case at waist, a few short bolt feather ends above mouth. Case hangs close behind hip, not front chest or back shoulder. No long quiver, no other gear, no held crossbow/arrow, no text. One full-body side view, no sheet.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/byzantine/militia/side.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/byzantine/crossbowman/militia/front.png"
+      ],
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a12635-f3fd-7f71-9092-f6ca1e47d0b3/exec-6bcc2611-6e08-4b26-9050-faef2eff510e.png",
+      "final": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/byzantine/crossbowman/militia/side.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "e69bcdc8859de9a1e1006ea4597be476a49785d6eca8d28ab56a16da1b98473a"
+    },
+    {
+      "slug": "crossbowman",
+      "rank": "militia",
+      "view": "back",
+      "prompt": "Precise-object-edit. Image 1 BACK target, Images 2/3 front/side accessory references only. Keep exact back view body, brown-purple patched clothing and cap, bare hands, empty horizontal T-pose, gray studio and proportions. Add only same small worn brown leather SHORT BOLT CASE at LEFT rear-side hip, narrow waist belt, few short bolt feather ends above mouth. Rear viewer sees it on LEFT side of image. Case 25cm tall, not long archer quiver. No chest/back backpack or new armor, no held arrow/weapons, no text. One independent full-body back view.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/byzantine/militia/back.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/byzantine/crossbowman/militia/front.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/byzantine/crossbowman/militia/side.png"
+      ],
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a12635-f3fd-7f71-9092-f6ca1e47d0b3/exec-afa087c5-5e37-454b-be3b-5514306e4343.png",
+      "final": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/byzantine/crossbowman/militia/back.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "113bd2792fd1c1fa996fb88468e4227921c8d47c16ffb36c76e7028d8b09a3fa"
+    },
+    {
+      "slug": "crossbowman",
+      "rank": "veteran",
+      "view": "front",
+      "prompt": "Precise-object-edit. Image 1 FRONT target Byzantine veteran. Keep exact face/iron helmet/pure leather armor/purple long sleeve/leather gloves/boots/body proportions/empty horizontal T-pose/gray studio. Add ONLY one well-maintained brown leather SHORT CROSSBOW-BOLT CASE on LEFT rear-side hip, 25cm tall rectangular leather container, small cluster of short bolts feather ends above mouth, two narrow plain reinforcing straps, fixed to existing waist belt. Slightly better craftsmanship than militia, no fancy additions. No long back quiver, no armor redesign, no held crossbow/arrow, no other gear or text. One independent full-body front view.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/byzantine/veteran/front.png"
+      ],
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a12635-f3fd-7f71-9092-f6ca1e47d0b3/exec-79eb6e81-c12b-4e69-aba7-21e3ad36dc79.png",
+      "final": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/byzantine/crossbowman/veteran/front.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "360cc4fea71e2b5463cb8e0e67b56cf66cac0c3edc7202493e4699e1ee0fd40a"
+    },
+    {
+      "slug": "crossbowman",
+      "rank": "veteran",
+      "view": "side",
+      "prompt": "Precise-object-edit. Image 1 exact SIDE VIEW target, Image 2 only bolt-case reference. Preserve exact right-facing side camera, face/iron helmet/purple long sleeves/pure leather armor/leather gloves/boots/body/empty horizontal T-pose/gray studio. Add ONLY Image 2 short brown leather rectangular BOLT CASE at LEFT rear-side hip, 25cm tall, two plain reinforcing straps, few short bolt feathers at opening. Clearly visible behind hip in this character-left-side profile. Same waist belt mounting, no shoulder quiver, no extra armor or bag, no held weapon/arrow, no text. One independent full-body side image.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/byzantine/veteran/side.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/byzantine/crossbowman/veteran/front.png"
+      ],
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a12635-f3fd-7f71-9092-f6ca1e47d0b3/exec-e35acde5-73ec-437b-8137-8e3568d65251.png",
+      "final": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/byzantine/crossbowman/veteran/side.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "45ed7ad0e54c2efa1ab11d2e03b2a359b8897dc803bdce36dfc7ba0e6ea6d267"
+    },
+    {
+      "slug": "crossbowman",
+      "rank": "veteran",
+      "view": "back",
+      "prompt": "Precise-object-edit. Image 1 BACK VIEW target. Images 2/3 front/side accessory references. Preserve exact body, empty horizontal T-pose, iron helmet, purple long sleeve uniform, pure leather armor/gloves, gray studio and framing. Add ONLY same brown leather short bolt case at LEFT rear-side hip (left side to rear viewer), 25cm tall, two plain reinforcing straps, small short bolt feather ends. No long quiver, no armor redesign, no extra bag, no held weapon/arrow or text. One independent full-body rear view.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/byzantine/veteran/back.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/byzantine/crossbowman/veteran/front.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/byzantine/crossbowman/veteran/side.png"
+      ],
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a12635-f3fd-7f71-9092-f6ca1e47d0b3/exec-301dc9ac-0797-4588-a353-c6795d68e790.png",
+      "final": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/byzantine/crossbowman/veteran/back.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "6b8291119fab7f57990f210e672a58c40db5590894099d490ed4f9a6d7103fe1"
+    },
+    {
+      "slug": "crossbowman",
+      "rank": "elite",
+      "view": "front",
+      "prompt": "Precise-object-edit. Image 1 FRONT VIEW target. Keep exact Byzantine elite face, iron helmet, purple-gold long-sleeved uniform, metal lamellar armor, chainmail gloves, boots, proportions, empty-handed horizontal T-pose, studio gray and camera. Add ONLY one high-quality dark brown leather short rectangular BOLT CASE on LEFT rear-side hip, slightly broader 30cm tall, small short bolt feather ends above opening, two modest bronze reinforcing bands and purple edge binding, fixed tightly to current waist belt. Recognizable short crossbow ammo, not archer back quiver. No body armor edits or other bags, no weapon/arrow held, no text. One full-body front view.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/byzantine/elite/front.png"
+      ],
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a12635-f3fd-7f71-9092-f6ca1e47d0b3/exec-2496de50-f792-4965-8434-4184a8e58877.png",
+      "final": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/byzantine/crossbowman/elite/front.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "fce2736ac0c801c3c45ad8877beccf24fc01e07fa2e9d321d3e7867f286e331f"
+    },
+    {
+      "slug": "crossbowman",
+      "rank": "elite",
+      "view": "side",
+      "prompt": "Precise-object-edit. Image 1 is exact SIDE VIEW target; Image 2 is FRONT accessory reference only. Preserve body/proportions, exact camera, empty horizontal T-pose, helmet, purple-gold long sleeve uniform, metal lamellar armor, chainmail gloves, gray studio. Add ONLY same slightly broader 30cm brown leather short rectangular BOLT CASE attached to LEFT rear-side hip, modest bronze reinforcing bands and purple edge binding, small cluster of short bolt feather ends. Show case clearly at hip, consistent with front; in back view it is on left image side. No long quiver, no new armor/bags, no held weapon/arrow, no text. ONE independent side full-body view, never a sheet.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/byzantine/elite/side.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/byzantine/crossbowman/elite/front.png"
+      ],
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a12635-f3fd-7f71-9092-f6ca1e47d0b3/exec-8cf51b0b-459a-4e40-8d10-dc232d9b484d.png",
+      "final": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/byzantine/crossbowman/elite/side.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "cef12958ea6470db3ba5d31e65d38fd1be0257382effac99cfdeee8ce6cbab89"
+    },
+    {
+      "slug": "crossbowman",
+      "rank": "elite",
+      "view": "back",
+      "prompt": "Precise-object-edit. Image 1 is exact BACK VIEW target; Image 2 is FRONT accessory reference only. Preserve body/proportions, exact camera, empty horizontal T-pose, helmet, purple-gold long sleeve uniform, metal lamellar armor, chainmail gloves, gray studio. Add ONLY same slightly broader 30cm brown leather short rectangular BOLT CASE attached to LEFT rear-side hip, modest bronze reinforcing bands and purple edge binding, small cluster of short bolt feather ends. Show case clearly at hip, consistent with front; in back view it is on left image side. No long quiver, no new armor/bags, no held weapon/arrow, no text. ONE independent back full-body view, never a sheet.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/byzantine/elite/back.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/byzantine/crossbowman/elite/front.png"
+      ],
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a12635-f3fd-7f71-9092-f6ca1e47d0b3/exec-e1670758-9920-443b-b167-35b980a28cdb.png",
+      "final": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/byzantine/crossbowman/elite/back.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "8f56eb8409e6891e1c2b746c3d8a1250800b7daaa3cd639b7c1ae47370af5576"
+    },
+    {
+      "slug": "javelin-legionary",
+      "rank": "militia",
+      "view": "front",
+      "prompt": "Precise-object-edit. Image 1 exact Byzantine militia FRONT VIEW target. Preserve this exact man, face, body, all accepted clothing and armor, helmet/cap, gloves/bare hands, colors, boots, horizontal empty-handed T-pose, gray studio, framing. Add ONLY a compact BACK JAVELIN CARRYING HARNESS holding THREE slender wooden spare throwing javelins upright diagonally behind RIGHT shoulder, shafts down toward LEFT waist. Small iron spearhead tips, NO arrow feathers. Spears are practical 1.2m long and stored tight to torso, well clear of arms, not oversized lances. Harness simple worn leather loops and cloth tie. Plain narrow carrying strap across chest. No held javelin, shield, sword, bow, no other bags, no armor redesign, no text. One independent full-body FRONT view, no sheet.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/byzantine/militia/front.png"
+      ],
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a12635-f3fd-7f71-9092-f6ca1e47d0b3/exec-c30f2a95-2c8b-4508-bd3b-e83ff15e2719.png",
+      "final": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/byzantine/javelin-legionary/militia/front.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "ea7b049c5acf69a0d748b4c5646066e284d1ee589f87f205402a025529a42dc3"
+    },
+    {
+      "slug": "javelin-legionary",
+      "rank": "veteran",
+      "view": "front",
+      "prompt": "Precise-object-edit. Image 1 exact Byzantine veteran FRONT VIEW target. Preserve this exact man, face, body, all accepted clothing and armor, helmet/cap, gloves/bare hands, colors, boots, horizontal empty-handed T-pose, gray studio, framing. Add ONLY a compact BACK JAVELIN CARRYING HARNESS holding THREE slender wooden spare throwing javelins upright diagonally behind RIGHT shoulder, shafts down toward LEFT waist. Small iron spearhead tips, NO arrow feathers. Spears are practical 1.2m long and stored tight to torso, well clear of arms, not oversized lances. Harness neat brown leather retaining bands and simple carrying strap. Plain narrow carrying strap across chest. No held javelin, shield, sword, bow, no other bags, no armor redesign, no text. One independent full-body FRONT view, no sheet.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/byzantine/veteran/front.png"
+      ],
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a12635-f3fd-7f71-9092-f6ca1e47d0b3/exec-2d0c65ca-0fb9-43aa-80f8-9898aa914001.png",
+      "final": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/byzantine/javelin-legionary/veteran/front.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "a933ced190d227c61116a26e86d44dbe738aafe093ad8d0e0abd4bf8d9a08518"
+    },
+    {
+      "slug": "javelin-legionary",
+      "rank": "elite",
+      "view": "front",
+      "prompt": "Precise-object-edit. Image 1 exact Byzantine elite FRONT VIEW target. Preserve this exact man, face, body, all accepted clothing and armor, helmet/cap, gloves/bare hands, colors, boots, horizontal empty-handed T-pose, gray studio, framing. Add ONLY a compact BACK JAVELIN CARRYING HARNESS holding THREE slender wooden spare throwing javelins upright diagonally behind RIGHT shoulder, shafts down toward LEFT waist. Small iron spearhead tips, NO arrow feathers. Spears are practical 1.2m long and stored tight to torso, well clear of arms, not oversized lances. Harness fine brown leather retaining bands with modest bronze fittings and small purple binding. Plain narrow carrying strap across chest. No held javelin, shield, sword, bow, no other bags, no armor redesign, no text. One independent full-body FRONT view, no sheet.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/byzantine/elite/front.png"
+      ],
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a12635-f3fd-7f71-9092-f6ca1e47d0b3/exec-2b3896af-6d8a-4f74-92cc-2614f2b08aac.png",
+      "final": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/byzantine/javelin-legionary/elite/front.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "906302f8d72ec0a1e714aeb26e32f3fa0a3c9943d76b49e2409cfa47920dde2c"
+    },
+    {
+      "slug": "javelin-legionary",
+      "rank": "militia",
+      "view": "side",
+      "prompt": "Precise-object-edit. Image 1 exact SIDE VIEW target; Image 2 only FRONT accessory reference. Preserve exact camera, Byzantine militia body/proportions, cap, brown-purple patched clothing, bare hands, empty horizontal T-pose and gray studio. Add ONLY same THREE slender spare throwing javelins stored diagonally across BACK, iron tips above RIGHT shoulder, wooden shafts down toward LEFT lower waist, simple worn leather retaining loops and small purple cloth tie, narrow leather chest strap. These are spare ammo, no held weapon. Show whole bundle behind torso clear of arm joints, in rear view from right shoulder to left hip. Spearheads NOT arrow feathers, no shields or other bags, no new armor, no labels. ONE independent full-body side image.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/byzantine/militia/side.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/byzantine/javelin-legionary/militia/front.png"
+      ],
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a12635-f3fd-7f71-9092-f6ca1e47d0b3/exec-d1926f4d-c71d-40cf-af12-819564006aa9.png",
+      "final": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/byzantine/javelin-legionary/militia/side.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "a8500797016114331e2ac9692525e5fc25d1ab7fb86663ade771b37dcd9d50da"
+    },
+    {
+      "slug": "javelin-legionary",
+      "rank": "veteran",
+      "view": "side",
+      "prompt": "Precise-object-edit. Image 1 exact SIDE target; Image 2 only FRONT accessory reference. Preserve entire Image 1 man/body, purple cloth, traditional helmet, pure leather armor/gloves, empty horizontal T-pose, camera and gray studio. Add ONLY THREE long slender CONTINUOUS wooden throwing javelins stored diagonally across BACK, iron spear tips above RIGHT shoulder, uninterrupted visible wooden shafts all the way down back to LEFT hip. Neat brown leather retaining bands around all three shafts at two small contact points, plain chest strap. In BACK view all three shafts MUST be completely visible as continuous wood, not broken into top and bottom pieces, no long strap covering the bundle middle. Clear of arms. NO arrow feathers, held weapons, shield, extra bags, armor redesign or text. One full-body side view.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/byzantine/veteran/side.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/byzantine/javelin-legionary/veteran/front.png"
+      ],
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a12635-f3fd-7f71-9092-f6ca1e47d0b3/exec-9f3ef66f-eb82-4429-ad8f-d614271219da.png",
+      "final": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/byzantine/javelin-legionary/veteran/side.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "bd3b3327ee0d081de950a1f4338e006971d4bae8c4e4825fb45418b34a272d19"
+    },
+    {
+      "slug": "javelin-legionary",
+      "rank": "veteran",
+      "view": "back",
+      "prompt": "Precise-object-edit. Image 1 exact BACK target; Image 2 only FRONT accessory reference. Preserve entire Image 1 man/body, purple cloth, traditional helmet, pure leather armor/gloves, empty horizontal T-pose, camera and gray studio. Add ONLY THREE long slender CONTINUOUS wooden throwing javelins stored diagonally across BACK, iron spear tips above RIGHT shoulder, uninterrupted visible wooden shafts all the way down back to LEFT hip. Neat brown leather retaining bands around all three shafts at two small contact points, plain chest strap. In BACK view all three shafts MUST be completely visible as continuous wood, not broken into top and bottom pieces, no long strap covering the bundle middle. Clear of arms. NO arrow feathers, held weapons, shield, extra bags, armor redesign or text. One full-body back view.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/byzantine/veteran/back.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/byzantine/javelin-legionary/veteran/front.png"
+      ],
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a12635-f3fd-7f71-9092-f6ca1e47d0b3/exec-e23c9173-4f69-4cdb-bf57-961545462a6a.png",
+      "final": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/byzantine/javelin-legionary/veteran/back.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "558431aaf95724e0687232b4497df3e5b92a0c50c78e6205329cff9cc6b314c9"
+    },
+    {
+      "slug": "javelin-legionary",
+      "rank": "elite",
+      "view": "side",
+      "prompt": "Precise-object-edit. Image 1 exact SIDE target; Image 2 only FRONT reference. Preserve whole Byzantine elite man/body, purple-gold cloth, traditional helmet, lamellar armor, chainmail gloves, empty horizontal T-pose, exact camera and gray studio. Add ONLY THREE slender CONTINUOUS wooden spare throwing javelins diagonal across BACK, iron spearheads above RIGHT shoulder, uninterrupted shafts to LEFT hip. Fine brown leather retaining bands at TWO SMALL points, modest bronze rivets and purple binding, narrow carrying strap. In BACK view all three wooden shafts are fully visible uninterrupted across back: no long strap hiding wood, no broken upper/lower segments. Clear of arm joints. NO arrow feathers, held weapon, shield, other bags, armor edits or text. One independent full-body side view.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/byzantine/elite/side.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/byzantine/javelin-legionary/elite/front.png"
+      ],
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a12635-f3fd-7f71-9092-f6ca1e47d0b3/exec-9939e48b-5423-442d-aec4-270cd167f70f.png",
+      "final": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/byzantine/javelin-legionary/elite/side.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "2ec2fbb914bfa20325e19aab69fa9cbb2f39e642d98ba53f2980c28f8ba80b61"
+    },
+    {
+      "slug": "javelin-legionary",
+      "rank": "elite",
+      "view": "back",
+      "prompt": "Precise-object-edit. Image 1 exact BACK target; Image 2 only FRONT reference. Preserve whole Byzantine elite man/body, purple-gold cloth, traditional helmet, lamellar armor, chainmail gloves, empty horizontal T-pose, exact camera and gray studio. Add ONLY THREE slender CONTINUOUS wooden spare throwing javelins diagonal across BACK, iron spearheads above RIGHT shoulder, uninterrupted shafts to LEFT hip. Fine brown leather retaining bands at TWO SMALL points, modest bronze rivets and purple binding, narrow carrying strap. In BACK view all three wooden shafts are fully visible uninterrupted across back: no long strap hiding wood, no broken upper/lower segments. Clear of arm joints. NO arrow feathers, held weapon, shield, other bags, armor edits or text. One independent full-body back view.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/byzantine/elite/back.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/byzantine/javelin-legionary/elite/front.png"
+      ],
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a12635-f3fd-7f71-9092-f6ca1e47d0b3/exec-afe44519-8b20-4444-af71-b9569d497192.png",
+      "final": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/byzantine/javelin-legionary/elite/back.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "35d1450d9171c2c2c97541164d9a8a5947508aeee51181c96781b6827721f0de"
+    },
+    {
+      "slug": "javelin-legionary",
+      "rank": "militia",
+      "view": "back",
+      "repair": true,
+      "prompt": "Precise accessory repair of this BACK VIEW. Fix ONLY the three spare wooden javelins on his BACK: the wood shafts MUST be continuous and completely visible from spearhead to bottom. Remove the long diagonal strap that currently hides middle portions of the shafts, replace with only TWO SMALL leather loop retaining bands, one near shoulder and one near hip. Connect all three uninterrupted wooden shafts down diagonally across back from RIGHT shoulder to LEFT hip. Preserve original iron heads, purple simple tie, clothing, cap, body, bare hands, horizontal T-pose and grey studio exactly. ONE rear-view person, no text or new gear.",
+      "inputs": [
+        "/Users/tankaixi/.codex/generated_images/01a12635-f3fd-7f71-9092-f6ca1e47d0b3/exec-621e03c5-8300-4590-841a-2444b786692e.png"
+      ],
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a12635-f3fd-7f71-9092-f6ca1e47d0b3/exec-4e7ce05c-d98a-4622-bbd3-cf205eb2ac2c.png",
+      "final": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/byzantine/javelin-legionary/militia/back.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "3c637e6fe37f3aec57fb2301dc697ecaad7081ba660e89cae0a07118ca9af9f6",
+      "previous": {
+        "slug": "javelin-legionary",
+        "rank": "militia",
+        "view": "back",
+        "prompt": "Precise-object-edit. Image 1 exact BACK VIEW target; Image 2 only FRONT accessory reference. Preserve exact camera, Byzantine militia body/proportions, cap, brown-purple patched clothing, bare hands, empty horizontal T-pose and gray studio. Add ONLY same THREE slender spare throwing javelins stored diagonally across BACK, iron tips above RIGHT shoulder, wooden shafts down toward LEFT lower waist, simple worn leather retaining loops and small purple cloth tie, narrow leather chest strap. These are spare ammo, no held weapon. Show whole bundle behind torso clear of arm joints, in rear view from right shoulder to left hip. Spearheads NOT arrow feathers, no shields or other bags, no new armor, no labels. ONE independent full-body back image.",
+        "inputs": [
+          "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/byzantine/militia/back.png",
+          "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/byzantine/javelin-legionary/militia/front.png"
+        ],
+        "generated_path": "/Users/tankaixi/.codex/generated_images/01a12635-f3fd-7f71-9092-f6ca1e47d0b3/exec-621e03c5-8300-4590-841a-2444b786692e.png",
+        "final": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/byzantine/javelin-legionary/militia/back.png",
+        "width": 1254,
+        "height": 1254,
+        "sha256": "d9990699a1fdcee55c98376d8c8ad7fdbaa31967a917543dace4125263c1159b"
+      }
+    },
+    {
+      "slug": "matchlock-infantry",
+      "rank": "militia",
+      "view": "front",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/byzantine/militia/front.png"
+      ],
+      "prompt": "Use case: precise-object-edit. Image 1 is the exact FRONT VIEW edit target of accepted Byzantine militia body. Output ONE independent full-body FRONT image. Keep exactly the existing person, face, anatomy, body proportions, outfit, helmet, gloves or bare hands, armor, boots, colors, gray studio background and framing unchanged. Arms fully horizontal empty-handed standard T-pose, no weapon. Change only this: add ONE small plain historical brown stitched LEATHER WATER FLASK/waterskin, with short belt loop and simple wooden stopper, hanging at character LEFT rear-side hip (viewer RIGHT side of waist), around forearm-length, flat oval traditional vessel not modern military bottle. It must sit at the side/back of belt, not on chest. Worn simple undecorated leather. No quiver, arrows, bullets, ammo pouches or backpack. Preserve every accepted clothing/armor detail. No held equipment, no loose weapon beside character, no labels, no other subjects.",
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a12635-f3fd-7f71-9092-f6ca1e47d0b3/exec-d0dd62d7-9ecf-4a11-953b-8be8e6bc8502.png",
+      "final": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/byzantine/matchlock-infantry/militia/front.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "ff902700520fc0015a0beadb5b116e40210043076e9a8c937e9eae3442b7d6f4"
+    },
+    {
+      "slug": "matchlock-infantry",
+      "rank": "veteran",
+      "view": "front",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/byzantine/veteran/front.png"
+      ],
+      "prompt": "Use case: precise-object-edit. Image 1 is the exact FRONT VIEW edit target of accepted Byzantine veteran body. Output ONE independent full-body FRONT image. Keep exactly the existing person, face, anatomy, body proportions, outfit, helmet, gloves or bare hands, armor, boots, colors, gray studio background and framing unchanged. Arms fully horizontal empty-handed standard T-pose, no weapon. Change only this: add ONE small plain historical brown stitched LEATHER WATER FLASK/waterskin, with short belt loop and simple wooden stopper, hanging at character LEFT rear-side hip (viewer RIGHT side of waist), around forearm-length, flat oval traditional vessel not modern military bottle. It must sit at the side/back of belt, not on chest. Neat restrained plain leather craftsmanship. No quiver, arrows, bullets, ammo pouches or backpack. Preserve every accepted clothing/armor detail. No held equipment, no loose weapon beside character, no labels, no other subjects.",
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a12635-f3fd-7f71-9092-f6ca1e47d0b3/exec-9629e64e-ce47-4bdc-a25c-9de4cd220b2f.png",
+      "final": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/byzantine/matchlock-infantry/veteran/front.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "03ba2f4effb018f2f755682ebf98536985e50a603de71edb33eea8b63c5a8462"
+    },
+    {
+      "slug": "matchlock-infantry",
+      "rank": "elite",
+      "view": "front",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/byzantine/elite/front.png"
+      ],
+      "prompt": "Use case: precise-object-edit. Image 1 is the exact FRONT VIEW edit target of accepted Byzantine elite body. Output ONE independent full-body FRONT image. Keep exactly the existing person, face, anatomy, body proportions, outfit, helmet, gloves or bare hands, armor, boots, colors, gray studio background and framing unchanged. Arms fully horizontal empty-handed standard T-pose, no weapon. Change only this: add ONE small plain historical brown stitched LEATHER WATER FLASK/waterskin, with short belt loop and simple wooden stopper, hanging at character LEFT rear-side hip (viewer RIGHT side of waist), around forearm-length, flat oval traditional vessel not modern military bottle. It must sit at the side/back of belt, not on chest. Fine brown leather with only modest small bronze clasp; do not add extra finery. No quiver, arrows, bullets, ammo pouches or backpack. Preserve every accepted clothing/armor detail. No held equipment, no loose weapon beside character, no labels, no other subjects.",
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a12635-f3fd-7f71-9092-f6ca1e47d0b3/exec-c967f331-af08-4b6f-a57a-72efa7a992bf.png",
+      "final": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/byzantine/matchlock-infantry/elite/front.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "a77e694ac1b5f40cd2a50e10b7dc64f58fe8b8e7438688984e9fde4d5e718856"
+    },
+    {
+      "slug": "matchlock-infantry",
+      "rank": "militia",
+      "view": "side",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/byzantine/militia/side.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/byzantine/matchlock-infantry/militia/front.png"
+      ],
+      "prompt": "Use case: precise-object-edit. Image 1 exact SIDE VIEW edit target. Image 2 front accessory reference of same rank. Output ONE independent full-body side view. Preserve exact body identity, accepted outfit, helmet, armor, hands/gloves, colors, proportions, pose and gray studio of Image 1. Add only SAME SINGLE brown historical flat oval stitched leather water flask and wooden stopper shown in Image 2, via short belt loop at character LEFT rear-side hip. Keep flask attached toward rear of character LEFT hip, not chest; match referenced shape size. No arrows/quiver/ammo/bow/gun/bag. Preserve EMPTY-HANDED horizontal T-pose and framing. No labels or additional people. Same water flask, no other changes.",
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a12635-f3fd-7f71-9092-f6ca1e47d0b3/exec-2d4fa327-d35b-4682-bc3c-0019e22ecf49.png",
+      "final": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/byzantine/matchlock-infantry/militia/side.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "1fc98295600ef53e6dfd56c88c5d6b854ca7dbb5de3ad73e225fd982556d7388"
+    },
+    {
+      "slug": "matchlock-infantry",
+      "rank": "militia",
+      "view": "back",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/byzantine/militia/back.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/byzantine/matchlock-infantry/militia/front.png"
+      ],
+      "prompt": "Use case: precise-object-edit. Image 1 exact BACK VIEW edit target. Image 2 front accessory reference of same rank. Output ONE independent full-body back view. Preserve exact body identity, accepted outfit, helmet, armor, hands/gloves, colors, proportions, pose and gray studio of Image 1. Add only SAME SINGLE brown historical flat oval stitched leather water flask and wooden stopper shown in Image 2, via short belt loop at character LEFT rear-side hip. In rear view flask is at viewer LEFT lower waist, slightly around side; do not move it to middle or opposite hip. No arrows/quiver/ammo/bow/gun/bag. Preserve EMPTY-HANDED horizontal T-pose and framing. No labels or additional people. Same water flask, no other changes.",
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a12635-f3fd-7f71-9092-f6ca1e47d0b3/exec-06c7e77d-97ea-4137-99dd-0ebd496f32f4.png",
+      "final": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/byzantine/matchlock-infantry/militia/back.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "fefdad0f231bc8dbc793a61dcac1cd2ed90ad21a0f4b5da1aa16d596ceb00f33"
+    },
+    {
+      "slug": "matchlock-infantry",
+      "rank": "veteran",
+      "view": "side",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/byzantine/veteran/side.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/byzantine/matchlock-infantry/veteran/front.png"
+      ],
+      "prompt": "Use case: precise-object-edit. Image 1 exact SIDE VIEW edit target. Image 2 front accessory reference of same rank. Output ONE independent full-body side view. Preserve exact body identity, accepted outfit, helmet, armor, hands/gloves, colors, proportions, pose and gray studio of Image 1. Add only SAME SINGLE brown historical flat oval stitched leather water flask and wooden stopper shown in Image 2, via short belt loop at character LEFT rear-side hip. Keep flask attached toward rear of character LEFT hip, not chest; match referenced shape size. No arrows/quiver/ammo/bow/gun/bag. Preserve EMPTY-HANDED horizontal T-pose and framing. No labels or additional people. Same water flask, no other changes.",
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a12635-f3fd-7f71-9092-f6ca1e47d0b3/exec-f6fa6c78-ca69-4143-ba95-9c877dd573c2.png",
+      "final": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/byzantine/matchlock-infantry/veteran/side.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "77370af913606f47c132b3f5998ea1c201469a3042f36f33cf40fee734d33480"
+    },
+    {
+      "slug": "matchlock-infantry",
+      "rank": "veteran",
+      "view": "back",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/byzantine/veteran/back.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/byzantine/matchlock-infantry/veteran/front.png"
+      ],
+      "prompt": "Use case: precise-object-edit. Image 1 exact BACK VIEW edit target. Image 2 front accessory reference of same rank. Output ONE independent full-body back view. Preserve exact body identity, accepted outfit, helmet, armor, hands/gloves, colors, proportions, pose and gray studio of Image 1. Add only SAME SINGLE brown historical flat oval stitched leather water flask and wooden stopper shown in Image 2, via short belt loop at character LEFT rear-side hip. In rear view flask is at viewer LEFT lower waist, slightly around side; do not move it to middle or opposite hip. No arrows/quiver/ammo/bow/gun/bag. Preserve EMPTY-HANDED horizontal T-pose and framing. No labels or additional people. Same water flask, no other changes.",
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a12635-f3fd-7f71-9092-f6ca1e47d0b3/exec-22054f99-84f5-48d9-b67a-77fa16e7e2bf.png",
+      "final": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/byzantine/matchlock-infantry/veteran/back.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "5d907133200054a4627dd795692937d5de24782c3b63aa27efd8f1e0c033527f"
+    },
+    {
+      "slug": "matchlock-infantry",
+      "rank": "elite",
+      "view": "side",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/byzantine/elite/side.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/byzantine/matchlock-infantry/elite/front.png"
+      ],
+      "prompt": "Use case: precise-object-edit. Image 1 exact SIDE VIEW edit target. Image 2 front accessory reference of same rank. Output ONE independent full-body side view. Preserve exact body identity, accepted outfit, helmet, armor, hands/gloves, colors, proportions, pose and gray studio of Image 1. Add only SAME SINGLE brown historical flat oval stitched leather water flask and wooden stopper shown in Image 2, via short belt loop at character LEFT rear-side hip. Keep flask attached toward rear of character LEFT hip, not chest; match referenced shape size. No arrows/quiver/ammo/bow/gun/bag. Preserve EMPTY-HANDED horizontal T-pose and framing. No labels or additional people. Same water flask, no other changes.",
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a12635-f3fd-7f71-9092-f6ca1e47d0b3/exec-6339829c-0a07-4925-924a-610abd7ab118.png",
+      "final": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/byzantine/matchlock-infantry/elite/side.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "ccb177844035af5275b82d79c6269fc8f255c17a15b1c1c149be8cd80f2bbef1"
+    },
+    {
+      "slug": "matchlock-infantry",
+      "rank": "elite",
+      "view": "back",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/byzantine/elite/back.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/byzantine/matchlock-infantry/elite/front.png"
+      ],
+      "prompt": "Use case: precise-object-edit. Image 1 exact BACK VIEW edit target. Image 2 front accessory reference of same rank. Output ONE independent full-body back view. Preserve exact body identity, accepted outfit, helmet, armor, hands/gloves, colors, proportions, pose and gray studio of Image 1. Add only SAME SINGLE brown historical flat oval stitched leather water flask and wooden stopper shown in Image 2, via short belt loop at character LEFT rear-side hip. In rear view flask is at viewer LEFT lower waist, slightly around side; do not move it to middle or opposite hip. No arrows/quiver/ammo/bow/gun/bag. Preserve EMPTY-HANDED horizontal T-pose and framing. No labels or additional people. Same water flask, no other changes.",
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a12635-f3fd-7f71-9092-f6ca1e47d0b3/exec-fd1e9ffe-78bc-4bdd-ae34-5860b12f2f66.png",
+      "final": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/byzantine/matchlock-infantry/elite/back.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "efb2c973a585563ab5e87cee75ae5066af9465f566d616f20ea6d07ef353dd83"
+    }
+  ]
+}

@@ -1,0 +1,287 @@
+{
+  "tool": "builtin image_gen",
+  "assets": [
+    {
+      "unit": "crossbowman",
+      "rank": "militia",
+      "view": "front",
+      "prompt": "Use case: precise-object-edit. Image 1 is the edit target. Make one independent front view T-pose concept input for Tripo of this Tianchao militia crossbowman. Change ONLY this: add a modest worn brown cloth-and-leather short crossbow-bolt pouch at the character's right rear hip, fastened to the existing waist sash, compact and recognizable, with a few short bolt fletchings visible; represents 30 bolts without drawing all individually. Preserve the exact man, face, clothing, bare hands, head wrap, colors, proportions, horizontal empty-handed T-pose, full-body framing, gray background and lighting. No handheld or loose weapon, no bow, no long arrow quiver, no extra armor or belt redesign, no text, no multi-view sheet. One single front view only.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/tianchao/militia/front.png"
+      ],
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a12654-febd-77b3-9552-4353c9008914/exec-f0b98a9c-50a2-4080-a35d-452cc0894e59.png",
+      "output": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/tianchao/crossbowman/militia/front.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "c32d91fe38b03cd6d9c3e95256603f3aa81c3c308f1aff786b4c6f599ee1c828",
+      "validation": "Visual inspection passed: single empty-handed T-pose, accepted clothing preserved, compact right hip bolt pouch."
+    },
+    {
+      "unit": "crossbowman",
+      "rank": "militia",
+      "view": "side",
+      "prompt": "Use case: precise-object-edit. Image 1 is the side-view edit target; Image 2 is the same character's approved front equipment anchor. Add ONLY the exact same compact brown worn leather crossbow bolt pouch with several short bolt fletchings, at the anatomical right rear hip tied to the existing waist sash, matching Image 2's design, size and placement. Show it properly from this right-side profile. Keep this exact side camera, man's face/body/clothes/bare hands/headwrap, empty-handed horizontal T-pose, gray backdrop, framing and lighting unchanged. One full-body side view only; no handheld or separate weapons, no long arrow quiver, no added armor, no text.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/tianchao/militia/side.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/tianchao/crossbowman/militia/front.png"
+      ],
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a12654-febd-77b3-9552-4353c9008914/exec-8a5e111a-7b76-4eaf-bb64-5c1510c0a21b.png",
+      "output": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/tianchao/crossbowman/militia/side.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "6ce61e4e40f69249c916eaf845b2218d44089f1f72e44946abea28490be0887c",
+      "validation": "Visual output reviewed for T-pose, no hand-held weapon, preserved clothing and accessory placement."
+    },
+    {
+      "unit": "crossbowman",
+      "rank": "militia",
+      "view": "back",
+      "prompt": "Use case: precise-object-edit. Image 1 rear view is the edit target; Image 2 is front equipment anchor. Add ONLY the SAME worn brown leather short crossbow bolt pouch tied at anatomical RIGHT rear hip (on image right in rear view), matching the front image shape/size, few short bolt fletchings visible. Preserve exact rear T-pose, bare hands, man, head wrap, patched clothes, sash, fabric, proportions, gray background and lighting. One single full-body rear view, no text, no handheld or separate weapon, no long arrow quiver, no additional armor.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/tianchao/militia/back.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/tianchao/crossbowman/militia/front.png"
+      ],
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a12654-febd-77b3-9552-4353c9008914/exec-4ef9fa12-d739-4ae0-839a-59f9a95bcc6e.png",
+      "output": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/tianchao/crossbowman/militia/back.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "fc00ed69aebdeead4fddf25f3f67d2149e6605ef31208306c04df4caa71ff486",
+      "validation": "Visual output reviewed for T-pose, no hand-held weapon, preserved clothing and accessory placement."
+    },
+    {
+      "unit": "crossbowman",
+      "rank": "veteran",
+      "view": "front",
+      "prompt": "Use case: precise-object-edit. Image 1 is edit target. Add ONLY a neat compact dark-brown leather short crossbow bolt pouch at anatomical RIGHT rear hip on his existing waist sash (left image side), with restrained brass fastening and a few SHORT crossbow bolt fletchings visible; carries 30 not literal counting. Preserve exact veteran face, body, PURE LEATHER chest armor, traditional helmet, leather gloves, colors/proportions, empty-handed horizontal T-pose, full body and gray background/lighting. Do not change armor, add metal plates, handheld/loose weapons or long arrow quiver. One single front view, no text.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/tianchao/veteran/front.png"
+      ],
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a12654-febd-77b3-9552-4353c9008914/exec-82792c43-244d-44a5-8fbc-00d0d704e8b9.png",
+      "output": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/tianchao/crossbowman/veteran/front.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "1584265ec7b0f94f9c8720c70db57e51fbc0977091a6dc8ccf85ed94a191624f",
+      "validation": "Visual output reviewed for T-pose, no hand-held weapon, preserved clothing and accessory placement."
+    },
+    {
+      "unit": "crossbowman",
+      "rank": "veteran",
+      "view": "side",
+      "prompt": "Use case: precise-object-edit. Image 1 right profile edit target; Image 2 equipment anchor. Add ONLY the identical compact rectangular dark-brown leather SHORT crossbow bolt pouch at anatomical RIGHT rear hip, with small flap, restrained brass button and few short fletchings, matching Image 2 shape/size/material. Keep exact right-side camera, T-pose with empty leather-gloved hands, pure leather armor, helmet, face, proportions, full-body framing, gray background, lighting. Do not redraw outfit, add weapons or long arrow quiver. One single full-body side view, no text.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/tianchao/veteran/side.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/tianchao/crossbowman/veteran/front.png"
+      ],
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a12654-febd-77b3-9552-4353c9008914/exec-eea5b9b3-352b-4136-b250-4d8904b83943.png",
+      "output": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/tianchao/crossbowman/veteran/side.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "8cdf0ecf1c5e3040775ebe57367aaaeb2f26e16ed084cd221bab638687b02187",
+      "validation": "Visual output reviewed for T-pose, no hand-held weapon, preserved clothing and accessory placement."
+    },
+    {
+      "unit": "crossbowman",
+      "rank": "veteran",
+      "view": "back",
+      "prompt": "Use case: precise-object-edit. Image 1 rear view edit target; Image 2 equipment anchor. Add ONLY identical compact rectangular dark-brown leather SHORT crossbow bolt pouch to anatomical RIGHT rear hip (image right), with modest brass button and few short fletchings; match Image 2 design, size and placement seen from rear. Preserve exact rear horizontal T-pose, pure leather armor, helmet, gloves, body/outfit/material/color/proportions, full-body gray backdrop and light. One rear view only, no weapon, no long arrow quiver, no text, no new armor.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/tianchao/veteran/back.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/tianchao/crossbowman/veteran/front.png"
+      ],
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a12654-febd-77b3-9552-4353c9008914/exec-b324f2dd-b5f9-4a77-8148-cfe9ffd88013.png",
+      "output": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/tianchao/crossbowman/veteran/back.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "6ddbe171724282e3161a3a7acb71bfe6fb1cc49b171eeda8e4aaae312f7fdefb",
+      "validation": "Visual output reviewed for T-pose, no hand-held weapon, preserved clothing and accessory placement."
+    },
+    {
+      "unit": "crossbowman",
+      "rank": "elite",
+      "view": "front",
+      "prompt": "Use case: precise-object-edit. Image 1 exact edit target. Add ONLY one high-quality dark-brown leather short crossbow bolt case at anatomical RIGHT rear hip on existing black belt (image left), restrained brass fittings and a few short bolt fletchings protruding. Slightly capacious for 50 bolts, NOT giant and no literal quantity. Preserve exact elite face/body, accepted red riveted armor, traditional black helmet, CHAINMAIL gloves with small hand plates, all colors/proportions/empty-handed T-pose/background/light. No armor redesign, no weapons, no long arrow quiver, no extra equipment. Single independent full-body front view only, no text.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/tianchao/elite/front.png"
+      ],
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a12654-febd-77b3-9552-4353c9008914/exec-2d7ee1d3-5761-48e3-8adc-1f58de863752.png",
+      "output": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/tianchao/crossbowman/elite/front.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "b3be28208974b7468cecc89490da3fe31b82608e9481ce8c36ff22569931bbac",
+      "validation": "Visual output reviewed for T-pose, no hand-held weapon, preserved clothing and accessory placement."
+    },
+    {
+      "unit": "crossbowman",
+      "rank": "elite",
+      "view": "side",
+      "prompt": "Use case: precise-object-edit. Image 1 side view is edit target; Image 2 is the equipment anchor. Add ONLY exact same cylindrical dark-brown leather SHORT bolt case with restrained brass bands/buckle and few short bolt fletchings at anatomical RIGHT rear hip on existing black belt (visible near-side hip in right profile). Match front reference accessory size/material/shape/position from this side camera. Preserve exact side T-pose, empty chainmail gloves with small hand plates, red riveted armor, helmet, identity/body/outfit/proportions, gray backdrop and lighting. One full-body side view only; no text, no weapon, no long arrow quiver, no other additions.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/tianchao/elite/side.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/tianchao/crossbowman/elite/front.png"
+      ],
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a12654-febd-77b3-9552-4353c9008914/exec-c38b9cd8-9d65-4788-bea6-f2291074e446.png",
+      "output": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/tianchao/crossbowman/elite/side.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "8d265be8b9c5df998100da8ccc1768ab3d1fee8dd856e560f539ac97e60c41b8",
+      "validation": "Visual output reviewed for T-pose, no hand-held weapon, preserved clothing and accessory placement."
+    },
+    {
+      "unit": "crossbowman",
+      "rank": "elite",
+      "view": "back",
+      "prompt": "Use case: precise-object-edit. Image 1 back view is edit target; Image 2 is the equipment anchor. Add ONLY exact same cylindrical dark-brown leather SHORT bolt case with restrained brass bands/buckle and few short bolt fletchings at anatomical RIGHT rear hip on existing black belt (image right from rear). Match front reference accessory size/material/shape/position from this back camera. Preserve exact back T-pose, empty chainmail gloves with small hand plates, red riveted armor, helmet, identity/body/outfit/proportions, gray backdrop and lighting. One full-body back view only; no text, no weapon, no long arrow quiver, no other additions.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/tianchao/elite/back.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/tianchao/crossbowman/elite/front.png"
+      ],
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a12654-febd-77b3-9552-4353c9008914/exec-8e8fafac-f8ee-44e6-ba14-850ede965ba3.png",
+      "output": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/tianchao/crossbowman/elite/back.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "97aa31a008401dd77f747a029c1c8ec01ead2a246b07fcd89b54f56153414dad",
+      "validation": "Visual output reviewed for T-pose, no hand-held weapon, preserved clothing and accessory placement."
+    },
+    {
+      "unit": "three-eyed-handgunner",
+      "rank": "militia",
+      "view": "front",
+      "prompt": "Use case: precise-object-edit. Image 1 is the exact front edit target of a Tianchao militia three-eyed handgun infantryman. Add ONLY a small plain worn dried double-bulb tan gourd with cord around its neck at anatomical RIGHT rear waist/hip (image left), attached to existing waist sash/belt. This is a Chinese drinking gourd, clearly two bulb lobes, not a grenade or ammo canister. Keep the exact accepted face/body, clothing, headgear, armor and hand/glove tier, empty-handed horizontal T-pose, proportions, full-body framing, gray backdrop and lighting unchanged. No weapon in hands or beside him, no quiver or bolt pouch, no extra armor/equipment, no text. One front view only.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/tianchao/militia/front.png"
+      ],
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a12654-febd-77b3-9552-4353c9008914/exec-a007ff96-1d66-40b6-bc93-3776e60b027d.png",
+      "output": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/tianchao/three-eyed-handgunner/militia/front.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "7f894a397dd18a9eb636df575a7ece95158407c9c72fe8fc8abc687a1de2daa6",
+      "validation": "Visual output reviewed for T-pose, no hand-held weapon, preserved clothing and accessory placement."
+    },
+    {
+      "unit": "three-eyed-handgunner",
+      "rank": "veteran",
+      "view": "front",
+      "prompt": "Use case: precise-object-edit. Image 1 is the exact front edit target of a Tianchao veteran three-eyed handgun infantryman. Add ONLY a neat modest double-bulb amber-brown Chinese gourd with simple leather neck strap and cork at anatomical RIGHT rear waist/hip (image left), attached to existing waist sash/belt. This is a Chinese drinking gourd, clearly two bulb lobes, not a grenade or ammo canister. Keep the exact accepted face/body, clothing, headgear, armor and hand/glove tier, empty-handed horizontal T-pose, proportions, full-body framing, gray backdrop and lighting unchanged. No weapon in hands or beside him, no quiver or bolt pouch, no extra armor/equipment, no text. One front view only.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/tianchao/veteran/front.png"
+      ],
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a12654-febd-77b3-9552-4353c9008914/exec-729bb205-1983-4ecf-b064-16949a8a06c4.png",
+      "output": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/tianchao/three-eyed-handgunner/veteran/front.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "8efd28c4520845a34b36af7130bca163f474c8175b20f27fa49aa007d55bb3b3",
+      "validation": "Visual output reviewed for T-pose, no hand-held weapon, preserved clothing and accessory placement."
+    },
+    {
+      "unit": "three-eyed-handgunner",
+      "rank": "elite",
+      "view": "front",
+      "prompt": "Use case: precise-object-edit. Image 1 is the exact front edit target of a Tianchao elite three-eyed handgun infantryman. Add ONLY a well-made modest double-bulb warm amber Chinese gourd, small brass neck collar and dark leather suspension at anatomical RIGHT rear waist/hip (image left), attached to existing waist sash/belt. This is a Chinese drinking gourd, clearly two bulb lobes, not a grenade or ammo canister. Keep the exact accepted face/body, clothing, headgear, armor and hand/glove tier, empty-handed horizontal T-pose, proportions, full-body framing, gray backdrop and lighting unchanged. No weapon in hands or beside him, no quiver or bolt pouch, no extra armor/equipment, no text. One front view only.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/tianchao/elite/front.png"
+      ],
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a12654-febd-77b3-9552-4353c9008914/exec-1fe29d1e-9fcf-463b-b0bf-09290e2eecec.png",
+      "output": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/tianchao/three-eyed-handgunner/elite/front.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "8b664aa64d5116b765201e5dbf5fe9fe7a99df6f9ad91ab4f809eac8c6d1063c",
+      "validation": "Visual output reviewed for T-pose, no hand-held weapon, preserved clothing and accessory placement."
+    },
+    {
+      "unit": "three-eyed-handgunner",
+      "rank": "militia",
+      "view": "side",
+      "prompt": "Use case: precise-object-edit. Image 1 right-side T-pose is edit target; Image 2 militia front is same-character equipment anchor. Add ONLY the EXACT SAME double-bulb Chinese drinking gourd at anatomical RIGHT rear hip/waist, visible on this near-side hip. Copy exact front reference gourd size, two lobes, tan/amber color, cord/leather fastening and cork/collar, properly seen from right side. Preserve exact character identity/body/clothes/headgear/armor/hand tier, empty-handed horizontal T-pose, full-body side framing, gray backdrop/light. No quiver, ammo pouch, weapon, text or redesign. Single side-view only.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/tianchao/militia/side.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/tianchao/three-eyed-handgunner/militia/front.png"
+      ],
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a12654-febd-77b3-9552-4353c9008914/exec-774df94b-9529-4cbc-868b-ab45e868ca4d.png",
+      "output": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/tianchao/three-eyed-handgunner/militia/side.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "509557b5eec06093bd082c0e0558a0ff26db642c5a081d6dec09c30bc8cc7b73",
+      "validation": "Visual output reviewed for T-pose, no hand-held weapon, preserved clothing and accessory placement."
+    },
+    {
+      "unit": "three-eyed-handgunner",
+      "rank": "veteran",
+      "view": "side",
+      "prompt": "Use case: precise-object-edit. Image 1 right-side T-pose is edit target; Image 2 veteran front is same-character equipment anchor. Add ONLY the EXACT SAME double-bulb Chinese drinking gourd at anatomical RIGHT rear hip/waist, visible on this near-side hip. Copy exact front reference gourd size, two lobes, tan/amber color, cord/leather fastening and cork/collar, properly seen from right side. Preserve exact character identity/body/clothes/headgear/armor/hand tier, empty-handed horizontal T-pose, full-body side framing, gray backdrop/light. No quiver, ammo pouch, weapon, text or redesign. Single side-view only.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/tianchao/veteran/side.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/tianchao/three-eyed-handgunner/veteran/front.png"
+      ],
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a12654-febd-77b3-9552-4353c9008914/exec-cf762cd1-0f2c-4a96-ae82-b17c9e00dc19.png",
+      "output": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/tianchao/three-eyed-handgunner/veteran/side.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "08905652a7e30572d9e0178dae8e68cb9210b64f15c719acab25812619622e34",
+      "validation": "Visual output reviewed for T-pose, no hand-held weapon, preserved clothing and accessory placement."
+    },
+    {
+      "unit": "three-eyed-handgunner",
+      "rank": "elite",
+      "view": "side",
+      "prompt": "Use case: precise-object-edit. Image 1 right-side T-pose is edit target; Image 2 elite front is same-character equipment anchor. Add ONLY the EXACT SAME double-bulb Chinese drinking gourd at anatomical RIGHT rear hip/waist, visible on this near-side hip. Copy exact front reference gourd size, two lobes, tan/amber color, cord/leather fastening and cork/collar, properly seen from right side. Preserve exact character identity/body/clothes/headgear/armor/hand tier, empty-handed horizontal T-pose, full-body side framing, gray backdrop/light. No quiver, ammo pouch, weapon, text or redesign. Single side-view only.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/tianchao/elite/side.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/tianchao/three-eyed-handgunner/elite/front.png"
+      ],
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a12654-febd-77b3-9552-4353c9008914/exec-5071f1d5-52e8-4b96-a53c-40dbc91df072.png",
+      "output": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/tianchao/three-eyed-handgunner/elite/side.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "ad50457aed7b10e400c26c5d73acdc9a1fe65b8eba0d79308de2db3babbd7fd8",
+      "validation": "Visual output reviewed for T-pose, no hand-held weapon, preserved clothing and accessory placement."
+    },
+    {
+      "unit": "three-eyed-handgunner",
+      "rank": "militia",
+      "view": "back",
+      "prompt": "Use case: precise-object-edit. Image 1 rear-view T-pose is edit target; Image 2 militia front is same-character equipment anchor. Add ONLY the EXACT SAME double-bulb Chinese drinking gourd at anatomical RIGHT rear hip/waist (image right in rear view), attached to existing belt or waist sash. Match exact gourd size, amber/tan color, two lobes, cord/leather fastening, cork/collar from front reference, properly viewed from rear. Preserve the original rear character, outfit, helmet/headwrap, armor/glove tier, proportions, empty-hand T-pose and gray background/lighting. Single full-body back view; no text, no weapon, no ammo pouch, no quiver, no redesign.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/tianchao/militia/back.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/tianchao/three-eyed-handgunner/militia/front.png"
+      ],
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a12654-febd-77b3-9552-4353c9008914/exec-00fc151b-fb2e-460d-b7ba-1f7a1f93f795.png",
+      "output": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/tianchao/three-eyed-handgunner/militia/back.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "5075b3523fc9bdb79b123fb51c2184b01854aab7c9558060e64fd4483d69ddf1",
+      "validation": "Visual output reviewed for T-pose, no hand-held weapon, preserved clothing and accessory placement."
+    },
+    {
+      "unit": "three-eyed-handgunner",
+      "rank": "veteran",
+      "view": "back",
+      "prompt": "Use case: precise-object-edit. Image 1 rear-view T-pose is edit target; Image 2 veteran front is same-character equipment anchor. Add ONLY the EXACT SAME double-bulb Chinese drinking gourd at anatomical RIGHT rear hip/waist (image right in rear view), attached to existing belt or waist sash. Match exact gourd size, amber/tan color, two lobes, cord/leather fastening, cork/collar from front reference, properly viewed from rear. Preserve the original rear character, outfit, helmet/headwrap, armor/glove tier, proportions, empty-hand T-pose and gray background/lighting. Single full-body back view; no text, no weapon, no ammo pouch, no quiver, no redesign.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/tianchao/veteran/back.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/tianchao/three-eyed-handgunner/veteran/front.png"
+      ],
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a12654-febd-77b3-9552-4353c9008914/exec-37ea9248-9c39-4880-bb24-57bce1ed51df.png",
+      "output": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/tianchao/three-eyed-handgunner/veteran/back.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "6046b3753b51630b2be6a88d8244358bacda8c0194bbaceed9c543b9d6c27683",
+      "validation": "Visual output reviewed for T-pose, no hand-held weapon, preserved clothing and accessory placement."
+    },
+    {
+      "unit": "three-eyed-handgunner",
+      "rank": "elite",
+      "view": "back",
+      "prompt": "Use case: precise-object-edit. Image 1 rear-view T-pose is edit target; Image 2 elite front is same-character equipment anchor. Add ONLY the EXACT SAME double-bulb Chinese drinking gourd at anatomical RIGHT rear hip/waist (image right in rear view), attached to existing belt or waist sash. Match exact gourd size, amber/tan color, two lobes, cord/leather fastening, cork/collar from front reference, properly viewed from rear. Preserve the original rear character, outfit, helmet/headwrap, armor/glove tier, proportions, empty-hand T-pose and gray background/lighting. Single full-body back view; no text, no weapon, no ammo pouch, no quiver, no redesign.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/bodies/tianchao/elite/back.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/tianchao/three-eyed-handgunner/elite/front.png"
+      ],
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a12654-febd-77b3-9552-4353c9008914/exec-ab143dce-8b31-4d4f-8d50-43948ffea093.png",
+      "output": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-infantry-kits/tianchao/three-eyed-handgunner/elite/back.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "8cdfe41d6278345409b68192f306de7182c964d96dfd56ef7bf33f631e2f78e1",
+      "validation": "Visual output reviewed for T-pose, no hand-held weapon, preserved clothing and accessory placement."
+    }
+  ]
+}

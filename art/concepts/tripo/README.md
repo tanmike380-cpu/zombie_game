@@ -1,10 +1,35 @@
 # Tripo 独立视图素材包
 
-更新：2026-10-05。**这里的每张 PNG 只有一个单位的一个视角，不是多人合照，也不是三视图拼图。**
+更新：2026-10-11。**这里的每张 PNG 只有一个单位的一个视角，不是多人合照，也不是三视图拼图。**
 
-当前上传清单为 **81 个素材、227 张独立 PNG**：共用人物 18 张、独立步兵武器 8 张、僵尸 21 张、工程器械 18 张、建筑 162 张。旧的72张分兵种人物图和18张防御塔图原址保留作历史参考，不再列为当前上传目标。另有6张新版塔纯俯视辅助图，不计入三个主视图的上传数量。本轮仅制作二维输入图，没有上传 Tripo、消耗 Tripo 积分、生成游戏模型或修改正式游戏数值。
+当前上传清单为 **99个素材、297张独立PNG**：挂件版空手T-pose人物72张、步兵武器24张、僵尸21张、器械18张、建筑162张。历史人物72张、基础人体18张、旧塔18张、单图武器8张原址保留，不再列为当前目标。另有6张塔纯俯视辅助图，不计入主视图数量。没有上传Tripo、消耗Tripo积分或生成游戏模型；携弹数值另见[正式balance](../../../balance/README.md)。
 
-## 怎么上传
+## 最新上传入口 · 2026-10-11
+
+两国各4兵种、各民兵／老兵／精英，每等级3张。人物保留认可衣甲，只有手持武器单独生成；箭筒、弩矢袋、箭盒、葫芦、水囊等挂件随人物概念生成。民兵裸手、老兵皮甲皮手套、精英锁甲护手，天朝精英保留小型覆手甲。
+
+| 阵营 | 兵种 | 三级人物目录 | 武器三角度目录 |
+|---|---|---|---|
+| 天朝 | 弓箭手 | [archer](humans/tianchao/archer-kit-v1/) | [bow](weapons/tianchao/bow-views-v2/) |
+| 天朝 | 诸葛弩手 | [repeating-crossbowman](humans/tianchao/repeating-crossbowman-kit-v1/) | [repeating-crossbow](weapons/tianchao/repeating-crossbow-views-v2/) |
+| 天朝 | 普通弩手 | [crossbowman](humans/tianchao/crossbowman-kit-v1/) | [crossbow](weapons/tianchao/crossbow-views-v2/) |
+| 天朝 | 三眼神铳兵 | [three-eyed-handgunner](humans/tianchao/three-eyed-handgunner-kit-v1/) | [three-eyed-handgun](weapons/tianchao/three-eyed-handgun-views-v2/) |
+| 拜占庭 | 弓箭手 | [archer](humans/byzantine/archer-kit-v1/) | [bow](weapons/byzantine/bow-views-v2/) |
+| 拜占庭 | 普通弩手 | [crossbowman](humans/byzantine/crossbowman-kit-v1/) | [crossbow](weapons/byzantine/crossbow-views-v2/) |
+| 拜占庭 | 投矛军团 | [javelin-legionary](humans/byzantine/javelin-legionary-kit-v1/) | [javelin](weapons/byzantine/javelin-views-v2/) |
+| 拜占庭 | 火绳枪手 | [matchlock-infantry](humans/byzantine/matchlock-infantry-kit-v1/) | [matchlock](weapons/byzantine/matchlock-views-v2/) |
+
+人物先进入militia、veteran或elite，再取front.png、side.png、back.png；武器目录直接有这三个文件。一次只用同一个模型的三张角度图，不能混不同等级，也不能混人物和武器。单图入口通常先上传front，支持多视图的入口则分别填对应槽位。图片没有拼在一起。
+
+[人物完整提示词与来源](../2026-10-10-infantry-kits/README.md) · [武器提示词与来源](../2026-10-10-weapon-views/README.md)。AI参考不是标定CAD图；细小扣件／纹样差异需在模型生成时统一，弓弦与可隐藏箭束需检查分件。
+
+[用户已选自然矿脉的石／铁／金9张独立三视图](../2026-10-10-resource-nodes/README.md) · [僵尸老巢候选](../2026-10-11-zombie-lairs/)。这些在独立新目录，不计入上述297张。
+
+最新技术路线：Tripo模型与初始绑定，Unity装配独立武器并生成／修正复杂攻击动作；Blender保存正式源模型并修网格、蒙皮和机构分件。[工具核实与限制](../../../docs/dev/TRIPO_UNITY_ANIMATION_WORKFLOW.md)。没有启用Unity AI或完成实际射击样本；生成动作不等于自动做好弓弦、箭和伤害时机。
+
+## 历史上传指南 · 2026-10-05（以下人体与武器单图仅存档）
+
+本节至“历史人物图”说明旧18张基础人体与8张武器单图，不再定义当前输入。最新请使用上方目录；不得把旧版无挂件人体误当作已更新图。下方僵尸、器械、建筑目录继续有效。
 
 1. 人物先选阵营和等级，例如 `humans/tianchao/base/militia/`；人物不带武器或兵种专属挂件。
 2. 该文件夹内 `front.png` 是正面、`side.png` 是侧面、`back.png` 是背面，三张都是独立文件。
@@ -102,9 +127,9 @@ Unity 读取现有弹药状态，零弹药隐藏箭束，补给后恢复；箭�
 
 Tripo 提供自动骨骼／蒙皮和预设动画，并可导出带骨骼的 FBX 或 GLB；这不等于一定能直接生成符合我们武器结构的拉弓、装填、三眼神铳三连发等完整动作。[官方教程](https://www.tripo3d.ai/blog/tripo-studio-tutorial-english) · [官方自动绑定说明](https://www.tripo3d.ai/features/ai-auto-rigging)。
 
-建议每个兵种的民兵、老兵、精英共用一套标准骨架和动作，在 Blender 中修正或制作，在 Unity 中播放。同一套动作不要求三个模型顶点数相同，但每个模型都必须正确绑定权重；骨骼名称、层级、参考姿态和比例需要兼容。不兼容的独立骨架要先重定向，不能承诺任意三个导出模型直接套用。
+建议每个兵种的民兵、老兵、精英共用兼容骨架和动作。最新为Tripo初始绑定、Unity复杂战斗动作与武器装配、Blender源模型与蒙皮修复。同一套动作不要求三个模型顶点数相同，但每个模型都必须正确绑定权重；骨骼层级、参考姿态和比例需要兼容。不兼容骨架要先重定向，不能承诺任意导出直接套用。
 
-当前六个基础人物是空手 T-Pose，武器单独输入。武器与手分开，弓弦、弹丸与烟雾独立处理。弓箭手三等级可以共用拉弓动作，但弩手和火枪手不应强行套同一攻击动作；换武器会切换动作集。动作复用后还要检查手与武器接触、袖口及铠甲穿插。这批图不是自动绑定已验收的模型。
+当前人物是带兵种挂件的空手T-pose，武器单独输入。武器与手分开，弓弦、弹丸与烟雾独立处理。弓箭手三等级可共用拉弓动作，但弩手和火枪手不应强行套同一攻击动作；换武器会切换动作集。动作复用后需检查握持与穿插。这批图不是自动绑定已验收的模型。
 
 ## 来源与检查
 

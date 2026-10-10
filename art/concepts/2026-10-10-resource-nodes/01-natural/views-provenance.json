@@ -1,0 +1,103 @@
+{
+  "date": "2026-10-11",
+  "tool": "builtin image_gen",
+  "selection": "user approved 01-natural style",
+  "records": [
+    {
+      "resource": "stone",
+      "view": "front",
+      "prompt": "Create ONE single FRONT view of the exact natural mineral resource outcrop in the reference, for Tripo multiview generation. Same mineral shape, same tiered boulder geometry, same base footprint, same vein distribution and colours/materials. Camera faces the reference's frontmost face straight-on rather than from its corner, with modest elevation 15 degrees to show the upper surface; near orthographic, centered uncropped, generous margins. Keep all geology and silhouette, do not redesign. Plain neutral grey background, neutral soft light, tiny contact shadow, no text labels, no extra objects, no collage. Square image. Resource stone.",
+      "sources": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-resource-nodes/01-natural/stone/reference.png"
+      ],
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a0b065-006f-78f2-8269-19a4b6e193b4/exec-5b54eae2-9844-471a-88ce-4c744b88615e.png",
+      "output": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-resource-nodes/01-natural/stone/front.png"
+    },
+    {
+      "resource": "iron",
+      "view": "front",
+      "prompt": "Create ONE single FRONT view of the exact natural mineral resource outcrop in the reference, for Tripo multiview generation. Same mineral shape, same tiered boulder geometry, same base footprint, same vein distribution and colours/materials. Camera faces the reference's frontmost face straight-on rather than from its corner, with modest elevation 15 degrees to show the upper surface; near orthographic, centered uncropped, generous margins. Keep all geology and silhouette, do not redesign. Plain neutral grey background, neutral soft light, tiny contact shadow, no text labels, no extra objects, no collage. Square image. Resource iron.",
+      "sources": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-resource-nodes/01-natural/iron/reference.png"
+      ],
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a0b065-006f-78f2-8269-19a4b6e193b4/exec-bef98c67-439f-4f24-bdb8-a430424c01df.png",
+      "output": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-resource-nodes/01-natural/iron/front.png"
+    },
+    {
+      "resource": "gold",
+      "view": "front",
+      "prompt": "Create ONE single FRONT view of the exact natural mineral resource outcrop in the reference, for Tripo multiview generation. Same mineral shape, same tiered boulder geometry, same base footprint, same vein distribution and colours/materials. Camera faces the reference's frontmost face straight-on rather than from its corner, with modest elevation 15 degrees to show the upper surface; near orthographic, centered uncropped, generous margins. Keep all geology and silhouette, do not redesign. Plain neutral grey background, neutral soft light, tiny contact shadow, no text labels, no extra objects, no collage. Square image. Resource gold.",
+      "sources": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-resource-nodes/01-natural/gold/reference.png"
+      ],
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a0b065-006f-78f2-8269-19a4b6e193b4/exec-067b3cee-8618-4299-87c8-4fcd9b16f465.png",
+      "output": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-resource-nodes/01-natural/gold/front.png"
+    },
+    {
+      "resource": "stone",
+      "view": "side",
+      "prompt": "Generate ONE SIDE view of the SAME stone deposit shown in the reference images. First reference is original natural style, second is front for this exact object. Rotate the CAMERA around the SAME rock outcrop by 90 degrees to its RIGHT side, not rotate the rock into the same previous angle. Near orthographic at modest 15 degree elevation, side silhouette centered uncropped with generous margins. Preserve tiered boulder heights, footprint, natural grey/beige lithology, mineral vein colours and realistic texture style, keep exact object identity. Show the unseen right side plausibly continuing the same geological structure. No changes to design, no tools no people no text, no collage. Plain neutral grey background, neutral diffuse lighting and tiny contact shadow. Single isolated resource, square canvas.",
+      "sources": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-resource-nodes/01-natural/stone/reference.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-resource-nodes/01-natural/stone/front.png"
+      ],
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a0b065-006f-78f2-8269-19a4b6e193b4/exec-281dfd17-d167-44fe-8524-63f162ded524.png",
+      "output": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-resource-nodes/01-natural/stone/side.png"
+    },
+    {
+      "resource": "iron",
+      "view": "side",
+      "prompt": "Generate ONE SIDE view of the SAME iron deposit shown in the reference images. First reference is original natural style, second is front for this exact object. Rotate the CAMERA around the SAME rock outcrop by 90 degrees to its RIGHT side, not rotate the rock into the same previous angle. Near orthographic at modest 15 degree elevation, side silhouette centered uncropped with generous margins. Preserve tiered boulder heights, footprint, natural grey/beige lithology, mineral vein colours and realistic texture style, keep exact object identity. Show the unseen right side plausibly continuing the same geological structure. No changes to design, no tools no people no text, no collage. Plain neutral grey background, neutral diffuse lighting and tiny contact shadow. Single isolated resource, square canvas.",
+      "sources": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-resource-nodes/01-natural/iron/reference.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-resource-nodes/01-natural/iron/front.png"
+      ],
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a0b065-006f-78f2-8269-19a4b6e193b4/exec-05160022-15c4-46bb-9f4d-a0ac1ad0da65.png",
+      "output": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-resource-nodes/01-natural/iron/side.png"
+    },
+    {
+      "resource": "gold",
+      "view": "side",
+      "prompt": "Generate ONE SIDE view of the SAME gold deposit shown in the reference images. First reference is original natural style, second is front for this exact object. Rotate the CAMERA around the SAME rock outcrop by 90 degrees to its RIGHT side, not rotate the rock into the same previous angle. Near orthographic at modest 15 degree elevation, side silhouette centered uncropped with generous margins. Preserve tiered boulder heights, footprint, natural grey/beige lithology, mineral vein colours and realistic texture style, keep exact object identity. Show the unseen right side plausibly continuing the same geological structure. No changes to design, no tools no people no text, no collage. Plain neutral grey background, neutral diffuse lighting and tiny contact shadow. Single isolated resource, square canvas.",
+      "sources": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-resource-nodes/01-natural/gold/reference.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-resource-nodes/01-natural/gold/front.png"
+      ],
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a0b065-006f-78f2-8269-19a4b6e193b4/exec-d2266d4d-f500-4415-9410-7b8bda3a4de9.png",
+      "output": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-resource-nodes/01-natural/gold/side.png"
+    },
+    {
+      "resource": "stone",
+      "view": "back",
+      "prompt": "ONE REAR/BACK view for a multi-view model sheet, delivered as ONE individual picture. References show the SAME stone outcrop from its front and side. Now photograph it from the OPPOSITE side, camera azimuth 180 degrees relative to the front: the tallest tier appears reversed left/right, foreground rocks from front are now hidden behind main rock, REAR faces must be new visible faces. Do NOT repeat the front face; show the back. Keep identity, exact overall mass, footprint, tier heights and mineral material style. Geological veins continue over rear surfaces plausibly; no redesign, no new spires. Near orthographic with only modest 15 degree elevation, entire centered uncropped object generous margins, flat compact base, neutral grey background, neutral soft diffuse light, no text, people, props or collage. Square canvas.",
+      "sources": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-resource-nodes/01-natural/stone/front.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-resource-nodes/01-natural/stone/side.png"
+      ],
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a0b065-006f-78f2-8269-19a4b6e193b4/exec-1ea12a7e-2729-417b-bd63-67f167873bb6.png",
+      "output": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-resource-nodes/01-natural/stone/back.png"
+    },
+    {
+      "resource": "iron",
+      "view": "back",
+      "prompt": "ONE REAR/BACK view for a multi-view model sheet, delivered as ONE individual picture. References show the SAME iron outcrop from its front and side. Now photograph it from the OPPOSITE side, camera azimuth 180 degrees relative to the front: the tallest tier appears reversed left/right, foreground rocks from front are now hidden behind main rock, REAR faces must be new visible faces. Do NOT repeat the front face; show the back. Keep identity, exact overall mass, footprint, tier heights and mineral material style. Geological veins continue over rear surfaces plausibly; no redesign, no new spires. Near orthographic with only modest 15 degree elevation, entire centered uncropped object generous margins, flat compact base, neutral grey background, neutral soft diffuse light, no text, people, props or collage. Square canvas.",
+      "sources": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-resource-nodes/01-natural/iron/front.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-resource-nodes/01-natural/iron/side.png"
+      ],
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a0b065-006f-78f2-8269-19a4b6e193b4/exec-95921a37-fb7a-4194-ab96-1dffd4063046.png",
+      "output": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-resource-nodes/01-natural/iron/back.png"
+    },
+    {
+      "resource": "gold",
+      "view": "back",
+      "prompt": "Make the BACK VIEW of this exact gold-bearing stone outcrop, as one image. Important correction: the reference shows the FRONT with a highly recognizable vertical forked Y gold vein down the middle; that FRONT vein must NOT appear on the back. Camera is on opposite side looking 180 degrees at the previously unseen REAR. The rear has a broad continuous rough pale beige-grey rock slab surface with two short horizontal gold veins and some fine scattered mineral speckles, NOT a long central vertical gold strip; maintain the same mound silhouette, highest rock near the middle slightly right, smaller rear boulders at base. Keep identical realistic natural-rock material and flat compact footing, no redesign of shape into tall spires. Slight elevated orthographic view, generous margins, plain grey background, neutral soft light. SINGLE isolated object, no text, no collage, no tools or people.",
+      "sources": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-resource-nodes/01-natural/gold/front.png"
+      ],
+      "generated_path": "/Users/tankaixi/.codex/generated_images/01a0b065-006f-78f2-8269-19a4b6e193b4/exec-0f6f44c5-c773-4285-9142-b14df4a838c0.png",
+      "output": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-resource-nodes/01-natural/gold/back.png",
+      "superseded_generated_path": "/Users/tankaixi/.codex/generated_images/01a0b065-006f-78f2-8269-19a4b6e193b4/exec-5d0d3a3d-5e1f-4da1-8a7f-923ca6f09b86.png"
+    }
+  ]
+}

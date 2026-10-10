@@ -1,0 +1,295 @@
+{
+  "generator": "builtin image_gen",
+  "status": "complete",
+  "expected_images": 18,
+  "completed_images": 18,
+  "records": [
+    {
+      "faction": "tianchao",
+      "weapon": "bow",
+      "view": "front",
+      "prompt": "Use case: precise-object-edit. Asset type: independent Tripo weapon FRONT concept. Image 1 is exact weapon design reference. Depict the SAME ONE complete weapon from clear THREE-QUARTER primary exterior view, modest angle revealing main identifiable face and thickness; show complete silhouette. Preserve exact bow limb curvature, string, grip wrapping, fittings and faction-specific decoration. Bow remains upright; show broadside surfaces and curved outline visibly, NEVER an edge-on thin straight line. Preserve original design, size ratios, color, weathering, wood grain, leather and metal materials. Match realistic rendered quality. Plain light grey studio background with soft neutral lighting. ONE weapon only, centered with margin at every end, no cropping. No people, hands, extra props, labels, text, multiple copies or collage. This is an angle change of the same object, NOT a redesign.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/weapons/tianchao/bow/reference.png"
+      ],
+      "generated_source": "/Users/tankaixi/.codex/generated_images/01a12635-26a5-7af3-bb58-cd249ba31308/exec-c73352d9-b2f8-4d9a-8364-ed50f3d60db9.png",
+      "source": "2026-10-10-weapon-views/tianchao/bow/front.png",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "7512d51b8b2aec628ea267689279f420a00a0ac34daee0a0f5394b8a2c61e82b",
+      "visual_review": "accepted: one complete isolated source weapon, no person or hands or collage, original main structure/materials preserved. Front is primary 3D reference, side minimal-perspective broadside, back opposite/rear view. Minor AI surface/fitting variation; not CAD-calibrated."
+    },
+    {
+      "faction": "tianchao",
+      "weapon": "repeating-crossbow",
+      "view": "front",
+      "prompt": "Use case: precise-object-edit. Asset type: independent Tripo weapon FRONT concept. Image 1 is exact weapon design reference. Depict the SAME ONE complete weapon from clear THREE-QUARTER primary exterior view, modest angle revealing main identifiable face and thickness; show complete silhouette. Preserve the exact Chinese wooden repeating crossbow, TOP rectangular arrow magazine, operating crank/lever, steel bow arms, bowstring and rail. Do not turn it into an ordinary crossbow or remove the TOP magazine. Preserve original design, size ratios, color, weathering, wood grain, leather and metal materials. Match realistic rendered quality. Plain light grey studio background with soft neutral lighting. ONE weapon only, centered with margin at every end, no cropping. No people, hands, extra props, labels, text, multiple copies or collage. This is an angle change of the same object, NOT a redesign.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/weapons/tianchao/repeating-crossbow/reference.png"
+      ],
+      "generated_source": "/Users/tankaixi/.codex/generated_images/01a12635-26a5-7af3-bb58-cd249ba31308/exec-6b1bede3-2541-4043-b7d6-0432e7176541.png",
+      "source": "2026-10-10-weapon-views/tianchao/repeating-crossbow/front.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "a0df470bbd3bcf814e30ffd5060e2d61386fe8b382123c3ce4b5271ac30e2a5c",
+      "visual_review": "accepted: one complete isolated source weapon, no person or hands or collage, original main structure/materials preserved. Front is primary 3D reference, side minimal-perspective broadside, back opposite/rear view. Minor AI surface/fitting variation; not CAD-calibrated."
+    },
+    {
+      "faction": "tianchao",
+      "weapon": "crossbow",
+      "view": "front",
+      "prompt": "Use case: precise-object-edit. Asset type: independent Tripo weapon FRONT concept. Image 1 is exact weapon design reference. Depict the SAME ONE complete weapon from clear THREE-QUARTER primary exterior view, modest angle revealing main identifiable face and thickness; show complete silhouette. Preserve this exact wooden medieval crossbow stock, steel curved transverse bow arms, rope bowstring, trigger and metal stirrup, unchanged ornament and material. Preserve original design, size ratios, color, weathering, wood grain, leather and metal materials. Match realistic rendered quality. Plain light grey studio background with soft neutral lighting. ONE weapon only, centered with margin at every end, no cropping. No people, hands, extra props, labels, text, multiple copies or collage. This is an angle change of the same object, NOT a redesign.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/weapons/tianchao/crossbow/reference.png"
+      ],
+      "generated_source": "/Users/tankaixi/.codex/generated_images/01a12635-26a5-7af3-bb58-cd249ba31308/exec-1717f568-4bd7-4b5e-97c5-0766169679ba.png",
+      "source": "2026-10-10-weapon-views/tianchao/crossbow/front.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "475c0dd719256c573157125989dee0484ba7e1497fd596d9559f86028538e0d4",
+      "visual_review": "accepted: one complete isolated source weapon, no person or hands or collage, original main structure/materials preserved. Front is primary 3D reference, side minimal-perspective broadside, back opposite/rear view. Minor AI surface/fitting variation; not CAD-calibrated."
+    },
+    {
+      "faction": "tianchao",
+      "weapon": "three-eyed-handgun",
+      "view": "front",
+      "prompt": "Use case: precise-object-edit. Asset type: independent Tripo weapon FRONT concept. Image 1 is exact weapon design reference. Depict the SAME ONE complete weapon from clear THREE-QUARTER primary exterior view, modest angle revealing main identifiable face and thickness; show complete silhouette. Preserve the ancient THREE-EYED Chinese hand cannon: exactly THREE parallel short steel muzzle tubes clustered in a triangle, brass binding rings and three small touchholes on top, long straight wooden handle. Do not add a modern gun stock, modern trigger or scope; never one or four barrels. Preserve original design, size ratios, color, weathering, wood grain, leather and metal materials. Match realistic rendered quality. Plain light grey studio background with soft neutral lighting. ONE weapon only, centered with margin at every end, no cropping. No people, hands, extra props, labels, text, multiple copies or collage. This is an angle change of the same object, NOT a redesign.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/weapons/tianchao/three-eyed-handgun/reference.png"
+      ],
+      "generated_source": "/Users/tankaixi/.codex/generated_images/01a12635-26a5-7af3-bb58-cd249ba31308/exec-d77161f3-17f6-486d-a6b4-423674beb606.png",
+      "source": "2026-10-10-weapon-views/tianchao/three-eyed-handgun/front.png",
+      "width": 1230,
+      "height": 1278,
+      "sha256": "b12bb7938308868e609c3efa2fdd86222f5c5afc4f74556ca6ace859bcbd650d",
+      "visual_review": "accepted: one complete isolated source weapon, no person or hands or collage, original main structure/materials preserved. Front is primary 3D reference, side minimal-perspective broadside, back opposite/rear view. Minor AI surface/fitting variation; not CAD-calibrated."
+    },
+    {
+      "faction": "byzantine",
+      "weapon": "javelin",
+      "view": "front",
+      "prompt": "Use case: precise-object-edit. Asset type: independent Tripo weapon FRONT concept. Image 1 is exact weapon design reference. Depict the SAME ONE complete weapon from clear THREE-QUARTER primary exterior view, modest angle revealing main identifiable face and thickness; show complete silhouette. Preserve exact wooden shaft, faceted long pointed spearhead, small fittings and metal butt spike, their unchanged length ratios. One spear, not a bundle. Preserve original design, size ratios, color, weathering, wood grain, leather and metal materials. Match realistic rendered quality. Plain light grey studio background with soft neutral lighting. ONE weapon only, centered with margin at every end, no cropping. No people, hands, extra props, labels, text, multiple copies or collage. This is an angle change of the same object, NOT a redesign.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/weapons/byzantine/javelin/reference.png"
+      ],
+      "generated_source": "/Users/tankaixi/.codex/generated_images/01a12635-26a5-7af3-bb58-cd249ba31308/exec-4aa287cc-c694-4b33-a9c9-d63e8cb0183a.png",
+      "source": "2026-10-10-weapon-views/byzantine/javelin/front.png",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "89867ee3eafe559db79c7390e11eb48ecb6ce958121f98eaae145bdb56a384e2",
+      "visual_review": "accepted: one complete isolated source weapon, no person or hands or collage, original main structure/materials preserved. Front is primary 3D reference, side minimal-perspective broadside, back opposite/rear view. Minor AI surface/fitting variation; not CAD-calibrated."
+    },
+    {
+      "faction": "byzantine",
+      "weapon": "bow",
+      "view": "front",
+      "prompt": "Use case: precise-object-edit. Asset type: independent Tripo weapon FRONT concept. Image 1 is exact weapon design reference. Depict the SAME ONE complete weapon from clear THREE-QUARTER primary exterior view, modest angle revealing main identifiable face and thickness; show complete silhouette. Preserve exact bow limb curvature, string, grip wrapping, fittings and faction-specific decoration. Bow remains upright; show broadside surfaces and curved outline visibly, NEVER an edge-on thin straight line. Preserve original design, size ratios, color, weathering, wood grain, leather and metal materials. Match realistic rendered quality. Plain light grey studio background with soft neutral lighting. ONE weapon only, centered with margin at every end, no cropping. No people, hands, extra props, labels, text, multiple copies or collage. This is an angle change of the same object, NOT a redesign.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/weapons/byzantine/bow/reference.png"
+      ],
+      "generated_source": "/Users/tankaixi/.codex/generated_images/01a12635-26a5-7af3-bb58-cd249ba31308/exec-96fc11cd-a0de-45ae-9556-32257a153091.png",
+      "source": "2026-10-10-weapon-views/byzantine/bow/front.png",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "39471ad4199c813e6a9d51927c56744d0051e7999f2441c5aa17c3c3f81206b1",
+      "visual_review": "accepted: one complete isolated source weapon, no person or hands or collage, original main structure/materials preserved. Front is primary 3D reference, side minimal-perspective broadside, back opposite/rear view. Minor AI surface/fitting variation; not CAD-calibrated."
+    },
+    {
+      "faction": "tianchao",
+      "weapon": "bow",
+      "view": "side",
+      "prompt": "Use case: precise-object-edit. Asset type: independent Tripo weapon SIDE concept. Image 1 is exact weapon design reference. Depict the SAME ONE complete weapon from near-ORTHOGRAPHIC broadside SIDE profile with minimal perspective, retain readable thickness and structural detail; show complete silhouette, not narrow barrel-end or bow-edge view. Preserve exact bow limb curvature, string, grip wrapping, fittings and faction-specific decoration. Bow remains upright; show broadside surfaces and curved outline visibly, NEVER an edge-on thin straight line. Preserve original design, size ratios, color, weathering, wood grain, leather and metal materials. Match realistic rendered quality. Plain light grey studio background with soft neutral lighting. ONE weapon only, centered with margin at every end, no cropping. No people, hands, extra props, labels, text, multiple copies or collage. This is an angle change of the same object, NOT a redesign. Image 2 is newly established FRONT of same object, supporting consistency reference. Keep all structural details consistent with both inputs; change camera only to the requested side view. Do not duplicate Image 2 camera.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/weapons/tianchao/bow/reference.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-weapon-views/tianchao/bow/front.png"
+      ],
+      "generated_source": "/Users/tankaixi/.codex/generated_images/01a12635-26a5-7af3-bb58-cd249ba31308/exec-6da5a1ac-2beb-4f8c-9d05-0a233b41fe53.png",
+      "source": "2026-10-10-weapon-views/tianchao/bow/side.png",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "1f16a06384e9fac10c0009649e0311fabf349631eecb048e8400563ee01c70fa",
+      "visual_review": "accepted: one complete isolated source weapon, no person or hands or collage, original main structure/materials preserved. Front is primary 3D reference, side minimal-perspective broadside, back opposite/rear view. Minor AI surface/fitting variation; not CAD-calibrated."
+    },
+    {
+      "faction": "tianchao",
+      "weapon": "bow",
+      "view": "back",
+      "prompt": "Use case: precise-object-edit. Asset type: independent Tripo weapon BACK concept. Image 1 is exact weapon design reference. Depict the SAME ONE complete weapon from OPPOSITE SIDE / REAR three-quarter view revealing the other exterior side and rear structures while keeping complete weapon readable; truly view the opposite surface, not a mirror of the first image. Preserve exact bow limb curvature, string, grip wrapping, fittings and faction-specific decoration. Bow remains upright; show broadside surfaces and curved outline visibly, NEVER an edge-on thin straight line. Preserve original design, size ratios, color, weathering, wood grain, leather and metal materials. Match realistic rendered quality. Plain light grey studio background with soft neutral lighting. ONE weapon only, centered with margin at every end, no cropping. No people, hands, extra props, labels, text, multiple copies or collage. This is an angle change of the same object, NOT a redesign. Image 2 is newly established FRONT of same object, supporting consistency reference. Keep all structural details consistent with both inputs; change camera only to the requested back view. Do not duplicate Image 2 camera.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/weapons/tianchao/bow/reference.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-weapon-views/tianchao/bow/front.png"
+      ],
+      "generated_source": "/Users/tankaixi/.codex/generated_images/01a12635-26a5-7af3-bb58-cd249ba31308/exec-3085a06e-68fe-48bc-a5c6-44eaa269e078.png",
+      "source": "2026-10-10-weapon-views/tianchao/bow/back.png",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "71fcd71822c3fe29678ece17ac71d64b173d0636fed7aa0c4901a2407de0fc5b",
+      "visual_review": "accepted: one complete isolated source weapon, no person or hands or collage, original main structure/materials preserved. Front is primary 3D reference, side minimal-perspective broadside, back opposite/rear view. Minor AI surface/fitting variation; not CAD-calibrated."
+    },
+    {
+      "faction": "tianchao",
+      "weapon": "repeating-crossbow",
+      "view": "side",
+      "prompt": "Use case: precise-object-edit. Asset type: independent Tripo weapon SIDE concept. Image 1 is exact weapon design reference. Depict the SAME ONE complete weapon from near-ORTHOGRAPHIC broadside SIDE profile with minimal perspective, retain readable thickness and structural detail; show complete silhouette, not narrow barrel-end or bow-edge view. Preserve the exact Chinese wooden repeating crossbow, TOP rectangular arrow magazine, operating crank/lever, steel bow arms, bowstring and rail. Do not turn it into an ordinary crossbow or remove the TOP magazine. Preserve original design, size ratios, color, weathering, wood grain, leather and metal materials. Match realistic rendered quality. Plain light grey studio background with soft neutral lighting. ONE weapon only, centered with margin at every end, no cropping. No people, hands, extra props, labels, text, multiple copies or collage. This is an angle change of the same object, NOT a redesign. Image 2 is newly established FRONT of same object, supporting consistency reference. Keep all structural details consistent with both inputs; change camera only to the requested side view. Do not duplicate Image 2 camera.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/weapons/tianchao/repeating-crossbow/reference.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-weapon-views/tianchao/repeating-crossbow/front.png"
+      ],
+      "generated_source": "/Users/tankaixi/.codex/generated_images/01a12635-26a5-7af3-bb58-cd249ba31308/exec-feb6fabf-c5b8-4b3a-8789-147ffe7f8604.png",
+      "source": "2026-10-10-weapon-views/tianchao/repeating-crossbow/side.png",
+      "width": 2172,
+      "height": 724,
+      "sha256": "3ae3b50c431506f53bd55950f7cc6a66b59e814ec23cb858ca8ca5a0357d95a0",
+      "visual_review": "accepted: one complete isolated source weapon, no person or hands or collage, original main structure/materials preserved. Front is primary 3D reference, side minimal-perspective broadside, back opposite/rear view. Minor AI surface/fitting variation; not CAD-calibrated."
+    },
+    {
+      "faction": "tianchao",
+      "weapon": "repeating-crossbow",
+      "view": "back",
+      "prompt": "Use case: precise-object-edit. Asset type: independent Tripo weapon BACK concept. Image 1 is exact weapon design reference. Depict the SAME ONE complete weapon from OPPOSITE SIDE / REAR three-quarter view revealing the other exterior side and rear structures while keeping complete weapon readable; truly view the opposite surface, not a mirror of the first image. Preserve the exact Chinese wooden repeating crossbow, TOP rectangular arrow magazine, operating crank/lever, steel bow arms, bowstring and rail. Do not turn it into an ordinary crossbow or remove the TOP magazine. Preserve original design, size ratios, color, weathering, wood grain, leather and metal materials. Match realistic rendered quality. Plain light grey studio background with soft neutral lighting. ONE weapon only, centered with margin at every end, no cropping. No people, hands, extra props, labels, text, multiple copies or collage. This is an angle change of the same object, NOT a redesign. Image 2 is newly established FRONT of same object, supporting consistency reference. Keep all structural details consistent with both inputs; change camera only to the requested back view. Do not duplicate Image 2 camera.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/weapons/tianchao/repeating-crossbow/reference.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-weapon-views/tianchao/repeating-crossbow/front.png"
+      ],
+      "generated_source": "/Users/tankaixi/.codex/generated_images/01a12635-26a5-7af3-bb58-cd249ba31308/exec-0a00a1df-2a8a-49ac-8a61-3832a5259109.png",
+      "source": "2026-10-10-weapon-views/tianchao/repeating-crossbow/back.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "796451a06704216d6b53123b6ed6c23c6fe9f8436346ed47672c573c2033055b",
+      "visual_review": "accepted: one complete isolated source weapon, no person or hands or collage, original main structure/materials preserved. Front is primary 3D reference, side minimal-perspective broadside, back opposite/rear view. Minor AI surface/fitting variation; not CAD-calibrated."
+    },
+    {
+      "faction": "tianchao",
+      "weapon": "crossbow",
+      "view": "side",
+      "prompt": "Use case: precise-object-edit. Asset type: independent Tripo weapon SIDE concept. Image 1 is exact weapon design reference. Depict the SAME ONE complete weapon from near-ORTHOGRAPHIC broadside SIDE profile with minimal perspective, retain readable thickness and structural detail; show complete silhouette, not narrow barrel-end or bow-edge view. Preserve this exact wooden medieval crossbow stock, steel curved transverse bow arms, rope bowstring, trigger and metal stirrup, unchanged ornament and material. Preserve original design, size ratios, color, weathering, wood grain, leather and metal materials. Match realistic rendered quality. Plain light grey studio background with soft neutral lighting. ONE weapon only, centered with margin at every end, no cropping. No people, hands, extra props, labels, text, multiple copies or collage. This is an angle change of the same object, NOT a redesign. Image 2 is newly established FRONT of same object, supporting consistency reference. Keep all structural details consistent with both inputs; change camera only to the requested side view. Do not duplicate Image 2 camera.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/weapons/tianchao/crossbow/reference.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-weapon-views/tianchao/crossbow/front.png"
+      ],
+      "generated_source": "/Users/tankaixi/.codex/generated_images/01a12635-26a5-7af3-bb58-cd249ba31308/exec-7e0100cb-85b3-441c-89f8-40a56fc90a7c.png",
+      "source": "2026-10-10-weapon-views/tianchao/crossbow/side.png",
+      "width": 1881,
+      "height": 836,
+      "sha256": "9dea0ad7a835a974d9323c26ed10da423673da6ce07de685aae2eec46febc513",
+      "visual_review": "accepted: one complete isolated source weapon, no person or hands or collage, original main structure/materials preserved. Front is primary 3D reference, side minimal-perspective broadside, back opposite/rear view. Minor AI surface/fitting variation; not CAD-calibrated."
+    },
+    {
+      "faction": "tianchao",
+      "weapon": "crossbow",
+      "view": "back",
+      "prompt": "Use case: precise-object-edit. Asset type: independent Tripo weapon BACK concept. Image 1 is exact weapon design reference. Depict the SAME ONE complete weapon from OPPOSITE SIDE / REAR three-quarter view revealing the other exterior side and rear structures while keeping complete weapon readable; truly view the opposite surface, not a mirror of the first image. Preserve this exact wooden medieval crossbow stock, steel curved transverse bow arms, rope bowstring, trigger and metal stirrup, unchanged ornament and material. Preserve original design, size ratios, color, weathering, wood grain, leather and metal materials. Match realistic rendered quality. Plain light grey studio background with soft neutral lighting. ONE weapon only, centered with margin at every end, no cropping. No people, hands, extra props, labels, text, multiple copies or collage. This is an angle change of the same object, NOT a redesign. Image 2 is newly established FRONT of same object, supporting consistency reference. Keep all structural details consistent with both inputs; change camera only to the requested back view. Do not duplicate Image 2 camera.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/weapons/tianchao/crossbow/reference.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-weapon-views/tianchao/crossbow/front.png"
+      ],
+      "generated_source": "/Users/tankaixi/.codex/generated_images/01a12635-26a5-7af3-bb58-cd249ba31308/exec-d51de708-c8aa-4aa3-9c67-928bc7f9ef92.png",
+      "source": "2026-10-10-weapon-views/tianchao/crossbow/back.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "a8075b0ec94910219ae759319119d7fc89be6d8f0fb37a6f45d6ce2aff1513d3",
+      "visual_review": "accepted: one complete isolated source weapon, no person or hands or collage, original main structure/materials preserved. Front is primary 3D reference, side minimal-perspective broadside, back opposite/rear view. Minor AI surface/fitting variation; not CAD-calibrated."
+    },
+    {
+      "faction": "tianchao",
+      "weapon": "three-eyed-handgun",
+      "view": "side",
+      "prompt": "Use case: precise-object-edit. Asset type: independent Tripo weapon SIDE concept. Image 1 is exact weapon design reference. Depict the SAME ONE complete weapon from near-ORTHOGRAPHIC broadside SIDE profile with minimal perspective, retain readable thickness and structural detail; show complete silhouette, not narrow barrel-end or bow-edge view. Preserve the ancient THREE-EYED Chinese hand cannon: exactly THREE parallel short steel muzzle tubes clustered in a triangle, brass binding rings and three small touchholes on top, long straight wooden handle. Do not add a modern gun stock, modern trigger or scope; never one or four barrels. Preserve original design, size ratios, color, weathering, wood grain, leather and metal materials. Match realistic rendered quality. Plain light grey studio background with soft neutral lighting. ONE weapon only, centered with margin at every end, no cropping. No people, hands, extra props, labels, text, multiple copies or collage. This is an angle change of the same object, NOT a redesign. Image 2 is newly established FRONT of same object, supporting consistency reference. Keep all structural details consistent with both inputs; change camera only to the requested side view. Do not duplicate Image 2 camera.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/weapons/tianchao/three-eyed-handgun/reference.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-weapon-views/tianchao/three-eyed-handgun/front.png"
+      ],
+      "generated_source": "/Users/tankaixi/.codex/generated_images/01a12635-26a5-7af3-bb58-cd249ba31308/exec-42f9b27a-b706-4736-966c-1ae20fca5303.png",
+      "source": "2026-10-10-weapon-views/tianchao/three-eyed-handgun/side.png",
+      "width": 1672,
+      "height": 941,
+      "sha256": "cceaedc771be37fc7080debbe3d1334cd78bf743ef9a218ba47bb33099b1e45f",
+      "visual_review": "accepted: one complete isolated source weapon, no person or hands or collage, original main structure/materials preserved. Front is primary 3D reference, side minimal-perspective broadside, back opposite/rear view. Minor AI surface/fitting variation; not CAD-calibrated."
+    },
+    {
+      "faction": "byzantine",
+      "weapon": "javelin",
+      "view": "side",
+      "prompt": "Use case: precise-object-edit. Asset type: independent Tripo weapon SIDE concept. Image 1 is exact weapon design reference. Depict the SAME ONE complete weapon from near-ORTHOGRAPHIC broadside SIDE profile with minimal perspective, retain readable thickness and structural detail; show complete silhouette, not narrow barrel-end or bow-edge view. Preserve exact wooden shaft, faceted long pointed spearhead, small fittings and metal butt spike, their unchanged length ratios. One spear, not a bundle. Preserve original design, size ratios, color, weathering, wood grain, leather and metal materials. Match realistic rendered quality. Plain light grey studio background with soft neutral lighting. ONE weapon only, centered with margin at every end, no cropping. No people, hands, extra props, labels, text, multiple copies or collage. This is an angle change of the same object, NOT a redesign. Image 2 is newly established FRONT of same object, supporting consistency reference. Keep all structural details consistent with both inputs; change camera only to the requested side view. Do not duplicate Image 2 camera.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/weapons/byzantine/javelin/reference.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-weapon-views/byzantine/javelin/front.png"
+      ],
+      "generated_source": "/Users/tankaixi/.codex/generated_images/01a12635-26a5-7af3-bb58-cd249ba31308/exec-1126d074-1c11-45da-848d-7faf754b4938.png",
+      "source": "2026-10-10-weapon-views/byzantine/javelin/side.png",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "c0adc01e80178b42115dff4d3586b6df1d82b237baea6e8403b7b9f4e221f8f7",
+      "visual_review": "accepted: one complete isolated source weapon, no person or hands or collage, original main structure/materials preserved. Front is primary 3D reference, side minimal-perspective broadside, back opposite/rear view. Minor AI surface/fitting variation; not CAD-calibrated."
+    },
+    {
+      "faction": "byzantine",
+      "weapon": "javelin",
+      "view": "back",
+      "prompt": "Use case: precise-object-edit. Asset type: independent Tripo weapon BACK concept. Image 1 is exact weapon design reference. Depict the SAME ONE complete weapon from OPPOSITE SIDE / REAR three-quarter view revealing the other exterior side and rear structures while keeping complete weapon readable; truly view the opposite surface, not a mirror of the first image. Preserve exact wooden shaft, faceted long pointed spearhead, small fittings and metal butt spike, their unchanged length ratios. One spear, not a bundle. Preserve original design, size ratios, color, weathering, wood grain, leather and metal materials. Match realistic rendered quality. Plain light grey studio background with soft neutral lighting. ONE weapon only, centered with margin at every end, no cropping. No people, hands, extra props, labels, text, multiple copies or collage. This is an angle change of the same object, NOT a redesign. Image 2 is newly established FRONT of same object, supporting consistency reference. Keep all structural details consistent with both inputs; change camera only to the requested back view. Do not duplicate Image 2 camera.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/weapons/byzantine/javelin/reference.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-weapon-views/byzantine/javelin/front.png"
+      ],
+      "generated_source": "/Users/tankaixi/.codex/generated_images/01a12635-26a5-7af3-bb58-cd249ba31308/exec-5445053e-42d5-4999-ac3e-ed8a7a3aa3f9.png",
+      "source": "2026-10-10-weapon-views/byzantine/javelin/back.png",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "f221da4372586b8557ceb7e225d9c9ff0dfbd5b0475ed2134f4f23ba4d7cf8b5",
+      "visual_review": "accepted: one complete isolated source weapon, no person or hands or collage, original main structure/materials preserved. Front is primary 3D reference, side minimal-perspective broadside, back opposite/rear view. Minor AI surface/fitting variation; not CAD-calibrated."
+    },
+    {
+      "faction": "byzantine",
+      "weapon": "bow",
+      "view": "side",
+      "prompt": "Use case: precise-object-edit. Asset type: independent Tripo weapon SIDE concept. Image 1 is exact weapon design reference. Depict the SAME ONE complete weapon from near-ORTHOGRAPHIC broadside SIDE profile with minimal perspective, retain readable thickness and structural detail; show complete silhouette, not narrow barrel-end or bow-edge view. Preserve exact bow limb curvature, string, grip wrapping, fittings and faction-specific decoration. Bow remains upright; show broadside surfaces and curved outline visibly, NEVER an edge-on thin straight line. Preserve original design, size ratios, color, weathering, wood grain, leather and metal materials. Match realistic rendered quality. Plain light grey studio background with soft neutral lighting. ONE weapon only, centered with margin at every end, no cropping. No people, hands, extra props, labels, text, multiple copies or collage. This is an angle change of the same object, NOT a redesign. Image 2 is newly established FRONT of same object, supporting consistency reference. Keep all structural details consistent with both inputs; change camera only to the requested side view. Do not duplicate Image 2 camera.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/weapons/byzantine/bow/reference.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-weapon-views/byzantine/bow/front.png"
+      ],
+      "generated_source": "/Users/tankaixi/.codex/generated_images/01a12635-26a5-7af3-bb58-cd249ba31308/exec-f2edc3ee-f3b8-45ca-8bd9-d4928659b5bf.png",
+      "source": "2026-10-10-weapon-views/byzantine/bow/side.png",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "3cb0a3bd4a4513b7bf178f03b0b962bec78e2509a99b5bf21746fa04f836f282",
+      "visual_review": "accepted: one complete isolated source weapon, no person or hands or collage, original main structure/materials preserved. Front is primary 3D reference, side minimal-perspective broadside, back opposite/rear view. Minor AI surface/fitting variation; not CAD-calibrated."
+    },
+    {
+      "faction": "byzantine",
+      "weapon": "bow",
+      "view": "back",
+      "prompt": "Use case: precise-object-edit. Asset type: independent Tripo weapon BACK concept. Image 1 is exact weapon design reference. Depict the SAME ONE complete weapon from OPPOSITE SIDE / REAR three-quarter view revealing the other exterior side and rear structures while keeping complete weapon readable; truly view the opposite surface, not a mirror of the first image. Preserve exact bow limb curvature, string, grip wrapping, fittings and faction-specific decoration. Bow remains upright; show broadside surfaces and curved outline visibly, NEVER an edge-on thin straight line. Preserve original design, size ratios, color, weathering, wood grain, leather and metal materials. Match realistic rendered quality. Plain light grey studio background with soft neutral lighting. ONE weapon only, centered with margin at every end, no cropping. No people, hands, extra props, labels, text, multiple copies or collage. This is an angle change of the same object, NOT a redesign. Image 2 is newly established FRONT of same object, supporting consistency reference. Keep all structural details consistent with both inputs; change camera only to the requested back view. Do not duplicate Image 2 camera.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-05-modular-infantry/weapons/byzantine/bow/reference.png",
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-weapon-views/byzantine/bow/front.png"
+      ],
+      "generated_source": "/Users/tankaixi/.codex/generated_images/01a12635-26a5-7af3-bb58-cd249ba31308/exec-51cbc7cd-a1d2-4985-aeae-a7a446182637.png",
+      "source": "2026-10-10-weapon-views/byzantine/bow/back.png",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "a2e689152e6ba834a14773bf0671858832c5fc86c9eed6527cf4a1c882a96510",
+      "visual_review": "accepted: one complete isolated source weapon, no person or hands or collage, original main structure/materials preserved. Front is primary 3D reference, side minimal-perspective broadside, back opposite/rear view. Minor AI surface/fitting variation; not CAD-calibrated."
+    },
+    {
+      "faction": "tianchao",
+      "weapon": "three-eyed-handgun",
+      "view": "back",
+      "prompt": "Use case: precise-object-edit. Image 1 is EXACT same ancient Chinese THREE-EYED handgun design reference. Change CAMERA ONLY to a genuine REAR THREE-QUARTER view from the WOODEN HANDLE END. The capped wooden handle butt is in the NEAR lower right foreground; the long handle points AWAY toward upper left to the three-barrel metal cluster. SHOW the rear/breech side of the metal assembly and its attachment to handle. The open muzzles point AWAY from viewer and their dark circular openings SHOULD NOT be prominently visible. The camera looks along the long handle toward the CLOSED BACKS of the barrel assembly, NOT from muzzle side. Preserve exactly THREE tubes in triangular cluster, brass binding rings, three small touchholes, long straight wooden handle, original wood / weathered steel finish / proportions. No redesign, no rifle stock, no trigger guard, no modern parts. ONE complete weapon only, all ends inside generous margin, light grey neutral studio background, no people, hands, props, words, collage.",
+      "inputs": [
+        "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-10-weapon-views/tianchao/three-eyed-handgun/front.png"
+      ],
+      "generated_source": "/Users/tankaixi/.codex/generated_images/01a12635-26a5-7af3-bb58-cd249ba31308/exec-e5f5a9fa-3c34-4286-abbd-db0e00a5ecd1.png",
+      "source": "2026-10-10-weapon-views/tianchao/three-eyed-handgun/back.png",
+      "width": 1230,
+      "height": 1278,
+      "sha256": "8cefab7fe35a4e14246f52f5ed91cf2a0cd16cd8fed4d4de8c05d6cc7a98e264",
+      "visual_review": "accepted: one complete isolated source weapon, no person or hands or collage, original main structure/materials preserved. Front is primary 3D reference, side minimal-perspective broadside, back opposite/rear view. Minor AI surface/fitting variation; not CAD-calibrated.",
+      "replaced_draft": {
+        "generated_source": "/Users/tankaixi/.codex/generated_images/01a12635-26a5-7af3-bb58-cd249ba31308/exec-1b4bcde6-1d27-481d-8183-5f428bb0890a.png",
+        "prompt": "Use case: precise-object-edit. Asset type: independent Tripo weapon BACK concept. Image 1 is exact weapon design reference. Depict the SAME ONE complete weapon from OPPOSITE SIDE / REAR three-quarter view revealing the other exterior side and rear structures while keeping complete weapon readable; truly view the opposite surface, not a mirror of the first image. Preserve the ancient THREE-EYED Chinese hand cannon: exactly THREE parallel short steel muzzle tubes clustered in a triangle, brass binding rings and three small touchholes on top, long straight wooden handle. Do not add a modern gun stock, modern trigger or scope; never one or four barrels. Preserve original design, size ratios, color, weathering, wood grain, leather and metal materials. Match realistic rendered quality. Plain light grey studio background with soft neutral lighting. ONE weapon only, centered with margin at every end, no cropping. No people, hands, extra props, labels, text, multiple copies or collage. This is an angle change of the same object, NOT a redesign. Image 2 is newly established FRONT of same object, supporting consistency reference. Keep all structural details consistent with both inputs; change camera only to the requested back view. Do not duplicate Image 2 camera.",
+        "sha256": "2de5965b7a37981f923dca8f4aad4e195952f069e01036fc8e0a1885112ca401",
+        "reason": "Opposite-side draft still predominantly showed muzzles; replaced with genuine handle-end rear perspective."
+      }
+    }
+  ]
+}

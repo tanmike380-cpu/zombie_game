@@ -1,0 +1,208 @@
+{
+  "assets": [
+    {
+      "id": "humans/tianchao/archer-kit-v1/militia",
+      "category": "human",
+      "faction": "tianchao",
+      "rank": "militia",
+      "unit_kind": "archer",
+      "accessory": "back-side archer quiver",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-10-infantry-kits/tianchao/archer/militia/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "2b24bd193ca6fdfc1885617e254dd6881972bca0f5ec0e328ce84e97c39a43a5"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-10-infantry-kits/tianchao/archer/militia/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "e66f4dfee657ca57dd7929cdf5fe33d1642d0e523cfc68c8c2102ede5b828e51"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-10-infantry-kits/tianchao/archer/militia/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "ca54c9fba144f45bdfc76cceb782f7f259acb2f64b0a39f86a70bdc28245d74c"
+        }
+      ]
+    },
+    {
+      "id": "humans/tianchao/archer-kit-v1/veteran",
+      "category": "human",
+      "faction": "tianchao",
+      "rank": "veteran",
+      "unit_kind": "archer",
+      "accessory": "back-side archer quiver",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-10-infantry-kits/tianchao/archer/veteran/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "6a53eefe7ca5087013832212995f034a520c8ec7173fefd3a0d8a6ef3792e7ca"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-10-infantry-kits/tianchao/archer/veteran/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "b78fe65803fa0d4b41062519f7dc2c11145f1aa0a6c128f8a28c4f63f3608eaf"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-10-infantry-kits/tianchao/archer/veteran/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "8c34909251f2e384f0b071ea6abe05aaf0b33b13946b6e1f39288673725a156e"
+        }
+      ]
+    },
+    {
+      "id": "humans/tianchao/archer-kit-v1/elite",
+      "category": "human",
+      "faction": "tianchao",
+      "rank": "elite",
+      "unit_kind": "archer",
+      "accessory": "back-side archer quiver",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-10-infantry-kits/tianchao/archer/elite/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "6797461453d0b99c4b2a0b1de9237296b5e2f1ffc5e6d90acce59a06989d4b13"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-10-infantry-kits/tianchao/archer/elite/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "bcbdd80d8655b2df7b79140a19b0cf93ddaefdc879d0e850d2e61e1d5ac5fd60"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-10-infantry-kits/tianchao/archer/elite/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "c4c7c7ffb6b62ff848d42481365ffd2441c89f788f34efef823010329e54a129"
+        }
+      ]
+    },
+    {
+      "id": "humans/tianchao/repeating-crossbowman-kit-v1/militia",
+      "category": "human",
+      "faction": "tianchao",
+      "rank": "militia",
+      "unit_kind": "repeating-crossbowman",
+      "accessory": "closed wood and leather bolt box",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-10-infantry-kits/tianchao/repeating-crossbowman/militia/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "dabbb6e7b55e51f92f370d46284da4ecee68395b58c272d4007d457ed1028084"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-10-infantry-kits/tianchao/repeating-crossbowman/militia/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "5bcc88b90cc0920b40e04556f77633ddcc2bc529fec905af0739bec50a61e0f9"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-10-infantry-kits/tianchao/repeating-crossbowman/militia/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "a6b17f48a5c4368e4631f466d5dca3c4edb146be3b8db1f7e4e6bddd29fe4fa4"
+        }
+      ]
+    },
+    {
+      "id": "humans/tianchao/repeating-crossbowman-kit-v1/veteran",
+      "category": "human",
+      "faction": "tianchao",
+      "rank": "veteran",
+      "unit_kind": "repeating-crossbowman",
+      "accessory": "closed wood and leather bolt box",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-10-infantry-kits/tianchao/repeating-crossbowman/veteran/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "37423dc98eb33dadbe368cd3269a71398da142b4b5b666d0642c455450b23852"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-10-infantry-kits/tianchao/repeating-crossbowman/veteran/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "09986467e83219c120493558abfda4c7fdeb6f61bb52db1288cdf3288948e989"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-10-infantry-kits/tianchao/repeating-crossbowman/veteran/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "53ac076ea8c6964ab7b1e6d2c643efcc120f32e56307486fc71ed03259e6b5c1"
+        }
+      ]
+    },
+    {
+      "id": "humans/tianchao/repeating-crossbowman-kit-v1/elite",
+      "category": "human",
+      "faction": "tianchao",
+      "rank": "elite",
+      "unit_kind": "repeating-crossbowman",
+      "accessory": "closed wood and leather bolt box",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-10-infantry-kits/tianchao/repeating-crossbowman/elite/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "00d9c293e08d2eec4e6de0c80dd09c93b92a13bbcae3ea9931662518c1f90863"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-10-infantry-kits/tianchao/repeating-crossbowman/elite/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "8132a7130a8a3ebe6d09d83ea9fb4ff76077825abb405fc067c8377ae3222feb"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-10-infantry-kits/tianchao/repeating-crossbowman/elite/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "8878bae4f4df9efc9569e9c00942279ecfb5bb7fae38687faeaf7d76392ac39d"
+        }
+      ]
+    }
+  ]
+}

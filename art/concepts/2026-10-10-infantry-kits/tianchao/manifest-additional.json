@@ -1,0 +1,208 @@
+{
+  "assets": [
+    {
+      "id": "humans/tianchao/crossbowman-kit-v1/militia",
+      "category": "human",
+      "faction": "tianchao",
+      "rank": "militia",
+      "unit_kind": "crossbowman",
+      "accessory": "short crossbow bolt pouch at right rear hip",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-10-infantry-kits/tianchao/crossbowman/militia/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "c32d91fe38b03cd6d9c3e95256603f3aa81c3c308f1aff786b4c6f599ee1c828"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-10-infantry-kits/tianchao/crossbowman/militia/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "6ce61e4e40f69249c916eaf845b2218d44089f1f72e44946abea28490be0887c"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-10-infantry-kits/tianchao/crossbowman/militia/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "fc00ed69aebdeead4fddf25f3f67d2149e6605ef31208306c04df4caa71ff486"
+        }
+      ]
+    },
+    {
+      "id": "humans/tianchao/crossbowman-kit-v1/veteran",
+      "category": "human",
+      "faction": "tianchao",
+      "rank": "veteran",
+      "unit_kind": "crossbowman",
+      "accessory": "short crossbow bolt pouch at right rear hip",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-10-infantry-kits/tianchao/crossbowman/veteran/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "1584265ec7b0f94f9c8720c70db57e51fbc0977091a6dc8ccf85ed94a191624f"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-10-infantry-kits/tianchao/crossbowman/veteran/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "8cdf0ecf1c5e3040775ebe57367aaaeb2f26e16ed084cd221bab638687b02187"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-10-infantry-kits/tianchao/crossbowman/veteran/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "6ddbe171724282e3161a3a7acb71bfe6fb1cc49b171eeda8e4aaae312f7fdefb"
+        }
+      ]
+    },
+    {
+      "id": "humans/tianchao/crossbowman-kit-v1/elite",
+      "category": "human",
+      "faction": "tianchao",
+      "rank": "elite",
+      "unit_kind": "crossbowman",
+      "accessory": "short crossbow bolt pouch at right rear hip",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-10-infantry-kits/tianchao/crossbowman/elite/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "b3be28208974b7468cecc89490da3fe31b82608e9481ce8c36ff22569931bbac"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-10-infantry-kits/tianchao/crossbowman/elite/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "8d265be8b9c5df998100da8ccc1768ab3d1fee8dd856e560f539ac97e60c41b8"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-10-infantry-kits/tianchao/crossbowman/elite/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "97aa31a008401dd77f747a029c1c8ec01ead2a246b07fcd89b54f56153414dad"
+        }
+      ]
+    },
+    {
+      "id": "humans/tianchao/three-eyed-handgunner-kit-v1/militia",
+      "category": "human",
+      "faction": "tianchao",
+      "rank": "militia",
+      "unit_kind": "three-eyed-handgunner",
+      "accessory": "Chinese double-bulb drinking gourd at right hip",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-10-infantry-kits/tianchao/three-eyed-handgunner/militia/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "7f894a397dd18a9eb636df575a7ece95158407c9c72fe8fc8abc687a1de2daa6"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-10-infantry-kits/tianchao/three-eyed-handgunner/militia/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "509557b5eec06093bd082c0e0558a0ff26db642c5a081d6dec09c30bc8cc7b73"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-10-infantry-kits/tianchao/three-eyed-handgunner/militia/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "5075b3523fc9bdb79b123fb51c2184b01854aab7c9558060e64fd4483d69ddf1"
+        }
+      ]
+    },
+    {
+      "id": "humans/tianchao/three-eyed-handgunner-kit-v1/veteran",
+      "category": "human",
+      "faction": "tianchao",
+      "rank": "veteran",
+      "unit_kind": "three-eyed-handgunner",
+      "accessory": "Chinese double-bulb drinking gourd at right hip",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-10-infantry-kits/tianchao/three-eyed-handgunner/veteran/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "8efd28c4520845a34b36af7130bca163f474c8175b20f27fa49aa007d55bb3b3"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-10-infantry-kits/tianchao/three-eyed-handgunner/veteran/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "08905652a7e30572d9e0178dae8e68cb9210b64f15c719acab25812619622e34"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-10-infantry-kits/tianchao/three-eyed-handgunner/veteran/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "6046b3753b51630b2be6a88d8244358bacda8c0194bbaceed9c543b9d6c27683"
+        }
+      ]
+    },
+    {
+      "id": "humans/tianchao/three-eyed-handgunner-kit-v1/elite",
+      "category": "human",
+      "faction": "tianchao",
+      "rank": "elite",
+      "unit_kind": "three-eyed-handgunner",
+      "accessory": "Chinese double-bulb drinking gourd at right hip",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-10-infantry-kits/tianchao/three-eyed-handgunner/elite/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "8b664aa64d5116b765201e5dbf5fe9fe7a99df6f9ad91ab4f809eac8c6d1063c"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-10-infantry-kits/tianchao/three-eyed-handgunner/elite/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "ad50457aed7b10e400c26c5d73acdc9a1fe65b8eba0d79308de2db3babbd7fd8"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-10-infantry-kits/tianchao/three-eyed-handgunner/elite/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "8cdfe41d6278345409b68192f306de7182c964d96dfd56ef7bf33f631e2f78e1"
+        }
+      ]
+    }
+  ]
+}

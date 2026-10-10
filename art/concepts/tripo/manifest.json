@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 5,
   "assets": [
     {
       "id": "buildings/tianchao/01-hq-age1",
@@ -33166,334 +33166,6 @@
       ]
     },
     {
-      "id": "humans/tianchao/base/militia",
-      "category": "human",
-      "label": "天朝 · 民兵共用基础身体",
-      "projection": "orthographic_t_pose",
-      "views": [
-        {
-          "name": "front",
-          "source": "2026-10-05-modular-infantry/bodies/tianchao/militia/front.png",
-          "copy_source": true,
-          "width": 1254,
-          "height": 1254,
-          "sha256": "674ad487f7b0d78ce82081fcf9bc57f572430bd30962522b4c311f9e969c179b"
-        },
-        {
-          "name": "side",
-          "source": "2026-10-05-modular-infantry/bodies/tianchao/militia/side.png",
-          "copy_source": true,
-          "width": 1254,
-          "height": 1254,
-          "sha256": "8bdcd72852d9438960857f4ff2fcc41745561d775a942f2f394b25460c687158"
-        },
-        {
-          "name": "back",
-          "source": "2026-10-05-modular-infantry/bodies/tianchao/militia/back.png",
-          "copy_source": true,
-          "width": 1254,
-          "height": 1254,
-          "sha256": "35a349da813ac79853a864729cb7993218a13c459288b35d2fb5f21420ce7a0a"
-        }
-      ]
-    },
-    {
-      "id": "humans/tianchao/base/veteran",
-      "category": "human",
-      "label": "天朝 · 老兵共用基础身体",
-      "projection": "orthographic_t_pose",
-      "views": [
-        {
-          "name": "front",
-          "source": "2026-10-05-modular-infantry/bodies/tianchao/veteran/front.png",
-          "copy_source": true,
-          "width": 1254,
-          "height": 1254,
-          "sha256": "53351f0421486f4654c677f05600495ed4ae83f2c9c46eb9ba293709570dfbc1"
-        },
-        {
-          "name": "side",
-          "source": "2026-10-05-modular-infantry/bodies/tianchao/veteran/side.png",
-          "copy_source": true,
-          "width": 1254,
-          "height": 1254,
-          "sha256": "da0d20cd4c1cf9c5f2146415266843cd58dbdc2ca2da34f35aa4182906bd5625"
-        },
-        {
-          "name": "back",
-          "source": "2026-10-05-modular-infantry/bodies/tianchao/veteran/back.png",
-          "copy_source": true,
-          "width": 1254,
-          "height": 1254,
-          "sha256": "a203696721b39c7172f1467d7ba25b21f6d8229a7202da75b5c6c07a26763ed9"
-        }
-      ]
-    },
-    {
-      "id": "humans/tianchao/base/elite",
-      "category": "human",
-      "label": "天朝 · 精英共用基础身体",
-      "projection": "orthographic_t_pose",
-      "views": [
-        {
-          "name": "front",
-          "source": "2026-10-05-modular-infantry/bodies/tianchao/elite/front.png",
-          "copy_source": true,
-          "width": 1254,
-          "height": 1254,
-          "sha256": "dab1396084c1af3bfc807a2dfa08c7d901f9e3f7308af2e8c83e9a06b578bf78"
-        },
-        {
-          "name": "side",
-          "source": "2026-10-05-modular-infantry/bodies/tianchao/elite/side.png",
-          "copy_source": true,
-          "width": 1254,
-          "height": 1254,
-          "sha256": "1ba9ccc5a4ecbbbf9d5f706d59e572a04ed319e7c7714449b6c06dcec7fd55c6"
-        },
-        {
-          "name": "back",
-          "source": "2026-10-05-modular-infantry/bodies/tianchao/elite/back.png",
-          "copy_source": true,
-          "width": 1254,
-          "height": 1254,
-          "sha256": "120551fd85745fe5cb10952c6fdcbb64dd8f339ebce9e40a8bc52d56c44e2bad"
-        }
-      ]
-    },
-    {
-      "id": "humans/byzantine/base/militia",
-      "category": "human",
-      "label": "拜占庭 · 民兵共用基础身体",
-      "projection": "orthographic_t_pose",
-      "views": [
-        {
-          "name": "front",
-          "source": "2026-10-05-modular-infantry/bodies/byzantine/militia/front.png",
-          "copy_source": true,
-          "width": 1254,
-          "height": 1254,
-          "sha256": "778b8e4ab9d9211aaa82ae01a4da945d46e1c58838f52e95f70f6e44afcbc3f1"
-        },
-        {
-          "name": "side",
-          "source": "2026-10-05-modular-infantry/bodies/byzantine/militia/side.png",
-          "copy_source": true,
-          "width": 1254,
-          "height": 1254,
-          "sha256": "119bd10a30f84178a8c1107beb4204043971f51f110d2c6def2c6cf2ad14de92"
-        },
-        {
-          "name": "back",
-          "source": "2026-10-05-modular-infantry/bodies/byzantine/militia/back.png",
-          "copy_source": true,
-          "width": 1254,
-          "height": 1254,
-          "sha256": "c9d9b3f205e81002ff14ff0fc5c453886d0e770cfeb152624ea9ae9ff18ca8a7"
-        }
-      ]
-    },
-    {
-      "id": "humans/byzantine/base/veteran",
-      "category": "human",
-      "label": "拜占庭 · 老兵共用基础身体",
-      "projection": "orthographic_t_pose",
-      "views": [
-        {
-          "name": "front",
-          "source": "2026-10-05-modular-infantry/bodies/byzantine/veteran/front.png",
-          "copy_source": true,
-          "width": 1254,
-          "height": 1254,
-          "sha256": "57865ca0731df37439b9c381338f23ed6a81a3d7ca2124ed5809890f6614e38c"
-        },
-        {
-          "name": "side",
-          "source": "2026-10-05-modular-infantry/bodies/byzantine/veteran/side.png",
-          "copy_source": true,
-          "width": 1254,
-          "height": 1254,
-          "sha256": "42eb13f4d76986366115697954d11bf76f8b4243a08dfd555b93ac1cc2913d7f"
-        },
-        {
-          "name": "back",
-          "source": "2026-10-05-modular-infantry/bodies/byzantine/veteran/back.png",
-          "copy_source": true,
-          "width": 1254,
-          "height": 1254,
-          "sha256": "2325db7000bb8d8895d6626c48e693f4d4c5d86f51505f25fa9f3a71f91acee8"
-        }
-      ]
-    },
-    {
-      "id": "humans/byzantine/base/elite",
-      "category": "human",
-      "label": "拜占庭 · 精英共用基础身体",
-      "projection": "orthographic_t_pose",
-      "views": [
-        {
-          "name": "front",
-          "source": "2026-10-05-modular-infantry/bodies/byzantine/elite/front.png",
-          "copy_source": true,
-          "width": 1254,
-          "height": 1254,
-          "sha256": "0f58e4859831f45eb110cf6e52d333e08ec90e9976591343300a28d91d3e3ad9"
-        },
-        {
-          "name": "side",
-          "source": "2026-10-05-modular-infantry/bodies/byzantine/elite/side.png",
-          "copy_source": true,
-          "width": 1254,
-          "height": 1254,
-          "sha256": "cd049ea20a14368e7b7cf733fea51c8a520c7141dcf82302c6b5d3d286a2e346"
-        },
-        {
-          "name": "back",
-          "source": "2026-10-05-modular-infantry/bodies/byzantine/elite/back.png",
-          "copy_source": true,
-          "width": 1254,
-          "height": 1254,
-          "sha256": "9a6dc9fc1f479079d7af8018acc758faade37aebdb486215721638ae2b0aecca"
-        }
-      ]
-    },
-    {
-      "id": "weapons/tianchao/bow",
-      "label": "弓·天朝",
-      "category": "weapon",
-      "faction": "tianchao",
-      "projection": "single isolated object, broadside or near-orthographic three-quarter; not calibrated orthographic",
-      "views": [
-        {
-          "name": "reference",
-          "source": "2026-10-05-modular-infantry/weapons/tianchao/bow/reference.png",
-          "copy_source": true,
-          "width": 1024,
-          "height": 1536,
-          "sha256": "502342da967b4a67916a02b59f6387fddb82e0bacce11d888b334b05fb90f1d8"
-        }
-      ]
-    },
-    {
-      "id": "weapons/tianchao/repeating-crossbow",
-      "label": "诸葛连弩",
-      "category": "weapon",
-      "faction": "tianchao",
-      "projection": "single isolated object, broadside or near-orthographic three-quarter; not calibrated orthographic",
-      "views": [
-        {
-          "name": "reference",
-          "source": "2026-10-05-modular-infantry/weapons/tianchao/repeating-crossbow/reference.png",
-          "copy_source": true,
-          "width": 1536,
-          "height": 1024,
-          "sha256": "e931c595057195e70cc6efb8c5e61fefc15161f06d4f0cfcabc0f3e65ab886fd"
-        }
-      ]
-    },
-    {
-      "id": "weapons/tianchao/crossbow",
-      "label": "普通弩·天朝",
-      "category": "weapon",
-      "faction": "tianchao",
-      "projection": "single isolated object, broadside or near-orthographic three-quarter; not calibrated orthographic",
-      "views": [
-        {
-          "name": "reference",
-          "source": "2026-10-05-modular-infantry/weapons/tianchao/crossbow/reference.png",
-          "copy_source": true,
-          "width": 1536,
-          "height": 1024,
-          "sha256": "209a9add1cc734ec12381d79f22ac106767af636becfad57d656c781ca4e0b99"
-        }
-      ]
-    },
-    {
-      "id": "weapons/tianchao/three-eyed-handgun",
-      "label": "三眼神铳",
-      "category": "weapon",
-      "faction": "tianchao",
-      "projection": "single isolated object, broadside or near-orthographic three-quarter; not calibrated orthographic",
-      "views": [
-        {
-          "name": "reference",
-          "source": "2026-10-05-modular-infantry/weapons/tianchao/three-eyed-handgun/reference.png",
-          "copy_source": true,
-          "width": 1230,
-          "height": 1278,
-          "sha256": "69cb6178227dcfb50bca8f9c4b6f44269ba8ea743de35c89f886a3fe3061a118"
-        }
-      ]
-    },
-    {
-      "id": "weapons/byzantine/javelin",
-      "label": "投矛",
-      "category": "weapon",
-      "faction": "byzantine",
-      "projection": "single isolated object, broadside or near-orthographic three-quarter; not calibrated orthographic",
-      "views": [
-        {
-          "name": "reference",
-          "source": "2026-10-05-modular-infantry/weapons/byzantine/javelin/reference.png",
-          "copy_source": true,
-          "width": 1024,
-          "height": 1536,
-          "sha256": "379ae767ee3a2fdab150f24c50f1dbdb97d0b5dc3465d6eb8ae02985c9d0f910"
-        }
-      ]
-    },
-    {
-      "id": "weapons/byzantine/bow",
-      "label": "弓·拜占庭",
-      "category": "weapon",
-      "faction": "byzantine",
-      "projection": "single isolated object, broadside or near-orthographic three-quarter; not calibrated orthographic",
-      "views": [
-        {
-          "name": "reference",
-          "source": "2026-10-05-modular-infantry/weapons/byzantine/bow/reference.png",
-          "copy_source": true,
-          "width": 1024,
-          "height": 1536,
-          "sha256": "b68872ebd39a79ff366c3012ea7ee3bb9922d9229b3a448271f9398dddae379c"
-        }
-      ]
-    },
-    {
-      "id": "weapons/byzantine/crossbow",
-      "label": "普通弩·拜占庭",
-      "category": "weapon",
-      "faction": "byzantine",
-      "projection": "single isolated object, broadside or near-orthographic three-quarter; not calibrated orthographic",
-      "views": [
-        {
-          "name": "reference",
-          "source": "2026-10-05-modular-infantry/weapons/byzantine/crossbow/reference.png",
-          "copy_source": true,
-          "width": 1254,
-          "height": 1254,
-          "sha256": "542d76c31578660445fba3e67cc880ed3f3df7af0bfdca6eef4eb1b8a37c073d"
-        }
-      ]
-    },
-    {
-      "id": "weapons/byzantine/matchlock",
-      "label": "单发火绳枪",
-      "category": "weapon",
-      "faction": "byzantine",
-      "projection": "single isolated object, broadside or near-orthographic three-quarter; not calibrated orthographic",
-      "views": [
-        {
-          "name": "reference",
-          "source": "2026-10-05-modular-infantry/weapons/byzantine/matchlock/reference.png",
-          "copy_source": true,
-          "width": 1024,
-          "height": 1536,
-          "sha256": "a822305295c4c8b19a226b92d3263e399c3bbad654a44ef765b58aeedfc6ea3b"
-        }
-      ]
-    },
-    {
       "id": "buildings/tianchao/26-arrow-tower-footprint-v2",
       "previous_id": "buildings/tianchao/26-arrow-tower",
       "label": "箭塔",
@@ -33760,6 +33432,1090 @@
           "width": 1199,
           "height": 1312,
           "sha256": "1f35f36ec9bae1779f59e27c39dbe495a1df6c2cd3e7da6627ff9d372943ebec"
+        }
+      ]
+    },
+    {
+      "id": "humans/tianchao/archer-kit-v1/militia",
+      "category": "human",
+      "faction": "tianchao",
+      "rank": "militia",
+      "unit_kind": "archer",
+      "accessory": "back-side archer quiver",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-10-infantry-kits/tianchao/archer/militia/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "2b24bd193ca6fdfc1885617e254dd6881972bca0f5ec0e328ce84e97c39a43a5"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-10-infantry-kits/tianchao/archer/militia/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "e66f4dfee657ca57dd7929cdf5fe33d1642d0e523cfc68c8c2102ede5b828e51"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-10-infantry-kits/tianchao/archer/militia/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "ca54c9fba144f45bdfc76cceb782f7f259acb2f64b0a39f86a70bdc28245d74c"
+        }
+      ]
+    },
+    {
+      "id": "humans/tianchao/archer-kit-v1/veteran",
+      "category": "human",
+      "faction": "tianchao",
+      "rank": "veteran",
+      "unit_kind": "archer",
+      "accessory": "back-side archer quiver",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-10-infantry-kits/tianchao/archer/veteran/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "6a53eefe7ca5087013832212995f034a520c8ec7173fefd3a0d8a6ef3792e7ca"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-10-infantry-kits/tianchao/archer/veteran/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "b78fe65803fa0d4b41062519f7dc2c11145f1aa0a6c128f8a28c4f63f3608eaf"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-10-infantry-kits/tianchao/archer/veteran/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "8c34909251f2e384f0b071ea6abe05aaf0b33b13946b6e1f39288673725a156e"
+        }
+      ]
+    },
+    {
+      "id": "humans/tianchao/archer-kit-v1/elite",
+      "category": "human",
+      "faction": "tianchao",
+      "rank": "elite",
+      "unit_kind": "archer",
+      "accessory": "back-side archer quiver",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-10-infantry-kits/tianchao/archer/elite/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "6797461453d0b99c4b2a0b1de9237296b5e2f1ffc5e6d90acce59a06989d4b13"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-10-infantry-kits/tianchao/archer/elite/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "bcbdd80d8655b2df7b79140a19b0cf93ddaefdc879d0e850d2e61e1d5ac5fd60"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-10-infantry-kits/tianchao/archer/elite/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "c4c7c7ffb6b62ff848d42481365ffd2441c89f788f34efef823010329e54a129"
+        }
+      ]
+    },
+    {
+      "id": "humans/tianchao/repeating-crossbowman-kit-v1/militia",
+      "category": "human",
+      "faction": "tianchao",
+      "rank": "militia",
+      "unit_kind": "repeating-crossbowman",
+      "accessory": "closed wood and leather bolt box",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-10-infantry-kits/tianchao/repeating-crossbowman/militia/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "dabbb6e7b55e51f92f370d46284da4ecee68395b58c272d4007d457ed1028084"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-10-infantry-kits/tianchao/repeating-crossbowman/militia/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "5bcc88b90cc0920b40e04556f77633ddcc2bc529fec905af0739bec50a61e0f9"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-10-infantry-kits/tianchao/repeating-crossbowman/militia/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "a6b17f48a5c4368e4631f466d5dca3c4edb146be3b8db1f7e4e6bddd29fe4fa4"
+        }
+      ]
+    },
+    {
+      "id": "humans/tianchao/repeating-crossbowman-kit-v1/veteran",
+      "category": "human",
+      "faction": "tianchao",
+      "rank": "veteran",
+      "unit_kind": "repeating-crossbowman",
+      "accessory": "closed wood and leather bolt box",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-10-infantry-kits/tianchao/repeating-crossbowman/veteran/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "37423dc98eb33dadbe368cd3269a71398da142b4b5b666d0642c455450b23852"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-10-infantry-kits/tianchao/repeating-crossbowman/veteran/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "09986467e83219c120493558abfda4c7fdeb6f61bb52db1288cdf3288948e989"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-10-infantry-kits/tianchao/repeating-crossbowman/veteran/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "53ac076ea8c6964ab7b1e6d2c643efcc120f32e56307486fc71ed03259e6b5c1"
+        }
+      ]
+    },
+    {
+      "id": "humans/tianchao/repeating-crossbowman-kit-v1/elite",
+      "category": "human",
+      "faction": "tianchao",
+      "rank": "elite",
+      "unit_kind": "repeating-crossbowman",
+      "accessory": "closed wood and leather bolt box",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-10-infantry-kits/tianchao/repeating-crossbowman/elite/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "00d9c293e08d2eec4e6de0c80dd09c93b92a13bbcae3ea9931662518c1f90863"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-10-infantry-kits/tianchao/repeating-crossbowman/elite/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "8132a7130a8a3ebe6d09d83ea9fb4ff76077825abb405fc067c8377ae3222feb"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-10-infantry-kits/tianchao/repeating-crossbowman/elite/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "8878bae4f4df9efc9569e9c00942279ecfb5bb7fae38687faeaf7d76392ac39d"
+        }
+      ]
+    },
+    {
+      "id": "humans/byzantine/archer-kit-v1/militia",
+      "category": "human",
+      "faction": "byzantine",
+      "rank": "militia",
+      "unit_kind": "archer",
+      "accessory": "diagonal back quiver",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-10-infantry-kits/byzantine/archer/militia/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "2893e5e27c57c780cbdb08e0ce9b2ddab0238c34ffe88cbaa44efcf7230ee1f4"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-10-infantry-kits/byzantine/archer/militia/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "63ab29390f6808dff214b694de50ea077919b26eec4b2241a1b5793fc28c5ef4"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-10-infantry-kits/byzantine/archer/militia/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "c71712b8e5434e8173bbf9c73496317477a5f97f5df141503f032af3e3579ca2"
+        }
+      ]
+    },
+    {
+      "id": "humans/byzantine/archer-kit-v1/veteran",
+      "category": "human",
+      "faction": "byzantine",
+      "rank": "veteran",
+      "unit_kind": "archer",
+      "accessory": "diagonal back quiver",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-10-infantry-kits/byzantine/archer/veteran/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "7626338ec6b34250096184bb163e37c274b198cacc5f420b3ca2a529128ba6cc"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-10-infantry-kits/byzantine/archer/veteran/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "a78a24c13062f04586649e7d08a6a49c49337b9ac52fd1f7830927ebf5a88335"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-10-infantry-kits/byzantine/archer/veteran/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "6ce43e4e80b56d9fc76f9c0592c4b14642a0b0bd2b7d6edab9139e073d7d4dc4"
+        }
+      ]
+    },
+    {
+      "id": "humans/byzantine/archer-kit-v1/elite",
+      "category": "human",
+      "faction": "byzantine",
+      "rank": "elite",
+      "unit_kind": "archer",
+      "accessory": "diagonal back quiver",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-10-infantry-kits/byzantine/archer/elite/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "769f8a786ad16bb70eede32bdd03910f9a0ff669d8bd5fb5b7c97c89fc08b548"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-10-infantry-kits/byzantine/archer/elite/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "1551b3846d1a365bb620e9148c526510ea35cdc79311e85d130a2f60098d5c4d"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-10-infantry-kits/byzantine/archer/elite/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "484b006f2312fbbfae478403a3dc1ac95c962713d3451300b4a46149a26a378c"
+        }
+      ]
+    },
+    {
+      "id": "humans/byzantine/crossbowman-kit-v1/militia",
+      "category": "human",
+      "faction": "byzantine",
+      "rank": "militia",
+      "unit_kind": "crossbowman",
+      "accessory": "short-bolt belt case",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-10-infantry-kits/byzantine/crossbowman/militia/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "3a274c2779e7b73e612ba85908f605702c5b2654dccad6b15e8c2d50b14dbcf3"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-10-infantry-kits/byzantine/crossbowman/militia/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "e69bcdc8859de9a1e1006ea4597be476a49785d6eca8d28ab56a16da1b98473a"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-10-infantry-kits/byzantine/crossbowman/militia/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "113bd2792fd1c1fa996fb88468e4227921c8d47c16ffb36c76e7028d8b09a3fa"
+        }
+      ]
+    },
+    {
+      "id": "humans/byzantine/crossbowman-kit-v1/veteran",
+      "category": "human",
+      "faction": "byzantine",
+      "rank": "veteran",
+      "unit_kind": "crossbowman",
+      "accessory": "short-bolt belt case",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-10-infantry-kits/byzantine/crossbowman/veteran/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "360cc4fea71e2b5463cb8e0e67b56cf66cac0c3edc7202493e4699e1ee0fd40a"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-10-infantry-kits/byzantine/crossbowman/veteran/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "45ed7ad0e54c2efa1ab11d2e03b2a359b8897dc803bdce36dfc7ba0e6ea6d267"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-10-infantry-kits/byzantine/crossbowman/veteran/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "6b8291119fab7f57990f210e672a58c40db5590894099d490ed4f9a6d7103fe1"
+        }
+      ]
+    },
+    {
+      "id": "humans/byzantine/crossbowman-kit-v1/elite",
+      "category": "human",
+      "faction": "byzantine",
+      "rank": "elite",
+      "unit_kind": "crossbowman",
+      "accessory": "short-bolt belt case",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-10-infantry-kits/byzantine/crossbowman/elite/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "fce2736ac0c801c3c45ad8877beccf24fc01e07fa2e9d321d3e7867f286e331f"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-10-infantry-kits/byzantine/crossbowman/elite/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "cef12958ea6470db3ba5d31e65d38fd1be0257382effac99cfdeee8ce6cbab89"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-10-infantry-kits/byzantine/crossbowman/elite/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "8f56eb8409e6891e1c2b746c3d8a1250800b7daaa3cd639b7c1ae47370af5576"
+        }
+      ]
+    },
+    {
+      "id": "humans/byzantine/javelin-legionary-kit-v1/militia",
+      "category": "human",
+      "faction": "byzantine",
+      "rank": "militia",
+      "unit_kind": "javelin-legionary",
+      "accessory": "back javelin carrying harness",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-10-infantry-kits/byzantine/javelin-legionary/militia/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "ea7b049c5acf69a0d748b4c5646066e284d1ee589f87f205402a025529a42dc3"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-10-infantry-kits/byzantine/javelin-legionary/militia/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "a8500797016114331e2ac9692525e5fc25d1ab7fb86663ade771b37dcd9d50da"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-10-infantry-kits/byzantine/javelin-legionary/militia/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "3c637e6fe37f3aec57fb2301dc697ecaad7081ba660e89cae0a07118ca9af9f6"
+        }
+      ]
+    },
+    {
+      "id": "humans/byzantine/javelin-legionary-kit-v1/veteran",
+      "category": "human",
+      "faction": "byzantine",
+      "rank": "veteran",
+      "unit_kind": "javelin-legionary",
+      "accessory": "back javelin carrying harness",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-10-infantry-kits/byzantine/javelin-legionary/veteran/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "a933ced190d227c61116a26e86d44dbe738aafe093ad8d0e0abd4bf8d9a08518"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-10-infantry-kits/byzantine/javelin-legionary/veteran/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "bd3b3327ee0d081de950a1f4338e006971d4bae8c4e4825fb45418b34a272d19"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-10-infantry-kits/byzantine/javelin-legionary/veteran/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "558431aaf95724e0687232b4497df3e5b92a0c50c78e6205329cff9cc6b314c9"
+        }
+      ]
+    },
+    {
+      "id": "humans/byzantine/javelin-legionary-kit-v1/elite",
+      "category": "human",
+      "faction": "byzantine",
+      "rank": "elite",
+      "unit_kind": "javelin-legionary",
+      "accessory": "back javelin carrying harness",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-10-infantry-kits/byzantine/javelin-legionary/elite/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "906302f8d72ec0a1e714aeb26e32f3fa0a3c9943d76b49e2409cfa47920dde2c"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-10-infantry-kits/byzantine/javelin-legionary/elite/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "2ec2fbb914bfa20325e19aab69fa9cbb2f39e642d98ba53f2980c28f8ba80b61"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-10-infantry-kits/byzantine/javelin-legionary/elite/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "35d1450d9171c2c2c97541164d9a8a5947508aeee51181c96781b6827721f0de"
+        }
+      ]
+    },
+    {
+      "id": "humans/byzantine/matchlock-infantry-kit-v1/militia",
+      "category": "human",
+      "faction": "byzantine",
+      "rank": "militia",
+      "unit_kind": "matchlock-infantry",
+      "accessory": "historical leather water flask",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-10-infantry-kits/byzantine/matchlock-infantry/militia/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "ff902700520fc0015a0beadb5b116e40210043076e9a8c937e9eae3442b7d6f4"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-10-infantry-kits/byzantine/matchlock-infantry/militia/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "1fc98295600ef53e6dfd56c88c5d6b854ca7dbb5de3ad73e225fd982556d7388"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-10-infantry-kits/byzantine/matchlock-infantry/militia/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "fefdad0f231bc8dbc793a61dcac1cd2ed90ad21a0f4b5da1aa16d596ceb00f33"
+        }
+      ]
+    },
+    {
+      "id": "humans/byzantine/matchlock-infantry-kit-v1/veteran",
+      "category": "human",
+      "faction": "byzantine",
+      "rank": "veteran",
+      "unit_kind": "matchlock-infantry",
+      "accessory": "historical leather water flask",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-10-infantry-kits/byzantine/matchlock-infantry/veteran/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "03ba2f4effb018f2f755682ebf98536985e50a603de71edb33eea8b63c5a8462"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-10-infantry-kits/byzantine/matchlock-infantry/veteran/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "77370af913606f47c132b3f5998ea1c201469a3042f36f33cf40fee734d33480"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-10-infantry-kits/byzantine/matchlock-infantry/veteran/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "5d907133200054a4627dd795692937d5de24782c3b63aa27efd8f1e0c033527f"
+        }
+      ]
+    },
+    {
+      "id": "humans/byzantine/matchlock-infantry-kit-v1/elite",
+      "category": "human",
+      "faction": "byzantine",
+      "rank": "elite",
+      "unit_kind": "matchlock-infantry",
+      "accessory": "historical leather water flask",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-10-infantry-kits/byzantine/matchlock-infantry/elite/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "a77e694ac1b5f40cd2a50e10b7dc64f58fe8b8e7438688984e9fde4d5e718856"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-10-infantry-kits/byzantine/matchlock-infantry/elite/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "ccb177844035af5275b82d79c6269fc8f255c17a15b1c1c149be8cd80f2bbef1"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-10-infantry-kits/byzantine/matchlock-infantry/elite/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "efb2c973a585563ab5e87cee75ae5066af9465f566d616f20ea6d07ef353dd83"
+        }
+      ]
+    },
+    {
+      "id": "humans/tianchao/crossbowman-kit-v1/militia",
+      "category": "human",
+      "faction": "tianchao",
+      "rank": "militia",
+      "unit_kind": "crossbowman",
+      "accessory": "short crossbow bolt pouch at right rear hip",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-10-infantry-kits/tianchao/crossbowman/militia/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "c32d91fe38b03cd6d9c3e95256603f3aa81c3c308f1aff786b4c6f599ee1c828"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-10-infantry-kits/tianchao/crossbowman/militia/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "6ce61e4e40f69249c916eaf845b2218d44089f1f72e44946abea28490be0887c"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-10-infantry-kits/tianchao/crossbowman/militia/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "fc00ed69aebdeead4fddf25f3f67d2149e6605ef31208306c04df4caa71ff486"
+        }
+      ]
+    },
+    {
+      "id": "humans/tianchao/crossbowman-kit-v1/veteran",
+      "category": "human",
+      "faction": "tianchao",
+      "rank": "veteran",
+      "unit_kind": "crossbowman",
+      "accessory": "short crossbow bolt pouch at right rear hip",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-10-infantry-kits/tianchao/crossbowman/veteran/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "1584265ec7b0f94f9c8720c70db57e51fbc0977091a6dc8ccf85ed94a191624f"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-10-infantry-kits/tianchao/crossbowman/veteran/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "8cdf0ecf1c5e3040775ebe57367aaaeb2f26e16ed084cd221bab638687b02187"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-10-infantry-kits/tianchao/crossbowman/veteran/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "6ddbe171724282e3161a3a7acb71bfe6fb1cc49b171eeda8e4aaae312f7fdefb"
+        }
+      ]
+    },
+    {
+      "id": "humans/tianchao/crossbowman-kit-v1/elite",
+      "category": "human",
+      "faction": "tianchao",
+      "rank": "elite",
+      "unit_kind": "crossbowman",
+      "accessory": "short crossbow bolt pouch at right rear hip",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-10-infantry-kits/tianchao/crossbowman/elite/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "b3be28208974b7468cecc89490da3fe31b82608e9481ce8c36ff22569931bbac"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-10-infantry-kits/tianchao/crossbowman/elite/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "8d265be8b9c5df998100da8ccc1768ab3d1fee8dd856e560f539ac97e60c41b8"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-10-infantry-kits/tianchao/crossbowman/elite/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "97aa31a008401dd77f747a029c1c8ec01ead2a246b07fcd89b54f56153414dad"
+        }
+      ]
+    },
+    {
+      "id": "humans/tianchao/three-eyed-handgunner-kit-v1/militia",
+      "category": "human",
+      "faction": "tianchao",
+      "rank": "militia",
+      "unit_kind": "three-eyed-handgunner",
+      "accessory": "Chinese double-bulb drinking gourd at right hip",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-10-infantry-kits/tianchao/three-eyed-handgunner/militia/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "7f894a397dd18a9eb636df575a7ece95158407c9c72fe8fc8abc687a1de2daa6"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-10-infantry-kits/tianchao/three-eyed-handgunner/militia/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "509557b5eec06093bd082c0e0558a0ff26db642c5a081d6dec09c30bc8cc7b73"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-10-infantry-kits/tianchao/three-eyed-handgunner/militia/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "5075b3523fc9bdb79b123fb51c2184b01854aab7c9558060e64fd4483d69ddf1"
+        }
+      ]
+    },
+    {
+      "id": "humans/tianchao/three-eyed-handgunner-kit-v1/veteran",
+      "category": "human",
+      "faction": "tianchao",
+      "rank": "veteran",
+      "unit_kind": "three-eyed-handgunner",
+      "accessory": "Chinese double-bulb drinking gourd at right hip",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-10-infantry-kits/tianchao/three-eyed-handgunner/veteran/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "8efd28c4520845a34b36af7130bca163f474c8175b20f27fa49aa007d55bb3b3"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-10-infantry-kits/tianchao/three-eyed-handgunner/veteran/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "08905652a7e30572d9e0178dae8e68cb9210b64f15c719acab25812619622e34"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-10-infantry-kits/tianchao/three-eyed-handgunner/veteran/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "6046b3753b51630b2be6a88d8244358bacda8c0194bbaceed9c543b9d6c27683"
+        }
+      ]
+    },
+    {
+      "id": "humans/tianchao/three-eyed-handgunner-kit-v1/elite",
+      "category": "human",
+      "faction": "tianchao",
+      "rank": "elite",
+      "unit_kind": "three-eyed-handgunner",
+      "accessory": "Chinese double-bulb drinking gourd at right hip",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-10-infantry-kits/tianchao/three-eyed-handgunner/elite/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "8b664aa64d5116b765201e5dbf5fe9fe7a99df6f9ad91ab4f809eac8c6d1063c"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-10-infantry-kits/tianchao/three-eyed-handgunner/elite/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "ad50457aed7b10e400c26c5d73acdc9a1fe65b8eba0d79308de2db3babbd7fd8"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-10-infantry-kits/tianchao/three-eyed-handgunner/elite/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "8cdfe41d6278345409b68192f306de7182c964d96dfd56ef7bf33f631e2f78e1"
+        }
+      ]
+    },
+    {
+      "id": "weapons/tianchao/bow-views-v2",
+      "category": "weapon",
+      "faction": "tianchao",
+      "weapon": "bow",
+      "previous_id": "weapons/tianchao/bow",
+      "projection": "independent 3D angle references; not CAD-calibrated orthographic",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-10-weapon-views/tianchao/bow/front.png",
+          "copy_source": true,
+          "width": 1024,
+          "height": 1536,
+          "sha256": "7512d51b8b2aec628ea267689279f420a00a0ac34daee0a0f5394b8a2c61e82b"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-10-weapon-views/tianchao/bow/side.png",
+          "copy_source": true,
+          "width": 1024,
+          "height": 1536,
+          "sha256": "1f16a06384e9fac10c0009649e0311fabf349631eecb048e8400563ee01c70fa"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-10-weapon-views/tianchao/bow/back.png",
+          "copy_source": true,
+          "width": 1024,
+          "height": 1536,
+          "sha256": "71fcd71822c3fe29678ece17ac71d64b173d0636fed7aa0c4901a2407de0fc5b"
+        }
+      ]
+    },
+    {
+      "id": "weapons/tianchao/repeating-crossbow-views-v2",
+      "category": "weapon",
+      "faction": "tianchao",
+      "weapon": "repeating-crossbow",
+      "previous_id": "weapons/tianchao/repeating-crossbow",
+      "projection": "independent 3D angle references; not CAD-calibrated orthographic",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-10-weapon-views/tianchao/repeating-crossbow/front.png",
+          "copy_source": true,
+          "width": 1536,
+          "height": 1024,
+          "sha256": "a0df470bbd3bcf814e30ffd5060e2d61386fe8b382123c3ce4b5271ac30e2a5c"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-10-weapon-views/tianchao/repeating-crossbow/side.png",
+          "copy_source": true,
+          "width": 2172,
+          "height": 724,
+          "sha256": "3ae3b50c431506f53bd55950f7cc6a66b59e814ec23cb858ca8ca5a0357d95a0"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-10-weapon-views/tianchao/repeating-crossbow/back.png",
+          "copy_source": true,
+          "width": 1536,
+          "height": 1024,
+          "sha256": "796451a06704216d6b53123b6ed6c23c6fe9f8436346ed47672c573c2033055b"
+        }
+      ]
+    },
+    {
+      "id": "weapons/tianchao/crossbow-views-v2",
+      "category": "weapon",
+      "faction": "tianchao",
+      "weapon": "crossbow",
+      "previous_id": "weapons/tianchao/crossbow",
+      "projection": "independent 3D angle references; not CAD-calibrated orthographic",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-10-weapon-views/tianchao/crossbow/front.png",
+          "copy_source": true,
+          "width": 1536,
+          "height": 1024,
+          "sha256": "475c0dd719256c573157125989dee0484ba7e1497fd596d9559f86028538e0d4"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-10-weapon-views/tianchao/crossbow/side.png",
+          "copy_source": true,
+          "width": 1881,
+          "height": 836,
+          "sha256": "9dea0ad7a835a974d9323c26ed10da423673da6ce07de685aae2eec46febc513"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-10-weapon-views/tianchao/crossbow/back.png",
+          "copy_source": true,
+          "width": 1536,
+          "height": 1024,
+          "sha256": "a8075b0ec94910219ae759319119d7fc89be6d8f0fb37a6f45d6ce2aff1513d3"
+        }
+      ]
+    },
+    {
+      "id": "weapons/tianchao/three-eyed-handgun-views-v2",
+      "category": "weapon",
+      "faction": "tianchao",
+      "weapon": "three-eyed-handgun",
+      "previous_id": "weapons/tianchao/three-eyed-handgun",
+      "projection": "independent 3D angle references; not CAD-calibrated orthographic",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-10-weapon-views/tianchao/three-eyed-handgun/front.png",
+          "copy_source": true,
+          "width": 1230,
+          "height": 1278,
+          "sha256": "b12bb7938308868e609c3efa2fdd86222f5c5afc4f74556ca6ace859bcbd650d"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-10-weapon-views/tianchao/three-eyed-handgun/side.png",
+          "copy_source": true,
+          "width": 1672,
+          "height": 941,
+          "sha256": "cceaedc771be37fc7080debbe3d1334cd78bf743ef9a218ba47bb33099b1e45f"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-10-weapon-views/tianchao/three-eyed-handgun/back.png",
+          "copy_source": true,
+          "width": 1230,
+          "height": 1278,
+          "sha256": "8cefab7fe35a4e14246f52f5ed91cf2a0cd16cd8fed4d4de8c05d6cc7a98e264"
+        }
+      ]
+    },
+    {
+      "id": "weapons/byzantine/javelin-views-v2",
+      "category": "weapon",
+      "faction": "byzantine",
+      "weapon": "javelin",
+      "previous_id": "weapons/byzantine/javelin",
+      "projection": "independent 3D angle references; not CAD-calibrated orthographic",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-10-weapon-views/byzantine/javelin/front.png",
+          "copy_source": true,
+          "width": 1024,
+          "height": 1536,
+          "sha256": "89867ee3eafe559db79c7390e11eb48ecb6ce958121f98eaae145bdb56a384e2"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-10-weapon-views/byzantine/javelin/side.png",
+          "copy_source": true,
+          "width": 1024,
+          "height": 1536,
+          "sha256": "c0adc01e80178b42115dff4d3586b6df1d82b237baea6e8403b7b9f4e221f8f7"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-10-weapon-views/byzantine/javelin/back.png",
+          "copy_source": true,
+          "width": 1024,
+          "height": 1536,
+          "sha256": "f221da4372586b8557ceb7e225d9c9ff0dfbd5b0475ed2134f4f23ba4d7cf8b5"
+        }
+      ]
+    },
+    {
+      "id": "weapons/byzantine/bow-views-v2",
+      "category": "weapon",
+      "faction": "byzantine",
+      "weapon": "bow",
+      "previous_id": "weapons/byzantine/bow",
+      "projection": "independent 3D angle references; not CAD-calibrated orthographic",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-10-weapon-views/byzantine/bow/front.png",
+          "copy_source": true,
+          "width": 1024,
+          "height": 1536,
+          "sha256": "39471ad4199c813e6a9d51927c56744d0051e7999f2441c5aa17c3c3f81206b1"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-10-weapon-views/byzantine/bow/side.png",
+          "copy_source": true,
+          "width": 1024,
+          "height": 1536,
+          "sha256": "3cb0a3bd4a4513b7bf178f03b0b962bec78e2509a99b5bf21746fa04f836f282"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-10-weapon-views/byzantine/bow/back.png",
+          "copy_source": true,
+          "width": 1024,
+          "height": 1536,
+          "sha256": "a2e689152e6ba834a14773bf0671858832c5fc86c9eed6527cf4a1c882a96510"
+        }
+      ]
+    },
+    {
+      "id": "weapons/byzantine/crossbow-views-v2",
+      "previous_id": "weapons/byzantine/crossbow",
+      "category": "weapon",
+      "faction": "byzantine",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-10-weapon-views/byzantine/crossbow/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "fb250552422ddd0d55726e172c4c6bf5b5e2fe00726a3455a43b46b11306d2ec"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-10-weapon-views/byzantine/crossbow/side.png",
+          "copy_source": true,
+          "width": 1774,
+          "height": 887,
+          "sha256": "020c560bdf0404dea0c0b31f4f6ff24ad8de86f69887031d6bc5b6b9eed5980a"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-10-weapon-views/byzantine/crossbow/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "103fb1ceeac178533227117955195bc30763745c9297947f4dd24ad8605ac986"
+        }
+      ]
+    },
+    {
+      "id": "weapons/byzantine/matchlock-views-v2",
+      "previous_id": "weapons/byzantine/matchlock",
+      "category": "weapon",
+      "faction": "byzantine",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-10-weapon-views/byzantine/matchlock/front.png",
+          "copy_source": true,
+          "width": 1024,
+          "height": 1536,
+          "sha256": "290235e91dc487dc9b1a2cc66e3f332c144af1896a5392f188fe883fd2b0b456"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-10-weapon-views/byzantine/matchlock/side.png",
+          "copy_source": true,
+          "width": 2172,
+          "height": 724,
+          "sha256": "281bc3a28a8598e247df9e0b5448e36cb0d1f8e5416268ba83ea54a1d819aa24"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-10-weapon-views/byzantine/matchlock/back.png",
+          "copy_source": true,
+          "width": 1024,
+          "height": 1536,
+          "sha256": "4c40fb9d6dd2b2cd2db045c175bb5e7b37c1f9d694a811143051fb265d57b094"
         }
       ]
     }
@@ -34926,6 +35682,334 @@
           "width": 1199,
           "height": 1312,
           "sha256": "80d52d116b30b99e5299e1e941c0d1e5bbf6803fbaf4ff9532826f386ec7cf6b"
+        }
+      ]
+    },
+    {
+      "id": "humans/tianchao/base/militia",
+      "category": "human",
+      "label": "天朝 · 民兵共用基础身体",
+      "projection": "orthographic_t_pose",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-05-modular-infantry/bodies/tianchao/militia/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "674ad487f7b0d78ce82081fcf9bc57f572430bd30962522b4c311f9e969c179b"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-05-modular-infantry/bodies/tianchao/militia/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "8bdcd72852d9438960857f4ff2fcc41745561d775a942f2f394b25460c687158"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-05-modular-infantry/bodies/tianchao/militia/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "35a349da813ac79853a864729cb7993218a13c459288b35d2fb5f21420ce7a0a"
+        }
+      ]
+    },
+    {
+      "id": "humans/tianchao/base/veteran",
+      "category": "human",
+      "label": "天朝 · 老兵共用基础身体",
+      "projection": "orthographic_t_pose",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-05-modular-infantry/bodies/tianchao/veteran/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "53351f0421486f4654c677f05600495ed4ae83f2c9c46eb9ba293709570dfbc1"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-05-modular-infantry/bodies/tianchao/veteran/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "da0d20cd4c1cf9c5f2146415266843cd58dbdc2ca2da34f35aa4182906bd5625"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-05-modular-infantry/bodies/tianchao/veteran/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "a203696721b39c7172f1467d7ba25b21f6d8229a7202da75b5c6c07a26763ed9"
+        }
+      ]
+    },
+    {
+      "id": "humans/tianchao/base/elite",
+      "category": "human",
+      "label": "天朝 · 精英共用基础身体",
+      "projection": "orthographic_t_pose",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-05-modular-infantry/bodies/tianchao/elite/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "dab1396084c1af3bfc807a2dfa08c7d901f9e3f7308af2e8c83e9a06b578bf78"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-05-modular-infantry/bodies/tianchao/elite/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "1ba9ccc5a4ecbbbf9d5f706d59e572a04ed319e7c7714449b6c06dcec7fd55c6"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-05-modular-infantry/bodies/tianchao/elite/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "120551fd85745fe5cb10952c6fdcbb64dd8f339ebce9e40a8bc52d56c44e2bad"
+        }
+      ]
+    },
+    {
+      "id": "humans/byzantine/base/militia",
+      "category": "human",
+      "label": "拜占庭 · 民兵共用基础身体",
+      "projection": "orthographic_t_pose",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-05-modular-infantry/bodies/byzantine/militia/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "778b8e4ab9d9211aaa82ae01a4da945d46e1c58838f52e95f70f6e44afcbc3f1"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-05-modular-infantry/bodies/byzantine/militia/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "119bd10a30f84178a8c1107beb4204043971f51f110d2c6def2c6cf2ad14de92"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-05-modular-infantry/bodies/byzantine/militia/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "c9d9b3f205e81002ff14ff0fc5c453886d0e770cfeb152624ea9ae9ff18ca8a7"
+        }
+      ]
+    },
+    {
+      "id": "humans/byzantine/base/veteran",
+      "category": "human",
+      "label": "拜占庭 · 老兵共用基础身体",
+      "projection": "orthographic_t_pose",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-05-modular-infantry/bodies/byzantine/veteran/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "57865ca0731df37439b9c381338f23ed6a81a3d7ca2124ed5809890f6614e38c"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-05-modular-infantry/bodies/byzantine/veteran/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "42eb13f4d76986366115697954d11bf76f8b4243a08dfd555b93ac1cc2913d7f"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-05-modular-infantry/bodies/byzantine/veteran/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "2325db7000bb8d8895d6626c48e693f4d4c5d86f51505f25fa9f3a71f91acee8"
+        }
+      ]
+    },
+    {
+      "id": "humans/byzantine/base/elite",
+      "category": "human",
+      "label": "拜占庭 · 精英共用基础身体",
+      "projection": "orthographic_t_pose",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-05-modular-infantry/bodies/byzantine/elite/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "0f58e4859831f45eb110cf6e52d333e08ec90e9976591343300a28d91d3e3ad9"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-05-modular-infantry/bodies/byzantine/elite/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "cd049ea20a14368e7b7cf733fea51c8a520c7141dcf82302c6b5d3d286a2e346"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-05-modular-infantry/bodies/byzantine/elite/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "9a6dc9fc1f479079d7af8018acc758faade37aebdb486215721638ae2b0aecca"
+        }
+      ]
+    },
+    {
+      "id": "weapons/tianchao/bow",
+      "label": "弓·天朝",
+      "category": "weapon",
+      "faction": "tianchao",
+      "projection": "single isolated object, broadside or near-orthographic three-quarter; not calibrated orthographic",
+      "views": [
+        {
+          "name": "reference",
+          "source": "2026-10-05-modular-infantry/weapons/tianchao/bow/reference.png",
+          "copy_source": true,
+          "width": 1024,
+          "height": 1536,
+          "sha256": "502342da967b4a67916a02b59f6387fddb82e0bacce11d888b334b05fb90f1d8"
+        }
+      ]
+    },
+    {
+      "id": "weapons/tianchao/repeating-crossbow",
+      "label": "诸葛连弩",
+      "category": "weapon",
+      "faction": "tianchao",
+      "projection": "single isolated object, broadside or near-orthographic three-quarter; not calibrated orthographic",
+      "views": [
+        {
+          "name": "reference",
+          "source": "2026-10-05-modular-infantry/weapons/tianchao/repeating-crossbow/reference.png",
+          "copy_source": true,
+          "width": 1536,
+          "height": 1024,
+          "sha256": "e931c595057195e70cc6efb8c5e61fefc15161f06d4f0cfcabc0f3e65ab886fd"
+        }
+      ]
+    },
+    {
+      "id": "weapons/tianchao/crossbow",
+      "label": "普通弩·天朝",
+      "category": "weapon",
+      "faction": "tianchao",
+      "projection": "single isolated object, broadside or near-orthographic three-quarter; not calibrated orthographic",
+      "views": [
+        {
+          "name": "reference",
+          "source": "2026-10-05-modular-infantry/weapons/tianchao/crossbow/reference.png",
+          "copy_source": true,
+          "width": 1536,
+          "height": 1024,
+          "sha256": "209a9add1cc734ec12381d79f22ac106767af636becfad57d656c781ca4e0b99"
+        }
+      ]
+    },
+    {
+      "id": "weapons/tianchao/three-eyed-handgun",
+      "label": "三眼神铳",
+      "category": "weapon",
+      "faction": "tianchao",
+      "projection": "single isolated object, broadside or near-orthographic three-quarter; not calibrated orthographic",
+      "views": [
+        {
+          "name": "reference",
+          "source": "2026-10-05-modular-infantry/weapons/tianchao/three-eyed-handgun/reference.png",
+          "copy_source": true,
+          "width": 1230,
+          "height": 1278,
+          "sha256": "69cb6178227dcfb50bca8f9c4b6f44269ba8ea743de35c89f886a3fe3061a118"
+        }
+      ]
+    },
+    {
+      "id": "weapons/byzantine/javelin",
+      "label": "投矛",
+      "category": "weapon",
+      "faction": "byzantine",
+      "projection": "single isolated object, broadside or near-orthographic three-quarter; not calibrated orthographic",
+      "views": [
+        {
+          "name": "reference",
+          "source": "2026-10-05-modular-infantry/weapons/byzantine/javelin/reference.png",
+          "copy_source": true,
+          "width": 1024,
+          "height": 1536,
+          "sha256": "379ae767ee3a2fdab150f24c50f1dbdb97d0b5dc3465d6eb8ae02985c9d0f910"
+        }
+      ]
+    },
+    {
+      "id": "weapons/byzantine/bow",
+      "label": "弓·拜占庭",
+      "category": "weapon",
+      "faction": "byzantine",
+      "projection": "single isolated object, broadside or near-orthographic three-quarter; not calibrated orthographic",
+      "views": [
+        {
+          "name": "reference",
+          "source": "2026-10-05-modular-infantry/weapons/byzantine/bow/reference.png",
+          "copy_source": true,
+          "width": 1024,
+          "height": 1536,
+          "sha256": "b68872ebd39a79ff366c3012ea7ee3bb9922d9229b3a448271f9398dddae379c"
+        }
+      ]
+    },
+    {
+      "id": "weapons/byzantine/crossbow",
+      "label": "普通弩·拜占庭",
+      "category": "weapon",
+      "faction": "byzantine",
+      "projection": "single isolated object, broadside or near-orthographic three-quarter; not calibrated orthographic",
+      "views": [
+        {
+          "name": "reference",
+          "source": "2026-10-05-modular-infantry/weapons/byzantine/crossbow/reference.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "542d76c31578660445fba3e67cc880ed3f3df7af0bfdca6eef4eb1b8a37c073d"
+        }
+      ]
+    },
+    {
+      "id": "weapons/byzantine/matchlock",
+      "label": "单发火绳枪",
+      "category": "weapon",
+      "faction": "byzantine",
+      "projection": "single isolated object, broadside or near-orthographic three-quarter; not calibrated orthographic",
+      "views": [
+        {
+          "name": "reference",
+          "source": "2026-10-05-modular-infantry/weapons/byzantine/matchlock/reference.png",
+          "copy_source": true,
+          "width": 1024,
+          "height": 1536,
+          "sha256": "a822305295c4c8b19a226b92d3263e399c3bbad654a44ef765b58aeedfc6ea3b"
         }
       ]
     }

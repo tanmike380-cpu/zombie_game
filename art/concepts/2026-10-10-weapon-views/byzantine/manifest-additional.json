@@ -1,0 +1,68 @@
+{
+  "assets": [
+    {
+      "id": "weapons/byzantine/crossbow-views-v2",
+      "previous_id": "weapons/byzantine/crossbow",
+      "category": "weapon",
+      "faction": "byzantine",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-10-weapon-views/byzantine/crossbow/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "fb250552422ddd0d55726e172c4c6bf5b5e2fe00726a3455a43b46b11306d2ec"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-10-weapon-views/byzantine/crossbow/side.png",
+          "copy_source": true,
+          "width": 1774,
+          "height": 887,
+          "sha256": "020c560bdf0404dea0c0b31f4f6ff24ad8de86f69887031d6bc5b6b9eed5980a"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-10-weapon-views/byzantine/crossbow/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "103fb1ceeac178533227117955195bc30763745c9297947f4dd24ad8605ac986"
+        }
+      ]
+    },
+    {
+      "id": "weapons/byzantine/matchlock-views-v2",
+      "previous_id": "weapons/byzantine/matchlock",
+      "category": "weapon",
+      "faction": "byzantine",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-10-weapon-views/byzantine/matchlock/front.png",
+          "copy_source": true,
+          "width": 1024,
+          "height": 1536,
+          "sha256": "290235e91dc487dc9b1a2cc66e3f332c144af1896a5392f188fe883fd2b0b456"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-10-weapon-views/byzantine/matchlock/side.png",
+          "copy_source": true,
+          "width": 2172,
+          "height": 724,
+          "sha256": "281bc3a28a8598e247df9e0b5448e36cb0d1f8e5416268ba83ea54a1d819aa24"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-10-weapon-views/byzantine/matchlock/back.png",
+          "copy_source": true,
+          "width": 1024,
+          "height": 1536,
+          "sha256": "4c40fb9d6dd2b2cd2db045c175bb5e7b37c1f9d694a811143051fb265d57b094"
+        }
+      ]
+    }
+  ]
+}

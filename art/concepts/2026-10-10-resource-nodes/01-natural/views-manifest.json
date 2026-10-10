@@ -1,0 +1,60 @@
+{
+  "version": 1,
+  "selected_style": "01-natural",
+  "files": [
+    {
+      "path": "gold/back.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "3453241babb5b9d26e7db232633c8283f4afadae226823d0b174821e8e4f9d83"
+    },
+    {
+      "path": "gold/front.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "cd205720d3313560f87dc708261258f60dd9d324abf1c2b911712c3284c1da0b"
+    },
+    {
+      "path": "gold/side.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "a7e2dab7680b2d4a88d591bddcd5c65577acc11ea0f5afa6e820a186d33c7f26"
+    },
+    {
+      "path": "iron/back.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "7ca780b5854a302e7f15268245ae39e8f04ed3bc2fa09feadce9bf80d594b6ad"
+    },
+    {
+      "path": "iron/front.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "a2f8e8c18c7aad0b13fcd2d0b2d8e85c9b3e199f0a0d7cf50e4cb18736ccc906"
+    },
+    {
+      "path": "iron/side.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "03066a5e084f891fc420837e4651bc753d59c57fef4ec59372192806b0297ea2"
+    },
+    {
+      "path": "stone/back.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "3ec35b04f7199d4ecdc35f04dd4d54f6b5cab0352041d96d5a829f4136af9dc7"
+    },
+    {
+      "path": "stone/front.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "2be6c8c9d626ccb8ad3b0fa6f0f635a0f7cf04208f920f743aaff0a27c0e7173"
+    },
+    {
+      "path": "stone/side.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "42f14ce9f9560bef09cb0dd756a4b9fe4e012b248e92c44e946ecee9781e98ac"
+    }
+  ]
+}

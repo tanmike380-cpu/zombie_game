@@ -1,0 +1,412 @@
+{
+  "assets": [
+    {
+      "id": "humans/byzantine/archer-kit-v1/militia",
+      "category": "human",
+      "faction": "byzantine",
+      "rank": "militia",
+      "unit_kind": "archer",
+      "accessory": "diagonal back quiver",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-10-infantry-kits/byzantine/archer/militia/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "2893e5e27c57c780cbdb08e0ce9b2ddab0238c34ffe88cbaa44efcf7230ee1f4"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-10-infantry-kits/byzantine/archer/militia/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "63ab29390f6808dff214b694de50ea077919b26eec4b2241a1b5793fc28c5ef4"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-10-infantry-kits/byzantine/archer/militia/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "c71712b8e5434e8173bbf9c73496317477a5f97f5df141503f032af3e3579ca2"
+        }
+      ]
+    },
+    {
+      "id": "humans/byzantine/archer-kit-v1/veteran",
+      "category": "human",
+      "faction": "byzantine",
+      "rank": "veteran",
+      "unit_kind": "archer",
+      "accessory": "diagonal back quiver",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-10-infantry-kits/byzantine/archer/veteran/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "7626338ec6b34250096184bb163e37c274b198cacc5f420b3ca2a529128ba6cc"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-10-infantry-kits/byzantine/archer/veteran/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "a78a24c13062f04586649e7d08a6a49c49337b9ac52fd1f7830927ebf5a88335"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-10-infantry-kits/byzantine/archer/veteran/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "6ce43e4e80b56d9fc76f9c0592c4b14642a0b0bd2b7d6edab9139e073d7d4dc4"
+        }
+      ]
+    },
+    {
+      "id": "humans/byzantine/archer-kit-v1/elite",
+      "category": "human",
+      "faction": "byzantine",
+      "rank": "elite",
+      "unit_kind": "archer",
+      "accessory": "diagonal back quiver",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-10-infantry-kits/byzantine/archer/elite/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "769f8a786ad16bb70eede32bdd03910f9a0ff669d8bd5fb5b7c97c89fc08b548"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-10-infantry-kits/byzantine/archer/elite/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "1551b3846d1a365bb620e9148c526510ea35cdc79311e85d130a2f60098d5c4d"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-10-infantry-kits/byzantine/archer/elite/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "484b006f2312fbbfae478403a3dc1ac95c962713d3451300b4a46149a26a378c"
+        }
+      ]
+    },
+    {
+      "id": "humans/byzantine/crossbowman-kit-v1/militia",
+      "category": "human",
+      "faction": "byzantine",
+      "rank": "militia",
+      "unit_kind": "crossbowman",
+      "accessory": "short-bolt belt case",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-10-infantry-kits/byzantine/crossbowman/militia/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "3a274c2779e7b73e612ba85908f605702c5b2654dccad6b15e8c2d50b14dbcf3"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-10-infantry-kits/byzantine/crossbowman/militia/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "e69bcdc8859de9a1e1006ea4597be476a49785d6eca8d28ab56a16da1b98473a"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-10-infantry-kits/byzantine/crossbowman/militia/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "113bd2792fd1c1fa996fb88468e4227921c8d47c16ffb36c76e7028d8b09a3fa"
+        }
+      ]
+    },
+    {
+      "id": "humans/byzantine/crossbowman-kit-v1/veteran",
+      "category": "human",
+      "faction": "byzantine",
+      "rank": "veteran",
+      "unit_kind": "crossbowman",
+      "accessory": "short-bolt belt case",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-10-infantry-kits/byzantine/crossbowman/veteran/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "360cc4fea71e2b5463cb8e0e67b56cf66cac0c3edc7202493e4699e1ee0fd40a"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-10-infantry-kits/byzantine/crossbowman/veteran/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "45ed7ad0e54c2efa1ab11d2e03b2a359b8897dc803bdce36dfc7ba0e6ea6d267"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-10-infantry-kits/byzantine/crossbowman/veteran/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "6b8291119fab7f57990f210e672a58c40db5590894099d490ed4f9a6d7103fe1"
+        }
+      ]
+    },
+    {
+      "id": "humans/byzantine/crossbowman-kit-v1/elite",
+      "category": "human",
+      "faction": "byzantine",
+      "rank": "elite",
+      "unit_kind": "crossbowman",
+      "accessory": "short-bolt belt case",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-10-infantry-kits/byzantine/crossbowman/elite/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "fce2736ac0c801c3c45ad8877beccf24fc01e07fa2e9d321d3e7867f286e331f"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-10-infantry-kits/byzantine/crossbowman/elite/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "cef12958ea6470db3ba5d31e65d38fd1be0257382effac99cfdeee8ce6cbab89"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-10-infantry-kits/byzantine/crossbowman/elite/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "8f56eb8409e6891e1c2b746c3d8a1250800b7daaa3cd639b7c1ae47370af5576"
+        }
+      ]
+    },
+    {
+      "id": "humans/byzantine/javelin-legionary-kit-v1/militia",
+      "category": "human",
+      "faction": "byzantine",
+      "rank": "militia",
+      "unit_kind": "javelin-legionary",
+      "accessory": "back javelin carrying harness",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-10-infantry-kits/byzantine/javelin-legionary/militia/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "ea7b049c5acf69a0d748b4c5646066e284d1ee589f87f205402a025529a42dc3"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-10-infantry-kits/byzantine/javelin-legionary/militia/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "a8500797016114331e2ac9692525e5fc25d1ab7fb86663ade771b37dcd9d50da"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-10-infantry-kits/byzantine/javelin-legionary/militia/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "3c637e6fe37f3aec57fb2301dc697ecaad7081ba660e89cae0a07118ca9af9f6"
+        }
+      ]
+    },
+    {
+      "id": "humans/byzantine/javelin-legionary-kit-v1/veteran",
+      "category": "human",
+      "faction": "byzantine",
+      "rank": "veteran",
+      "unit_kind": "javelin-legionary",
+      "accessory": "back javelin carrying harness",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-10-infantry-kits/byzantine/javelin-legionary/veteran/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "a933ced190d227c61116a26e86d44dbe738aafe093ad8d0e0abd4bf8d9a08518"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-10-infantry-kits/byzantine/javelin-legionary/veteran/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "bd3b3327ee0d081de950a1f4338e006971d4bae8c4e4825fb45418b34a272d19"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-10-infantry-kits/byzantine/javelin-legionary/veteran/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "558431aaf95724e0687232b4497df3e5b92a0c50c78e6205329cff9cc6b314c9"
+        }
+      ]
+    },
+    {
+      "id": "humans/byzantine/javelin-legionary-kit-v1/elite",
+      "category": "human",
+      "faction": "byzantine",
+      "rank": "elite",
+      "unit_kind": "javelin-legionary",
+      "accessory": "back javelin carrying harness",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-10-infantry-kits/byzantine/javelin-legionary/elite/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "906302f8d72ec0a1e714aeb26e32f3fa0a3c9943d76b49e2409cfa47920dde2c"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-10-infantry-kits/byzantine/javelin-legionary/elite/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "2ec2fbb914bfa20325e19aab69fa9cbb2f39e642d98ba53f2980c28f8ba80b61"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-10-infantry-kits/byzantine/javelin-legionary/elite/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "35d1450d9171c2c2c97541164d9a8a5947508aeee51181c96781b6827721f0de"
+        }
+      ]
+    },
+    {
+      "id": "humans/byzantine/matchlock-infantry-kit-v1/militia",
+      "category": "human",
+      "faction": "byzantine",
+      "rank": "militia",
+      "unit_kind": "matchlock-infantry",
+      "accessory": "historical leather water flask",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-10-infantry-kits/byzantine/matchlock-infantry/militia/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "ff902700520fc0015a0beadb5b116e40210043076e9a8c937e9eae3442b7d6f4"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-10-infantry-kits/byzantine/matchlock-infantry/militia/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "1fc98295600ef53e6dfd56c88c5d6b854ca7dbb5de3ad73e225fd982556d7388"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-10-infantry-kits/byzantine/matchlock-infantry/militia/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "fefdad0f231bc8dbc793a61dcac1cd2ed90ad21a0f4b5da1aa16d596ceb00f33"
+        }
+      ]
+    },
+    {
+      "id": "humans/byzantine/matchlock-infantry-kit-v1/veteran",
+      "category": "human",
+      "faction": "byzantine",
+      "rank": "veteran",
+      "unit_kind": "matchlock-infantry",
+      "accessory": "historical leather water flask",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-10-infantry-kits/byzantine/matchlock-infantry/veteran/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "03ba2f4effb018f2f755682ebf98536985e50a603de71edb33eea8b63c5a8462"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-10-infantry-kits/byzantine/matchlock-infantry/veteran/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "77370af913606f47c132b3f5998ea1c201469a3042f36f33cf40fee734d33480"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-10-infantry-kits/byzantine/matchlock-infantry/veteran/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "5d907133200054a4627dd795692937d5de24782c3b63aa27efd8f1e0c033527f"
+        }
+      ]
+    },
+    {
+      "id": "humans/byzantine/matchlock-infantry-kit-v1/elite",
+      "category": "human",
+      "faction": "byzantine",
+      "rank": "elite",
+      "unit_kind": "matchlock-infantry",
+      "accessory": "historical leather water flask",
+      "views": [
+        {
+          "name": "front",
+          "source": "2026-10-10-infantry-kits/byzantine/matchlock-infantry/elite/front.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "a77e694ac1b5f40cd2a50e10b7dc64f58fe8b8e7438688984e9fde4d5e718856"
+        },
+        {
+          "name": "side",
+          "source": "2026-10-10-infantry-kits/byzantine/matchlock-infantry/elite/side.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "ccb177844035af5275b82d79c6269fc8f255c17a15b1c1c149be8cd80f2bbef1"
+        },
+        {
+          "name": "back",
+          "source": "2026-10-10-infantry-kits/byzantine/matchlock-infantry/elite/back.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "efb2c973a585563ab5e87cee75ae5066af9465f566d616f20ea6d07ef353dd83"
+        }
+      ]
+    }
+  ]
+}
