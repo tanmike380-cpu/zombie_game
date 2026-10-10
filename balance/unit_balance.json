@@ -15,6 +15,30 @@
   "zombie_queue_probe_seconds": 0.15,
   "zombie_queue_hold_seconds": 0.35,
   "zombie_queue_clearance": 0.18,
+  "infantry_ranks": {
+    "default_rank": "militia",
+    "damage_progression": "pending",
+    "ranks": [
+      {
+        "id": "militia",
+        "name_zh": "民兵",
+        "ammunition_capacity": 30,
+        "attack_range_bonus": 0
+      },
+      {
+        "id": "veteran",
+        "name_zh": "老兵",
+        "ammunition_capacity": 30,
+        "attack_range_bonus": 0
+      },
+      {
+        "id": "elite",
+        "name_zh": "精英",
+        "ammunition_capacity": 50,
+        "attack_range_bonus": 1
+      }
+    ]
+  },
   "units": [
     {
       "id": "firearm_infantry",

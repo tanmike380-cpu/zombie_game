@@ -22,6 +22,23 @@ namespace ZombieGame.Balance
         public int threat_tier;
         public float model_scale, navigation_radius, splash_radius, poison_damage_per_second, poison_duration;
         public bool map_revealed;
+
+        internal UnitStats copy() => (UnitStats)MemberwiseClone();
+    }
+
+    [Serializable]
+    public sealed class InfantryRankStats
+    {
+        public string id, name_zh;
+        public int ammunition_capacity;
+        public float attack_range_bonus;
+    }
+
+    [Serializable]
+    public sealed class InfantryRankRules
+    {
+        public string default_rank, damage_progression;
+        public InfantryRankStats[] ranks;
     }
 
     [Serializable]
@@ -42,6 +59,7 @@ namespace ZombieGame.Balance
         public float zombie_queue_probe_seconds,zombie_queue_hold_seconds,zombie_queue_clearance;
         public UnitStats[] units;
         public BuildingStats buildings;
+        public InfantryRankRules infantry_ranks;
     }
 
     /// <summary>Single authored source: repository balance/unit_balance.json. Builds embed an exact generated snapshot.</summary>
@@ -55,8 +73,28 @@ namespace ZombieGame.Balance
         public static UnitStats exploder => get("exploder");
         public static readonly string[] zombie_ids={"walker","runner","brute","exploder","zombie_hound","spitter","giant","boss"};
         public static readonly string[] human_ids={"firearm_infantry","archer","repeating_crossbowman","heavy_crossbowman","heavy_ballista","cannon","greek_fire"};
+        public static readonly string[] infantry_ids={"firearm_infantry","archer","repeating_crossbowman","heavy_crossbowman"};
         public static bool is_human(string id)=>Array.IndexOf(human_ids,id)>=0;
-        public static float max_human_noise {get {float radius=0;foreach(string id in human_ids)if(get(id).implemented)radius=Mathf.Max(radius,human_noise(get(id)));return radius;}}
+        public static bool is_infantry(string id)=>Array.IndexOf(infantry_ids,id)>=0;
+        public static float max_human_noise
+        {
+            get
+            {
+                float radius = 0, rank_range_bonus = 0;
+                foreach (var rank in config.infantry_ranks.ranks)
+                    rank_range_bonus = Mathf.Max(rank_range_bonus, rank.attack_range_bonus);
+                foreach (string id in human_ids)
+                {
+                    var stats = get(id);
+                    if (!stats.implemented) continue;
+                    float unit_noise = human_noise(stats);
+                    if (is_infantry(id) && stats.attack_range > 0)
+                        unit_noise += rank_range_bonus * config.noise_range_multiplier;
+                    radius = Mathf.Max(radius, unit_noise);
+                }
+                return radius;
+            }
+        }
         public static bool is_zombie(string id)=>Array.IndexOf(zombie_ids,id)>=0;
         // All zombie roles, including giants/bosses, use the same fixed tile footprint, never art scale.
         public static float navigation_radius(UnitStats stats)=>is_zombie(stats.id) ? config.zombie_navigation_radius
@@ -71,6 +109,45 @@ namespace ZombieGame.Balance
             ensure_loaded();
             if (!by_id.TryGetValue(id,out var stats)) throw new InvalidOperationException("Missing balance unit: " + id);
             return stats;
+        }
+
+        /// <summary>Resolve an explicit infantry rank without changing the shared base record or inventing damage bonuses.</summary>
+        public static UnitStats get_infantry_ranked(string unit_id, string rank_id = null)
+        {
+            if (!is_infantry(unit_id)) throw new InvalidOperationException("Infantry ranks do not apply to unit: " + unit_id);
+            var base_stats = get(unit_id);
+            var rules = config.infantry_ranks;
+            string resolved_rank = rank_id ?? rules.default_rank;
+            var rank_stats = Array.Find(rules.ranks, rank => rank.id == resolved_rank);
+            if (rank_stats == null) throw new InvalidOperationException("Missing infantry rank: " + resolved_rank);
+            var resolved_stats = base_stats.copy();
+            resolved_stats.ammunition_capacity = rank_stats.ammunition_capacity;
+            resolved_stats.attack_range += rank_stats.attack_range_bonus;
+            return resolved_stats;
+        }
+
+        private static void validate_infantry_ranks(BalanceConfig values)
+        {
+            var rules = values.infantry_ranks;
+            if (rules == null || rules.default_rank != "militia" || rules.damage_progression != "pending"
+                || rules.ranks == null || rules.ranks.Length != 3)
+                throw new InvalidOperationException("Invalid infantry rank rules: require militia/veteran/elite and pending damage progression");
+            var rank_ids = new HashSet<string>();
+            foreach (var rank in rules.ranks)
+            {
+                if (rank == null || (rank.id != "militia" && rank.id != "veteran" && rank.id != "elite") || !rank_ids.Add(rank.id)
+                    || rank.ammunition_capacity < 1 || rank.attack_range_bonus < 0
+                    || float.IsNaN(rank.attack_range_bonus) || float.IsInfinity(rank.attack_range_bonus))
+                    throw new InvalidOperationException("Invalid infantry rank capacity/range/id");
+            }
+            var default_stats = Array.Find(rules.ranks, rank => rank.id == rules.default_rank);
+            foreach (string unit_id in infantry_ids)
+            {
+                var unit_stats = Array.Find(values.units, unit => unit.id == unit_id);
+                if (unit_stats == null || unit_stats.ammunition_capacity != default_stats.ammunition_capacity
+                    || Array.Exists(rules.ranks, rank => rank.ammunition_capacity < unit_stats.ammunition_cost))
+                    throw new InvalidOperationException("Infantry base/default ammunition mismatch: " + unit_id);
+            }
         }
 
         public static float human_noise(UnitStats stats) => stats.attack_range > 0 ? stats.attack_range * config.noise_range_multiplier : stats.noise_radius;
@@ -110,6 +187,7 @@ namespace ZombieGame.Balance
             }
             foreach (string required in new[] { "firearm_infantry", "runner", "exploder", "walker", "archer" })
                 if (!ids.Contains(required)) throw new InvalidOperationException("Required balance unit missing: " + required);
+            validate_infantry_ranks(values);
             foreach (float number in new[] {values.human_sight,values.zombie_sight,values.noise_range_multiplier,values.noise_probe_radius,values.noise_propagation_speed,values.noise_pulse_duration,values.formation_spacing,values.chase_repath_seconds,values.unit_navigation_radius,values.zombie_navigation_radius,values.zombie_attack_move_follow_through,values.ammunition_depot_radius})
                 if (float.IsNaN(number) || float.IsInfinity(number)) throw new InvalidOperationException("Non-finite balance global");
             var human_stats = Array.Find(values.units,unit => unit.id == "firearm_infantry");

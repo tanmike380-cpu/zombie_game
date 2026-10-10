@@ -3,6 +3,42 @@
 只修改 `balance/unit_balance.json`。它不在 `_Tests` 中；正式读取代码在
 `Assets/_Game/Scripts/Balance/UnitBalance.cs`。
 
+## 步兵等级 · 2026-10-10
+
+两个阵营各四种步兵，共八种设计；每种分民兵、老兵、精英。统一等级规则在同一份
+`unit_balance.json` 的 `infantry_ranks`，不是另建一套测试数值。
+
+| 等级 | 总携弹上限 | 同兵种基础射程加成 |
+| --- | ---: | ---: |
+| 民兵 | 30 | 0 格 |
+| 老兵 | 30 | 0 格 |
+| 精英 | 50 | +1 格 |
+
+精英的 50 发是**总上限**，不是 30+50=80。老兵与精英伤害递增方向已确定，但具体
+加成尚未批准，`damage_progression: "pending"`；本轮保留每种兵的现有伤害，不暗填倍率。
+噪音继续通过最终射程 × 3 计算；精英加射程后用同一 `human_noise` 接口推导噪音。
+听觉传播的 `max_human_noise` 上界也覆盖配置中最大的步兵等级射程加成，避免裁掉
+精英声音；工程车只使用自身基础射程，不套用步兵加成。
+
+接入接口：`UnitBalance.get_infantry_ranked(unit_id, rank_id)`，等级 ID 为 `militia`、
+`veteran`、`elite`，省略等级明确使用民兵。返回独立记录，不修改共享基础记录。
+当前四个已有基础记录是 `archer`、`repeating_crossbowman`、`heavy_crossbowman`、
+`firearm_infantry`；其范围覆盖现有弓、弩、连弩、火枪战斗角色。天朝三眼铳和拜占庭
+投矛还没有独立的完整运行时记录，须另行定齐数值后接入，不能借此自动启用。
+工程车、炮塔和僵尸不适用步兵等级，显式套用会报错，原携弹量保持不变。
+
+当前战斗单位尚无经验晋升／等级选择数据流，现有 `UnitBalance.get` 调用仍使用基础
+记录（30 发、原射程、原伤害）；只有显式调用等级接口才解析精英 50 发／+1 格。
+本轮保存正式规则和读取能力，不宣称试玩里的所有精英已自动生效，也不新增 XP 系统。
+非法等级、缺失规则、负值／非有限加成、基础与默认携弹冲突都会拒绝。
+
+本地自动回归：`tools/balance/RankBalanceTests.csproj` 编译直接链接正式 `UnitBalance.cs`，
+用最小 Unity API 测试替身验证读取和拒绝逻辑；不代替 Unity 编辑器／实际战斗回归。
+运行 `bash tools/balance/run_rank_checks.sh`；可用 `ZOMBIE_DOTNET_PATH` 指定 .NET 8 SDK，
+当前 Mac 自动使用已有 Unity 附带 SDK。生成物仅在被忽略的 `Builds/BalanceTests`。
+
+## 现有基础数值
+
 - 神机营：生命 100，移速 3.5 格/秒，伤害 100，间隔 0.8 秒，射程 7，弹速 40。
 - 狂暴僵尸：生命 60，移速 5.2，伤害 10，间隔 1 秒，近战距离 1。
 - 爆裂尸：生命 60，移速 4.9，爆炸伤害 70，半径 2，接触距离 1.2，引信 0.65 秒。
