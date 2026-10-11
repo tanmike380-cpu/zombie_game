@@ -1,0 +1,802 @@
+{
+  "schema_version": 1,
+  "assets": [
+    {
+      "id": "buildings/byzantine/01-hq-age1",
+      "label": "主基地·时代一",
+      "views": [
+        {
+          "name": "front-perspective",
+          "path": "buildings/byzantine/01-hq-age1/v4/front-perspective.png",
+          "source": "art/concepts/tripo/buildings/byzantine/01-hq-age1/front-perspective.png",
+          "source_sha256": "4d4a46e4dc1d08fb2c9acbe078a199aa71062f511d60602a249c77f956605118",
+          "width": 764,
+          "height": 764,
+          "sha256": "e14495c9a8c8c027b02318c850bebbd2288538a2515b2e1df25ce94536116d8d"
+        },
+        {
+          "name": "side",
+          "path": "buildings/byzantine/01-hq-age1/v4/side.png",
+          "source": "art/concepts/tripo/buildings/byzantine/01-hq-age1/side.png",
+          "source_sha256": "078e3be4843d9ae41b10e9618cc655d1708882238dd48effdefef1a5621d1c91",
+          "width": 1294,
+          "height": 1294,
+          "sha256": "616ee9d5f9ce4cb9031a2fbedb1d16d208671ac596d834a4a02f61cf70cade56"
+        },
+        {
+          "name": "rear-perspective",
+          "path": "buildings/byzantine/01-hq-age1/v4/rear-perspective.png",
+          "source": "art/concepts/tripo/buildings/byzantine/01-hq-age1/rear-perspective.png",
+          "source_sha256": "09ed3e545b1fac17df21f36d53218fd9e071e61a25edff0a7b634798871518b5",
+          "width": 764,
+          "height": 764,
+          "sha256": "423e4404df7473120f9f8d02a1b3b3ef54d22539652cf58cbb48f3ad8f7abe6c"
+        }
+      ],
+      "sheet": "buildings/byzantine/01-hq-age1/generated-sheet-v3.png",
+      "native_sheet_dimensions": [
+        2172,
+        724
+      ],
+      "side_sheet": "buildings/byzantine/01-hq-age1/generated-side-v4.png",
+      "footprint_tiles": [
+        5,
+        5
+      ],
+      "footprint_provisional": true,
+      "prompt": "Use case: precise-object-edit. Image1 reference/edit target is our Byzantine headquarters identity in3views. REDESIGN the age1 headquarters into a modest sparse WOODEN settlement on an EXACT fixed square5×5tile plot, not a palace. THREE panels show same newasset front elevatedperspective / true side / rear elevatedperspective. Allplot boundsidenticalworldsize andsame camera zoom allthreeviews. Onlyfew modest timber buildings around an open CENTRALcourtyard, lowstone foundation edging delineating entire5×5square, generous vacantcourtyard withsmallstones/subtlelandscaping. ONE plain accessiblecommandhall, 2smalltimberoutbuildings. Human-sized doors/windows same normalrealworldscale, don'tenlarge entirehamlet to fillplot. Mainbuildingroof pitchedclaytiles onwoodtimber, retainBYZcharacterthrougharchdoor, purpleclothbanners andmodestsimplecarvedwood Byzantine motif. NOmetal cladding, NOmetal roofs, NOgildedornaments, NOgoldstatues, NOcopperdomes, NOmetalroofcaps. Stone warm-neutralgreige notwhite, naturally brownwood, mutedreddishbrownclayroof, purplefabric. Subtlycoolbluegrayshadows only, humanfaction overallslightlywarm tasteful. Texturedsemi-realisticRTS gameassetconcept, daylight. Wide3:1sheet3072x1024 EXACTthree equalwidthpanelscompleteplots, grayneutralbackground no labelsno text. Age1 clearly simplest/leastdense, limitedwoodstructuresand mostlyopen land butfixed5×5footprint. Unlike sourcepalace, structurefill sparse and lowrise.",
+      "side_prompt": "Use case: precise-object-edit. Image1 is ONLYreference for EXISTING complete ByzantineHQage1model. Render ONE independent strict RIGHT SIDE VIEW ONLY of exactsame model andsquare5×5plot. Rotatecamera90degreesaroundmodel fromfront, showthearchitecturalSIDE wall notthefrontentrance. Orthographic SIDEelevation perpendicular to sideplotedge, entireplotinframe withslightlyelevatedeye toreadtheground. FRONT ARCH ENTRANCE belongs LEFT edge and MUST NOT facecamera; doNOT showcenteredfrontarchdoor. Keepmodeldoors/windows/roofs/plantlocationsandstructures unchanged, no mirroredfront. Samehuman scale andsquare5×5lowstoneedge asreference, materialwarmgreigestonebrownwoodclaytilepurplecloth, naturallycoolgray recess shadows. NOmetal. Oneassetonecameraon cleanneutral lightgraybackground. Square1024×1024native highresolution, generousmargins, noletteringno text. Thisisexact age1 fromreference, notnewcastle/palace. DO NOTMAKE3panels; ONLY ONE SIDEVIEW.",
+      "generation_metadata": {
+        "tool": "built-in image_gen",
+        "output_hint": "Generated images are saved to /Users/tankaixi/.codex/generated_images/01a12728-34cb-7b22-b679-73b8fae84a4d as /Users/tankaixi/.codex/generated_images/01a12728-34cb-7b22-b679-73b8fae84a4d/exec-5666db5f-4abf-4421-8602-18616b2554f4.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+        "side_output_hint": "Generated images are saved to /Users/tankaixi/.codex/generated_images/01a12728-34cb-7b22-b679-73b8fae84a4d as /Users/tankaixi/.codex/generated_images/01a12728-34cb-7b22-b679-73b8fae84a4d/exec-8019cce7-6837-49e1-ae81-9abd114d885e.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+      },
+      "visual_review": {
+        "status": "review_candidate",
+        "palette": "slightly warm greige/plaster/wood/terracotta with neutral cool recesses, no purewhite wash",
+        "composition": "sparse→intermediate→dense on same provisional5x5square; side corrected individually toactualsidewall",
+        "changes": "HQ user-requested redesign, no metal structures/ornaments; purplefabric retained",
+        "limitations": "AI concept not exact CAD geometry; matchingplot andnormalhumanarchitecturalscale checkedvisually",
+        "resolution": "front/rear native724px panel+20pxpadding, side native1254px+padding; no upscaling"
+      }
+    },
+    {
+      "id": "buildings/byzantine/02-hq-age2",
+      "label": "主基地·时代二",
+      "views": [
+        {
+          "name": "front-perspective",
+          "path": "buildings/byzantine/02-hq-age2/v4/front-perspective.png",
+          "source": "art/concepts/tripo/buildings/byzantine/02-hq-age2/front-perspective.png",
+          "source_sha256": "13271b33ed0bbeab06dc4d8b4ad5554516308a43781e313459dd2bc8c3b475ec",
+          "width": 764,
+          "height": 764,
+          "sha256": "b7a50bcda7414a3ce65b23541044b001c9a4180514be226430e0017c603e6b9c"
+        },
+        {
+          "name": "side",
+          "path": "buildings/byzantine/02-hq-age2/v4/side.png",
+          "source": "art/concepts/tripo/buildings/byzantine/02-hq-age2/side.png",
+          "source_sha256": "b6b8c3a297212164679d2000b005330a71d7ff186352f943bca57171fc138693",
+          "width": 1294,
+          "height": 1294,
+          "sha256": "688cf5957e415cf9faa95660adabe03b1e6a6acba2077c0d51a3f21db0c52a84"
+        },
+        {
+          "name": "rear-perspective",
+          "path": "buildings/byzantine/02-hq-age2/v4/rear-perspective.png",
+          "source": "art/concepts/tripo/buildings/byzantine/02-hq-age2/rear-perspective.png",
+          "source_sha256": "ad8daf3fc31bed94c925c18f00831bd50dc77c3b2c6a967b7c24756a7f6fa314",
+          "width": 764,
+          "height": 764,
+          "sha256": "d9d76d3fc7f36043e7646e0fdbf2e952fb1ab346044e7880546b71df9ccb14f7"
+        }
+      ],
+      "sheet": "buildings/byzantine/02-hq-age2/generated-sheet-v3.png",
+      "native_sheet_dimensions": [
+        2172,
+        724
+      ],
+      "side_sheet": "buildings/byzantine/02-hq-age2/generated-side-v4.png",
+      "footprint_tiles": [
+        5,
+        5
+      ],
+      "footprint_provisional": true,
+      "prompt": "Use case: precise-object-edit. Image1 is FIXED-PLOT anchor showing age1 Byzantine settlement. Image2 is older palace identity reference only. Create an upgraded headquarters within EXACT SAME square 5×5-tile plot as Image1; keep its low stone perimeter edge, matching camera zoom, normal human doorway height and building structural SCALE. Do NOT enlarge whole buildings to fillplot. Allthreeviews consistent upgradedasset. Leftpanel elevated FRONTperspective, MIDDLE PANEL STRICT 90-DEGREE SIDE ELEVATION looking at the commandhall sidewall, NOT front! Rightpanel elevated REAR perspective showing back, not repeatedfront. Fixedplot externaldimensions and door/window size unchanged from Image1, ageprogressionis number/density of buildings and tallerarchitecturalgrowth. Preserve Byzantineidentity: purplecloth banners, stone arches, restrained claytile roofs and Byzantine motifs. NOmetal: no metalroof/domeroof, no gildedstatues/copperfinials/metalcladding. Stone warmneutral greige with mildly coolgray shadows, natural brownwood, restrainedreddishbrownterracotta, purpleaccent. Lightneutral background and softdaylight exposure, texturedsemi-realisticRTS gameconcept. COMPLETEplotsin3EQUALpanels3072x1024wide3:1sheet, no text/no labels. AGE2: intermediate density, around HALF ofplotbuilt, wooden and stone buildings mixed, renovated two-storey modest commandhall and additional small houses/workspace, some open centralcourt. Lessgrand thanage3. Doorheights exactsameage1.",
+      "side_prompt": "Use case: precise-object-edit. Image1 is ONLYreference for EXISTING complete ByzantineHQage2model. Render ONE independent strict RIGHT SIDE VIEW ONLY of exactsame model andsquare5×5plot. Rotatecamera90degreesaroundmodel fromfront, showthearchitecturalSIDE wall notthefrontentrance. Orthographic SIDEelevation perpendicular to sideplotedge, entireplotinframe withslightlyelevatedeye toreadtheground. FRONT ARCH ENTRANCE belongs LEFT edge and MUST NOT facecamera; doNOT showcenteredfrontarchdoor. Keepmodeldoors/windows/roofs/plantlocationsandstructures unchanged, no mirroredfront. Samehuman scale andsquare5×5lowstoneedge asreference, materialwarmgreigestonebrownwoodclaytilepurplecloth, naturallycoolgray recess shadows. NOmetal. Oneassetonecameraon cleanneutral lightgraybackground. Square1024×1024native highresolution, generousmargins, noletteringno text. Thisisexact age2 fromreference, notnewcastle/palace. DO NOTMAKE3panels; ONLY ONE SIDEVIEW.",
+      "generation_metadata": {
+        "tool": "built-in image_gen",
+        "output_hint": "Generated images are saved to /Users/tankaixi/.codex/generated_images/01a12728-34cb-7b22-b679-73b8fae84a4d as /Users/tankaixi/.codex/generated_images/01a12728-34cb-7b22-b679-73b8fae84a4d/exec-0fd919a4-6360-4de8-bc36-9e429b3a542f.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+        "side_output_hint": "Generated images are saved to /Users/tankaixi/.codex/generated_images/01a12728-34cb-7b22-b679-73b8fae84a4d as /Users/tankaixi/.codex/generated_images/01a12728-34cb-7b22-b679-73b8fae84a4d/exec-d0019e75-b274-4d5d-ae2a-445c9fa5b5bd.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+      },
+      "visual_review": {
+        "status": "review_candidate",
+        "palette": "slightly warm greige/plaster/wood/terracotta with neutral cool recesses, no purewhite wash",
+        "composition": "sparse→intermediate→dense on same provisional5x5square; side corrected individually toactualsidewall",
+        "changes": "HQ user-requested redesign, no metal structures/ornaments; purplefabric retained",
+        "limitations": "AI concept not exact CAD geometry; matchingplot andnormalhumanarchitecturalscale checkedvisually",
+        "resolution": "front/rear native724px panel+20pxpadding, side native1254px+padding; no upscaling"
+      }
+    },
+    {
+      "id": "buildings/byzantine/03-hq-age3",
+      "label": "主基地·时代三",
+      "views": [
+        {
+          "name": "front-perspective",
+          "path": "buildings/byzantine/03-hq-age3/v4/front-perspective.png",
+          "source": "art/concepts/tripo/buildings/byzantine/03-hq-age3/front-perspective.png",
+          "source_sha256": "a0cdb167b0ab45a91a64a4cd915ea02676f4d171a3e6c1e9ca0a971b90a6dee6",
+          "width": 764,
+          "height": 764,
+          "sha256": "89ff3b48314f28a3c743da0c064f7d671294612d1e16b75b3556b26adb675bf2"
+        },
+        {
+          "name": "side",
+          "path": "buildings/byzantine/03-hq-age3/v4/side.png",
+          "source": "art/concepts/tripo/buildings/byzantine/03-hq-age3/side.png",
+          "source_sha256": "c9c6bdfe0cda7dcee3483ae08c972ff596a99782c3b5c6a304b058dd4fc716ea",
+          "width": 1294,
+          "height": 1294,
+          "sha256": "597a3c51125ccab2aadb40a27e215beaabefd67b222c084c4fb39e57082b9a9f"
+        },
+        {
+          "name": "rear-perspective",
+          "path": "buildings/byzantine/03-hq-age3/v4/rear-perspective.png",
+          "source": "art/concepts/tripo/buildings/byzantine/03-hq-age3/rear-perspective.png",
+          "source_sha256": "97946c0d8eb42a1b36f4c43120c019eebcfc4721829b4d280ebedea8a60aee04",
+          "width": 764,
+          "height": 764,
+          "sha256": "7d816aa4a3c6087890fe01c4e5421fe8cb98351fea1e1bd9721153a704366d4d"
+        }
+      ],
+      "sheet": "buildings/byzantine/03-hq-age3/generated-sheet-v3.png",
+      "native_sheet_dimensions": [
+        2172,
+        724
+      ],
+      "side_sheet": "buildings/byzantine/03-hq-age3/generated-side-v4.png",
+      "footprint_tiles": [
+        5,
+        5
+      ],
+      "footprint_provisional": true,
+      "prompt": "Use case: precise-object-edit. Image1 is FIXED-PLOT anchor showing age1 Byzantine settlement. Image2 is older palace identity reference only. Create an upgraded headquarters within EXACT SAME square 5×5-tile plot as Image1; keep its low stone perimeter edge, matching camera zoom, normal human doorway height and building structural SCALE. Do NOT enlarge whole buildings to fillplot. Allthreeviews consistent upgradedasset. Leftpanel elevated FRONTperspective, MIDDLE PANEL STRICT 90-DEGREE SIDE ELEVATION looking at the commandhall sidewall, NOT front! Rightpanel elevated REAR perspective showing back, not repeatedfront. Fixedplot externaldimensions and door/window size unchanged from Image1, ageprogressionis number/density of buildings and tallerarchitecturalgrowth. Preserve Byzantineidentity: purplecloth banners, stone arches, restrained claytile roofs and Byzantine motifs. NOmetal: no metalroof/domeroof, no gildedstatues/copperfinials/metalcladding. Stone warmneutral greige with mildly coolgray shadows, natural brownwood, restrainedreddishbrownterracotta, purpleaccent. Lightneutral background and softdaylight exposure, texturedsemi-realisticRTS gameconcept. COMPLETEplotsin3EQUALpanels3072x1024wide3:1sheet, no text/no labels. AGE3: compact mature grand fortified administrative town, PREDOMINANTLY STONE, densely built and occupiedinside5×5plot, commandhallwithgrandstonearchgallery and masonry/claytile dome, 2-3storeysmaximum so human doorheightsremainunchanged. Many clustered stone buildingsaround small courtyard, monumentalcomplexviaarchitecturalrichness NOTgiantdoors/windows. Almostallplotfilled butreadablecirculation. Strongestgrandeur anddensity of3ages, NOmetalornament.",
+      "side_prompt": "Use case: precise-object-edit. Image1 is ONLYreference for EXISTING complete ByzantineHQage3model. Render ONE independent strict RIGHT SIDE VIEW ONLY of exactsame model andsquare5×5plot. Rotatecamera90degreesaroundmodel fromfront, showthearchitecturalSIDE wall notthefrontentrance. Orthographic SIDEelevation perpendicular to sideplotedge, entireplotinframe withslightlyelevatedeye toreadtheground. FRONT ARCH ENTRANCE belongs LEFT edge and MUST NOT facecamera; doNOT showcenteredfrontarchdoor. Keepmodeldoors/windows/roofs/plantlocationsandstructures unchanged, no mirroredfront. Samehuman scale andsquare5×5lowstoneedge asreference, materialwarmgreigestonebrownwoodclaytilepurplecloth, naturallycoolgray recess shadows. NOmetal. Oneassetonecameraon cleanneutral lightgraybackground. Square1024×1024native highresolution, generousmargins, noletteringno text. Thisisexact age3 fromreference, notnewcastle/palace. DO NOTMAKE3panels; ONLY ONE SIDEVIEW.",
+      "generation_metadata": {
+        "tool": "built-in image_gen",
+        "output_hint": "Generated images are saved to /Users/tankaixi/.codex/generated_images/01a12728-34cb-7b22-b679-73b8fae84a4d as /Users/tankaixi/.codex/generated_images/01a12728-34cb-7b22-b679-73b8fae84a4d/exec-f56f73f8-8d83-446a-859b-087d82126a97.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+        "side_output_hint": "Generated images are saved to /Users/tankaixi/.codex/generated_images/01a12728-34cb-7b22-b679-73b8fae84a4d as /Users/tankaixi/.codex/generated_images/01a12728-34cb-7b22-b679-73b8fae84a4d/exec-a0f8d240-9160-4fc0-aefd-1360632fe894.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+      },
+      "visual_review": {
+        "status": "review_candidate",
+        "palette": "slightly warm greige/plaster/wood/terracotta with neutral cool recesses, no purewhite wash",
+        "composition": "sparse→intermediate→dense on same provisional5x5square; side corrected individually toactualsidewall",
+        "changes": "HQ user-requested redesign, no metal structures/ornaments; purplefabric retained",
+        "limitations": "AI concept not exact CAD geometry; matchingplot andnormalhumanarchitecturalscale checkedvisually",
+        "resolution": "front/rear native724px panel+20pxpadding, side native1254px+padding; no upscaling"
+      }
+    },
+    {
+      "id": "buildings/byzantine/04-lumber-camp",
+      "label": "伐木场",
+      "views": [
+        {
+          "name": "front-perspective",
+          "path": "buildings/byzantine/04-lumber-camp/v2/front-perspective.png",
+          "source": "art/concepts/tripo/buildings/byzantine/04-lumber-camp/front-perspective.png",
+          "source_sha256": "727337057b87247fea69645e3cb9591fa487117121c281b4de212ea18ba32bf2",
+          "width": 764,
+          "height": 764,
+          "sha256": "8879ffaaf313ac2101d7cfa5cdaad0b8d151d1eb415f45c2921925b5594f4df4"
+        },
+        {
+          "name": "side",
+          "path": "buildings/byzantine/04-lumber-camp/v2/side.png",
+          "source": "art/concepts/tripo/buildings/byzantine/04-lumber-camp/side.png",
+          "source_sha256": "cffcbc5c5a6dd8716243e53b1bab9ab78c3ffb6d177251a777a2e9fd16c33abd",
+          "width": 764,
+          "height": 764,
+          "sha256": "aaaa34507bf1245f39ee74cef650c0cb73d379fba7c67ec8789d9e8db17df390"
+        },
+        {
+          "name": "rear-perspective",
+          "path": "buildings/byzantine/04-lumber-camp/v2/rear-perspective.png",
+          "source": "art/concepts/tripo/buildings/byzantine/04-lumber-camp/rear-perspective.png",
+          "source_sha256": "1263a6e10737fb73fde119b56279d9b4c2adc000fd502d9f3a9952b343042fd6",
+          "width": 764,
+          "height": 764,
+          "sha256": "bf8ea8f4f0fd474614517f399d03a12bc5d27277c5e52290a30b0527b4983fb4"
+        }
+      ],
+      "sheet": "buildings/byzantine/04-lumber-camp/generated-sheet-v2.png",
+      "native_sheet_dimensions": [
+        2172,
+        724
+      ],
+      "prompt": "Use case: precise-object-edit. Image1 is EDIT TARGET, three independent views of ONE existing Byzantine building. ONLY refine material color balance; absolutely preserve every architectural shape, silhouette, camera angle, props, scale and ornament. Reduce yellow-orange cast in stone and ground into natural WARM-NEUTRAL GREIGE (stone base remains slightly ivory, never bleach white); mildly cool blue-gray ONLY in shadows. Roof keeps MUTED terracotta reddish-brown (not graywashed). Wood natural weathered brown not orange. Retain purple fabrics, warm brass/gold, golden ripe crops, natural bluewater; these identifying hues must not be neutralized. Texturedsemi-realistic3Dgameconcept, original softdaylight and brightness. Humanfaction tasteful littlewarmth anchoredbycoolrecesses, NOTiceblue, NOTwhitewash, NOTallgray. Lightneutral backdrop. SAME threecamera viewscomplete insideEXACT threeequalwidth panels,3072x1024wide3:1sheet. No architectural redesign, no new objects, no added text. Asset: 伐木场 (buildings/byzantine/04-lumber-camp). ",
+      "generation_metadata": {
+        "tool": "built-in image_gen",
+        "output_hint": "Generated images are saved to /Users/tankaixi/.codex/generated_images/01a12728-34cb-7b22-b679-73b8fae84a4d as /Users/tankaixi/.codex/generated_images/01a12728-34cb-7b22-b679-73b8fae84a4d/exec-e7ddad2a-7ca9-4d97-8de4-880197fcf613.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+      },
+      "visual_review": {
+        "status": "review_candidate",
+        "palette": "warm-neutral greige, mild coolgray shadows, restrained terracotta/natural wood/purple identity",
+        "composition": "all3source cameras complete; no obvious silhouette/proportion drift",
+        "changes": "palette only; identifying crop/wood/brass preserved",
+        "resolution": "native724pxpanel +20pxpadding, no upscale"
+      }
+    },
+    {
+      "id": "buildings/byzantine/05-quarry",
+      "label": "采石场",
+      "views": [
+        {
+          "name": "front-perspective",
+          "path": "buildings/byzantine/05-quarry/v2/front-perspective.png",
+          "source": "art/concepts/tripo/buildings/byzantine/05-quarry/front-perspective.png",
+          "source_sha256": "280d3af55125db36c748a333ed83df7344d4e32ddb6551cabb3afb21b95246bf",
+          "width": 764,
+          "height": 764,
+          "sha256": "17c2dee9d096b41623ad61f26e2908bf88591df47be415d1861bf86b0e093ffe"
+        },
+        {
+          "name": "side",
+          "path": "buildings/byzantine/05-quarry/v2/side.png",
+          "source": "art/concepts/tripo/buildings/byzantine/05-quarry/side.png",
+          "source_sha256": "24292f2a255c27efb08bd2e5b5335848ceeb66a1807b7d9c24b95ef4bbe9fdb8",
+          "width": 764,
+          "height": 764,
+          "sha256": "5e8ac042c31a7dd9a58395c1d6700a84903e777ea347674cb440c44cef97a4fc"
+        },
+        {
+          "name": "rear-perspective",
+          "path": "buildings/byzantine/05-quarry/v2/rear-perspective.png",
+          "source": "art/concepts/tripo/buildings/byzantine/05-quarry/rear-perspective.png",
+          "source_sha256": "6712f4529354e9c8b883eb10201aa6ac161485ac2666e24d88b944b8a866310e",
+          "width": 764,
+          "height": 764,
+          "sha256": "464401b7450183a05c879dc4773b308bc2dea57b0ab365748af453bbaf16fa34"
+        }
+      ],
+      "sheet": "buildings/byzantine/05-quarry/generated-sheet-v2.png",
+      "native_sheet_dimensions": [
+        2172,
+        724
+      ],
+      "prompt": "Use case: precise-object-edit. Image1 is EDIT TARGET, three independent views of ONE existing Byzantine building. ONLY refine material color balance; absolutely preserve every architectural shape, silhouette, camera angle, props, scale and ornament. Reduce yellow-orange cast in stone and ground into natural WARM-NEUTRAL GREIGE (stone base remains slightly ivory, never bleach white); mildly cool blue-gray ONLY in shadows. Roof keeps MUTED terracotta reddish-brown (not graywashed). Wood natural weathered brown not orange. Retain purple fabrics, warm brass/gold, golden ripe crops, natural bluewater; these identifying hues must not be neutralized. Texturedsemi-realistic3Dgameconcept, original softdaylight and brightness. Humanfaction tasteful littlewarmth anchoredbycoolrecesses, NOTiceblue, NOTwhitewash, NOTallgray. Lightneutral backdrop. SAME threecamera viewscomplete insideEXACT threeequalwidth panels,3072x1024wide3:1sheet. No architectural redesign, no new objects, no added text. Asset: 采石场 (buildings/byzantine/05-quarry). ",
+      "generation_metadata": {
+        "tool": "built-in image_gen",
+        "output_hint": "Generated images are saved to /Users/tankaixi/.codex/generated_images/01a12728-34cb-7b22-b679-73b8fae84a4d as /Users/tankaixi/.codex/generated_images/01a12728-34cb-7b22-b679-73b8fae84a4d/exec-88d55ac2-017e-45ee-96cd-6fafbd8a9391.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+      },
+      "visual_review": {
+        "status": "review_candidate",
+        "palette": "warm-neutral greige, mild coolgray shadows, restrained terracotta/natural wood/purple identity",
+        "composition": "all3source cameras complete; no obvious silhouette/proportion drift",
+        "changes": "palette only; identifying crop/wood/brass preserved",
+        "resolution": "native724pxpanel +20pxpadding, no upscale"
+      }
+    },
+    {
+      "id": "buildings/byzantine/06-farm",
+      "label": "农田",
+      "views": [
+        {
+          "name": "front-perspective",
+          "path": "buildings/byzantine/06-farm/v2/front-perspective.png",
+          "source": "art/concepts/tripo/buildings/byzantine/06-farm/front-perspective.png",
+          "source_sha256": "d2581dc984c6aa7c56a87f419ce2846bf5e0973d5ca20577829bf6b4fe509502",
+          "width": 764,
+          "height": 764,
+          "sha256": "4c2874760cab0257b40526f96855768cc2a74072ab86838181f192ec18d57e94"
+        },
+        {
+          "name": "side",
+          "path": "buildings/byzantine/06-farm/v2/side.png",
+          "source": "art/concepts/tripo/buildings/byzantine/06-farm/side.png",
+          "source_sha256": "b1dc1d55ff85c5e97a3c1dea9df5f8ac0825458eb6749f8aadd50ea141335a5a",
+          "width": 764,
+          "height": 764,
+          "sha256": "64155ddda3ccbb70658e917aaf2a564aa29677a8f40a572954b5f5f9bde7474b"
+        },
+        {
+          "name": "rear-perspective",
+          "path": "buildings/byzantine/06-farm/v2/rear-perspective.png",
+          "source": "art/concepts/tripo/buildings/byzantine/06-farm/rear-perspective.png",
+          "source_sha256": "e2ae7ab8523328b8b80ebb6f07d7947030aa2e9ad317d46ca0752588cd3ab61c",
+          "width": 764,
+          "height": 764,
+          "sha256": "affdf2c3368539b86fb0eb9862aa1bfcd440b4699304a59d6c3fd57d74dac9d8"
+        }
+      ],
+      "sheet": "buildings/byzantine/06-farm/generated-sheet-v2.png",
+      "native_sheet_dimensions": [
+        2172,
+        724
+      ],
+      "prompt": "Use case: precise-object-edit. Image1 is EDIT TARGET, three independent views of ONE existing Byzantine building. ONLY refine material color balance; absolutely preserve every architectural shape, silhouette, camera angle, props, scale and ornament. Reduce yellow-orange cast in stone and ground into natural WARM-NEUTRAL GREIGE (stone base remains slightly ivory, never bleach white); mildly cool blue-gray ONLY in shadows. Roof keeps MUTED terracotta reddish-brown (not graywashed). Wood natural weathered brown not orange. Retain purple fabrics, warm brass/gold, golden ripe crops, natural bluewater; these identifying hues must not be neutralized. Texturedsemi-realistic3Dgameconcept, original softdaylight and brightness. Humanfaction tasteful littlewarmth anchoredbycoolrecesses, NOTiceblue, NOTwhitewash, NOTallgray. Lightneutral backdrop. SAME threecamera viewscomplete insideEXACT threeequalwidth panels,3072x1024wide3:1sheet. No architectural redesign, no new objects, no added text. Asset: 农田 (buildings/byzantine/06-farm). IMPORTANT all crop rows must remain golden ripe wheat; only buildings/ground/shadows cool neutral.",
+      "generation_metadata": {
+        "tool": "built-in image_gen",
+        "output_hint": "Generated images are saved to /Users/tankaixi/.codex/generated_images/01a12728-34cb-7b22-b679-73b8fae84a4d as /Users/tankaixi/.codex/generated_images/01a12728-34cb-7b22-b679-73b8fae84a4d/exec-89d5d2a0-0876-4b22-a8ca-6b117f2a20b9.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+      },
+      "visual_review": {
+        "status": "review_candidate",
+        "palette": "warm-neutral greige, mild coolgray shadows, restrained terracotta/natural wood/purple identity",
+        "composition": "all3source cameras complete; no obvious silhouette/proportion drift",
+        "changes": "palette only; identifying crop/wood/brass preserved",
+        "resolution": "native724pxpanel +20pxpadding, no upscale"
+      }
+    },
+    {
+      "id": "buildings/byzantine/07-iron-mine",
+      "label": "铁矿厂",
+      "views": [
+        {
+          "name": "front-perspective",
+          "path": "buildings/byzantine/07-iron-mine/v2/front-perspective.png",
+          "source": "art/concepts/tripo/buildings/byzantine/07-iron-mine/front-perspective.png",
+          "source_sha256": "fc7a254b261a0421283901a37b1d07c7dfc78ee710aaae7d2e475242366e2fe8",
+          "width": 764,
+          "height": 764,
+          "sha256": "169c48facedb80930103aabf5aafb56cec2511a03b9fc471d29db09b2b781af7"
+        },
+        {
+          "name": "side",
+          "path": "buildings/byzantine/07-iron-mine/v2/side.png",
+          "source": "art/concepts/tripo/buildings/byzantine/07-iron-mine/side.png",
+          "source_sha256": "2a8d5eac2b3dd2bc709b22492b24cfdb47a2a94bfabe1df5b86db786f5e09afd",
+          "width": 764,
+          "height": 764,
+          "sha256": "c062d13654a20e9b6f6227b813d0852a9961e140e7e5d05902396187ec1739a9"
+        },
+        {
+          "name": "rear-perspective",
+          "path": "buildings/byzantine/07-iron-mine/v2/rear-perspective.png",
+          "source": "art/concepts/tripo/buildings/byzantine/07-iron-mine/rear-perspective.png",
+          "source_sha256": "dacd5d3b45f63ec1d9cedc23f93552b6a54bb41834b8df0b54c91918bf8f95bc",
+          "width": 764,
+          "height": 764,
+          "sha256": "f5c460a26a05f482a5c7bcf5ce9917f4a4d8ce0720c7bbaad6b5dd547db3de92"
+        }
+      ],
+      "sheet": "buildings/byzantine/07-iron-mine/generated-sheet-v2.png",
+      "native_sheet_dimensions": [
+        2172,
+        724
+      ],
+      "prompt": "Use case: precise-object-edit. Image1 is EDIT TARGET, three independent views of ONE existing Byzantine building. ONLY refine material color balance; absolutely preserve every architectural shape, silhouette, camera angle, props, scale and ornament. Reduce yellow-orange cast in stone and ground into natural WARM-NEUTRAL GREIGE (stone base remains slightly ivory, never bleach white); mildly cool blue-gray ONLY in shadows. Roof keeps MUTED terracotta reddish-brown (not graywashed). Wood natural weathered brown not orange. Retain purple fabrics, warm brass/gold, golden ripe crops, natural bluewater; these identifying hues must not be neutralized. Texturedsemi-realistic3Dgameconcept, original softdaylight and brightness. Humanfaction tasteful littlewarmth anchoredbycoolrecesses, NOTiceblue, NOTwhitewash, NOTallgray. Lightneutral backdrop. SAME threecamera viewscomplete insideEXACT threeequalwidth panels,3072x1024wide3:1sheet. No architectural redesign, no new objects, no added text. Asset: 铁矿厂 (buildings/byzantine/07-iron-mine).",
+      "generation_metadata": {
+        "tool": "built-in image_gen",
+        "output_hint": "Generated images are saved to /Users/tankaixi/.codex/generated_images/01a12728-34cb-7b22-b679-73b8fae84a4d as /Users/tankaixi/.codex/generated_images/01a12728-34cb-7b22-b679-73b8fae84a4d/exec-33d0e40c-77a1-4961-841a-abad8c0641ef.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+      },
+      "visual_review": {
+        "status": "review_candidate",
+        "palette": "warm-neutral greige, mild coolgray shadows, restrained terracotta/natural wood/purple identity",
+        "composition": "all3source cameras complete; no obvious silhouette/proportion drift",
+        "changes": "palette only; identifying crop/wood/brass preserved",
+        "resolution": "native724pxpanel +20pxpadding, no upscale"
+      }
+    },
+    {
+      "id": "buildings/byzantine/08-hunting-lodge",
+      "label": "打猎小屋",
+      "views": [
+        {
+          "name": "front-perspective",
+          "path": "buildings/byzantine/08-hunting-lodge/v2/front-perspective.png",
+          "source": "art/concepts/tripo/buildings/byzantine/08-hunting-lodge/front-perspective.png",
+          "source_sha256": "4924caad2a542fb55829e43bdd9c67d61c097448b398ebb31dbeedcb8fd1afbb",
+          "width": 764,
+          "height": 764,
+          "sha256": "918880a45a9acb7da5586c66d109edefe4c205036bc39dc045df1023a4253239"
+        },
+        {
+          "name": "side",
+          "path": "buildings/byzantine/08-hunting-lodge/v2/side.png",
+          "source": "art/concepts/tripo/buildings/byzantine/08-hunting-lodge/side.png",
+          "source_sha256": "8440e508595484b136521ea32d8a56648af19805d5d3ce52d2e573945f8dd6fe",
+          "width": 764,
+          "height": 764,
+          "sha256": "1db3fae5dd5dbf6718b9e5e2ff8c1cdf3092e98cd8d2234ec851966bd439d26e"
+        },
+        {
+          "name": "rear-perspective",
+          "path": "buildings/byzantine/08-hunting-lodge/v2/rear-perspective.png",
+          "source": "art/concepts/tripo/buildings/byzantine/08-hunting-lodge/rear-perspective.png",
+          "source_sha256": "38f2542cc080a40a612e9db6436581c5789d893a28f98d79aadaac095b4f5324",
+          "width": 764,
+          "height": 764,
+          "sha256": "9fce5984d5008b512ce6ff5608f5eefd784e277acb87be5b3beb29f818fe116f"
+        }
+      ],
+      "sheet": "buildings/byzantine/08-hunting-lodge/generated-sheet-v2.png",
+      "native_sheet_dimensions": [
+        2172,
+        724
+      ],
+      "prompt": "Use case: precise-object-edit. Image1 is EDIT TARGET, three independent views of ONE existing Byzantine building. ONLY refine material color balance; absolutely preserve every architectural shape, silhouette, camera angle, props, scale and ornament. Reduce yellow-orange cast in stone and ground into natural WARM-NEUTRAL GREIGE (stone base remains slightly ivory, never bleach white); mildly cool blue-gray ONLY in shadows. Roof keeps MUTED terracotta reddish-brown (not graywashed). Wood natural weathered brown not orange. Retain purple fabrics, warm brass/gold, golden ripe crops, natural bluewater; these identifying hues must not be neutralized. Texturedsemi-realistic3Dgameconcept, original softdaylight and brightness. Humanfaction tasteful littlewarmth anchoredbycoolrecesses, NOTiceblue, NOTwhitewash, NOTallgray. Lightneutral backdrop. SAME threecamera viewscomplete insideEXACT threeequalwidth panels,3072x1024wide3:1sheet. No architectural redesign, no new objects, no added text. Asset: 打猎小屋 (buildings/byzantine/08-hunting-lodge).",
+      "generation_metadata": {
+        "tool": "built-in image_gen",
+        "output_hint": "Generated images are saved to /Users/tankaixi/.codex/generated_images/01a12728-34cb-7b22-b679-73b8fae84a4d as /Users/tankaixi/.codex/generated_images/01a12728-34cb-7b22-b679-73b8fae84a4d/exec-10442443-414a-4e93-a132-3fd58d3e1a74.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+      },
+      "visual_review": {
+        "status": "review_candidate",
+        "palette": "warm-neutral greige, mild coolgray shadows, restrained terracotta/natural wood/purple identity",
+        "composition": "all3source cameras complete; no obvious silhouette/proportion drift",
+        "changes": "palette only; identifying crop/wood/brass preserved",
+        "resolution": "native724pxpanel +20pxpadding, no upscale"
+      }
+    },
+    {
+      "id": "buildings/byzantine/09-fishery",
+      "label": "渔场",
+      "views": [
+        {
+          "name": "front-perspective",
+          "path": "buildings/byzantine/09-fishery/v2/front-perspective.png",
+          "source": "art/concepts/tripo/buildings/byzantine/09-fishery/front-perspective.png",
+          "source_sha256": "5a759589ef943ba164e8bcc713008d106371a04acb3401af09241035f86df9a6",
+          "width": 764,
+          "height": 764,
+          "sha256": "3838ec73f8cc4a867ff4fc4121c8303a46689abf5f2b13263e3042c2bb0abcc7"
+        },
+        {
+          "name": "side",
+          "path": "buildings/byzantine/09-fishery/v2/side.png",
+          "source": "art/concepts/tripo/buildings/byzantine/09-fishery/side.png",
+          "source_sha256": "e477e2c362f24f61f0402711b1975e81aedf434b7e53b23a96047933038939a5",
+          "width": 764,
+          "height": 764,
+          "sha256": "2d089b4c2d258dd48ddedffdc85bbfab1ffa414d2ef35aedbb35a94b8c9d6042"
+        },
+        {
+          "name": "rear-perspective",
+          "path": "buildings/byzantine/09-fishery/v2/rear-perspective.png",
+          "source": "art/concepts/tripo/buildings/byzantine/09-fishery/rear-perspective.png",
+          "source_sha256": "abc3e16c36fab2917c77a3e563d3e27ba42c168fc902250303e42857e8d45b2c",
+          "width": 764,
+          "height": 764,
+          "sha256": "7b1bf509982a37c24459d59584a079879746555c3d691aab056a3dc32e5edd20"
+        }
+      ],
+      "sheet": "buildings/byzantine/09-fishery/generated-sheet-v2.png",
+      "native_sheet_dimensions": [
+        2172,
+        724
+      ],
+      "prompt": "Use case: precise-object-edit. Image1 is EDIT TARGET, three independent views of ONE existing Byzantine building. ONLY refine material color balance; absolutely preserve every architectural shape, silhouette, camera angle, props, scale and ornament. Reduce yellow-orange cast in stone and ground into natural WARM-NEUTRAL GREIGE (stone base remains slightly ivory, never bleach white); mildly cool blue-gray ONLY in shadows. Roof keeps MUTED terracotta reddish-brown (not graywashed). Wood natural weathered brown not orange. Retain purple fabrics, warm brass/gold, golden ripe crops, natural bluewater; these identifying hues must not be neutralized. Texturedsemi-realistic3Dgameconcept, original softdaylight and brightness. Humanfaction tasteful littlewarmth anchoredbycoolrecesses, NOTiceblue, NOTwhitewash, NOTallgray. Lightneutral backdrop. SAME threecamera viewscomplete insideEXACT threeequalwidth panels,3072x1024wide3:1sheet. No architectural redesign, no new objects, no added text. Asset: 渔场 (buildings/byzantine/09-fishery).",
+      "generation_metadata": {
+        "tool": "built-in image_gen",
+        "output_hint": "Generated images are saved to /Users/tankaixi/.codex/generated_images/01a12728-34cb-7b22-b679-73b8fae84a4d as /Users/tankaixi/.codex/generated_images/01a12728-34cb-7b22-b679-73b8fae84a4d/exec-e2241579-4bd6-4c78-9710-c7a678514334.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+      },
+      "visual_review": {
+        "status": "review_candidate",
+        "palette": "warm-neutral greige, mild coolgray shadows, restrained terracotta/natural wood/purple identity",
+        "composition": "all3source cameras complete; no obvious silhouette/proportion drift",
+        "changes": "palette only; identifying crop/wood/brass preserved",
+        "resolution": "native724pxpanel +20pxpadding, no upscale"
+      }
+    },
+    {
+      "id": "buildings/byzantine/10-warehouse",
+      "label": "仓库",
+      "views": [
+        {
+          "name": "front-perspective",
+          "path": "buildings/byzantine/10-warehouse/v2/front-perspective.png",
+          "source": "art/concepts/tripo/buildings/byzantine/10-warehouse/front-perspective.png",
+          "source_sha256": "ee42bd952164c56b61a917645409e925bd5ce034b84d34f18c5ff06e87c16ea9",
+          "width": 764,
+          "height": 764,
+          "sha256": "a4db3040eb2d96fda1d9451ec9234791e757960174463c8f90d82c6ad72daad9"
+        },
+        {
+          "name": "side",
+          "path": "buildings/byzantine/10-warehouse/v2/side.png",
+          "source": "art/concepts/tripo/buildings/byzantine/10-warehouse/side.png",
+          "source_sha256": "594315b9f92765815ca9e16e3c144c4fd9cd92140c436d3af9f98e08ba087aea",
+          "width": 764,
+          "height": 764,
+          "sha256": "a0d0f8dba6c58b2fbf79e3645d55929fd912de3254826d680241e74d6e8f6401"
+        },
+        {
+          "name": "rear-perspective",
+          "path": "buildings/byzantine/10-warehouse/v2/rear-perspective.png",
+          "source": "art/concepts/tripo/buildings/byzantine/10-warehouse/rear-perspective.png",
+          "source_sha256": "cf7311a5fc937d4fe6e3946903f9688bea05c22642564aa43e97e3103bb96e1d",
+          "width": 764,
+          "height": 764,
+          "sha256": "4ddd144f7be1fbefcf8569fd8d44eb3ba0f227be623e1f67dff206d1ae7a5bed"
+        }
+      ],
+      "sheet": "buildings/byzantine/10-warehouse/generated-sheet-v2.png",
+      "native_sheet_dimensions": [
+        2172,
+        724
+      ],
+      "prompt": "Use case: precise-object-edit. Image1 is EDIT TARGET, three independent views of ONE existing Byzantine building. ONLY refine material color balance; absolutely preserve every architectural shape, silhouette, camera angle, props, scale and ornament. Reduce yellow-orange cast in stone and ground into natural WARM-NEUTRAL GREIGE (stone base remains slightly ivory, never bleach white); mildly cool blue-gray ONLY in shadows. Roof keeps MUTED terracotta reddish-brown (not graywashed). Wood natural weathered brown not orange. Retain purple fabrics, warm brass/gold, golden ripe crops, natural bluewater; these identifying hues must not be neutralized. Texturedsemi-realistic3Dgameconcept, original softdaylight and brightness. Humanfaction tasteful littlewarmth anchoredbycoolrecesses, NOTiceblue, NOTwhitewash, NOTallgray. Lightneutral backdrop. SAME threecamera viewscomplete insideEXACT threeequalwidth panels,3072x1024wide3:1sheet. No architectural redesign, no new objects, no added text. Asset: 仓库 (buildings/byzantine/10-warehouse).",
+      "generation_metadata": {
+        "tool": "built-in image_gen",
+        "output_hint": "Generated images are saved to /Users/tankaixi/.codex/generated_images/01a12728-34cb-7b22-b679-73b8fae84a4d as /Users/tankaixi/.codex/generated_images/01a12728-34cb-7b22-b679-73b8fae84a4d/exec-d8137bef-4c3a-45b3-b634-50fb5dcd455b.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+      },
+      "visual_review": {
+        "status": "review_candidate",
+        "palette": "warm-neutral greige, mild coolgray shadows, restrained terracotta/natural wood/purple identity",
+        "composition": "all3source cameras complete; no obvious silhouette/proportion drift",
+        "changes": "palette only; identifying crop/wood/brass preserved",
+        "resolution": "native724pxpanel +20pxpadding, no upscale"
+      }
+    },
+    {
+      "id": "buildings/byzantine/11-arrow-depot",
+      "label": "弹药库",
+      "views": [
+        {
+          "name": "front-perspective",
+          "path": "buildings/byzantine/11-arrow-depot/v2/front-perspective.png",
+          "source": "art/concepts/tripo/buildings/byzantine/11-arrow-depot/front-perspective.png",
+          "source_sha256": "87cb8a9dbe38078e135cb563094bf6e15e1beb19541d2fb994c0305aac39738b",
+          "width": 764,
+          "height": 764,
+          "sha256": "ca827ffd5f1c226ca4d368c95f5a37eccb9a7a46bf58f7242e9945c51bc4f089"
+        },
+        {
+          "name": "side",
+          "path": "buildings/byzantine/11-arrow-depot/v2/side.png",
+          "source": "art/concepts/tripo/buildings/byzantine/11-arrow-depot/side.png",
+          "source_sha256": "7438806b50e71af5d9a44c26f2b6bab056ed520e8e5d98b960fbeeccedf0471d",
+          "width": 764,
+          "height": 764,
+          "sha256": "83c07448d0b01b3a5254576575158cacac458035744ab77b7cfb4f892d575043"
+        },
+        {
+          "name": "rear-perspective",
+          "path": "buildings/byzantine/11-arrow-depot/v2/rear-perspective.png",
+          "source": "art/concepts/tripo/buildings/byzantine/11-arrow-depot/rear-perspective.png",
+          "source_sha256": "ee45066bbab950840ec654d833bd8ea265803b19f589a937e358799b8769f4ee",
+          "width": 764,
+          "height": 764,
+          "sha256": "d614cd7cf8c7039a7d1ec13c98e503235221a95927effa0c1c6528f9c9974091"
+        }
+      ],
+      "sheet": "buildings/byzantine/11-arrow-depot/generated-sheet-v2.png",
+      "native_sheet_dimensions": [
+        2172,
+        724
+      ],
+      "prompt": "Use case: precise-object-edit. Image1 is EDIT TARGET, three independent views of ONE existing Byzantine building. ONLY refine material color balance; absolutely preserve every architectural shape, silhouette, camera angle, props, scale and ornament. Reduce yellow-orange cast in stone and ground into natural WARM-NEUTRAL GREIGE (stone base remains slightly ivory, never bleach white); mildly cool blue-gray ONLY in shadows. Roof keeps MUTED terracotta reddish-brown (not graywashed). Wood natural weathered brown not orange. Retain purple fabrics, warm brass/gold, golden ripe crops, natural bluewater; these identifying hues must not be neutralized. Texturedsemi-realistic3Dgameconcept, original softdaylight and brightness. Humanfaction tasteful littlewarmth anchoredbycoolrecesses, NOTiceblue, NOTwhitewash, NOTallgray. Lightneutral backdrop. SAME threecamera viewscomplete insideEXACT threeequalwidth panels,3072x1024wide3:1sheet. No architectural redesign, no new objects, no added text. Asset: 弹药库 (buildings/byzantine/11-arrow-depot).",
+      "generation_metadata": {
+        "tool": "built-in image_gen",
+        "output_hint": "Generated images are saved to /Users/tankaixi/.codex/generated_images/01a12728-34cb-7b22-b679-73b8fae84a4d as /Users/tankaixi/.codex/generated_images/01a12728-34cb-7b22-b679-73b8fae84a4d/exec-294739fe-c852-431e-8430-4c355b2b34d3.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+      },
+      "visual_review": {
+        "status": "review_candidate",
+        "palette": "warm-neutral greige, mild coolgray shadows, restrained terracotta/natural wood/purple identity",
+        "composition": "all3source cameras complete; no obvious silhouette/proportion drift",
+        "changes": "palette only; identifying crop/wood/brass preserved",
+        "resolution": "native724pxpanel +20pxpadding, no upscale"
+      }
+    },
+    {
+      "id": "buildings/byzantine/12-powder-magazine",
+      "label": "火药库",
+      "views": [
+        {
+          "name": "front-perspective",
+          "path": "buildings/byzantine/12-powder-magazine/v2/front-perspective.png",
+          "source": "art/concepts/tripo/buildings/byzantine/12-powder-magazine/front-perspective.png",
+          "source_sha256": "6b1ceef521a1f294430dbd53288eacc8c4e3b7e908d2ae6e8a01d782758789eb",
+          "width": 764,
+          "height": 764,
+          "sha256": "77c687923f0c75f36c431538bcbfc5b204b36dea043995a3bb83f67a40335174"
+        },
+        {
+          "name": "side",
+          "path": "buildings/byzantine/12-powder-magazine/v2/side.png",
+          "source": "art/concepts/tripo/buildings/byzantine/12-powder-magazine/side.png",
+          "source_sha256": "a500d4ef1814d92e03e2ed48ca7b2077bd217ff01cbf7b0c3ddc167d9bd51e7a",
+          "width": 764,
+          "height": 764,
+          "sha256": "20c6f6af51d059533f535052c8da8d63315de810d84466cb8b691303f90ce756"
+        },
+        {
+          "name": "rear-perspective",
+          "path": "buildings/byzantine/12-powder-magazine/v2/rear-perspective.png",
+          "source": "art/concepts/tripo/buildings/byzantine/12-powder-magazine/rear-perspective.png",
+          "source_sha256": "b3d13dbd2d7bde881716179a57db2ed43c1d0ed9ca2d0ad19164ca1108d72e31",
+          "width": 764,
+          "height": 764,
+          "sha256": "a53b7c0fc9a89251743918e5b4e6c3d65a5967dbeecde53558e01fdf334e07f8"
+        }
+      ],
+      "sheet": "buildings/byzantine/12-powder-magazine/generated-sheet-v2.png",
+      "native_sheet_dimensions": [
+        2172,
+        724
+      ],
+      "prompt": "Use case: precise-object-edit. Image1 is EDIT TARGET, three independent views of ONE existing Byzantine building. ONLY refine material color balance; absolutely preserve every architectural shape, silhouette, camera angle, props, scale and ornament. Reduce yellow-orange cast in stone and ground into natural WARM-NEUTRAL GREIGE (stone base remains slightly ivory, never bleach white); mildly cool blue-gray ONLY in shadows. Roof keeps MUTED terracotta reddish-brown (not graywashed). Wood natural weathered brown not orange. Retain purple fabrics, warm brass/gold, golden ripe crops, natural bluewater; these identifying hues must not be neutralized. Texturedsemi-realistic3Dgameconcept, original softdaylight and brightness. Humanfaction tasteful littlewarmth anchoredbycoolrecesses, NOTiceblue, NOTwhitewash, NOTallgray. Lightneutral backdrop. SAME threecamera viewscomplete insideEXACT threeequalwidth panels,3072x1024wide3:1sheet. No architectural redesign, no new objects, no added text. Asset: 火药库 (buildings/byzantine/12-powder-magazine).",
+      "generation_metadata": {
+        "tool": "built-in image_gen",
+        "output_hint": "Generated images are saved to /Users/tankaixi/.codex/generated_images/01a12728-34cb-7b22-b679-73b8fae84a4d as /Users/tankaixi/.codex/generated_images/01a12728-34cb-7b22-b679-73b8fae84a4d/exec-f66a6d99-8ad1-447b-91eb-fabfbdb447ad.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+      },
+      "visual_review": {
+        "status": "review_candidate",
+        "palette": "warm-neutral greige, mild coolgray shadows, restrained terracotta/natural wood/purple identity",
+        "composition": "all3source cameras complete; no obvious silhouette/proportion drift",
+        "changes": "palette only; identifying crop/wood/brass preserved",
+        "resolution": "native724pxpanel +20pxpadding, no upscale"
+      }
+    },
+    {
+      "id": "buildings/byzantine/26-arrow-tower-footprint-v2",
+      "label": "箭塔·拜占庭·方形占地修订",
+      "views": [
+        {
+          "name": "front-perspective",
+          "path": "buildings/byzantine/26-arrow-tower-footprint-v2/v2/front-perspective.png",
+          "source": "art/concepts/tripo/buildings/byzantine/26-arrow-tower-footprint-v2/front-perspective.png",
+          "source_sha256": "b0346a566652be15c8af8c08233690e52d9f96dd0593e74044bf5a9d2730ed3a",
+          "width": 764,
+          "height": 764,
+          "sha256": "6ce86ec728ac012ad404d431151cf9e6c10defeaef3616aa41b38cbdb03360cb"
+        },
+        {
+          "name": "side",
+          "path": "buildings/byzantine/26-arrow-tower-footprint-v2/v2/side.png",
+          "source": "art/concepts/tripo/buildings/byzantine/26-arrow-tower-footprint-v2/side.png",
+          "source_sha256": "73d45be2e7533cc810b1845f229da85a992c407b7bedb37d0be345f57ce571ea",
+          "width": 764,
+          "height": 764,
+          "sha256": "e4bd23d4671802ba59adea909c7e6be026f064c61fb83c3af4932c50e538118e"
+        },
+        {
+          "name": "rear-perspective",
+          "path": "buildings/byzantine/26-arrow-tower-footprint-v2/v2/rear-perspective.png",
+          "source": "art/concepts/tripo/buildings/byzantine/26-arrow-tower-footprint-v2/rear-perspective.png",
+          "source_sha256": "52146974b79c396e6b0304cf58bf4f25d0bde399e64ae90e767f4e728a955e37",
+          "width": 764,
+          "height": 764,
+          "sha256": "3d9915db20ea9971edcae2b66d240282cad68d2de526b782000bda750427903b"
+        }
+      ],
+      "sheet": "buildings/byzantine/26-arrow-tower-footprint-v2/generated-sheet-v2.png",
+      "native_sheet_dimensions": [
+        2172,
+        724
+      ],
+      "prompt": "Use case: precise-object-edit. Image1 is EDIT TARGET, three independent views of ONE existing Byzantine building. ONLY refine material color balance; absolutely preserve every architectural shape, silhouette, camera angle, props, scale and ornament. Reduce yellow-orange cast in stone and ground into natural WARM-NEUTRAL GREIGE (stone base remains slightly ivory, never bleach white); mildly cool blue-gray ONLY in shadows. Roof keeps MUTED terracotta reddish-brown (not graywashed). Wood natural weathered brown not orange. Retain purple fabrics, warm brass/gold, golden ripe crops, natural bluewater; these identifying hues must not be neutralized. Texturedsemi-realistic3Dgameconcept, original softdaylight and brightness. Humanfaction tasteful littlewarmth anchoredbycoolrecesses, NOTiceblue, NOTwhitewash, NOTallgray. Lightneutral backdrop. SAME threecamera viewscomplete insideEXACT threeequalwidth panels,3072x1024wide3:1sheet. No architectural redesign, no new objects, no added text. Asset: 箭塔·拜占庭·方形占地修订 (buildings/byzantine/26-arrow-tower-footprint-v2). IMPORTANT keep existing exact2x2squarefootprint, vertical rectangularstonepedestal (NOTtapered), nofrontdoor or ladder/passage. Preserve single closedrearpersonneldoor and original upper weapon platform and allmetalweapons/brassfinial. Onlycolorbalance.",
+      "generation_metadata": {
+        "tool": "built-in image_gen",
+        "output_hint": "Generated images are saved to /Users/tankaixi/.codex/generated_images/01a12728-34cb-7b22-b679-73b8fae84a4d as /Users/tankaixi/.codex/generated_images/01a12728-34cb-7b22-b679-73b8fae84a4d/exec-7b035f36-76ad-41e4-8d10-65539f322d5e.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+      },
+      "visual_review": {
+        "status": "review_candidate",
+        "palette": "warm-neutral greige, mild coolgray shadows, restrained terracotta/natural wood/purple identity",
+        "composition": "all3source cameras complete; no obvious silhouette/proportion drift",
+        "changes": "palette only; identifying crop/wood/brass preserved",
+        "resolution": "native724pxpanel +20pxpadding, no upscale",
+        "tower_policy": "solid vertical square pedestal retained, upper weapons unchanged, single closed rear door retained, no passage/frontdoor/ladder"
+      },
+      "footprint_tiles": [
+        2,
+        2
+      ],
+      "footprint_provisional": false
+    },
+    {
+      "id": "buildings/byzantine/27-cannon-tower-footprint-v2",
+      "label": "炮塔·拜占庭·方形占地修订",
+      "views": [
+        {
+          "name": "front-perspective",
+          "path": "buildings/byzantine/27-cannon-tower-footprint-v2/v2/front-perspective.png",
+          "source": "art/concepts/tripo/buildings/byzantine/27-cannon-tower-footprint-v2/front-perspective.png",
+          "source_sha256": "78a0a755f7751f0801c05324c9caaf3f2fbc5a9450700c3dd245c3ac7b70e9c2",
+          "width": 764,
+          "height": 764,
+          "sha256": "7a146514971358f8825c13725895c72c2151de27996a0a6aadb3265f960d2021"
+        },
+        {
+          "name": "side",
+          "path": "buildings/byzantine/27-cannon-tower-footprint-v2/v2/side.png",
+          "source": "art/concepts/tripo/buildings/byzantine/27-cannon-tower-footprint-v2/side.png",
+          "source_sha256": "2341fb58b94d76a4a6c017e82dc79381e51cb51a38f41df014019150ce5fb02f",
+          "width": 764,
+          "height": 764,
+          "sha256": "e6d34c7f3f3cac84bb8d1bf2be495379e4c56be5b4aff7c3c278ec3578cd1a8d"
+        },
+        {
+          "name": "rear-perspective",
+          "path": "buildings/byzantine/27-cannon-tower-footprint-v2/v2/rear-perspective.png",
+          "source": "art/concepts/tripo/buildings/byzantine/27-cannon-tower-footprint-v2/rear-perspective.png",
+          "source_sha256": "29eb99c928f1340dfc21ca2e8eb007caf81a28e70b94408de6a554d461b104c0",
+          "width": 764,
+          "height": 764,
+          "sha256": "1757d7901e7540408110b7ca379c8b9739663bd63c20f40950b158d8b4647f8f"
+        }
+      ],
+      "sheet": "buildings/byzantine/27-cannon-tower-footprint-v2/generated-sheet-v2.png",
+      "native_sheet_dimensions": [
+        2172,
+        724
+      ],
+      "prompt": "Use case: precise-object-edit. Image1 is EDIT TARGET, three independent views of ONE existing Byzantine building. ONLY refine material color balance; absolutely preserve every architectural shape, silhouette, camera angle, props, scale and ornament. Reduce yellow-orange cast in stone and ground into natural WARM-NEUTRAL GREIGE (stone base remains slightly ivory, never bleach white); mildly cool blue-gray ONLY in shadows. Roof keeps MUTED terracotta reddish-brown (not graywashed). Wood natural weathered brown not orange. Retain purple fabrics, warm brass/gold, golden ripe crops, natural bluewater; these identifying hues must not be neutralized. Texturedsemi-realistic3Dgameconcept, original softdaylight and brightness. Humanfaction tasteful littlewarmth anchoredbycoolrecesses, NOTiceblue, NOTwhitewash, NOTallgray. Lightneutral backdrop. SAME threecamera viewscomplete insideEXACT threeequalwidth panels,3072x1024wide3:1sheet. No architectural redesign, no new objects, no added text. Asset: 炮塔·拜占庭·方形占地修订 (buildings/byzantine/27-cannon-tower-footprint-v2). IMPORTANT keep existing exact2x2squarefootprint, vertical rectangularstonepedestal (NOTtapered), nofrontdoor or ladder/passage. Preserve single closedrearpersonneldoor and original upper weapon platform and allmetalweapons/brassfinial. Onlycolorbalance.",
+      "generation_metadata": {
+        "tool": "built-in image_gen",
+        "output_hint": "Generated images are saved to /Users/tankaixi/.codex/generated_images/01a12728-34cb-7b22-b679-73b8fae84a4d as /Users/tankaixi/.codex/generated_images/01a12728-34cb-7b22-b679-73b8fae84a4d/exec-dcb4a18b-5bfd-418b-8189-27383fffdf74.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+      },
+      "visual_review": {
+        "status": "review_candidate",
+        "palette": "warm-neutral greige, mild coolgray shadows, restrained terracotta/natural wood/purple identity",
+        "composition": "all3source cameras complete; no obvious silhouette/proportion drift",
+        "changes": "palette only; identifying crop/wood/brass preserved",
+        "resolution": "native724pxpanel +20pxpadding, no upscale",
+        "tower_policy": "solid vertical square pedestal retained, upper weapons unchanged, single closed rear door retained, no passage/frontdoor/ladder"
+      },
+      "footprint_tiles": [
+        2,
+        2
+      ],
+      "footprint_provisional": false
+    },
+    {
+      "id": "buildings/byzantine/29-flame-tower-footprint-v2",
+      "label": "喷火塔·拜占庭·方形占地修订",
+      "views": [
+        {
+          "name": "front-perspective",
+          "path": "buildings/byzantine/29-flame-tower-footprint-v2/v2/front-perspective.png",
+          "source": "art/concepts/tripo/buildings/byzantine/29-flame-tower-footprint-v2/front-perspective.png",
+          "source_sha256": "6936241120a484bed90548f940c1125518d67b680f6428f2f98f2290b5f2a175",
+          "width": 764,
+          "height": 764,
+          "sha256": "44af56398938d141c65497f3190c9ec140fa86ce017b871e5abc4cd66011a8dd"
+        },
+        {
+          "name": "side",
+          "path": "buildings/byzantine/29-flame-tower-footprint-v2/v2/side.png",
+          "source": "art/concepts/tripo/buildings/byzantine/29-flame-tower-footprint-v2/side.png",
+          "source_sha256": "27f0ccc2b79c3e1028b49c68e80d0b1569cb074835cd3cfdefc8b2c6b12275bb",
+          "width": 764,
+          "height": 764,
+          "sha256": "8de1e93083e9f397f1497a7c521f28e99ec01fd43a6bd3441866ecc19331d897"
+        },
+        {
+          "name": "rear-perspective",
+          "path": "buildings/byzantine/29-flame-tower-footprint-v2/v2/rear-perspective.png",
+          "source": "art/concepts/tripo/buildings/byzantine/29-flame-tower-footprint-v2/rear-perspective.png",
+          "source_sha256": "1f35f36ec9bae1779f59e27c39dbe495a1df6c2cd3e7da6627ff9d372943ebec",
+          "width": 764,
+          "height": 764,
+          "sha256": "d8a2414c683cd5e394d259ef9c2e1c1a4766ed2a7e8f6cced89b0b96995b7d8a"
+        }
+      ],
+      "sheet": "buildings/byzantine/29-flame-tower-footprint-v2/generated-sheet-v2.png",
+      "native_sheet_dimensions": [
+        2172,
+        724
+      ],
+      "prompt": "Use case: precise-object-edit. Image1 is EDIT TARGET, three independent views of ONE existing Byzantine building. ONLY refine material color balance; absolutely preserve every architectural shape, silhouette, camera angle, props, scale and ornament. Reduce yellow-orange cast in stone and ground into natural WARM-NEUTRAL GREIGE (stone base remains slightly ivory, never bleach white); mildly cool blue-gray ONLY in shadows. Roof keeps MUTED terracotta reddish-brown (not graywashed). Wood natural weathered brown not orange. Retain purple fabrics, warm brass/gold, golden ripe crops, natural bluewater; these identifying hues must not be neutralized. Texturedsemi-realistic3Dgameconcept, original softdaylight and brightness. Humanfaction tasteful littlewarmth anchoredbycoolrecesses, NOTiceblue, NOTwhitewash, NOTallgray. Lightneutral backdrop. SAME threecamera viewscomplete insideEXACT threeequalwidth panels,3072x1024wide3:1sheet. No architectural redesign, no new objects, no added text. Asset: 喷火塔·拜占庭·方形占地修订 (buildings/byzantine/29-flame-tower-footprint-v2). IMPORTANT keep existing exact2x2squarefootprint, vertical rectangularstonepedestal (NOTtapered), nofrontdoor or ladder/passage. Preserve single closedrearpersonneldoor and original upper weapon platform and allmetalweapons/brassfinial. Onlycolorbalance.",
+      "generation_metadata": {
+        "tool": "built-in image_gen",
+        "output_hint": "Generated images are saved to /Users/tankaixi/.codex/generated_images/01a12728-34cb-7b22-b679-73b8fae84a4d as /Users/tankaixi/.codex/generated_images/01a12728-34cb-7b22-b679-73b8fae84a4d/exec-e323b11a-b90a-4401-8fa0-e846964c51a8.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+      },
+      "visual_review": {
+        "status": "review_candidate",
+        "palette": "warm-neutral greige, mild coolgray shadows, restrained terracotta/natural wood/purple identity",
+        "composition": "all3source cameras complete; no obvious silhouette/proportion drift",
+        "changes": "palette only; identifying crop/wood/brass preserved",
+        "resolution": "native724pxpanel +20pxpadding, no upscale",
+        "tower_policy": "solid vertical square pedestal retained, upper weapons unchanged, single closed rear door retained, no passage/frontdoor/ladder"
+      },
+      "footprint_tiles": [
+        2,
+        2
+      ],
+      "footprint_provisional": false
+    }
+  ],
+  "status": "complete_review_candidate",
+  "source_policy": "Canonical source PNGs and prior drafts preserved; no current manifest replacement, no Blender/Unity edits."
+}

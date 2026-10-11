@@ -1,0 +1,543 @@
+{
+  "schema_version": 1,
+  "tool_mode": "builtin-image_gen",
+  "assets": [
+    {
+      "id": "zombies/07-carrier",
+      "label": "zombies/07-carrier",
+      "views": [
+        {
+          "name": "front",
+          "source": "art/concepts/tripo/zombies/07-carrier/front.png",
+          "source_sha256": "267619338065df644203fed8b27152251cf442cb6f964629ba1e351aba788b06",
+          "width": 764,
+          "height": 764,
+          "sha256": "b08b8ad63d5cd858f017eb3bcbe5b41dbb4c5ca884690feb34e53e952787edf5",
+          "path": "units/zombies/07-carrier/front.png"
+        },
+        {
+          "name": "side",
+          "source": "art/concepts/tripo/zombies/07-carrier/side.png",
+          "source_sha256": "35ce0676fd727cb3b4081e3c90a7ed0c53f62655217a1897dd2026bc31daa36a",
+          "width": 764,
+          "height": 764,
+          "sha256": "12931421d81d92742ccb8286d567709eb6324922c7d3bce6137b4f83be0fba01",
+          "path": "units/zombies/07-carrier/side.png"
+        },
+        {
+          "name": "back",
+          "source": "art/concepts/tripo/zombies/07-carrier/back.png",
+          "source_sha256": "af25b4a812897aa28ecc61ac94ec0adfef6da7e51a48fe0ac69048011df44857",
+          "width": 764,
+          "height": 764,
+          "sha256": "0960b7266757ff4a541c3d476c42bbc7c8add40c7862a78a165b7a6e035a43b4",
+          "path": "units/zombies/07-carrier/back.png"
+        }
+      ],
+      "prompt": "Use case: identity-preserve, material-palette edit. Image1 is EDIT TARGET, the same existing fantasy game boss in three front/side/back panels. Change ONLY COLOR of skin, cloth shadows, rope and wood: reduce yellow/orange cast; skin goes to natural pale cool ash-grey with muted gray-brown mottling, cloth stays faded desaturated gray-brown with cool grey shadows. Keep detailed texture exactly, not white bleached, not blue tinted, balanced exposure and readable shadow. Preserve every geometry shape, face, body masses, exact pose including hunched spine, full limb length, costume, prop construction and three existing view cameras. Return sharp 3:1 sheet ideally3072x1024, three equal panels, same original framing and neutral background. No added effects, no action, no new injuries, no text, no labels, no redesign. If headram preserve Tpose. If carrier preserve very long arms and square cage exactly.\n",
+      "tool_mode": "builtin-image_gen",
+      "sheet": "units/zombies/07-carrier/generated-sheet.png",
+      "visual_review": {
+        "status": "reviewed",
+        "sheet_width": 2172,
+        "sheet_height": 724,
+        "panel_pixels": 724,
+        "notes": "Actual sheet inspected: shapes and cameras preserved, cool gray shadows; boss poses/long arms/square cage preserved; equipment natural brown wood retained.",
+        "resolution_note": "Native 724 px panel before 20 px padding. No upscale. Palette review draft."
+      }
+    },
+    {
+      "id": "zombies/06-headram",
+      "label": "zombies/06-headram",
+      "views": [
+        {
+          "name": "front",
+          "source": "art/concepts/tripo/zombies/06-headram/front.png",
+          "source_sha256": "ad1933fa95a6ef100bb52b606ac0d132090dc6cf78682efc87ed08f34798a4f2",
+          "width": 764,
+          "height": 764,
+          "sha256": "14860218bb88084dd79d79951814576f15a13c9a0b2338bb792a30ae5fbc1bc7",
+          "path": "units/zombies/06-headram/front.png"
+        },
+        {
+          "name": "side",
+          "source": "art/concepts/tripo/zombies/06-headram/side.png",
+          "source_sha256": "f7dfef113416431c37e52e22d05400f13527f603e3435f8bd3ec40806ce01f37",
+          "width": 764,
+          "height": 764,
+          "sha256": "573654deb3c879f8e7ff0dc3d7d2512924a1983e846149bf8e2abf8e5631a8ca",
+          "path": "units/zombies/06-headram/side.png"
+        },
+        {
+          "name": "back",
+          "source": "art/concepts/tripo/zombies/06-headram/back.png",
+          "source_sha256": "d57f8d2cfe2d8c9ab982455e2547b6468fd7e42d659ae5dc82e5e8a9676f12c1",
+          "width": 764,
+          "height": 764,
+          "sha256": "a5bd8815b4714ea76ce3b5807c81698427ce13dc2b5ec5d164f077a976c52b42",
+          "path": "units/zombies/06-headram/back.png"
+        }
+      ],
+      "prompt": "Use case: identity-preserve, material-palette edit. Image1 is EDIT TARGET, the same existing fantasy game boss in three front/side/back panels. Change ONLY COLOR of skin, cloth shadows, rope and wood: reduce yellow/orange cast; skin goes to natural pale cool ash-grey with muted gray-brown mottling, cloth stays faded desaturated gray-brown with cool grey shadows. Keep detailed texture exactly, not white bleached, not blue tinted, balanced exposure and readable shadow. Preserve every geometry shape, face, body masses, exact pose including hunched spine, full limb length, costume, prop construction and three existing view cameras. Return sharp 3:1 sheet ideally3072x1024, three equal panels, same original framing and neutral background. No added effects, no action, no new injuries, no text, no labels, no redesign. If headram preserve Tpose. If carrier preserve very long arms and square cage exactly.\n",
+      "tool_mode": "builtin-image_gen",
+      "sheet": "units/zombies/06-headram/generated-sheet.png",
+      "visual_review": {
+        "status": "reviewed",
+        "sheet_width": 2172,
+        "sheet_height": 724,
+        "panel_pixels": 724,
+        "notes": "Actual sheet inspected: shapes and cameras preserved, cool gray shadows; boss poses/long arms/square cage preserved; equipment natural brown wood retained.",
+        "resolution_note": "Native 724 px panel before 20 px padding. No upscale. Palette review draft."
+      }
+    },
+    {
+      "id": "humans/tianchao/repeating-crossbowman-kit-v1/militia",
+      "label": "humans/tianchao/repeating-crossbowman-kit-v1/militia",
+      "views": [
+        {
+          "name": "front",
+          "source": "art/concepts/tripo/humans/tianchao/repeating-crossbowman-kit-v1/militia/front.png",
+          "source_sha256": "dabbb6e7b55e51f92f370d46284da4ecee68395b58c272d4007d457ed1028084",
+          "width": 764,
+          "height": 764,
+          "sha256": "3af017ce6be10d335015ecccd9cfa30d42030a475d184881be99050dabec48a9",
+          "path": "units/humans/tianchao/repeating-crossbowman-kit-v1/militia/front.png"
+        },
+        {
+          "name": "side",
+          "source": "art/concepts/tripo/humans/tianchao/repeating-crossbowman-kit-v1/militia/side.png",
+          "source_sha256": "5bcc88b90cc0920b40e04556f77633ddcc2bc529fec905af0739bec50a61e0f9",
+          "width": 764,
+          "height": 764,
+          "sha256": "e3b6f840f5c96e993381fe75916e3702cc5a8bc169b2aa2d7cb6fb927d58b92b",
+          "path": "units/humans/tianchao/repeating-crossbowman-kit-v1/militia/side.png"
+        },
+        {
+          "name": "back",
+          "source": "art/concepts/tripo/humans/tianchao/repeating-crossbowman-kit-v1/militia/back.png",
+          "source_sha256": "a6b17f48a5c4368e4631f466d5dca3c4edb146be3b8db1f7e4e6bddd29fe4fa4",
+          "width": 764,
+          "height": 764,
+          "sha256": "6c4309d120f79de5b819575939d0f9cd2f8f2b8eeedbbf7b86d5f1e5ef0a9902",
+          "path": "units/humans/tianchao/repeating-crossbowman-kit-v1/militia/back.png"
+        }
+      ],
+      "prompt": "Use case: identity-preserve. Image 1 is the exact edit target, an existing 3-view T-pose character sheet. Preserve absolutely the same figure, face, body proportions, clothes construction, every accessory, bare hands, T-pose, full body, view cameras and three equal panel positions, front/side/back. Make only a restrained material-palette correction: the warm brown/cream linen and leather shadows become cooler neutral ash gray/gray-brown, lower yellow-orange saturation; cloth still looks natural old linen with wear and patches, leather remains naturally brown not blue. Preserve red waist sash and natural skin color. Light cool gray shadows, balanced exposure, no blue filter, no loss of texture. Same semi-realistic 3D game-concept rendering and original neutral plain backdrop. Do not add armor, gloves, weapons, props, text or labels. Output sharp wide 3:1 sheet ideally 3072x1024 with all subjects fully inside equal thirds.\n",
+      "tool_mode": "builtin-image_gen",
+      "sheet": "units/humans/tianchao/repeating-crossbowman-kit-v1/militia/generated-sheet.png",
+      "visual_review": {
+        "status": "reviewed",
+        "sheet_width": 2172,
+        "sheet_height": 724,
+        "panel_pixels": 724,
+        "notes": "Actual sheet inspected: T-pose, bare hands, cameras and accessories preserved; greige/ash linen, warm skin and brown accessories, faction accents retained, not white bleached.",
+        "resolution_note": "Native 724 px panel before 20 px padding. No upscale. Palette review draft."
+      }
+    },
+    {
+      "id": "humans/tianchao/three-eyed-handgunner-kit-v1/militia",
+      "label": "humans/tianchao/three-eyed-handgunner-kit-v1/militia",
+      "views": [
+        {
+          "name": "front",
+          "source": "art/concepts/tripo/humans/tianchao/three-eyed-handgunner-kit-v1/militia/front.png",
+          "source_sha256": "7f894a397dd18a9eb636df575a7ece95158407c9c72fe8fc8abc687a1de2daa6",
+          "width": 764,
+          "height": 764,
+          "sha256": "ddfee746c4320df2742223dae179410fa75f96fa6b4c931b9f8337754c2315e7",
+          "path": "units/humans/tianchao/three-eyed-handgunner-kit-v1/militia/front.png"
+        },
+        {
+          "name": "side",
+          "source": "art/concepts/tripo/humans/tianchao/three-eyed-handgunner-kit-v1/militia/side.png",
+          "source_sha256": "509557b5eec06093bd082c0e0558a0ff26db642c5a081d6dec09c30bc8cc7b73",
+          "width": 764,
+          "height": 764,
+          "sha256": "3a9ffcb7b2b6a221c45ae00bd71842507ce4c9ee5de8869564a72352c270cefc",
+          "path": "units/humans/tianchao/three-eyed-handgunner-kit-v1/militia/side.png"
+        },
+        {
+          "name": "back",
+          "source": "art/concepts/tripo/humans/tianchao/three-eyed-handgunner-kit-v1/militia/back.png",
+          "source_sha256": "5075b3523fc9bdb79b123fb51c2184b01854aab7c9558060e64fd4483d69ddf1",
+          "width": 764,
+          "height": 764,
+          "sha256": "4d96c7e054d11afa9d5185c4e6fe67b0f8da749de35e24aa258b46d256fc9b29",
+          "path": "units/humans/tianchao/three-eyed-handgunner-kit-v1/militia/back.png"
+        }
+      ],
+      "prompt": "Use case: identity-preserve. Image 1 is the exact edit target, an existing 3-view T-pose character sheet. Preserve absolutely the same figure, face, body proportions, clothes construction, every accessory, bare hands, T-pose, full body, view cameras and three equal panel positions, front/side/back. Make only a restrained material-palette correction: the warm brown/cream linen and leather shadows become cooler neutral ash gray/gray-brown, lower yellow-orange saturation; cloth still looks natural old linen with wear and patches, leather remains naturally brown not blue. Preserve red waist sash and natural skin color. Light cool gray shadows, balanced exposure, no blue filter, no loss of texture. Same semi-realistic 3D game-concept rendering and original neutral plain backdrop. Do not add armor, gloves, weapons, props, text or labels. Output sharp wide 3:1 sheet ideally 3072x1024 with all subjects fully inside equal thirds.\n",
+      "tool_mode": "builtin-image_gen",
+      "sheet": "units/humans/tianchao/three-eyed-handgunner-kit-v1/militia/generated-sheet.png",
+      "visual_review": {
+        "status": "reviewed",
+        "sheet_width": 2172,
+        "sheet_height": 724,
+        "panel_pixels": 724,
+        "notes": "Actual sheet inspected: T-pose, bare hands, cameras and accessories preserved; greige/ash linen, warm skin and brown accessories, faction accents retained, not white bleached.",
+        "resolution_note": "Native 724 px panel before 20 px padding. No upscale. Palette review draft."
+      }
+    },
+    {
+      "id": "humans/tianchao/crossbowman-kit-v1/militia",
+      "label": "humans/tianchao/crossbowman-kit-v1/militia",
+      "views": [
+        {
+          "name": "front",
+          "source": "art/concepts/tripo/humans/tianchao/crossbowman-kit-v1/militia/front.png",
+          "source_sha256": "c32d91fe38b03cd6d9c3e95256603f3aa81c3c308f1aff786b4c6f599ee1c828",
+          "width": 764,
+          "height": 764,
+          "sha256": "d5ad43a960258b54d4cdb881d2146056e27a1fc11404b01fe3c398ba50b9891e",
+          "path": "units/humans/tianchao/crossbowman-kit-v1/militia/front.png"
+        },
+        {
+          "name": "side",
+          "source": "art/concepts/tripo/humans/tianchao/crossbowman-kit-v1/militia/side.png",
+          "source_sha256": "6ce61e4e40f69249c916eaf845b2218d44089f1f72e44946abea28490be0887c",
+          "width": 764,
+          "height": 764,
+          "sha256": "1290c3ff1ac907b7ceaa30997d3671f0249a6dd878efd6589c1530a1e27f2931",
+          "path": "units/humans/tianchao/crossbowman-kit-v1/militia/side.png"
+        },
+        {
+          "name": "back",
+          "source": "art/concepts/tripo/humans/tianchao/crossbowman-kit-v1/militia/back.png",
+          "source_sha256": "fc00ed69aebdeead4fddf25f3f67d2149e6605ef31208306c04df4caa71ff486",
+          "width": 764,
+          "height": 764,
+          "sha256": "1644b9e94660f92011bc1c4de2144dec3e96068a033aa8a24ec1e18c6de6df38",
+          "path": "units/humans/tianchao/crossbowman-kit-v1/militia/back.png"
+        }
+      ],
+      "prompt": "Use case: identity-preserve. Image 1 is the exact edit target, an existing 3-view T-pose character sheet. Preserve absolutely the same figure, face, body proportions, clothes construction, every accessory, bare hands, T-pose, full body, view cameras and three equal panel positions, front/side/back. Make only a restrained material-palette correction: the warm brown/cream linen and leather shadows become cooler neutral ash gray/gray-brown, lower yellow-orange saturation; cloth still looks natural old linen with wear and patches, leather remains naturally brown not blue. Preserve red waist sash and natural skin color. Light cool gray shadows, balanced exposure, no blue filter, no loss of texture. Same semi-realistic 3D game-concept rendering and original neutral plain backdrop. Do not add armor, gloves, weapons, props, text or labels. Output sharp wide 3:1 sheet ideally 3072x1024 with all subjects fully inside equal thirds.\n",
+      "tool_mode": "builtin-image_gen",
+      "sheet": "units/humans/tianchao/crossbowman-kit-v1/militia/generated-sheet.png",
+      "visual_review": {
+        "status": "reviewed",
+        "sheet_width": 2172,
+        "sheet_height": 724,
+        "panel_pixels": 724,
+        "notes": "Actual sheet inspected: T-pose, bare hands, cameras and accessories preserved; greige/ash linen, warm skin and brown accessories, faction accents retained, not white bleached.",
+        "resolution_note": "Native 724 px panel before 20 px padding. No upscale. Palette review draft."
+      }
+    },
+    {
+      "id": "humans/tianchao/archer-kit-v1/militia",
+      "label": "humans/tianchao/archer-kit-v1/militia",
+      "views": [
+        {
+          "name": "front",
+          "source": "art/concepts/tripo/humans/tianchao/archer-kit-v1/militia/front.png",
+          "source_sha256": "2b24bd193ca6fdfc1885617e254dd6881972bca0f5ec0e328ce84e97c39a43a5",
+          "width": 764,
+          "height": 764,
+          "sha256": "95622873ca8f65d5dc31988678075ffdbce579020eea0121c9c22b53b9970e35",
+          "path": "units/humans/tianchao/archer-kit-v1/militia/front.png"
+        },
+        {
+          "name": "side",
+          "source": "art/concepts/tripo/humans/tianchao/archer-kit-v1/militia/side.png",
+          "source_sha256": "e66f4dfee657ca57dd7929cdf5fe33d1642d0e523cfc68c8c2102ede5b828e51",
+          "width": 764,
+          "height": 764,
+          "sha256": "99e7f63e97a841033dec176d09a3908e8893c8d972741656576426004a04f63d",
+          "path": "units/humans/tianchao/archer-kit-v1/militia/side.png"
+        },
+        {
+          "name": "back",
+          "source": "art/concepts/tripo/humans/tianchao/archer-kit-v1/militia/back.png",
+          "source_sha256": "ca54c9fba144f45bdfc76cceb782f7f259acb2f64b0a39f86a70bdc28245d74c",
+          "width": 764,
+          "height": 764,
+          "sha256": "d4d19878dfe703c773656db9fdc33f7c5d30eb2fcb07324ac92f5291b32b40fd",
+          "path": "units/humans/tianchao/archer-kit-v1/militia/back.png"
+        }
+      ],
+      "prompt": "Use case: identity-preserve. Image 1 is the exact edit target, an existing 3-view T-pose character sheet. Preserve absolutely the same figure, face, body proportions, clothes construction, every accessory, bare hands, T-pose, full body, view cameras and three equal panel positions, front/side/back. Make only a restrained material-palette correction: the warm brown/cream linen and leather shadows become cooler neutral ash gray/gray-brown, lower yellow-orange saturation; cloth still looks natural old linen with wear and patches, leather remains naturally brown not blue. Preserve red waist sash and natural skin color. Light cool gray shadows, balanced exposure, no blue filter, no loss of texture. Same semi-realistic 3D game-concept rendering and original neutral plain backdrop. Do not add armor, gloves, weapons, props, text or labels. Output sharp wide 3:1 sheet ideally 3072x1024 with all subjects fully inside equal thirds.\n",
+      "tool_mode": "builtin-image_gen",
+      "sheet": "units/humans/tianchao/archer-kit-v1/militia/generated-sheet.png",
+      "visual_review": {
+        "status": "reviewed",
+        "sheet_width": 2172,
+        "sheet_height": 724,
+        "panel_pixels": 724,
+        "notes": "Actual sheet inspected: T-pose, bare hands, cameras and accessories preserved; greige/ash linen, warm skin and brown accessories, faction accents retained, not white bleached.",
+        "resolution_note": "Native 724 px panel before 20 px padding. No upscale. Palette review draft."
+      }
+    },
+    {
+      "id": "humans/byzantine/crossbowman-kit-v1/militia",
+      "label": "humans/byzantine/crossbowman-kit-v1/militia",
+      "views": [
+        {
+          "name": "front",
+          "source": "art/concepts/tripo/humans/byzantine/crossbowman-kit-v1/militia/front.png",
+          "source_sha256": "3a274c2779e7b73e612ba85908f605702c5b2654dccad6b15e8c2d50b14dbcf3",
+          "width": 764,
+          "height": 764,
+          "sha256": "aa2aa4c10707ac7f708d8a0b467918870b83f2f47c434699554021e445ec6f28",
+          "path": "units/humans/byzantine/crossbowman-kit-v1/militia/front.png"
+        },
+        {
+          "name": "side",
+          "source": "art/concepts/tripo/humans/byzantine/crossbowman-kit-v1/militia/side.png",
+          "source_sha256": "e69bcdc8859de9a1e1006ea4597be476a49785d6eca8d28ab56a16da1b98473a",
+          "width": 764,
+          "height": 764,
+          "sha256": "6b649270952c50e265d8c5dfa568769d14d1039dfbcee9247b26fea4b446005c",
+          "path": "units/humans/byzantine/crossbowman-kit-v1/militia/side.png"
+        },
+        {
+          "name": "back",
+          "source": "art/concepts/tripo/humans/byzantine/crossbowman-kit-v1/militia/back.png",
+          "source_sha256": "113bd2792fd1c1fa996fb88468e4227921c8d47c16ffb36c76e7028d8b09a3fa",
+          "width": 764,
+          "height": 764,
+          "sha256": "db39ac623da6d30254cbc38a2a8ae0116e996b466241cfec2c4b356dd912a37e",
+          "path": "units/humans/byzantine/crossbowman-kit-v1/militia/back.png"
+        }
+      ],
+      "prompt": "Use case: identity-preserve. Image 1 is EDIT TARGET: the same single Byzantine militia character in three equal front/side/back panels, T-pose. Change ONLY subtle material color balance: retain naturally warm greige/brown linen, brown leather, warm natural skin and purple faction sash. Add gentle cool neutral-gray shadows to cloth creases and leather, reduce ONLY excess yellow-orange cast slightly. This is a lightly warmer HUMAN within a cool world, NOT white/silver cloth, NOT blue skin, NOT a gray-only/desaturated figure, NOT a blue color filter. Keep every stitch, dirty patch, worn texture, exact clothing form, cap, all unit accessories at same positions, face identity, proportions and bare hands. Same existing full-body T-pose, camera directions and positions within three equal thirds. Same realistic 3D game-concept rendering, gray plain background, brightness and texture detail. No weapons in hands, no gloves, no armor, no text, no labels. Return sharp wide3:1 preferably3072x1024, fully visible equal panels ready for independent crops.\n",
+      "tool_mode": "builtin-image_gen",
+      "sheet": "units/humans/byzantine/crossbowman-kit-v1/militia/generated-sheet.png",
+      "visual_review": {
+        "status": "reviewed",
+        "sheet_width": 2172,
+        "sheet_height": 724,
+        "panel_pixels": 724,
+        "notes": "Actual sheet inspected: T-pose, bare hands, cameras and accessories preserved; greige/ash linen, warm skin and brown accessories, faction accents retained, not white bleached.",
+        "resolution_note": "Native 724 px panel before 20 px padding. No upscale. Palette review draft."
+      }
+    },
+    {
+      "id": "humans/byzantine/archer-kit-v1/militia",
+      "label": "humans/byzantine/archer-kit-v1/militia",
+      "views": [
+        {
+          "name": "front",
+          "source": "art/concepts/tripo/humans/byzantine/archer-kit-v1/militia/front.png",
+          "source_sha256": "2893e5e27c57c780cbdb08e0ce9b2ddab0238c34ffe88cbaa44efcf7230ee1f4",
+          "width": 764,
+          "height": 764,
+          "sha256": "2d87293ad95d6d282215636ef6a6e56ea2500fb71a04dcd7e16ba11125c2c239",
+          "path": "units/humans/byzantine/archer-kit-v1/militia/front.png"
+        },
+        {
+          "name": "side",
+          "source": "art/concepts/tripo/humans/byzantine/archer-kit-v1/militia/side.png",
+          "source_sha256": "63ab29390f6808dff214b694de50ea077919b26eec4b2241a1b5793fc28c5ef4",
+          "width": 764,
+          "height": 764,
+          "sha256": "9d4aa5bb839292242f10dbbc4442fe8afed014880eaa15446d9862de8ab6ef0a",
+          "path": "units/humans/byzantine/archer-kit-v1/militia/side.png"
+        },
+        {
+          "name": "back",
+          "source": "art/concepts/tripo/humans/byzantine/archer-kit-v1/militia/back.png",
+          "source_sha256": "c71712b8e5434e8173bbf9c73496317477a5f97f5df141503f032af3e3579ca2",
+          "width": 764,
+          "height": 764,
+          "sha256": "19e308778df586fd4ce00c22d89048b875887e0fcc70ece8048845e5faa5ab3b",
+          "path": "units/humans/byzantine/archer-kit-v1/militia/back.png"
+        }
+      ],
+      "prompt": "Use case: identity-preserve. Image 1 is EDIT TARGET: the same single Byzantine militia character in three equal front/side/back panels, T-pose. Change ONLY subtle material color balance: retain naturally warm greige/brown linen, brown leather, warm natural skin and purple faction sash. Add gentle cool neutral-gray shadows to cloth creases and leather, reduce ONLY excess yellow-orange cast slightly. This is a lightly warmer HUMAN within a cool world, NOT white/silver cloth, NOT blue skin, NOT a gray-only/desaturated figure, NOT a blue color filter. Keep every stitch, dirty patch, worn texture, exact clothing form, cap, all unit accessories at same positions, face identity, proportions and bare hands. Same existing full-body T-pose, camera directions and positions within three equal thirds. Same realistic 3D game-concept rendering, gray plain background, brightness and texture detail. No weapons in hands, no gloves, no armor, no text, no labels. Return sharp wide3:1 preferably3072x1024, fully visible equal panels ready for independent crops.\n",
+      "tool_mode": "builtin-image_gen",
+      "sheet": "units/humans/byzantine/archer-kit-v1/militia/generated-sheet.png",
+      "visual_review": {
+        "status": "reviewed",
+        "sheet_width": 2172,
+        "sheet_height": 724,
+        "panel_pixels": 724,
+        "notes": "Actual sheet inspected: T-pose, bare hands, cameras and accessories preserved; greige/ash linen, warm skin and brown accessories, faction accents retained, not white bleached.",
+        "resolution_note": "Native 724 px panel before 20 px padding. No upscale. Palette review draft."
+      }
+    },
+    {
+      "id": "humans/byzantine/matchlock-infantry-kit-v1/militia",
+      "label": "humans/byzantine/matchlock-infantry-kit-v1/militia",
+      "views": [
+        {
+          "name": "front",
+          "source": "art/concepts/tripo/humans/byzantine/matchlock-infantry-kit-v1/militia/front.png",
+          "source_sha256": "ff902700520fc0015a0beadb5b116e40210043076e9a8c937e9eae3442b7d6f4",
+          "width": 764,
+          "height": 764,
+          "sha256": "97a82ba11cb5116ab2f370356c87e1d652801b119f1eecbec99eaa7a107c4b9e",
+          "path": "units/humans/byzantine/matchlock-infantry-kit-v1/militia/front.png"
+        },
+        {
+          "name": "side",
+          "source": "art/concepts/tripo/humans/byzantine/matchlock-infantry-kit-v1/militia/side.png",
+          "source_sha256": "1fc98295600ef53e6dfd56c88c5d6b854ca7dbb5de3ad73e225fd982556d7388",
+          "width": 764,
+          "height": 764,
+          "sha256": "6d3a33c6a3902cc9ef8b63edd19969803e36f98ee6b88243a6e338531172efbd",
+          "path": "units/humans/byzantine/matchlock-infantry-kit-v1/militia/side.png"
+        },
+        {
+          "name": "back",
+          "source": "art/concepts/tripo/humans/byzantine/matchlock-infantry-kit-v1/militia/back.png",
+          "source_sha256": "fefdad0f231bc8dbc793a61dcac1cd2ed90ad21a0f4b5da1aa16d596ceb00f33",
+          "width": 764,
+          "height": 764,
+          "sha256": "867b6476abe02ee55adb668b7a2a3e405e276ed8e2012666e8ed9e10c86237e2",
+          "path": "units/humans/byzantine/matchlock-infantry-kit-v1/militia/back.png"
+        }
+      ],
+      "prompt": "Use case: identity-preserve. Image 1 is EDIT TARGET: the same single Byzantine militia character in three equal front/side/back panels, T-pose. Change ONLY subtle material color balance: retain naturally warm greige/brown linen, brown leather, warm natural skin and purple faction sash. Add gentle cool neutral-gray shadows to cloth creases and leather, reduce ONLY excess yellow-orange cast slightly. This is a lightly warmer HUMAN within a cool world, NOT white/silver cloth, NOT blue skin, NOT a gray-only/desaturated figure, NOT a blue color filter. Keep every stitch, dirty patch, worn texture, exact clothing form, cap, all unit accessories at same positions, face identity, proportions and bare hands. Same existing full-body T-pose, camera directions and positions within three equal thirds. Same realistic 3D game-concept rendering, gray plain background, brightness and texture detail. No weapons in hands, no gloves, no armor, no text, no labels. Return sharp wide3:1 preferably3072x1024, fully visible equal panels ready for independent crops.\n",
+      "tool_mode": "builtin-image_gen",
+      "sheet": "units/humans/byzantine/matchlock-infantry-kit-v1/militia/generated-sheet.png",
+      "visual_review": {
+        "status": "reviewed",
+        "sheet_width": 2172,
+        "sheet_height": 724,
+        "panel_pixels": 724,
+        "notes": "Actual sheet inspected: T-pose, bare hands, cameras and accessories preserved; greige/ash linen, warm skin and brown accessories, faction accents retained, not white bleached.",
+        "resolution_note": "Native 724 px panel before 20 px padding. No upscale. Palette review draft."
+      }
+    },
+    {
+      "id": "humans/byzantine/javelin-legionary-kit-v1/militia",
+      "label": "humans/byzantine/javelin-legionary-kit-v1/militia",
+      "views": [
+        {
+          "name": "front",
+          "source": "art/concepts/tripo/humans/byzantine/javelin-legionary-kit-v1/militia/front.png",
+          "source_sha256": "ea7b049c5acf69a0d748b4c5646066e284d1ee589f87f205402a025529a42dc3",
+          "width": 764,
+          "height": 764,
+          "sha256": "09f5e18a40794bd06b6a8c8b6dc7533d2667b4725f031531b4c8744a87dafdcf",
+          "path": "units/humans/byzantine/javelin-legionary-kit-v1/militia/front.png"
+        },
+        {
+          "name": "side",
+          "source": "art/concepts/tripo/humans/byzantine/javelin-legionary-kit-v1/militia/side.png",
+          "source_sha256": "a8500797016114331e2ac9692525e5fc25d1ab7fb86663ade771b37dcd9d50da",
+          "width": 764,
+          "height": 764,
+          "sha256": "4a34d5c9280c9fdcb07ac7d059c6a02c1f63ac8e0adb8d86e41bc33d67bfc160",
+          "path": "units/humans/byzantine/javelin-legionary-kit-v1/militia/side.png"
+        },
+        {
+          "name": "back",
+          "source": "art/concepts/tripo/humans/byzantine/javelin-legionary-kit-v1/militia/back.png",
+          "source_sha256": "3c637e6fe37f3aec57fb2301dc697ecaad7081ba660e89cae0a07118ca9af9f6",
+          "width": 764,
+          "height": 764,
+          "sha256": "a78f52aa8a0865c16ff1e3cd58730ac544134e38beb8a154a5a9b0acbb26478a",
+          "path": "units/humans/byzantine/javelin-legionary-kit-v1/militia/back.png"
+        }
+      ],
+      "prompt": "Use case: identity-preserve. Image 1 is EDIT TARGET: the same single Byzantine militia character in three equal front/side/back panels, T-pose. Change ONLY subtle material color balance: retain naturally warm greige/brown linen, brown leather, warm natural skin and purple faction sash. Add gentle cool neutral-gray shadows to cloth creases and leather, reduce ONLY excess yellow-orange cast slightly. This is a lightly warmer HUMAN within a cool world, NOT white/silver cloth, NOT blue skin, NOT a gray-only/desaturated figure, NOT a blue color filter. Keep every stitch, dirty patch, worn texture, exact clothing form, cap, all unit accessories at same positions, face identity, proportions and bare hands. Same existing full-body T-pose, camera directions and positions within three equal thirds. Same realistic 3D game-concept rendering, gray plain background, brightness and texture detail. No weapons in hands, no gloves, no armor, no text, no labels. Return sharp wide3:1 preferably3072x1024, fully visible equal panels ready for independent crops.\n",
+      "tool_mode": "builtin-image_gen",
+      "sheet": "units/humans/byzantine/javelin-legionary-kit-v1/militia/generated-sheet.png",
+      "visual_review": {
+        "status": "reviewed",
+        "sheet_width": 2172,
+        "sheet_height": 724,
+        "panel_pixels": 724,
+        "notes": "Actual sheet inspected: T-pose, bare hands, cameras and accessories preserved; greige/ash linen, warm skin and brown accessories, faction accents retained, not white bleached.",
+        "resolution_note": "Native 724 px panel before 20 px padding. No upscale. Palette review draft."
+      }
+    },
+    {
+      "id": "weapons/tianchao/repeating-crossbow-views-v2",
+      "label": "weapons/tianchao/repeating-crossbow-views-v2",
+      "views": [
+        {
+          "name": "front",
+          "source": "art/concepts/tripo/weapons/tianchao/repeating-crossbow-views-v2/front.png",
+          "source_sha256": "a0df470bbd3bcf814e30ffd5060e2d61386fe8b382123c3ce4b5271ac30e2a5c",
+          "width": 764,
+          "height": 764,
+          "sha256": "f4f27f3fb56431247741743fff6cb79d418265a2c92bdf3537b3c9a78c89f2fc",
+          "path": "weapons/weapons/tianchao/repeating-crossbow-views-v2/front.png"
+        },
+        {
+          "name": "side",
+          "source": "art/concepts/tripo/weapons/tianchao/repeating-crossbow-views-v2/side.png",
+          "source_sha256": "3ae3b50c431506f53bd55950f7cc6a66b59e814ec23cb858ca8ca5a0357d95a0",
+          "width": 764,
+          "height": 764,
+          "sha256": "25a3edc1da9aa2f42d7daeffdc5282efd92ff5100562922f177cf54b50187d49",
+          "path": "weapons/weapons/tianchao/repeating-crossbow-views-v2/side.png"
+        },
+        {
+          "name": "back",
+          "source": "art/concepts/tripo/weapons/tianchao/repeating-crossbow-views-v2/back.png",
+          "source_sha256": "796451a06704216d6b53123b6ed6c23c6fe9f8436346ed47672c573c2033055b",
+          "width": 764,
+          "height": 764,
+          "sha256": "6c9306108f04d2a0ab9672a71f763c189570c70a40b10739b09f93e38d1255d1",
+          "path": "weapons/weapons/tianchao/repeating-crossbow-views-v2/back.png"
+        }
+      ],
+      "prompt": "Use case: precise-object-edit. Image1 is edit target: three views of the same approved wood-and-metal historical RTS equipment. Only gently adjust material color: remove excessive orange/yellow in wood shadows, adding cool neutral-gray shadow tint. Wood still has rich natural warm brown grain and highlights, not blue, not gray-only, not bleached white; metal stays dark iron with brass fittings. Keep every exact piece, mechanism, shape, proportion, ropes, accessory, view camera and full object framing unchanged. Preserve any existing red faction cloth accent. Same semi-realistic 3D concept rendering, restrained gray plain background. Output sharp wide3:1 preferably3072x1024, three equal panels, every object fully inside its original panel. No new components, no arrows added, no text, no labels, no cartoon restyle.\n",
+      "tool_mode": "builtin-image_gen",
+      "sheet": "weapons/weapons/tianchao/repeating-crossbow-views-v2/generated-sheet.png",
+      "visual_review": {
+        "status": "reviewed",
+        "sheet_width": 2172,
+        "sheet_height": 724,
+        "panel_pixels": 724,
+        "notes": "Actual sheet inspected: shapes and cameras preserved, cool gray shadows; boss poses/long arms/square cage preserved; equipment natural brown wood retained.",
+        "resolution_note": "Native 724 px panel before 20 px padding. No upscale. Palette review draft."
+      }
+    },
+    {
+      "id": "siege/tianchao/trebuchet",
+      "label": "siege/tianchao/trebuchet",
+      "views": [
+        {
+          "name": "front",
+          "source": "art/concepts/tripo/siege/tianchao/trebuchet/front.png",
+          "source_sha256": "fc8fbb361589717eb795bafb7736cf4fbf1c7d2c7f853ddcab3623c16ff96daa",
+          "width": 764,
+          "height": 764,
+          "sha256": "bb1e1d39c33c03c19aa4aaa62f7e1881e04cbb3b0c9e868eaf29fcdb6338c7b3",
+          "path": "siege/siege/tianchao/trebuchet/front.png"
+        },
+        {
+          "name": "side",
+          "source": "art/concepts/tripo/siege/tianchao/trebuchet/side.png",
+          "source_sha256": "7b34eb9fbbe314e4eb8598db13ebdb29885f21fd251a2f1e3b6339b5d9ed83c3",
+          "width": 764,
+          "height": 764,
+          "sha256": "cebaa9e7d99142058ddf33a422a1bc15f72740f55902fc1917a149128d568d9a",
+          "path": "siege/siege/tianchao/trebuchet/side.png"
+        },
+        {
+          "name": "back",
+          "source": "art/concepts/tripo/siege/tianchao/trebuchet/back.png",
+          "source_sha256": "3fa0c23130139e630f1026486df782d75fc1a9bf353d7b453ccee8f9b9ab418c",
+          "width": 764,
+          "height": 764,
+          "sha256": "8287bb6d84cd61b59ba08db5bfa96ae350b78cfb838c4e43f41d6ed911f8a727",
+          "path": "siege/siege/tianchao/trebuchet/back.png"
+        }
+      ],
+      "prompt": "Use case: precise-object-edit. Image1 is edit target: three views of the same approved wood-and-metal historical RTS equipment. Only gently adjust material color: remove excessive orange/yellow in wood shadows, adding cool neutral-gray shadow tint. Wood still has rich natural warm brown grain and highlights, not blue, not gray-only, not bleached white; metal stays dark iron with brass fittings. Keep every exact piece, mechanism, shape, proportion, ropes, accessory, view camera and full object framing unchanged. Preserve any existing red faction cloth accent. Same semi-realistic 3D concept rendering, restrained gray plain background. Output sharp wide3:1 preferably3072x1024, three equal panels, every object fully inside its original panel. No new components, no arrows added, no text, no labels, no cartoon restyle.\n",
+      "tool_mode": "builtin-image_gen",
+      "sheet": "siege/siege/tianchao/trebuchet/generated-sheet.png",
+      "visual_review": {
+        "status": "reviewed",
+        "sheet_width": 2172,
+        "sheet_height": 724,
+        "panel_pixels": 724,
+        "notes": "Actual sheet inspected: shapes and cameras preserved, cool gray shadows; boss poses/long arms/square cage preserved; equipment natural brown wood retained.",
+        "resolution_note": "Native 724 px panel before 20 px padding. No upscale. Palette review draft."
+      }
+    }
+  ],
+  "blocked": [
+    {
+      "id": "zombies/01-common",
+      "status": "blocked-no-output",
+      "reason": "Built-in image_gen output moderation [violence]; no retry/bypass; prior PNG preserved.",
+      "request_id": "b29af58c-3801-4e83-ac5b-767c68e13515",
+      "prompt": "Use case: identity-preserve / precise-object-edit. Image 1 is the EDIT TARGET: one common zombie shown in three equal panels (front, side, back). Return a sharp wide 3:1 sheet, ideally 3072x1024, three equally spaced views with every body completely inside its original panel. Change ONLY clothing to medieval Western peasant clothing: a torn plain pull-over round-neck tunic with simple waist leather belt and worn trousers, no Eastern wrap collar, sash, robe, puttees or decorative oriental details. Replace head-top bun/headwrap with the same dirty hair hanging loose to remove Eastern costume cue, preserve face and skull identity. Cool neutral gray linen, dark faded slate cloth, cold grey shadow and restrained gray-brown belt. Preserve rotting skin detail, emaciated long arms, face expression, bent spine/slouched posture, feet position and exact three view cameras. Keep level of semi-realistic 3D game-concept detail, not cartoon, no weapons, no props, no armor, no new anatomy, no labels, no text. Same plain light neutral background. Not blue-tinted skin; cool grey base with slight residual natural earthy color."
+    }
+  ]
+}
