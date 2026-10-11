@@ -1,0 +1,6578 @@
+{
+  "source_blend": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/grass_medium_01/grass_medium_01_1k.blend",
+  "source_sha256": "5bbeaf7161508c1de66f137e7fcaec6fdea9c4ac0faa134c384c89c97271bec2",
+  "blender_version": "5.2.2 LTS",
+  "active_scene": "Scene",
+  "unit_scale": 1.0,
+  "scenes": [
+    "Scene"
+  ],
+  "collections": [
+    {
+      "name": "grass_medium_01",
+      "children": [
+        "grass_medium_01_geometry_nodes",
+        "grass_medium_01_LOD0",
+        "grass_medium_01_LOD1",
+        "grass_medium_01_LOD2"
+      ],
+      "objects": [],
+      "hide_viewport": false,
+      "hide_render": false
+    },
+    {
+      "name": "grass_medium_01_geometry",
+      "children": [
+        "grass_medium_01_geonodes_LOD0",
+        "grass_medium_01_geonodes_LOD1",
+        "grass_medium_01_geonodes_LOD2"
+      ],
+      "objects": [],
+      "hide_viewport": false,
+      "hide_render": false
+    },
+    {
+      "name": "grass_medium_01_geometry_nodes",
+      "children": [
+        "grass_medium_01_geometry"
+      ],
+      "objects": [
+        "grass_medium_01_geometry_nodes"
+      ],
+      "hide_viewport": false,
+      "hide_render": false
+    },
+    {
+      "name": "grass_medium_01_geonodes_LOD0",
+      "children": [],
+      "objects": [
+        "grass_medium_01_geonodes_small_a_LOD0",
+        "grass_medium_01_geonodes_large_b_LOD0",
+        "grass_medium_01_geonodes_mid_b_LOD0",
+        "grass_medium_01_geonodes_tall_b_LOD0",
+        "grass_medium_01_geonodes_tall_a_LOD0",
+        "grass_medium_01_geonodes_tall_c_LOD0",
+        "grass_medium_01_geonodes_small_b_LOD0",
+        "grass_medium_01_geonodes_mid_c_LOD0",
+        "grass_medium_01_geonodes_mid_a_LOD0",
+        "grass_medium_01_geonodes_large_a_LOD0",
+        "grass_medium_01_geonodes_large_c_LOD0",
+        "grass_medium_01_geonodes_tiny_c_LOD0",
+        "grass_medium_01_geonodes_tiny_a_LOD0",
+        "grass_medium_01_geonodes_tiny_b_LOD0",
+        "grass_medium_01_geonodes_tiny_d_LOD0",
+        "grass_medium_01_geonodes_tiny_e_LOD0",
+        "grass_medium_01_geonodes_tiny_f_LOD0"
+      ],
+      "hide_viewport": false,
+      "hide_render": false
+    },
+    {
+      "name": "grass_medium_01_geonodes_LOD1",
+      "children": [],
+      "objects": [
+        "grass_medium_01_geonodes_mid_c_LOD1",
+        "grass_medium_01_geonodes_large_c_LOD1",
+        "grass_medium_01_geonodes_large_b_LOD1",
+        "grass_medium_01_geonodes_mid_b_LOD1",
+        "grass_medium_01_geonodes_mid_a_LOD1",
+        "grass_medium_01_geonodes_large_a_LOD1",
+        "grass_medium_01_geonodes_small_a_LOD1",
+        "grass_medium_01_geonodes_tall_b_LOD1",
+        "grass_medium_01_geonodes_tall_a_LOD1",
+        "grass_medium_01_geonodes_tall_c_LOD1",
+        "grass_medium_01_geonodes_small_b_LOD1",
+        "grass_medium_01_geonodes_tiny_c_LOD1",
+        "grass_medium_01_geonodes_tiny_a_LOD1",
+        "grass_medium_01_geonodes_tiny_b_LOD1",
+        "grass_medium_01_geonodes_tiny_d_LOD1",
+        "grass_medium_01_geonodes_tiny_e_LOD1",
+        "grass_medium_01_geonodes_tiny_f_LOD1"
+      ],
+      "hide_viewport": false,
+      "hide_render": false
+    },
+    {
+      "name": "grass_medium_01_geonodes_LOD2",
+      "children": [],
+      "objects": [
+        "grass_medium_01_geonodes_mid_c_LOD2",
+        "grass_medium_01_geonodes_large_c_LOD2",
+        "grass_medium_01_geonodes_large_b_LOD2",
+        "grass_medium_01_geonodes_mid_b_LOD2",
+        "grass_medium_01_geonodes_mid_a_LOD2",
+        "grass_medium_01_geonodes_large_a_LOD2",
+        "grass_medium_01_geonodes_small_a_LOD2",
+        "grass_medium_01_geonodes_tall_b_LOD2",
+        "grass_medium_01_geonodes_tall_a_LOD2",
+        "grass_medium_01_geonodes_tall_c_LOD2",
+        "grass_medium_01_geonodes_small_b_LOD2",
+        "grass_medium_01_geonodes_tiny_c_LOD2",
+        "grass_medium_01_geonodes_tiny_a_LOD2",
+        "grass_medium_01_geonodes_tiny_b_LOD2",
+        "grass_medium_01_geonodes_tiny_d_LOD2",
+        "grass_medium_01_geonodes_tiny_e_LOD2",
+        "grass_medium_01_geonodes_tiny_f_LOD2"
+      ],
+      "hide_viewport": false,
+      "hide_render": false
+    },
+    {
+      "name": "grass_medium_01_LOD0",
+      "children": [],
+      "objects": [
+        "grass_medium_01_small_a_LOD0",
+        "grass_medium_01_large_b_LOD0",
+        "grass_medium_01_mid_b_LOD0",
+        "grass_medium_01_tall_b_LOD0",
+        "grass_medium_01_tall_a_LOD0",
+        "grass_medium_01_tall_c_LOD0",
+        "grass_medium_01_small_b_LOD0",
+        "grass_medium_01_mid_c_LOD0",
+        "grass_medium_01_mid_a_LOD0",
+        "grass_medium_01_large_a_LOD0",
+        "grass_medium_01_large_c_LOD0",
+        "grass_medium_01_tiny_c_LOD0",
+        "grass_medium_01_tiny_a_LOD0",
+        "grass_medium_01_tiny_b_LOD0",
+        "grass_medium_01_tiny_d_LOD0",
+        "grass_medium_01_tiny_e_LOD0",
+        "grass_medium_01_tiny_f_LOD0"
+      ],
+      "hide_viewport": false,
+      "hide_render": false
+    },
+    {
+      "name": "grass_medium_01_LOD1",
+      "children": [],
+      "objects": [
+        "grass_medium_01_mid_c_LOD1",
+        "grass_medium_01_large_c_LOD1",
+        "grass_medium_01_large_b_LOD1",
+        "grass_medium_01_mid_b_LOD1",
+        "grass_medium_01_mid_a_LOD1",
+        "grass_medium_01_large_a_LOD1",
+        "grass_medium_01_small_a_LOD1",
+        "grass_medium_01_tall_b_LOD1",
+        "grass_medium_01_tall_a_LOD1",
+        "grass_medium_01_tall_c_LOD1",
+        "grass_medium_01_small_b_LOD1",
+        "grass_medium_01_tiny_c_LOD1",
+        "grass_medium_01_tiny_a_LOD1",
+        "grass_medium_01_tiny_b_LOD1",
+        "grass_medium_01_tiny_d_LOD1",
+        "grass_medium_01_tiny_e_LOD1",
+        "grass_medium_01_tiny_f_LOD1"
+      ],
+      "hide_viewport": false,
+      "hide_render": false
+    },
+    {
+      "name": "grass_medium_01_LOD2",
+      "children": [],
+      "objects": [
+        "grass_medium_01_mid_c_LOD2",
+        "grass_medium_01_large_c_LOD2",
+        "grass_medium_01_large_b_LOD2",
+        "grass_medium_01_mid_b_LOD2",
+        "grass_medium_01_mid_a_LOD2",
+        "grass_medium_01_large_a_LOD2",
+        "grass_medium_01_small_a_LOD2",
+        "grass_medium_01_tall_b_LOD2",
+        "grass_medium_01_tall_a_LOD2",
+        "grass_medium_01_tall_c_LOD2",
+        "grass_medium_01_tiny_c_LOD2",
+        "grass_medium_01_tiny_a_LOD2",
+        "grass_medium_01_tiny_b_LOD2",
+        "grass_medium_01_tiny_d_LOD2",
+        "grass_medium_01_tiny_e_LOD2",
+        "grass_medium_01_tiny_f_LOD2",
+        "grass_medium_01_small_b_LOD2"
+      ],
+      "hide_viewport": false,
+      "hide_render": false
+    }
+  ],
+  "meshes": [
+    {
+      "name": "grass_medium_01_geometry_nodes",
+      "mesh": "Sphere.001",
+      "vertices": 482,
+      "triangles": 960,
+      "evaluated_triangles": 1595905,
+      "bounds_min": [
+        -4.165514945983887,
+        -0.5552182197570801,
+        -0.6079533696174622
+      ],
+      "bounds_max": [
+        -2.9932069778442383,
+        0.6351289749145508,
+        0.554678201675415
+      ],
+      "dimensions_m": [
+        1.1723079681396484,
+        1.1903471946716309,
+        1.1626315712928772
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -3.5974087715148926
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.06059861183166504
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_geometry_nodes"
+      ],
+      "modifiers": [
+        {
+          "name": "GeometryNodes",
+          "type": "NODES"
+        }
+      ],
+      "materials": [
+        "grass_medium_01_sphere"
+      ]
+    },
+    {
+      "name": "grass_medium_01_geonodes_large_a_LOD0",
+      "mesh": "Plane.233",
+      "vertices": 7044,
+      "triangles": 6422,
+      "evaluated_triangles": 6422,
+      "bounds_min": [
+        -2.5527944564819336,
+        -0.16885031759738922,
+        -0.007504553068429232
+      ],
+      "bounds_max": [
+        -2.235785484313965,
+        0.15770849585533142,
+        0.13918423652648926
+      ],
+      "dimensions_m": [
+        0.31700897216796875,
+        0.32655881345272064,
+        0.1466887895949185
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -2.3999998569488525
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_geonodes_LOD0"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_geonodes_large_a_LOD1",
+      "mesh": "Plane.025",
+      "vertices": 2601,
+      "triangles": 2301,
+      "evaluated_triangles": 2301,
+      "bounds_min": [
+        -2.5641562938690186,
+        -0.16885031759738922,
+        -0.0057053882628679276
+      ],
+      "bounds_max": [
+        -2.2371907234191895,
+        0.16280913352966309,
+        0.13918423652648926
+      ],
+      "dimensions_m": [
+        0.3269655704498291,
+        0.3316594511270523,
+        0.14488962478935719
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -2.3999998569488525
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_geonodes_LOD1"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_geonodes_large_a_LOD2",
+      "mesh": "Plane.021",
+      "vertices": 1193,
+      "triangles": 1011,
+      "evaluated_triangles": 1011,
+      "bounds_min": [
+        -2.5641562938690186,
+        -0.16415643692016602,
+        -0.0057053882628679276
+      ],
+      "bounds_max": [
+        -2.2371907234191895,
+        0.16280913352966309,
+        0.12957464158535004
+      ],
+      "dimensions_m": [
+        0.3269655704498291,
+        0.3269655704498291,
+        0.13528002984821796
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -2.3999998569488525
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_geonodes_LOD2"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_geonodes_large_b_LOD0",
+      "mesh": "Plane.153",
+      "vertices": 4823,
+      "triangles": 4626,
+      "evaluated_triangles": 4626,
+      "bounds_min": [
+        -2.146009683609009,
+        -0.1419035643339157,
+        -0.025613101199269295
+      ],
+      "bounds_max": [
+        -1.8619121313095093,
+        0.1338363140821457,
+        0.14364951848983765
+      ],
+      "dimensions_m": [
+        0.2840975522994995,
+        0.2757398784160614,
+        0.16926261968910694
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -1.9999998807907104
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_geonodes_LOD0"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_geonodes_large_b_LOD1",
+      "mesh": "Plane.019",
+      "vertices": 2592,
+      "triangles": 2447,
+      "evaluated_triangles": 2447,
+      "bounds_min": [
+        -2.151512622833252,
+        -0.1515125036239624,
+        -0.021419264376163483
+      ],
+      "bounds_max": [
+        -1.860473871231079,
+        0.1395261287689209,
+        0.14364951848983765
+      ],
+      "dimensions_m": [
+        0.29103875160217285,
+        0.2910386323928833,
+        0.16506878286600113
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -2.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_geonodes_LOD1"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_geonodes_large_b_LOD2",
+      "mesh": "Plane.016",
+      "vertices": 966,
+      "triangles": 890,
+      "evaluated_triangles": 890,
+      "bounds_min": [
+        -2.151512622833252,
+        -0.1515125036239624,
+        -0.021419264376163483
+      ],
+      "bounds_max": [
+        -1.860473871231079,
+        0.1395261287689209,
+        0.14364951848983765
+      ],
+      "dimensions_m": [
+        0.29103875160217285,
+        0.2910386323928833,
+        0.16506878286600113
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -2.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_geonodes_LOD2"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_geonodes_large_c_LOD0",
+      "mesh": "Plane.394",
+      "vertices": 6405,
+      "triangles": 5945,
+      "evaluated_triangles": 5945,
+      "bounds_min": [
+        -1.7451976537704468,
+        -0.11970172822475433,
+        -0.021477332338690758
+      ],
+      "bounds_max": [
+        -1.4664065837860107,
+        0.13536815345287323,
+        0.12087008357048035
+      ],
+      "dimensions_m": [
+        0.27879106998443604,
+        0.25506988167762756,
+        0.1423474159091711
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -1.5999997854232788
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_geonodes_LOD0"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_geonodes_large_c_LOD1",
+      "mesh": "Plane.014",
+      "vertices": 2596,
+      "triangles": 2336,
+      "evaluated_triangles": 2336,
+      "bounds_min": [
+        -1.74765145778656,
+        -0.14765167236328125,
+        -0.019430456683039665
+      ],
+      "bounds_max": [
+        -1.457792043685913,
+        0.14220774173736572,
+        0.12087008357048035
+      ],
+      "dimensions_m": [
+        0.289859414100647,
+        0.289859414100647,
+        0.14030054025352
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -1.5999997854232788
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_geonodes_LOD1"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_geonodes_large_c_LOD2",
+      "mesh": "Plane.005",
+      "vertices": 1200,
+      "triangles": 1032,
+      "evaluated_triangles": 1032,
+      "bounds_min": [
+        -1.74765145778656,
+        -0.14765167236328125,
+        -0.019430456683039665
+      ],
+      "bounds_max": [
+        -1.457792043685913,
+        0.14220774173736572,
+        0.11736031621694565
+      ],
+      "dimensions_m": [
+        0.289859414100647,
+        0.289859414100647,
+        0.1367907728999853
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -1.5999997854232788
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_geonodes_LOD2"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_geonodes_mid_a_LOD0",
+      "mesh": "Plane.147",
+      "vertices": 2593,
+      "triangles": 2287,
+      "evaluated_triangles": 2287,
+      "bounds_min": [
+        -1.311848521232605,
+        -0.10901965200901031,
+        -0.02293974906206131
+      ],
+      "bounds_max": [
+        -1.0962332487106323,
+        0.1123582273721695,
+        0.19480454921722412
+      ],
+      "dimensions_m": [
+        0.21561527252197266,
+        0.2213778793811798,
+        0.21774429827928543
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -1.1999996900558472
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_geonodes_LOD0"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_geonodes_mid_a_LOD1",
+      "mesh": "Plane.022",
+      "vertices": 1493,
+      "triangles": 1309,
+      "evaluated_triangles": 1309,
+      "bounds_min": [
+        -1.311848521232605,
+        -0.10901965200901031,
+        -0.02293974906206131
+      ],
+      "bounds_max": [
+        -1.0928740501403809,
+        0.10712563991546631,
+        0.19480454921722412
+      ],
+      "dimensions_m": [
+        0.21897447109222412,
+        0.21614529192447662,
+        0.21774429827928543
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -1.1999996900558472
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_geonodes_LOD1"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_geonodes_mid_a_LOD2",
+      "mesh": "Plane.018",
+      "vertices": 754,
+      "triangles": 659,
+      "evaluated_triangles": 659,
+      "bounds_min": [
+        -1.298438310623169,
+        -0.10901965200901031,
+        -0.004139971919357777
+      ],
+      "bounds_max": [
+        -1.0928740501403809,
+        0.10712563991546631,
+        0.19480454921722412
+      ],
+      "dimensions_m": [
+        0.20556426048278809,
+        0.21614529192447662,
+        0.1989445211365819
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -1.1999996900558472
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_geonodes_LOD2"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_geonodes_mid_b_LOD0",
+      "mesh": "Plane.114",
+      "vertices": 1386,
+      "triangles": 1257,
+      "evaluated_triangles": 1257,
+      "bounds_min": [
+        -0.8764547109603882,
+        -0.11334384977817535,
+        -0.003344380995258689
+      ],
+      "bounds_max": [
+        -0.6886658668518066,
+        0.0876847505569458,
+        0.1743771880865097
+      ],
+      "dimensions_m": [
+        0.18778884410858154,
+        0.20102860033512115,
+        0.1777215690817684
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.7999995946884155
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_geonodes_LOD0"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_geonodes_mid_b_LOD1",
+      "mesh": "Plane.020",
+      "vertices": 755,
+      "triangles": 662,
+      "evaluated_triangles": 662,
+      "bounds_min": [
+        -0.8764547109603882,
+        -0.09517807513475418,
+        -0.003344380995258689
+      ],
+      "bounds_max": [
+        -0.6886658668518066,
+        0.0876847505569458,
+        0.1743771880865097
+      ],
+      "dimensions_m": [
+        0.18778884410858154,
+        0.18286282569169998,
+        0.1777215690817684
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.7999995946884155
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_geonodes_LOD1"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_geonodes_mid_b_LOD2",
+      "mesh": "Plane.017",
+      "vertices": 396,
+      "triangles": 334,
+      "evaluated_triangles": 334,
+      "bounds_min": [
+        -0.8764547109603882,
+        -0.09517807513475418,
+        -0.003344380995258689
+      ],
+      "bounds_max": [
+        -0.6886658668518066,
+        0.08712169528007507,
+        0.1743771880865097
+      ],
+      "dimensions_m": [
+        0.18778884410858154,
+        0.18229977041482925,
+        0.1777215690817684
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.7999995946884155
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_geonodes_LOD2"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_geonodes_mid_c_LOD0",
+      "mesh": "Plane.049",
+      "vertices": 1580,
+      "triangles": 1466,
+      "evaluated_triangles": 1466,
+      "bounds_min": [
+        -0.4801561236381531,
+        -0.09483355283737183,
+        -0.02140900306403637
+      ],
+      "bounds_max": [
+        -0.28782564401626587,
+        0.10802191495895386,
+        0.12322665750980377
+      ],
+      "dimensions_m": [
+        0.1923304796218872,
+        0.20285546779632568,
+        0.14463566057384014
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.3999999463558197
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_geonodes_LOD0"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_geonodes_mid_c_LOD1",
+      "mesh": "Plane.004",
+      "vertices": 737,
+      "triangles": 655,
+      "evaluated_triangles": 655,
+      "bounds_min": [
+        -0.4801561236381531,
+        -0.09434068948030472,
+        -0.0077371555380523205
+      ],
+      "bounds_max": [
+        -0.2847568988800049,
+        0.11524304747581482,
+        0.12322665750980377
+      ],
+      "dimensions_m": [
+        0.1953992247581482,
+        0.20958373695611954,
+        0.1309638130478561
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.3999999463558197
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_geonodes_LOD1"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_geonodes_mid_c_LOD2",
+      "mesh": "Plane.001",
+      "vertices": 412,
+      "triangles": 348,
+      "evaluated_triangles": 348,
+      "bounds_min": [
+        -0.4801561236381531,
+        -0.09434068948030472,
+        -0.0077371555380523205
+      ],
+      "bounds_max": [
+        -0.2847568988800049,
+        0.11524304747581482,
+        0.12322665750980377
+      ],
+      "dimensions_m": [
+        0.1953992247581482,
+        0.20958373695611954,
+        0.1309638130478561
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.3999999463558197
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_geonodes_LOD2"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_geonodes_small_a_LOD0",
+      "mesh": "Plane.071",
+      "vertices": 888,
+      "triangles": 833,
+      "evaluated_triangles": 833,
+      "bounds_min": [
+        -0.07992789149284363,
+        -0.07973111420869827,
+        -0.0024811276234686375
+      ],
+      "bounds_max": [
+        0.10491221398115158,
+        0.08258192986249924,
+        0.13794554769992828
+      ],
+      "dimensions_m": [
+        0.1848401054739952,
+        0.1623130440711975,
+        0.14042667532339692
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          1.4901161193847656e-07
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_geonodes_LOD0"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_geonodes_small_a_LOD1",
+      "mesh": "Plane.002",
+      "vertices": 716,
+      "triangles": 661,
+      "evaluated_triangles": 661,
+      "bounds_min": [
+        -0.07992789149284363,
+        -0.07973111420869827,
+        -0.0024811276234686375
+      ],
+      "bounds_max": [
+        0.10491221398115158,
+        0.08258192986249924,
+        0.13794554769992828
+      ],
+      "dimensions_m": [
+        0.1848401054739952,
+        0.1623130440711975,
+        0.14042667532339692
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          1.4901161193847656e-07
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_geonodes_LOD1"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_geonodes_small_a_LOD2",
+      "mesh": "Plane.023",
+      "vertices": 543,
+      "triangles": 493,
+      "evaluated_triangles": 493,
+      "bounds_min": [
+        -0.0799679234623909,
+        -0.07973111420869827,
+        -0.0024811276234686375
+      ],
+      "bounds_max": [
+        0.10491221398115158,
+        0.0823187604546547,
+        0.13794554769992828
+      ],
+      "dimensions_m": [
+        0.18488013744354248,
+        0.16204987466335297,
+        0.14042667532339692
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          1.4901161193847656e-07
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_geonodes_LOD2"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_geonodes_small_b_LOD0",
+      "mesh": "Plane.052",
+      "vertices": 700,
+      "triangles": 653,
+      "evaluated_triangles": 653,
+      "bounds_min": [
+        0.30784428119659424,
+        -0.09204978495836258,
+        -0.007656285539269447
+      ],
+      "bounds_max": [
+        0.47380098700523376,
+        0.09784233570098877,
+        0.09223899245262146
+      ],
+      "dimensions_m": [
+        0.16595670580863953,
+        0.18989212065935135,
+        0.09989527799189091
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.4000002443790436
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_geonodes_LOD0"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_geonodes_small_b_LOD1",
+      "mesh": "Plane.008",
+      "vertices": 444,
+      "triangles": 403,
+      "evaluated_triangles": 403,
+      "bounds_min": [
+        0.30784428119659424,
+        -0.09204978495836258,
+        -0.007656285539269447
+      ],
+      "bounds_max": [
+        0.47380098700523376,
+        0.09784233570098877,
+        0.09223899245262146
+      ],
+      "dimensions_m": [
+        0.16595670580863953,
+        0.18989212065935135,
+        0.09989527799189091
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.4000002443790436
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_geonodes_LOD1"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_geonodes_small_b_LOD2",
+      "mesh": "Plane.028",
+      "vertices": 324,
+      "triangles": 283,
+      "evaluated_triangles": 283,
+      "bounds_min": [
+        0.30782291293144226,
+        -0.09204978495836258,
+        -0.007671208120882511
+      ],
+      "bounds_max": [
+        0.47380098700523376,
+        0.09784233570098877,
+        0.09224691987037659
+      ],
+      "dimensions_m": [
+        0.1659780740737915,
+        0.18989212065935135,
+        0.0999181279912591
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.4000002443790436
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_geonodes_LOD2"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_geonodes_tall_a_LOD0",
+      "mesh": "Plane.044",
+      "vertices": 330,
+      "triangles": 290,
+      "evaluated_triangles": 290,
+      "bounds_min": [
+        0.7204158306121826,
+        -0.08402851223945618,
+        -0.005577980075031519
+      ],
+      "bounds_max": [
+        0.8813722133636475,
+        0.07450296729803085,
+        0.3169684112071991
+      ],
+      "dimensions_m": [
+        0.16095638275146484,
+        0.15853147953748703,
+        0.3225463912822306
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.7999998331069946
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_geonodes_LOD0"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_geonodes_tall_a_LOD1",
+      "mesh": "Plane.006",
+      "vertices": 192,
+      "triangles": 163,
+      "evaluated_triangles": 163,
+      "bounds_min": [
+        0.7204158306121826,
+        -0.08402851223945618,
+        -0.005577980075031519
+      ],
+      "bounds_max": [
+        0.8813722133636475,
+        0.07450296729803085,
+        0.3169684112071991
+      ],
+      "dimensions_m": [
+        0.16095638275146484,
+        0.15853147953748703,
+        0.3225463912822306
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.7999998331069946
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_geonodes_LOD1"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_geonodes_tall_a_LOD2",
+      "mesh": "Plane.026",
+      "vertices": 150,
+      "triangles": 121,
+      "evaluated_triangles": 121,
+      "bounds_min": [
+        0.7207391262054443,
+        -0.08405190706253052,
+        -0.006425906904041767
+      ],
+      "bounds_max": [
+        0.8818048238754272,
+        0.07450296729803085,
+        0.319293349981308
+      ],
+      "dimensions_m": [
+        0.1610656976699829,
+        0.15855487436056137,
+        0.32571925688534975
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.7999998331069946
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_geonodes_LOD2"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_geonodes_tall_b_LOD0",
+      "mesh": "Plane.041",
+      "vertices": 354,
+      "triangles": 310,
+      "evaluated_triangles": 310,
+      "bounds_min": [
+        1.1160801649093628,
+        -0.074491485953331,
+        -0.0018983071204274893
+      ],
+      "bounds_max": [
+        1.266028642654419,
+        0.060298189520835876,
+        0.28376469016075134
+      ],
+      "dimensions_m": [
+        0.14994847774505615,
+        0.13478967547416687,
+        0.28566299728117883
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          1.1999999284744263
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_geonodes_LOD0"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_geonodes_tall_b_LOD1",
+      "mesh": "Plane.003",
+      "vertices": 247,
+      "triangles": 215,
+      "evaluated_triangles": 215,
+      "bounds_min": [
+        1.1160801649093628,
+        -0.074491485953331,
+        -0.0018983071204274893
+      ],
+      "bounds_max": [
+        1.266028642654419,
+        0.060298189520835876,
+        0.28376469016075134
+      ],
+      "dimensions_m": [
+        0.14994847774505615,
+        0.13478967547416687,
+        0.28566299728117883
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          1.1999999284744263
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_geonodes_LOD1"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_geonodes_tall_b_LOD2",
+      "mesh": "Plane.024",
+      "vertices": 196,
+      "triangles": 164,
+      "evaluated_triangles": 164,
+      "bounds_min": [
+        1.1160801649093628,
+        -0.0744713842868805,
+        -0.0018983071204274893
+      ],
+      "bounds_max": [
+        1.266028642654419,
+        0.060298189520835876,
+        0.28376469016075134
+      ],
+      "dimensions_m": [
+        0.14994847774505615,
+        0.13476957380771637,
+        0.28566299728117883
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          1.1999999284744263
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_geonodes_LOD2"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_geonodes_tall_c_LOD0",
+      "mesh": "Plane.046",
+      "vertices": 394,
+      "triangles": 340,
+      "evaluated_triangles": 340,
+      "bounds_min": [
+        1.5333714485168457,
+        -0.07759398221969604,
+        -0.00573160033673048
+      ],
+      "bounds_max": [
+        1.6864023208618164,
+        0.050562914460897446,
+        0.23052458465099335
+      ],
+      "dimensions_m": [
+        0.1530308723449707,
+        0.1281568966805935,
+        0.23625618498772383
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          1.6000001430511475
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_geonodes_LOD0"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_geonodes_tall_c_LOD1",
+      "mesh": "Plane.007",
+      "vertices": 254,
+      "triangles": 219,
+      "evaluated_triangles": 219,
+      "bounds_min": [
+        1.5355169773101807,
+        -0.07028329372406006,
+        -0.005121632479131222
+      ],
+      "bounds_max": [
+        1.6864023208618164,
+        0.050562914460897446,
+        0.22112156450748444
+      ],
+      "dimensions_m": [
+        0.15088534355163574,
+        0.1208462081849575,
+        0.22624319698661566
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          1.6000001430511475
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_geonodes_LOD1"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_geonodes_tall_c_LOD2",
+      "mesh": "Plane.027",
+      "vertices": 197,
+      "triangles": 162,
+      "evaluated_triangles": 162,
+      "bounds_min": [
+        1.5355169773101807,
+        -0.07028329372406006,
+        -0.005312858149409294
+      ],
+      "bounds_max": [
+        1.6864469051361084,
+        0.050562914460897446,
+        0.22112156450748444
+      ],
+      "dimensions_m": [
+        0.15092992782592773,
+        0.1208462081849575,
+        0.22643442265689373
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          1.6000001430511475
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_geonodes_LOD2"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_geonodes_tiny_a_LOD0",
+      "mesh": "Plane.101",
+      "vertices": 87,
+      "triangles": 79,
+      "evaluated_triangles": 79,
+      "bounds_min": [
+        1.9766993522644043,
+        -0.022762246429920197,
+        -0.0026543086860328913
+      ],
+      "bounds_max": [
+        2.0440471172332764,
+        0.051006510853767395,
+        0.10979903489351273
+      ],
+      "dimensions_m": [
+        0.06734776496887207,
+        0.07376875728368759,
+        0.11245334357954562
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          2.000000476837158
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_geonodes_LOD0"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_geonodes_tiny_a_LOD1",
+      "mesh": "Plane.010",
+      "vertices": 67,
+      "triangles": 59,
+      "evaluated_triangles": 59,
+      "bounds_min": [
+        1.97663152217865,
+        -0.02294229157269001,
+        -0.00278453528881073
+      ],
+      "bounds_max": [
+        2.044240951538086,
+        0.05121435970067978,
+        0.11010143905878067
+      ],
+      "dimensions_m": [
+        0.06760942935943604,
+        0.07415665127336979,
+        0.1128859743475914
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          2.000000476837158
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_geonodes_LOD1"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_geonodes_tiny_a_LOD2",
+      "mesh": "Plane.030",
+      "vertices": 43,
+      "triangles": 35,
+      "evaluated_triangles": 35,
+      "bounds_min": [
+        1.976514220237732,
+        -0.02325373701751232,
+        -0.0030098040588200092
+      ],
+      "bounds_max": [
+        2.044576406478882,
+        0.05157390609383583,
+        0.1106245368719101
+      ],
+      "dimensions_m": [
+        0.0680621862411499,
+        0.07482764311134815,
+        0.1136343409307301
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          2.000000476837158
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_geonodes_LOD2"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_geonodes_tiny_b_LOD0",
+      "mesh": "Plane.103",
+      "vertices": 30,
+      "triangles": 28,
+      "evaluated_triangles": 28,
+      "bounds_min": [
+        2.195826530456543,
+        -0.000264353962847963,
+        -0.002296786056831479
+      ],
+      "bounds_max": [
+        2.2193963527679443,
+        0.034134380519390106,
+        0.057911694049835205
+      ],
+      "dimensions_m": [
+        0.023569822311401367,
+        0.03439873448223807,
+        0.060208480106666684
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          2.200000762939453
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_geonodes_LOD0"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_geonodes_tiny_b_LOD1",
+      "mesh": "Plane.011",
+      "vertices": 22,
+      "triangles": 20,
+      "evaluated_triangles": 20,
+      "bounds_min": [
+        2.1953535079956055,
+        -0.000264353962847963,
+        -0.002296786056831479
+      ],
+      "bounds_max": [
+        2.2193963527679443,
+        0.03416651114821434,
+        0.057911694049835205
+      ],
+      "dimensions_m": [
+        0.024042844772338867,
+        0.0344308651110623,
+        0.060208480106666684
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          2.200000762939453
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_geonodes_LOD1"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_geonodes_tiny_b_LOD2",
+      "mesh": "Plane.031",
+      "vertices": 15,
+      "triangles": 13,
+      "evaluated_triangles": 13,
+      "bounds_min": [
+        2.1948180198669434,
+        -0.000264353962847963,
+        -0.002296786056831479
+      ],
+      "bounds_max": [
+        2.2193963527679443,
+        0.034068889915943146,
+        0.057911694049835205
+      ],
+      "dimensions_m": [
+        0.024578332901000977,
+        0.03433324387879111,
+        0.060208480106666684
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          2.200000762939453
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_geonodes_LOD2"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_geonodes_tiny_c_LOD0",
+      "mesh": "Plane.099",
+      "vertices": 44,
+      "triangles": 40,
+      "evaluated_triangles": 40,
+      "bounds_min": [
+        2.397968292236328,
+        -0.028342707082629204,
+        -0.0015277046477422118
+      ],
+      "bounds_max": [
+        2.4139997959136963,
+        0.0006610661512240767,
+        0.08086099475622177
+      ],
+      "dimensions_m": [
+        0.016031503677368164,
+        0.02900377323385328,
+        0.08238869940396398
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          2.40000057220459
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_geonodes_LOD0"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_geonodes_tiny_c_LOD1",
+      "mesh": "Plane.009",
+      "vertices": 34,
+      "triangles": 30,
+      "evaluated_triangles": 30,
+      "bounds_min": [
+        2.3978071212768555,
+        -0.028477642685174942,
+        -0.001596839283592999
+      ],
+      "bounds_max": [
+        2.4140374660491943,
+        0.000715352245606482,
+        0.08088986575603485
+      ],
+      "dimensions_m": [
+        0.016230344772338867,
+        0.029192994930781424,
+        0.08248670503962785
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          2.40000057220459
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_geonodes_LOD1"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_geonodes_tiny_c_LOD2",
+      "mesh": "Plane.029",
+      "vertices": 22,
+      "triangles": 18,
+      "evaluated_triangles": 18,
+      "bounds_min": [
+        2.3992888927459717,
+        -0.028624292463064194,
+        -0.001671976177021861
+      ],
+      "bounds_max": [
+        2.4140782356262207,
+        0.0010737032862380147,
+        0.0809212401509285
+      ],
+      "dimensions_m": [
+        0.014789342880249023,
+        0.02969799574930221,
+        0.08259321632795036
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          2.40000057220459
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_geonodes_LOD2"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_geonodes_tiny_d_LOD0",
+      "mesh": "Plane.033",
+      "vertices": 36,
+      "triangles": 32,
+      "evaluated_triangles": 32,
+      "bounds_min": [
+        2.5990235805511475,
+        -0.034244898706674576,
+        -0.00266977958381176
+      ],
+      "bounds_max": [
+        2.6420633792877197,
+        0.054337579756975174,
+        0.04515690729022026
+      ],
+      "dimensions_m": [
+        0.043039798736572266,
+        0.08858247846364975,
+        0.04782668687403202
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          2.6000003814697266
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_geonodes_LOD0"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_geonodes_tiny_d_LOD1",
+      "mesh": "Plane.012",
+      "vertices": 30,
+      "triangles": 26,
+      "evaluated_triangles": 26,
+      "bounds_min": [
+        2.5989480018615723,
+        -0.03429701179265976,
+        -0.002697866875678301
+      ],
+      "bounds_max": [
+        2.642094612121582,
+        0.054377008229494095,
+        0.04534957557916641
+      ],
+      "dimensions_m": [
+        0.043146610260009766,
+        0.08867402002215385,
+        0.04804744245484471
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          2.6000003814697266
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_geonodes_LOD1"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_geonodes_tiny_d_LOD2",
+      "mesh": "Plane.032",
+      "vertices": 18,
+      "triangles": 14,
+      "evaluated_triangles": 14,
+      "bounds_min": [
+        2.598220109939575,
+        -0.03413868322968483,
+        -0.0027519427239894867
+      ],
+      "bounds_max": [
+        2.6419997215270996,
+        0.05425721034407616,
+        0.044764190912246704
+      ],
+      "dimensions_m": [
+        0.043779611587524414,
+        0.08839589357376099,
+        0.04751613363623619
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          2.6000003814697266
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_geonodes_LOD2"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_geonodes_tiny_e_LOD0",
+      "mesh": "Plane.036",
+      "vertices": 66,
+      "triangles": 62,
+      "evaluated_triangles": 62,
+      "bounds_min": [
+        2.7732460498809814,
+        -0.051811572164297104,
+        -0.0046236226335167885
+      ],
+      "bounds_max": [
+        2.8585116863250732,
+        0.022340359166264534,
+        0.0448271669447422
+      ],
+      "dimensions_m": [
+        0.0852656364440918,
+        0.07415193133056164,
+        0.04945078957825899
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          2.8000001907348633
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_geonodes_LOD0"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_geonodes_tiny_e_LOD1",
+      "mesh": "Plane.013",
+      "vertices": 48,
+      "triangles": 44,
+      "evaluated_triangles": 44,
+      "bounds_min": [
+        2.773085594177246,
+        -0.051958777010440826,
+        -0.0046236226335167885
+      ],
+      "bounds_max": [
+        2.858525276184082,
+        0.022538242861628532,
+        0.045197758823633194
+      ],
+      "dimensions_m": [
+        0.08543968200683594,
+        0.07449701987206936,
+        0.04982138145714998
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          2.8000001907348633
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_geonodes_LOD1"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_geonodes_tiny_e_LOD2",
+      "mesh": "Plane.034",
+      "vertices": 38,
+      "triangles": 34,
+      "evaluated_triangles": 34,
+      "bounds_min": [
+        2.773573637008667,
+        -0.05151152238249779,
+        -0.0046236226335167885
+      ],
+      "bounds_max": [
+        2.8585355281829834,
+        0.02268628403544426,
+        0.045475006103515625
+      ],
+      "dimensions_m": [
+        0.0849618911743164,
+        0.07419780641794205,
+        0.050098628737032413
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          2.8000001907348633
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_geonodes_LOD2"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_geonodes_tiny_f_LOD0",
+      "mesh": "Plane.040",
+      "vertices": 60,
+      "triangles": 60,
+      "evaluated_triangles": 60,
+      "bounds_min": [
+        2.99699330329895,
+        -0.023381344974040985,
+        -0.0029108894523233175
+      ],
+      "bounds_max": [
+        3.0521891117095947,
+        0.04550879821181297,
+        0.044163916260004044
+      ],
+      "dimensions_m": [
+        0.05519580841064453,
+        0.06889014318585396,
+        0.04707480571232736
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          3.000000476837158
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_geonodes_LOD0"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_geonodes_tiny_f_LOD1",
+      "mesh": "Plane.015",
+      "vertices": 44,
+      "triangles": 44,
+      "evaluated_triangles": 44,
+      "bounds_min": [
+        2.99699330329895,
+        -0.023381344974040985,
+        -0.0029108894523233175
+      ],
+      "bounds_max": [
+        3.0521891117095947,
+        0.04550879821181297,
+        0.044163916260004044
+      ],
+      "dimensions_m": [
+        0.05519580841064453,
+        0.06889014318585396,
+        0.04707480571232736
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          3.000000476837158
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_geonodes_LOD1"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_geonodes_tiny_f_LOD2",
+      "mesh": "Plane.035",
+      "vertices": 37,
+      "triangles": 37,
+      "evaluated_triangles": 37,
+      "bounds_min": [
+        2.99699330329895,
+        -0.023381344974040985,
+        -0.0029108894523233175
+      ],
+      "bounds_max": [
+        3.0518112182617188,
+        0.045447640120983124,
+        0.044163916260004044
+      ],
+      "dimensions_m": [
+        0.054817914962768555,
+        0.06882898509502411,
+        0.04707480571232736
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          3.000000476837158
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_geonodes_LOD2"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_large_a_LOD0",
+      "mesh": "Plane.051",
+      "vertices": 7044,
+      "triangles": 6422,
+      "evaluated_triangles": 6422,
+      "bounds_min": [
+        -2.5527944564819336,
+        -0.16885031759738922,
+        -0.007504553068429232
+      ],
+      "bounds_max": [
+        -2.235785484313965,
+        0.15770849585533142,
+        0.13918423652648926
+      ],
+      "dimensions_m": [
+        0.31700897216796875,
+        0.32655881345272064,
+        0.1466887895949185
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -2.3999998569488525
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_LOD0"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_large_a_LOD1",
+      "mesh": "Plane.065",
+      "vertices": 2601,
+      "triangles": 2301,
+      "evaluated_triangles": 2301,
+      "bounds_min": [
+        -2.5641562938690186,
+        -0.16885031759738922,
+        -0.0057053882628679276
+      ],
+      "bounds_max": [
+        -2.2371907234191895,
+        0.16280913352966309,
+        0.13918423652648926
+      ],
+      "dimensions_m": [
+        0.3269655704498291,
+        0.3316594511270523,
+        0.14488962478935719
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -2.3999998569488525
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_LOD1"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_large_a_LOD2",
+      "mesh": "Plane.083",
+      "vertices": 1193,
+      "triangles": 1011,
+      "evaluated_triangles": 1011,
+      "bounds_min": [
+        -2.5641562938690186,
+        -0.16415643692016602,
+        -0.0057053882628679276
+      ],
+      "bounds_max": [
+        -2.2371907234191895,
+        0.16280913352966309,
+        0.12957464158535004
+      ],
+      "dimensions_m": [
+        0.3269655704498291,
+        0.3269655704498291,
+        0.13528002984821796
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -2.3999998569488525
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_LOD2"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_large_b_LOD0",
+      "mesh": "Plane.038",
+      "vertices": 4823,
+      "triangles": 4626,
+      "evaluated_triangles": 4626,
+      "bounds_min": [
+        -2.146009683609009,
+        -0.1419035643339157,
+        -0.025613101199269295
+      ],
+      "bounds_max": [
+        -1.8619121313095093,
+        0.1338363140821457,
+        0.14364951848983765
+      ],
+      "dimensions_m": [
+        0.2840975522994995,
+        0.2757398784160614,
+        0.16926261968910694
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -1.9999998807907104
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_LOD0"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_large_b_LOD1",
+      "mesh": "Plane.062",
+      "vertices": 2592,
+      "triangles": 2447,
+      "evaluated_triangles": 2447,
+      "bounds_min": [
+        -2.151512622833252,
+        -0.1515125036239624,
+        -0.021419264376163483
+      ],
+      "bounds_max": [
+        -1.860473871231079,
+        0.1395261287689209,
+        0.14364951848983765
+      ],
+      "dimensions_m": [
+        0.29103875160217285,
+        0.2910386323928833,
+        0.16506878286600113
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -2.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_LOD1"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_large_b_LOD2",
+      "mesh": "Plane.080",
+      "vertices": 966,
+      "triangles": 890,
+      "evaluated_triangles": 890,
+      "bounds_min": [
+        -2.151512622833252,
+        -0.1515125036239624,
+        -0.021419264376163483
+      ],
+      "bounds_max": [
+        -1.860473871231079,
+        0.1395261287689209,
+        0.14364951848983765
+      ],
+      "dimensions_m": [
+        0.29103875160217285,
+        0.2910386323928833,
+        0.16506878286600113
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -2.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_LOD2"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_large_c_LOD0",
+      "mesh": "Plane.053",
+      "vertices": 6405,
+      "triangles": 5945,
+      "evaluated_triangles": 5945,
+      "bounds_min": [
+        -1.7451976537704468,
+        -0.11970172822475433,
+        -0.021477332338690758
+      ],
+      "bounds_max": [
+        -1.4664065837860107,
+        0.13536815345287323,
+        0.12087008357048035
+      ],
+      "dimensions_m": [
+        0.27879106998443604,
+        0.25506988167762756,
+        0.1423474159091711
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -1.5999997854232788
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_LOD0"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_large_c_LOD1",
+      "mesh": "Plane.061",
+      "vertices": 2596,
+      "triangles": 2336,
+      "evaluated_triangles": 2336,
+      "bounds_min": [
+        -1.74765145778656,
+        -0.14765167236328125,
+        -0.019430456683039665
+      ],
+      "bounds_max": [
+        -1.457792043685913,
+        0.14220774173736572,
+        0.12087008357048035
+      ],
+      "dimensions_m": [
+        0.289859414100647,
+        0.289859414100647,
+        0.14030054025352
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -1.5999997854232788
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_LOD1"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_large_c_LOD2",
+      "mesh": "Plane.079",
+      "vertices": 1200,
+      "triangles": 1032,
+      "evaluated_triangles": 1032,
+      "bounds_min": [
+        -1.74765145778656,
+        -0.14765167236328125,
+        -0.019430456683039665
+      ],
+      "bounds_max": [
+        -1.457792043685913,
+        0.14220774173736572,
+        0.11736031621694565
+      ],
+      "dimensions_m": [
+        0.289859414100647,
+        0.289859414100647,
+        0.1367907728999853
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -1.5999997854232788
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_LOD2"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_mid_a_LOD0",
+      "mesh": "Plane.050",
+      "vertices": 2593,
+      "triangles": 2287,
+      "evaluated_triangles": 2287,
+      "bounds_min": [
+        -1.311848521232605,
+        -0.10901965200901031,
+        -0.02293974906206131
+      ],
+      "bounds_max": [
+        -1.0962332487106323,
+        0.1123582273721695,
+        0.19480454921722412
+      ],
+      "dimensions_m": [
+        0.21561527252197266,
+        0.2213778793811798,
+        0.21774429827928543
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -1.1999996900558472
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_LOD0"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_mid_a_LOD1",
+      "mesh": "Plane.064",
+      "vertices": 1493,
+      "triangles": 1309,
+      "evaluated_triangles": 1309,
+      "bounds_min": [
+        -1.311848521232605,
+        -0.10901965200901031,
+        -0.02293974906206131
+      ],
+      "bounds_max": [
+        -1.0928740501403809,
+        0.10712563991546631,
+        0.19480454921722412
+      ],
+      "dimensions_m": [
+        0.21897447109222412,
+        0.21614529192447662,
+        0.21774429827928543
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -1.1999996900558472
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_LOD1"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_mid_a_LOD2",
+      "mesh": "Plane.082",
+      "vertices": 754,
+      "triangles": 659,
+      "evaluated_triangles": 659,
+      "bounds_min": [
+        -1.298438310623169,
+        -0.10901965200901031,
+        -0.004139971919357777
+      ],
+      "bounds_max": [
+        -1.0928740501403809,
+        0.10712563991546631,
+        0.19480454921722412
+      ],
+      "dimensions_m": [
+        0.20556426048278809,
+        0.21614529192447662,
+        0.1989445211365819
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -1.1999996900558472
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_LOD2"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_mid_b_LOD0",
+      "mesh": "Plane.039",
+      "vertices": 1386,
+      "triangles": 1257,
+      "evaluated_triangles": 1257,
+      "bounds_min": [
+        -0.8764547109603882,
+        -0.11334384977817535,
+        -0.003344380995258689
+      ],
+      "bounds_max": [
+        -0.6886658668518066,
+        0.0876847505569458,
+        0.1743771880865097
+      ],
+      "dimensions_m": [
+        0.18778884410858154,
+        0.20102860033512115,
+        0.1777215690817684
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.7999995946884155
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_LOD0"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_mid_b_LOD1",
+      "mesh": "Plane.063",
+      "vertices": 755,
+      "triangles": 662,
+      "evaluated_triangles": 662,
+      "bounds_min": [
+        -0.8764547109603882,
+        -0.09517807513475418,
+        -0.003344380995258689
+      ],
+      "bounds_max": [
+        -0.6886658668518066,
+        0.0876847505569458,
+        0.1743771880865097
+      ],
+      "dimensions_m": [
+        0.18778884410858154,
+        0.18286282569169998,
+        0.1777215690817684
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.7999995946884155
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_LOD1"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_mid_b_LOD2",
+      "mesh": "Plane.081",
+      "vertices": 396,
+      "triangles": 334,
+      "evaluated_triangles": 334,
+      "bounds_min": [
+        -0.8764547109603882,
+        -0.09517807513475418,
+        -0.003344380995258689
+      ],
+      "bounds_max": [
+        -0.6886658668518066,
+        0.08712169528007507,
+        0.1743771880865097
+      ],
+      "dimensions_m": [
+        0.18778884410858154,
+        0.18229977041482925,
+        0.1777215690817684
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.7999995946884155
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_LOD2"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_mid_c_LOD0",
+      "mesh": "Plane.048",
+      "vertices": 1580,
+      "triangles": 1466,
+      "evaluated_triangles": 1466,
+      "bounds_min": [
+        -0.4801561236381531,
+        -0.09483355283737183,
+        -0.02140900306403637
+      ],
+      "bounds_max": [
+        -0.28782564401626587,
+        0.10802191495895386,
+        0.12322665750980377
+      ],
+      "dimensions_m": [
+        0.1923304796218872,
+        0.20285546779632568,
+        0.14463566057384014
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.3999999463558197
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_LOD0"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_mid_c_LOD1",
+      "mesh": "Plane.060",
+      "vertices": 737,
+      "triangles": 655,
+      "evaluated_triangles": 655,
+      "bounds_min": [
+        -0.4801561236381531,
+        -0.09434068948030472,
+        -0.0077371555380523205
+      ],
+      "bounds_max": [
+        -0.2847568988800049,
+        0.11524304747581482,
+        0.12322665750980377
+      ],
+      "dimensions_m": [
+        0.1953992247581482,
+        0.20958373695611954,
+        0.1309638130478561
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.3999999463558197
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_LOD1"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_mid_c_LOD2",
+      "mesh": "Plane.078",
+      "vertices": 412,
+      "triangles": 348,
+      "evaluated_triangles": 348,
+      "bounds_min": [
+        -0.4801561236381531,
+        -0.09434068948030472,
+        -0.0077371555380523205
+      ],
+      "bounds_max": [
+        -0.2847568988800049,
+        0.11524304747581482,
+        0.12322665750980377
+      ],
+      "dimensions_m": [
+        0.1953992247581482,
+        0.20958373695611954,
+        0.1309638130478561
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.3999999463558197
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_LOD2"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_small_a_LOD0",
+      "mesh": "Plane.037",
+      "vertices": 888,
+      "triangles": 833,
+      "evaluated_triangles": 833,
+      "bounds_min": [
+        -0.07992789149284363,
+        -0.07973111420869827,
+        -0.0024811276234686375
+      ],
+      "bounds_max": [
+        0.10491221398115158,
+        0.08258192986249924,
+        0.13794554769992828
+      ],
+      "dimensions_m": [
+        0.1848401054739952,
+        0.1623130440711975,
+        0.14042667532339692
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          1.4901161193847656e-07
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_LOD0"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_small_a_LOD1",
+      "mesh": "Plane.066",
+      "vertices": 716,
+      "triangles": 661,
+      "evaluated_triangles": 661,
+      "bounds_min": [
+        -0.07992789149284363,
+        -0.07973111420869827,
+        -0.0024811276234686375
+      ],
+      "bounds_max": [
+        0.10491221398115158,
+        0.08258192986249924,
+        0.13794554769992828
+      ],
+      "dimensions_m": [
+        0.1848401054739952,
+        0.1623130440711975,
+        0.14042667532339692
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          1.4901161193847656e-07
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_LOD1"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_small_a_LOD2",
+      "mesh": "Plane.084",
+      "vertices": 543,
+      "triangles": 493,
+      "evaluated_triangles": 493,
+      "bounds_min": [
+        -0.0799679234623909,
+        -0.07973111420869827,
+        -0.0024811276234686375
+      ],
+      "bounds_max": [
+        0.10491221398115158,
+        0.0823187604546547,
+        0.13794554769992828
+      ],
+      "dimensions_m": [
+        0.18488013744354248,
+        0.16204987466335297,
+        0.14042667532339692
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          1.4901161193847656e-07
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_LOD2"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_small_b_LOD0",
+      "mesh": "Plane.047",
+      "vertices": 700,
+      "triangles": 653,
+      "evaluated_triangles": 653,
+      "bounds_min": [
+        0.30784428119659424,
+        -0.09204978495836258,
+        -0.007656285539269447
+      ],
+      "bounds_max": [
+        0.47380098700523376,
+        0.09784233570098877,
+        0.09223899245262146
+      ],
+      "dimensions_m": [
+        0.16595670580863953,
+        0.18989212065935135,
+        0.09989527799189091
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.4000002443790436
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_LOD0"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_small_b_LOD1",
+      "mesh": "Plane.070",
+      "vertices": 444,
+      "triangles": 403,
+      "evaluated_triangles": 403,
+      "bounds_min": [
+        0.30784428119659424,
+        -0.09204978495836258,
+        -0.007656285539269447
+      ],
+      "bounds_max": [
+        0.47380098700523376,
+        0.09784233570098877,
+        0.09223899245262146
+      ],
+      "dimensions_m": [
+        0.16595670580863953,
+        0.18989212065935135,
+        0.09989527799189091
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.4000002443790436
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_LOD1"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_small_b_LOD2",
+      "mesh": "Plane.088",
+      "vertices": 324,
+      "triangles": 283,
+      "evaluated_triangles": 283,
+      "bounds_min": [
+        0.30782291293144226,
+        -0.09204978495836258,
+        -0.007671208120882511
+      ],
+      "bounds_max": [
+        0.47380098700523376,
+        0.09784233570098877,
+        0.09224691987037659
+      ],
+      "dimensions_m": [
+        0.1659780740737915,
+        0.18989212065935135,
+        0.0999181279912591
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.4000002443790436
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_LOD2"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_tall_a_LOD0",
+      "mesh": "Plane.043",
+      "vertices": 330,
+      "triangles": 290,
+      "evaluated_triangles": 290,
+      "bounds_min": [
+        0.7204158306121826,
+        -0.08402851223945618,
+        -0.005577980075031519
+      ],
+      "bounds_max": [
+        0.8813722133636475,
+        0.07450296729803085,
+        0.3169684112071991
+      ],
+      "dimensions_m": [
+        0.16095638275146484,
+        0.15853147953748703,
+        0.3225463912822306
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.7999998331069946
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_LOD0"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_tall_a_LOD1",
+      "mesh": "Plane.068",
+      "vertices": 192,
+      "triangles": 163,
+      "evaluated_triangles": 163,
+      "bounds_min": [
+        0.7204158306121826,
+        -0.08402851223945618,
+        -0.005577980075031519
+      ],
+      "bounds_max": [
+        0.8813722133636475,
+        0.07450296729803085,
+        0.3169684112071991
+      ],
+      "dimensions_m": [
+        0.16095638275146484,
+        0.15853147953748703,
+        0.3225463912822306
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.7999998331069946
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_LOD1"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_tall_a_LOD2",
+      "mesh": "Plane.086",
+      "vertices": 150,
+      "triangles": 121,
+      "evaluated_triangles": 121,
+      "bounds_min": [
+        0.7207391262054443,
+        -0.08405190706253052,
+        -0.006425906904041767
+      ],
+      "bounds_max": [
+        0.8818048238754272,
+        0.07450296729803085,
+        0.319293349981308
+      ],
+      "dimensions_m": [
+        0.1610656976699829,
+        0.15855487436056137,
+        0.32571925688534975
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.7999998331069946
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_LOD2"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_tall_b_LOD0",
+      "mesh": "Plane.042",
+      "vertices": 354,
+      "triangles": 310,
+      "evaluated_triangles": 310,
+      "bounds_min": [
+        1.1160801649093628,
+        -0.074491485953331,
+        -0.0018983071204274893
+      ],
+      "bounds_max": [
+        1.266028642654419,
+        0.060298189520835876,
+        0.28376469016075134
+      ],
+      "dimensions_m": [
+        0.14994847774505615,
+        0.13478967547416687,
+        0.28566299728117883
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          1.1999999284744263
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_LOD0"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_tall_b_LOD1",
+      "mesh": "Plane.067",
+      "vertices": 247,
+      "triangles": 215,
+      "evaluated_triangles": 215,
+      "bounds_min": [
+        1.1160801649093628,
+        -0.074491485953331,
+        -0.0018983071204274893
+      ],
+      "bounds_max": [
+        1.266028642654419,
+        0.060298189520835876,
+        0.28376469016075134
+      ],
+      "dimensions_m": [
+        0.14994847774505615,
+        0.13478967547416687,
+        0.28566299728117883
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          1.1999999284744263
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_LOD1"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_tall_b_LOD2",
+      "mesh": "Plane.085",
+      "vertices": 196,
+      "triangles": 164,
+      "evaluated_triangles": 164,
+      "bounds_min": [
+        1.1160801649093628,
+        -0.0744713842868805,
+        -0.0018983071204274893
+      ],
+      "bounds_max": [
+        1.266028642654419,
+        0.060298189520835876,
+        0.28376469016075134
+      ],
+      "dimensions_m": [
+        0.14994847774505615,
+        0.13476957380771637,
+        0.28566299728117883
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          1.1999999284744263
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_LOD2"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_tall_c_LOD0",
+      "mesh": "Plane.045",
+      "vertices": 394,
+      "triangles": 340,
+      "evaluated_triangles": 340,
+      "bounds_min": [
+        1.5333714485168457,
+        -0.07759398221969604,
+        -0.00573160033673048
+      ],
+      "bounds_max": [
+        1.6864023208618164,
+        0.050562914460897446,
+        0.23052458465099335
+      ],
+      "dimensions_m": [
+        0.1530308723449707,
+        0.1281568966805935,
+        0.23625618498772383
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          1.6000001430511475
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_LOD0"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_tall_c_LOD1",
+      "mesh": "Plane.069",
+      "vertices": 254,
+      "triangles": 219,
+      "evaluated_triangles": 219,
+      "bounds_min": [
+        1.5355169773101807,
+        -0.07028329372406006,
+        -0.005121632479131222
+      ],
+      "bounds_max": [
+        1.6864023208618164,
+        0.050562914460897446,
+        0.22112156450748444
+      ],
+      "dimensions_m": [
+        0.15088534355163574,
+        0.1208462081849575,
+        0.22624319698661566
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          1.6000001430511475
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_LOD1"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_tall_c_LOD2",
+      "mesh": "Plane.087",
+      "vertices": 197,
+      "triangles": 162,
+      "evaluated_triangles": 162,
+      "bounds_min": [
+        1.5355169773101807,
+        -0.07028329372406006,
+        -0.005312858149409294
+      ],
+      "bounds_max": [
+        1.6864469051361084,
+        0.050562914460897446,
+        0.22112156450748444
+      ],
+      "dimensions_m": [
+        0.15092992782592773,
+        0.1208462081849575,
+        0.22643442265689373
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          1.6000001430511475
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_LOD2"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_tiny_a_LOD0",
+      "mesh": "Plane.055",
+      "vertices": 87,
+      "triangles": 79,
+      "evaluated_triangles": 79,
+      "bounds_min": [
+        1.9766993522644043,
+        -0.022762246429920197,
+        -0.0026543086860328913
+      ],
+      "bounds_max": [
+        2.0440471172332764,
+        0.051006510853767395,
+        0.10979903489351273
+      ],
+      "dimensions_m": [
+        0.06734776496887207,
+        0.07376875728368759,
+        0.11245334357954562
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          2.000000476837158
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_LOD0"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_tiny_a_LOD1",
+      "mesh": "Plane.073",
+      "vertices": 67,
+      "triangles": 59,
+      "evaluated_triangles": 59,
+      "bounds_min": [
+        1.97663152217865,
+        -0.02294229157269001,
+        -0.00278453528881073
+      ],
+      "bounds_max": [
+        2.044240951538086,
+        0.05121435970067978,
+        0.11010143905878067
+      ],
+      "dimensions_m": [
+        0.06760942935943604,
+        0.07415665127336979,
+        0.1128859743475914
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          2.000000476837158
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_LOD1"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_tiny_a_LOD2",
+      "mesh": "Plane.090",
+      "vertices": 43,
+      "triangles": 35,
+      "evaluated_triangles": 35,
+      "bounds_min": [
+        1.976514220237732,
+        -0.02325373701751232,
+        -0.0030098040588200092
+      ],
+      "bounds_max": [
+        2.044576406478882,
+        0.05157390609383583,
+        0.1106245368719101
+      ],
+      "dimensions_m": [
+        0.0680621862411499,
+        0.07482764311134815,
+        0.1136343409307301
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          2.000000476837158
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_LOD2"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_tiny_b_LOD0",
+      "mesh": "Plane.056",
+      "vertices": 30,
+      "triangles": 28,
+      "evaluated_triangles": 28,
+      "bounds_min": [
+        2.195826530456543,
+        -0.000264353962847963,
+        -0.002296786056831479
+      ],
+      "bounds_max": [
+        2.2193963527679443,
+        0.034134380519390106,
+        0.057911694049835205
+      ],
+      "dimensions_m": [
+        0.023569822311401367,
+        0.03439873448223807,
+        0.060208480106666684
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          2.200000762939453
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_LOD0"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_tiny_b_LOD1",
+      "mesh": "Plane.074",
+      "vertices": 22,
+      "triangles": 20,
+      "evaluated_triangles": 20,
+      "bounds_min": [
+        2.1953535079956055,
+        -0.000264353962847963,
+        -0.002296786056831479
+      ],
+      "bounds_max": [
+        2.2193963527679443,
+        0.03416651114821434,
+        0.057911694049835205
+      ],
+      "dimensions_m": [
+        0.024042844772338867,
+        0.0344308651110623,
+        0.060208480106666684
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          2.200000762939453
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_LOD1"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_tiny_b_LOD2",
+      "mesh": "Plane.091",
+      "vertices": 15,
+      "triangles": 13,
+      "evaluated_triangles": 13,
+      "bounds_min": [
+        2.1948180198669434,
+        -0.000264353962847963,
+        -0.002296786056831479
+      ],
+      "bounds_max": [
+        2.2193963527679443,
+        0.034068889915943146,
+        0.057911694049835205
+      ],
+      "dimensions_m": [
+        0.024578332901000977,
+        0.03433324387879111,
+        0.060208480106666684
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          2.200000762939453
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_LOD2"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_tiny_c_LOD0",
+      "mesh": "Plane.054",
+      "vertices": 44,
+      "triangles": 40,
+      "evaluated_triangles": 40,
+      "bounds_min": [
+        2.397968292236328,
+        -0.028342707082629204,
+        -0.0015277046477422118
+      ],
+      "bounds_max": [
+        2.4139997959136963,
+        0.0006610661512240767,
+        0.08086099475622177
+      ],
+      "dimensions_m": [
+        0.016031503677368164,
+        0.02900377323385328,
+        0.08238869940396398
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          2.40000057220459
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_LOD0"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_tiny_c_LOD1",
+      "mesh": "Plane.072",
+      "vertices": 34,
+      "triangles": 30,
+      "evaluated_triangles": 30,
+      "bounds_min": [
+        2.3978071212768555,
+        -0.028477642685174942,
+        -0.001596839283592999
+      ],
+      "bounds_max": [
+        2.4140374660491943,
+        0.000715352245606482,
+        0.08088986575603485
+      ],
+      "dimensions_m": [
+        0.016230344772338867,
+        0.029192994930781424,
+        0.08248670503962785
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          2.40000057220459
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_LOD1"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_tiny_c_LOD2",
+      "mesh": "Plane.089",
+      "vertices": 22,
+      "triangles": 18,
+      "evaluated_triangles": 18,
+      "bounds_min": [
+        2.3992888927459717,
+        -0.028624292463064194,
+        -0.001671976177021861
+      ],
+      "bounds_max": [
+        2.4140782356262207,
+        0.0010737032862380147,
+        0.0809212401509285
+      ],
+      "dimensions_m": [
+        0.014789342880249023,
+        0.02969799574930221,
+        0.08259321632795036
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          2.40000057220459
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_LOD2"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_tiny_d_LOD0",
+      "mesh": "Plane.057",
+      "vertices": 36,
+      "triangles": 32,
+      "evaluated_triangles": 32,
+      "bounds_min": [
+        2.5990235805511475,
+        -0.034244898706674576,
+        -0.00266977958381176
+      ],
+      "bounds_max": [
+        2.6420633792877197,
+        0.054337579756975174,
+        0.04515690729022026
+      ],
+      "dimensions_m": [
+        0.043039798736572266,
+        0.08858247846364975,
+        0.04782668687403202
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          2.6000003814697266
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_LOD0"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_tiny_d_LOD1",
+      "mesh": "Plane.075",
+      "vertices": 30,
+      "triangles": 26,
+      "evaluated_triangles": 26,
+      "bounds_min": [
+        2.5989480018615723,
+        -0.03429701179265976,
+        -0.002697866875678301
+      ],
+      "bounds_max": [
+        2.642094612121582,
+        0.054377008229494095,
+        0.04534957557916641
+      ],
+      "dimensions_m": [
+        0.043146610260009766,
+        0.08867402002215385,
+        0.04804744245484471
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          2.6000003814697266
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_LOD1"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_tiny_d_LOD2",
+      "mesh": "Plane.092",
+      "vertices": 18,
+      "triangles": 14,
+      "evaluated_triangles": 14,
+      "bounds_min": [
+        2.598220109939575,
+        -0.03413868322968483,
+        -0.0027519427239894867
+      ],
+      "bounds_max": [
+        2.6419997215270996,
+        0.05425721034407616,
+        0.044764190912246704
+      ],
+      "dimensions_m": [
+        0.043779611587524414,
+        0.08839589357376099,
+        0.04751613363623619
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          2.6000003814697266
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_LOD2"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_tiny_e_LOD0",
+      "mesh": "Plane.058",
+      "vertices": 66,
+      "triangles": 62,
+      "evaluated_triangles": 62,
+      "bounds_min": [
+        2.7732460498809814,
+        -0.051811572164297104,
+        -0.0046236226335167885
+      ],
+      "bounds_max": [
+        2.8585116863250732,
+        0.022340359166264534,
+        0.0448271669447422
+      ],
+      "dimensions_m": [
+        0.0852656364440918,
+        0.07415193133056164,
+        0.04945078957825899
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          2.8000001907348633
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_LOD0"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_tiny_e_LOD1",
+      "mesh": "Plane.076",
+      "vertices": 48,
+      "triangles": 44,
+      "evaluated_triangles": 44,
+      "bounds_min": [
+        2.773085594177246,
+        -0.051958777010440826,
+        -0.0046236226335167885
+      ],
+      "bounds_max": [
+        2.858525276184082,
+        0.022538242861628532,
+        0.045197758823633194
+      ],
+      "dimensions_m": [
+        0.08543968200683594,
+        0.07449701987206936,
+        0.04982138145714998
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          2.8000001907348633
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_LOD1"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_tiny_e_LOD2",
+      "mesh": "Plane.093",
+      "vertices": 38,
+      "triangles": 34,
+      "evaluated_triangles": 34,
+      "bounds_min": [
+        2.773573637008667,
+        -0.05151152238249779,
+        -0.0046236226335167885
+      ],
+      "bounds_max": [
+        2.8585355281829834,
+        0.02268628403544426,
+        0.045475006103515625
+      ],
+      "dimensions_m": [
+        0.0849618911743164,
+        0.07419780641794205,
+        0.050098628737032413
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          2.8000001907348633
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_LOD2"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_tiny_f_LOD0",
+      "mesh": "Plane.059",
+      "vertices": 60,
+      "triangles": 60,
+      "evaluated_triangles": 60,
+      "bounds_min": [
+        2.99699330329895,
+        -0.023381344974040985,
+        -0.0029108894523233175
+      ],
+      "bounds_max": [
+        3.0521891117095947,
+        0.04550879821181297,
+        0.044163916260004044
+      ],
+      "dimensions_m": [
+        0.05519580841064453,
+        0.06889014318585396,
+        0.04707480571232736
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          3.000000476837158
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_LOD0"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_tiny_f_LOD1",
+      "mesh": "Plane.077",
+      "vertices": 44,
+      "triangles": 44,
+      "evaluated_triangles": 44,
+      "bounds_min": [
+        2.99699330329895,
+        -0.023381344974040985,
+        -0.0029108894523233175
+      ],
+      "bounds_max": [
+        3.0521891117095947,
+        0.04550879821181297,
+        0.044163916260004044
+      ],
+      "dimensions_m": [
+        0.05519580841064453,
+        0.06889014318585396,
+        0.04707480571232736
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          3.000000476837158
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_LOD1"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    },
+    {
+      "name": "grass_medium_01_tiny_f_LOD2",
+      "mesh": "Plane.094",
+      "vertices": 37,
+      "triangles": 37,
+      "evaluated_triangles": 37,
+      "bounds_min": [
+        2.99699330329895,
+        -0.023381344974040985,
+        -0.0029108894523233175
+      ],
+      "bounds_max": [
+        3.0518112182617188,
+        0.045447640120983124,
+        0.044163916260004044
+      ],
+      "dimensions_m": [
+        0.054817914962768555,
+        0.06882898509502411,
+        0.04707480571232736
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          3.000000476837158
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_medium_01_LOD2"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_medium_01"
+      ]
+    }
+  ],
+  "materials": [
+    {
+      "name": "grass_medium_01",
+      "surface_render_method": "DITHERED",
+      "blend_method": "HASHED",
+      "use_backface_culling": false,
+      "images": [
+        {
+          "node": "Image Texture.002",
+          "image": "grass_medium_01_nor_gl.png",
+          "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/grass_medium_01/textures/grass_medium_01_nor_gl_1k.exr",
+          "exists": true,
+          "size": [
+            1024,
+            1024
+          ],
+          "colorspace": "Non-Color",
+          "channels": 4,
+          "links": [
+            "Color->grass_medium_01:Normal"
+          ]
+        },
+        {
+          "node": "Image Texture.003",
+          "image": "grass_medium_01_alpha.png",
+          "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/grass_medium_01/textures/grass_medium_01_alpha_1k.png",
+          "exists": true,
+          "size": [
+            1024,
+            1024
+          ],
+          "colorspace": "Non-Color",
+          "channels": 4,
+          "links": [
+            "Color->grass_medium_01:Alpha"
+          ]
+        },
+        {
+          "node": "Image Texture.001",
+          "image": "grass_medium_01_rough.png",
+          "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/grass_medium_01/textures/grass_medium_01_rough_1k.exr",
+          "exists": true,
+          "size": [
+            1024,
+            1024
+          ],
+          "colorspace": "Non-Color",
+          "channels": 4,
+          "links": [
+            "Color->grass_medium_01:Rough"
+          ]
+        },
+        {
+          "node": "Image Texture",
+          "image": "grass_medium_01_diff.png",
+          "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/grass_medium_01/textures/grass_medium_01_diff_1k.jpg",
+          "exists": true,
+          "size": [
+            1024,
+            1024
+          ],
+          "colorspace": "sRGB",
+          "channels": 4,
+          "links": [
+            "Color->grass_medium_01:Diffuse"
+          ]
+        },
+        {
+          "node": "Image Texture.004",
+          "image": "grass_medium_01_dry_diff.png",
+          "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/grass_medium_01/textures/grass_medium_01_dry_diff_1k.png",
+          "exists": true,
+          "size": [
+            1024,
+            1024
+          ],
+          "colorspace": "sRGB",
+          "channels": 4,
+          "links": [
+            "Color->grass_medium_01:Diffuse Dead"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "grass_medium_01_sphere",
+      "surface_render_method": "DITHERED",
+      "blend_method": "HASHED",
+      "use_backface_culling": false,
+      "images": []
+    }
+  ]
+}

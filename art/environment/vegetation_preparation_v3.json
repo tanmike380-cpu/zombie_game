@@ -1,0 +1,916 @@
+{
+  "status": "review_only_not_export_approved",
+  "staging_blend": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/Vegetation_Review_v3.blend",
+  "staging_sha256": "0a10aa7e66024ec0f545723a79464da8589acc9f2a1161c570419852a26b4680",
+  "collection": "环境评审 · Poly Haven 植被",
+  "assets": [
+    {
+      "id": "GrassBermuda",
+      "collection": "环境素材 · Poly Haven · GrassBermuda",
+      "object": "GrassBermuda",
+      "source": {
+        "id": "GrassBermuda",
+        "source_blend": "art/environment/polyhaven-src/grass_bermuda_01/grass_bermuda_01_1k.blend",
+        "source_sha256": "6ff15e278219947ce8013663f918fc3ae074f19157ace2f2dcfb3484e2e4e654",
+        "source_object": "grass_bermuda_01_medium_e"
+      },
+      "source_triangles": 24,
+      "triangles": 24,
+      "dimensions_m": [
+        0.06603643298149109,
+        0.0368752577342093,
+        0.0826614685356617
+      ],
+      "bounds_relative_error": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "pivot_translation": [
+        0.15503239631652832,
+        -0.015368851833045483,
+        -0.011469792574644089
+      ],
+      "gallery_translation": [
+        0.0,
+        0,
+        0
+      ],
+      "materials": [
+        {
+          "name": "grass_bermuda_01",
+          "surface_render_method": "DITHERED",
+          "blend_method": "HASHED",
+          "use_backface_culling": false,
+          "images": [
+            {
+              "node": "Image Texture",
+              "image": "grass_bermuda_01_diff.png",
+              "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/grass_bermuda_01/textures/grass_bermuda_01_diff_1k.jpg",
+              "exists": true,
+              "size": [
+                1024,
+                1024
+              ],
+              "colorspace": "sRGB",
+              "channels": 4,
+              "links": [
+                "Color->Group:Color"
+              ]
+            },
+            {
+              "node": "Image Texture.001",
+              "image": "grass_bermuda_01_rough.png",
+              "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/grass_bermuda_01/textures/grass_bermuda_01_rough_1k.exr",
+              "exists": true,
+              "size": [
+                1024,
+                1024
+              ],
+              "colorspace": "Non-Color",
+              "channels": 4,
+              "links": [
+                "Color->Group:Roughness"
+              ]
+            },
+            {
+              "node": "Image Texture.002",
+              "image": "grass_bermuda_01_nor_gl.png",
+              "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/grass_bermuda_01/textures/grass_bermuda_01_nor_gl_1k.exr",
+              "exists": true,
+              "size": [
+                1024,
+                1024
+              ],
+              "colorspace": "Non-Color",
+              "channels": 4,
+              "links": [
+                "Color->Group:Normal"
+              ]
+            },
+            {
+              "node": "Image Texture.003",
+              "image": "grass_bermuda_01_alpha.png",
+              "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/grass_bermuda_01/textures/grass_bermuda_01_alpha_1k.png",
+              "exists": true,
+              "size": [
+                1024,
+                1024
+              ],
+              "colorspace": "Non-Color",
+              "channels": 4,
+              "links": [
+                "Color->Group:Alpha"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "GrassMedium",
+      "collection": "环境素材 · Poly Haven · GrassMedium",
+      "object": "GrassMedium",
+      "source": {
+        "id": "GrassMedium",
+        "source_blend": "art/environment/polyhaven-src/grass_medium_01/grass_medium_01_1k.blend",
+        "source_sha256": "5bbeaf7161508c1de66f137e7fcaec6fdea9c4ac0faa134c384c89c97271bec2",
+        "source_object": "grass_medium_01_tall_a_LOD1"
+      },
+      "source_triangles": 163,
+      "triangles": 163,
+      "dimensions_m": [
+        0.16095638275146484,
+        0.15853147953748703,
+        0.3225463912822306
+      ],
+      "bounds_relative_error": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "pivot_translation": [
+        0.800894021987915,
+        -0.004762772470712662,
+        -0.005577980075031519
+      ],
+      "gallery_translation": [
+        6.0,
+        0,
+        0
+      ],
+      "materials": [
+        {
+          "name": "grass_medium_01",
+          "surface_render_method": "DITHERED",
+          "blend_method": "HASHED",
+          "use_backface_culling": false,
+          "images": [
+            {
+              "node": "Image Texture.002",
+              "image": "grass_medium_01_nor_gl.png",
+              "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/grass_medium_01/textures/grass_medium_01_nor_gl_1k.exr",
+              "exists": true,
+              "size": [
+                1024,
+                1024
+              ],
+              "colorspace": "Non-Color",
+              "channels": 4,
+              "links": [
+                "Color->grass_medium_01:Normal"
+              ]
+            },
+            {
+              "node": "Image Texture.003",
+              "image": "grass_medium_01_alpha.png",
+              "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/grass_medium_01/textures/grass_medium_01_alpha_1k.png",
+              "exists": true,
+              "size": [
+                1024,
+                1024
+              ],
+              "colorspace": "Non-Color",
+              "channels": 4,
+              "links": [
+                "Color->grass_medium_01:Alpha"
+              ]
+            },
+            {
+              "node": "Image Texture.001",
+              "image": "grass_medium_01_rough.png",
+              "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/grass_medium_01/textures/grass_medium_01_rough_1k.exr",
+              "exists": true,
+              "size": [
+                1024,
+                1024
+              ],
+              "colorspace": "Non-Color",
+              "channels": 4,
+              "links": [
+                "Color->grass_medium_01:Rough"
+              ]
+            },
+            {
+              "node": "Image Texture",
+              "image": "grass_medium_01_diff.png",
+              "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/grass_medium_01/textures/grass_medium_01_diff_1k.jpg",
+              "exists": true,
+              "size": [
+                1024,
+                1024
+              ],
+              "colorspace": "sRGB",
+              "channels": 4,
+              "links": [
+                "Color->grass_medium_01:Diffuse"
+              ]
+            },
+            {
+              "node": "Image Texture.004",
+              "image": "grass_medium_01_dry_diff.png",
+              "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/grass_medium_01/textures/grass_medium_01_dry_diff_1k.png",
+              "exists": true,
+              "size": [
+                1024,
+                1024
+              ],
+              "colorspace": "sRGB",
+              "channels": 4,
+              "links": [
+                "Color->grass_medium_01:Diffuse Dead"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ShrubA",
+      "collection": "环境素材 · Poly Haven · ShrubA",
+      "object": "ShrubA",
+      "source": {
+        "id": "ShrubA",
+        "source_blend": "art/environment/polyhaven-src/shrub_02/shrub_02_1k.blend",
+        "source_sha256": "56d0a66207ade193224ec2f1ca1996d35b415ec0fc3ec8fdd17574629d0ace7b",
+        "source_object": "shrub_02_a_LOD2"
+      },
+      "source_triangles": 2335,
+      "triangles": 2335,
+      "dimensions_m": [
+        1.066114366054535,
+        1.3329291343688965,
+        1.3719556741416454
+      ],
+      "bounds_relative_error": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "pivot_translation": [
+        -1.1670054197311401,
+        0.05084884166717529,
+        -0.008960526436567307
+      ],
+      "gallery_translation": [
+        12.0,
+        0,
+        0
+      ],
+      "materials": [
+        {
+          "name": "shrub_02",
+          "surface_render_method": "DITHERED",
+          "blend_method": "HASHED",
+          "use_backface_culling": false,
+          "images": [
+            {
+              "node": "Image Texture.004",
+              "image": "shrub_02_alpha.png",
+              "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/shrub_02/textures/shrub_02_alpha_1k.png",
+              "exists": true,
+              "size": [
+                1024,
+                1024
+              ],
+              "colorspace": "Non-Color",
+              "channels": 4,
+              "links": [
+                "Color->Group:Alpha"
+              ]
+            },
+            {
+              "node": "Image Texture.003",
+              "image": "shrub_02_nor_gl.png",
+              "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/shrub_02/textures/shrub_02_nor_gl_1k.exr",
+              "exists": true,
+              "size": [
+                1024,
+                1024
+              ],
+              "colorspace": "Non-Color",
+              "channels": 4,
+              "links": [
+                "Color->Group:Normal"
+              ]
+            },
+            {
+              "node": "Image Texture.002",
+              "image": "shrub_02_rough.png",
+              "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/shrub_02/textures/shrub_02_rough_1k.exr",
+              "exists": true,
+              "size": [
+                1024,
+                1024
+              ],
+              "colorspace": "Non-Color",
+              "channels": 4,
+              "links": [
+                "Color->Group:Rough"
+              ]
+            },
+            {
+              "node": "Image Texture.001",
+              "image": "shrub_02_diff.png",
+              "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/shrub_02/textures/shrub_02_diff_1k.jpg",
+              "exists": true,
+              "size": [
+                1024,
+                1024
+              ],
+              "colorspace": "sRGB",
+              "channels": 4,
+              "links": [
+                "Color->Group:Diffuse"
+              ]
+            },
+            {
+              "node": "Image Texture.005",
+              "image": "shrub_02_mask.png",
+              "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/shrub_02/textures/shrub_02_mask_1k.png",
+              "exists": true,
+              "size": [
+                1024,
+                1024
+              ],
+              "colorspace": "Non-Color",
+              "channels": 4,
+              "links": [
+                "Color->Math:Value"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ShrubB",
+      "collection": "环境素材 · Poly Haven · ShrubB",
+      "object": "ShrubB",
+      "source": {
+        "id": "ShrubB",
+        "source_blend": "art/environment/polyhaven-src/shrub_02/shrub_02_1k.blend",
+        "source_sha256": "56d0a66207ade193224ec2f1ca1996d35b415ec0fc3ec8fdd17574629d0ace7b",
+        "source_object": "shrub_02_b_LOD2"
+      },
+      "source_triangles": 1603,
+      "triangles": 1603,
+      "dimensions_m": [
+        0.9021530747413635,
+        1.040014535188675,
+        1.223717585671693
+      ],
+      "bounds_relative_error": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "pivot_translation": [
+        0.004203766584396362,
+        -0.10048060119152069,
+        -0.0062619601376354694
+      ],
+      "gallery_translation": [
+        18.0,
+        0,
+        0
+      ],
+      "materials": [
+        {
+          "name": "shrub_02.001",
+          "surface_render_method": "DITHERED",
+          "blend_method": "HASHED",
+          "use_backface_culling": false,
+          "images": [
+            {
+              "node": "Image Texture.004",
+              "image": "shrub_02_alpha.png.001",
+              "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/shrub_02/textures/shrub_02_alpha_1k.png",
+              "exists": true,
+              "size": [
+                1024,
+                1024
+              ],
+              "colorspace": "Non-Color",
+              "channels": 4,
+              "links": [
+                "Color->Group:Alpha"
+              ]
+            },
+            {
+              "node": "Image Texture.003",
+              "image": "shrub_02_nor_gl.png.001",
+              "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/shrub_02/textures/shrub_02_nor_gl_1k.exr",
+              "exists": true,
+              "size": [
+                1024,
+                1024
+              ],
+              "colorspace": "Non-Color",
+              "channels": 4,
+              "links": [
+                "Color->Group:Normal"
+              ]
+            },
+            {
+              "node": "Image Texture.002",
+              "image": "shrub_02_rough.png.001",
+              "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/shrub_02/textures/shrub_02_rough_1k.exr",
+              "exists": true,
+              "size": [
+                1024,
+                1024
+              ],
+              "colorspace": "Non-Color",
+              "channels": 4,
+              "links": [
+                "Color->Group:Rough"
+              ]
+            },
+            {
+              "node": "Image Texture.001",
+              "image": "shrub_02_diff.png.001",
+              "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/shrub_02/textures/shrub_02_diff_1k.jpg",
+              "exists": true,
+              "size": [
+                1024,
+                1024
+              ],
+              "colorspace": "sRGB",
+              "channels": 4,
+              "links": [
+                "Color->Group:Diffuse"
+              ]
+            },
+            {
+              "node": "Image Texture.005",
+              "image": "shrub_02_mask.png.001",
+              "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/shrub_02/textures/shrub_02_mask_1k.png",
+              "exists": true,
+              "size": [
+                1024,
+                1024
+              ],
+              "colorspace": "Non-Color",
+              "channels": 4,
+              "links": [
+                "Color->Math:Value"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TreeSmall_LOD0",
+      "collection": "环境素材 · Poly Haven · TreeSmall_LOD0",
+      "object": "TreeSmall_LOD0",
+      "source": {
+        "id": "TreeSmall_LOD0",
+        "source_blend": "art/environment/polyhaven-src/tree_small_02/tree_small_02_1k.blend",
+        "source_sha256": "af3fef6da3eb97057d9d4d3c4281c5944696b8d518715deddd8500482d30b1bd",
+        "source_object": "tree_small_02_LOD1",
+        "target_triangles": 85000,
+        "material_decimation_ratios": {
+          "_branches": 0.21,
+          "_leaves": 0.14,
+          "_trunk": 0.5
+        }
+      },
+      "source_triangles": 495533,
+      "triangles": 81035,
+      "dimensions_m": [
+        2.9276723861694336,
+        4.3019349575042725,
+        4.5758485700935125
+      ],
+      "bounds_relative_error": [
+        0.002135042422761968,
+        0.0021586239081532455,
+        0.0025878965479262384
+      ],
+      "uv_layers": [
+        "UVMap",
+        "UV_map_01"
+      ],
+      "pivot_translation": [
+        0.15110111236572266,
+        -0.7633556127548218,
+        -0.024194231256842613
+      ],
+      "gallery_translation": [
+        24.0,
+        0,
+        0
+      ],
+      "materials": [
+        {
+          "name": "tree_small_02_trunk",
+          "surface_render_method": "DITHERED",
+          "blend_method": "HASHED",
+          "use_backface_culling": false,
+          "images": [
+            {
+              "node": "Image Texture.001",
+              "image": "tree_small_02_diff.png",
+              "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/tree_small_02/textures/tree_small_02_diff_1k.jpg",
+              "exists": true,
+              "size": [
+                1024,
+                1024
+              ],
+              "colorspace": "sRGB",
+              "channels": 4,
+              "links": [
+                "Color->Principled BSDF:Base Color"
+              ]
+            },
+            {
+              "node": "Image Texture.002",
+              "image": "tree_small_02_rough.png",
+              "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/tree_small_02/textures/tree_small_02_rough_1k.exr",
+              "exists": true,
+              "size": [
+                1024,
+                1024
+              ],
+              "colorspace": "Non-Color",
+              "channels": 4,
+              "links": [
+                "Color->Principled BSDF:Roughness"
+              ]
+            },
+            {
+              "node": "Image Texture.003",
+              "image": "tree_small_02_nor_gl.png",
+              "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/tree_small_02/textures/tree_small_02_nor_gl_1k.exr",
+              "exists": true,
+              "size": [
+                1024,
+                1024
+              ],
+              "colorspace": "Non-Color",
+              "channels": 4,
+              "links": [
+                "Color->Normal Map:Color"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "tree_small_02_branches",
+          "surface_render_method": "DITHERED",
+          "blend_method": "HASHED",
+          "use_backface_culling": false,
+          "images": [
+            {
+              "node": "Image Texture.001",
+              "image": "tree_small_02_branch_diff.png",
+              "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/tree_small_02/textures/tree_small_02_branch_diff_1k.png",
+              "exists": true,
+              "size": [
+                1024,
+                1024
+              ],
+              "colorspace": "sRGB",
+              "channels": 4,
+              "links": [
+                "Color->Principled BSDF:Base Color"
+              ]
+            },
+            {
+              "node": "Image Texture.002",
+              "image": "tree_small_02_branch_rough.png",
+              "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/tree_small_02/textures/tree_small_02_branch_rough_1k.png",
+              "exists": true,
+              "size": [
+                1024,
+                1024
+              ],
+              "colorspace": "Non-Color",
+              "channels": 4,
+              "links": [
+                "Color->Principled BSDF:Roughness"
+              ]
+            },
+            {
+              "node": "Image Texture.003",
+              "image": "tree_small_02_branch_nor_gl.png",
+              "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/tree_small_02/textures/tree_small_02_branch_nor_gl_1k.png",
+              "exists": true,
+              "size": [
+                1024,
+                1024
+              ],
+              "colorspace": "Non-Color",
+              "channels": 4,
+              "links": [
+                "Color->Normal Map:Color"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "tree_small_02_leaves",
+          "surface_render_method": "DITHERED",
+          "blend_method": "HASHED",
+          "use_backface_culling": false,
+          "images": [
+            {
+              "node": "Image Texture.001",
+              "image": "tree_small_02_leaves_diff.png",
+              "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/tree_small_02/textures/tree_small_02_leaves_diff_1k.png",
+              "exists": true,
+              "size": [
+                1024,
+                1024
+              ],
+              "colorspace": "sRGB",
+              "channels": 4,
+              "links": [
+                "Color->Group:Diffuse"
+              ]
+            },
+            {
+              "node": "Image Texture.002",
+              "image": "tree_small_02_leaves_rough.png",
+              "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/tree_small_02/textures/tree_small_02_leaves_rough_1k.png",
+              "exists": true,
+              "size": [
+                1024,
+                1024
+              ],
+              "colorspace": "Non-Color",
+              "channels": 4,
+              "links": [
+                "Color->Group:Rough"
+              ]
+            },
+            {
+              "node": "Image Texture.003",
+              "image": "tree_small_02_leaves_nor_gl.png",
+              "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/tree_small_02/textures/tree_small_02_leaves_nor_gl_1k.png",
+              "exists": true,
+              "size": [
+                1024,
+                1024
+              ],
+              "colorspace": "Non-Color",
+              "channels": 4,
+              "links": [
+                "Color->Group:Normal"
+              ]
+            },
+            {
+              "node": "Image Texture.004",
+              "image": "tree_small_02_leaves_alpha.png",
+              "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/tree_small_02/textures/tree_small_02_leaves_alpha_1k.png",
+              "exists": true,
+              "size": [
+                1024,
+                1024
+              ],
+              "colorspace": "sRGB",
+              "channels": 4,
+              "links": [
+                "Color->Group:Alpha"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TreeSmall_LOD1",
+      "collection": "环境素材 · Poly Haven · TreeSmall_LOD1",
+      "object": "TreeSmall_LOD1",
+      "source": {
+        "id": "TreeSmall_LOD1",
+        "source_blend": "art/environment/polyhaven-src/tree_small_02/tree_small_02_1k.blend",
+        "source_sha256": "af3fef6da3eb97057d9d4d3c4281c5944696b8d518715deddd8500482d30b1bd",
+        "source_object": "tree_small_02_LOD1",
+        "target_triangles": 50000,
+        "material_decimation_ratios": {
+          "_branches": 0.1,
+          "_leaves": 0.085,
+          "_trunk": 0.3
+        }
+      },
+      "source_triangles": 495533,
+      "triangles": 46542,
+      "dimensions_m": [
+        2.9276723861694336,
+        4.3019349575042725,
+        4.583409948274493
+      ],
+      "bounds_relative_error": [
+        0.002135042422761968,
+        0.0021586239081532455,
+        0.004244626688652442
+      ],
+      "uv_layers": [
+        "UVMap",
+        "UV_map_01"
+      ],
+      "pivot_translation": [
+        0.15110111236572266,
+        -0.7633556127548218,
+        -0.024063272401690483
+      ],
+      "gallery_translation": [
+        30.0,
+        0,
+        0
+      ],
+      "materials": [
+        {
+          "name": "tree_small_02_trunk.001",
+          "surface_render_method": "DITHERED",
+          "blend_method": "HASHED",
+          "use_backface_culling": false,
+          "images": [
+            {
+              "node": "Image Texture.001",
+              "image": "tree_small_02_diff.png.001",
+              "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/tree_small_02/textures/tree_small_02_diff_1k.jpg",
+              "exists": true,
+              "size": [
+                1024,
+                1024
+              ],
+              "colorspace": "sRGB",
+              "channels": 4,
+              "links": [
+                "Color->Principled BSDF:Base Color"
+              ]
+            },
+            {
+              "node": "Image Texture.002",
+              "image": "tree_small_02_rough.png.001",
+              "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/tree_small_02/textures/tree_small_02_rough_1k.exr",
+              "exists": true,
+              "size": [
+                1024,
+                1024
+              ],
+              "colorspace": "Non-Color",
+              "channels": 4,
+              "links": [
+                "Color->Principled BSDF:Roughness"
+              ]
+            },
+            {
+              "node": "Image Texture.003",
+              "image": "tree_small_02_nor_gl.png.001",
+              "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/tree_small_02/textures/tree_small_02_nor_gl_1k.exr",
+              "exists": true,
+              "size": [
+                1024,
+                1024
+              ],
+              "colorspace": "Non-Color",
+              "channels": 4,
+              "links": [
+                "Color->Normal Map:Color"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "tree_small_02_branches.001",
+          "surface_render_method": "DITHERED",
+          "blend_method": "HASHED",
+          "use_backface_culling": false,
+          "images": [
+            {
+              "node": "Image Texture.001",
+              "image": "tree_small_02_branch_diff.png.001",
+              "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/tree_small_02/textures/tree_small_02_branch_diff_1k.png",
+              "exists": true,
+              "size": [
+                1024,
+                1024
+              ],
+              "colorspace": "sRGB",
+              "channels": 4,
+              "links": [
+                "Color->Principled BSDF:Base Color"
+              ]
+            },
+            {
+              "node": "Image Texture.002",
+              "image": "tree_small_02_branch_rough.png.001",
+              "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/tree_small_02/textures/tree_small_02_branch_rough_1k.png",
+              "exists": true,
+              "size": [
+                1024,
+                1024
+              ],
+              "colorspace": "Non-Color",
+              "channels": 4,
+              "links": [
+                "Color->Principled BSDF:Roughness"
+              ]
+            },
+            {
+              "node": "Image Texture.003",
+              "image": "tree_small_02_branch_nor_gl.png.001",
+              "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/tree_small_02/textures/tree_small_02_branch_nor_gl_1k.png",
+              "exists": true,
+              "size": [
+                1024,
+                1024
+              ],
+              "colorspace": "Non-Color",
+              "channels": 4,
+              "links": [
+                "Color->Normal Map:Color"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "tree_small_02_leaves.001",
+          "surface_render_method": "DITHERED",
+          "blend_method": "HASHED",
+          "use_backface_culling": false,
+          "images": [
+            {
+              "node": "Image Texture.001",
+              "image": "tree_small_02_leaves_diff.png.001",
+              "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/tree_small_02/textures/tree_small_02_leaves_diff_1k.png",
+              "exists": true,
+              "size": [
+                1024,
+                1024
+              ],
+              "colorspace": "sRGB",
+              "channels": 4,
+              "links": [
+                "Color->Group:Diffuse"
+              ]
+            },
+            {
+              "node": "Image Texture.002",
+              "image": "tree_small_02_leaves_rough.png.001",
+              "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/tree_small_02/textures/tree_small_02_leaves_rough_1k.png",
+              "exists": true,
+              "size": [
+                1024,
+                1024
+              ],
+              "colorspace": "Non-Color",
+              "channels": 4,
+              "links": [
+                "Color->Group:Rough"
+              ]
+            },
+            {
+              "node": "Image Texture.003",
+              "image": "tree_small_02_leaves_nor_gl.png.001",
+              "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/tree_small_02/textures/tree_small_02_leaves_nor_gl_1k.png",
+              "exists": true,
+              "size": [
+                1024,
+                1024
+              ],
+              "colorspace": "Non-Color",
+              "channels": 4,
+              "links": [
+                "Color->Group:Normal"
+              ]
+            },
+            {
+              "node": "Image Texture.004",
+              "image": "tree_small_02_leaves_alpha.png.001",
+              "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/tree_small_02/textures/tree_small_02_leaves_alpha_1k.png",
+              "exists": true,
+              "size": [
+                1024,
+                1024
+              ],
+              "colorspace": "sRGB",
+              "channels": 4,
+              "links": [
+                "Color->Group:Alpha"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "proportion_policy": "translation-only pivot; native dimensions retained"
+}

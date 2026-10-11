@@ -1,0 +1,158 @@
+{
+  "status": "fbx_roundtrip_pass",
+  "records": [
+    {
+      "id": "GrassBermuda",
+      "triangles": 24,
+      "uv_layers": [
+        "UVMap"
+      ],
+      "dimensions_m": [
+        0.06603642925620079,
+        0.03687525354325771,
+        0.08266147048714156
+      ],
+      "bounds_min": [
+        -0.033018216490745544,
+        -0.018437623977661133,
+        1.7738104318709702e-09
+      ],
+      "material_slots": [
+        "grass_bermuda_01"
+      ],
+      "model_and_texture_hashes": "pass"
+    },
+    {
+      "id": "GrassMedium",
+      "triangles": 163,
+      "uv_layers": [
+        "UVMap"
+      ],
+      "dimensions_m": [
+        0.16095640510320663,
+        0.15853147953748703,
+        0.32254639261910134
+      ],
+      "bounds_min": [
+        -0.08047808706760406,
+        -0.07926572859287262,
+        6.011313669063156e-11
+      ],
+      "material_slots": [
+        "grass_medium_01"
+      ],
+      "model_and_texture_hashes": "pass"
+    },
+    {
+      "id": "ShrubA",
+      "triangles": 2335,
+      "uv_layers": [
+        "UVMap"
+      ],
+      "dimensions_m": [
+        1.0661142468452454,
+        1.3329290747642517,
+        1.3719556332798675
+      ],
+      "bounds_min": [
+        -0.5330567955970764,
+        -0.6664645075798035,
+        -1.1641532182693481e-10
+      ],
+      "material_slots": [
+        "shrub_02"
+      ],
+      "model_and_texture_hashes": "pass"
+    },
+    {
+      "id": "ShrubB",
+      "triangles": 1603,
+      "uv_layers": [
+        "UVMap"
+      ],
+      "dimensions_m": [
+        0.9021530449390411,
+        1.0400145649909973,
+        1.223717451095581
+      ],
+      "bounds_min": [
+        -0.4510754346847534,
+        -0.520007312297821,
+        0.0
+      ],
+      "material_slots": [
+        "shrub_02.001"
+      ],
+      "model_and_texture_hashes": "pass"
+    },
+    {
+      "id": "TreeSmall_LOD0",
+      "triangles": 81035,
+      "uv_layers": [
+        "UVMap",
+        "UV_map_01"
+      ],
+      "dimensions_m": [
+        2.9276723861694336,
+        4.301934719085693,
+        4.575848582326174
+      ],
+      "bounds_min": [
+        -1.4638352394104004,
+        -2.1509671211242676,
+        -2.919434916037744e-09
+      ],
+      "material_slots": [
+        "tree_small_02_trunk",
+        "tree_small_02_branches",
+        "tree_small_02_leaves"
+      ],
+      "model_and_texture_hashes": "pass"
+    },
+    {
+      "id": "TreeSmall_LOD1",
+      "triangles": 46542,
+      "uv_layers": [
+        "UVMap",
+        "UV_map_01"
+      ],
+      "dimensions_m": [
+        2.9276723861694336,
+        4.301934719085693,
+        4.583409790348675
+      ],
+      "bounds_min": [
+        -1.4638352394104004,
+        -2.1509671211242676,
+        -4.124309338493504e-09
+      ],
+      "material_slots": [
+        "tree_small_02_trunk.001",
+        "tree_small_02_branches.001",
+        "tree_small_02_leaves.001"
+      ],
+      "model_and_texture_hashes": "pass"
+    },
+    {
+      "id": "RockNatural",
+      "triangles": 3710,
+      "uv_layers": [
+        "UVMap"
+      ],
+      "dimensions_m": [
+        0.1689094454050064,
+        0.3205258399248123,
+        0.14360668358906636
+      ],
+      "bounds_min": [
+        -0.0844552218914032,
+        -0.16026291251182556,
+        8.963500164327343e-09
+      ],
+      "material_slots": [
+        "rock_07"
+      ],
+      "model_and_texture_hashes": "pass"
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "status": "formal_category_source_test_only",
+  "source_blend": "art/Blender主文件/ZombieGame_Environment.blend",
+  "source_sha256": "22cf18b836561446acae85f98b97086e40cac6ec23e88f91eebe05c8310ad56f",
+  "packed_images": 42,
+  "recovery_snapshot": "art/environment/snapshots/before-native-rock-20261011-152917.blend",
+  "previous_source_sha256": "4f44271e2a3c80d6e74fc4468c6df558e2d53744a5cdda0c539192e57abf7a1f",
+  "existing_objects_unchanged": 6,
+  "geometry_signatures": {
+    "GrassBermuda": "1b0cee56c32361f564594a3e040d97e02c0406ba886067d17b40b203405f1c7a",
+    "GrassMedium": "3f263009849c874164d06f67f90a5f988d85f9c59803e4f69a8aa2fc3f2657d5",
+    "RockNatural": "4fb42021409ce26835c1d08770d31efe1adcf582b8971b3debf56d2e3ada7ae6",
+    "ShrubA": "401ab70e775559fe4a2a270a8dcfa37dbc10c61254c2c078bc75b5b6694622d5",
+    "ShrubB": "67dc8ea619b09398f9af489bb18fdccab323fb953aaa12a07e649925dab63e77",
+    "TreeSmall_LOD0": "83ec0498ec8c303c319a629f48e3aab725011c78c6a42b248a826006f5558857",
+    "TreeSmall_LOD1": "9dfed748a5cff4e09b8ed8e74c80db76c665a77e08dfd1ec0c403c6fbfd0a6d3"
+  },
+  "new_asset": {
+    "id": "RockNatural",
+    "collection": "环境素材 · Poly Haven · RockNatural",
+    "object": "RockNatural",
+    "source": {
+      "id": "RockNatural",
+      "source_blend": "art/environment/polyhaven-src/rock_07/rock_07_1k.blend",
+      "source_sha256": "da8010774291c5d0acfbcc3b82b367be06c5ed0926640147de5f17371ef227d1",
+      "source_object": "rock_07_LOD2",
+      "geometry_policy": "Unchanged original native LOD2; translation-only grounding pivot and gallery placement"
+    },
+    "source_triangles": 3710,
+    "triangles": 3710,
+    "dimensions_m": [
+      0.1689094454050064,
+      0.3205258250236511,
+      0.14360670396126807
+    ],
+    "bounds_relative_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "uv_layers": [
+      "UVMap"
+    ],
+    "pivot_translation": [
+      -0.003059886395931244,
+      0.017873704433441162,
+      -0.0017508829478174448
+    ],
+    "gallery_translation": [
+      36.0,
+      0,
+      0
+    ],
+    "materials": [
+      {
+        "name": "rock_07",
+        "surface_render_method": "DITHERED",
+        "blend_method": "HASHED",
+        "use_backface_culling": false,
+        "images": [
+          {
+            "node": "Image Texture.002",
+            "image": "rock_07_rough.png",
+            "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/rock_07/textures/rock_07_rough_1k.exr",
+            "exists": true,
+            "size": [
+              1024,
+              1024
+            ],
+            "colorspace": "Non-Color",
+            "channels": 4,
+            "links": [
+              "Color->Principled BSDF:Roughness"
+            ]
+          },
+          {
+            "node": "Image Texture.003",
+            "image": "rock_07_nor_gl.png",
+            "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/rock_07/textures/rock_07_nor_gl_1k.exr",
+            "exists": true,
+            "size": [
+              1024,
+              1024
+            ],
+            "colorspace": "Non-Color",
+            "channels": 4,
+            "links": [
+              "Color->Normal Map:Color"
+            ]
+          },
+          {
+            "node": "Image Texture.001",
+            "image": "rock_07_diff.png",
+            "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/rock_07/textures/rock_07_diff_1k.jpg",
+            "exists": true,
+            "size": [
+              1024,
+              1024
+            ],
+            "colorspace": "sRGB",
+            "channels": 4,
+            "links": [
+              "Color->Principled BSDF:Base Color"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "source_reopened_and_verified": true
+}

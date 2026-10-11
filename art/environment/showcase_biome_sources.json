@@ -1,0 +1,187 @@
+{
+  "schema_version": 1,
+  "assets": [
+    {
+      "id": "snow_02",
+      "source": "https://polyhaven.com/a/snow_02",
+      "authors": {
+        "Rob Tuytel": "All"
+      },
+      "license": "CC0-1.0",
+      "license_url": "https://polyhaven.com/license",
+      "texture_resolution": "2K",
+      "files": [
+        {
+          "path": "art/environment/polyhaven-src/snow_02/textures/snow_02_diff_2k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/snow_02/snow_02_diff_2k.jpg",
+          "bytes": 1314409,
+          "md5": "5541e5601951b071691238ddc70632c0",
+          "sha256": "d185c2853c7e674161789db4eed1c5708d85e4f6e3dcb5698209568adf02aa98",
+          "channel": "Diffuse"
+        },
+        {
+          "path": "art/environment/polyhaven-src/snow_02/textures/snow_02_nor_gl_2k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/snow_02/snow_02_nor_gl_2k.jpg",
+          "bytes": 4761595,
+          "md5": "ef128fbdf1b31932c792eb6472c84574",
+          "sha256": "288539ee33387e91035be4dc8d10da574bf6a95c8374d33b6b1dc465c6949e8f",
+          "channel": "nor_gl"
+        },
+        {
+          "path": "art/environment/polyhaven-src/snow_02/textures/snow_02_rough_2k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/snow_02/snow_02_rough_2k.jpg",
+          "bytes": 628467,
+          "md5": "8b9787b4c7b1d7390a4b4a1ae67728b1",
+          "sha256": "9cfa994318ef190d4540875a166c7c745184c1a166e82271bca7c0a628f8820f",
+          "channel": "Rough"
+        }
+      ]
+    },
+    {
+      "id": "sand_01",
+      "source": "https://polyhaven.com/a/sand_01",
+      "authors": {
+        "Rob Tuytel": "All"
+      },
+      "license": "CC0-1.0",
+      "license_url": "https://polyhaven.com/license",
+      "texture_resolution": "2K",
+      "files": [
+        {
+          "path": "art/environment/polyhaven-src/sand_01/textures/sand_01_diff_2k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/sand_01/sand_01_diff_2k.jpg",
+          "bytes": 1984816,
+          "md5": "e5b22b6d5c2bbe3b6ec0b9dfa137bea1",
+          "sha256": "f311767ab68e132cb9de4160493a71ff17ec765c699d411facd5154d9a9a9c18",
+          "channel": "Diffuse"
+        },
+        {
+          "path": "art/environment/polyhaven-src/sand_01/textures/sand_01_nor_gl_2k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/sand_01/sand_01_nor_gl_2k.jpg",
+          "bytes": 2503853,
+          "md5": "b8298e9007b3983f9e10d35cd87a4b1f",
+          "sha256": "b784b6a0526b79c81635bf423be9bc517ad36278ae5d68a4ff30f46eac56f0e3",
+          "channel": "nor_gl"
+        },
+        {
+          "path": "art/environment/polyhaven-src/sand_01/textures/sand_01_rough_2k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/sand_01/sand_01_rough_2k.jpg",
+          "bytes": 757435,
+          "md5": "ae89a58489a0cf49e899fb6abd5f65c9",
+          "sha256": "60ec73993d245be5dab83f9debb67cab4303a0af9d4cec3f28868a58f939f8db",
+          "channel": "Rough"
+        }
+      ]
+    },
+    {
+      "id": "rocky_terrain_02",
+      "source": "https://polyhaven.com/a/rocky_terrain_02",
+      "authors": {
+        "Amal Kumar": "All"
+      },
+      "license": "CC0-1.0",
+      "license_url": "https://polyhaven.com/license",
+      "texture_resolution": "2K",
+      "files": [
+        {
+          "path": "art/environment/polyhaven-src/rocky_terrain_02/textures/rocky_terrain_02_diff_2k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/rocky_terrain_02/rocky_terrain_02_diff_2k.jpg",
+          "bytes": 3232826,
+          "md5": "68f9c94575ff3c3512be9b010eb03f0e",
+          "sha256": "9b042fe0618ffbc3650592456d7d8d265ba9a1cb5ce802f5f1d86b7ee79508a1",
+          "channel": "Diffuse"
+        },
+        {
+          "path": "art/environment/polyhaven-src/rocky_terrain_02/textures/rocky_terrain_02_nor_gl_2k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/rocky_terrain_02/rocky_terrain_02_nor_gl_2k.jpg",
+          "bytes": 4149208,
+          "md5": "672bfdf5e7835fa369da6a5d1209026a",
+          "sha256": "556ed903180a9431b253fc1c334c769dc4615c5c0f4ef1cedf20533ae8409ce8",
+          "channel": "nor_gl"
+        },
+        {
+          "path": "art/environment/polyhaven-src/rocky_terrain_02/textures/rocky_terrain_02_rough_2k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/rocky_terrain_02/rocky_terrain_02_rough_2k.jpg",
+          "bytes": 1589303,
+          "md5": "eb3ca6990da229305918c08980ceb66f",
+          "sha256": "89f3c7b9e467160a821cbac32a1fdfd75f13cb87c9deeb22099d16677a711126",
+          "channel": "Rough"
+        }
+      ]
+    },
+    {
+      "id": "forest_ground_04",
+      "source": "https://polyhaven.com/a/forest_ground_04",
+      "authors": {
+        "Rob Tuytel": "Photography, Processing",
+        "Rico Cilliers": "Minor adjustment"
+      },
+      "license": "CC0-1.0",
+      "license_url": "https://polyhaven.com/license",
+      "texture_resolution": "2K",
+      "files": [
+        {
+          "path": "art/environment/polyhaven-src/forest_ground_04/textures/forest_ground_04_diff_2k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/forest_ground_04/forest_ground_04_diff_2k.jpg",
+          "bytes": 4529321,
+          "md5": "f6ce9c8af4316c2627a4b3fbab8ad944",
+          "sha256": "24b8aaf4c8547305d80b0e029ec365219ab1b90748d4ca5651bdc9e75bfde5e6",
+          "channel": "Diffuse"
+        },
+        {
+          "path": "art/environment/polyhaven-src/forest_ground_04/textures/forest_ground_04_nor_gl_2k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/forest_ground_04/forest_ground_04_nor_gl_2k.jpg",
+          "bytes": 5288849,
+          "md5": "5fa9256955e7bfa40a0269b4965ce646",
+          "sha256": "b37ac799ed410976541e0011c246fca254e74eaa3f096ae7a7d74178db5a6d9b",
+          "channel": "nor_gl"
+        },
+        {
+          "path": "art/environment/polyhaven-src/forest_ground_04/textures/forest_ground_04_rough_2k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/forest_ground_04/forest_ground_04_rough_2k.jpg",
+          "bytes": 2509805,
+          "md5": "81daa9a1d8b35dd9ffdff3aa7a74fbd9",
+          "sha256": "24194662948424c323c75e0918461ad9d38bc0a275022000144f248b3efb4119",
+          "channel": "Rough"
+        }
+      ]
+    },
+    {
+      "id": "rock_boulder_dry",
+      "source": "https://polyhaven.com/a/rock_boulder_dry",
+      "authors": {
+        "Dimitrios Savva": "Photography",
+        "Rico Cilliers": "Processing"
+      },
+      "license": "CC0-1.0",
+      "license_url": "https://polyhaven.com/license",
+      "texture_resolution": "2K",
+      "files": [
+        {
+          "path": "art/environment/polyhaven-src/rock_boulder_dry/textures/rock_boulder_dry_diff_2k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/rock_boulder_dry/rock_boulder_dry_diff_2k.jpg",
+          "bytes": 3437626,
+          "md5": "fbc9cf377db427f54381f463c0639e1f",
+          "sha256": "c66de7f7b48ef1ba542c17af780787ca6d43da2160a46ff3544dd9fcdf65ca30",
+          "channel": "Diffuse"
+        },
+        {
+          "path": "art/environment/polyhaven-src/rock_boulder_dry/textures/rock_boulder_dry_nor_gl_2k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/rock_boulder_dry/rock_boulder_dry_nor_gl_2k.jpg",
+          "bytes": 3307320,
+          "md5": "513ef3fdaadd106c38a9c40919918cc0",
+          "sha256": "72a3c96d563fc17ac36c568802e106222e6480512d98e07318e1f431cea33dd6",
+          "channel": "nor_gl"
+        },
+        {
+          "path": "art/environment/polyhaven-src/rock_boulder_dry/textures/rock_boulder_dry_rough_2k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/rock_boulder_dry/rock_boulder_dry_rough_2k.jpg",
+          "bytes": 2706723,
+          "md5": "f69a2caafb58d427cb17cab31c202e0e",
+          "sha256": "63bb4105e6f60b5968da785afc292b94026a5afa6f18388e98b00232e9e2c433",
+          "channel": "Rough"
+        }
+      ]
+    }
+  ]
+}

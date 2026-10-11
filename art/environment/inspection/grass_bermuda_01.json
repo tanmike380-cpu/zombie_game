@@ -1,0 +1,2799 @@
+{
+  "source_blend": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/grass_bermuda_01/grass_bermuda_01_1k.blend",
+  "source_sha256": "6ff15e278219947ce8013663f918fc3ae074f19157ace2f2dcfb3484e2e4e654",
+  "blender_version": "5.2.2 LTS",
+  "active_scene": "Scene",
+  "unit_scale": 1.0,
+  "scenes": [
+    "Scene"
+  ],
+  "collections": [
+    {
+      "name": "grass_bermuda_01",
+      "children": [
+        "grass_bermuda_01_geometry_nodes",
+        "grass_bermuda_01_static"
+      ],
+      "objects": [],
+      "hide_viewport": false,
+      "hide_render": false
+    },
+    {
+      "name": "grass_bermuda_01_geometry",
+      "children": [],
+      "objects": [
+        "grass_bermuda_01_geometry_dead_a",
+        "grass_bermuda_01_geometry_dead_b",
+        "grass_bermuda_01_geometry_flattened_a",
+        "grass_bermuda_01_geometry_medium_a",
+        "grass_bermuda_01_geometry_medium_b",
+        "grass_bermuda_01_geometry_medium_c",
+        "grass_bermuda_01_geometry_medium_d",
+        "grass_bermuda_01_geometry_medium_e",
+        "grass_bermuda_01_geometry_medium_f",
+        "grass_bermuda_01_geometry_seedling_a",
+        "grass_bermuda_01_geometry_seedling_b",
+        "grass_bermuda_01_geometry_seedling_c",
+        "grass_bermuda_01_geometry_seedling_d",
+        "grass_bermuda_01_geometry_single_a",
+        "grass_bermuda_01_geometry_single_b",
+        "grass_bermuda_01_geometry_small_a",
+        "grass_bermuda_01_geometry_small_b",
+        "grass_bermuda_01_geometry_small_c",
+        "grass_bermuda_01_geometry_small_d",
+        "grass_bermuda_01_geometry_small_e",
+        "grass_bermuda_01_geometry_small_f"
+      ],
+      "hide_viewport": false,
+      "hide_render": false
+    },
+    {
+      "name": "grass_bermuda_01_geometry_nodes",
+      "children": [
+        "grass_bermuda_01_geometry"
+      ],
+      "objects": [
+        "grass_bermuda_01_geometry_nodes"
+      ],
+      "hide_viewport": false,
+      "hide_render": false
+    },
+    {
+      "name": "grass_bermuda_01_static",
+      "children": [],
+      "objects": [
+        "grass_bermuda_01_dead_a",
+        "grass_bermuda_01_dead_b",
+        "grass_bermuda_01_flattened_a",
+        "grass_bermuda_01_medium_a",
+        "grass_bermuda_01_medium_b",
+        "grass_bermuda_01_medium_c",
+        "grass_bermuda_01_medium_d",
+        "grass_bermuda_01_medium_e",
+        "grass_bermuda_01_medium_f",
+        "grass_bermuda_01_seedling_a",
+        "grass_bermuda_01_seedling_b",
+        "grass_bermuda_01_seedling_c",
+        "grass_bermuda_01_seedling_d",
+        "grass_bermuda_01_single_a",
+        "grass_bermuda_01_single_b",
+        "grass_bermuda_01_small_a",
+        "grass_bermuda_01_small_b",
+        "grass_bermuda_01_small_c",
+        "grass_bermuda_01_small_d",
+        "grass_bermuda_01_small_e",
+        "grass_bermuda_01_small_f"
+      ],
+      "hide_viewport": false,
+      "hide_render": false
+    }
+  ],
+  "meshes": [
+    {
+      "name": "grass_bermuda_01_dead_a",
+      "mesh": "Plane.007",
+      "vertices": 12,
+      "triangles": 12,
+      "evaluated_triangles": 12,
+      "bounds_min": [
+        -0.6393871307373047,
+        -0.057030271738767624,
+        -0.005760090425610542
+      ],
+      "bounds_max": [
+        -0.5716491341590881,
+        0.027279876172542572,
+        0.01898103952407837
+      ],
+      "dimensions_m": [
+        0.06773799657821655,
+        0.0843101479113102,
+        0.02474112994968891
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.5927864909172058
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0017063836567103863
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0007589152082800865
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_bermuda_01_static"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_bermuda_01"
+      ]
+    },
+    {
+      "name": "grass_bermuda_01_dead_b",
+      "mesh": "Plane.010",
+      "vertices": 12,
+      "triangles": 12,
+      "evaluated_triangles": 12,
+      "bounds_min": [
+        -0.5532999634742737,
+        -0.0082194022834301,
+        -0.004449555650353432
+      ],
+      "bounds_max": [
+        -0.4831996560096741,
+        0.04680674150586128,
+        0.038894008845090866
+      ],
+      "dimensions_m": [
+        0.07010030746459961,
+        0.05502614378929138,
+        0.0433435644954443
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.5395382642745972
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0014924663119018078
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0005264685023576021
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_bermuda_01_static"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_bermuda_01"
+      ]
+    },
+    {
+      "name": "grass_bermuda_01_flattened_a",
+      "mesh": "Plane.012",
+      "vertices": 18,
+      "triangles": 19,
+      "evaluated_triangles": 19,
+      "bounds_min": [
+        -0.6994786262512207,
+        0.0008536442182958126,
+        -0.0019496417371556163
+      ],
+      "bounds_max": [
+        -0.6555405855178833,
+        0.07010690867900848,
+        0.0416841134428978
+      ],
+      "dimensions_m": [
+        0.0439380407333374,
+        0.06925326446071267,
+        0.04363375518005341
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.6884512901306152
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0038146707229316235
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.0003332803025841713
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_bermuda_01_static"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_bermuda_01"
+      ]
+    },
+    {
+      "name": "grass_bermuda_01_geometry_dead_a",
+      "mesh": "Plane.033",
+      "vertices": 12,
+      "triangles": 12,
+      "evaluated_triangles": 12,
+      "bounds_min": [
+        -0.6393871307373047,
+        -0.057030271738767624,
+        -0.005760090425610542
+      ],
+      "bounds_max": [
+        -0.5716491341590881,
+        0.027279876172542572,
+        0.01898103952407837
+      ],
+      "dimensions_m": [
+        0.06773799657821655,
+        0.0843101479113102,
+        0.02474112994968891
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.5927864909172058
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0017063836567103863
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0007589152082800865
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_bermuda_01_geometry"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_bermuda_01"
+      ]
+    },
+    {
+      "name": "grass_bermuda_01_geometry_dead_b",
+      "mesh": "Plane.017",
+      "vertices": 12,
+      "triangles": 12,
+      "evaluated_triangles": 12,
+      "bounds_min": [
+        -0.5532999634742737,
+        -0.0082194022834301,
+        -0.004449555650353432
+      ],
+      "bounds_max": [
+        -0.4831996560096741,
+        0.04680674150586128,
+        0.038894008845090866
+      ],
+      "dimensions_m": [
+        0.07010030746459961,
+        0.05502614378929138,
+        0.0433435644954443
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.5395382642745972
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0014924663119018078
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0005264685023576021
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_bermuda_01_geometry"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_bermuda_01"
+      ]
+    },
+    {
+      "name": "grass_bermuda_01_geometry_flattened_a",
+      "mesh": "Plane.003",
+      "vertices": 18,
+      "triangles": 19,
+      "evaluated_triangles": 19,
+      "bounds_min": [
+        -0.6994786262512207,
+        0.0008536442182958126,
+        -0.0019496417371556163
+      ],
+      "bounds_max": [
+        -0.6555405855178833,
+        0.07010690867900848,
+        0.0416841134428978
+      ],
+      "dimensions_m": [
+        0.0439380407333374,
+        0.06925326446071267,
+        0.04363375518005341
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.6884512901306152
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0038146707229316235
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.0003332803025841713
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_bermuda_01_geometry"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_bermuda_01"
+      ]
+    },
+    {
+      "name": "grass_bermuda_01_geometry_medium_a",
+      "mesh": "Plane.045",
+      "vertices": 16,
+      "triangles": 17,
+      "evaluated_triangles": 17,
+      "bounds_min": [
+        -0.7589022517204285,
+        -0.005096749402582645,
+        -0.0007399478345178068
+      ],
+      "bounds_max": [
+        -0.7203900218009949,
+        0.02347058430314064,
+        0.09701007604598999
+      ],
+      "dimensions_m": [
+        0.038512229919433594,
+        0.028567333705723286,
+        0.0977500238805078
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.7426877021789551
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.002644236432388425
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.0007399478927254677
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_bermuda_01_geometry"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_bermuda_01"
+      ]
+    },
+    {
+      "name": "grass_bermuda_01_geometry_medium_b",
+      "mesh": "Plane.037",
+      "vertices": 9,
+      "triangles": 8,
+      "evaluated_triangles": 8,
+      "bounds_min": [
+        0.7057216167449951,
+        -0.016252916306257248,
+        -0.001052365405485034
+      ],
+      "bounds_max": [
+        0.7568853497505188,
+        0.00561143271625042,
+        0.0735202431678772
+      ],
+      "dimensions_m": [
+        0.05116373300552368,
+        0.021864349022507668,
+        0.07457260857336223
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.7379401326179504
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.008286217227578163
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0014649808872491121
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_bermuda_01_geometry"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_bermuda_01"
+      ]
+    },
+    {
+      "name": "grass_bermuda_01_geometry_medium_c",
+      "mesh": "Plane.009",
+      "vertices": 21,
+      "triangles": 20,
+      "evaluated_triangles": 20,
+      "bounds_min": [
+        0.03593838959932327,
+        -0.04338168725371361,
+        -0.004552933387458324
+      ],
+      "bounds_max": [
+        0.09291981160640717,
+        0.048237212002277374,
+        0.06212042272090912
+      ],
+      "dimensions_m": [
+        0.05698142200708389,
+        0.09161889925599098,
+        0.06667335610836744
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.07156552374362946
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.0010710246860980988
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.002195997629314661
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_bermuda_01_geometry"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_bermuda_01"
+      ]
+    },
+    {
+      "name": "grass_bermuda_01_geometry_medium_d",
+      "mesh": "Plane.038",
+      "vertices": 13,
+      "triangles": 14,
+      "evaluated_triangles": 14,
+      "bounds_min": [
+        0.79437255859375,
+        -0.01234001200646162,
+        -0.0008517793612554669
+      ],
+      "bounds_max": [
+        0.8493461608886719,
+        0.003959273919463158,
+        0.10121391713619232
+      ],
+      "dimensions_m": [
+        0.054973602294921875,
+        0.016299285925924778,
+        0.10206569649744779
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.8339244723320007
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.009924020618200302
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.00045594293624162674
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_bermuda_01_geometry"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_bermuda_01"
+      ]
+    },
+    {
+      "name": "grass_bermuda_01_geometry_medium_e",
+      "mesh": "Plane.008",
+      "vertices": 24,
+      "triangles": 24,
+      "evaluated_triangles": 24,
+      "bounds_min": [
+        0.12201417982578278,
+        -0.03380648046731949,
+        -0.011469792574644089
+      ],
+      "bounds_max": [
+        0.18805061280727386,
+        0.0030687772668898106,
+        0.07119167596101761
+      ],
+      "dimensions_m": [
+        0.06603643298149109,
+        0.0368752577342093,
+        0.0826614685356617
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.16164429485797882
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.0013983789831399918
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.002678921911865473
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_bermuda_01_geometry"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_bermuda_01"
+      ]
+    },
+    {
+      "name": "grass_bermuda_01_geometry_medium_f",
+      "mesh": "Plane.004",
+      "vertices": 28,
+      "triangles": 30,
+      "evaluated_triangles": 30,
+      "bounds_min": [
+        0.22706550359725952,
+        -0.019484739750623703,
+        -0.0034410571679472923
+      ],
+      "bounds_max": [
+        0.2677663564682007,
+        0.006617863662540913,
+        0.1095631867647171
+      ],
+      "dimensions_m": [
+        0.04070085287094116,
+        0.026102603413164616,
+        0.1130042439326644
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.24350793659687042
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.0017635039985179901
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.0023800195194780827
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_bermuda_01_geometry"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_bermuda_01"
+      ]
+    },
+    {
+      "name": "grass_bermuda_01_geometry_nodes",
+      "mesh": "Sphere",
+      "vertices": 482,
+      "triangles": 960,
+      "evaluated_triangles": 223243,
+      "bounds_min": [
+        -2.2114315032958984,
+        -0.5307179689407349,
+        -0.5462199449539185
+      ],
+      "bounds_max": [
+        -1.1325632333755493,
+        0.5460909605026245,
+        0.5375215411186218
+      ],
+      "dimensions_m": [
+        1.0788682699203491,
+        1.0768089294433594,
+        1.0837414860725403
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -1.6788809299468994
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_bermuda_01_geometry_nodes"
+      ],
+      "modifiers": [
+        {
+          "name": "GeometryNodes",
+          "type": "NODES"
+        }
+      ],
+      "materials": [
+        "grass_bermuda_01_sphere",
+        "grass_bermuda_01"
+      ]
+    },
+    {
+      "name": "grass_bermuda_01_geometry_seedling_a",
+      "mesh": "Plane.002",
+      "vertices": 125,
+      "triangles": 147,
+      "evaluated_triangles": 147,
+      "bounds_min": [
+        0.3003484010696411,
+        -0.035955436527729034,
+        -0.0043368106707930565
+      ],
+      "bounds_max": [
+        0.368183434009552,
+        0.009625769220292568,
+        0.14654964208602905
+      ],
+      "dimensions_m": [
+        0.06783503293991089,
+        0.0455812057480216,
+        0.1508864527568221
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.348913311958313
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.0022334307432174683
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.0019972086884081364
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_bermuda_01_geometry"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_bermuda_01"
+      ]
+    },
+    {
+      "name": "grass_bermuda_01_geometry_seedling_b",
+      "mesh": "Plane",
+      "vertices": 118,
+      "triangles": 140,
+      "evaluated_triangles": 140,
+      "bounds_min": [
+        0.42015331983566284,
+        -0.02998259849846363,
+        -0.005493218079209328
+      ],
+      "bounds_max": [
+        0.49674856662750244,
+        0.019283946603536606,
+        0.12171181291341782
+      ],
+      "dimensions_m": [
+        0.0765952467918396,
+        0.049266545102000237,
+        0.12720503099262714
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.46332934498786926
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.0025088563561439514
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.00414243945851922
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_bermuda_01_geometry"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_bermuda_01"
+      ]
+    },
+    {
+      "name": "grass_bermuda_01_geometry_seedling_c",
+      "mesh": "Plane.040",
+      "vertices": 108,
+      "triangles": 128,
+      "evaluated_triangles": 128,
+      "bounds_min": [
+        0.535728394985199,
+        -0.033369824290275574,
+        -0.002134819980710745
+      ],
+      "bounds_max": [
+        0.5728906393051147,
+        0.01114214863628149,
+        0.09012342989444733
+      ],
+      "dimensions_m": [
+        0.03716224431991577,
+        0.044511972926557064,
+        0.09225824987515807
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.5535324215888977
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.003077588975429535
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.0019972086884081364
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_bermuda_01_geometry"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_bermuda_01"
+      ]
+    },
+    {
+      "name": "grass_bermuda_01_geometry_seedling_d",
+      "mesh": "Plane.044",
+      "vertices": 226,
+      "triangles": 268,
+      "evaluated_triangles": 268,
+      "bounds_min": [
+        0.5938416719436646,
+        -0.07208762317895889,
+        -0.006892947480082512
+      ],
+      "bounds_max": [
+        0.6634887456893921,
+        0.011046159081161022,
+        0.14529606699943542
+      ],
+      "dimensions_m": [
+        0.06964707374572754,
+        0.08313378226011992,
+        0.15218901447951794
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.6350690126419067
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.0032197758555412292
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.004774367902427912
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_bermuda_01_geometry"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_bermuda_01"
+      ]
+    },
+    {
+      "name": "grass_bermuda_01_geometry_single_a",
+      "mesh": "Plane.005",
+      "vertices": 17,
+      "triangles": 15,
+      "evaluated_triangles": 15,
+      "bounds_min": [
+        0.9146153926849365,
+        -0.017475396394729614,
+        -0.002628959948197007
+      ],
+      "bounds_max": [
+        0.918190598487854,
+        -0.0037787959445267916,
+        0.1467858850955963
+      ],
+      "dimensions_m": [
+        0.0035752058029174805,
+        0.013696600450202823,
+        0.14941484504379332
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.9164353013038635
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.0038117244839668274
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.002277171704918146
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_bermuda_01_geometry"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_bermuda_01"
+      ]
+    },
+    {
+      "name": "grass_bermuda_01_geometry_single_b",
+      "mesh": "Plane.006",
+      "vertices": 17,
+      "triangles": 15,
+      "evaluated_triangles": 15,
+      "bounds_min": [
+        0.9239988923072815,
+        -0.017514120787382126,
+        -0.0026289448142051697
+      ],
+      "bounds_max": [
+        0.927574098110199,
+        -0.003817523829638958,
+        0.1467858999967575
+      ],
+      "dimensions_m": [
+        0.0035752058029174805,
+        0.013696596957743168,
+        0.14941484481096268
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.9258216023445129
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.0038545429706573486
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.0022326470352709293
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_bermuda_01_geometry"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_bermuda_01"
+      ]
+    },
+    {
+      "name": "grass_bermuda_01_geometry_small_a",
+      "mesh": "Plane.034",
+      "vertices": 12,
+      "triangles": 12,
+      "evaluated_triangles": 12,
+      "bounds_min": [
+        -0.4681876301765442,
+        -0.011698783375322819,
+        -0.0038261297158896923
+      ],
+      "bounds_max": [
+        -0.38832220435142517,
+        0.016055090352892876,
+        0.02841346338391304
+      ],
+      "dimensions_m": [
+        0.07986542582511902,
+        0.027753873728215694,
+        0.03223959309980273
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.43225741386413574
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.005144219845533371
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.0004870869452133775
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_bermuda_01_geometry"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_bermuda_01"
+      ]
+    },
+    {
+      "name": "grass_bermuda_01_geometry_small_b",
+      "mesh": "Plane.036",
+      "vertices": 12,
+      "triangles": 12,
+      "evaluated_triangles": 12,
+      "bounds_min": [
+        -0.24743157625198364,
+        -0.018007932230830193,
+        0.00013711117208003998
+      ],
+      "bounds_max": [
+        -0.16474410891532898,
+        0.01802578940987587,
+        0.04598737135529518
+      ],
+      "dimensions_m": [
+        0.08268746733665466,
+        0.03603372164070606,
+        0.04585026018321514
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.2115013599395752
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.0006084572523832321
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0048597389832139015
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_bermuda_01_geometry"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_bermuda_01"
+      ]
+    },
+    {
+      "name": "grass_bermuda_01_geometry_small_c",
+      "mesh": "Plane.013",
+      "vertices": 20,
+      "triangles": 18,
+      "evaluated_triangles": 18,
+      "bounds_min": [
+        -0.15497703850269318,
+        -0.019036827608942986,
+        -0.0022268102038651705
+      ],
+      "bounds_max": [
+        -0.10097742080688477,
+        0.0224290918558836,
+        0.05293840169906616
+      ],
+      "dimensions_m": [
+        0.05399961769580841,
+        0.041465919464826584,
+        0.05516521190293133
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.1329820305109024
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.00043730437755584717
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          9.676162153482437e-05
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_bermuda_01_geometry"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_bermuda_01"
+      ]
+    },
+    {
+      "name": "grass_bermuda_01_geometry_small_d",
+      "mesh": "Plane.011",
+      "vertices": 11,
+      "triangles": 10,
+      "evaluated_triangles": 10,
+      "bounds_min": [
+        -0.05196933448314667,
+        -0.014222927391529083,
+        -0.00021776906214654446
+      ],
+      "bounds_max": [
+        0.0062423646450042725,
+        0.019246159121394157,
+        0.05442679300904274
+      ],
+      "dimensions_m": [
+        0.05821169912815094,
+        0.03346908651292324,
+        0.054644562071189284
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.02666320651769638
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.0009970404207706451
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0018245438113808632
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_bermuda_01_geometry"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_bermuda_01"
+      ]
+    },
+    {
+      "name": "grass_bermuda_01_geometry_small_e",
+      "mesh": "Plane.016",
+      "vertices": 11,
+      "triangles": 10,
+      "evaluated_triangles": 10,
+      "bounds_min": [
+        -0.36192914843559265,
+        -0.008425532840192318,
+        -0.0028400481678545475
+      ],
+      "bounds_max": [
+        -0.33321723341941833,
+        0.009237183257937431,
+        0.08789726346731186
+      ],
+      "dimensions_m": [
+        0.028711915016174316,
+        0.01766271609812975,
+        0.0907373116351664
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.34815514087677
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0004998203366994858
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -4.6996516175568104e-05
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_bermuda_01_geometry"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_bermuda_01"
+      ]
+    },
+    {
+      "name": "grass_bermuda_01_geometry_small_f",
+      "mesh": "Plane.015",
+      "vertices": 11,
+      "triangles": 10,
+      "evaluated_triangles": 10,
+      "bounds_min": [
+        -0.3067149519920349,
+        -0.01181105524301529,
+        -0.005279341712594032
+      ],
+      "bounds_max": [
+        -0.2711772322654724,
+        0.012801808305084705,
+        0.06377337872982025
+      ],
+      "dimensions_m": [
+        0.0355377197265625,
+        0.024612863548099995,
+        0.06905272044241428
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.2808748185634613
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.00035902485251426697
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.002777969930320978
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_bermuda_01_geometry"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_bermuda_01"
+      ]
+    },
+    {
+      "name": "grass_bermuda_01_medium_a",
+      "mesh": "Plane.014",
+      "vertices": 16,
+      "triangles": 17,
+      "evaluated_triangles": 17,
+      "bounds_min": [
+        -0.7589022517204285,
+        -0.005096749402582645,
+        -0.0007399478345178068
+      ],
+      "bounds_max": [
+        -0.7203900218009949,
+        0.02347058430314064,
+        0.09701007604598999
+      ],
+      "dimensions_m": [
+        0.038512229919433594,
+        0.028567333705723286,
+        0.0977500238805078
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.7426877021789551
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.002644236432388425
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.0007399478927254677
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_bermuda_01_static"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_bermuda_01"
+      ]
+    },
+    {
+      "name": "grass_bermuda_01_medium_b",
+      "mesh": "Plane.021",
+      "vertices": 9,
+      "triangles": 8,
+      "evaluated_triangles": 8,
+      "bounds_min": [
+        0.7057216167449951,
+        -0.016252916306257248,
+        -0.001052365405485034
+      ],
+      "bounds_max": [
+        0.7568853497505188,
+        0.00561143271625042,
+        0.0735202431678772
+      ],
+      "dimensions_m": [
+        0.05116373300552368,
+        0.021864349022507668,
+        0.07457260857336223
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.7379401326179504
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.008286217227578163
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0014649808872491121
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_bermuda_01_static"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_bermuda_01"
+      ]
+    },
+    {
+      "name": "grass_bermuda_01_medium_c",
+      "mesh": "Plane.022",
+      "vertices": 21,
+      "triangles": 20,
+      "evaluated_triangles": 20,
+      "bounds_min": [
+        0.03593838959932327,
+        -0.04338168725371361,
+        -0.004552933387458324
+      ],
+      "bounds_max": [
+        0.09291981160640717,
+        0.048237212002277374,
+        0.06212042272090912
+      ],
+      "dimensions_m": [
+        0.05698142200708389,
+        0.09161889925599098,
+        0.06667335610836744
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.07156552374362946
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.0010710246860980988
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.002195997629314661
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_bermuda_01_static"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_bermuda_01"
+      ]
+    },
+    {
+      "name": "grass_bermuda_01_medium_d",
+      "mesh": "Plane.023",
+      "vertices": 13,
+      "triangles": 14,
+      "evaluated_triangles": 14,
+      "bounds_min": [
+        0.79437255859375,
+        -0.01234001200646162,
+        -0.0008517793612554669
+      ],
+      "bounds_max": [
+        0.8493461608886719,
+        0.003959273919463158,
+        0.10121391713619232
+      ],
+      "dimensions_m": [
+        0.054973602294921875,
+        0.016299285925924778,
+        0.10206569649744779
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.8339244723320007
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.009924020618200302
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.00045594293624162674
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_bermuda_01_static"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_bermuda_01"
+      ]
+    },
+    {
+      "name": "grass_bermuda_01_medium_e",
+      "mesh": "Plane.024",
+      "vertices": 24,
+      "triangles": 24,
+      "evaluated_triangles": 24,
+      "bounds_min": [
+        0.12201417982578278,
+        -0.03380648046731949,
+        -0.011469792574644089
+      ],
+      "bounds_max": [
+        0.18805061280727386,
+        0.0030687772668898106,
+        0.07119167596101761
+      ],
+      "dimensions_m": [
+        0.06603643298149109,
+        0.0368752577342093,
+        0.0826614685356617
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.16164429485797882
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.0013983789831399918
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.002678921911865473
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_bermuda_01_static"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_bermuda_01"
+      ]
+    },
+    {
+      "name": "grass_bermuda_01_medium_f",
+      "mesh": "Plane.025",
+      "vertices": 28,
+      "triangles": 30,
+      "evaluated_triangles": 30,
+      "bounds_min": [
+        0.22706550359725952,
+        -0.019484739750623703,
+        -0.0034410571679472923
+      ],
+      "bounds_max": [
+        0.2677663564682007,
+        0.006617863662540913,
+        0.1095631867647171
+      ],
+      "dimensions_m": [
+        0.04070085287094116,
+        0.026102603413164616,
+        0.1130042439326644
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.24350793659687042
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.0017635039985179901
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.0023800195194780827
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_bermuda_01_static"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_bermuda_01"
+      ]
+    },
+    {
+      "name": "grass_bermuda_01_seedling_a",
+      "mesh": "Plane.026",
+      "vertices": 125,
+      "triangles": 147,
+      "evaluated_triangles": 147,
+      "bounds_min": [
+        0.3003484010696411,
+        -0.035955436527729034,
+        -0.0043368106707930565
+      ],
+      "bounds_max": [
+        0.368183434009552,
+        0.009625769220292568,
+        0.14654964208602905
+      ],
+      "dimensions_m": [
+        0.06783503293991089,
+        0.0455812057480216,
+        0.1508864527568221
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.348913311958313
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.0022334307432174683
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.0019972086884081364
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_bermuda_01_static"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_bermuda_01"
+      ]
+    },
+    {
+      "name": "grass_bermuda_01_seedling_b",
+      "mesh": "Plane.027",
+      "vertices": 118,
+      "triangles": 140,
+      "evaluated_triangles": 140,
+      "bounds_min": [
+        0.42015331983566284,
+        -0.02998259849846363,
+        -0.005493218079209328
+      ],
+      "bounds_max": [
+        0.49674856662750244,
+        0.019283946603536606,
+        0.12171181291341782
+      ],
+      "dimensions_m": [
+        0.0765952467918396,
+        0.049266545102000237,
+        0.12720503099262714
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.46332934498786926
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.0025088563561439514
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.00414243945851922
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_bermuda_01_static"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_bermuda_01"
+      ]
+    },
+    {
+      "name": "grass_bermuda_01_seedling_c",
+      "mesh": "Plane.028",
+      "vertices": 108,
+      "triangles": 128,
+      "evaluated_triangles": 128,
+      "bounds_min": [
+        0.535728394985199,
+        -0.033369824290275574,
+        -0.002134819980710745
+      ],
+      "bounds_max": [
+        0.5728906393051147,
+        0.01114214863628149,
+        0.09012342989444733
+      ],
+      "dimensions_m": [
+        0.03716224431991577,
+        0.044511972926557064,
+        0.09225824987515807
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.5535324215888977
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.003077588975429535
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.0019972086884081364
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_bermuda_01_static"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_bermuda_01"
+      ]
+    },
+    {
+      "name": "grass_bermuda_01_seedling_d",
+      "mesh": "Plane.029",
+      "vertices": 226,
+      "triangles": 268,
+      "evaluated_triangles": 268,
+      "bounds_min": [
+        0.5938416719436646,
+        -0.07208762317895889,
+        -0.006892947480082512
+      ],
+      "bounds_max": [
+        0.6634887456893921,
+        0.011046159081161022,
+        0.14529606699943542
+      ],
+      "dimensions_m": [
+        0.06964707374572754,
+        0.08313378226011992,
+        0.15218901447951794
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.6350690126419067
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.0032197758555412292
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.004774367902427912
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_bermuda_01_static"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_bermuda_01"
+      ]
+    },
+    {
+      "name": "grass_bermuda_01_single_a",
+      "mesh": "Plane.030",
+      "vertices": 17,
+      "triangles": 15,
+      "evaluated_triangles": 15,
+      "bounds_min": [
+        0.9146153926849365,
+        -0.017475396394729614,
+        -0.002628959948197007
+      ],
+      "bounds_max": [
+        0.918190598487854,
+        -0.0037787959445267916,
+        0.1467858850955963
+      ],
+      "dimensions_m": [
+        0.0035752058029174805,
+        0.013696600450202823,
+        0.14941484504379332
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.9164353013038635
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.0038117244839668274
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.002277171704918146
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_bermuda_01_static"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_bermuda_01"
+      ]
+    },
+    {
+      "name": "grass_bermuda_01_single_b",
+      "mesh": "Plane.031",
+      "vertices": 17,
+      "triangles": 15,
+      "evaluated_triangles": 15,
+      "bounds_min": [
+        0.9239988923072815,
+        -0.017514120787382126,
+        -0.0026289448142051697
+      ],
+      "bounds_max": [
+        0.927574098110199,
+        -0.003817523829638958,
+        0.1467858999967575
+      ],
+      "dimensions_m": [
+        0.0035752058029174805,
+        0.013696596957743168,
+        0.14941484481096268
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.9258216023445129
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.0038545429706573486
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.0022326470352709293
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_bermuda_01_static"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_bermuda_01"
+      ]
+    },
+    {
+      "name": "grass_bermuda_01_small_a",
+      "mesh": "Plane.035",
+      "vertices": 12,
+      "triangles": 12,
+      "evaluated_triangles": 12,
+      "bounds_min": [
+        -0.4681876301765442,
+        -0.011698783375322819,
+        -0.0038261297158896923
+      ],
+      "bounds_max": [
+        -0.38832220435142517,
+        0.016055090352892876,
+        0.02841346338391304
+      ],
+      "dimensions_m": [
+        0.07986542582511902,
+        0.027753873728215694,
+        0.03223959309980273
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.43225741386413574
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.005144219845533371
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.0004870869452133775
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_bermuda_01_static"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_bermuda_01"
+      ]
+    },
+    {
+      "name": "grass_bermuda_01_small_b",
+      "mesh": "Plane.039",
+      "vertices": 12,
+      "triangles": 12,
+      "evaluated_triangles": 12,
+      "bounds_min": [
+        -0.24743157625198364,
+        -0.018007932230830193,
+        0.00013711117208003998
+      ],
+      "bounds_max": [
+        -0.16474410891532898,
+        0.01802578940987587,
+        0.04598737135529518
+      ],
+      "dimensions_m": [
+        0.08268746733665466,
+        0.03603372164070606,
+        0.04585026018321514
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.2115013599395752
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.0006084572523832321
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0048597389832139015
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_bermuda_01_static"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_bermuda_01"
+      ]
+    },
+    {
+      "name": "grass_bermuda_01_small_c",
+      "mesh": "Plane.041",
+      "vertices": 20,
+      "triangles": 18,
+      "evaluated_triangles": 18,
+      "bounds_min": [
+        -0.15497703850269318,
+        -0.019036827608942986,
+        -0.0022268102038651705
+      ],
+      "bounds_max": [
+        -0.10097742080688477,
+        0.0224290918558836,
+        0.05293840169906616
+      ],
+      "dimensions_m": [
+        0.05399961769580841,
+        0.041465919464826584,
+        0.05516521190293133
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.1329820305109024
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.00043730437755584717
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          9.676162153482437e-05
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_bermuda_01_static"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_bermuda_01"
+      ]
+    },
+    {
+      "name": "grass_bermuda_01_small_d",
+      "mesh": "Plane.042",
+      "vertices": 11,
+      "triangles": 10,
+      "evaluated_triangles": 10,
+      "bounds_min": [
+        -0.05196933448314667,
+        -0.014222927391529083,
+        -0.00021776906214654446
+      ],
+      "bounds_max": [
+        0.0062423646450042725,
+        0.019246159121394157,
+        0.05442679300904274
+      ],
+      "dimensions_m": [
+        0.05821169912815094,
+        0.03346908651292324,
+        0.054644562071189284
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.02666320651769638
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.0009970404207706451
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0018245438113808632
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_bermuda_01_static"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_bermuda_01"
+      ]
+    },
+    {
+      "name": "grass_bermuda_01_small_e",
+      "mesh": "Plane.043",
+      "vertices": 11,
+      "triangles": 10,
+      "evaluated_triangles": 10,
+      "bounds_min": [
+        -0.36192914843559265,
+        -0.008425532840192318,
+        -0.0028400481678545475
+      ],
+      "bounds_max": [
+        -0.33321723341941833,
+        0.009237183257937431,
+        0.08789726346731186
+      ],
+      "dimensions_m": [
+        0.028711915016174316,
+        0.01766271609812975,
+        0.0907373116351664
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.34815514087677
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0004998203366994858
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -4.6996516175568104e-05
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_bermuda_01_static"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_bermuda_01"
+      ]
+    },
+    {
+      "name": "grass_bermuda_01_small_f",
+      "mesh": "Plane.046",
+      "vertices": 11,
+      "triangles": 10,
+      "evaluated_triangles": 10,
+      "bounds_min": [
+        -0.3067149519920349,
+        -0.01181105524301529,
+        -0.005279341712594032
+      ],
+      "bounds_max": [
+        -0.2711772322654724,
+        0.012801808305084705,
+        0.06377337872982025
+      ],
+      "dimensions_m": [
+        0.0355377197265625,
+        0.024612863548099995,
+        0.06905272044241428
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.2808748185634613
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.00035902485251426697
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.002777969930320978
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "grass_bermuda_01_static"
+      ],
+      "modifiers": [],
+      "materials": [
+        "grass_bermuda_01"
+      ]
+    }
+  ],
+  "materials": [
+    {
+      "name": "grass_bermuda_01",
+      "surface_render_method": "DITHERED",
+      "blend_method": "HASHED",
+      "use_backface_culling": false,
+      "images": [
+        {
+          "node": "Image Texture",
+          "image": "grass_bermuda_01_diff.png",
+          "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/grass_bermuda_01/textures/grass_bermuda_01_diff_1k.jpg",
+          "exists": true,
+          "size": [
+            1024,
+            1024
+          ],
+          "colorspace": "sRGB",
+          "channels": 4,
+          "links": [
+            "Color->Group:Color"
+          ]
+        },
+        {
+          "node": "Image Texture.001",
+          "image": "grass_bermuda_01_rough.png",
+          "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/grass_bermuda_01/textures/grass_bermuda_01_rough_1k.exr",
+          "exists": true,
+          "size": [
+            1024,
+            1024
+          ],
+          "colorspace": "Non-Color",
+          "channels": 4,
+          "links": [
+            "Color->Group:Roughness"
+          ]
+        },
+        {
+          "node": "Image Texture.002",
+          "image": "grass_bermuda_01_nor_gl.png",
+          "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/grass_bermuda_01/textures/grass_bermuda_01_nor_gl_1k.exr",
+          "exists": true,
+          "size": [
+            1024,
+            1024
+          ],
+          "colorspace": "Non-Color",
+          "channels": 4,
+          "links": [
+            "Color->Group:Normal"
+          ]
+        },
+        {
+          "node": "Image Texture.003",
+          "image": "grass_bermuda_01_alpha.png",
+          "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/grass_bermuda_01/textures/grass_bermuda_01_alpha_1k.png",
+          "exists": true,
+          "size": [
+            1024,
+            1024
+          ],
+          "colorspace": "Non-Color",
+          "channels": 4,
+          "links": [
+            "Color->Group:Alpha"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "grass_bermuda_01_sphere",
+      "surface_render_method": "DITHERED",
+      "blend_method": "HASHED",
+      "use_backface_culling": false,
+      "images": []
+    }
+  ]
+}

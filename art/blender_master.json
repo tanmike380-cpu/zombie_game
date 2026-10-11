@@ -15,7 +15,13 @@
   "wall_gallery_collection": "城墙评审 · 全部状态 00—16",
   "playable_wall_collection": "城防实装 · 连续墙＋双炮塔",
   "wall_gallery_report": "Builds/ArtReview/ModularStoneWall/master-gallery-report.json",
-  "source_policy": "All final art must be present in this master layout; exports are derived artifacts, not competing masters.",
+  "source_policy": "User update 2026-10-11: preserve the existing master layout, but author and store animated humans and zombies in their separate category Blender files below. Future building assets will likewise be organized in separate category files as designated by the user. This explicitly supersedes the previous single-file requirement for these category assets; exports remain derived artifacts.",
+  "category_blend_files": {
+    "human": "art/Blender主文件/ZombieGame_with_ani_human.blend",
+    "zombie": "art/Blender主文件/ZombieGame_with_ani_zombie.blend",
+    "environment": "art/Blender主文件/ZombieGame_Environment.blend"
+  },
+  "category_source_confirmation": "2026-10-11: User confirmed the live ZombieGame_with_ani_zombie.blend as the formal zombie source and separate ZombieGame_Environment.blend as the formal environment source. Preserve unsaved live zombie edits; environment integration is limited to the isolated showcase pending visual approval.",
   "wall_review_source": "art/models/modular-stone-wall/ModularStoneWall.blend",
   "wall_review_page": "Builds/ArtReview/ModularStoneWall/review.html"
 }

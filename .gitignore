@@ -70,3 +70,16 @@ sysinfo.txt
 # Reproducible CC0 download cache; sources and checksums live in art/free_environment_manifest.json.
 /Assets/_Game/Resources/FreeEnvironment/
 /Assets/_Game/Resources/FreeEnvironment.meta
+# Re-downloadable CC0 environment cache; pinned manifests and portable reviewed source are kept.
+/art/environment/polyhaven-src/
+/art/environment/snapshots/
+/art/environment/Vegetation_Review.blend
+/art/environment/Vegetation_Review_v2.blend
+/art/environment/Vegetation_Review_v3.blend
+/art/environment/Vegetation_Review_v3_portable.blend
+/art/environment/vegetation_review_report.json
+/art/environment/vegetation_review_report_v2.json
+/art/environment/vegetation_review_report_v3.json
+/art/environment/vegetation_preparation.json
+/art/environment/vegetation_preparation_v2.json
+/art/environment/inspection/tree_lod_comparison.png

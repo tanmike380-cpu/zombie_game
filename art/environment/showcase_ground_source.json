@@ -1,0 +1,33 @@
+{
+  "id": "grass_ground",
+  "source": "https://polyhaven.com/a/grass_ground",
+  "authors": {
+    "Charlotte Baglioni": "All"
+  },
+  "license": "CC0-1.0",
+  "license_url": "https://polyhaven.com/license",
+  "texture_resolution": "2K",
+  "files": [
+    {
+      "path": "art/environment/polyhaven-src/grass_ground/textures/grass_ground_diff_2k.jpg",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/grass_ground/grass_ground_diff_2k.jpg",
+      "bytes": 3787330,
+      "md5": "fd97f2402677e6686b2d9159fc3a4256",
+      "sha256": "4272bddc71a7fa659d1deeb13a9df8c42e68a5ac8cde7523187e4a081e028258"
+    },
+    {
+      "path": "art/environment/polyhaven-src/grass_ground/textures/grass_ground_nor_gl_2k.jpg",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/grass_ground/grass_ground_nor_gl_2k.jpg",
+      "bytes": 5968024,
+      "md5": "c8b2dd95f09868c4aacb91f62c673344",
+      "sha256": "effa95c06af273c974476d9a74a234668a1c9292f60fffb4fa40348d638ee7f3"
+    },
+    {
+      "path": "art/environment/polyhaven-src/grass_ground/textures/grass_ground_rough_2k.jpg",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/grass_ground/grass_ground_rough_2k.jpg",
+      "bytes": 1525000,
+      "md5": "0685285b42a7110ce0876f676a2f79c2",
+      "sha256": "afaed95537e894b8054db38c81712a6d9504b05b560274526621d91d5a95fbe7"
+    }
+  ]
+}

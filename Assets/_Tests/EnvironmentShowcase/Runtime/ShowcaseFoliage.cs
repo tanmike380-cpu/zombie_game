@@ -1,0 +1,226 @@
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Rendering;
+
+namespace ZombieGame.Tests.EnvironmentShowcase
+{
+    /// <summary>Chunked instancing of approved source meshes, without mesh edits, colliders or per-clump scripts.</summary>
+    public sealed class ShowcaseFoliage : IDisposable
+    {
+        private const int MAX_BATCH_SIZE = 1023;
+        private readonly List<DrawBatch> batches = new List<DrawBatch>();
+        private readonly List<Material> materials = new List<Material>();
+        private readonly EnvironmentShowcaseConfig config;
+        private readonly ShowcaseTerrain ground;
+        private readonly System.Random random;
+        private readonly Plane[] frustum_planes = new Plane[6];
+        public bool show_grass = true;
+        public bool show_decorations = true;
+        public bool show_rocks = true;
+        public int grass_instances { get; private set; }
+        public int tree_instances { get; private set; }
+        public int shrub_instances { get; private set; }
+        public int rock_instances { get; private set; }
+        public int visible_batches { get; private set; }
+
+        private sealed class SourcePart
+        {
+            public Mesh mesh;
+            public Material material;
+            public int submesh_index;
+            public Matrix4x4 relative_transform;
+            public float lod_min_height = 0;
+            public float lod_max_height = float.PositiveInfinity;
+            public float source_lod_height;
+        }
+
+        private sealed class DrawBatch
+        {
+            public SourcePart part;
+            public Matrix4x4[] matrices;
+            public Bounds bounds;
+            public float draw_distance;
+            public bool is_grass;
+            public bool is_rock;
+            public bool is_tree;
+            public float lod_height;
+        }
+
+        public ShowcaseFoliage(EnvironmentShowcaseConfig settings, ShowcaseTerrain terrain)
+        {
+            config = settings;
+            ground = terrain;
+            random = new System.Random(config.seed);
+            var biome = terrain.biome;
+            int grass_count = Mathf.RoundToInt(config.grass_count * (biome == null ? 1 : biome.grass_density));
+            int tree_count = Mathf.RoundToInt(config.tree_count * (biome == null ? 1 : biome.tree_density));
+            int shrub_count = Mathf.RoundToInt(config.shrub_count * (biome == null ? 1 : biome.shrub_density));
+            int rock_count = Mathf.RoundToInt(config.rock_count * (biome == null ? 1 : biome.rock_density));
+            if (config.grass_variants != null && config.grass_variants.Length > 0)
+                grass_instances = add_variants(config.grass_variants, grass_count, config.grass_scale_range, "grass");
+            else if (config.grass_prefab) grass_instances = add_prefab(config.grass_prefab, grass_count, config.grass_scale_range, "grass");
+            tree_instances = add_variants(config.tree_prefabs, tree_count, config.tree_scale_range, "tree");
+            shrub_instances = add_variants(config.shrub_prefabs, shrub_count, config.shrub_scale_range, "shrub");
+            rock_instances = add_variants(config.rock_prefabs, rock_count, config.rock_scale_range, "rock");
+        }
+
+        private int add_variants(GameObject[] prefabs, int count, Vector2 scale_range, string category)
+        {
+            if (prefabs == null || prefabs.Length == 0) return 0;
+            int total = 0;
+            for (int index = 0; index < prefabs.Length; index++)
+                if (prefabs[index]) total += add_prefab(prefabs[index], count / prefabs.Length + (index < count % prefabs.Length ? 1 : 0), scale_range, category);
+            return total;
+        }
+
+        private int add_prefab(GameObject prefab, int count, Vector2 scale_range, string category)
+        {
+            var parts = read_source_parts(prefab);
+            if (parts.Count == 0) throw new InvalidOperationException("Approved showcase asset has no renderable static source meshes: " + prefab.name);
+            var cells = new Dictionary<Vector2Int, List<Matrix4x4>>();
+            int placed = 0;
+            for (int attempt = 0; attempt < count * 12 && placed < count; attempt++)
+            {
+                float x = (float)random.NextDouble() * config.map_size;
+                float z = (float)random.NextDouble() * config.map_size;
+                if (category == "grass" && random.NextDouble() < config.grass_focus_fraction)
+                {
+                    x = Mathf.Clamp01(config.grass_focus_center.x + ((float)random.NextDouble() * 2 - 1) * config.grass_focus_extent.x) * config.map_size;
+                    z = Mathf.Clamp01(config.grass_focus_center.y + ((float)random.NextDouble() * 2 - 1) * config.grass_focus_extent.y) * config.map_size;
+                }
+                if (!can_place_category(x, z, category)) continue;
+                float scale = Mathf.Lerp(scale_range.x, scale_range.y, (float)random.NextDouble());
+                Vector3 point = ground.sample_ground(x, z);
+                var matrix = Matrix4x4.TRS(point, Quaternion.Euler(0, (float)random.NextDouble() * 360, 0) * prefab.transform.localRotation,
+                    prefab.transform.localScale * scale);
+                var cell = new Vector2Int(Mathf.FloorToInt(x / config.grass_chunk_size), Mathf.FloorToInt(z / config.grass_chunk_size));
+                if (!cells.TryGetValue(cell, out var instances)) { instances = new List<Matrix4x4>(); cells.Add(cell, instances); }
+                instances.Add(matrix);
+                placed++;
+            }
+            foreach (var cell in cells) build_batches(cell.Value, parts, category);
+            return placed;
+        }
+
+        private bool can_place_category(float x, float z, string category)
+        {
+            if (z - ground.shoreline_z(x) <= config.shore_blend_width ||
+                Mathf.Abs(x - ground.road_x(z)) <= config.road_half_width + config.road_edge_width) return false;
+            float forest = ground.forest_weight(x, z);
+            if (category == "rock") return forest > .3f || ground.terrain_data.GetSteepness(x / config.map_size, z / config.map_size) > 12;
+            if (!ground.can_place_greenery(x, z)) return false;
+            if (category == "tree") return forest > .65f && random.NextDouble() < forest;
+            if (category == "shrub") return forest > .15f && forest < .9f && random.NextDouble() < .6f;
+            float patch = Mathf.PerlinNoise(x / 7 + 12.6f, z / 7);
+            return random.NextDouble() < Mathf.Lerp(.18f, .92f, patch) * (1 - forest * .6f);
+        }
+
+        private List<SourcePart> read_source_parts(GameObject prefab)
+        {
+            var parts = new List<SourcePart>();
+            foreach (var filter in prefab.GetComponentsInChildren<MeshFilter>(true))
+            {
+                var renderer = filter.GetComponent<MeshRenderer>();
+                if (!filter.sharedMesh || !renderer || !renderer.enabled) continue;
+                var source_materials = renderer.sharedMaterials;
+                for (int submesh_index = 0; submesh_index < filter.sharedMesh.subMeshCount; submesh_index++)
+                {
+                    if (submesh_index >= source_materials.Length || !source_materials[submesh_index])
+                        throw new InvalidOperationException("Approved source has missing material: " + prefab.name + "/" + filter.name);
+                    if (!source_materials[submesh_index].shader || !source_materials[submesh_index].shader.isSupported)
+                        throw new InvalidOperationException("Approved showcase source shader unsupported by verified Built-in pipeline: " + prefab.name);
+                    var material = new Material(source_materials[submesh_index]) { enableInstancing = true };
+                    materials.Add(material);
+                    var part = new SourcePart { mesh = filter.sharedMesh, material = material, submesh_index = submesh_index,
+                        relative_transform = prefab.transform.worldToLocalMatrix * filter.transform.localToWorldMatrix };
+                    read_source_lod(prefab, renderer, part);
+                    parts.Add(part);
+                }
+            }
+            return parts;
+        }
+
+        private static void read_source_lod(GameObject prefab, Renderer renderer, SourcePart part)
+        {
+            var group = renderer.GetComponentInParent<LODGroup>();
+            if (!group) return;
+            var lods = group.GetLODs();
+            for (int lod_index = 0; lod_index < lods.Length; lod_index++)
+            {
+                if (Array.IndexOf(lods[lod_index].renderers, renderer) < 0) continue;
+                part.lod_min_height = lods[lod_index].screenRelativeTransitionHeight;
+                part.lod_max_height = lod_index == 0 ? float.PositiveInfinity : lods[lod_index - 1].screenRelativeTransitionHeight;
+                part.source_lod_height = group.size * (prefab.transform.worldToLocalMatrix * group.transform.localToWorldMatrix).MultiplyVector(Vector3.up).magnitude;
+                return;
+            }
+            throw new InvalidOperationException("Source renderer belongs to LODGroup but no source LOD: " + prefab.name + "/" + renderer.name);
+        }
+
+        private void build_batches(List<Matrix4x4> instances, List<SourcePart> parts, string category)
+        {
+            foreach (var part in parts)
+                for (int offset = 0; offset < instances.Count; offset += MAX_BATCH_SIZE)
+                {
+                    int count = Mathf.Min(MAX_BATCH_SIZE, instances.Count - offset);
+                    var matrices = new Matrix4x4[count];
+                    var bounds = new Bounds();
+                    float lod_height = 0;
+                    for (int index = 0; index < count; index++)
+                    {
+                        matrices[index] = instances[offset + index] * part.relative_transform;
+                        lod_height = Mathf.Max(lod_height, part.source_lod_height * instances[offset + index].lossyScale.y);
+                        var mesh_bounds = transform_bounds(part.mesh.bounds, matrices[index]);
+                        if (index == 0) bounds = mesh_bounds; else bounds.Encapsulate(mesh_bounds);
+                    }
+                    batches.Add(new DrawBatch { part = part, matrices = matrices, bounds = bounds, lod_height = lod_height, is_grass = category == "grass", is_rock = category == "rock", is_tree = category == "tree",
+                        draw_distance = category == "grass" ? config.grass_draw_distance : category == "tree" ? config.tree_draw_distance :
+                            category == "shrub" ? config.shrub_draw_distance : config.rock_draw_distance });
+                }
+        }
+
+        private static Bounds transform_bounds(Bounds bounds, Matrix4x4 matrix)
+        {
+            Vector3 x_axis = matrix.MultiplyVector(new Vector3(bounds.extents.x, 0, 0));
+            Vector3 y_axis = matrix.MultiplyVector(new Vector3(0, bounds.extents.y, 0));
+            Vector3 z_axis = matrix.MultiplyVector(new Vector3(0, 0, bounds.extents.z));
+            return new Bounds(matrix.MultiplyPoint3x4(bounds.center), new Vector3(
+                Mathf.Abs(x_axis.x) + Mathf.Abs(y_axis.x) + Mathf.Abs(z_axis.x),
+                Mathf.Abs(x_axis.y) + Mathf.Abs(y_axis.y) + Mathf.Abs(z_axis.y),
+                Mathf.Abs(x_axis.z) + Mathf.Abs(y_axis.z) + Mathf.Abs(z_axis.z)) * 2);
+        }
+
+        public void draw_batches(Camera camera)
+        {
+            visible_batches = 0;
+            if (!show_decorations || !SystemInfo.supportsInstancing) return;
+            GeometryUtility.CalculateFrustumPlanes(camera, frustum_planes);
+            foreach (var batch in batches)
+            {
+                if (batch.is_grass && !show_grass) continue;
+                if (batch.is_rock && !show_rocks) continue;
+                if (batch.lod_height > 0)
+                {
+                    float relative_height = batch.lod_height / (camera.orthographicSize * 2);
+                    if (relative_height < batch.part.lod_min_height || relative_height >= batch.part.lod_max_height) continue;
+                }
+                Vector3 planar_delta = batch.bounds.center - camera.transform.position;
+                planar_delta.y = 0;
+                if (planar_delta.sqrMagnitude > batch.draw_distance * batch.draw_distance ||
+                    !GeometryUtility.TestPlanesAABB(frustum_planes, batch.bounds)) continue;
+                bool cast_shadows = !batch.is_grass && (!batch.is_tree || planar_delta.sqrMagnitude <= config.tree_shadow_draw_distance * config.tree_shadow_draw_distance);
+                Graphics.DrawMeshInstanced(batch.part.mesh, batch.part.submesh_index, batch.part.material, batch.matrices,
+                    batch.matrices.Length, null, cast_shadows ? ShadowCastingMode.On : ShadowCastingMode.Off,
+                    true, 0, camera, LightProbeUsage.Off);
+                visible_batches++;
+            }
+        }
+
+        public void Dispose()
+        {
+            foreach (var material in materials) if (material) UnityEngine.Object.Destroy(material);
+            batches.Clear();
+            materials.Clear();
+        }
+    }
+}

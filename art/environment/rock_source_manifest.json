@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "verified_date": "2026-10-11",
+  "id": "rock_07",
+  "title": "Rock 07",
+  "source": "https://polyhaven.com/a/rock_07",
+  "authors": {"Jenelle van Heerden": "All"},
+  "license": "CC0-1.0",
+  "license_url": "https://polyhaven.com/license",
+  "texture_resolution": "1K",
+  "policy": "Use one original native LOD as shared natural detail; no decimation, mesh remodeling or nonuniform scaling",
+  "source_blend": {
+    "path": "art/environment/polyhaven-src/rock_07/rock_07_1k.blend",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/blend/1k/rock_07/rock_07_1k.blend",
+    "bytes": 1061620,
+    "md5": "8b9908a42bebf102ea390d96e66e1219",
+    "sha256": "da8010774291c5d0acfbcc3b82b367be06c5ed0926640147de5f17371ef227d1"
+  },
+  "export_maps": [
+    {"channel": "base_color", "path": "art/environment/polyhaven-src/rock_07/textures/rock_07_diff_1k.png", "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/rock_07/rock_07_diff_1k.png", "md5": "c1efffcd8319c27b7b4401fb70d4b4c8", "sha256": "86e26fcb23e53288e23b04a1aa92ce90ff717b7da7b7f4713af6827b7cc0f3f2"},
+    {"channel": "normal_gl", "path": "art/environment/polyhaven-src/rock_07/textures/rock_07_nor_gl_1k.png", "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/rock_07/rock_07_nor_gl_1k.png", "md5": "6a1c9baa9b53675e985a8c77d99ce9bb", "sha256": "f2294cbeaf0dc62991aea5cadca98a0fb1a47177f41f89db7671ae5323d2a705"},
+    {"channel": "roughness", "path": "art/environment/polyhaven-src/rock_07/textures/rock_07_rough_1k.png", "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/rock_07/rock_07_rough_1k.png", "md5": "81c5f623061f7c2b09d00b01c90326e5", "sha256": "198f92ffce72d05bf993e26bca894c48f58c00f136debdf979bfbd4f579ac7bb"}
+  ]
+}

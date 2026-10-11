@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "approval": "User designated formal environment category 2026-10-11; licensed material-aware tree derivatives visually approved; only EnvironmentShowcase test integration",
+  "assets": [
+    {
+      "id": "RockNatural",
+      "source_blend": "art/environment/polyhaven-src/rock_07/rock_07_1k.blend",
+      "source_sha256": "da8010774291c5d0acfbcc3b82b367be06c5ed0926640147de5f17371ef227d1",
+      "source_object": "rock_07_LOD2",
+      "geometry_policy": "Unchanged original native LOD2; translation-only grounding pivot and gallery placement"
+    },
+    {
+      "id": "GrassBermuda",
+      "source_blend": "art/environment/polyhaven-src/grass_bermuda_01/grass_bermuda_01_1k.blend",
+      "source_sha256": "6ff15e278219947ce8013663f918fc3ae074f19157ace2f2dcfb3484e2e4e654",
+      "source_object": "grass_bermuda_01_medium_e"
+    },
+    {
+      "id": "GrassMedium",
+      "source_blend": "art/environment/polyhaven-src/grass_medium_01/grass_medium_01_1k.blend",
+      "source_sha256": "5bbeaf7161508c1de66f137e7fcaec6fdea9c4ac0faa134c384c89c97271bec2",
+      "source_object": "grass_medium_01_tall_a_LOD1"
+    },
+    {
+      "id": "ShrubA",
+      "source_blend": "art/environment/polyhaven-src/shrub_02/shrub_02_1k.blend",
+      "source_sha256": "56d0a66207ade193224ec2f1ca1996d35b415ec0fc3ec8fdd17574629d0ace7b",
+      "source_object": "shrub_02_a_LOD2"
+    },
+    {
+      "id": "ShrubB",
+      "source_blend": "art/environment/polyhaven-src/shrub_02/shrub_02_1k.blend",
+      "source_sha256": "56d0a66207ade193224ec2f1ca1996d35b415ec0fc3ec8fdd17574629d0ace7b",
+      "source_object": "shrub_02_b_LOD2"
+    },
+    {
+      "id": "TreeSmall_LOD0",
+      "source_blend": "art/environment/polyhaven-src/tree_small_02/tree_small_02_1k.blend",
+      "source_sha256": "af3fef6da3eb97057d9d4d3c4281c5944696b8d518715deddd8500482d30b1bd",
+      "source_object": "tree_small_02_LOD1",
+      "target_triangles": 85000,
+      "material_decimation_ratios": {
+        "_branches": 0.21,
+        "_leaves": 0.14,
+        "_trunk": 0.5
+      }
+    },
+    {
+      "id": "TreeSmall_LOD1",
+      "source_blend": "art/environment/polyhaven-src/tree_small_02/tree_small_02_1k.blend",
+      "source_sha256": "af3fef6da3eb97057d9d4d3c4281c5944696b8d518715deddd8500482d30b1bd",
+      "source_object": "tree_small_02_LOD1",
+      "target_triangles": 50000,
+      "material_decimation_ratios": {
+        "_branches": 0.1,
+        "_leaves": 0.085,
+        "_trunk": 0.3
+      }
+    }
+  ],
+  "approved_source_blend": "art/Blender主文件/ZombieGame_Environment.blend",
+  "approved_source_sha256": "22cf18b836561446acae85f98b97086e40cac6ec23e88f91eebe05c8310ad56f",
+  "source_status": "formal_category_source_test_only"
+}

@@ -1,0 +1,948 @@
+{
+  "source_blend": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/tree_small_02/tree_small_02_1k.blend",
+  "source_sha256": "af3fef6da3eb97057d9d4d3c4281c5944696b8d518715deddd8500482d30b1bd",
+  "blender_version": "5.2.2 LTS",
+  "active_scene": "Scene",
+  "unit_scale": 1.0,
+  "scenes": [
+    "Scene"
+  ],
+  "collections": [
+    {
+      "name": "tree_small_02",
+      "children": [
+        "tree_small_02_geometry_nodes",
+        "tree_small_02_LOD0",
+        "tree_small_02_LOD1"
+      ],
+      "objects": [],
+      "hide_viewport": false,
+      "hide_render": false
+    },
+    {
+      "name": "tree_small_02_geometry",
+      "children": [
+        "tree_small_02_leaves_LOD0",
+        "tree_small_02_leaves_LOD1"
+      ],
+      "objects": [
+        "tree_small_02_trunk"
+      ],
+      "hide_viewport": false,
+      "hide_render": false
+    },
+    {
+      "name": "tree_small_02_geometry_nodes",
+      "children": [
+        "tree_small_02_geometry"
+      ],
+      "objects": [
+        "tree_small_02_geometry_nodes"
+      ],
+      "hide_viewport": false,
+      "hide_render": false
+    },
+    {
+      "name": "tree_small_02_leaves_LOD0",
+      "children": [],
+      "objects": [
+        "tree_small_02_leaves_a_LOD0",
+        "tree_small_02_leaves_b_LOD0",
+        "tree_small_02_leaves_c_LOD0",
+        "tree_small_02_leaves_d_LOD0"
+      ],
+      "hide_viewport": false,
+      "hide_render": false
+    },
+    {
+      "name": "tree_small_02_leaves_LOD1",
+      "children": [],
+      "objects": [
+        "tree_small_02_leaves_a_LOD1",
+        "tree_small_02_leaves_b_LOD1",
+        "tree_small_02_leaves_c_LOD1",
+        "tree_small_02_leaves_d_LOD1"
+      ],
+      "hide_viewport": false,
+      "hide_render": false
+    },
+    {
+      "name": "tree_small_02_LOD0",
+      "children": [],
+      "objects": [
+        "tree_small_02_LOD0"
+      ],
+      "hide_viewport": false,
+      "hide_render": false
+    },
+    {
+      "name": "tree_small_02_LOD1",
+      "children": [],
+      "objects": [
+        "tree_small_02_LOD1"
+      ],
+      "hide_viewport": false,
+      "hide_render": false
+    }
+  ],
+  "meshes": [
+    {
+      "name": "tree_small_02_leaves_a_LOD0",
+      "mesh": "Cube",
+      "vertices": 627,
+      "triangles": 725,
+      "evaluated_triangles": 725,
+      "bounds_min": [
+        -0.12346202880144119,
+        -0.0036763902753591537,
+        -0.07983775436878204
+      ],
+      "bounds_max": [
+        0.12437618523836136,
+        0.299242228269577,
+        0.004058152437210083
+      ],
+      "dimensions_m": [
+        0.24783821403980255,
+        0.3029186185449362,
+        0.08389590680599213
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "tree_small_02_leaves_LOD0"
+      ],
+      "modifiers": [],
+      "materials": [
+        "tree_small_02_leaves"
+      ]
+    },
+    {
+      "name": "tree_small_02_leaves_a_LOD1",
+      "mesh": "Cube.004",
+      "vertices": 209,
+      "triangles": 145,
+      "evaluated_triangles": 145,
+      "bounds_min": [
+        -0.12451555579900742,
+        -0.003987208008766174,
+        -0.07682705670595169
+      ],
+      "bounds_max": [
+        0.12486466020345688,
+        0.30450281500816345,
+        0.006326367612928152
+      ],
+      "dimensions_m": [
+        0.2493802160024643,
+        0.3084900230169296,
+        0.08315342431887984
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "tree_small_02_leaves_LOD1"
+      ],
+      "modifiers": [],
+      "materials": [
+        "tree_small_02_leaves"
+      ]
+    },
+    {
+      "name": "tree_small_02_leaves_b_LOD0",
+      "mesh": "Cube.001",
+      "vertices": 922,
+      "triangles": 1070,
+      "evaluated_triangles": 1070,
+      "bounds_min": [
+        -0.14304381608963013,
+        -0.0010964731918647885,
+        -0.11009064316749573
+      ],
+      "bounds_max": [
+        0.12856891751289368,
+        0.37127721309661865,
+        0.028163740411400795
+      ],
+      "dimensions_m": [
+        0.2716127336025238,
+        0.37237368628848344,
+        0.13825438357889652
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "tree_small_02_leaves_LOD0"
+      ],
+      "modifiers": [],
+      "materials": [
+        "tree_small_02_leaves"
+      ]
+    },
+    {
+      "name": "tree_small_02_leaves_b_LOD1",
+      "mesh": "Cube.005",
+      "vertices": 313,
+      "triangles": 214,
+      "evaluated_triangles": 214,
+      "bounds_min": [
+        -0.14233480393886566,
+        -0.001533197588287294,
+        -0.10777918249368668
+      ],
+      "bounds_max": [
+        0.12859117984771729,
+        0.37891387939453125,
+        0.02522842399775982
+      ],
+      "dimensions_m": [
+        0.27092598378658295,
+        0.38044707698281854,
+        0.1330076064914465
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "tree_small_02_leaves_LOD1"
+      ],
+      "modifiers": [],
+      "materials": [
+        "tree_small_02_leaves"
+      ]
+    },
+    {
+      "name": "tree_small_02_leaves_c_LOD0",
+      "mesh": "Cube.002",
+      "vertices": 885,
+      "triangles": 1029,
+      "evaluated_triangles": 1029,
+      "bounds_min": [
+        -0.12672987580299377,
+        -0.0009579200414009392,
+        -0.06910547614097595
+      ],
+      "bounds_max": [
+        0.13160844147205353,
+        0.3392682373523712,
+        0.03377820923924446
+      ],
+      "dimensions_m": [
+        0.2583383172750473,
+        0.34022615739377216,
+        0.10288368538022041
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "tree_small_02_leaves_LOD0"
+      ],
+      "modifiers": [],
+      "materials": [
+        "tree_small_02_leaves"
+      ]
+    },
+    {
+      "name": "tree_small_02_leaves_c_LOD1",
+      "mesh": "Cube.006",
+      "vertices": 288,
+      "triangles": 205,
+      "evaluated_triangles": 205,
+      "bounds_min": [
+        -0.1264006644487381,
+        -0.0011913960333913565,
+        -0.06910709291696548
+      ],
+      "bounds_max": [
+        0.12989738583564758,
+        0.3424142003059387,
+        0.03505578264594078
+      ],
+      "dimensions_m": [
+        0.2562980502843857,
+        0.3436055963393301,
+        0.10416287556290627
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "tree_small_02_leaves_LOD1"
+      ],
+      "modifiers": [],
+      "materials": [
+        "tree_small_02_leaves"
+      ]
+    },
+    {
+      "name": "tree_small_02_leaves_d_LOD0",
+      "mesh": "Cube.003",
+      "vertices": 297,
+      "triangles": 332,
+      "evaluated_triangles": 332,
+      "bounds_min": [
+        -0.04521261900663376,
+        -0.00025931515847332776,
+        -0.07977224886417389
+      ],
+      "bounds_max": [
+        0.11250307410955429,
+        0.1448240876197815,
+        0.011754938401281834
+      ],
+      "dimensions_m": [
+        0.15771569311618805,
+        0.14508340277825482,
+        0.09152718726545572
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "tree_small_02_leaves_LOD0"
+      ],
+      "modifiers": [],
+      "materials": [
+        "tree_small_02_leaves"
+      ]
+    },
+    {
+      "name": "tree_small_02_leaves_d_LOD1",
+      "mesh": "Cube.007",
+      "vertices": 92,
+      "triangles": 65,
+      "evaluated_triangles": 65,
+      "bounds_min": [
+        -0.045366834849119186,
+        0.023365657776594162,
+        -0.07977056503295898
+      ],
+      "bounds_max": [
+        0.11203207075595856,
+        0.1448240876197815,
+        0.011709383688867092
+      ],
+      "dimensions_m": [
+        0.15739890560507774,
+        0.12145842984318733,
+        0.09147994872182608
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "tree_small_02_leaves_LOD1"
+      ],
+      "modifiers": [],
+      "materials": [
+        "tree_small_02_leaves"
+      ]
+    },
+    {
+      "name": "tree_small_02_LOD0",
+      "mesh": "BezierCurve.002",
+      "vertices": 1755568,
+      "triangles": 2062487,
+      "evaluated_triangles": 2062487,
+      "bounds_min": [
+        -1.3089934587478638,
+        -2.9098503589630127,
+        -0.02410384640097618
+      ],
+      "bounds_max": [
+        1.6077065467834473,
+        1.3826267719268799,
+        4.532637119293213
+      ],
+      "dimensions_m": [
+        2.916700005531311,
+        4.292477130889893,
+        4.556740965694189
+      ],
+      "uv_layers": [
+        "UVMap",
+        "UV_map_01"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "tree_small_02_LOD0"
+      ],
+      "modifiers": [],
+      "materials": [
+        "tree_small_02_branches",
+        "tree_small_02_leaves",
+        "tree_small_02_trunk"
+      ]
+    },
+    {
+      "name": "tree_small_02_LOD1",
+      "mesh": "BezierCurve.003",
+      "vertices": 626249,
+      "triangles": 495533,
+      "evaluated_triangles": 495533,
+      "bounds_min": [
+        -1.310724139213562,
+        -2.9096455574035645,
+        -0.024194231256842613
+      ],
+      "bounds_max": [
+        1.610710859298706,
+        1.3830231428146362,
+        4.5398430824279785
+      ],
+      "dimensions_m": [
+        2.921434998512268,
+        4.292668700218201,
+        4.564037313684821
+      ],
+      "uv_layers": [
+        "UVMap",
+        "UV_map_01"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "tree_small_02_LOD1"
+      ],
+      "modifiers": [],
+      "materials": [
+        "tree_small_02_branches",
+        "tree_small_02_leaves",
+        "tree_small_02_trunk"
+      ]
+    },
+    {
+      "name": "tree_small_02_trunk",
+      "mesh": "tree_small_02_DECIMATE",
+      "vertices": 14160,
+      "triangles": 28293,
+      "evaluated_triangles": 28293,
+      "bounds_min": [
+        -0.7654515504837036,
+        -1.9231672286987305,
+        -0.02410384640097618
+      ],
+      "bounds_max": [
+        0.9303282499313354,
+        0.39323970675468445,
+        3.6645729541778564
+      ],
+      "dimensions_m": [
+        1.695779800415039,
+        2.316406935453415,
+        3.6886768005788326
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "tree_small_02_geometry"
+      ],
+      "modifiers": [
+        {
+          "name": "WeightedNormal",
+          "type": "WEIGHTED_NORMAL"
+        }
+      ],
+      "materials": [
+        "tree_small_02_trunk"
+      ]
+    }
+  ],
+  "materials": [
+    {
+      "name": "tree_small_02_branches",
+      "surface_render_method": "DITHERED",
+      "blend_method": "HASHED",
+      "use_backface_culling": false,
+      "images": [
+        {
+          "node": "Image Texture.001",
+          "image": "tree_small_02_branch_diff.png",
+          "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/tree_small_02/textures/tree_small_02_branch_diff_1k.png",
+          "exists": true,
+          "size": [
+            1024,
+            1024
+          ],
+          "colorspace": "sRGB",
+          "channels": 4,
+          "links": [
+            "Color->Principled BSDF:Base Color"
+          ]
+        },
+        {
+          "node": "Image Texture.002",
+          "image": "tree_small_02_branch_rough.png",
+          "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/tree_small_02/textures/tree_small_02_branch_rough_1k.png",
+          "exists": true,
+          "size": [
+            1024,
+            1024
+          ],
+          "colorspace": "Non-Color",
+          "channels": 4,
+          "links": [
+            "Color->Principled BSDF:Roughness"
+          ]
+        },
+        {
+          "node": "Image Texture.003",
+          "image": "tree_small_02_branch_nor_gl.png",
+          "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/tree_small_02/textures/tree_small_02_branch_nor_gl_1k.png",
+          "exists": true,
+          "size": [
+            1024,
+            1024
+          ],
+          "colorspace": "Non-Color",
+          "channels": 4,
+          "links": [
+            "Color->Normal Map:Color"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "tree_small_02_leaves",
+      "surface_render_method": "DITHERED",
+      "blend_method": "HASHED",
+      "use_backface_culling": false,
+      "images": [
+        {
+          "node": "Image Texture.001",
+          "image": "tree_small_02_leaves_diff.png",
+          "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/tree_small_02/textures/tree_small_02_leaves_diff_1k.png",
+          "exists": true,
+          "size": [
+            1024,
+            1024
+          ],
+          "colorspace": "sRGB",
+          "channels": 4,
+          "links": [
+            "Color->Group:Diffuse"
+          ]
+        },
+        {
+          "node": "Image Texture.002",
+          "image": "tree_small_02_leaves_rough.png",
+          "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/tree_small_02/textures/tree_small_02_leaves_rough_1k.png",
+          "exists": true,
+          "size": [
+            1024,
+            1024
+          ],
+          "colorspace": "Non-Color",
+          "channels": 4,
+          "links": [
+            "Color->Group:Rough"
+          ]
+        },
+        {
+          "node": "Image Texture.003",
+          "image": "tree_small_02_leaves_nor_gl.png",
+          "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/tree_small_02/textures/tree_small_02_leaves_nor_gl_1k.png",
+          "exists": true,
+          "size": [
+            1024,
+            1024
+          ],
+          "colorspace": "Non-Color",
+          "channels": 4,
+          "links": [
+            "Color->Group:Normal"
+          ]
+        },
+        {
+          "node": "Image Texture.004",
+          "image": "tree_small_02_leaves_alpha.png",
+          "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/tree_small_02/textures/tree_small_02_leaves_alpha_1k.png",
+          "exists": true,
+          "size": [
+            1024,
+            1024
+          ],
+          "colorspace": "sRGB",
+          "channels": 4,
+          "links": [
+            "Color->Group:Alpha"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "tree_small_02_trunk",
+      "surface_render_method": "DITHERED",
+      "blend_method": "HASHED",
+      "use_backface_culling": false,
+      "images": [
+        {
+          "node": "Image Texture.001",
+          "image": "tree_small_02_diff.png",
+          "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/tree_small_02/textures/tree_small_02_diff_1k.jpg",
+          "exists": true,
+          "size": [
+            1024,
+            1024
+          ],
+          "colorspace": "sRGB",
+          "channels": 4,
+          "links": [
+            "Color->Principled BSDF:Base Color"
+          ]
+        },
+        {
+          "node": "Image Texture.002",
+          "image": "tree_small_02_rough.png",
+          "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/tree_small_02/textures/tree_small_02_rough_1k.exr",
+          "exists": true,
+          "size": [
+            1024,
+            1024
+          ],
+          "colorspace": "Non-Color",
+          "channels": 4,
+          "links": [
+            "Color->Principled BSDF:Roughness"
+          ]
+        },
+        {
+          "node": "Image Texture.003",
+          "image": "tree_small_02_nor_gl.png",
+          "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/tree_small_02/textures/tree_small_02_nor_gl_1k.exr",
+          "exists": true,
+          "size": [
+            1024,
+            1024
+          ],
+          "colorspace": "Non-Color",
+          "channels": 4,
+          "links": [
+            "Color->Normal Map:Color"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,878 @@
+{
+  "source_blend": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/shrub_02/shrub_02_1k.blend",
+  "source_sha256": "56d0a66207ade193224ec2f1ca1996d35b415ec0fc3ec8fdd17574629d0ace7b",
+  "blender_version": "5.2.2 LTS",
+  "active_scene": "Scene",
+  "unit_scale": 1.0,
+  "scenes": [
+    "Scene"
+  ],
+  "collections": [
+    {
+      "name": "shrub_02",
+      "children": [
+        "shrub_02_LOD0",
+        "shrub_02_LOD1",
+        "shrub_02_LOD2"
+      ],
+      "objects": [],
+      "hide_viewport": false,
+      "hide_render": false
+    },
+    {
+      "name": "shrub_02_LOD0",
+      "children": [],
+      "objects": [
+        "shrub_02_a_LOD0",
+        "shrub_02_b_LOD0",
+        "shrub_02_c_LOD0",
+        "shrub_02_d_LOD0"
+      ],
+      "hide_viewport": false,
+      "hide_render": false
+    },
+    {
+      "name": "shrub_02_LOD1",
+      "children": [],
+      "objects": [
+        "shrub_02_a_LOD1",
+        "shrub_02_b_LOD1",
+        "shrub_02_c_LOD1",
+        "shrub_02_d_LOD1"
+      ],
+      "hide_viewport": false,
+      "hide_render": false
+    },
+    {
+      "name": "shrub_02_LOD2",
+      "children": [],
+      "objects": [
+        "shrub_02_a_LOD2",
+        "shrub_02_b_LOD2",
+        "shrub_02_c_LOD2",
+        "shrub_02_d_LOD2"
+      ],
+      "hide_viewport": false,
+      "hide_render": false
+    }
+  ],
+  "meshes": [
+    {
+      "name": "shrub_02_a_LOD0",
+      "mesh": "Plane.024",
+      "vertices": 5035,
+      "triangles": 7590,
+      "evaluated_triangles": 7590,
+      "bounds_min": [
+        -1.70006263256073,
+        -0.615615725517273,
+        -0.009440356865525246
+      ],
+      "bounds_max": [
+        -0.6339482665061951,
+        0.7178397178649902,
+        1.3629951477050781
+      ],
+      "dimensions_m": [
+        1.066114366054535,
+        1.3334554433822632,
+        1.3724355045706034
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          0.03452039137482643,
+          0.9823991060256958,
+          -0.18357637524604797,
+          -1.257727861404419
+        ],
+        [
+          -0.9854696989059448,
+          0.002893571276217699,
+          -0.16982664167881012,
+          0.016848158091306686
+        ],
+        [
+          -0.16630636155605316,
+          0.1867714375257492,
+          0.9682244658470154,
+          -0.004258451052010059
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "shrub_02_LOD0"
+      ],
+      "modifiers": [],
+      "materials": [
+        "shrub_02"
+      ]
+    },
+    {
+      "name": "shrub_02_a_LOD1",
+      "mesh": "Plane.001",
+      "vertices": 3162,
+      "triangles": 4670,
+      "evaluated_triangles": 4670,
+      "bounds_min": [
+        -0.7670781016349792,
+        -0.3468462824821472,
+        -0.024479709565639496
+      ],
+      "bounds_max": [
+        0.5002720355987549,
+        0.7014584541320801,
+        1.3669129610061646
+      ],
+      "dimensions_m": [
+        1.2673501372337341,
+        1.0483047366142273,
+        1.391392670571804
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "shrub_02_LOD1"
+      ],
+      "modifiers": [],
+      "materials": [
+        "shrub_02"
+      ]
+    },
+    {
+      "name": "shrub_02_a_LOD2",
+      "mesh": "Plane.005",
+      "vertices": 1935,
+      "triangles": 2335,
+      "evaluated_triangles": 2335,
+      "bounds_min": [
+        -0.7666942477226257,
+        -0.3468462824821472,
+        -0.024479709565639496
+      ],
+      "bounds_max": [
+        0.5002720355987549,
+        0.7014584541320801,
+        1.3669129610061646
+      ],
+      "dimensions_m": [
+        1.2669662833213806,
+        1.0483047366142273,
+        1.391392670571804
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "shrub_02_LOD2"
+      ],
+      "modifiers": [],
+      "materials": [
+        "shrub_02"
+      ]
+    },
+    {
+      "name": "shrub_02_b_LOD0",
+      "mesh": "Plane.029",
+      "vertices": 3546,
+      "triangles": 5242,
+      "evaluated_triangles": 5242,
+      "bounds_min": [
+        -0.4468688368797302,
+        -0.6204878687858582,
+        -0.006549582350999117
+      ],
+      "bounds_max": [
+        0.4552895426750183,
+        0.41955170035362244,
+        1.2174556255340576
+      ],
+      "dimensions_m": [
+        0.9021583795547485,
+        1.0400395691394806,
+        1.2240052078850567
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          -0.25249558687210083,
+          0.8604887127876282,
+          -0.4424987733364105,
+          0.0005788634298369288
+        ],
+        [
+          -0.9481835961341858,
+          -0.12888965010643005,
+          0.2904055118560791,
+          0.013657902367413044
+        ],
+        [
+          0.19285716116428375,
+          0.492896169424057,
+          0.8484453558921814,
+          -0.005152538418769836
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "shrub_02_LOD0"
+      ],
+      "modifiers": [],
+      "materials": [
+        "shrub_02"
+      ]
+    },
+    {
+      "name": "shrub_02_b_LOD1",
+      "mesh": "Plane.002",
+      "vertices": 2221,
+      "triangles": 3206,
+      "evaluated_triangles": 3206,
+      "bounds_min": [
+        -0.3281225860118866,
+        -0.25067082047462463,
+        -0.08309606462717056
+      ],
+      "bounds_max": [
+        0.7839503288269043,
+        0.8754615187644958,
+        0.8812281489372253
+      ],
+      "dimensions_m": [
+        1.112072914838791,
+        1.1261323392391205,
+        0.9643242135643959
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "shrub_02_LOD1"
+      ],
+      "modifiers": [],
+      "materials": [
+        "shrub_02"
+      ]
+    },
+    {
+      "name": "shrub_02_b_LOD2",
+      "mesh": "Plane.006",
+      "vertices": 1364,
+      "triangles": 1603,
+      "evaluated_triangles": 1603,
+      "bounds_min": [
+        -0.3281225860118866,
+        -0.25067082047462463,
+        -0.08309606462717056
+      ],
+      "bounds_max": [
+        0.7839503288269043,
+        0.8754615187644958,
+        0.8812281489372253
+      ],
+      "dimensions_m": [
+        1.112072914838791,
+        1.1261323392391205,
+        0.9643242135643959
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "shrub_02_LOD2"
+      ],
+      "modifiers": [],
+      "materials": [
+        "shrub_02"
+      ]
+    },
+    {
+      "name": "shrub_02_c_LOD0",
+      "mesh": "Plane.041",
+      "vertices": 6256,
+      "triangles": 9234,
+      "evaluated_triangles": 9234,
+      "bounds_min": [
+        0.6722242832183838,
+        -0.9385685324668884,
+        -0.018091432750225067
+      ],
+      "bounds_max": [
+        2.107879877090454,
+        0.9182358384132385,
+        1.0502665042877197
+      ],
+      "dimensions_m": [
+        1.4356555938720703,
+        1.856804370880127,
+        1.0683579370379448
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          -0.32776421308517456,
+          0.7070142030715942,
+          -0.6266589760780334,
+          1.2643390893936157
+        ],
+        [
+          -0.9065626859664917,
+          -0.048666950315237045,
+          0.4192560613155365,
+          0.004958318080753088
+        ],
+        [
+          0.2659223973751068,
+          0.7055227756500244,
+          0.6569039821624756,
+          -0.004456536844372749
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "shrub_02_LOD0"
+      ],
+      "modifiers": [],
+      "materials": [
+        "shrub_02"
+      ]
+    },
+    {
+      "name": "shrub_02_c_LOD1",
+      "mesh": "Plane.003",
+      "vertices": 3922,
+      "triangles": 5650,
+      "evaluated_triangles": 5650,
+      "bounds_min": [
+        -0.7240308523178101,
+        -0.19618743658065796,
+        -0.23947666585445404
+      ],
+      "bounds_max": [
+        1.0465896129608154,
+        0.9966265559196472,
+        0.7085703611373901
+      ],
+      "dimensions_m": [
+        1.7706204652786255,
+        1.1928139925003052,
+        0.9480470269918442
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "shrub_02_LOD1"
+      ],
+      "modifiers": [],
+      "materials": [
+        "shrub_02"
+      ]
+    },
+    {
+      "name": "shrub_02_c_LOD2",
+      "mesh": "Plane.007",
+      "vertices": 2419,
+      "triangles": 2824,
+      "evaluated_triangles": 2824,
+      "bounds_min": [
+        -0.7230895161628723,
+        -0.19618743658065796,
+        -0.2384243905544281
+      ],
+      "bounds_max": [
+        1.0465896129608154,
+        0.9965038299560547,
+        0.7085703611373901
+      ],
+      "dimensions_m": [
+        1.7696791291236877,
+        1.1926912665367126,
+        0.9469947516918182
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "shrub_02_LOD2"
+      ],
+      "modifiers": [],
+      "materials": [
+        "shrub_02"
+      ]
+    },
+    {
+      "name": "shrub_02_d_LOD0",
+      "mesh": "Plane.036",
+      "vertices": 3474,
+      "triangles": 5188,
+      "evaluated_triangles": 5188,
+      "bounds_min": [
+        2.3414363861083984,
+        -0.36081764101982117,
+        -0.020466558635234833
+      ],
+      "bounds_max": [
+        3.2192201614379883,
+        0.5314024686813354,
+        0.9783921837806702
+      ],
+      "dimensions_m": [
+        0.8777837753295898,
+        0.8922201097011566,
+        0.998858742415905
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          -0.2707371115684509,
+          0.9173845648765564,
+          0.291731059551239,
+          2.647937536239624
+        ],
+        [
+          -0.8604532480239868,
+          -0.09472859650850296,
+          -0.5006462931632996,
+          0.004426921717822552
+        ],
+        [
+          -0.4316498935222626,
+          -0.3865644931793213,
+          0.81501305103302,
+          -0.003873704932630062
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "shrub_02_LOD0"
+      ],
+      "modifiers": [],
+      "materials": [
+        "shrub_02"
+      ]
+    },
+    {
+      "name": "shrub_02_d_LOD1",
+      "mesh": "Plane.004",
+      "vertices": 2180,
+      "triangles": 3184,
+      "evaluated_triangles": 3184,
+      "bounds_min": [
+        -0.8544211387634277,
+        -0.4599308967590332,
+        -0.07326287776231766
+      ],
+      "bounds_max": [
+        0.18589623272418976,
+        0.34055399894714355,
+        0.9369679689407349
+      ],
+      "dimensions_m": [
+        1.0403173714876175,
+        0.8004848957061768,
+        1.0102308467030525
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "shrub_02_LOD1"
+      ],
+      "modifiers": [],
+      "materials": [
+        "shrub_02"
+      ]
+    },
+    {
+      "name": "shrub_02_d_LOD2",
+      "mesh": "Plane.008",
+      "vertices": 1336,
+      "triangles": 1591,
+      "evaluated_triangles": 1591,
+      "bounds_min": [
+        -0.854110062122345,
+        -0.4599308967590332,
+        -0.07326287776231766
+      ],
+      "bounds_max": [
+        0.18589623272418976,
+        0.34055399894714355,
+        0.9369679689407349
+      ],
+      "dimensions_m": [
+        1.0400062948465347,
+        0.8004848957061768,
+        1.0102308467030525
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "shrub_02_LOD2"
+      ],
+      "modifiers": [],
+      "materials": [
+        "shrub_02"
+      ]
+    }
+  ],
+  "materials": [
+    {
+      "name": "shrub_02",
+      "surface_render_method": "DITHERED",
+      "blend_method": "HASHED",
+      "use_backface_culling": false,
+      "images": [
+        {
+          "node": "Image Texture.004",
+          "image": "shrub_02_alpha.png",
+          "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/shrub_02/textures/shrub_02_alpha_1k.png",
+          "exists": true,
+          "size": [
+            1024,
+            1024
+          ],
+          "colorspace": "Non-Color",
+          "channels": 4,
+          "links": [
+            "Color->Group:Alpha"
+          ]
+        },
+        {
+          "node": "Image Texture.003",
+          "image": "shrub_02_nor_gl.png",
+          "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/shrub_02/textures/shrub_02_nor_gl_1k.exr",
+          "exists": true,
+          "size": [
+            1024,
+            1024
+          ],
+          "colorspace": "Non-Color",
+          "channels": 4,
+          "links": [
+            "Color->Group:Normal"
+          ]
+        },
+        {
+          "node": "Image Texture.002",
+          "image": "shrub_02_rough.png",
+          "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/shrub_02/textures/shrub_02_rough_1k.exr",
+          "exists": true,
+          "size": [
+            1024,
+            1024
+          ],
+          "colorspace": "Non-Color",
+          "channels": 4,
+          "links": [
+            "Color->Group:Rough"
+          ]
+        },
+        {
+          "node": "Image Texture.001",
+          "image": "shrub_02_diff.png",
+          "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/shrub_02/textures/shrub_02_diff_1k.jpg",
+          "exists": true,
+          "size": [
+            1024,
+            1024
+          ],
+          "colorspace": "sRGB",
+          "channels": 4,
+          "links": [
+            "Color->Group:Diffuse"
+          ]
+        },
+        {
+          "node": "Image Texture.005",
+          "image": "shrub_02_mask.png",
+          "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/shrub_02/textures/shrub_02_mask_1k.png",
+          "exists": true,
+          "size": [
+            1024,
+            1024
+          ],
+          "colorspace": "Non-Color",
+          "channels": 4,
+          "links": [
+            "Color->Math:Value"
+          ]
+        }
+      ]
+    }
+  ]
+}

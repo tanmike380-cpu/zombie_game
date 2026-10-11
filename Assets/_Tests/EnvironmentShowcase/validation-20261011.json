@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-11",
+  "status": "technical_checks_passed_visual_review_required",
+  "scope": "Independent environment preview; no gameplay or battle performance conclusion",
+  "unity": "6000.6.1f1 Built-in",
+  "device": "Apple M2 Pro (Mac14,9)",
+  "resolution": "1440x900",
+  "frame_rate_cap": 60,
+  "shadow_distance_metres": 45,
+  "shadow_cascades": 1,
+  "source_blend": "art/Blender主文件/ZombieGame_Environment.blend",
+  "source_sha256": "22cf18b836561446acae85f98b97086e40cac6ec23e88f91eebe05c8310ad56f",
+  "checks": ["Six-layer contribution", "Actual terrain slope", "Terrain shader and rendered pixels", "Source checksums", "Same-frame grass on/off pixels", "Same-frame rock on/off pixels"],
+  "biomes": [
+    {"id": "europe", "passed": true, "maximum_slope_degrees": 37.6381, "p95_ms_range": [16.6781, 17.5284]},
+    {"id": "mountains", "passed": true, "maximum_slope_degrees": 43.9750, "p95_ms_range": [17.2423, 17.5690]},
+    {"id": "winter", "passed": true, "maximum_slope_degrees": 37.6381, "p95_ms_range": [17.3146, 17.5929]},
+    {"id": "desert", "passed": true, "maximum_slope_degrees": 41.1185, "p95_ms_range": [17.2340, 17.3916]}
+  ],
+  "timing_note": "Six 180-frame near/middle/far grass on/off samples per biome; frame time includes 60Hz waiting; no slow-frame filtering",
+  "limitations": ["No approved snow trees, desert vegetation or regional medieval props; green vegetation disabled in winter/desert", "No height blending, wind or complex water", "Pure environment tests do not replace production navigation, combat or unit-feedback regression tests"],
+  "full_evidence": "Builds/ArtReview/EnvironmentShowcase/biomes-final/showcase-report.json",
+  "reproduce": "Launch EnvironmentShowcase.app with -showcaseCheck -showcaseBiome all -showcaseOutput <absolute-output-path> -screen-fullscreen 0 -screen-width 1440 -screen-height 900"
+}

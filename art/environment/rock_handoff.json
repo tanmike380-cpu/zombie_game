@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "status": "parent_approved_source_export",
+  "source_blend": "art/Blender主文件/ZombieGame_Environment.blend",
+  "source_sha256": "22cf18b836561446acae85f98b97086e40cac6ec23e88f91eebe05c8310ad56f",
+  "license": "CC0-1.0",
+  "license_url": "https://polyhaven.com/license",
+  "records": [
+    {
+      "id": "RockNatural",
+      "model_path": "Assets/_Tests/EnvironmentShowcase/Art/Vegetation/rock_07/RockNatural.fbx",
+      "model_sha256": "cd8ca213c177f0dd4ad6319ff9e326d8252dbaf4f90edc3506f490ed8fb6e704",
+      "source_blend": "art/Blender主文件/ZombieGame_Environment.blend",
+      "source_scene": "Scene",
+      "source_collection": "环境素材 · Poly Haven · RockNatural",
+      "source_object": "RockNatural",
+      "original_source": "art/environment/polyhaven-src/rock_07/rock_07_1k.blend",
+      "original_object": "rock_07_LOD2",
+      "original_sha256": "da8010774291c5d0acfbcc3b82b367be06c5ed0926640147de5f17371ef227d1",
+      "triangles": 3710,
+      "dimensions_blender_xyz_m": [
+        0.1689094454050064,
+        0.3205258250236511,
+        0.14360670745372772
+      ],
+      "dimensions_unity_xyz_m": [
+        0.1689094454050064,
+        0.14360670745372772,
+        0.3205258250236511
+      ],
+      "pivot_bounds_min": [
+        -0.0844552218914032,
+        -0.16026291251182556,
+        0.0
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "material_slots": [
+        "rock_07"
+      ],
+      "materials": [
+        {
+          "name": "rock_07",
+          "channels": {
+            "roughness": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Vegetation/rock_07/Textures/rock_07_rough_1k.png",
+              "sha256": "198f92ffce72d05bf993e26bca894c48f58c00f136debdf979bfbd4f579ac7bb",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "linear",
+              "component": "red"
+            },
+            "normal_gl": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Vegetation/rock_07/Textures/rock_07_nor_gl_1k.png",
+              "sha256": "f2294cbeaf0dc62991aea5cadca98a0fb1a47177f41f89db7671ae5323d2a705",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "linear",
+              "component": "rgb"
+            },
+            "base_color": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Vegetation/rock_07/Textures/rock_07_diff_1k.png",
+              "sha256": "86e26fcb23e53288e23b04a1aa92ce90ff717b7da7b7f4713af6827b7cc0f3f2",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "sRGB",
+              "component": "rgb"
+            }
+          },
+          "double_sided": true,
+          "alpha_mode": "opaque",
+          "alpha_cutoff": 0.5,
+          "metallic": 0,
+          "roughness_to_smoothness": "Unity converts once; smoothness=1-roughness"
+        }
+      ],
+      "lod_index": 0,
+      "lod_screen_relative_transition": null,
+      "placement_scale": 1,
+      "unit_m": 1,
+      "axis_forward": "-Z",
+      "axis_up": "Y",
+      "axis_conversion": "FBX baked once; Unity importer globalScale=1; no per-axis mesh refit"
+    }
+  ]
+}

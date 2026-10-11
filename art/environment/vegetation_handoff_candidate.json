@@ -1,0 +1,855 @@
+{
+  "schema_version": 1,
+  "status": "formal_category_source_test_only",
+  "preview_approval": "User confirmed separate formal environment category on 2026-10-11; portable v3 tree comparison visually approved by parent; asset integration remains limited to independent EnvironmentShowcase test",
+  "source_blend": "art/Blender主文件/ZombieGame_Environment.blend",
+  "source_sha256": "22cf18b836561446acae85f98b97086e40cac6ec23e88f91eebe05c8310ad56f",
+  "license": "CC0-1.0",
+  "license_url": "https://polyhaven.com/license",
+  "records": [
+    {
+      "id": "GrassBermuda",
+      "model_path": "Assets/_Tests/EnvironmentShowcase/Art/Vegetation/grass_bermuda_01/GrassBermuda.fbx",
+      "model_sha256": "6df639437e0232d28058bbfacd614f2b9c78cf7e821501f4ee42063f77064e4d",
+      "source_blend": "art/Blender主文件/ZombieGame_Environment.blend",
+      "source_scene": "Scene",
+      "source_collection": "环境素材 · Poly Haven · GrassBermuda",
+      "source_object": "GrassBermuda",
+      "original_source": "art/environment/polyhaven-src/grass_bermuda_01/grass_bermuda_01_1k.blend",
+      "original_object": "grass_bermuda_01_medium_e",
+      "original_sha256": "6ff15e278219947ce8013663f918fc3ae074f19157ace2f2dcfb3484e2e4e654",
+      "triangles": 24,
+      "dimensions_blender_xyz_m": [
+        0.06603642925620079,
+        0.03687525726854801,
+        0.082661472260952
+      ],
+      "dimensions_unity_xyz_m": [
+        0.06603642925620079,
+        0.082661472260952,
+        0.03687525726854801
+      ],
+      "pivot_bounds_min": [
+        -0.033018216490745544,
+        -0.01843762770295143,
+        0.0
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "material_slots": [
+        "grass_bermuda_01"
+      ],
+      "materials": [
+        {
+          "name": "grass_bermuda_01",
+          "channels": {
+            "base_color": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Vegetation/grass_bermuda_01/Textures/grass_bermuda_01_diff_1k.png",
+              "sha256": "7ea0fb20949e3f5ef6a4d0c17976ea929b875e4c71fa71cd76894883f0bb2f2b",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "sRGB",
+              "component": "rgb"
+            },
+            "roughness": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Vegetation/grass_bermuda_01/Textures/grass_bermuda_01_rough_1k.png",
+              "sha256": "e316fd8d508cd3afaf686cee2a7bee139f2461b85e5ddc4a8c456cad07363483",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "linear",
+              "component": "red"
+            },
+            "normal_gl": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Vegetation/grass_bermuda_01/Textures/grass_bermuda_01_nor_gl_1k.png",
+              "sha256": "a76b2da43fd741ffbf37e9fd7f37db241d6684afcbe84962dac08cfdc59ff385",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "linear",
+              "component": "rgb"
+            },
+            "alpha": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Vegetation/grass_bermuda_01/Textures/grass_bermuda_01_alpha_1k.png",
+              "sha256": "e58b3052aad2f107cdd763e437f80ed8fb5a31bcc43b44023f7f767cb3d9888e",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "linear",
+              "component": "red"
+            }
+          },
+          "double_sided": true,
+          "alpha_mode": "cutout",
+          "alpha_cutoff": 0.5,
+          "metallic": 0,
+          "roughness_to_smoothness": "Unity converts once; smoothness=1-roughness"
+        }
+      ],
+      "lod_index": 0,
+      "lod_screen_relative_transition": null,
+      "placement_scale": 1,
+      "unit_m": 1,
+      "axis_forward": "-Z",
+      "axis_up": "Y",
+      "axis_conversion": "FBX baked once; Unity importer globalScale=1; no per-axis mesh refit"
+    },
+    {
+      "id": "GrassMedium",
+      "model_path": "Assets/_Tests/EnvironmentShowcase/Art/Vegetation/grass_medium_01/GrassMedium.fbx",
+      "model_sha256": "fbb6c5d3f8b7da46ae17ceb14bed161bb923d31ddacdcc9137f746691dcc1385",
+      "source_blend": "art/Blender主文件/ZombieGame_Environment.blend",
+      "source_scene": "Scene",
+      "source_collection": "环境素材 · Poly Haven · GrassMedium",
+      "source_object": "GrassMedium",
+      "original_source": "art/environment/polyhaven-src/grass_medium_01/grass_medium_01_1k.blend",
+      "original_object": "grass_medium_01_tall_a_LOD1",
+      "original_sha256": "5bbeaf7161508c1de66f137e7fcaec6fdea9c4ac0faa134c384c89c97271bec2",
+      "triangles": 163,
+      "dimensions_blender_xyz_m": [
+        0.16095640510320663,
+        0.15853148698806763,
+        0.3225463926792145
+      ],
+      "dimensions_unity_xyz_m": [
+        0.16095640510320663,
+        0.3225463926792145,
+        0.15853148698806763
+      ],
+      "pivot_bounds_min": [
+        -0.08047808706760406,
+        -0.07926574349403381,
+        0.0
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "material_slots": [
+        "grass_medium_01"
+      ],
+      "materials": [
+        {
+          "name": "grass_medium_01",
+          "channels": {
+            "normal_gl": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Vegetation/grass_medium_01/Textures/grass_medium_01_nor_gl_1k.png",
+              "sha256": "33caffef5ef221202d9d3b79198093c9f53a5389ecb48e6bac98ce0faa1a2b65",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "linear",
+              "component": "rgb"
+            },
+            "alpha": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Vegetation/grass_medium_01/Textures/grass_medium_01_alpha_1k.png",
+              "sha256": "711a8e49af758d6a6ce1f610db858899a27be19da6d1866bd35c13bc7b8ffeff",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "linear",
+              "component": "red"
+            },
+            "roughness": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Vegetation/grass_medium_01/Textures/grass_medium_01_rough_1k.png",
+              "sha256": "f3daf51e960f8a5d253d4dd01904922ee73ae9a26f3a80f87646ea6c278942ec",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "linear",
+              "component": "red"
+            },
+            "base_color": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Vegetation/grass_medium_01/Textures/grass_medium_01_diff_1k.png",
+              "sha256": "420dfd0fe7392244360b6f9ae1ada8893512941f73091d94718c8409e8658106",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "sRGB",
+              "component": "rgb"
+            },
+            "base_color_dry_not_default": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Vegetation/grass_medium_01/Textures/grass_medium_01_dry_diff_1k.png",
+              "sha256": "da85639d6eb8f029b50e7920aaf7e649940541bb24fe6ad239dbae7400af2eb2",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "sRGB",
+              "component": "rgb"
+            }
+          },
+          "double_sided": true,
+          "alpha_mode": "cutout",
+          "alpha_cutoff": 0.5,
+          "metallic": 0,
+          "roughness_to_smoothness": "Unity converts once; smoothness=1-roughness"
+        }
+      ],
+      "lod_index": 0,
+      "lod_screen_relative_transition": null,
+      "placement_scale": 1,
+      "unit_m": 1,
+      "axis_forward": "-Z",
+      "axis_up": "Y",
+      "axis_conversion": "FBX baked once; Unity importer globalScale=1; no per-axis mesh refit"
+    },
+    {
+      "id": "ShrubA",
+      "model_path": "Assets/_Tests/EnvironmentShowcase/Art/Vegetation/shrub_02/ShrubA.fbx",
+      "model_sha256": "df89d2a808e241c010208f8f3611f1a1051287338592a48da9480fc6450e3971",
+      "source_blend": "art/Blender主文件/ZombieGame_Environment.blend",
+      "source_scene": "Scene",
+      "source_collection": "环境素材 · Poly Haven · ShrubA",
+      "source_object": "ShrubA",
+      "original_source": "art/environment/polyhaven-src/shrub_02/shrub_02_1k.blend",
+      "original_object": "shrub_02_a_LOD2",
+      "original_sha256": "56d0a66207ade193224ec2f1ca1996d35b415ec0fc3ec8fdd17574629d0ace7b",
+      "triangles": 2335,
+      "dimensions_blender_xyz_m": [
+        1.066114366054535,
+        1.3329291343688965,
+        1.3719556331634521
+      ],
+      "dimensions_unity_xyz_m": [
+        1.066114366054535,
+        1.3719556331634521,
+        1.3329291343688965
+      ],
+      "pivot_bounds_min": [
+        -0.5330568552017212,
+        -0.6664645671844482,
+        0.0
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "material_slots": [
+        "shrub_02"
+      ],
+      "materials": [
+        {
+          "name": "shrub_02",
+          "channels": {
+            "alpha": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Vegetation/shrub_02/Textures/shrub_02_alpha_1k.png",
+              "sha256": "5c2c31bac311051db77443e1780078403c2df0a832c40fe6ed7bcd982695cdf0",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "linear",
+              "component": "red"
+            },
+            "normal_gl": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Vegetation/shrub_02/Textures/shrub_02_nor_gl_1k.png",
+              "sha256": "5ffb3fdb60f5e91bad133095420e2f2a25c79eb2dc8989f674d263258b6cd527",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "linear",
+              "component": "rgb"
+            },
+            "roughness": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Vegetation/shrub_02/Textures/shrub_02_rough_1k.png",
+              "sha256": "fdb2187825f11843f7af402b23add48ebfb2c4d53b51f5e489ba4499edbe501b",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "linear",
+              "component": "red"
+            },
+            "base_color": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Vegetation/shrub_02/Textures/shrub_02_diff_1k.png",
+              "sha256": "d6f8bcbd221e9229bc8d831a0819717dd74d327cd7f66219de942b7d60d01876",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "sRGB",
+              "component": "rgb"
+            },
+            "source_mask": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Vegetation/shrub_02/Textures/shrub_02_mask_1k.png",
+              "sha256": "5079f3b1136b10f715934f401c7f75b3fa015e24c92680f8758e09f8f0cdf7e2",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "linear",
+              "component": "rgb"
+            }
+          },
+          "double_sided": true,
+          "alpha_mode": "cutout",
+          "alpha_cutoff": 0.5,
+          "metallic": 0,
+          "roughness_to_smoothness": "Unity converts once; smoothness=1-roughness"
+        }
+      ],
+      "lod_index": 0,
+      "lod_screen_relative_transition": null,
+      "placement_scale": 1,
+      "unit_m": 1,
+      "axis_forward": "-Z",
+      "axis_up": "Y",
+      "axis_conversion": "FBX baked once; Unity importer globalScale=1; no per-axis mesh refit"
+    },
+    {
+      "id": "ShrubB",
+      "model_path": "Assets/_Tests/EnvironmentShowcase/Art/Vegetation/shrub_02/ShrubB.fbx",
+      "model_sha256": "37cee3741c6f6e017d45cf0e36aae3f61bb14aa6011c6954db8aa3547b0b032e",
+      "source_blend": "art/Blender主文件/ZombieGame_Environment.blend",
+      "source_scene": "Scene",
+      "source_collection": "环境素材 · Poly Haven · ShrubB",
+      "source_object": "ShrubB",
+      "original_source": "art/environment/polyhaven-src/shrub_02/shrub_02_1k.blend",
+      "original_object": "shrub_02_b_LOD2",
+      "original_sha256": "56d0a66207ade193224ec2f1ca1996d35b415ec0fc3ec8fdd17574629d0ace7b",
+      "triangles": 1603,
+      "dimensions_blender_xyz_m": [
+        0.9021530449390411,
+        1.0400145053863525,
+        1.223717570421286
+      ],
+      "dimensions_unity_xyz_m": [
+        0.9021530449390411,
+        1.223717570421286,
+        1.0400145053863525
+      ],
+      "pivot_bounds_min": [
+        -0.45107558369636536,
+        -0.5200072526931763,
+        -1.1641532182693481e-10
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "material_slots": [
+        "shrub_02.001"
+      ],
+      "materials": [
+        {
+          "name": "shrub_02.001",
+          "channels": {
+            "alpha": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Vegetation/shrub_02/Textures/shrub_02_alpha_1k.png",
+              "sha256": "5c2c31bac311051db77443e1780078403c2df0a832c40fe6ed7bcd982695cdf0",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "linear",
+              "component": "red"
+            },
+            "normal_gl": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Vegetation/shrub_02/Textures/shrub_02_nor_gl_1k.png",
+              "sha256": "5ffb3fdb60f5e91bad133095420e2f2a25c79eb2dc8989f674d263258b6cd527",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "linear",
+              "component": "rgb"
+            },
+            "roughness": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Vegetation/shrub_02/Textures/shrub_02_rough_1k.png",
+              "sha256": "fdb2187825f11843f7af402b23add48ebfb2c4d53b51f5e489ba4499edbe501b",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "linear",
+              "component": "red"
+            },
+            "base_color": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Vegetation/shrub_02/Textures/shrub_02_diff_1k.png",
+              "sha256": "d6f8bcbd221e9229bc8d831a0819717dd74d327cd7f66219de942b7d60d01876",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "sRGB",
+              "component": "rgb"
+            },
+            "source_mask": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Vegetation/shrub_02/Textures/shrub_02_mask_1k.png",
+              "sha256": "5079f3b1136b10f715934f401c7f75b3fa015e24c92680f8758e09f8f0cdf7e2",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "linear",
+              "component": "rgb"
+            }
+          },
+          "double_sided": true,
+          "alpha_mode": "cutout",
+          "alpha_cutoff": 0.5,
+          "metallic": 0,
+          "roughness_to_smoothness": "Unity converts once; smoothness=1-roughness"
+        }
+      ],
+      "lod_index": 0,
+      "lod_screen_relative_transition": null,
+      "placement_scale": 1,
+      "unit_m": 1,
+      "axis_forward": "-Z",
+      "axis_up": "Y",
+      "axis_conversion": "FBX baked once; Unity importer globalScale=1; no per-axis mesh refit"
+    },
+    {
+      "id": "TreeSmall_LOD0",
+      "model_path": "Assets/_Tests/EnvironmentShowcase/Art/Vegetation/tree_small_02/TreeSmall_LOD0.fbx",
+      "model_sha256": "bb44363efc7984d8a8bc7ac86f97e1255211c850ca54d77104bbec234cacef2a",
+      "source_blend": "art/Blender主文件/ZombieGame_Environment.blend",
+      "source_scene": "Scene",
+      "source_collection": "环境素材 · Poly Haven · TreeSmall_LOD0",
+      "source_object": "TreeSmall_LOD0",
+      "original_source": "art/environment/polyhaven-src/tree_small_02/tree_small_02_1k.blend",
+      "original_object": "tree_small_02_LOD1",
+      "original_sha256": "af3fef6da3eb97057d9d4d3c4281c5944696b8d518715deddd8500482d30b1bd",
+      "triangles": 81035,
+      "dimensions_blender_xyz_m": [
+        2.9276723861694336,
+        4.301935195922852,
+        4.575848579406738
+      ],
+      "dimensions_unity_xyz_m": [
+        2.9276723861694336,
+        4.575848579406738,
+        4.301935195922852
+      ],
+      "pivot_bounds_min": [
+        -1.4638352394104004,
+        -2.150967597961426,
+        0.0
+      ],
+      "uv_layers": [
+        "UVMap",
+        "UV_map_01"
+      ],
+      "material_slots": [
+        "tree_small_02_trunk",
+        "tree_small_02_branches",
+        "tree_small_02_leaves"
+      ],
+      "materials": [
+        {
+          "name": "tree_small_02_trunk",
+          "channels": {
+            "base_color": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Vegetation/tree_small_02/Textures/tree_small_02_diff_1k.png",
+              "sha256": "b4306647da19edb4d856926b80ae80663419cba78e008deafe17a82eba70e405",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "sRGB",
+              "component": "rgb"
+            },
+            "roughness": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Vegetation/tree_small_02/Textures/tree_small_02_rough_1k.png",
+              "sha256": "2b5b1c0fe58543cd5d2e375668550042fd6a7f00e71cad45d156a9e77db6b0eb",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "linear",
+              "component": "red"
+            },
+            "normal_gl": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Vegetation/tree_small_02/Textures/tree_small_02_nor_gl_1k.png",
+              "sha256": "d1978a02903cc356e3bb7bf84788817e018a2fbab2ed95b8389be367fd3c4656",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "linear",
+              "component": "rgb"
+            }
+          },
+          "double_sided": true,
+          "alpha_mode": "opaque",
+          "alpha_cutoff": 0.5,
+          "metallic": 0,
+          "roughness_to_smoothness": "Unity converts once; smoothness=1-roughness"
+        },
+        {
+          "name": "tree_small_02_branches",
+          "channels": {
+            "base_color": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Vegetation/tree_small_02/Textures/tree_small_02_branch_diff_1k.png",
+              "sha256": "a93ce54213c4a98cd01cb5c5f7ab46b77defcd66e1dd082e6912f6e60632e630",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "sRGB",
+              "component": "rgb"
+            },
+            "roughness": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Vegetation/tree_small_02/Textures/tree_small_02_branch_rough_1k.png",
+              "sha256": "f285a54d141f30e39c7741e84a813c5cbccd9e9ee397af687176213f77d3e9a5",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "linear",
+              "component": "red"
+            },
+            "normal_gl": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Vegetation/tree_small_02/Textures/tree_small_02_branch_nor_gl_1k.png",
+              "sha256": "0338a1400391893fdf6c6cbd1c22a573d6ab2300ad771d4916184bf206e1a671",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "linear",
+              "component": "rgb"
+            }
+          },
+          "double_sided": true,
+          "alpha_mode": "opaque",
+          "alpha_cutoff": 0.5,
+          "metallic": 0,
+          "roughness_to_smoothness": "Unity converts once; smoothness=1-roughness"
+        },
+        {
+          "name": "tree_small_02_leaves",
+          "channels": {
+            "base_color": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Vegetation/tree_small_02/Textures/tree_small_02_leaves_diff_1k.png",
+              "sha256": "d3fc48522c76aa1f91076c6b86f302669822ebe4e2acabd67d42c4d57eaa5ba0",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "sRGB",
+              "component": "rgb"
+            },
+            "roughness": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Vegetation/tree_small_02/Textures/tree_small_02_leaves_rough_1k.png",
+              "sha256": "f005213467e38bcb355b00c9a6eb9896b8d810ee885d5c7fa308d9f3326ef602",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "linear",
+              "component": "red"
+            },
+            "normal_gl": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Vegetation/tree_small_02/Textures/tree_small_02_leaves_nor_gl_1k.png",
+              "sha256": "fa4ad390f2e68b745db8f568cad64c3272696c5e01312ae564795e37724d79b8",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "linear",
+              "component": "rgb"
+            },
+            "alpha": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Vegetation/tree_small_02/Textures/tree_small_02_leaves_alpha_1k.png",
+              "sha256": "4f143e2dda8a6a572f427ac378b92255d21761e4611de0d26e21816c01aa533b",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "linear",
+              "component": "red"
+            }
+          },
+          "double_sided": true,
+          "alpha_mode": "cutout",
+          "alpha_cutoff": 0.5,
+          "metallic": 0,
+          "roughness_to_smoothness": "Unity converts once; smoothness=1-roughness"
+        }
+      ],
+      "lod_index": 0,
+      "lod_screen_relative_transition": 0.18,
+      "placement_scale": 1,
+      "unit_m": 1,
+      "axis_forward": "-Z",
+      "axis_up": "Y",
+      "axis_conversion": "FBX baked once; Unity importer globalScale=1; no per-axis mesh refit"
+    },
+    {
+      "id": "TreeSmall_LOD1",
+      "model_path": "Assets/_Tests/EnvironmentShowcase/Art/Vegetation/tree_small_02/TreeSmall_LOD1.fbx",
+      "model_sha256": "0b0b94106f53bc24d8dc677f7b3297945ab1c7091e0a284c067a7b052d9a6783",
+      "source_blend": "art/Blender主文件/ZombieGame_Environment.blend",
+      "source_scene": "Scene",
+      "source_collection": "环境素材 · Poly Haven · TreeSmall_LOD1",
+      "source_object": "TreeSmall_LOD1",
+      "original_source": "art/environment/polyhaven-src/tree_small_02/tree_small_02_1k.blend",
+      "original_object": "tree_small_02_LOD1",
+      "original_sha256": "af3fef6da3eb97057d9d4d3c4281c5944696b8d518715deddd8500482d30b1bd",
+      "triangles": 46542,
+      "dimensions_blender_xyz_m": [
+        2.9276723861694336,
+        4.301935195922852,
+        4.583409786224365
+      ],
+      "dimensions_unity_xyz_m": [
+        2.9276723861694336,
+        4.583409786224365,
+        4.301935195922852
+      ],
+      "pivot_bounds_min": [
+        -1.4638352394104004,
+        -2.150967597961426,
+        0.0
+      ],
+      "uv_layers": [
+        "UVMap",
+        "UV_map_01"
+      ],
+      "material_slots": [
+        "tree_small_02_trunk.001",
+        "tree_small_02_branches.001",
+        "tree_small_02_leaves.001"
+      ],
+      "materials": [
+        {
+          "name": "tree_small_02_trunk.001",
+          "channels": {
+            "base_color": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Vegetation/tree_small_02/Textures/tree_small_02_diff_1k.png",
+              "sha256": "b4306647da19edb4d856926b80ae80663419cba78e008deafe17a82eba70e405",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "sRGB",
+              "component": "rgb"
+            },
+            "roughness": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Vegetation/tree_small_02/Textures/tree_small_02_rough_1k.png",
+              "sha256": "2b5b1c0fe58543cd5d2e375668550042fd6a7f00e71cad45d156a9e77db6b0eb",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "linear",
+              "component": "red"
+            },
+            "normal_gl": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Vegetation/tree_small_02/Textures/tree_small_02_nor_gl_1k.png",
+              "sha256": "d1978a02903cc356e3bb7bf84788817e018a2fbab2ed95b8389be367fd3c4656",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "linear",
+              "component": "rgb"
+            }
+          },
+          "double_sided": true,
+          "alpha_mode": "opaque",
+          "alpha_cutoff": 0.5,
+          "metallic": 0,
+          "roughness_to_smoothness": "Unity converts once; smoothness=1-roughness"
+        },
+        {
+          "name": "tree_small_02_branches.001",
+          "channels": {
+            "base_color": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Vegetation/tree_small_02/Textures/tree_small_02_branch_diff_1k.png",
+              "sha256": "a93ce54213c4a98cd01cb5c5f7ab46b77defcd66e1dd082e6912f6e60632e630",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "sRGB",
+              "component": "rgb"
+            },
+            "roughness": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Vegetation/tree_small_02/Textures/tree_small_02_branch_rough_1k.png",
+              "sha256": "f285a54d141f30e39c7741e84a813c5cbccd9e9ee397af687176213f77d3e9a5",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "linear",
+              "component": "red"
+            },
+            "normal_gl": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Vegetation/tree_small_02/Textures/tree_small_02_branch_nor_gl_1k.png",
+              "sha256": "0338a1400391893fdf6c6cbd1c22a573d6ab2300ad771d4916184bf206e1a671",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "linear",
+              "component": "rgb"
+            }
+          },
+          "double_sided": true,
+          "alpha_mode": "opaque",
+          "alpha_cutoff": 0.5,
+          "metallic": 0,
+          "roughness_to_smoothness": "Unity converts once; smoothness=1-roughness"
+        },
+        {
+          "name": "tree_small_02_leaves.001",
+          "channels": {
+            "base_color": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Vegetation/tree_small_02/Textures/tree_small_02_leaves_diff_1k.png",
+              "sha256": "d3fc48522c76aa1f91076c6b86f302669822ebe4e2acabd67d42c4d57eaa5ba0",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "sRGB",
+              "component": "rgb"
+            },
+            "roughness": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Vegetation/tree_small_02/Textures/tree_small_02_leaves_rough_1k.png",
+              "sha256": "f005213467e38bcb355b00c9a6eb9896b8d810ee885d5c7fa308d9f3326ef602",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "linear",
+              "component": "red"
+            },
+            "normal_gl": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Vegetation/tree_small_02/Textures/tree_small_02_leaves_nor_gl_1k.png",
+              "sha256": "fa4ad390f2e68b745db8f568cad64c3272696c5e01312ae564795e37724d79b8",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "linear",
+              "component": "rgb"
+            },
+            "alpha": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Vegetation/tree_small_02/Textures/tree_small_02_leaves_alpha_1k.png",
+              "sha256": "4f143e2dda8a6a572f427ac378b92255d21761e4611de0d26e21816c01aa533b",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "linear",
+              "component": "red"
+            }
+          },
+          "double_sided": true,
+          "alpha_mode": "cutout",
+          "alpha_cutoff": 0.5,
+          "metallic": 0,
+          "roughness_to_smoothness": "Unity converts once; smoothness=1-roughness"
+        }
+      ],
+      "lod_index": 1,
+      "lod_screen_relative_transition": 0.015,
+      "placement_scale": 1,
+      "unit_m": 1,
+      "axis_forward": "-Z",
+      "axis_up": "Y",
+      "axis_conversion": "FBX baked once; Unity importer globalScale=1; no per-axis mesh refit"
+    },
+    {
+      "id": "RockNatural",
+      "model_path": "Assets/_Tests/EnvironmentShowcase/Art/Vegetation/rock_07/RockNatural.fbx",
+      "model_sha256": "cd8ca213c177f0dd4ad6319ff9e326d8252dbaf4f90edc3506f490ed8fb6e704",
+      "source_blend": "art/Blender主文件/ZombieGame_Environment.blend",
+      "source_scene": "Scene",
+      "source_collection": "环境素材 · Poly Haven · RockNatural",
+      "source_object": "RockNatural",
+      "original_source": "art/environment/polyhaven-src/rock_07/rock_07_1k.blend",
+      "original_object": "rock_07_LOD2",
+      "original_sha256": "da8010774291c5d0acfbcc3b82b367be06c5ed0926640147de5f17371ef227d1",
+      "triangles": 3710,
+      "dimensions_blender_xyz_m": [
+        0.1689094454050064,
+        0.3205258250236511,
+        0.14360670745372772
+      ],
+      "dimensions_unity_xyz_m": [
+        0.1689094454050064,
+        0.14360670745372772,
+        0.3205258250236511
+      ],
+      "pivot_bounds_min": [
+        -0.0844552218914032,
+        -0.16026291251182556,
+        0.0
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "material_slots": [
+        "rock_07"
+      ],
+      "materials": [
+        {
+          "name": "rock_07",
+          "channels": {
+            "roughness": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Vegetation/rock_07/Textures/rock_07_rough_1k.png",
+              "sha256": "198f92ffce72d05bf993e26bca894c48f58c00f136debdf979bfbd4f579ac7bb",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "linear",
+              "component": "red"
+            },
+            "normal_gl": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Vegetation/rock_07/Textures/rock_07_nor_gl_1k.png",
+              "sha256": "f2294cbeaf0dc62991aea5cadca98a0fb1a47177f41f89db7671ae5323d2a705",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "linear",
+              "component": "rgb"
+            },
+            "base_color": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Vegetation/rock_07/Textures/rock_07_diff_1k.png",
+              "sha256": "86e26fcb23e53288e23b04a1aa92ce90ff717b7da7b7f4713af6827b7cc0f3f2",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "sRGB",
+              "component": "rgb"
+            }
+          },
+          "double_sided": true,
+          "alpha_mode": "opaque",
+          "alpha_cutoff": 0.5,
+          "metallic": 0,
+          "roughness_to_smoothness": "Unity converts once; smoothness=1-roughness"
+        }
+      ],
+      "lod_index": 0,
+      "lod_screen_relative_transition": null,
+      "placement_scale": 1,
+      "unit_m": 1,
+      "axis_forward": "-Z",
+      "axis_up": "Y",
+      "axis_conversion": "FBX baked once; Unity importer globalScale=1; no per-axis mesh refit"
+    }
+  ],
+  "source_extension_validation": {
+    "report": "art/environment/rock_category_validation.json",
+    "recovery_snapshot": "art/environment/snapshots/before-native-rock-20261011-152917.blend",
+    "previous_source_sha256": "4f44271e2a3c80d6e74fc4468c6df558e2d53744a5cdda0c539192e57abf7a1f",
+    "existing_objects_unchanged": 6,
+    "packed_images": 42
+  }
+}

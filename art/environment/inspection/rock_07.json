@@ -1,0 +1,361 @@
+{
+  "source_blend": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/rock_07/rock_07_1k.blend",
+  "source_sha256": "da8010774291c5d0acfbcc3b82b367be06c5ed0926640147de5f17371ef227d1",
+  "blender_version": "5.2.2 LTS",
+  "active_scene": "Scene",
+  "unit_scale": 1.0,
+  "scenes": [
+    "Scene"
+  ],
+  "collections": [
+    {
+      "name": "rock_07",
+      "children": [
+        "rock_07_LOD0",
+        "rock_07_LOD1",
+        "rock_07_LOD2",
+        "rock_07_LOD3"
+      ],
+      "objects": [],
+      "hide_viewport": false,
+      "hide_render": false
+    },
+    {
+      "name": "rock_07_LOD0",
+      "children": [],
+      "objects": [
+        "rock_07_LOD0"
+      ],
+      "hide_viewport": false,
+      "hide_render": false
+    },
+    {
+      "name": "rock_07_LOD1",
+      "children": [],
+      "objects": [
+        "rock_07_LOD1"
+      ],
+      "hide_viewport": false,
+      "hide_render": false
+    },
+    {
+      "name": "rock_07_LOD2",
+      "children": [],
+      "objects": [
+        "rock_07_LOD2"
+      ],
+      "hide_viewport": false,
+      "hide_render": false
+    },
+    {
+      "name": "rock_07_LOD3",
+      "children": [],
+      "objects": [
+        "rock_07_LOD3"
+      ],
+      "hide_viewport": false,
+      "hide_render": false
+    }
+  ],
+  "meshes": [
+    {
+      "name": "rock_07_LOD0",
+      "mesh": "realCap_Model_3",
+      "vertices": 7424,
+      "triangles": 14844,
+      "evaluated_triangles": 14844,
+      "bounds_min": [
+        -0.0875801146030426,
+        -0.14230197668075562,
+        -0.00190715491771698
+      ],
+      "bounds_max": [
+        0.08130179345607758,
+        0.17797498404979706,
+        0.1418129950761795
+      ],
+      "dimensions_m": [
+        0.16888190805912018,
+        0.3202769607305527,
+        0.14372014999389648
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "rock_07_LOD0"
+      ],
+      "modifiers": [],
+      "materials": [
+        "rock_07"
+      ]
+    },
+    {
+      "name": "rock_07_LOD1",
+      "mesh": "realCap_Model_3.001",
+      "vertices": 3713,
+      "triangles": 7422,
+      "evaluated_triangles": 7422,
+      "bounds_min": [
+        -0.0877075120806694,
+        -0.14226286113262177,
+        -0.001918363501317799
+      ],
+      "bounds_max": [
+        0.08125954121351242,
+        0.17789262533187866,
+        0.14185582101345062
+      ],
+      "dimensions_m": [
+        0.16896705329418182,
+        0.3201554864645004,
+        0.14377418451476842
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "rock_07_LOD1"
+      ],
+      "modifiers": [],
+      "materials": [
+        "rock_07"
+      ]
+    },
+    {
+      "name": "rock_07_LOD2",
+      "mesh": "realCap_Model_3.002",
+      "vertices": 1857,
+      "triangles": 3710,
+      "evaluated_triangles": 3710,
+      "bounds_min": [
+        -0.08751460909843445,
+        -0.1423892080783844,
+        -0.0017508829478174448
+      ],
+      "bounds_max": [
+        0.08139483630657196,
+        0.17813661694526672,
+        0.14185582101345062
+      ],
+      "dimensions_m": [
+        0.1689094454050064,
+        0.3205258250236511,
+        0.14360670396126807
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "rock_07_LOD2"
+      ],
+      "modifiers": [],
+      "materials": [
+        "rock_07"
+      ]
+    },
+    {
+      "name": "rock_07_LOD3",
+      "mesh": "realCap_Model_3.003",
+      "vertices": 929,
+      "triangles": 1854,
+      "evaluated_triangles": 1854,
+      "bounds_min": [
+        -0.08746284246444702,
+        -0.1424175649881363,
+        -0.0018158613238483667
+      ],
+      "bounds_max": [
+        0.08072105050086975,
+        0.17813661694526672,
+        0.14185582101345062
+      ],
+      "dimensions_m": [
+        0.16818389296531677,
+        0.320554181933403,
+        0.143671682337299
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "collections": [
+        "rock_07_LOD3"
+      ],
+      "modifiers": [],
+      "materials": [
+        "rock_07"
+      ]
+    }
+  ],
+  "materials": [
+    {
+      "name": "rock_07",
+      "surface_render_method": "DITHERED",
+      "blend_method": "HASHED",
+      "use_backface_culling": false,
+      "images": [
+        {
+          "node": "Image Texture.002",
+          "image": "rock_07_rough.png",
+          "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/rock_07/textures/rock_07_rough_1k.exr",
+          "exists": true,
+          "size": [
+            1024,
+            1024
+          ],
+          "colorspace": "Non-Color",
+          "channels": 4,
+          "links": [
+            "Color->Principled BSDF:Roughness"
+          ]
+        },
+        {
+          "node": "Image Texture.003",
+          "image": "rock_07_nor_gl.png",
+          "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/rock_07/textures/rock_07_nor_gl_1k.exr",
+          "exists": true,
+          "size": [
+            1024,
+            1024
+          ],
+          "colorspace": "Non-Color",
+          "channels": 4,
+          "links": [
+            "Color->Normal Map:Color"
+          ]
+        },
+        {
+          "node": "Image Texture.001",
+          "image": "rock_07_diff.png",
+          "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/rock_07/textures/rock_07_diff_1k.jpg",
+          "exists": true,
+          "size": [
+            1024,
+            1024
+          ],
+          "colorspace": "sRGB",
+          "channels": 4,
+          "links": [
+            "Color->Principled BSDF:Base Color"
+          ]
+        }
+      ]
+    }
+  ]
+}
