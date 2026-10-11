@@ -215,6 +215,9 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("command", choices=("validate", "publish"))
     args = parser.parse_args()
+    if (REVISION_ROOT / "retired.json").exists():
+        parser.error("Cool revision was retired by user request; use tools.art.headquarters_review. "
+                     "Historical files are in Builds/ArtReview/ConceptBackups or Git commit 67b013e.")
     assets, blocked = load_fragments()
     validate_assets(assets, blocked)
     if args.command == "publish":

@@ -1,0 +1,358 @@
+{
+  "schema_version": 1,
+  "status": "complete_review_candidate",
+  "scope": "BYZANTINE3HQ warm restoration; ordinary buildings and infantry untouched",
+  "footprint_and_scale_note": "5×5同占地、门窗和镜头尺度一致是概念视觉约束与暂定设计目标，不是精确测绘或经过三维模型验证的实际尺寸。",
+  "source_mapping_note": "views.source是该视角实际使用的冷稿v4原图；三视图机械拼入layout-input.png后作为image_gen的第一个输入。第二输入warm-palette-input.png由palette_sources三个旧暖稿视角机械拼接；时代3第三输入是本轮时代2generated-sheet.png。没有像素调色。",
+  "assets": [
+    {
+      "id": "buildings/byzantine/01-hq-age1",
+      "label": "拜占庭主基地·时代1",
+      "views": [
+        {
+          "name": "front-perspective",
+          "path": "byzantine/01-hq-age1/front-perspective.png",
+          "source": "art/concepts/2026-10-11-warm-headquarters/reference-inputs/byzantine/01-hq-age1/front-perspective.png",
+          "source_sha256": "e14495c9a8c8c027b02318c850bebbd2288538a2515b2e1df25ce94536116d8d",
+          "crop_box": [
+            0,
+            0,
+            724,
+            724
+          ],
+          "width": 764,
+          "height": 764,
+          "sha256": "62ff3fc78d304ff05165513a6b8bee4e680ab0b42cedd0f438adfe8345bdb3f8",
+          "original_source": "art/concepts/2026-10-11-cool-revision/buildings/byzantine/01-hq-age1/v4/front-perspective.png"
+        },
+        {
+          "name": "side",
+          "path": "byzantine/01-hq-age1/side.png",
+          "source": "art/concepts/2026-10-11-warm-headquarters/reference-inputs/byzantine/01-hq-age1/side.png",
+          "source_sha256": "616ee9d5f9ce4cb9031a2fbedb1d16d208671ac596d834a4a02f61cf70cade56",
+          "crop_box": [
+            724,
+            0,
+            1448,
+            724
+          ],
+          "width": 764,
+          "height": 764,
+          "sha256": "23c66888ce744d0d887d240a66abeec2ee529e1f0569f572a43efc9fb619b0c0",
+          "original_source": "art/concepts/2026-10-11-cool-revision/buildings/byzantine/01-hq-age1/v4/side.png"
+        },
+        {
+          "name": "rear-perspective",
+          "path": "byzantine/01-hq-age1/rear-perspective.png",
+          "source": "art/concepts/2026-10-11-warm-headquarters/reference-inputs/byzantine/01-hq-age1/rear-perspective.png",
+          "source_sha256": "423e4404df7473120f9f8d02a1b3b3ef54d22539652cf58cbb48f3ad8f7abe6c",
+          "crop_box": [
+            1448,
+            0,
+            2172,
+            724
+          ],
+          "width": 764,
+          "height": 764,
+          "sha256": "59d7fd41f40396808d61e5b5536c16a29a146c50ec69d9812e6eed7e3535e0ad",
+          "original_source": "art/concepts/2026-10-11-cool-revision/buildings/byzantine/01-hq-age1/v4/rear-perspective.png"
+        }
+      ],
+      "sheet": "byzantine/01-hq-age1/generated-sheet.png",
+      "sheet_sha256": "abc4c93dcc3586a913d11151af9998ac2cd00b9e0a4f92ca739e0b68c26fff4e",
+      "native_sheet_dimensions": [
+        2172,
+        724
+      ],
+      "footprint_tiles": [
+        5,
+        5
+      ],
+      "footprint_provisional": true,
+      "palette_sources": [
+        {
+          "path": "art/concepts/2026-10-11-warm-headquarters/reference-inputs/byzantine/01-hq-age1/palette-front-perspective.png",
+          "sha256": "4d4a46e4dc1d08fb2c9acbe078a199aa71062f511d60602a249c77f956605118",
+          "original_path": "art/concepts/tripo/buildings/byzantine/01-hq-age1/front-perspective.png"
+        },
+        {
+          "path": "art/concepts/2026-10-11-warm-headquarters/reference-inputs/byzantine/01-hq-age1/palette-side.png",
+          "sha256": "078e3be4843d9ae41b10e9618cc655d1708882238dd48effdefef1a5621d1c91",
+          "original_path": "art/concepts/tripo/buildings/byzantine/01-hq-age1/side.png"
+        },
+        {
+          "path": "art/concepts/2026-10-11-warm-headquarters/reference-inputs/byzantine/01-hq-age1/palette-rear-perspective.png",
+          "sha256": "09ed3e545b1fac17df21f36d53218fd9e071e61a25edff0a7b634798871518b5",
+          "original_path": "art/concepts/tripo/buildings/byzantine/01-hq-age1/rear-perspective.png"
+        }
+      ],
+      "packed_inputs": [
+        {
+          "path": "byzantine/01-hq-age1/layout-input.png",
+          "sha256": "bd6518c6c49b4eaf7e781f93eea015fb3ea377f06cf10be2035ab8a6b89ef54e",
+          "dimensions": [
+            3072,
+            1024
+          ],
+          "role": "mechanical reference packing only"
+        },
+        {
+          "path": "byzantine/01-hq-age1/warm-palette-input.png",
+          "sha256": "53d42c1b5bb263dc53e5d04e4eb266a55e2dbee94533f6550b62b383200231be",
+          "dimensions": [
+            3072,
+            1024
+          ],
+          "role": "mechanical reference packing only"
+        }
+      ],
+      "prompt": "Use case: precise-object-edit. Asset: Byzantine headquarters AGE ONE game-model concept with three consistent views. Image 1 is the exact target layout and shape reference: preserve every structure, building position, sparse courtyard, roof form, door/window dimensions, stone plot border, plants, purple banners, and camera angles. Image 2 is ONLY a warm MATERIAL/COLOR reference, NOT a geometry reference. Restore the richly natural warm historical palette from image 2 onto image 1: gently warm ivory/beige-gray limestone and plaster, natural medium brown wood, warm muted burnt-terracotta clay roof tiles, deep purple cloth with muted gold THREAD embroidery. Clear stone texture and restrained warm ambient light, not bleached white, not strongly yellow, not a cold blue wash. Shadows stay neutral natural gray. Do NOT import Image 2's palace, statues, huge arches, large footprint or metal ornaments. Absolutely no metal roofs, metal wall cladding, metallic domes, gilded architectural ornaments. Keep AGE ONE the small timber/plaster hamlet with lots of open courtyard on a square provisional 5 by 5 tile plot. This is palette restoration only, zero architectural redesign or enlargement. Composition: exactly three equal square panels in a 3:1 horizontal sheet, left elevated front three-quarter, middle TRUE 90-degree side elevation as image 1 (three windows on the side wall; no front entry), right elevated rear three-quarter. Maintain same asset in all three panels, full base visible, generous margin, no labels, no text, no watermark. Crisp detailed RTS building concept, request native approx3072x1024 or higher; do not invent fourth panel.",
+      "generation_metadata": {
+        "tool": "built-in image_gen",
+        "output_hint": "Generated images are saved to /Users/tankaixi/.codex/generated_images/01a12728-34cb-7b22-b679-73b8fae84a4d as /Users/tankaixi/.codex/generated_images/01a12728-34cb-7b22-b679-73b8fae84a4d/exec-432a1edf-980d-44a3-9646-9b2cf688aa3f.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+      },
+      "visual_review": {
+        "status": "review_candidate",
+        "palette": "暖米灰石材、棕木、赤陶、紫布金绣线；非纯白/黄沙/冷蓝。",
+        "composition": "front-perspective / true right-side elevation / rear-perspective; all plot borders visible.",
+        "architecture": "保留原布局、疏密与门窗尺度，仅恢复暖色材质。",
+        "metal": "无金属屋顶/墙面/建筑装饰；穹顶为陶瓦，阵营紫金通过布与绣线。",
+        "limitations": "AI概念图，不是精确CAD/三维正交验收；角度间小细节需建模时校准。",
+        "resolution": "native2172×724 sheet; each native724×724 crop plus20pxpadding=764×764; no upscaling."
+      }
+    },
+    {
+      "id": "buildings/byzantine/02-hq-age2",
+      "label": "拜占庭主基地·时代2",
+      "views": [
+        {
+          "name": "front-perspective",
+          "path": "byzantine/02-hq-age2/front-perspective.png",
+          "source": "art/concepts/2026-10-11-warm-headquarters/reference-inputs/byzantine/02-hq-age2/front-perspective.png",
+          "source_sha256": "b7a50bcda7414a3ce65b23541044b001c9a4180514be226430e0017c603e6b9c",
+          "crop_box": [
+            0,
+            0,
+            724,
+            724
+          ],
+          "width": 764,
+          "height": 764,
+          "sha256": "a485b0fce056dc1447437982a9c0548ca6f829fb4f27aab0082b3572815559d1",
+          "original_source": "art/concepts/2026-10-11-cool-revision/buildings/byzantine/02-hq-age2/v4/front-perspective.png"
+        },
+        {
+          "name": "side",
+          "path": "byzantine/02-hq-age2/side.png",
+          "source": "art/concepts/2026-10-11-warm-headquarters/reference-inputs/byzantine/02-hq-age2/side.png",
+          "source_sha256": "688cf5957e415cf9faa95660adabe03b1e6a6acba2077c0d51a3f21db0c52a84",
+          "crop_box": [
+            724,
+            0,
+            1448,
+            724
+          ],
+          "width": 764,
+          "height": 764,
+          "sha256": "d03512d157a746a6ebc139223bc1f1ba5f0e679554dd6ca3f19b421f5db274b3",
+          "original_source": "art/concepts/2026-10-11-cool-revision/buildings/byzantine/02-hq-age2/v4/side.png"
+        },
+        {
+          "name": "rear-perspective",
+          "path": "byzantine/02-hq-age2/rear-perspective.png",
+          "source": "art/concepts/2026-10-11-warm-headquarters/reference-inputs/byzantine/02-hq-age2/rear-perspective.png",
+          "source_sha256": "d9d76d3fc7f36043e7646e0fdbf2e952fb1ab346044e7880546b71df9ccb14f7",
+          "crop_box": [
+            1448,
+            0,
+            2172,
+            724
+          ],
+          "width": 764,
+          "height": 764,
+          "sha256": "d10261d4fd7290d3f5a92f53fb5b2e63ffa0f85a77963021b31fa77b0f7c6542",
+          "original_source": "art/concepts/2026-10-11-cool-revision/buildings/byzantine/02-hq-age2/v4/rear-perspective.png"
+        }
+      ],
+      "sheet": "byzantine/02-hq-age2/generated-sheet.png",
+      "sheet_sha256": "a349333339d7ce08f8a45787ed50e8e204f34a70daa32e60d26a6aa4e95833e2",
+      "native_sheet_dimensions": [
+        2172,
+        724
+      ],
+      "footprint_tiles": [
+        5,
+        5
+      ],
+      "footprint_provisional": true,
+      "palette_sources": [
+        {
+          "path": "art/concepts/2026-10-11-warm-headquarters/reference-inputs/byzantine/02-hq-age2/palette-front-perspective.png",
+          "sha256": "13271b33ed0bbeab06dc4d8b4ad5554516308a43781e313459dd2bc8c3b475ec",
+          "original_path": "art/concepts/tripo/buildings/byzantine/02-hq-age2/front-perspective.png"
+        },
+        {
+          "path": "art/concepts/2026-10-11-warm-headquarters/reference-inputs/byzantine/02-hq-age2/palette-side.png",
+          "sha256": "b6b8c3a297212164679d2000b005330a71d7ff186352f943bca57171fc138693",
+          "original_path": "art/concepts/tripo/buildings/byzantine/02-hq-age2/side.png"
+        },
+        {
+          "path": "art/concepts/2026-10-11-warm-headquarters/reference-inputs/byzantine/02-hq-age2/palette-rear-perspective.png",
+          "sha256": "ad8daf3fc31bed94c925c18f00831bd50dc77c3b2c6a967b7c24756a7f6fa314",
+          "original_path": "art/concepts/tripo/buildings/byzantine/02-hq-age2/rear-perspective.png"
+        }
+      ],
+      "packed_inputs": [
+        {
+          "path": "byzantine/02-hq-age2/layout-input.png",
+          "sha256": "e9a370bb509530cf941604ea2669031578bd7dfed4dda8debf506609c11550ec",
+          "dimensions": [
+            3072,
+            1024
+          ],
+          "role": "mechanical reference packing only"
+        },
+        {
+          "path": "byzantine/02-hq-age2/warm-palette-input.png",
+          "sha256": "b5c11a17d69bcfdfe06dd63dc2535aec9ccf898ca007e3a6678883f9a4b7b9d5",
+          "dimensions": [
+            3072,
+            1024
+          ],
+          "role": "mechanical reference packing only"
+        }
+      ],
+      "prompt": "Use case: precise-object-edit. Asset: Byzantine headquarters AGE TWO game-model concept with three consistent views. Image 1 is the exact target layout and shape reference: preserve every structure, building position, sparse courtyard, roof form, door/window dimensions, stone plot border, plants, purple banners, and camera angles. Image 2 is ONLY a warm MATERIAL/COLOR reference, NOT a geometry reference. Restore the richly natural warm historical palette from image 2 onto image 1: gently warm ivory/beige-gray limestone and plaster, natural medium brown wood, warm muted burnt-terracotta clay roof tiles, deep purple cloth with muted gold THREAD embroidery. Clear stone texture and restrained warm ambient light, not bleached white, not strongly yellow, not a cold blue wash. Shadows stay neutral natural gray. Do NOT import Image 2's palace, statues, huge arches, large footprint or metal ornaments. Absolutely no metal roofs, metal wall cladding, metallic domes, gilded architectural ornaments. Keep AGE TWO the intermediate two-storey timber-and-stone town with the exact existing courtyard and outbuildings on a square provisional 5 by 5 tile plot. This is palette restoration only, zero architectural redesign or enlargement. Composition: exactly three equal square panels in a 3:1 horizontal sheet, left elevated front three-quarter, middle TRUE 90-degree side elevation as image 1 (three windows on the side wall; no front entry), right elevated rear three-quarter. Maintain same asset in all three panels, full base visible, generous margin, no labels, no text, no watermark. Crisp detailed RTS building concept, request native approx3072x1024 or higher; do not invent fourth panel.",
+      "generation_metadata": {
+        "tool": "built-in image_gen",
+        "output_hint": "Generated images are saved to /Users/tankaixi/.codex/generated_images/01a12728-34cb-7b22-b679-73b8fae84a4d as /Users/tankaixi/.codex/generated_images/01a12728-34cb-7b22-b679-73b8fae84a4d/exec-3f0e66f5-7867-4310-851b-41d9baee67c5.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+      },
+      "visual_review": {
+        "status": "review_candidate",
+        "palette": "暖米灰石材、棕木、赤陶、紫布金绣线；非纯白/黄沙/冷蓝。",
+        "composition": "front-perspective / true right-side elevation / rear-perspective; all plot borders visible.",
+        "architecture": "保留原布局、疏密与门窗尺度，仅恢复暖色材质。",
+        "metal": "无金属屋顶/墙面/建筑装饰；穹顶为陶瓦，阵营紫金通过布与绣线。",
+        "limitations": "AI概念图，不是精确CAD/三维正交验收；角度间小细节需建模时校准。",
+        "resolution": "native2172×724 sheet; each native724×724 crop plus20pxpadding=764×764; no upscaling."
+      }
+    },
+    {
+      "id": "buildings/byzantine/03-hq-age3",
+      "label": "拜占庭主基地·时代3",
+      "views": [
+        {
+          "name": "front-perspective",
+          "path": "byzantine/03-hq-age3/front-perspective.png",
+          "source": "art/concepts/2026-10-11-warm-headquarters/reference-inputs/byzantine/03-hq-age3/front-perspective.png",
+          "source_sha256": "89ff3b48314f28a3c743da0c064f7d671294612d1e16b75b3556b26adb675bf2",
+          "crop_box": [
+            0,
+            0,
+            724,
+            724
+          ],
+          "width": 764,
+          "height": 764,
+          "sha256": "bd2bd1706f9d33c09ca75f3b14a08eaa8058f8f2437b706584781ae25633a393",
+          "original_source": "art/concepts/2026-10-11-cool-revision/buildings/byzantine/03-hq-age3/v4/front-perspective.png"
+        },
+        {
+          "name": "side",
+          "path": "byzantine/03-hq-age3/side.png",
+          "source": "art/concepts/2026-10-11-warm-headquarters/reference-inputs/byzantine/03-hq-age3/side.png",
+          "source_sha256": "597a3c51125ccab2aadb40a27e215beaabefd67b222c084c4fb39e57082b9a9f",
+          "crop_box": [
+            724,
+            0,
+            1448,
+            724
+          ],
+          "width": 764,
+          "height": 764,
+          "sha256": "89ecaa8d869bcc617eed4840ca4a290dc2b90d3cd0c4e54ae557659231126023",
+          "original_source": "art/concepts/2026-10-11-cool-revision/buildings/byzantine/03-hq-age3/v4/side.png"
+        },
+        {
+          "name": "rear-perspective",
+          "path": "byzantine/03-hq-age3/rear-perspective.png",
+          "source": "art/concepts/2026-10-11-warm-headquarters/reference-inputs/byzantine/03-hq-age3/rear-perspective.png",
+          "source_sha256": "7d816aa4a3c6087890fe01c4e5421fe8cb98351fea1e1bd9721153a704366d4d",
+          "crop_box": [
+            1448,
+            0,
+            2172,
+            724
+          ],
+          "width": 764,
+          "height": 764,
+          "sha256": "3f8e70a6e0ae8c9267ff9a62cc0dacc6bd789399dd7b7edafc4a2c4bced98d74",
+          "original_source": "art/concepts/2026-10-11-cool-revision/buildings/byzantine/03-hq-age3/v4/rear-perspective.png"
+        }
+      ],
+      "sheet": "byzantine/03-hq-age3/generated-sheet.png",
+      "sheet_sha256": "dfb366170a0041d80bd1b6b51da5e4798d88910001cc65aa0bf8ddc438c5b515",
+      "native_sheet_dimensions": [
+        2172,
+        724
+      ],
+      "footprint_tiles": [
+        5,
+        5
+      ],
+      "footprint_provisional": true,
+      "palette_sources": [
+        {
+          "path": "art/concepts/2026-10-11-warm-headquarters/reference-inputs/byzantine/03-hq-age3/palette-front-perspective.png",
+          "sha256": "a0cdb167b0ab45a91a64a4cd915ea02676f4d171a3e6c1e9ca0a971b90a6dee6",
+          "original_path": "art/concepts/tripo/buildings/byzantine/03-hq-age3/front-perspective.png"
+        },
+        {
+          "path": "art/concepts/2026-10-11-warm-headquarters/reference-inputs/byzantine/03-hq-age3/palette-side.png",
+          "sha256": "c9c6bdfe0cda7dcee3483ae08c972ff596a99782c3b5c6a304b058dd4fc716ea",
+          "original_path": "art/concepts/tripo/buildings/byzantine/03-hq-age3/side.png"
+        },
+        {
+          "path": "art/concepts/2026-10-11-warm-headquarters/reference-inputs/byzantine/03-hq-age3/palette-rear-perspective.png",
+          "sha256": "97946c0d8eb42a1b36f4c43120c019eebcfc4721829b4d280ebedea8a60aee04",
+          "original_path": "art/concepts/tripo/buildings/byzantine/03-hq-age3/rear-perspective.png"
+        }
+      ],
+      "packed_inputs": [
+        {
+          "path": "byzantine/03-hq-age3/layout-input.png",
+          "sha256": "3062ff60ee3eb4f5d3e70ccfe6d5aa8cd66853cd68a72df1060b0a0f2ee050f3",
+          "dimensions": [
+            3072,
+            1024
+          ],
+          "role": "mechanical reference packing only"
+        },
+        {
+          "path": "byzantine/03-hq-age3/warm-palette-input.png",
+          "sha256": "c9df1fe46deee2f16db280b19881f24216ee280cbea621576642a0059ca9a296",
+          "dimensions": [
+            3072,
+            1024
+          ],
+          "role": "mechanical reference packing only"
+        }
+      ],
+      "prompt": "Use case: precise-object-edit / architecture concept redesign. Asset: BYZANTINE HEADQUARTERS AGE THREE, evolved from Image 1. Image 1 defines exact square ground plot, positions, Byzantine identity, normal door/window human scale and three cameras. Image 2 is old warm material and GRANDEUR inspiration only. Image 3 is age two, ONLY anchors common world scale, human-size windows/doors, 5 by 5 ground footprint, warm palette. Make age THREE visibly more magnificent and more developed than age two by adding ARCHITECTURAL HEIGHT AND STOREYS, not by scaling the existing building up: a central commanding stone palace tower with FIVE normal human-height storeys, tiered arched galleries and a high masonry/clay-tile Byzantine dome, flanked by dense THREE-storey stone town wings and rooflines rising toward center. Its central roof silhouette should be clearly taller than Image 1, approx1.6times height above base; the same normal-size door/window units repeat on added floors. Compact mature stone town fills the plot, retain a short narrow front plaza/path for entry and realistic roof spacing; avoid giant enlarged windows or doors, avoid fantasy skyscraper/castle battlements. Keep EXACT SAME square provisional 5x5 TILE BASE footprint and low stone edge border as Image 1; no steps, wings or buildings protrude outside it. The increase is upward, not a bigger base. Rich warm neutral ivory-beige-gray limestone blocks, cream-gray plaster, natural brown wood, muted terracotta fired-clay roof tiles, dark purple cloth banners with gold THREAD embroidery. All dome roof is clay tile over masonry. NO metal roofs, NO copper/gold dome, NO metallic cladding, statues, gilded architectural finials or metal ornaments. Purple/gold identity through fabric only. Natural restrained warm material light, detailed crisp masonry, neutral shadows, not pure white or overly yellow. Composition: horizontal THREE equally sized square panels 3:1, SAME evolved asset in all: left elevated FRONT three-quarter showing entrance, middle strictly TRUE 90-degree RIGHT SIDE elevation (show side window rows, entry portico out of view, not another front), right elevated REAR three-quarter. Keep same camera/world scale as Image 1 ground border; allow higher building into top margin while full plot remains visible; consistent main tower/wings between views. Neutral gray-beige backdrop, no labels, no people, no text or watermark. Request native approx3072x1024 or higher.",
+      "generation_metadata": {
+        "tool": "built-in image_gen",
+        "output_hint": "Generated images are saved to /Users/tankaixi/.codex/generated_images/01a12728-34cb-7b22-b679-73b8fae84a4d as /Users/tankaixi/.codex/generated_images/01a12728-34cb-7b22-b679-73b8fae84a4d/exec-68fdeb1e-5ab8-44ec-8b53-f3bed6c937a1.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+      },
+      "visual_review": {
+        "status": "review_candidate",
+        "palette": "暖米灰石材、棕木、赤陶、紫布金绣线；非纯白/黄沙/冷蓝。",
+        "composition": "front-perspective / true right-side elevation / rear-perspective; all plot borders visible.",
+        "architecture": "同5×5暂定地块，增加中央主楼层数与高度，侧翼多层密集；门窗采用重复正常尺度，不整体放大。",
+        "metal": "无金属屋顶/墙面/建筑装饰；穹顶为陶瓦，阵营紫金通过布与绣线。",
+        "limitations": "AI概念图，不是精确CAD/三维正交验收；角度间小细节需建模时校准。",
+        "resolution": "native2172×724 sheet; each native724×724 crop plus20pxpadding=764×764; no upscaling."
+      }
+    }
+  ],
+  "frozen_reference_note": "views.source及palette_sources.path现指向reference-inputs中的逐字节冻结输入；original_source/original_path保留生成时位置。冷稿停用或当前Tripo更新不影响这些输入。"
+}

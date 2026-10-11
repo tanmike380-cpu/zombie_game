@@ -1,0 +1,398 @@
+{
+  "schema_version": 1,
+  "status": "complete_review_candidate",
+  "scope": "Tianchao 3 HQ warm restoration and wood-dominant royal progression only; no ordinary buildings/infantry/model/gameplay edits",
+  "footprint_and_scale_note": "5×5同占地、门窗世界尺度和镜头尺度一致是概念视觉约束与暂定设计目标，不是精确测绘或经过三维模型验证的实际尺寸。",
+  "source_mapping_note": "First pass used three actual separate cold layout/angle files and one old warm front material reference; no reference-sheet packing. Age3 first pass rejected and archived in history; wood/height correction used that draft plus warm front, then independent side used final sheet plus cold side. All actual inputs recorded with hashes. No pixel color filter or upscale.",
+  "assets": [
+    {
+      "id": "buildings/tianchao/01-hq-age1",
+      "label": "天朝主基地·时代1",
+      "views": [
+        {
+          "name": "front-perspective",
+          "path": "tianchao/01-hq-age1/front-perspective.png",
+          "source": "art/concepts/2026-10-11-warm-headquarters/reference-inputs/tianchao/01-hq-age1/front-perspective.png",
+          "source_sha256": "896a8a934bd28cfe94880febc9269739b86aecfe397f981c2073a2d4224ea8f5",
+          "width": 764,
+          "height": 764,
+          "sha256": "ba255f1fafe61548b27cb33cff5571c8bc697d1f8b2610c4fca4be3c5553c8fa",
+          "crop_box": [
+            0,
+            0,
+            724,
+            724
+          ],
+          "original_source": "art/concepts/2026-10-11-cool-revision/buildings/tianchao/01-hq-age1/front-perspective.png"
+        },
+        {
+          "name": "side",
+          "path": "tianchao/01-hq-age1/side.png",
+          "source": "art/concepts/2026-10-11-warm-headquarters/reference-inputs/tianchao/01-hq-age1/side.png",
+          "source_sha256": "653dc67e1ffbc2aa11ce0ac8b67ca044f2c88248384576842a23d0e56a9e3927",
+          "width": 764,
+          "height": 764,
+          "sha256": "9039f2d0aae1069a629a49669ce4a53f9e8492d9cf6f6c5ebbf82c61c1ffcb4f",
+          "crop_box": [
+            724,
+            0,
+            1448,
+            724
+          ],
+          "original_source": "art/concepts/2026-10-11-cool-revision/buildings/tianchao/01-hq-age1/side.png"
+        },
+        {
+          "name": "rear-perspective",
+          "path": "tianchao/01-hq-age1/rear-perspective.png",
+          "source": "art/concepts/2026-10-11-warm-headquarters/reference-inputs/tianchao/01-hq-age1/rear-perspective.png",
+          "source_sha256": "e91b2c62d30da425d6bea21cffd822e807153815ef7684f339076da1abb8caee",
+          "width": 763,
+          "height": 764,
+          "sha256": "ee501afe48b1e5ed2cf7a6fb3bcba1329787e34c48fa920b8653b1805d39ce90",
+          "crop_box": [
+            1448,
+            0,
+            2171,
+            724
+          ],
+          "original_source": "art/concepts/2026-10-11-cool-revision/buildings/tianchao/01-hq-age1/rear-perspective.png"
+        }
+      ],
+      "sheet": "tianchao/01-hq-age1/generated-sheet.png",
+      "sheet_sha256": "6b5e5a8e2095944cd46ab1168ec9677fa2d0c0886ff085b03b1ab49b5d7f0a65",
+      "native_sheet_dimensions": [
+        2171,
+        724
+      ],
+      "footprint_tiles": [
+        5,
+        5
+      ],
+      "footprint_provisional": true,
+      "palette_sources": [
+        {
+          "path": "art/concepts/2026-10-11-warm-headquarters/reference-inputs/tianchao/01-hq-age1/palette-front-perspective.png",
+          "sha256": "2544ae34e3baf3126171018199308246a6e446ed85afdf48cadc0c04b02a428b",
+          "original_path": "art/concepts/tripo/buildings/tianchao/01-hq-age1/front-perspective.png"
+        }
+      ],
+      "generation_inputs": [
+        {
+          "source": "art/concepts/2026-10-11-warm-headquarters/reference-inputs/generation/896a8a934bd28cfe94880febc9269739b86aecfe397f981c2073a2d4224ea8f5.png",
+          "source_sha256": "896a8a934bd28cfe94880febc9269739b86aecfe397f981c2073a2d4224ea8f5",
+          "role": "actual separate layout/angle image_gen input",
+          "original_source": "art/concepts/2026-10-11-cool-revision/buildings/tianchao/01-hq-age1/front-perspective.png"
+        },
+        {
+          "source": "art/concepts/2026-10-11-warm-headquarters/reference-inputs/generation/653dc67e1ffbc2aa11ce0ac8b67ca044f2c88248384576842a23d0e56a9e3927.png",
+          "source_sha256": "653dc67e1ffbc2aa11ce0ac8b67ca044f2c88248384576842a23d0e56a9e3927",
+          "role": "actual separate layout/angle image_gen input",
+          "original_source": "art/concepts/2026-10-11-cool-revision/buildings/tianchao/01-hq-age1/side.png"
+        },
+        {
+          "source": "art/concepts/2026-10-11-warm-headquarters/reference-inputs/generation/e91b2c62d30da425d6bea21cffd822e807153815ef7684f339076da1abb8caee.png",
+          "source_sha256": "e91b2c62d30da425d6bea21cffd822e807153815ef7684f339076da1abb8caee",
+          "role": "actual separate layout/angle image_gen input",
+          "original_source": "art/concepts/2026-10-11-cool-revision/buildings/tianchao/01-hq-age1/rear-perspective.png"
+        },
+        {
+          "source": "art/concepts/2026-10-11-warm-headquarters/reference-inputs/generation/2544ae34e3baf3126171018199308246a6e446ed85afdf48cadc0c04b02a428b.png",
+          "source_sha256": "2544ae34e3baf3126171018199308246a6e446ed85afdf48cadc0c04b02a428b",
+          "role": "actual natural warm material image_gen input",
+          "original_source": "art/concepts/tripo/buildings/tianchao/01-hq-age1/front-perspective.png"
+        }
+      ],
+      "prompt": "Use case: precise-object-edit\nAsset type: Tianchao Chinese headquarters concept revision for Tripo. Images1,2,3 are exact layout targets FRONT3/4, RIGHTSIDE, REAR3/4 of one existing compound. Image4 is ONLY original natural WARM material/paintedwood aesthetic reference, NOT layout target. Keep Eastern architectural identity and fixed5x5squareplotborder footprint; normalhuman doors/windows worldscale identical acrossages. Restore NATURAL warm darkbrown woodgrain, subdued vermilion-red lacquer posts/beams, beige/warmcream stone foundations, naturalolivegreen foliage. CharcoalGRAYcurvedtile roofs remain realgray, notorange. Neutralshadows, slightgentlewarmdaylight, no globalorange/sepiafilter, no coldgraywash. Chinese structures allages WOOD predominant; stone restricted to lowfoundations, stairs, paving. 3Drealistic coherent RTS gameasset style, crispclear materialdetails nottoy/cartoon. No newtext/people/objectspillingoutsideplot. SAMEcompound THREEequalpanels in a WIDE3:1sheet, LEFTfront-left3/4(angleImage1), MIDDLEexactRIGHTSIDE(angleImage2: mainhallgableendvisible, frontmainentrancedoorhidden, NOTfrontorback elevation), RIGHTrear-right3/4(angleImage3). Samephysicalfeatures acrossviews, whole5x5plotvisible eachpanel withsamecamerascale and equalpadding. No labels/borders/watermarks. Request3762x1254sharpnativeoutput ifpossible.\nAGE1: ONLY palette/material update. Preserve approved sparseone-storeywoodhall+twostoragehuts, openyard, exactlayout and roof/door proportions. Lowstoneedge, smallstones/shrubs retained. No extra floors/buildings/palace.",
+      "generation_metadata": {
+        "tool": "built-in image_gen",
+        "output_hint": "Generated images are saved to /Users/tankaixi/.codex/generated_images/01a1272a-549b-7ee3-8ad7-0ba08ebaf9bb as /Users/tankaixi/.codex/generated_images/01a1272a-549b-7ee3-8ad7-0ba08ebaf9bb/exec-4c38a79a-b10d-4184-8d22-5e03f0d07add.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+      },
+      "visual_review": {
+        "status": "complete_review_candidate",
+        "palette": "自然暖棕木与朱漆梁柱，灰瓦保留中性灰；米暖石仅在低基座、台阶、铺地。无整幅橙色滤镜。",
+        "architecture": "稀疏一层木厅与两间小屋，留大面积庭院。",
+        "composition": "正面斜视、右侧山墙端视、背面斜视；单视图文件独立。时代3 side 采用额外单图生成，不使用 sheet 中间。",
+        "limitations": "AI 二维概念不能证明精确三维拓扑/结构一致性；5×5为暂定概念标定、需 Tripo/Blender 模型再校准。",
+        "resolution": "native2171×724 sheet; 724/723px panels+20px padding. No upscale."
+      }
+    },
+    {
+      "id": "buildings/tianchao/02-hq-age2",
+      "label": "天朝主基地·时代2",
+      "views": [
+        {
+          "name": "front-perspective",
+          "path": "tianchao/02-hq-age2/front-perspective.png",
+          "source": "art/concepts/2026-10-11-warm-headquarters/reference-inputs/tianchao/02-hq-age2/front-perspective.png",
+          "source_sha256": "c6149e51a185adae0afb911fd263a570170245aa88d9b21e64f31d4410d12042",
+          "width": 764,
+          "height": 764,
+          "sha256": "50c922d3c4d60dc896a3473521f62764fd07a33c7f455f53460f5291bcfae895",
+          "crop_box": [
+            0,
+            0,
+            724,
+            724
+          ],
+          "original_source": "art/concepts/2026-10-11-cool-revision/buildings/tianchao/02-hq-age2/front-perspective.png"
+        },
+        {
+          "name": "side",
+          "path": "tianchao/02-hq-age2/side.png",
+          "source": "art/concepts/2026-10-11-warm-headquarters/reference-inputs/tianchao/02-hq-age2/side.png",
+          "source_sha256": "809275624d2cee89c4c517964776851fc94c1bfc18e47bda5eb168b3ae5d95cc",
+          "width": 764,
+          "height": 764,
+          "sha256": "ffe3a677d2251f251824496386c9d80a7f8677eaca8670573ef958533f2c2e70",
+          "crop_box": [
+            724,
+            0,
+            1448,
+            724
+          ],
+          "original_source": "art/concepts/2026-10-11-cool-revision/buildings/tianchao/02-hq-age2/side.png"
+        },
+        {
+          "name": "rear-perspective",
+          "path": "tianchao/02-hq-age2/rear-perspective.png",
+          "source": "art/concepts/2026-10-11-warm-headquarters/reference-inputs/tianchao/02-hq-age2/rear-perspective.png",
+          "source_sha256": "640fb20963f310b65bc29102d05f577503aa391c69af52649e7c0fff29a8fce4",
+          "width": 763,
+          "height": 764,
+          "sha256": "47d4b5f19415c739a46462685cbdf56c2d964179823deeac0698ed2199a53b7b",
+          "crop_box": [
+            1448,
+            0,
+            2171,
+            724
+          ],
+          "original_source": "art/concepts/2026-10-11-cool-revision/buildings/tianchao/02-hq-age2/rear-perspective.png"
+        }
+      ],
+      "sheet": "tianchao/02-hq-age2/generated-sheet.png",
+      "sheet_sha256": "78220606712537d6f14a14b6d0328e0ee6d5b1f587f72ba9181037094dc54a2b",
+      "native_sheet_dimensions": [
+        2171,
+        724
+      ],
+      "footprint_tiles": [
+        5,
+        5
+      ],
+      "footprint_provisional": true,
+      "palette_sources": [
+        {
+          "path": "art/concepts/2026-10-11-warm-headquarters/reference-inputs/tianchao/02-hq-age2/palette-front-perspective.png",
+          "sha256": "7e5fb8c4badc27633e8ad4fc48932bf376db48e1e7e0505185b416e179637ba8",
+          "original_path": "art/concepts/tripo/buildings/tianchao/02-hq-age2/front-perspective.png"
+        }
+      ],
+      "generation_inputs": [
+        {
+          "source": "art/concepts/2026-10-11-warm-headquarters/reference-inputs/generation/c6149e51a185adae0afb911fd263a570170245aa88d9b21e64f31d4410d12042.png",
+          "source_sha256": "c6149e51a185adae0afb911fd263a570170245aa88d9b21e64f31d4410d12042",
+          "role": "actual separate layout/angle image_gen input",
+          "original_source": "art/concepts/2026-10-11-cool-revision/buildings/tianchao/02-hq-age2/front-perspective.png"
+        },
+        {
+          "source": "art/concepts/2026-10-11-warm-headquarters/reference-inputs/generation/809275624d2cee89c4c517964776851fc94c1bfc18e47bda5eb168b3ae5d95cc.png",
+          "source_sha256": "809275624d2cee89c4c517964776851fc94c1bfc18e47bda5eb168b3ae5d95cc",
+          "role": "actual separate layout/angle image_gen input",
+          "original_source": "art/concepts/2026-10-11-cool-revision/buildings/tianchao/02-hq-age2/side.png"
+        },
+        {
+          "source": "art/concepts/2026-10-11-warm-headquarters/reference-inputs/generation/640fb20963f310b65bc29102d05f577503aa391c69af52649e7c0fff29a8fce4.png",
+          "source_sha256": "640fb20963f310b65bc29102d05f577503aa391c69af52649e7c0fff29a8fce4",
+          "role": "actual separate layout/angle image_gen input",
+          "original_source": "art/concepts/2026-10-11-cool-revision/buildings/tianchao/02-hq-age2/rear-perspective.png"
+        },
+        {
+          "source": "art/concepts/2026-10-11-warm-headquarters/reference-inputs/generation/7e5fb8c4badc27633e8ad4fc48932bf376db48e1e7e0505185b416e179637ba8.png",
+          "source_sha256": "7e5fb8c4badc27633e8ad4fc48932bf376db48e1e7e0505185b416e179637ba8",
+          "role": "actual natural warm material image_gen input",
+          "original_source": "art/concepts/tripo/buildings/tianchao/02-hq-age2/front-perspective.png"
+        }
+      ],
+      "prompt": "Use case: precise-object-edit\nAsset type: Tianchao Chinese headquarters concept revision for Tripo. Images1,2,3 are exact layout targets FRONT3/4, RIGHTSIDE, REAR3/4 of one existing compound. Image4 is ONLY original natural WARM material/paintedwood aesthetic reference, NOT layout target. Keep Eastern architectural identity and fixed5x5squareplotborder footprint; normalhuman doors/windows worldscale identical acrossages. Restore NATURAL warm darkbrown woodgrain, subdued vermilion-red lacquer posts/beams, beige/warmcream stone foundations, naturalolivegreen foliage. CharcoalGRAYcurvedtile roofs remain realgray, notorange. Neutralshadows, slightgentlewarmdaylight, no globalorange/sepiafilter, no coldgraywash. Chinese structures allages WOOD predominant; stone restricted to lowfoundations, stairs, paving. 3Drealistic coherent RTS gameasset style, crispclear materialdetails nottoy/cartoon. No newtext/people/objectspillingoutsideplot. SAMEcompound THREEequalpanels in a WIDE3:1sheet, LEFTfront-left3/4(angleImage1), MIDDLEexactRIGHTSIDE(angleImage2: mainhallgableendvisible, frontmainentrancedoorhidden, NOTfrontorback elevation), RIGHTrear-right3/4(angleImage3). Samephysicalfeatures acrossviews, whole5x5plotvisible eachpanel withsamecamerascale and equalpadding. No labels/borders/watermarks. Request3762x1254sharpnativeoutput ifpossible.\nAGE2: preserve approvedtwo-storeymainhall+sidewingsmediumdensityplan, doors/windows/camera/5x5border. Change oversizedvisible stonewallconstruction into warmdarkbrown WOODPLANKinfill and thickdarkredtimberpost-and-beams, lowstonefoundationonly. No tallstonefacades, no castle. Slightlymore refinedqualitywoodand lacquer thanage1 butnotroyalmetals.",
+      "generation_metadata": {
+        "tool": "built-in image_gen",
+        "output_hint": "Generated images are saved to /Users/tankaixi/.codex/generated_images/01a1272a-549b-7ee3-8ad7-0ba08ebaf9bb as /Users/tankaixi/.codex/generated_images/01a1272a-549b-7ee3-8ad7-0ba08ebaf9bb/exec-6da9b698-c7eb-4b7d-97d1-01cfecffd7fd.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+      },
+      "visual_review": {
+        "status": "complete_review_candidate",
+        "palette": "自然暖棕木与朱漆梁柱，灰瓦保留中性灰；米暖石仅在低基座、台阶、铺地。无整幅橙色滤镜。",
+        "architecture": "两层厅堂与侧翼，木板墙身、朱漆柱梁为主，低石基座。",
+        "composition": "正面斜视、右侧山墙端视、背面斜视；单视图文件独立。时代3 side 采用额外单图生成，不使用 sheet 中间。",
+        "limitations": "AI 二维概念不能证明精确三维拓扑/结构一致性；5×5为暂定概念标定、需 Tripo/Blender 模型再校准。",
+        "resolution": "native2171×724 sheet; 724/723px panels+20px padding. No upscale."
+      }
+    },
+    {
+      "id": "buildings/tianchao/03-hq-age3",
+      "label": "天朝主基地·时代3",
+      "views": [
+        {
+          "name": "front-perspective",
+          "path": "tianchao/03-hq-age3/front-perspective.png",
+          "source": "art/concepts/2026-10-11-warm-headquarters/reference-inputs/tianchao/03-hq-age3/front-perspective.png",
+          "source_sha256": "fa1a634e535adac48bcb956e49b2dff086cbea11ec8b4779d3a99a33dc12a4aa",
+          "width": 763,
+          "height": 765,
+          "sha256": "bf967041d8e5209fa2cd64f985b8c01a10147efda36952fa62352a1e6a154cc0",
+          "crop_box": [
+            0,
+            0,
+            723,
+            725
+          ],
+          "original_source": "art/concepts/2026-10-11-cool-revision/buildings/tianchao/03-hq-age3/front-perspective.png"
+        },
+        {
+          "name": "side",
+          "path": "tianchao/03-hq-age3/side.png",
+          "source": "art/concepts/2026-10-11-warm-headquarters/reference-inputs/tianchao/03-hq-age3/side.png",
+          "source_sha256": "4d844dcebaf063439387606d8419a2f800160d61f6e9c700b87046951bc6a9b8",
+          "width": 1254,
+          "height": 1254,
+          "sha256": "3353f1e6a3008a8dbd28b841ce53787d445e129aa97bd75945a649f139ea17fd",
+          "copy_source": true,
+          "original_source": "art/concepts/2026-10-11-cool-revision/buildings/tianchao/03-hq-age3/side.png"
+        },
+        {
+          "name": "rear-perspective",
+          "path": "tianchao/03-hq-age3/rear-perspective.png",
+          "source": "art/concepts/2026-10-11-warm-headquarters/reference-inputs/tianchao/03-hq-age3/rear-perspective.png",
+          "source_sha256": "5ad9b99a8972d5cbd05d3f42600e795390cc8bc04a495cf60ff32f56e575833e",
+          "width": 763,
+          "height": 765,
+          "sha256": "9aa48926a7254d8e92ab93253322aa0947dfd75574484ddeccc1d04ad2df05f6",
+          "crop_box": [
+            1447,
+            0,
+            2170,
+            725
+          ],
+          "original_source": "art/concepts/2026-10-11-cool-revision/buildings/tianchao/03-hq-age3/rear-perspective.png"
+        }
+      ],
+      "sheet": "tianchao/03-hq-age3/generated-sheet.png",
+      "sheet_sha256": "211dca63b511de80cd1b6ef1e002508f1e4fafa64adb312e8f08e9d3c9a05fd0",
+      "native_sheet_dimensions": [
+        2170,
+        725
+      ],
+      "footprint_tiles": [
+        5,
+        5
+      ],
+      "footprint_provisional": true,
+      "palette_sources": [
+        {
+          "path": "art/concepts/2026-10-11-warm-headquarters/reference-inputs/tianchao/03-hq-age3/palette-front-perspective.png",
+          "sha256": "15cdb216a6818f1c63c0b95d519dea433b71bf4f6a476acd458fece1de071e01",
+          "original_path": "art/concepts/tripo/buildings/tianchao/03-hq-age3/front-perspective.png"
+        }
+      ],
+      "generation_inputs": [
+        {
+          "source": "art/concepts/2026-10-11-warm-headquarters/reference-inputs/generation/fa1a634e535adac48bcb956e49b2dff086cbea11ec8b4779d3a99a33dc12a4aa.png",
+          "source_sha256": "fa1a634e535adac48bcb956e49b2dff086cbea11ec8b4779d3a99a33dc12a4aa",
+          "role": "actual separate layout/angle image_gen input",
+          "original_source": "art/concepts/2026-10-11-cool-revision/buildings/tianchao/03-hq-age3/front-perspective.png"
+        },
+        {
+          "source": "art/concepts/2026-10-11-warm-headquarters/reference-inputs/generation/4d844dcebaf063439387606d8419a2f800160d61f6e9c700b87046951bc6a9b8.png",
+          "source_sha256": "4d844dcebaf063439387606d8419a2f800160d61f6e9c700b87046951bc6a9b8",
+          "role": "actual separate layout/angle image_gen input",
+          "original_source": "art/concepts/2026-10-11-cool-revision/buildings/tianchao/03-hq-age3/side.png"
+        },
+        {
+          "source": "art/concepts/2026-10-11-warm-headquarters/reference-inputs/generation/5ad9b99a8972d5cbd05d3f42600e795390cc8bc04a495cf60ff32f56e575833e.png",
+          "source_sha256": "5ad9b99a8972d5cbd05d3f42600e795390cc8bc04a495cf60ff32f56e575833e",
+          "role": "actual separate layout/angle image_gen input",
+          "original_source": "art/concepts/2026-10-11-cool-revision/buildings/tianchao/03-hq-age3/rear-perspective.png"
+        },
+        {
+          "source": "art/concepts/2026-10-11-warm-headquarters/reference-inputs/generation/15cdb216a6818f1c63c0b95d519dea433b71bf4f6a476acd458fece1de071e01.png",
+          "source_sha256": "15cdb216a6818f1c63c0b95d519dea433b71bf4f6a476acd458fece1de071e01",
+          "role": "actual natural warm material image_gen input",
+          "original_source": "art/concepts/tripo/buildings/tianchao/03-hq-age3/front-perspective.png"
+        }
+      ],
+      "prompt": "Use case: precise-object-edit\nAsset type: Tianchao Chinese headquarters concept revision for Tripo. Images1,2,3 are exact layout targets FRONT3/4, RIGHTSIDE, REAR3/4 of one existing compound. Image4 is ONLY original natural WARM material/paintedwood aesthetic reference, NOT layout target. Keep Eastern architectural identity and fixed5x5squareplotborder footprint; normalhuman doors/windows worldscale identical acrossages. Restore NATURAL warm darkbrown woodgrain, subdued vermilion-red lacquer posts/beams, beige/warmcream stone foundations, naturalolivegreen foliage. CharcoalGRAYcurvedtile roofs remain realgray, notorange. Neutralshadows, slightgentlewarmdaylight, no globalorange/sepiafilter, no coldgraywash. Chinese structures allages WOOD predominant; stone restricted to lowfoundations, stairs, paving. 3Drealistic coherent RTS gameasset style, crispclear materialdetails nottoy/cartoon. No newtext/people/objectspillingoutsideplot. SAMEcompound THREEequalpanels in a WIDE3:1sheet, LEFTfront-left3/4(angleImage1), MIDDLEexactRIGHTSIDE(angleImage2: mainhallgableendvisible, frontmainentrancedoorhidden, NOTfrontorback elevation), RIGHTrear-right3/4(angleImage3). Samephysicalfeatures acrossviews, whole5x5plotvisible eachpanel withsamecamerascale and equalpadding. No labels/borders/watermarks. Request3762x1254sharpnativeoutput ifpossible.\nAGE3: grandeurupgrade within SAME5x5squareplot. Centralhallbecomes taller3–4storey traditionalimperialWOODpalace hall, broader imposinglargecharcoalgray hippedtile roofs and deep graceful eaves. Finelycrafted DARKBROWNwoodandVERMILIONlacquercolumns/beams, detailedwoodendougongbracketsetssupporteaves, highqualitywarmgrain and carvedwood. Surroundingcompactcourtyard/wingsallWOOD predominant, notstonecastle/fortress. StoneONLYLOWfoundation/steps/paving. No stoneconstructionupperwalls, no metalcladding/goldplating, no arbitraryextraallgolddecorations. Normalhuman doors/windowssameWORLDscaleasAGE1; grandeurthroughmorefloors/largeroofheightnotgiantdoors. Preserveexistingfrontgatewaylocation, sameoutsideplotborderandarea/camerascale, densetastefulEasternimperialcomplex.",
+      "generation_metadata": {
+        "tool": "built-in image_gen",
+        "output_hint": "Generated images are saved to /Users/tankaixi/.codex/generated_images/01a1272a-549b-7ee3-8ad7-0ba08ebaf9bb as /Users/tankaixi/.codex/generated_images/01a1272a-549b-7ee3-8ad7-0ba08ebaf9bb/exec-e651e404-29d6-4668-a73b-e57ccd662dd6.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+      },
+      "visual_review": {
+        "status": "complete_review_candidate",
+        "palette": "自然暖棕木与朱漆梁柱，灰瓦保留中性灰；米暖石仅在低基座、台阶、铺地。无整幅橙色滤镜。",
+        "architecture": "中央三至四层高厅堂、木构墙身和精工斗拱；大灰瓦屋顶、密集附属木构，非石头城堡。",
+        "composition": "正面斜视、右侧山墙端视、背面斜视；单视图文件独立。时代3 side 采用额外单图生成，不使用 sheet 中间。",
+        "limitations": "AI 二维概念不能证明精确三维拓扑/结构一致性；5×5为暂定概念标定、需 Tripo/Blender 模型再校准。",
+        "resolution": "native2170×725 sheet; front/rear723×725+20px padding; independent side native1254×1254. No upscale."
+      },
+      "initial_draft": {
+        "path": "tianchao/03-hq-age3/history/draft-stone-generated-sheet.png",
+        "sha256": "27d7a62df13193b08b10662894cabf281dea74f425306cea1511a508d08044e8",
+        "native_dimensions": [
+          2170,
+          725
+        ],
+        "status": "rejected draft: too much upper stone wall and insufficient central height; NOT final",
+        "generation_prompt": "Use case: precise-object-edit\nAsset type: Tianchao Chinese headquarters concept revision for Tripo. Images1,2,3 are exact layout targets FRONT3/4, RIGHTSIDE, REAR3/4 of one existing compound. Image4 is ONLY original natural WARM material/paintedwood aesthetic reference, NOT layout target. Keep Eastern architectural identity and fixed5x5squareplotborder footprint; normalhuman doors/windows worldscale identical acrossages. Restore NATURAL warm darkbrown woodgrain, subdued vermilion-red lacquer posts/beams, beige/warmcream stone foundations, naturalolivegreen foliage. CharcoalGRAYcurvedtile roofs remain realgray, notorange. Neutralshadows, slightgentlewarmdaylight, no globalorange/sepiafilter, no coldgraywash. Chinese structures allages WOOD predominant; stone restricted to lowfoundations, stairs, paving. 3Drealistic coherent RTS gameasset style, crispclear materialdetails nottoy/cartoon. No newtext/people/objectspillingoutsideplot. SAMEcompound THREEequalpanels in a WIDE3:1sheet, LEFTfront-left3/4(angleImage1), MIDDLEexactRIGHTSIDE(angleImage2: mainhallgableendvisible, frontmainentrancedoorhidden, NOTfrontorback elevation), RIGHTrear-right3/4(angleImage3). Samephysicalfeatures acrossviews, whole5x5plotvisible eachpanel withsamecamerascale and equalpadding. No labels/borders/watermarks. Request3762x1254sharpnativeoutput ifpossible.\nAGE3: grandeurupgrade within SAME5x5squareplot. Centralhallbecomes taller3–4storey traditionalimperialWOODpalace hall, broader imposinglargecharcoalgray hippedtile roofs and deep graceful eaves. Finelycrafted DARKBROWNwoodandVERMILIONlacquercolumns/beams, detailedwoodendougongbracketsetssupporteaves, highqualitywarmgrain and carvedwood. Surroundingcompactcourtyard/wingsallWOOD predominant, notstonecastle/fortress. StoneONLYLOWfoundation/steps/paving. No stoneconstructionupperwalls, no metalcladding/goldplating, no arbitraryextraallgolddecorations. Normalhuman doors/windowssameWORLDscaleasAGE1; grandeurthroughmorefloors/largeroofheightnotgiantdoors. Preserveexistingfrontgatewaylocation, sameoutsideplotborderandarea/camerascale, densetastefulEasternimperialcomplex.",
+        "generation_metadata": {
+          "tool": "built-in image_gen",
+          "output_hint": "Generated images are saved to /Users/tankaixi/.codex/generated_images/01a1272a-549b-7ee3-8ad7-0ba08ebaf9bb as /Users/tankaixi/.codex/generated_images/01a1272a-549b-7ee3-8ad7-0ba08ebaf9bb/exec-8ca0e38e-54fb-4055-aeb4-d32c9374b1d9.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+        }
+      },
+      "revisions": [
+        {
+          "prompt": "Use case: precise-object-edit\nAsset type: correctedTianchaoAGE3royalWOOD headquarters3views forTripo. Image1 exact EDITTARGET3panel currentcomplex, Image2 ORIGINALwarmChineseimperialWOODdetailreferenceonly. Criticalmaterialchange: EVERYSTONEBUILDINGWALL ABOVELOWBASEmust be replaced with darkwarm BROWNWOODENPLANKS/PANELINFILL and boldVERMILIONWOODPOSTS/BEAMS, especially WHOLErearcentralhallbackwall andfrontsidewings. Almostentire ABOVEGROUNDARCHITECTURE85%WOOD. NOstonebrickmasonryfacades, no stonecastle, no greycreambrickwallsmaskingaswood. Stoneonlyplinthup toONEshortfoundationrow, stairs, paving andlowplotedge. Keepgreycharcoaltiledroofs realgray. HEIGHTupgrade: Centralroyalhalladd ONEWHOLE EXTRAUPPER WOODENSTOREY withclearcontinuousvermilionwoodbalcony/latticewindows andanadditionalmajesticlargegreyEasternrooftier; total3–4woodenlevels. Centralroof peak mustrise25%higher thaneditTarget, roofmoredignified withlonggracefuleaves andclearwoodeavesbracketsdougong, carvedbrownwood and朱红lacquer, WITHOUTmetalplating/goldbling. SAME5x5plotboundary+entrylocation+camera+SIDEazimuth+normalhuman doors/windowsworldscale, neverenlargefootprint. Firstandthirdpanel preservefront-left/rear-rightperspective, middleTRUErightside (gableendvisible, frontentrancedoorhidden), allsamephysicalmodelchangesappliedtoALL3views. Naturalmaterialwarmth wooden grain/paint retainredidentity butNOTorangeallimagefilter. Plainneutralwarmgraybackground; no text/labels/gutters/newprops/people. Fullplotandnewtallroofinsideeachpanelwithpadding. SHARP3:1width3762height1254requested. Wood-firstChineseimperialarchitecture, NOTstonecity.",
+          "inputs": [
+            {
+              "source": "art/concepts/2026-10-11-warm-headquarters/reference-inputs/generation/27d7a62df13193b08b10662894cabf281dea74f425306cea1511a508d08044e8.png",
+              "source_sha256": "27d7a62df13193b08b10662894cabf281dea74f425306cea1511a508d08044e8",
+              "path_at_generation": "art/concepts/2026-10-11-warm-headquarters/tianchao/03-hq-age3/generated-sheet.png",
+              "role": "initial draft target, archived unchanged after call",
+              "original_source": "art/concepts/2026-10-11-warm-headquarters/tianchao/03-hq-age3/history/draft-stone-generated-sheet.png"
+            },
+            {
+              "source": "art/concepts/2026-10-11-warm-headquarters/reference-inputs/generation/15cdb216a6818f1c63c0b95d519dea433b71bf4f6a476acd458fece1de071e01.png",
+              "source_sha256": "15cdb216a6818f1c63c0b95d519dea433b71bf4f6a476acd458fece1de071e01",
+              "role": "original warm architecture detail reference",
+              "original_source": "art/concepts/tripo/buildings/tianchao/03-hq-age3/front-perspective.png"
+            }
+          ],
+          "tool": "built-in image_gen",
+          "output_hint": "Generated images are saved to /Users/tankaixi/.codex/generated_images/01a1272a-549b-7ee3-8ad7-0ba08ebaf9bb as /Users/tankaixi/.codex/generated_images/01a1272a-549b-7ee3-8ad7-0ba08ebaf9bb/exec-e651e404-29d6-4668-a73b-e57ccd662dd6.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "output": "tianchao/03-hq-age3/generated-sheet.png",
+          "output_sha256": "211dca63b511de80cd1b6ef1e002508f1e4fafa64adb312e8f08e9d3c9a05fd0"
+        },
+        {
+          "prompt": "Use case: image angle correction. Create exactly ONE true RIGHT SIDE orthographic-like elevated view of the completed Tianchao AGE3 compound. Image1 is final corrected wooden palace appearance and 5x5 plot; Image2 is RIGHT SIDE camera/azimuth reference only from older layout, not cold palette or stone walls. Rotate Image1's compound 90 degrees around vertical to see its RIGHT SIDE: central grand palace ROOF GABLE END toward viewer, NO frontal central entrance facade/stair directly facing viewer, NOT front elevation. Main royal palace is 3–4-storey tall, DARK WARM BROWN WOOD panel walls with VERMILION WOOD beams/columns, charcoalgray tiled roofs/deep wooden dougong, stone ONLY low foundation/stairs/paving/plotedge. Keep exact compound features of image1, main height/roof tiers and courtyard density, same provisional 5x5 square plot, normal human doors/windows. Front gateway shifts to frame left edge and is side-on, not central front facing. Match lighting natural warm materials and neutral warmgray background. All structure entirely in image with padding, single object single view, no text/no multiplepanels/no extra people/no goldenmetal. Sharp 1536x1536 native if possible. Most important exact SIDE angle, not frontal or back angle.",
+          "inputs": [
+            {
+              "source": "art/concepts/2026-10-11-warm-headquarters/reference-inputs/generation/211dca63b511de80cd1b6ef1e002508f1e4fafa64adb312e8f08e9d3c9a05fd0.png",
+              "source_sha256": "211dca63b511de80cd1b6ef1e002508f1e4fafa64adb312e8f08e9d3c9a05fd0",
+              "role": "final warm palace geometry appearance",
+              "original_source": "art/concepts/2026-10-11-warm-headquarters/tianchao/03-hq-age3/generated-sheet.png"
+            },
+            {
+              "source": "art/concepts/2026-10-11-warm-headquarters/reference-inputs/generation/4d844dcebaf063439387606d8419a2f800160d61f6e9c700b87046951bc6a9b8.png",
+              "source_sha256": "4d844dcebaf063439387606d8419a2f800160d61f6e9c700b87046951bc6a9b8",
+              "role": "right side camera reference only",
+              "original_source": "art/concepts/2026-10-11-cool-revision/buildings/tianchao/03-hq-age3/side.png"
+            }
+          ],
+          "tool": "built-in image_gen",
+          "output_hint": "Generated images are saved to /Users/tankaixi/.codex/generated_images/01a1272a-549b-7ee3-8ad7-0ba08ebaf9bb as /Users/tankaixi/.codex/generated_images/01a1272a-549b-7ee3-8ad7-0ba08ebaf9bb/exec-eaf191c3-e3da-4bfc-916d-e655f569ae8b.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+          "output": "tianchao/03-hq-age3/side.png",
+          "output_sha256": "3353f1e6a3008a8dbd28b841ce53787d445e129aa97bd75945a649f139ea17fd"
+        }
+      ],
+      "sheet_note": "The middle sheet view is not an accepted final side. Use the separate side.png only."
+    }
+  ],
+  "frozen_reference_note": "views.source及palette_sources.path现指向reference-inputs中的逐字节冻结输入；original_source/original_path保留生成时位置。冷稿停用或当前Tripo更新不影响这些输入。"
+}
