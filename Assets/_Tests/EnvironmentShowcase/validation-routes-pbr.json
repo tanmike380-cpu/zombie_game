@@ -1,0 +1,50 @@
+{
+  "tested_at": "2026-10-13 Asia/Jakarta; player evidence timestamp 2026-10-12 UTC",
+  "scope": "Independent environment rendering/layout preview only. Not a production navigation, mining or battle benchmark.",
+  "unity": "6000.6.1f1 Built-in",
+  "machine": "Mac14,9 Apple M2 Pro",
+  "resolution": "1440x900",
+  "target_frame_rate": 60,
+  "build": "Builds/EnvironmentShowcase.app",
+  "build_log": "Builds/EnvironmentShowcase-routes-pbr-build.log",
+  "route_report": "Builds/ArtReview/EnvironmentShowcase/routes-pbr-v1/showcase-report.json",
+  "regression_report": "Builds/ArtReview/EnvironmentShowcase/routes-cliffs-regression/showcase-report.json",
+  "source_environment": {
+    "path": "art/Blender主文件/ZombieGame_Environment.blend",
+    "sha256": "dfd40cfc85891b05f660d56f7016fa163391d8627e80002d48f691cf6a9e017d"
+  },
+  "source_resources": {
+    "path": "art/Blender主文件/ZombieGame_Resources.blend",
+    "sha256": "37fcad0d37b78aea743399c0fc144c4c3d6038ede7c01c35474d051f651bee03",
+    "ids": ["IronOreRock", "GoldOreRock"],
+    "maps_per_asset": ["base_color", "normal", "metallic", "roughness"],
+    "normal_convention": "Unverified, original pixels retained without green flip. Close/middle/far screenshots visually inspected; no obvious deformation or inverted relief, but this does not establish the exporter convention.",
+    "retired_assets": "art/resources/retirement-20261012.json"
+  },
+  "route_results": [
+    {"biome": "europe", "passed": true, "fixtures": 9, "forest_coverage": 1.0, "p95_min_ms": 17.200212478637695, "p95_max_ms": 17.5836238861084},
+    {"biome": "mountains", "passed": true, "fixtures": 9, "forest_coverage": 1.0, "p95_min_ms": 16.670082092285156, "p95_max_ms": 17.582582473754883},
+    {"biome": "winter", "passed": true, "fixtures": 9, "forest_coverage": 0.0, "p95_min_ms": 17.2724552154541, "p95_max_ms": 17.585460662841797},
+    {"biome": "desert", "passed": true, "fixtures": 9, "forest_coverage": 0.0, "p95_min_ms": 16.69524574279785, "p95_max_ms": 17.581087112426758}
+  ],
+  "checks": {
+    "all_four_route_regions": true,
+    "all_four_previous_cliff_regions": true,
+    "six_layer_terrain_and_real_cliff_talus_material_pixels": true,
+    "river_bed_ford_crossings_road_slopes_and_corridors": true,
+    "every_fixture_source_transform_ground_clearance_pixels_and_material_channels": true,
+    "active_new_mine_instances_per_region": 6,
+    "new_mine_instances_each": 3,
+    "neutral_buildings_per_region": 3,
+    "shader_compile_errors": 0,
+    "production_gameplay_or_unit_balance_modified": false
+  },
+  "timing_note": "Each route region has eleven samples of 180 measured frames after 60 warmup frames. Measurements include 60 Hz waiting and real slow frames; do not infer guaranteed FPS or combat performance. Earlier locked-screen spikes remain in prior reports.",
+  "limitations": [
+    "Winter/snow and desert regional vegetation sources remain unavailable; no replacement models invented.",
+    "Basic water surface only; no flowing water, bridge or freezing simulation.",
+    "Buildings and ores are decorative fixtures without mining income or production NavMesh obstacles.",
+    "Mixed building licenses; user ore redistribution license unverified, no public upload."
+  ],
+  "passed": true
+}

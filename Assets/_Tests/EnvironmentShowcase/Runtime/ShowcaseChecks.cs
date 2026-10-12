@@ -7,7 +7,7 @@ using UnityEngine;
 namespace ZombieGame.Tests.EnvironmentShowcase
 {
     /// <summary>Packaged-player pixel contribution, actual slope, source completeness and same-view art timing evidence.</summary>
-    public sealed class ShowcaseChecks : MonoBehaviour
+    public sealed partial class ShowcaseChecks : MonoBehaviour
     {
         [Serializable] private sealed class CheckReport
         {
@@ -36,6 +36,8 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             public string previous_approved_views;
             public bool cliff_material_pixel_pass, talus_material_pixel_pass;
             public float cliff_material_mean_rgb_delta, talus_material_mean_rgb_delta;
+            public RouteReport routes;
+            public HeightExpectation[] height_expectations;
             public string[] implemented = { "Six real PBR layers", "Actual isolated terrain slope blending", "Semantic shore/road/forest soils",
                 "World-scale low-contrast macro colour variation", "Two shifted neighbour samples for tile breakup",
                 "Distance-faded source detail normals", "Chunked source mesh instancing and authored source LODs",
@@ -60,6 +62,34 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             public bool grass_enabled;
             public int frames;
             public float median_ms, p95_ms;
+        }
+
+        [Serializable] private sealed class HeightExpectation
+        {
+            public Vector2 point;
+            public float previous_cliffs_height_m, expected_height_m, actual_height_m;
+            public string change_reason;
+        }
+
+        [Serializable] private sealed class RouteReport
+        {
+            public bool enabled, river_bed_pass, ford_pass, road_slope_pass, crossing_pass, forest_coverage_pass, forest_pixel_pass;
+            public bool corridor_width_pass, water_pixel_pass, fixtures_pass, passed;
+            public string version, previous_baseline, license_note;
+            public float minimum_river_depth_m, ford_depth_m, maximum_road_slope_degrees, forest_coverage, forest_mean_rgb_delta, water_mean_rgb_delta;
+            public float minimum_corridor_width_m;
+            public FixtureReport[] fixtures;
+        }
+
+        [Serializable] private sealed class FixtureReport
+        {
+            public string id, source;
+            public Vector3 authored_native_dimensions_m, world_position;
+            public float whole_uniform_scale, ground_height_error_m, footprint_ground_span_m, pixel_delta;
+            public Vector3 whole_root_translation;
+            public bool source_transform_pass, ground_pass, clearance_pass, pixel_pass, material_channels_pass;
+            public string normal_note;
+            public float metallic_max_red;
         }
 
         private EnvironmentShowcase showcase;
@@ -117,7 +147,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
                 report = create_report();
                 report.biome = profile == null ? "baseline" : profile.id;
                 report.biome_label = profile == null ? "Baseline" : profile.label;
-                report.unavailable_art = profile?.missing_art;
+                report.unavailable_art = showcase.missing_art;
                 report.previous_approved_views = "Builds/ArtReview/EnvironmentShowcase/biomes-final/" + report.biome + "/view-0.png through view-4.png; compare new same-resolution view-0..4, same exposure/camera settings.";
                 report.layer_semantics = profile == null ? new[] { "Grass_A", "Grass_Dry", "Dirt", "Mud", "Stone", "Road" } : profile.layer_semantics;
                 report.grass_intentionally_absent = profile != null && profile.grass_density == 0;
@@ -262,7 +292,13 @@ namespace ZombieGame.Tests.EnvironmentShowcase
                 showcase.current_biome.talus_albedo_smoothness && showcase.current_biome.talus_normal &&
                 !string.IsNullOrWhiteSpace(report.cliff_source) && !string.IsNullOrWhiteSpace(report.talus_source) &&
                 showcase.config.grass_layer_override && showcase.config.terrain_material && !string.IsNullOrWhiteSpace(report.ground_source);
-            report.passed = report.terrain_passed && report.source_complete && report.grass_pixel_pass && report.rock_pixel_pass;
+            if (showcase.ground.routes.enabled)
+            {
+                var route_checks = run_route_checks();
+                while (route_checks.MoveNext()) yield return route_checks.Current;
+            }
+            report.passed = report.terrain_passed && report.source_complete && report.grass_pixel_pass && report.rock_pixel_pass &&
+                (report.routes == null || report.routes.passed);
         }
 
         private float compare_same_frame_meadow_grass()
@@ -414,9 +450,18 @@ namespace ZombieGame.Tests.EnvironmentShowcase
         {
             var ground = showcase.ground;
             var terrain_data = ground.terrain_data;
+            var expectations = new List<HeightExpectation>();
             foreach (var point in new[] { new Vector2(.5f, .53f), new Vector2(.42f, .48f), new Vector2(.43f, .235f), new Vector2(.61f, .57f), new Vector2(.70f, .72f) })
+            {
+                float old_height = ground.sample_original_height(point.x * showcase.config.map_size,point.y * showcase.config.map_size);
+                float expected = ground.routes.enabled ? ground.sample_authored_height(point.x * showcase.config.map_size,point.y * showcase.config.map_size) : old_height;
+                float actual = terrain_data.GetInterpolatedHeight(point.x,point.y);
+                expectations.Add(new HeightExpectation { point = point, previous_cliffs_height_m = old_height, expected_height_m = expected, actual_height_m = actual,
+                    change_reason = Mathf.Abs(expected - old_height) < .001f ? "Preserved original height" : "routes-v1 explicit river/road-grade/courtyard/highland fixture; previous cliffs-final retained with -showcaseLayout cliffs" });
                 report.preserved_landmark_max_delta_m = Mathf.Max(report.preserved_landmark_max_delta_m,
-                    Mathf.Abs(terrain_data.GetInterpolatedHeight(point.x, point.y) - ground.sample_original_height(point.x * showcase.config.map_size, point.y * showcase.config.map_size)));
+                    Mathf.Abs(actual - expected));
+            }
+            report.height_expectations = expectations.ToArray();
             report.preserved_landmarks_pass = report.preserved_landmark_max_delta_m < .06f;
         }
 

@@ -1,5 +1,36 @@
 # 独立环境渲染实验场
 
+## 路线与中立地标样场（routes-v1）
+
+2026-10-13：新PBR矿石版已实际打包，四区域routes及四区域旧cliffs回归全通过，摘要 `validation-routes-pbr.json`。每区域三处废墟、新IronOreRock/GoldOreRock各三处；原两矿仅恢复记录，不再使用。1440×900、M2 Pro、60Hz限帧，44组各180帧实测p95范围16.67–17.59ms（包含主动等待），非战斗基准。源码/贴地/每fixture像素/真实通道均通过；近中远截图已人工核对，normal约定仍未由Tripo文件证明，原图不翻绿。完整证据保留在 `Builds/ArtReview/EnvironmentShowcase/routes-pbr-v1` 与 `routes-cliffs-regression`，不删除旧慢帧证据。
+
+本轮仍是同一场景／controller，`route_layout` 保存在独立 Config。L 在新 routes 与旧 cliffs 布局间切换，B 仍切四区域；1/2/3、Tab、G、H 不变。
+新增 River ford / Continuous forest belt / Neutral landmark / Ore source detail / Route panorama 五视点；全景与新近中远图用于检查河谷、道路、森林和地标的整体关系，不以近景或 tree_count 声称摆脱大平原。
+西侧六节点真实河床接南岸：水面1.1m、河床深 .5m、半河宽2.5m、岸带5.5m，唯一浅滩深 .12m；基础水平水表面不是水流／桥梁／冰模拟。
+三条资源化乡土路线核心走廊宽7m，路面目标2.5m；河岸局部渐变到浅滩，绕东北已验收台地和西北7m小高地。道路／河谷用资源节点的Catmull-Rom曲线缓存采样＋距离场平滑边缘，不是路径规划。
+欧洲／山区两条连续12m宽森林带，2.55m密度网格＋小扰动，最多200棵批准原树，保留原LOD/剔除/阴影预算；道路、河岸、建筑院落主动清空。覆盖检查看带中实际树冠邻距并对树单独同帧开关，不用数量替代树林连续性；Winter/Desert仍明确缺区域植被源。
+每区域三处建筑：欧洲／山区／冬季使用批准EuropeanStoneHouse；Desert用两处NorthAfricanRuins及一处MiddleEasternCourtyard。`BiomeProfile.landmark_source_indices` 可编辑，不复制场景。
+`landmark_handoff.json` 与 `resources/handoff.json` 导入五个源：源文件／FBX／图SHA256、UV0、三角数、逐顶点Y-up尺寸与底轴心严格核对；逐piece exact material slots，无几何编辑、独立子件拟合或重拼。
+建筑whole scale1，最新 IronOreRock/GoldOreRock各三处whole uniform scale2.5（可配置1–4）；只作分散装饰，无收益、采矿、碰撞或正式NavMesh阻挡。整根一次旋转／等比／平移将原组包围盒投影中心放到预设平台，子件原矩阵保留；report记录原生尺寸、整根缩放、平移、地面与足迹误差。
+用户已替换旧两矿：仅启用新 iron/gold PBR 包、正式 `ZombieGame_Resources.blend` 和 schema2 handoff，共八张实际源图（两套 basecolor/normal/roughness/metallic）。旧 Downloads 包及旧 Unity 矿目录由父协调移到 Trash 恢复目录，不继续引用；旧源只作 ignored 恢复。
+新矿 Base Color 为 sRGB，normal 为 NormalMap，roughness/metallic 为线性红通道；Built-in Standard metallic 工作流直接使用 source metallic × authored multiplier1，smoothness仅在 shader 转换一次 `1−source roughness`，不先打包反转。Normal convention仍 `unverified`，原图 no green flip，仅预览假设，不宣称 OpenGL；需实际玩家画面对照后核实。无真实 Height/AO，不补造。
+建筑维持原非金属值0、原真实法线和有源rough图；缺rough仍用各作者常量，不改变建筑工作流或光照。矿通道校验包含 checksum、类型/色彩空间/noFlip、原金属图非零数据、实际玩家 Material 三数据通道绑定和倍率；报告保留 normal 未核实说明，技术通过不代表法线方向已获视觉确认。
+唯一三角例外：MiddleEasternCourtyard FBX SHA256 `a62b35ed830786e8a056e73c1fb0a94cb476deb210da419afca59c307f15a082`，源10028三角中恰有2个重复位置零面积三角，交接明确 effective10026；导入仅对此 exact record/hash/字段严格接受10026。其余源仍严格 authored count，不泛化容差、不删除其他小面、不修改源几何。
+许可不是全CC0：farmhouse CC BY4.0、wall atlas CC BY-SA3.0、3TD／clay CC0，出处／归属见 `art/environment/landmark_source_manifest.json` 与交接；用户矿来源许可未核实，限本地私有preview，不公开上传／再分发。
+
+父协调统一执行准备／构建（不可同时有源写入或另一个Unity进程）：
+
+```sh
+/Applications/Unity/Hub/Editor/6000.6.1f1/Unity.app/Contents/MacOS/Unity -batchmode -quit -projectPath "$PWD" -executeMethod ZombieGame.Tests.EditorTools.EnvironmentShowcaseTools.prepare_and_build_route_preview -logFile Builds/EnvironmentShowcase-routes-build.log
+"Builds/EnvironmentShowcase.app/Contents/MacOS/Zombie Game" -showcaseCheck -showcaseBiome all -showcaseLayout routes -showcaseOutput "$PWD/Builds/ArtReview/EnvironmentShowcase/routes-preview" -screen-width 1440 -screen-height 900
+"Builds/EnvironmentShowcase.app/Contents/MacOS/Zombie Game" -showcaseCheck -showcaseBiome all -showcaseLayout cliffs -showcaseOutput "$PWD/Builds/ArtReview/EnvironmentShowcase/routes-cliffs-regression" -screen-width 1440 -screen-height 900
+```
+
+新QA保留六层、旧悬崖／坡脚材质像素、草／石检查，再验证河床低于水面、浅滩深度、道路核心坡度<32°（仅视觉几何阈值，不是单位通行规则）、唯一河交叉点、7m走廊横向坡度／森林净空、森林带覆盖>=.8、同帧水／树贡献。
+九个fixture逐个同帧开关并存近中远截图，核对原源Mesh、材质数据通道与相对子件矩阵、root贴地、native_bounds、建筑足迹平整<.08m／矿足迹地形差<.5m、道路／水／院落净空；每矿不是用另外一个矿的像素代通过。`material_channels_pass` 和 `metallic_max_red` 单独记录，缺真实矿通道或错误倍率会令 fixtures_pass 失败。
+旧五高度点输出逐点previous_cliffs_height / expected / actual及变化原因：新路线刻意调整路面／谷地时使用明确新预期，误差阈值仍 .06m；`-showcaseLayout cliffs` 保留旧高度公式回归。新route panorama近中远各60暖帧＋180实测，保留全部慢帧和机器／分辨率／限帧信息。
+本轮代码接入不等于人眼／播放器验收；没有建筑活动、资源玩法或生产导航。旧cliffs-final及锁屏慢帧证据不删除，不把纯环境结果宣传成战斗稳定60fps。
+
 入口：`Zombie Game → Environment Showcase → Create or open independent scene`。
 场景：`Scenes/EnvironmentShowcase.unity`；可编辑参数资产：`Settings/EnvironmentShowcaseConfig.asset`。
 这两个资产由编辑器入口首次生成，不覆盖已存在资产，也不写 Build Settings。
@@ -9,6 +40,7 @@
 没有修改正式地图、寻路、接触系统、UnitBalance 或已经验收的单位表现。
 
 按 B 循环 Europe / Mountains / Winter / Desert，也可按对应 HUD 按钮；1/2/3 或滚轮切换近中远，Tab 切八个观察位置，G 开关草细节，H 隐藏 HUD。
+（历史cliffs基线为八位置；当前routes共十三位置并新增L布局切换，以上方routes-v1说明为准。）
 首次进入 Europe 草甸／林缘中景。四区域是同一场景控制器的资源化配置，不是四个复制控制器。
 HUD 显示同一视角本机近 600 帧中位数与 p95 帧时间，属纯环境结果，不代表战斗压力性能。
 
@@ -23,7 +55,7 @@ HUD 显示同一视角本机近 600 帧中位数与 p95 帧时间，属纯环境
 打包入口：`Zombie Game → Environment Showcase → Build independent macOS player`。
 植被交接入口：`Zombie Game → Environment Showcase → Import approved vegetation handoff`，只接受
 `art/environment/vegetation_handoff.json` 的 `status: approved`，完整校验源 blend、FBX 和通道 SHA-256。
-用户已批准独立环境分类源 `art/Blender主文件/ZombieGame_Environment.blend`，集合 `环境评审 · Poly Haven 植被`，42 张源图已打包。
+用户已批准独立环境分类源 `art/Blender主文件/ZombieGame_Environment.blend`；原 `环境评审 · Poly Haven 植被` 七资产／42张源图仍保留，当前文件另含三地标集合和交接依赖图，不把42当最新总图数。
 交接 JSON 为兼容保留原文件名 `art/environment/vegetation_handoff_candidate.json`，最新状态
 `formal_category_source_test_only`；`prepare_root_approved_preview()` 接受该明确授权状态，不替换正式玩法模型。
 `build_prepared_preview_player()` 会校验正式分类源及七个 FBX／贴图 checksum，更新配置里的源追溯，不重新导出模型。
@@ -37,7 +69,7 @@ Base Color + alpha 走颜色空间，Normal_GL 走 Normal 类型，roughness/alp
 实际变好与否须核对打包近中远截图，不把参数修改声称视觉验收完成。
 双面 cutout 专用 Built-in PBR shader 保留真实 alpha，不造草片或更改网格；树 LOD 两个源 FBX 共用其原相对变换。
 可执行文件使用 `-showcaseCheck -showcaseOutput <绝对目录> -showcaseBiome all` 做四区域验收；也可只测 europe / mountains / winter / desert 或 0–3。应在与前后图相同分辨率运行。
-输出包括地形显示/隐藏的同帧像素对比、八个位置图、近中远草开/关图，以及包含机器、分辨率、真实坡度、六层平均权重、草开/关帧时间的 JSON。
+历史cliffs输出包括地形显示/隐藏的同帧像素对比、八个原位置图、近中远草开/关图，以及包含机器、分辨率、真实坡度、六层平均权重、草开/关帧时间的 JSON；当前routes追加五视点和上述新QA。
 植被只在 `Camera.onPreCull` 为该观察相机每次 render 提交，含手动 capture，不与 LateUpdate 重复提交；截图必须有真实草／树贡献，不能用数量替代像素验收。
 每区域子目录存独立图与 JSON，根目录 JSON 汇总区域结果。包含 source semantics、明确缺失的 art、草有意关闭与否、岩石同帧开关像素；各区域保留近中远草开关及林缘／道路／岸边观察图。
 `terrain_passed` 独立报告地形基础检查；`source_complete` 要求该区域配置应有的草／树／灌木与来源岩石齐全。
@@ -68,9 +100,9 @@ Stone层只在约49–74°的陡坡渐入真实世界空间三轴投影；欧洲
 Europe 使用真实 Grass_A、枯草、森林腐殖土、湿泥、自然岩地、既有乡土道路。Rocky_terrain_02 是大尺度航拍，实验 tile65m，不缩成砖块。
 Mountains 真正增加 1.25 倍独立山坡起伏，并按实际海拔接 Snow_02，降低植被至低谷；不是调色冒充高山。
 Winter 广域 Snow_02＋林土／泥／无植被 Rock_boulder_dry 岩／道路，没有批准的枯树或积雪树，故隐藏绿色植被，基础水面仅冰色而非模拟结冰。
-Desert 真实 Sand_01、裸土、无植被 Rock_boulder_dry 岩（5m tile）、湿盆地与未铺砌土路；没有批准的棕榈／沙漠灌木／地区建筑，明确缺失，不造替代物。
+Desert 真实 Sand_01、裸土、无植被 Rock_boulder_dry 岩（5m tile）、湿盆地与未铺砌土路；仍没有批准的棕榈／沙漠灌木，当前routes已有北非废墟／中东院落源，历史cliffs基线不摆建筑。
 共享 RockNatural 为原生 rock_07_LOD2 的完整网格，3710 三角形，仅整体 2–4 倍等比摆放，不轴向拉伸；无碰撞，不变地形通行性。
-中世纪／区域建筑道具尚缺批准源，本轮不造假。无现代道路或建筑新增。
+历史cliffs阶段缺中世纪／区域建筑道具；当前routes已接三种批准中立地标（非建筑玩法），仍缺更多时代道具。无现代道路或建筑新增。
 正式战斗中的血条/弹药/选择圈/雾与性能，需另跑既有测试，不能用本纯环境场景替代。
 
 2026-10-11 最终播放器四区域技术检查全通过，1440×900、M2 Pro、60fps 限帧下，六组各180帧的 p95 为16.68–17.60ms（包含主动等待）。

@@ -18,11 +18,13 @@ namespace ZombieGame.Tests.EnvironmentShowcase
         public bool show_grass = true;
         public bool show_decorations = true;
         public bool show_rocks = true;
+        public bool show_trees = true;
         public int grass_instances { get; private set; }
         public int tree_instances { get; private set; }
         public int shrub_instances { get; private set; }
         public int rock_instances { get; private set; }
         public int visible_batches { get; private set; }
+        public readonly List<Vector2> tree_positions = new List<Vector2>();
 
         private sealed class SourcePart
         {
@@ -55,6 +57,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             var biome = terrain.biome;
             int grass_count = Mathf.RoundToInt(config.grass_count * (biome == null ? 1 : biome.grass_density));
             int tree_count = Mathf.RoundToInt(config.tree_count * (biome == null ? 1 : biome.tree_density));
+            if (terrain.routes.enabled && (biome == null || biome.tree_density > 0)) tree_count = terrain.routes.layout.tree_budget;
             int shrub_count = Mathf.RoundToInt(config.shrub_count * (biome == null ? 1 : biome.shrub_density));
             int rock_count = Mathf.RoundToInt(config.rock_count * (biome == null ? 1 : biome.rock_density));
             if (config.grass_variants != null && config.grass_variants.Length > 0)
@@ -79,12 +82,15 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             var parts = read_source_parts(prefab);
             if (parts.Count == 0) throw new InvalidOperationException("Approved showcase asset has no renderable static source meshes: " + prefab.name);
             var cells = new Dictionary<Vector2Int, List<Matrix4x4>>();
+            var tree_candidates = category == "tree" && ground.routes.enabled ? build_forest_candidates() : null;
             int placed = 0;
-            for (int attempt = 0; attempt < count * 12 && placed < count; attempt++)
+            int attempts = tree_candidates == null ? count * 12 : tree_candidates.Count;
+            for (int attempt = 0; attempt < attempts && placed < count; attempt++)
             {
                 float x = (float)random.NextDouble() * config.map_size;
                 float z = (float)random.NextDouble() * config.map_size;
-                if (category == "grass" && random.NextDouble() < config.grass_focus_fraction)
+                if (tree_candidates != null) { x = tree_candidates[attempt].x; z = tree_candidates[attempt].y; }
+                else if (category == "grass" && random.NextDouble() < config.grass_focus_fraction)
                 {
                     x = Mathf.Clamp01(config.grass_focus_center.x + ((float)random.NextDouble() * 2 - 1) * config.grass_focus_extent.x) * config.map_size;
                     z = Mathf.Clamp01(config.grass_focus_center.y + ((float)random.NextDouble() * 2 - 1) * config.grass_focus_extent.y) * config.map_size;
@@ -111,6 +117,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
                 var cell = new Vector2Int(Mathf.FloorToInt(x / config.grass_chunk_size), Mathf.FloorToInt(z / config.grass_chunk_size));
                 if (!cells.TryGetValue(cell, out var instances)) { instances = new List<Matrix4x4>(); cells.Add(cell, instances); }
                 instances.Add(matrix);
+                if (category == "tree") tree_positions.Add(new Vector2(x,z));
                 placed++;
             }
             foreach (var cell in cells) build_batches(cell.Value, parts, category);
@@ -119,8 +126,11 @@ namespace ZombieGame.Tests.EnvironmentShowcase
 
         private bool can_place_category(float x, float z, string category)
         {
+            if (ground.routes.enabled && (ground.routes.measure_river(x,z) < ground.routes.layout.river_half_width + 2 ||
+                ground.routes.measure_road(x,z) < ground.routes.layout.corridor_half_width ||
+                ground.routes.measure_courtyard(x,z) < ground.routes.layout.landmark_clear_radius)) return false;
             if (z - ground.shoreline_z(x) <= config.shore_blend_width ||
-                Mathf.Abs(x - ground.road_x(z)) <= config.road_half_width + config.road_edge_width) return false;
+                (!ground.routes.enabled && Mathf.Abs(x - ground.road_x(z)) <= config.road_half_width + config.road_edge_width)) return false;
             float forest = ground.forest_weight(x, z);
             if (category == "rock") return ground.terrain_data.GetSteepness(x / config.map_size, z / config.map_size) < 38 &&
                 (ground.talus_weight(x, z) > .2f || forest > .3f || ground.terrain_data.GetSteepness(x / config.map_size, z / config.map_size) > 12);
@@ -129,6 +139,25 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             if (category == "shrub") return forest > .15f && forest < .9f && random.NextDouble() < .6f;
             float patch = Mathf.PerlinNoise(x / 7 + 12.6f, z / 7);
             return random.NextDouble() < Mathf.Lerp(.18f, .92f, patch) * (1 - forest * .6f);
+        }
+
+        private List<Vector2> build_forest_candidates()
+        {
+            var candidates = new List<Vector2>();
+            float spacing = ground.routes.layout.tree_spacing;
+            for (float z = spacing; z < config.map_size - spacing; z += spacing)
+                for (float x = spacing; x < config.map_size - spacing; x += spacing)
+                {
+                    var point = new Vector2(x + ((float)random.NextDouble() - .5f) * spacing * .2f,
+                        z + ((float)random.NextDouble() - .5f) * spacing * .2f);
+                    if (ground.forest_weight(point.x,point.y) > .75f && ground.can_place_greenery(point.x,point.y)) candidates.Add(point);
+                }
+            for (int index = candidates.Count - 1; index > 0; index--)
+            {
+                int other = random.Next(index + 1);
+                var point = candidates[index]; candidates[index] = candidates[other]; candidates[other] = point;
+            }
+            return candidates;
         }
 
         private List<SourcePart> read_source_parts(GameObject prefab)
@@ -214,6 +243,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             {
                 if (batch.is_grass && !show_grass) continue;
                 if (batch.is_rock && !show_rocks) continue;
+                if (batch.is_tree && !show_trees) continue;
                 if (batch.lod_height > 0)
                 {
                     float relative_height = batch.lod_height / (camera.orthographicSize * 2);

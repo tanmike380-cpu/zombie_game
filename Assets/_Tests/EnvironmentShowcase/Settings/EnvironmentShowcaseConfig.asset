@@ -12,11 +12,221 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 562e564691adf467f808a00b98991523, type: 3}
   m_Name: EnvironmentShowcaseConfig
   m_EditorClassIdentifier: Assembly-CSharp::ZombieGame.Tests.EnvironmentShowcase.EnvironmentShowcaseConfig
+  route_layout:
+    enabled: 1
+    version: routes-v1; previous baseline cliffs-final
+    river:
+    - {x: 0.23, y: 0.16}
+    - {x: 0.25, y: 0.28}
+    - {x: 0.3, y: 0.39}
+    - {x: 0.26, y: 0.55}
+    - {x: 0.32, y: 0.7}
+    - {x: 0.23, y: 0.88}
+    river_half_width: 2.5
+    river_bank_width: 5.5
+    river_depth: 0.5
+    ford: {x: 0.26, y: 0.55}
+    ford_radius: 5
+    ford_depth: 0.12
+    roads:
+    - points:
+      - {x: 0.45, y: 0.25}
+      - {x: 0.44, y: 0.42}
+      - {x: 0.42, y: 0.55}
+      - {x: 0.43, y: 0.68}
+      - {x: 0.4, y: 0.84}
+    - points:
+      - {x: 0.42, y: 0.55}
+      - {x: 0.34, y: 0.55}
+      - {x: 0.26, y: 0.55}
+      - {x: 0.17, y: 0.55}
+      - {x: 0.15, y: 0.68}
+    - points:
+      - {x: 0.44, y: 0.42}
+      - {x: 0.55, y: 0.43}
+      - {x: 0.65, y: 0.49}
+      - {x: 0.78, y: 0.5}
+      - {x: 0.91, y: 0.5}
+      - {x: 0.93, y: 0.62}
+    forest_bands:
+    - points:
+      - {x: 0.52, y: 0.34}
+      - {x: 0.57, y: 0.4}
+      - {x: 0.58, y: 0.51}
+      - {x: 0.61, y: 0.57}
+    - points:
+      - {x: 0.52, y: 0.64}
+      - {x: 0.55, y: 0.72}
+      - {x: 0.62, y: 0.78}
+    forest_half_width: 6
+    tree_spacing: 2.55
+    tree_budget: 200
+    corridor_half_width: 3.5
+    road_height: 2.5
+    highland_center: {x: 0.12, y: 0.75}
+    highland_radius: {x: 10, y: 15}
+    highland_height: 7
+    highland_edge_width: 3
+    landmarks:
+    - {x: 0.49, y: 0.31}
+    - {x: 0.47, y: 0.83}
+    - {x: 0.86, y: 0.58}
+    ores:
+    - {x: 0.37, y: 0.35}
+    - {x: 0.38, y: 0.66}
+    - {x: 0.71, y: 0.4}
+    - {x: 0.48, y: 0.6}
+    - {x: 0.82, y: 0.42}
+    - {x: 0.68, y: 0.83}
+    ore_uniform_scale: 2.5
+    landmark_clear_radius: 7
+    landmark_pad_radius: 5.7
+  landmark_sources:
+  - id: EuropeanStoneHouse
+    source_record: "art/environment/landmark_handoff.json#EuropeanStoneHouse; art/Blender\u4E3B\u6587\u4EF6/ZombieGame_Environment.blend; SHA256=dfd40cfc85891b05f660d56f7016fa163391d8627e80002d48f691cf6a9e017d; Scene=Scene; Collection=\u73AF\u5883\u5730\u6807 \xB7 EuropeanStoneHouse; scale=1, once-baked axes; authored_triangles=835; effective_triangles=835; degenerate_triangles=0"
+    prefab: {fileID: 1783395682626955510, guid: 122de176034b44923a0b206b5cc41ff4, type: 3}
+    native_dimensions: {x: 4.778984, y: 3.9249148, z: 6.9895115}
+    native_bounds_center: {x: 0, y: 1.9624574, z: 0}
+    material_bindings:
+    - material: {fileID: 2100000, guid: 09e8301957faa41d6aa6da25c32fd36c, type: 2}
+      base_color: {fileID: 2800000, guid: 9168203bc95ce498daf367ea9e9a0b91, type: 3}
+      normal: {fileID: 2800000, guid: c2b661a4759cb4dffb7d1e20e3e4d6a6, type: 3}
+      roughness: {fileID: 0}
+      metallic: {fileID: 0}
+      import_channels_pass: 1
+      metallic_max_red: 0
+      metallic_multiplier: 0
+      normal_note: Source-documented normal_gl; no green flip
+  - id: NorthAfricanRuins
+    source_record: "art/environment/landmark_handoff.json#NorthAfricanRuins; art/Blender\u4E3B\u6587\u4EF6/ZombieGame_Environment.blend; SHA256=dfd40cfc85891b05f660d56f7016fa163391d8627e80002d48f691cf6a9e017d; Scene=Scene; Collection=\u73AF\u5883\u5730\u6807 \xB7 NorthAfricanRuins; scale=1, once-baked axes; authored_triangles=1916; effective_triangles=1916; degenerate_triangles=0"
+    prefab: {fileID: 122649777870623997, guid: 8de65b19a5f404e308827406c406fc7a, type: 3}
+    native_dimensions: {x: 7.2855225, y: 4.9301963, z: 7.321697}
+    native_bounds_center: {x: 0.00000023841858, y: 2.4650981, z: -0.05408287}
+    material_bindings:
+    - material: {fileID: 2100000, guid: aa7b25799c19b419098fefad67eb0200, type: 2}
+      base_color: {fileID: 2800000, guid: c0ab489ef51514a0a94ca6c1b261bd98, type: 3}
+      normal: {fileID: 2800000, guid: ab02d44cd3e564b658b2a122965d00c8, type: 3}
+      roughness: {fileID: 0}
+      metallic: {fileID: 0}
+      import_channels_pass: 1
+      metallic_max_red: 0
+      metallic_multiplier: 0
+      normal_note: Source-documented normal_gl; no green flip
+    - material: {fileID: 2100000, guid: b05911538f4714ffcb98330f67a1a192, type: 2}
+      base_color: {fileID: 2800000, guid: 2080774e2ca504516a7ec2761f1ee47d, type: 3}
+      normal: {fileID: 2800000, guid: aa60ff0e8ee6944dcb31b9fb8d46487e, type: 3}
+      roughness: {fileID: 0}
+      metallic: {fileID: 0}
+      import_channels_pass: 1
+      metallic_max_red: 0
+      metallic_multiplier: 0
+      normal_note: Source-documented normal_gl; no green flip
+    - material: {fileID: 2100000, guid: f03de87bc58374071b33c1bb63f05e63, type: 2}
+      base_color: {fileID: 2800000, guid: c01ccd2177ea847c8b316a7feb1ac049, type: 3}
+      normal: {fileID: 2800000, guid: 01df9562246344ebb884d3bcfc62447a, type: 3}
+      roughness: {fileID: 0}
+      metallic: {fileID: 0}
+      import_channels_pass: 1
+      metallic_max_red: 0
+      metallic_multiplier: 0
+      normal_note: Source-documented normal_gl; no green flip
+    - material: {fileID: 2100000, guid: 4bf4a15eb9c824c6ab4f9f26d1e7a318, type: 2}
+      base_color: {fileID: 2800000, guid: 9eab9aa3a050144c7abdee198ae25ebf, type: 3}
+      normal: {fileID: 2800000, guid: e1229d4bebb8b42b0868d146ffa049c9, type: 3}
+      roughness: {fileID: 0}
+      metallic: {fileID: 0}
+      import_channels_pass: 1
+      metallic_max_red: 0
+      metallic_multiplier: 0
+      normal_note: Source-documented normal_gl; no green flip
+    - material: {fileID: 2100000, guid: 8ec3fb2a542e441c6bb65797d8e104e7, type: 2}
+      base_color: {fileID: 2800000, guid: 0da3d15a53036496584f19e9cc65277b, type: 3}
+      normal: {fileID: 2800000, guid: c86e2ca2d1ce648118e74c2d70898de8, type: 3}
+      roughness: {fileID: 0}
+      metallic: {fileID: 0}
+      import_channels_pass: 1
+      metallic_max_red: 0
+      metallic_multiplier: 0
+      normal_note: Source-documented normal_gl; no green flip
+    - material: {fileID: 2100000, guid: 2351813fc2475494bae383eab97a9d79, type: 2}
+      base_color: {fileID: 2800000, guid: 89f0300c2b3524216a9649286e8f580a, type: 3}
+      normal: {fileID: 2800000, guid: 58834978024ca4d56bcf1c8548afdfad, type: 3}
+      roughness: {fileID: 0}
+      metallic: {fileID: 0}
+      import_channels_pass: 1
+      metallic_max_red: 0
+      metallic_multiplier: 0
+      normal_note: Source-documented normal_gl; no green flip
+  - id: MiddleEasternCourtyard
+    source_record: "art/environment/landmark_handoff.json#MiddleEasternCourtyard; art/Blender\u4E3B\u6587\u4EF6/ZombieGame_Environment.blend; SHA256=dfd40cfc85891b05f660d56f7016fa163391d8627e80002d48f691cf6a9e017d; Scene=Scene; Collection=\u73AF\u5883\u5730\u6807 \xB7 MiddleEasternCourtyard; scale=1, once-baked axes; authored_triangles=10028; effective_triangles=10026; degenerate_triangles=2"
+    prefab: {fileID: 135574410185833631, guid: 9ec1389ba56d8410385abd880c663d84, type: 3}
+    native_dimensions: {x: 7.7745056, y: 2.9639325, z: 7.6414976}
+    native_bounds_center: {x: 0, y: 1.4819663, z: 2.904741}
+    material_bindings:
+    - material: {fileID: 2100000, guid: 245ca0ae8eb4345ab81e406e187b1827, type: 2}
+      base_color: {fileID: 2800000, guid: ba8a5b72ca98d4790b38675ae2e50c64, type: 3}
+      normal: {fileID: 2800000, guid: 26ea274a27eab4daab7f4e6cde6ddd5b, type: 3}
+      roughness: {fileID: 2800000, guid: b6f471eda32f847f0ba595a84063033b, type: 3}
+      metallic: {fileID: 0}
+      import_channels_pass: 1
+      metallic_max_red: 0
+      metallic_multiplier: 0
+      normal_note: Source-documented normal_gl; no green flip
+    - material: {fileID: 2100000, guid: 703fb5c499ed4436bb7e27c5d460ab9a, type: 2}
+      base_color: {fileID: 2800000, guid: ba8a5b72ca98d4790b38675ae2e50c64, type: 3}
+      normal: {fileID: 2800000, guid: 26ea274a27eab4daab7f4e6cde6ddd5b, type: 3}
+      roughness: {fileID: 2800000, guid: b6f471eda32f847f0ba595a84063033b, type: 3}
+      metallic: {fileID: 0}
+      import_channels_pass: 1
+      metallic_max_red: 0
+      metallic_multiplier: 0
+      normal_note: Source-documented normal_gl; no green flip
+    - material: {fileID: 2100000, guid: 247055bec5b4d4e428ca5144793e428d, type: 2}
+      base_color: {fileID: 2800000, guid: 9dfcf4dddc8fd467f8ced86822b4604e, type: 3}
+      normal: {fileID: 2800000, guid: d6e919507dfc24a1685729795e67fd4b, type: 3}
+      roughness: {fileID: 0}
+      metallic: {fileID: 0}
+      import_channels_pass: 1
+      metallic_max_red: 0
+      metallic_multiplier: 0
+      normal_note: Source-documented normal_gl; no green flip
+  ore_sources:
+  - id: IronOreRock
+    source_record: "art/resources/handoff.json#IronOreRock; art/Blender\u4E3B\u6587\u4EF6/ZombieGame_Resources.blend; SHA256=37fcad0d37b78aea743399c0fc144c4c3d6038ede7c01c35474d051f651bee03; Scene=Scene; Collection=\u8D44\u6E90\u7D20\u6750 \xB7 IronOreRock; scale=1, once-baked axes; authored_triangles=8618; effective_triangles=8618; degenerate_triangles=0"
+    prefab: {fileID: 4689653461755136067, guid: dac84c5f3b5a74112a7f59697e69c82f, type: 3}
+    native_dimensions: {x: 0.9995117, y: 0.71435547, z: 0.8442383}
+    native_bounds_center: {x: 0, y: 0.35717773, z: 0}
+    material_bindings:
+    - material: {fileID: 2100000, guid: 603a13c160d544d7cbd9d03047e2353e, type: 2}
+      base_color: {fileID: 2800000, guid: 1048a45afa9524a428baef69f11c860b, type: 3}
+      normal: {fileID: 2800000, guid: 05b4b66cb55db4ef7a7ab5c57deb6601, type: 3}
+      roughness: {fileID: 2800000, guid: 651f2c63a1c8941cb983a995f74616d6, type: 3}
+      metallic: {fileID: 2800000, guid: 1bf33501888314254b2d79a99dd896ab, type: 3}
+      import_channels_pass: 1
+      metallic_max_red: 0.39607844
+      metallic_multiplier: 1
+      normal_note: unverified; as_encoded_no_green_flip; NOT asserted OpenGL; visual_check_required=True
+  - id: GoldOreRock
+    source_record: "art/resources/handoff.json#GoldOreRock; art/Blender\u4E3B\u6587\u4EF6/ZombieGame_Resources.blend; SHA256=37fcad0d37b78aea743399c0fc144c4c3d6038ede7c01c35474d051f651bee03; Scene=Scene; Collection=\u8D44\u6E90\u7D20\u6750 \xB7 GoldOreRock; scale=1, once-baked axes; authored_triangles=8281; effective_triangles=8281; degenerate_triangles=0"
+    prefab: {fileID: 6878578747612230363, guid: f8a51e3385a3b4d578caeb7477ace736, type: 3}
+    native_dimensions: {x: 0.9995117, y: 0.47607425, z: 0.9995117}
+    native_bounds_center: {x: 0, y: 0.23803712, z: 0}
+    material_bindings:
+    - material: {fileID: 2100000, guid: 35a8e26d159e74ecf95c8f0efdcbc810, type: 2}
+      base_color: {fileID: 2800000, guid: fc026f0c8b9824a8495a20450ce8af52, type: 3}
+      normal: {fileID: 2800000, guid: a03e90b382ab04d7586f7ba36f33515b, type: 3}
+      roughness: {fileID: 2800000, guid: d7aa18dc154f14fbebf401ae0df09d75, type: 3}
+      metallic: {fileID: 2800000, guid: 18cdd24872b724b328ade4d549fcdcfe, type: 3}
+      import_channels_pass: 1
+      metallic_max_red: 1
+      metallic_multiplier: 1
+      normal_note: unverified; as_encoded_no_green_flip; NOT asserted OpenGL; visual_check_required=True
   biomes:
   - id: europe
     label: Europe
     source_record: art/environment/showcase_biome_sources.json#europe
     missing_art: Medieval architecture and props are not approved for this environment preview.
+    route_missing_art: Approved neutral European ruins; further period props not supplied.
     layer_semantics:
     - 'Grass_A: real green grass'
     - 'Grass_Dry: dry grass patches'
@@ -68,10 +278,12 @@ MonoBehaviour:
     cliff_tile_size: 4
     talus_tile_size: 2.5
     cliff_normal_strength: 0.3
+    landmark_source_indices: 000000000000000000000000i
   - id: mountains
     label: Mountains
     source_record: art/environment/showcase_biome_sources.json#mountains
     missing_art: Native broadleaf tree reused only in low valleys; alpine conifers and buildings absent.
+    route_missing_art: Broadleaf valley belts and neutral European ruins; alpine conifers absent.
     layer_semantics:
     - 'Grass_A: real green grass'
     - 'Snow_02: upper mountain snow, not dry grass'
@@ -123,10 +335,12 @@ MonoBehaviour:
     cliff_tile_size: 4
     talus_tile_size: 2.5
     cliff_normal_strength: 0.3
+    landmark_source_indices: 000000000000000000000000i
   - id: winter
     label: Winter
     source_record: art/environment/showcase_biome_sources.json#winter
     missing_art: 'No approved snow-covered/leafless trees: green vegetation deliberately hidden; basic ice-coloured surface, not simulated ice.'
+    route_missing_art: European ruins are not snow-authored; leafless/snow trees absent; ice-coloured water only.
     layer_semantics:
     - 'Snow_02: snow cover, not Grass_A'
     - 'Snow_02: drift variation, not Grass_Dry'
@@ -178,10 +392,12 @@ MonoBehaviour:
     cliff_tile_size: 4
     talus_tile_size: 2.5
     cliff_normal_strength: 0.3
+    landmark_source_indices: 000000000000000000000000i
   - id: desert
     label: Desert
     source_record: art/environment/showcase_biome_sources.json#desert
     missing_art: 'No approved palms, desert shrubs or regional architecture: source rocks only; shallow wet basin preview.'
+    route_missing_art: Approved NorthAfrican/MiddleEastern neutral ruins; palms/desert shrubs absent. Decorative ores only.
     layer_semantics:
     - 'Sand_01: sand substrate, not Grass_A'
     - 'Sand_01: sand variation, not Grass_Dry'
@@ -233,6 +449,7 @@ MonoBehaviour:
     cliff_tile_size: 4
     talus_tile_size: 2.5
     cliff_normal_strength: 0.3
+    landmark_source_indices: 010000000100000002000000i
   seed: 173
   map_size: 128
   heightmap_resolution: 257

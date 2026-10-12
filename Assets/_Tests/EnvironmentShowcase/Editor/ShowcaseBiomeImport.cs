@@ -128,6 +128,7 @@ namespace ZombieGame.Tests.EditorTools
             var europe = create_profile("europe", "Europe", layers);
             europe.ground_tints = new[] { config.grass_tint, config.dry_tint, Color.white, config.mud_tint };
             europe.missing_art = "Medieval architecture and props are not approved for this environment preview.";
+            europe.route_missing_art = "Approved neutral European ruins; further period props not supplied.";
             var alpine = create_profile("mountains", "Mountains", layers);
             alpine.layer_overrides[1] = layers["snow_02"];
             alpine.layer_semantics[1] = "Snow_02: upper mountain snow, not dry grass";
@@ -145,6 +146,7 @@ namespace ZombieGame.Tests.EditorTools
             alpine.fog = new Color(.56f, .63f, .68f);
             alpine.sun = new Color(.96f, .98f, 1);
             alpine.missing_art = "Native broadleaf tree reused only in low valleys; alpine conifers and buildings absent.";
+            alpine.route_missing_art = "Broadleaf valley belts and neutral European ruins; alpine conifers absent.";
             alpine.plateau_height = 17;
             var winter = create_profile("winter", "Winter", layers);
             winter.layer_overrides[0] = layers["snow_02"];
@@ -162,6 +164,7 @@ namespace ZombieGame.Tests.EditorTools
             winter.fog = new Color(.62f, .68f, .73f);
             winter.water = new Color(.53f, .64f, .68f);
             winter.missing_art = "No approved snow-covered/leafless trees: green vegetation deliberately hidden; basic ice-coloured surface, not simulated ice.";
+            winter.route_missing_art = "European ruins are not snow-authored; leafless/snow trees absent; ice-coloured water only.";
             winter.plateau_height = 13;
             var desert = create_profile("desert", "Desert", layers);
             desert.layer_overrides[0] = layers["sand_01"];
@@ -186,8 +189,10 @@ namespace ZombieGame.Tests.EditorTools
             desert.fog = new Color(.68f, .61f, .48f);
             desert.water = new Color(.18f, .38f, .36f);
             desert.missing_art = "No approved palms, desert shrubs or regional architecture: source rocks only; shallow wet basin preview.";
+            desert.route_missing_art = "Approved NorthAfrican/MiddleEastern neutral ruins; palms/desert shrubs absent. Decorative ores only.";
             desert.plateau_height = 15;
             desert.erosion_strength = .08f;
+            desert.landmark_source_indices = new[] { 1,1,2 };
             config.biomes = new[] { europe, alpine, winter, desert };
             foreach (var profile in config.biomes) assign_landform_pbr(profile, layers);
             config.validate_config();

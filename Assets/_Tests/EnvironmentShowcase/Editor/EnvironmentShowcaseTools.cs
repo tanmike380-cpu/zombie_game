@@ -119,5 +119,16 @@ namespace ZombieGame.Tests.EditorTools
             VegetationShowcaseImport.apply_existing_coverage();
             build_player();
         }
+
+        /// <summary>Parent runs one Unity session after source handoff, never concurrent with source authoring.</summary>
+        public static void prepare_and_build_route_preview()
+        {
+            guard_unsaved_scene();
+            ShowcaseBiomeImport.prepare_biomes();
+            VegetationShowcaseImport.refresh_root_test_source_provenance();
+            ShowcaseLandmarkImport.prepare_route_sources();
+            VegetationShowcaseImport.apply_existing_coverage();
+            build_player();
+        }
     }
 }

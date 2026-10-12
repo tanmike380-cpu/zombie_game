@@ -10,7 +10,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
         [Serializable]
         public sealed class BiomeProfile
         {
-            public string id, label, source_record, missing_art;
+            public string id, label, source_record, missing_art, route_missing_art;
             public string[] layer_semantics;
             public TerrainLayer[] layer_overrides = new TerrainLayer[6];
             public float relief_multiplier = 1, rock_start = 16, rock_full = 34, dry_strength = .3f;
@@ -28,7 +28,63 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             public Texture2D cliff_albedo_smoothness, cliff_normal, talus_albedo_smoothness, talus_normal;
             public string cliff_source_record, talus_source_record;
             public float cliff_tile_size = 4, talus_tile_size = 2.5f, cliff_normal_strength = .3f;
+            public int[] landmark_source_indices = { 0,0,0 };
         }
+
+        [Serializable] public sealed class SourceAsset
+        {
+            public string id, source_record;
+            public GameObject prefab;
+            public Vector3 native_dimensions;
+            public Vector3 native_bounds_center;
+            public SourceMaterialBinding[] material_bindings;
+        }
+
+        [Serializable] public sealed class SourceMaterialBinding
+        {
+            public Material material;
+            public Texture2D base_color, normal, roughness, metallic;
+            public bool import_channels_pass;
+            public float metallic_max_red, metallic_multiplier;
+            public string normal_note;
+        }
+
+        [Serializable] public sealed class RoutePath
+        {
+            public Vector2[] points;
+        }
+
+        [Serializable] public sealed class RouteLayout
+        {
+            public bool enabled;
+            public string version = "routes-v1; previous baseline cliffs-final";
+            public Vector2[] river = { new Vector2(.23f,.16f), new Vector2(.25f,.28f), new Vector2(.30f,.39f),
+                new Vector2(.26f,.55f), new Vector2(.32f,.70f), new Vector2(.23f,.88f) };
+            public float river_half_width = 2.5f, river_bank_width = 5.5f, river_depth = .5f;
+            public Vector2 ford = new Vector2(.26f,.55f);
+            public float ford_radius = 5, ford_depth = .12f;
+            public RoutePath[] roads = {
+                new RoutePath { points = new[] { new Vector2(.45f,.25f), new Vector2(.44f,.42f), new Vector2(.42f,.55f), new Vector2(.43f,.68f), new Vector2(.40f,.84f) } },
+                new RoutePath { points = new[] { new Vector2(.42f,.55f), new Vector2(.34f,.55f), new Vector2(.26f,.55f), new Vector2(.17f,.55f), new Vector2(.15f,.68f) } },
+                new RoutePath { points = new[] { new Vector2(.44f,.42f), new Vector2(.55f,.43f), new Vector2(.65f,.49f), new Vector2(.78f,.50f), new Vector2(.91f,.50f), new Vector2(.93f,.62f) } } };
+            public RoutePath[] forest_bands = {
+                new RoutePath { points = new[] { new Vector2(.52f,.34f), new Vector2(.57f,.40f), new Vector2(.58f,.51f), new Vector2(.61f,.57f) } },
+                new RoutePath { points = new[] { new Vector2(.52f,.64f), new Vector2(.55f,.72f), new Vector2(.62f,.78f) } } };
+            public float forest_half_width = 6, tree_spacing = 2.55f;
+            public int tree_budget = 200;
+            public float corridor_half_width = 3.5f, road_height = 2.5f;
+            public Vector2 highland_center = new Vector2(.12f,.75f), highland_radius = new Vector2(10,15);
+            public float highland_height = 7, highland_edge_width = 3;
+            public Vector2[] landmarks = { new Vector2(.49f,.31f), new Vector2(.47f,.83f), new Vector2(.86f,.58f) };
+            public Vector2[] ores = { new Vector2(.37f,.35f), new Vector2(.38f,.66f), new Vector2(.71f,.40f),
+                new Vector2(.48f,.60f), new Vector2(.82f,.42f), new Vector2(.68f,.83f) };
+            public float ore_uniform_scale = 2.5f;
+            public float landmark_clear_radius = 7, landmark_pad_radius = 5.7f;
+        }
+
+        public RouteLayout route_layout = new RouteLayout();
+        public SourceAsset[] landmark_sources = Array.Empty<SourceAsset>();
+        public SourceAsset[] ore_sources = Array.Empty<SourceAsset>();
 
         [Header("Independent region profiles; six source slots remain explicit")]
         public BiomeProfile[] biomes = Array.Empty<BiomeProfile>();
@@ -131,6 +187,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             validate_sources(tree_prefabs, tree_source_record, "tree");
             validate_sources(shrub_prefabs, shrub_source_record, "shrub");
             validate_sources(rock_prefabs, rock_source_record, "rock");
+            if (route_layout != null && route_layout.enabled) validate_routes();
             if (biomes != null)
             {
                 foreach (var biome in biomes)
@@ -142,6 +199,10 @@ namespace ZombieGame.Tests.EnvironmentShowcase
                         biome.grass_density < 0 || biome.tree_density < 0 || biome.shrub_density < 0 || biome.rock_density < 0)
                         throw new InvalidOperationException("Showcase biome provenance, six semantics or relief bounds invalid: " + biome?.id);
                     else validate_plateau(biome);
+                    if (biome.landmark_source_indices == null || biome.landmark_source_indices.Length != 3)
+                        throw new InvalidOperationException("Biome requires three landmark source selectors: " + biome.id);
+                    foreach (int source_index in biome.landmark_source_indices)
+                        if (source_index < 0 || source_index >= 3) throw new InvalidOperationException("Biome landmark index invalid: " + biome.id);
                 }
             }
         }
@@ -162,6 +223,42 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             if ((biome.talus_albedo_smoothness || biome.talus_normal) &&
                 (!biome.talus_albedo_smoothness || !biome.talus_normal || string.IsNullOrWhiteSpace(biome.talus_source_record)))
                 throw new InvalidOperationException("Talus PBR requires paired approved base+normal and source record: " + biome.id);
+        }
+
+        private void validate_routes()
+        {
+            var layout = route_layout;
+            if (layout.river_half_width < 2 || layout.river_bank_width < 3 || layout.river_depth <= 0 ||
+                layout.river_depth >= water_level || layout.ford_depth <= 0 || layout.ford_depth >= layout.river_depth ||
+                layout.tree_spacing < 2 || layout.tree_budget < 80 || layout.corridor_half_width < 3 ||
+                layout.ore_uniform_scale < 1 || layout.ore_uniform_scale > 4 ||
+                layout.highland_height <= 0 || layout.highland_height >= height_range - .5f || layout.highland_edge_width < 1 ||
+                layout.highland_center.x * map_size < layout.highland_radius.x || layout.highland_center.y * map_size < layout.highland_radius.y ||
+                layout.highland_center.x * map_size + layout.highland_radius.x > map_size || layout.highland_center.y * map_size + layout.highland_radius.y > map_size ||
+                layout.landmarks.Length != 3 || layout.ores.Length != 6 || landmark_sources.Length != 3 || ore_sources.Length != 2)
+                throw new InvalidOperationException("Route layout widths/budgets or approved source counts invalid.");
+            foreach (var source in landmark_sources) validate_route_source(source);
+            foreach (var source in ore_sources) validate_route_source(source);
+            validate_points(layout.river);
+            validate_points(layout.landmarks);
+            validate_points(layout.ores);
+            foreach (var path in layout.roads) validate_points(path.points);
+            foreach (var path in layout.forest_bands) validate_points(path.points);
+        }
+
+        private static void validate_points(Vector2[] points)
+        {
+            if (points == null || points.Length < 2) throw new InvalidOperationException("Route requires at least two authored points.");
+            foreach (var point in points)
+                if (float.IsNaN(point.x) || float.IsNaN(point.y) || point.x < 0 || point.y < 0 || point.x > 1 || point.y > 1)
+                    throw new InvalidOperationException("Route authored point lies outside terrain: " + point);
+        }
+
+        private static void validate_route_source(SourceAsset source)
+        {
+            if (source == null || !source.prefab || string.IsNullOrWhiteSpace(source.source_record) ||
+                source.native_dimensions.x <= 0 || source.native_dimensions.y <= 0 || source.native_dimensions.z <= 0)
+                throw new InvalidOperationException("Route fixture requires approved prefab/provenance/imported vertex bounds: " + source?.id);
         }
 
         private static void validate_source(GameObject prefab, string source_record, string category)

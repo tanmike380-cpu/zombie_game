@@ -13,12 +13,14 @@ namespace ZombieGame.Tests.EnvironmentShowcase
         private Material material_instance;
         public Terrain terrain { get; private set; }
         public TerrainData terrain_data { get; private set; }
+        public ShowcaseRoutes routes { get; private set; }
         public Vector3 origin => new Vector3(-config.map_size * .5f, 0, -config.map_size * .5f);
 
         public ShowcaseTerrain(EnvironmentShowcaseConfig settings, Transform parent, EnvironmentShowcaseConfig.BiomeProfile profile = null)
         {
             config = settings;
             biome = profile;
+            routes = new ShowcaseRoutes(settings);
             layer_instances = load_layers();
             terrain_data = new TerrainData { name = "Showcase real relief", heightmapResolution = config.heightmap_resolution,
                 alphamapResolution = config.alphamap_resolution, baseMapResolution = 1024,
@@ -108,9 +110,15 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             return result;
         }
 
-        private float sample_authored_height(float x, float z)
+        public float sample_authored_height(float x, float z)
         {
             float original = sample_original_height(x, z);
+            float height = sample_cliff_height(x, z, original);
+            return routes.enabled ? routes.sample_height(x,z,height,original) : height;
+        }
+
+        private float sample_cliff_height(float x, float z, float original)
+        {
             if (biome == null || !biome.plateau_enabled) return original;
             float signed_distance = plateau_edge_distance(x, z);
             float interior = 1 - Mathf.SmoothStep(0, 1, Mathf.InverseLerp(-biome.cliff_edge_width, 0, signed_distance));
@@ -161,6 +169,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
         public float road_x(float z) => config.map_size * .42f + Mathf.Sin(z / config.map_size * 6.2f) * 8;
         public float forest_weight(float x, float z)
         {
+            if (routes.enabled) return routes.sample_forest(x,z);
             float border = config.map_size * .58f + Mathf.Sin(z / 17) * 7;
             return Mathf.SmoothStep(0, 1, Mathf.Clamp01((x - border) / 13)) *
                 Mathf.SmoothStep(0, 1, Mathf.Clamp01((z - config.map_size * .32f) / 12));
@@ -193,11 +202,15 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             float stone = Mathf.SmoothStep(0, 1, Mathf.InverseLerp(rock_start, rock_full, slope));
             float shore_distance = z - shoreline_z(x);
             float wet = 1 - Mathf.SmoothStep(0, 1, Mathf.Clamp01(shore_distance / config.shore_blend_width));
-            float road_distance = Mathf.Abs(x - road_x(z));
+            if (routes.enabled) wet = Mathf.Max(wet, 1 - Mathf.SmoothStep(0,1,Mathf.InverseLerp(routes.layout.river_half_width,
+                routes.layout.river_half_width + 3, routes.measure_river(x,z))));
+            float road_distance = routes.enabled ? routes.measure_road(x,z) : Mathf.Abs(x - road_x(z));
             float road = 1 - Mathf.SmoothStep(0, 1, Mathf.Clamp01((road_distance - config.road_half_width) / config.road_edge_width));
             road *= Mathf.SmoothStep(0, 1, Mathf.Clamp01((shore_distance - 5) / 7));
             float path_soil = 1 - Mathf.Clamp01((road_distance - config.road_half_width) / (config.road_edge_width * 2.4f));
             float dirt = Mathf.Clamp01(path_soil * .45f + forest_weight(x, z) * .36f);
+            if (routes.enabled) dirt = Mathf.Max(dirt, (1 - Mathf.SmoothStep(0,1,Mathf.InverseLerp(routes.layout.landmark_pad_radius,
+                routes.layout.landmark_clear_radius, routes.measure_courtyard(x,z)))) * .8f);
             float dry_strength = biome == null ? config.dry_grass_strength : biome.dry_strength;
             if (biome != null && biome.dry_basin) dirt = path_soil * .35f + stone * .1f;
             float talus = talus_weight(x, z);
@@ -228,8 +241,11 @@ namespace ZombieGame.Tests.EnvironmentShowcase
 
         public bool can_place_grass(float x, float z)
         {
+            if (routes.enabled && (routes.measure_road(x,z) < routes.layout.corridor_half_width ||
+                routes.measure_river(x,z) < routes.layout.river_half_width + 2 ||
+                routes.measure_courtyard(x,z) < routes.layout.landmark_clear_radius)) return false;
             return z - shoreline_z(x) > config.shore_blend_width &&
-                Mathf.Abs(x - road_x(z)) > config.road_half_width + config.road_edge_width &&
+                (routes.enabled || Mathf.Abs(x - road_x(z)) > config.road_half_width + config.road_edge_width) &&
                 talus_weight(x, z) < .35f &&
                 terrain_data.GetSteepness(x / config.map_size, z / config.map_size) < config.slope_rock_start + 4;
         }
