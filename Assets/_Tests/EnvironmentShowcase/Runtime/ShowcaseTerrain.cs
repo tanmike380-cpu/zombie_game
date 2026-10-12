@@ -14,12 +14,14 @@ namespace ZombieGame.Tests.EnvironmentShowcase
         public Terrain terrain { get; private set; }
         public TerrainData terrain_data { get; private set; }
         public ShowcaseRoutes routes { get; private set; }
+        public ShowcaseConceptLayout concept { get; private set; }
         public Vector3 origin => new Vector3(-config.map_size * .5f, 0, -config.map_size * .5f);
 
         public ShowcaseTerrain(EnvironmentShowcaseConfig settings, Transform parent, EnvironmentShowcaseConfig.BiomeProfile profile = null)
         {
             config = settings;
             biome = profile;
+            if (config.concept_enabled) concept = new ShowcaseConceptLayout(config.concept_layout,config.map_size);
             routes = new ShowcaseRoutes(settings);
             layer_instances = load_layers();
             terrain_data = new TerrainData { name = "Showcase real relief", heightmapResolution = config.heightmap_resolution,
@@ -39,7 +41,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             configure_material();
             terrain.materialTemplate = material_instance;
             terrain.drawInstanced = true;
-            terrain.heightmapPixelError = 3;
+            terrain.heightmapPixelError = concept != null ? .5f : 3;
             terrain.basemapDistance = 400;
             terrain.Flush();
         }
@@ -53,6 +55,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
                 string resource_path = TerrainPresentation.GENERATED_ROOT + profile.layers[layer_index].id;
                 var source = layer_index == 0 && config.grass_layer_override ? config.grass_layer_override : Resources.Load<TerrainLayer>(resource_path);
                 if (biome != null && biome.layer_overrides[layer_index]) source = biome.layer_overrides[layer_index];
+                if (concept != null && layer_index == 4 && concept.layout.stone_layer) source = concept.layout.stone_layer;
                 if (!source || !source.diffuseTexture || !source.normalMapTexture)
                     throw new InvalidOperationException("Missing prepared PBR terrain layer: " + resource_path);
                 result[layer_index] = UnityEngine.Object.Instantiate(source);
@@ -91,6 +94,14 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             if (biome.cliff_normal) material_instance.SetTexture("_CliffNormal", biome.cliff_normal);
             if (biome.talus_albedo_smoothness) material_instance.SetTexture("_TalusPbr", biome.talus_albedo_smoothness);
             if (biome.talus_normal) material_instance.SetTexture("_TalusNormal", biome.talus_normal);
+            if (concept != null)
+            {
+                material_instance.SetFloat("_PlateauEnabled",0);
+                material_instance.SetFloat("_PreviewSmoothnessCap",.08f);
+                material_instance.SetColor("_RoadTint",new Color(1.18f,1.06f,.85f,1));
+                material_instance.SetColor("_GrassTint",new Color(.85f,1,.72f,1));
+                material_instance.SetFloat("_MacroStrength",.35f);
+            }
         }
 
         private float[,] build_heights()
@@ -112,6 +123,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
 
         public float sample_authored_height(float x, float z)
         {
+            if (concept != null) return concept.sample_height(x,z);
             float original = sample_original_height(x, z);
             float height = sample_cliff_height(x, z, original);
             return routes.enabled ? routes.sample_height(x,z,height,original) : height;
@@ -159,16 +171,18 @@ namespace ZombieGame.Tests.EnvironmentShowcase
 
         public float talus_weight(float x, float z)
         {
+            if (concept != null) return 0;
             if (biome == null || !biome.plateau_enabled) return 0;
             float distance = plateau_edge_distance(x, z) - (biome.dry_basin ? biome.cliff_edge_width * 2 : 0);
             return Mathf.SmoothStep(0, 1, Mathf.InverseLerp(-.5f, 1, distance)) *
                 (1 - Mathf.SmoothStep(0, 1, Mathf.InverseLerp(1, biome.talus_width, distance)));
         }
 
-        public float shoreline_z(float x) => config.map_size * .18f + Mathf.Sin(x / config.map_size * 5.8f) * 5;
+        public float shoreline_z(float x) => concept != null ? -1000 : config.map_size * .18f + Mathf.Sin(x / config.map_size * 5.8f) * 5;
         public float road_x(float z) => config.map_size * .42f + Mathf.Sin(z / config.map_size * 6.2f) * 8;
         public float forest_weight(float x, float z)
         {
+            if (concept != null) return concept.forest_weight(x,z);
             if (routes.enabled) return routes.sample_forest(x,z);
             float border = config.map_size * .58f + Mathf.Sin(z / 17) * 7;
             return Mathf.SmoothStep(0, 1, Mathf.Clamp01((x - border) / 13)) *
@@ -202,16 +216,26 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             float stone = Mathf.SmoothStep(0, 1, Mathf.InverseLerp(rock_start, rock_full, slope));
             float shore_distance = z - shoreline_z(x);
             float wet = 1 - Mathf.SmoothStep(0, 1, Mathf.Clamp01(shore_distance / config.shore_blend_width));
+            if (concept != null) wet = (1-Mathf.SmoothStep(0,1,Mathf.InverseLerp(.2f,1.6f,concept.measure_wet_edge(x,z))))*(.6f+.4f*Mathf.PerlinNoise(x/5,z/5));
             if (routes.enabled) wet = Mathf.Max(wet, 1 - Mathf.SmoothStep(0,1,Mathf.InverseLerp(routes.layout.river_half_width,
                 routes.layout.river_half_width + 3, routes.measure_river(x,z))));
             float road_distance = routes.enabled ? routes.measure_road(x,z) : Mathf.Abs(x - road_x(z));
-            float road = 1 - Mathf.SmoothStep(0, 1, Mathf.Clamp01((road_distance - config.road_half_width) / config.road_edge_width));
+            if (concept != null) road_distance = float.MaxValue;
+            float road_half_width = config.road_half_width;
+            float road_edge_width = config.road_edge_width;
+            float road = 1 - Mathf.SmoothStep(0, 1, Mathf.Clamp01((road_distance - road_half_width) / road_edge_width));
             road *= Mathf.SmoothStep(0, 1, Mathf.Clamp01((shore_distance - 5) / 7));
-            float path_soil = 1 - Mathf.Clamp01((road_distance - config.road_half_width) / (config.road_edge_width * 2.4f));
+            float path_soil = 1 - Mathf.Clamp01((road_distance - road_half_width) / (road_edge_width * 2.4f));
             float dirt = Mathf.Clamp01(path_soil * .45f + forest_weight(x, z) * .36f);
+            if(concept != null) dirt=Mathf.Clamp01(forest_weight(x,z)*.35f+stone*.28f);
             if (routes.enabled) dirt = Mathf.Max(dirt, (1 - Mathf.SmoothStep(0,1,Mathf.InverseLerp(routes.layout.landmark_pad_radius,
                 routes.layout.landmark_clear_radius, routes.measure_courtyard(x,z)))) * .8f);
             float dry_strength = biome == null ? config.dry_grass_strength : biome.dry_strength;
+            if(concept != null)
+            {
+                dry=Mathf.Max(dry,Mathf.InverseLerp(6,10,terrain_data.GetInterpolatedHeight(u,v))*.55f);
+                dry_strength=.7f*(1-forest_weight(x,z)*.7f);
+            }
             if (biome != null && biome.dry_basin) dirt = path_soil * .35f + stone * .1f;
             float talus = talus_weight(x, z);
             stone = Mathf.Max(stone, talus * .52f);
@@ -241,6 +265,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
 
         public bool can_place_grass(float x, float z)
         {
+            if (concept != null) return concept.can_place(x,z) && terrain_data.GetSteepness(x/config.map_size,z/config.map_size) < config.slope_rock_start + 4;
             if (routes.enabled && (routes.measure_road(x,z) < routes.layout.corridor_half_width ||
                 routes.measure_river(x,z) < routes.layout.river_half_width + 2 ||
                 routes.measure_courtyard(x,z) < routes.layout.landmark_clear_radius)) return false;

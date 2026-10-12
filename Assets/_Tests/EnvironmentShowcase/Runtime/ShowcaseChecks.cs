@@ -37,6 +37,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             public bool cliff_material_pixel_pass, talus_material_pixel_pass;
             public float cliff_material_mean_rgb_delta, talus_material_mean_rgb_delta;
             public RouteReport routes;
+            public ConceptReport concept;
             public HeightExpectation[] height_expectations;
             public string[] implemented = { "Six real PBR layers", "Actual isolated terrain slope blending", "Semantic shore/road/forest soils",
                 "World-scale low-contrast macro colour variation", "Two shifted neighbour samples for tile breakup",
@@ -133,6 +134,13 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             if (!showcase || !showcase.enabled || showcase.ground == null)
             {
                 report.error = "Showcase initialization failed; inspect Player.log.";
+                finish_report();
+                yield break;
+            }
+            if (showcase.config.concept_enabled)
+            {
+                var concept_checks=run_concept_checks();
+                while(concept_checks.MoveNext()) yield return concept_checks.Current;
                 finish_report();
                 yield break;
             }
@@ -374,7 +382,12 @@ namespace ZombieGame.Tests.EnvironmentShowcase
                     }
                     if (Mathf.Abs(sum - 1) > .001f) report.layer_pass = false;
                 }
-            foreach (float mean_weight in report.layer_mean_weights) if (mean_weight <= .003f) report.layer_pass = false;
+            for(int index=0;index<report.layer_mean_weights.Length;index++)
+            {
+                if(showcase.config.concept_enabled && index==5)
+                { if(report.layer_mean_weights[index]!=0) report.layer_pass=false; }
+                else if(report.layer_mean_weights[index]<=.003f) report.layer_pass=false;
+            }
             report.actual_slope_pass = report.maximum_slope_degrees > (showcase.current_biome == null ? showcase.config.slope_rock_start : showcase.current_biome.rock_start) + 8;
             report.grass_instances = showcase.foliage.grass_instances;
             report.tree_instances = showcase.foliage.tree_instances;
@@ -559,11 +572,20 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             var previous_target = camera.targetTexture;
             var previous_active = RenderTexture.active;
             var target = RenderTexture.GetTemporary(Screen.width, Screen.height, 24, RenderTextureFormat.ARGB32);
+            RenderTexture resolved = null;
+            if(showcase.config.concept_enabled)
+            {
+                RenderTexture.ReleaseTemporary(target);
+                var descriptor = new RenderTextureDescriptor(Screen.width,Screen.height,RenderTextureFormat.ARGB32,24){msaaSamples=4};
+                target=RenderTexture.GetTemporary(descriptor);
+                resolved=RenderTexture.GetTemporary(Screen.width,Screen.height,0,RenderTextureFormat.ARGB32);
+            }
             try
             {
                 camera.targetTexture = target;
                 camera.Render();
-                RenderTexture.active = target;
+                if(resolved) Graphics.Blit(target,resolved);
+                RenderTexture.active = resolved ? resolved : target;
                 var texture = new Texture2D(target.width, target.height, TextureFormat.RGB24, false);
                 texture.ReadPixels(new Rect(0, 0, target.width, target.height), 0, 0);
                 texture.Apply();
@@ -574,6 +596,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
                 camera.targetTexture = previous_target;
                 RenderTexture.active = previous_active;
                 RenderTexture.ReleaseTemporary(target);
+                if(resolved) RenderTexture.ReleaseTemporary(resolved);
             }
         }
 

@@ -11,6 +11,8 @@ namespace ZombieGame.Tests.EnvironmentShowcase
         public ShowcaseTerrain ground { get; private set; }
         public ShowcaseFoliage foliage { get; private set; }
         public ShowcaseLandmarks landmarks { get; private set; }
+        public ShowcaseConceptWater concept_water { get; private set; }
+        public string[] view_names => config.concept_enabled ? new[] {"Concept 05 - Rounded grass slopes","Concept 07 - Limestone seacoast","Concept 09 - Closed natural pond","Concept composite overview"} : VIEW_NAMES;
         public Camera review_camera { get; private set; }
         public Renderer water_renderer => water_transform ? water_transform.GetComponent<Renderer>() : null;
         public bool show_hud = true;
@@ -18,7 +20,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
         public int view_index { get; private set; }
         public int biome_index { get; private set; }
         public EnvironmentShowcaseConfig.BiomeProfile current_biome => config.biomes != null && config.biomes.Length > 0 ? config.biomes[biome_index] : null;
-        public string missing_art => current_biome == null ? "" : ground != null && ground.routes.enabled ? current_biome.route_missing_art : current_biome.missing_art;
+        public string missing_art => config.concept_enabled ? config.concept_layout.missing_art : current_biome == null ? "" : ground != null && ground.routes.enabled ? current_biome.route_missing_art : current_biome.missing_art;
         private readonly float[] frame_samples = new float[600];
         private int frame_cursor;
         private int frame_count;
@@ -33,6 +35,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
         private bool previous_run_in_background;
         private float previous_shadow_distance;
         private int previous_shadow_cascades;
+        private int previous_antialiasing;
         private Light sun;
         public static readonly string[] VIEW_NAMES = { "Meadow overview", "Road seam", "Wet shoreline", "Forest edge", "Actual rocky slope", "Cliff face", "Plateau top", "Talus foot",
             "River ford", "Continuous forest belt", "Neutral landmark", "Ore source detail", "Route panorama" };
@@ -46,25 +49,30 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             previous_run_in_background = Application.runInBackground;
             previous_shadow_distance = QualitySettings.shadowDistance;
             previous_shadow_cascades = QualitySettings.shadowCascades;
+            previous_antialiasing = QualitySettings.antiAliasing;
             Application.runInBackground = true;
             try
             {
                 if (!config) throw new InvalidOperationException("Environment showcase requires its independent authored config asset.");
                 previous_route_layout = config.route_layout != null && config.route_layout.enabled;
+                config.concept_enabled = false;
                 var arguments = Environment.GetCommandLineArgs();
                 for (int index = 0; index + 1 < arguments.Length; index++)
                     if (arguments[index] == "-showcaseLayout")
                     {
                         string layout_name = arguments[index + 1];
-                        if (layout_name != "cliffs" && layout_name != "routes") throw new InvalidOperationException("Use -showcaseLayout routes / cliffs, got: " + layout_name);
-                        config.route_layout.enabled = layout_name == "routes";
+                        if (layout_name != "cliffs" && layout_name != "routes" && layout_name != "concept") throw new InvalidOperationException("Use -showcaseLayout routes / cliffs / concept, got: " + layout_name);
+                        config.concept_enabled = layout_name == "concept";
+                        if (!config.concept_enabled) config.route_layout.enabled = layout_name == "routes";
                     }
                 config.validate_config();
+                if(config.concept_enabled) QualitySettings.antiAliasing=4;
                 configure_lighting();
                 ground = new ShowcaseTerrain(config, transform, current_biome);
                 foliage = new ShowcaseFoliage(config, ground);
                 landmarks = new ShowcaseLandmarks(config,ground,transform);
                 create_water();
+                if (config.concept_enabled) concept_water = new ShowcaseConceptWater(ground,transform);
                 create_camera();
                 Camera.onPreCull += submit_foliage;
                 set_view(ground.routes.enabled ? 10 : 0, 1);
@@ -100,7 +108,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             {
                 var sun_object = new GameObject("Showcase afternoon sun");
                 sun_object.transform.SetParent(transform, false);
-                sun_object.transform.rotation = Quaternion.Euler(config.sun_rotation);
+                sun_object.transform.rotation = Quaternion.Euler(config.concept_enabled ? config.concept_layout.sun_rotation : config.sun_rotation);
                 sun = sun_object.AddComponent<Light>();
             }
             sun.type = LightType.Directional;
@@ -130,6 +138,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
 
         private void update_water_extent()
         {
+            if (config.concept_enabled) { water_transform.gameObject.SetActive(false); return; }
             bool routes_enabled = config.route_layout != null && config.route_layout.enabled;
             water_transform.position = new Vector3(0,config.water_level,routes_enabled ? 0 : -config.map_size * .38f);
             water_transform.localScale = new Vector3(config.map_size / 10,1,config.map_size * (routes_enabled ? 1 : .30f) / 10);
@@ -152,7 +161,13 @@ namespace ZombieGame.Tests.EnvironmentShowcase
 
         public void set_view(int requested_view, int requested_zoom)
         {
-            view_index = Mathf.Clamp(requested_view, 0, VIEW_NAMES.Length - 1);
+            view_index = Mathf.Clamp(requested_view, 0, view_names.Length - 1);
+            if (config.concept_enabled)
+            {
+                set_focus(config.concept_layout.views[view_index],requested_zoom);
+                if(view_index==3) review_camera.orthographicSize *= 1.45f;
+                return;
+            }
             zoom_index = Mathf.Clamp(requested_zoom, 0, config.camera_sizes.Length - 1);
             var view_point = view_index < VIEW_POINTS.Length ? VIEW_POINTS[view_index] : new Vector2(.77f, .81f);
             var profile = current_biome;
@@ -173,9 +188,12 @@ namespace ZombieGame.Tests.EnvironmentShowcase
         {
             zoom_index = Mathf.Clamp(requested_zoom,0,config.camera_sizes.Length - 1);
             Vector3 focus = ground.sample_ground(view_point.x * config.map_size, view_point.y * config.map_size);
-            Quaternion rotation = Quaternion.Euler(config.camera_pitch, config.camera_yaw, 0);
-            review_camera.transform.SetPositionAndRotation(focus - rotation * Vector3.forward * config.camera_sizes[zoom_index] * 2.3f, rotation);
-            review_camera.orthographicSize = config.camera_sizes[zoom_index];
+            Quaternion rotation = Quaternion.Euler(config.concept_enabled ? config.concept_layout.camera_pitch : config.camera_pitch,
+                config.concept_enabled ? config.concept_layout.camera_yaw : config.camera_yaw, 0);
+            float camera_size=config.concept_enabled ? config.concept_layout.camera_sizes[zoom_index] : config.camera_sizes[zoom_index];
+            if(config.concept_enabled && view_index==2) camera_size*=.82f;
+            review_camera.transform.SetPositionAndRotation(focus - rotation * Vector3.forward * camera_size * 2.3f, rotation);
+            review_camera.orthographicSize = camera_size;
             reset_frame_samples();
         }
 
@@ -188,9 +206,11 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             foliage?.Dispose();
             landmarks?.Dispose();
             ground?.Dispose();
+            concept_water?.Dispose();
             ground = new ShowcaseTerrain(config, transform, current_biome);
             foliage = new ShowcaseFoliage(config, ground) { show_grass = grass_enabled };
             landmarks = new ShowcaseLandmarks(config,ground,transform);
+            if(config.concept_enabled) concept_water = new ShowcaseConceptWater(ground,transform);
             update_water_extent();
             configure_lighting();
             if (water_material)
@@ -207,11 +227,11 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             if (Input.GetKeyDown(KeyCode.Alpha1)) set_view(view_index, 0);
             if (Input.GetKeyDown(KeyCode.Alpha2)) set_view(view_index, 1);
             if (Input.GetKeyDown(KeyCode.Alpha3)) set_view(view_index, 2);
-            if (Input.GetKeyDown(KeyCode.Tab)) set_view((view_index + 1) % VIEW_NAMES.Length, zoom_index);
-            if (Input.GetKeyDown(KeyCode.B) && config.biomes != null && config.biomes.Length > 0) set_biome((biome_index + 1) % config.biomes.Length);
+            if (Input.GetKeyDown(KeyCode.Tab)) set_view((view_index + 1) % view_names.Length, zoom_index);
+            if (Input.GetKeyDown(KeyCode.B) && !config.concept_enabled && config.biomes != null && config.biomes.Length > 0) set_biome((biome_index + 1) % config.biomes.Length);
             if (Input.GetKeyDown(KeyCode.G)) { foliage.show_grass = !foliage.show_grass; reset_frame_samples(); }
             if (Input.GetKeyDown(KeyCode.H)) show_hud = !show_hud;
-            if (Input.GetKeyDown(KeyCode.L))
+            if (Input.GetKeyDown(KeyCode.L) && !config.concept_enabled)
             {
                 config.route_layout.enabled = !config.route_layout.enabled;
                 set_biome(biome_index);
@@ -256,21 +276,21 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             GUILayout.BeginArea(new Rect(18, 18, 530, 330), GUI.skin.box);
             // Built-in ASCII HUD: desktop system fonts are not reliably available in a packaged player.
             GUILayout.Label("ENVIRONMENT ART LAB - Six PBR layers - " + config.map_size + " m");
-            GUILayout.Label("B: region | 1/2/3: zoom | Tab: view | G: grass | H: HUD | L: layout");
-            GUILayout.Label(ground.routes.enabled ? "ROUTES: river / forest belts / neutral landmarks (art only)" : "CLIFFS: preserved previous layout baseline");
+            GUILayout.Label(config.concept_enabled ? "1/2/3: zoom | Tab: 05 slopes / 07 coast / 09 pond / overview | G: grass | H: HUD" : "B: region | 1/2/3: zoom | Tab: view | G: grass | H: HUD | L: layout");
+            GUILayout.Label(config.concept_enabled ? "WILDERNESS PREVIEW - no roads/rivers; visual review pending" : ground.routes.enabled ? "ROUTES: river / forest belts / neutral landmarks (art only)" : "CLIFFS: preserved previous layout baseline");
             GUILayout.BeginHorizontal();
-            if (config.biomes != null)
+            if (!config.concept_enabled && config.biomes != null)
                 for (int index = 0; index < config.biomes.Length; index++)
                     if (GUILayout.Button((biome_index == index ? "* " : "") + config.biomes[index].label)) set_biome(index);
             GUILayout.EndHorizontal();
             if (current_biome != null) GUILayout.Label(current_biome.label + " | " + missing_art);
-            GUILayout.Label(VIEW_NAMES[view_index] + " - " + new[] { "Near", "Middle", "Far" }[zoom_index]);
+            GUILayout.Label(view_names[view_index] + " - " + new[] { "Near", "Middle", "Far" }[zoom_index]);
             GUILayout.BeginHorizontal();
             for (int index = 0; index < 3; index++)
                 if (GUILayout.Button(new[] { "Near", "Middle", "Far" }[index])) set_view(view_index, index);
             GUILayout.EndHorizontal();
             GUILayout.BeginHorizontal();
-            if (GUILayout.Button("Next view")) set_view((view_index + 1) % VIEW_NAMES.Length, zoom_index);
+            if (GUILayout.Button("Next view")) set_view((view_index + 1) % view_names.Length, zoom_index);
             if (GUILayout.Button(foliage.show_grass ? "Grass ON" : "Grass OFF")) { foliage.show_grass = !foliage.show_grass; reset_frame_samples(); }
             GUILayout.EndHorizontal();
             GUILayout.Label("Grass " + foliage.grass_instances + " | trees " + foliage.tree_instances + " | shrubs " + foliage.shrub_instances +
@@ -284,6 +304,8 @@ namespace ZombieGame.Tests.EnvironmentShowcase
 
         private void OnDestroy()
         {
+            concept_water?.Dispose();
+            if(config) config.concept_enabled=false;
             Camera.onPreCull -= submit_foliage;
             foliage?.Dispose();
             landmarks?.Dispose();
@@ -294,6 +316,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             Application.runInBackground = previous_run_in_background;
             QualitySettings.shadowDistance = previous_shadow_distance;
             QualitySettings.shadowCascades = previous_shadow_cascades;
+            QualitySettings.antiAliasing = previous_antialiasing;
             if (config && config.route_layout != null) config.route_layout.enabled = previous_route_layout;
         }
     }

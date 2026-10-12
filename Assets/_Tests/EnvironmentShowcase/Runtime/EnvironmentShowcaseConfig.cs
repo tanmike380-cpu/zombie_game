@@ -83,6 +83,8 @@ namespace ZombieGame.Tests.EnvironmentShowcase
         }
 
         public RouteLayout route_layout = new RouteLayout();
+        public ConceptLayoutConfig concept_layout;
+        [NonSerialized] public bool concept_enabled;
         public SourceAsset[] landmark_sources = Array.Empty<SourceAsset>();
         public SourceAsset[] ore_sources = Array.Empty<SourceAsset>();
 
@@ -162,6 +164,11 @@ namespace ZombieGame.Tests.EnvironmentShowcase
 
         public void validate_config()
         {
+            if (concept_enabled)
+            {
+                if (!concept_layout) throw new InvalidOperationException("Prepare approved concept config before concept mode.");
+                concept_layout.validate_config(map_size,height_range);
+            }
             if (map_size < 64 || map_size > 256 || height_range <= hill_height + 3 || hill_height <= 0)
                 throw new InvalidOperationException("Showcase ground needs 64–256 m and height_range > hill_height + 3 m base relief.");
             int intervals = heightmap_resolution - 1;

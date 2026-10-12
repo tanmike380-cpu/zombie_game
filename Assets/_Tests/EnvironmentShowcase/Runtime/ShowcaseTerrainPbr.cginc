@@ -49,6 +49,8 @@ void SplatmapFinalGBuffer(Input input, SurfaceOutputStandard output, inout half4
 half _Smoothness0, _Smoothness1, _Smoothness2, _Smoothness3;
 float _ShowcaseTerrainSize, _MacroScale, _MacroStrength, _BreakupStrength;
 float _DetailFadeStart, _DetailFadeEnd;
+float _PreviewSmoothnessCap;
+float4 _RoadTint;
 float4 _ShowcaseTerrainOrigin, _GrassTint, _DryTint, _SoilTint, _MudTint;
 float4 _PlateauCenter, _PlateauRadius;
 float _PlateauEnabled, _PlateauLedge, _ErosionStrength, _HasCliffPbr, _HasTalusPbr, _CliffTileSize, _TalusTileSize, _CliffNormalStrength;
@@ -163,6 +165,7 @@ void surf(Input input, inout SurfaceOutputStandard output)
     #else
         // Road belongs to add-pass layer 1: keep coherent cobbles, no ghosted neighbours.
         color1 = tex2D(_Splat1, uv1);
+        color1.rgb *= _RoadTint.rgb;
         UNITY_BRANCH if (control.r > .01 && talus_weight > .001)
             color0 = lerp(color0, UNITY_SAMPLE_TEX2D_SAMPLER(_TalusPbr, _CliffPbr, world_xz / max(.5, _TalusTileSize)), talus_weight);
         UNITY_BRANCH if (control.r > .01 && cliff_weight > .001)
@@ -172,6 +175,7 @@ void surf(Input input, inout SurfaceOutputStandard output)
     output.Smoothness = dot(half4(color0.a, color1.a, color2.a, color3.a) *
         half4(_Smoothness0, _Smoothness1, _Smoothness2, _Smoothness3), control);
     output.Metallic = 0;
+    output.Smoothness = min(output.Smoothness,_PreviewSmoothnessCap);
     output.Occlusion = 1;
     output.Alpha = weight;
     #ifdef _NORMALMAP

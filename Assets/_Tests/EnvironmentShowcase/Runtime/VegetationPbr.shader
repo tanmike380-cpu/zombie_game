@@ -13,12 +13,15 @@ Shader "ZombieGame/EnvironmentShowcase/VegetationPbr"
         _NormalFadeStart ("Normal fade start metres", Float) = 20
         _NormalFadeEnd ("Normal fade end metres", Float) = 65
         _Cull ("Cull", Float) = 0
+        _AlphaToMask ("Preview alpha coverage", Float) = 0
+        _MipBias ("Preview colour mip bias", Float) = 0
     }
     SubShader
     {
         Tags { "Queue"="AlphaTest" "RenderType"="TransparentCutout" }
         LOD 200
         Cull [_Cull]
+        AlphaToMask [_AlphaToMask]
         CGPROGRAM
         #pragma surface surf StandardSpecular fullforwardshadows alphatest:_Cutoff addshadow
         #pragma target 3.0
@@ -27,11 +30,11 @@ Shader "ZombieGame/EnvironmentShowcase/VegetationPbr"
         sampler2D _MainTex, _BumpMap, _MetallicGlossMap;
         fixed4 _Color;
         half _BumpScale, _SpecularStrength, _SmoothnessCap;
-        float _NormalFadeStart, _NormalFadeEnd;
+        float _NormalFadeStart, _NormalFadeEnd, _MipBias;
         struct Input { float2 uv_MainTex; float3 worldPos; float facing : VFACE; };
         void surf(Input input, inout SurfaceOutputStandardSpecular output)
         {
-            fixed4 albedo = tex2D(_MainTex, input.uv_MainTex) * _Color;
+            fixed4 albedo = tex2Dbias(_MainTex, float4(input.uv_MainTex,0,_MipBias)) * _Color;
             output.Albedo = albedo.rgb;
             output.Alpha = albedo.a;
             output.Specular = _SpecularStrength;

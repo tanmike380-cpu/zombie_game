@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "status": "technical_preview_only_not_visual_accepted",
+  "visual_accepted": false,
+  "visual_review": "Parent reviewed actual middle images: no-road direction correct; grass hills remain visually flat/uniform, analytic water stripes are too regular, source tree crowns remain sparse/fragmented. Not a concept reproduction or finished art.",
+  "handoff": "Assets/_Tests/EnvironmentShowcase/Settings/concept-handoff.json",
+  "player": "Builds/EnvironmentShowcase.app",
+  "build_log": "Builds/EnvironmentShowcase-concept-build-final.log",
+  "final_assembly_sha256": "1bd5dd1c038371648c21af551dd68373ddb5ff377e73918c7ab479dbefe4ad96",
+  "checks": {
+    "concept": {"report":"Builds/ArtReview/EnvironmentShowcase/concept-wilderness-final/showcase-report.json","passed":true,"frames_per_view":180,"views":12,"p95_range_ms":[17.1492,17.4604]},
+    "old_routes": {"report":"Builds/ArtReview/EnvironmentShowcase/concept-routes-regression/showcase-report.json","passed":true,"biomes":4},
+    "old_cliffs": {"report":"Builds/ArtReview/EnvironmentShowcase/concept-cliffs-regression/showcase-report.json","passed":true,"biomes":4},
+    "regression_build_note": "All old checks used assembly36d085b970aeae1fca6a8b1ada7988fb3b2fd0e67919c24185731fa787e3d8d2. The final rebuild differs only in concept report/HUD unaccepted wording, not rendering or old-layout logic. Final concept checks used final rebuilt app; no runtime report was edited."
+  },
+  "machine": "Mac14,9 / Apple M2 Pro / 1440x900 / Unity6000.6.1f1 Built-in / target60; timings contain active waiting and all sampled frames, no gameplay or battle performance claim",
+  "concept_measurements": {
+    "minimum_height_m":0.0802051,"maximum_height_m":10.6277246,"maximum_slope_degrees":76.7162094,
+    "layers":6,"road_max_weight":0,"sea_level_m":1.1,"pond_level_m":3.6,"pond_depth_m":1.2493973,"dry_rim_clearance_m":0.4733305,
+    "grass_instances":24000,"trees":89,"tree_budget":110,"shrubs":140,"small_rocks":99,
+    "grass_pixel_delta":0.0003861565,"rock_pixel_delta":0.0017502824,"sea_pixel_delta":0.0574502945,"pond_pixel_delta":0.05230527,"tree_pixel_delta":0.0432366654
+  },
+  "alpha_diagnostic": {
+    "source":"Art/Vegetation/tree_small_02/Textures/tree_small_02_leaves_alpha_1k.png",
+    "storage":"16bit grayscale red, linear scale1/257 to generated8bit alpha",
+    "maximum_byte_error":1,"pixels_with_error_greater_than_one":0,"source_and_generated_coverage_at_half":0.5350122451782227,
+    "generated_import":"sRGB albedo, input alpha, trilinear, preserve mip coverage at source cutoff0.5",
+    "shader":"visible surface and generated addshadow share same uv/albedo alpha/source cutoff; no substitute canopy or modified mesh",
+    "source_gap":"Original source is open fine-leaf crown, approved decimated LODs are sparser; not the dense oak/birch/olive/cypress of the concepts"
+  },
+  "missing_art":["dense reference tree species/crowns","reeds","lily pads","giant pale rocks","limestone overhang/sea-stack models"],
+  "missing_features":["concept-level terrain art layering","natural nonperiodic water/reflection/surf","production NavMesh/resource/gameplay integration"],
+  "retained_failed_evidence":["concept-first","concept-wilderness-v1","concept-wilderness-v2"],
+  "scope":"Only EnvironmentShowcase Unity integration/tests; no _Game, balance, Packages, ProjectSettings, Blender edits, Git commits or pushes"
+}

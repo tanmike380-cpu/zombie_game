@@ -8,7 +8,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
     {
         private readonly EnvironmentShowcaseConfig config;
         public EnvironmentShowcaseConfig.RouteLayout layout => config.route_layout;
-        public bool enabled => layout != null && layout.enabled;
+        public bool enabled => !config.concept_enabled && layout != null && layout.enabled;
         public readonly Vector2[] river_points;
         public readonly Vector2[][] road_paths;
         public ShowcaseRoutes(EnvironmentShowcaseConfig settings)

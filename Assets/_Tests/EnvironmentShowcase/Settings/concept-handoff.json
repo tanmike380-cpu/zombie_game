@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "status": "parent_authorized_2d_interpretation_pending_player_visual_acceptance",
+  "user_revision": "2026-10-13: untouched post-apocalyptic wilderness; no roads, wheel ruts, paved areas or river. Revised no-road boards handed off and viewed; supersede tracks in the original 05/07/09 boards, which remain preserved.",
+  "scope": "Independent EnvironmentShowcase concept layout; not a production world or navigable map",
+  "sources": [
+    {"path":"art/concepts/2026-10-13-environment-forests/05-grassland-slopes-wilderness-v2.png","sha256":"5f96a2355edb50d09f5e60364134cc19bb0eea6112eb779fdf6234828debd0ba","features":"Rounded open grass hill and woodland margins; no track, wheel ruts or artificial route. Inset boulders/species are not replacement-model permission"},
+    {"path":"art/concepts/2026-10-13-environment-forests/07-mediterranean-seacoast-wilderness-v2.png","sha256":"cd31777eba5d044e777cfba6843b7808caf310dc54bd516501a016eadb759867","features":"Open sea on left, pale limestone shore, untrampled inland terrain and shallow/deep water transition"},
+    {"path":"art/concepts/2026-10-13-environment-forests/09-temperate-pond-wilderness-v2.png","sha256":"164152f5fa1dc485a800122a93024c12588392ede5e1864ce1fd811bea507be0","features":"Closed natural oval pond, no ring road; irregular wet soil and dry grass margins; surrounding vegetation, reeds/lilies missing"}
+  ],
+  "assumptions": [
+    "These generated 2D art boards are composition references, not measurable height maps. No exact camera or botanical/geological identity is claimed.",
+    "Combine three studies into 128x128 metres; 05 central meadow, 07 west coast, 09 NE pond. Inspect both dedicated views and composite overview.",
+    "Ground local X/Z in [0,128], Unity world X/Z subtract64. Reference left sea maps to west; terrain metres configured independently of unit balance.",
+    "Heightfield cannot author overhang, detached sea stacks or giant boulders; source small rocks remain native shape at whole2-4x, not stacked into cliffs.",
+    "Water is permitted infrastructure: separate sea and bounded pond surfaces; actual Terrain-height data supplies shallow/deep colours. Low analytic ripples and a thin shore cue, no flow/physics/refractive/reflection simulation.",
+    "User revision removes all path curves and path clearance. Road PBR asset remains sixth semantic slot with exactly zero weights. Forest/slope soil is disconnected natural exposure, never an artificial route.",
+    "Pond radius receives bounded 0.8m and 0.32m shoreline perturbations. Lower 0.55m shore rise replaces prior 1m circular berm. Closed-pool QA solves the true irregular shore-distance contour at bank+0.5m for128angles and requires greater than0.2m dry clearance; old routes/cliffs thresholds unchanged. Initial fixed-ellipse test did not sample that actual contour and its failed reports remain preserved.",
+    "Concept-only camera pitch36/yaw-12, sizes11/19/43m (pond scale0.82, overview1.45); sun35/-55 for legible slopes. Four-sample MSAA and alpha-to-coverage with source cutoff unchanged; source near mesh now selected down to0.065 projected height, source far cull0.015 remains. Native source topology/transforms unchanged, maximum trees110.",
+    "No rivers, mines, buildings, bridges or production forest/resource/blocking logic in concept layout. Old routes/cliffs remain explicit unchanged modes."
+  ],
+  "geometry": {
+    "map_metres":128,"height_range_metres":18,"sea_level_metres":1.1,"west_coast_x_metres":32,"coast_nominal_height_metres":7.8,"coast_rise_width_range_metres":[2.4,4.8],
+    "meadow_center_normalized":[0.54,0.35],"meadow_radius_metres":[22,25],"meadow_relief_metres":7,
+    "pond_center_normalized":[0.75,0.73],"pond_radius_metres":[15,11],"pond_level_metres":3.6,"pond_depth_metres":1.25,"bank_width_metres":4,
+    "road_weight":0,"road_curves":[],"artificial_vegetation_clearance":false,
+    "forest_centers_normalized":[[0.60,0.77],[0.90,0.48],[0.48,0.19]],"maximum_generic_trees":110
+  },
+  "source_models":"art/environment/vegetation_handoff_candidate.json; authored Environment source only; GrassBermuda/GrassMedium/ShrubA/ShrubB/TreeSmall_LOD0/LOD1/RockNatural",
+  "ground":"Keep six semantic source PBR assets. Road retains its original asset with zero weight; Stone uses approved rock_boulder_dry + rock_face_03 on steep coast; existing Grass_A override, meaningful dry grass, disconnected soil and narrow uneven wet mud remain. Concept smoothness ceiling0.08; no source map edits.",
+  "missing_art":["oak","birch","olive","cypress","reeds","lily pads","giant boulders","overhanging limestone sea stacks"],
+  "preset":"Assets/_Tests/EnvironmentShowcase/Settings/ConceptLayoutConfig.asset",
+  "player_commands":"-showcaseLayout concept; -showcaseCheck for packaged geometry/pixel evidence; old -showcaseLayout routes/cliffs for full regressions"
+}

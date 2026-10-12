@@ -18,6 +18,41 @@ namespace ZombieGame.Tests.EditorTools
         public const string SCENE_PATH = "Assets/_Tests/EnvironmentShowcase/Scenes/EnvironmentShowcase.unity";
         public const string CONFIG_PATH = "Assets/_Tests/EnvironmentShowcase/Settings/EnvironmentShowcaseConfig.asset";
 
+        /// <summary>Only add an independent concept preset reference; never rewrite approved route/biome parameters.</summary>
+        public static void prepare_and_build_concept_preview()
+        {
+            guard_unsaved_scene();
+            var config=ensure_config();
+            const string concept_path="Assets/_Tests/EnvironmentShowcase/Settings/ConceptLayoutConfig.asset";
+            var concept=AssetDatabase.LoadAssetAtPath<ConceptLayoutConfig>(concept_path);
+            if(!concept){concept=ScriptableObject.CreateInstance<ConceptLayoutConfig>();AssetDatabase.CreateAsset(concept,concept_path);}
+            concept.stone_layer=config.biomes[2].layer_overrides[4];
+            concept.validate_config(config.map_size,config.height_range);
+            config.concept_layout=concept;
+            EditorUtility.SetDirty(concept);EditorUtility.SetDirty(config);AssetDatabase.SaveAssets();
+            var water_shader=Shader.Find("ZombieGame/EnvironmentShowcase/ConceptWater");
+            if(!water_shader)throw new InvalidOperationException("Concept water shader compile/import failed.");
+            // Serialized material on an inactive surface keeps the new shader in this same scene's player build.
+            create_scene();
+            const string water_path="Assets/_Tests/EnvironmentShowcase/Settings/ConceptWaterKeeper.mat";
+            var water=AssetDatabase.LoadAssetAtPath<Material>(water_path);
+            if(!water){water=new Material(water_shader);AssetDatabase.CreateAsset(water,water_path);}
+            var keeper=GameObject.Find("Concept water shader keeper");
+            if(!keeper)
+            {
+                var objects=SceneManager.GetActiveScene().GetRootGameObjects();
+                foreach(var candidate in objects)if(candidate.name=="Concept water shader keeper")keeper=candidate;
+            }
+            if(!keeper)
+            {
+                keeper=GameObject.CreatePrimitive(PrimitiveType.Plane);keeper.name="Concept water shader keeper";
+                UnityEngine.Object.DestroyImmediate(keeper.GetComponent<Collider>());
+                keeper.GetComponent<Renderer>().sharedMaterial=water;keeper.SetActive(false);
+                EditorSceneManager.SaveScene(SceneManager.GetActiveScene(),SCENE_PATH);
+            }
+            AssetDatabase.SaveAssets();build_player();
+        }
+
         [MenuItem("Zombie Game/Environment Showcase/Create or open independent scene")]
         public static void create_scene()
         {

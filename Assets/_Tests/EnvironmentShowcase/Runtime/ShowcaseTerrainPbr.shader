@@ -23,6 +23,8 @@ Shader "ZombieGame/EnvironmentShowcase/TerrainPbr"
         _BreakupStrength("Neighbour blend", Range(0,1)) = .52
         _DetailFadeStart("Detail fade start", Float) = 28
         _DetailFadeEnd("Detail fade end", Float) = 100
+        _PreviewSmoothnessCap("Independent preview smoothness ceiling", Float) = 1
+        _RoadTint("Independent road source tint",Color)=(1,1,1,1)
         _CliffPbr("Approved cliff RGB + smoothness", 2D) = "white" {}
         _CliffNormal("Approved cliff normal GL", 2D) = "bump" {}
         _TalusPbr("Approved talus RGB + smoothness", 2D) = "white" {}

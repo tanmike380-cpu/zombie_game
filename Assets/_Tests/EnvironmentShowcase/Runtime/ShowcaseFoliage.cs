@@ -57,6 +57,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             var biome = terrain.biome;
             int grass_count = Mathf.RoundToInt(config.grass_count * (biome == null ? 1 : biome.grass_density));
             int tree_count = Mathf.RoundToInt(config.tree_count * (biome == null ? 1 : biome.tree_density));
+            if (terrain.concept != null) tree_count = terrain.concept.layout.tree_budget;
             if (terrain.routes.enabled && (biome == null || biome.tree_density > 0)) tree_count = terrain.routes.layout.tree_budget;
             int shrub_count = Mathf.RoundToInt(config.shrub_count * (biome == null ? 1 : biome.shrub_density));
             int rock_count = Mathf.RoundToInt(config.rock_count * (biome == null ? 1 : biome.rock_density));
@@ -79,10 +80,10 @@ namespace ZombieGame.Tests.EnvironmentShowcase
 
         private int add_prefab(GameObject prefab, int count, Vector2 scale_range, string category)
         {
-            var parts = read_source_parts(prefab);
+            var parts = read_source_parts(prefab,category);
             if (parts.Count == 0) throw new InvalidOperationException("Approved showcase asset has no renderable static source meshes: " + prefab.name);
             var cells = new Dictionary<Vector2Int, List<Matrix4x4>>();
-            var tree_candidates = category == "tree" && ground.routes.enabled ? build_forest_candidates() : null;
+            var tree_candidates = category == "tree" && (ground.routes.enabled || ground.concept!=null) ? build_forest_candidates() : null;
             int placed = 0;
             int attempts = tree_candidates == null ? count * 12 : tree_candidates.Count;
             for (int attempt = 0; attempt < attempts && placed < count; attempt++)
@@ -95,7 +96,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
                     x = Mathf.Clamp01(config.grass_focus_center.x + ((float)random.NextDouble() * 2 - 1) * config.grass_focus_extent.x) * config.map_size;
                     z = Mathf.Clamp01(config.grass_focus_center.y + ((float)random.NextDouble() * 2 - 1) * config.grass_focus_extent.y) * config.map_size;
                 }
-                else if (category == "rock" && ground.biome != null && ground.biome.plateau_enabled && random.NextDouble() < ground.biome.talus_rock_fraction)
+                else if (category == "rock" && ground.concept == null && ground.biome != null && ground.biome.plateau_enabled && random.NextDouble() < ground.biome.talus_rock_fraction)
                 {
                     var profile = ground.biome;
                     float angle = (float)random.NextDouble() * Mathf.PI * 2;
@@ -126,6 +127,17 @@ namespace ZombieGame.Tests.EnvironmentShowcase
 
         private bool can_place_category(float x, float z, string category)
         {
+            if (ground.concept != null)
+            {
+                if (!ground.concept.can_place(x,z)) return false;
+                float slope = ground.terrain_data.GetSteepness(x/config.map_size,z/config.map_size);
+                if (category == "rock") return slope < 35 && ground.concept.is_local_rock_patch(x,z);
+                if (!ground.can_place_greenery(x,z)) return false;
+                float density = ground.forest_weight(x,z);
+                if (category == "tree") return random.NextDouble() < density;
+                if (category == "shrub") return random.NextDouble() < Mathf.Max(.1f,density*.7f);
+                return random.NextDouble() < .7f;
+            }
             if (ground.routes.enabled && (ground.routes.measure_river(x,z) < ground.routes.layout.river_half_width + 2 ||
                 ground.routes.measure_road(x,z) < ground.routes.layout.corridor_half_width ||
                 ground.routes.measure_courtyard(x,z) < ground.routes.layout.landmark_clear_radius)) return false;
@@ -144,7 +156,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
         private List<Vector2> build_forest_candidates()
         {
             var candidates = new List<Vector2>();
-            float spacing = ground.routes.layout.tree_spacing;
+            float spacing = ground.concept!=null ? 2.55f : ground.routes.layout.tree_spacing;
             for (float z = spacing; z < config.map_size - spacing; z += spacing)
                 for (float x = spacing; x < config.map_size - spacing; x += spacing)
                 {
@@ -160,7 +172,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             return candidates;
         }
 
-        private List<SourcePart> read_source_parts(GameObject prefab)
+        private List<SourcePart> read_source_parts(GameObject prefab, string category)
         {
             var parts = new List<SourcePart>();
             foreach (var filter in prefab.GetComponentsInChildren<MeshFilter>(true))
@@ -175,10 +187,22 @@ namespace ZombieGame.Tests.EnvironmentShowcase
                     if (!source_materials[submesh_index].shader || !source_materials[submesh_index].shader.isSupported)
                         throw new InvalidOperationException("Approved showcase source shader unsupported by verified Built-in pipeline: " + prefab.name);
                     var material = new Material(source_materials[submesh_index]) { enableInstancing = true };
+                    if (ground.concept != null && material.HasProperty("_AlphaToMask"))
+                    {
+                        material.SetFloat("_AlphaToMask",1);
+                        material.SetFloat("_MipBias",category == "tree" ? .45f : .15f);
+                        if(category == "tree") material.SetColor("_Color",new Color(.82f,.87f,.75f,1));
+                    }
                     materials.Add(material);
                     var part = new SourcePart { mesh = filter.sharedMesh, material = material, submesh_index = submesh_index,
                         relative_transform = prefab.transform.worldToLocalMatrix * filter.transform.localToWorldMatrix };
                     read_source_lod(prefab, renderer, part);
+                    if(ground.concept != null && category=="tree" && part.source_lod_height>0)
+                    {
+                        // Select the two already-approved source meshes; no re-meshing or extra trees.
+                        if(float.IsPositiveInfinity(part.lod_max_height)) part.lod_min_height=ground.concept.layout.tree_near_lod_threshold;
+                        else part.lod_max_height=ground.concept.layout.tree_near_lod_threshold;
+                    }
                     parts.Add(part);
                 }
             }

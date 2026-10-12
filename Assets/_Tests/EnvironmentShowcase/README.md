@@ -1,5 +1,35 @@
 # 独立环境渲染实验场
 
+## 无人荒野概念技术预览（未美术验收）
+
+最终真实播放器技术检查及旧routes／cliffs四区域回归通过；记录见 `validation-wilderness.json`。完整12近中远图及同帧差异图在 `Builds/ArtReview/EnvironmentShowcase/concept-wilderness-final`，旧回归分别在 `concept-routes-regression`／`concept-cliffs-regression`。父协调已实看中景并明确未通过美术目标：草坡仍扁均一、水波斜条纹过明显、树冠疏碎。此版仅保存独立技术预览，不继续以提高密度或放宽测试凑完成。1440×900 M2 Pro、60Hz限帧下12组各180帧p95 17.15–17.46ms，含主动等待；不是稳定战斗／万人性能结论。
+
+最新方向为草原斜坡＋海岸＋封闭水池，不含任何小路、车辙、铺面、河流、矿石或建筑。来源是概念库 `05/07/09-*-wilderness-v2.png`，路径／SHA256、有限二维到128m高度场的转换假设与缺源清单在 `Settings/concept-handoff.json`。旧有路概念保留为历史记录，不再是当前方向；新布局不是概念图的精准高度提取或还原完成。
+
+本机再次打开无路预览：双击项目 `Builds/OpenWilderness.command`（保留现有app，仅传concept参数；Builds为忽略的本机交付目录）。不要直接双击 `EnvironmentShowcase.app` 来检查无人荒野：app默认仍是历史routes，故会出现旧道路／河流。重新下载仓库后若未保留此本机快捷入口，用下方带 `-showcaseLayout concept` 的命令即可。
+
+同一 controller 通过 `-showcaseLayout concept` 启用 `Settings/ConceptLayoutConfig.asset`；未传参数仍默认原 routes。Tab 切草坡／海岸／池塘／全景，1/2/3切近中远，G草，H HUD。概念中B/L禁用以免混入旧区域／河道。旧 `routes` 与 `cliffs` 的高度公式、配置数值、预期高度和验收阈值未修改；`ShowcaseRoutes.enabled` 仅加 `!concept_enabled`，防止本次独立布局误生成旧河流、院落和路径。
+
+六个真实PBR资产槽仍保留；按用户最新要求 Road 权重全图严格0且不再按曲线清草／树。Grass_A与Grass_Dry的宏观干湿层次、断续林土、局部裸岩和实际水边湿泥保持自然空间含义。草坡真实起伏7m，西侧高度场海岸以可变宽度／高度和不规则岸线呈现；不是独立悬崖模型，不支持悬挑。原RockNatural整体2–4倍，只作局部小石，不堆小石冒充概念巨岩。
+
+海水1.1m、池水3.6m分别独立表面／范围；水色读取实际257²高度场形成深浅，池岸有有界不规则扰动，不共享一张高水位plane。水面只有低成本解析波纹及局部岸线提示，没有折射、动态反射、复杂浪花或水体物理；远全景仍可见有限128m测试地块边界。浅岸与陡坡密度不等于真实海岸岩石资产。
+
+概念专用36°斜俯视、11/19/43m正交观察尺度、35°太阳，运行时4xMSAA及同帧capture明确resolve；销毁恢复AA，不改ProjectSettings。地形PixelError0.5／smoothness上限0.08只用于concept。树预算最多110，最终实际数量由源间距及自然水岸清空决定，不用加树数补树冠。两已批准原网格分别81035／46542三角；仅概念投影阈值改为0.065／0.015，旧阈值0.18／0.015不变。概念材质alpha-to-coverage、正mip bias和轻微独立tint不改源UV、网格、图或prefab。
+
+叶片只读核对：源独立alpha PNG实际为16-bit灰度，按真实线性红值1/257与generated8-bit alpha逐像素比较，最大误差1字节、无大于1字节误差，>=0.5覆盖均53.5012%。不能将Pillow的16-bit→RGB8截断当成源alpha误采。生成albedo sRGB、FromInput alpha、三线性mip、coverage cutoff0.5；surface visible与addshadow使用同一UV／albedo alpha和cutoff。批准原图 `art/environment/inspection/tree_lod_comparison_v3.png` 已是开放细叶冠，派生近级大幅减少叶面；打包约80–170px树高使叶片进一步亚像素化。当前没有浓密橡树／桦树／橄榄／柏树、芦苇／睡莲、巨大灰白岩体／悬挑海蚀岩源，不能把技术source_complete当成概念资产齐全。
+
+地表实际Grass_A为2K、tile4.5m、normal0.45，24m宏观变化、邻居混合0.55、normal28–100m淡出。概念仍有明显灰绿均一、地形细节不及参考和源冠稀碎；水纹为有限解析效果。技术PASS只证明运行／像素／几何一致，不代表美术认可或概念还原。未新增单位、采集、阻挡或生产NavMesh；帧时间不是战斗性能。
+
+运行与打包（先确认无其他Unity编辑器进程持有同项目；不要关闭未保存工作）：
+
+```sh
+/Applications/Unity/Hub/Editor/6000.6.1f1/Unity.app/Contents/MacOS/Unity -batchmode -quit -projectPath "$PWD" -executeMethod ZombieGame.Tests.EditorTools.EnvironmentShowcaseTools.prepare_and_build_concept_preview -logFile Builds/EnvironmentShowcase-concept-build.log
+"Builds/EnvironmentShowcase.app/Contents/MacOS/Zombie Game" -showcaseLayout concept -screen-width 1440 -screen-height 900 -screen-fullscreen 0
+"Builds/EnvironmentShowcase.app/Contents/MacOS/Zombie Game" -showcaseLayout concept -showcaseCheck -showcaseOutput "$PWD/Builds/ArtReview/EnvironmentShowcase/concept-preview" -screen-width 1440 -screen-height 900 -screen-fullscreen 0
+```
+
+`-showcaseStyleCheck`（与-showcaseCheck并用）仅快速4中景＋技术像素检查，30帧采样不能代替完整12组各180帧。完整检查包括实际高度／Collider、五种自然层权重与第六Road=0、无河／无props、128角实际不规则干岸闭合、地形／草／源树／局部小石／海／池／崖材质各自同帧on/off。新概念不再测试道路宽度／坡度，因为用户已取消道路；原routes仍保留全部该项回归。
+
 ## 路线与中立地标样场（routes-v1）
 
 2026-10-13：新PBR矿石版已实际打包，四区域routes及四区域旧cliffs回归全通过，摘要 `validation-routes-pbr.json`。每区域三处废墟、新IronOreRock/GoldOreRock各三处；原两矿仅恢复记录，不再使用。1440×900、M2 Pro、60Hz限帧，44组各180帧实测p95范围16.67–17.59ms（包含主动等待），非战斗基准。源码/贴地/每fixture像素/真实通道均通过；近中远截图已人工核对，normal约定仍未由Tripo文件证明，原图不翻绿。完整证据保留在 `Builds/ArtReview/EnvironmentShowcase/routes-pbr-v1` 与 `routes-cliffs-regression`，不删除旧慢帧证据。
