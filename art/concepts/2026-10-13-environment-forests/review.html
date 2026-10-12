@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>树林、地形与水面 · 十组概念</title>
+  <style>
+    :root { color-scheme:dark; }
+    body { margin:0; background:#20252a; color:#e4e7e7; font:16px/1.75 system-ui,sans-serif; }
+    main { max-width:1500px; margin:auto; padding:30px; }
+    h1 { font-size:30px; margin:0 0 10px; }
+    h2 { font-size:22px; margin:6px 0 10px; }
+    h3 { font-size:19px; margin:0 0 4px; }
+    a { color:#b8d9cd; }
+    p { max-width:1100px; }
+    .note { border-left:3px solid #b6c5ad; padding:12px 18px; background:#2d3338; }
+    nav { display:flex; flex-wrap:wrap; gap:20px; margin:20px 0; }
+    .cards { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:22px; }
+    article { padding:18px; background:#2d3338; border:1px solid #424a50; border-radius:10px; }
+    img { display:block; width:100%; height:auto; border-radius:5px; background:#dedad3; }
+    small { color:#b4c1c0; }
+    section { margin-top:34px; }
+    table { width:100%; border-collapse:collapse; margin:14px 0; }
+    th,td { text-align:left; padding:12px; border-bottom:1px solid #495158; vertical-align:top; }
+    th { color:#c3d9cc; }
+    ul { padding-left:24px; }
+    footer { margin:30px 0 0; color:#aebcba; }
+    @media(max-width:800px) { main{padding:18px} .cards{grid-template-columns:1fr} table{font-size:14px} th,td{padding:8px} }
+  </style>
+</head>
+<body>
+<main>
+  <h1>树林、地形与水面 · 十组概念</h1>
+  <p>先确定自然环境的树形、层次、色调和路网。统一为写实倾向的 RTS 斜俯视：自然色彩、略冷阴影、适量暖光；树林、悬崖、河谷划分区域，同时给军队留出宽通道。</p>
+  <p class="note">这是新生成的二维美术评审图，不是 Unity 实机画面，也不是可直接使用的模型或 PBR 材质。下方材质小样仅供外观参考。整体图不要直接交给 Tripo 生成一个大模型；选定后，树、岩石等资产应分别做独立图与视图。</p>
+  <nav><a href="#new-concepts">新增六组地形概念</a><a href="#concepts">四组地域树林</a><a href="#gameplay">资源林与装饰</a><a href="#pipeline">哪些做模型</a><a href="#research">RTS 调研</a><a href="manifest.json">完整提示词与来源记录</a></nav>
+  <p class="note">用户选择先将 05 草原斜坡＋07 海岸＋09 水池做成独立 Unity 环境预览。新布局不生成河流；第一批 01–04 中的河流只是保留旧概念，并非本次实施方向。Unity 预览正在独立实现，尚未宣称达到概念图质量或完成玩法测试。</p>
+  <div class="cards" id="new-concepts">
+    <article><h2>05 · 草原斜坡</h2><a href="05-grassland-slopes.png"><img src="05-grassland-slopes.png" alt="圆缓3D草坡、林缘、宽弯土路与分层地表"></a><p>柔和圆坡、宽土路、草色与高度变化，局部裸岩。道路有压实中心与自然草边，不是贴一条纯色带。</p><small>第一轮 Unity 参考之一；底部地形块仅为形态说明，不是直接可导入网格。</small></article>
+    <article><h2>06 · 高地与悬崖</h2><a href="06-alpine-highland-cliffs.png"><img src="06-alpine-highland-cliffs.png" alt="高山台地、断崖、碎石坡、针叶林与缓坡通路"></a><p>上层平缓台地、下层谷地、可通行缓坡与不可行走崖壁明显分开。灰岩与碎石地表叠加，而非整片同色。</p><small>独立巨岩和针叶模型仍待来源与模型制作；不能用小石头随机堆砌代替。</small></article>
+    <article><h2>07 · 地中海海岸</h2><a href="07-mediterranean-seacoast.png"><img src="07-mediterranean-seacoast.png" alt="开放蓝色海面、石灰岩高岸、沙滩与海岸路径"></a><p>大海沿地图一侧延伸，岸边浅、远处深；石灰岩崖、草坡、土路和小沙湾构成陆地层次。</p><small>第一轮 Unity 参考之一；橄榄／柏树属于待补地域模型，现成通用树不是同种替代验收。</small></article>
+    <article><h2>08 · 北非沙漠海岸</h2><a href="08-north-african-desert-sea.png"><img src="08-north-african-desert-sea.png" alt="北非砂岩海岸、沙砾、旱生疏林与开放海面"></a><p>有层理的砂岩断崖、稀疏干草、旱生树与海湾。沙漠不是一张黄色贴图；土地颜色也不过度橙红。</p><small>北非树与海枣需独立模型，本轮是概念评审。</small></article>
+    <article><h2>09 · 温带自然水池</h2><a href="09-temperate-pond.png"><img src="09-temperate-pond.png" alt="封闭椭圆池塘、环岸土路、湿泥、草坡与林缘"></a><p>独立封闭池塘，无河流入出口；岸线自然不规则，水边湿泥与石子，外围路线留足通行宽度。</p><small>第一轮 Unity 参考之一；芦苇、水生植物、独立巨石模型暂无源，缺项不能靠临时拼模型隐藏。</small></article>
+    <article><h2>10 · 沙漠绿洲水池</h2><a href="10-arid-oasis-pond.png"><img src="10-arid-oasis-pond.png" alt="封闭绿洲水池、海枣林、干旱边缘与砂岩高地"></a><p>湿润池边集中海枣林，远离水的区域稀疏旱灌；绿洲外围仍有清晰宽路，而不是植被堵满通道。</p><small>只有封闭水池，不加河流。模型制作在概念确认后按资产逐个进行。</small></article>
+  </div>
+  <div class="cards" id="concepts">
+    <article><h2>01 · 欧洲温带阔叶林</h2><a href="01-europe-temperate.png"><img src="01-europe-temperate.png" alt="欧洲阔叶树林、石灰岩悬崖、河谷、宽土路与树形材质参考"></a><p>橡树型厚树冠＋桦树型细树干；林下叠加落叶、泥土、草与石子。成片森林构成资源区域，林缘更疏。三棵独立树、低灌木和六种地表外观小样。</p><small>欧洲树种方案是待评审的新方向；不是现有通用树已经完成的效果。</small></article>
+    <article><h2>02 · 高山针叶林</h2><a href="02-mountain-conifers.png"><img src="02-mountain-conifers.png" alt="高山针叶林、灰色断崖、碎石坡与溪流通路概念"></a><p>松树型＋云杉型＋较稀疏的落叶松型；灰色岩壁、碎石坡、针叶地表和溪流形成高地通道，不做整片裸大平原。</p><small>针叶树是现有分类资产的缺项；需要正式 Blender 模型再接入。</small></article>
+    <article><h2>03 · 冬季树林</h2><a href="03-winter-woodland.png"><img src="03-winter-woodland.png" alt="冬季常绿林、无叶树、斑块积雪、泥路与河谷概念"></a><p>带雪常绿针叶树＋无叶阔叶树；保留深绿、树皮与土路的色彩，避免全白发糊。积雪覆盖不等于树或资源消失。</p><small>可与高山树共享基础模型，但雪覆盖与无叶版本需在 Blender 中明确制作并验收。</small></article>
+    <article><h2>04 · 北非／中东疏林与绿洲</h2><a href="04-north-africa-middle-east.png"><img src="04-north-africa-middle-east.png" alt="北非与中东旱生疏林、海枣绿洲、橄榄树型、砂岩和沙土路径概念"></a><p>半干旱区稀疏枝叶、海枣绿洲与地中海边缘橄榄树型；依水分布，不把欧洲绿树林简单染黄。沙土、砾石、干草、砂岩与湿润绿洲土混合。</p><small>这是过渡地带的组合美术方案，不表示同一类沙漠每处都生长相同植物。纯沙海可以无树，但整张可玩地图不应因此没有木材来源。</small></article>
+  </div>
+  <section id="gameplay">
+    <h2>推荐：一套树模型，两类游戏用途</h2>
+    <table><thead><tr><th>用途</th><th>呈现</th><th>逻辑建议（尚未实施）</th></tr></thead><tbody>
+      <tr><td>资源林</td><td>可识别的成片、正常大小的立体树</td><td>同一森林格定义驱动模型、占地阻挡和木材产出。伐木场预览覆盖的有效格及每分钟收益，禁止重复计算已占用采集格。</td></tr>
+      <tr><td>装饰植被</td><td>低草、灌木、路边花草；远处不可达背景植被</td><td>不注册资源、不阻挡军队。不要把可达的整片大树伪装成无收益装饰；可交互树木应能明确显示资源身份。</td></tr>
+    </tbody></table>
+    <p>建议延续当前的<strong>持续产出型森林</strong>，而不是新增逐棵砍伐耗尽；树林同时帮助形成防线与扩张路线。地域改变树种和分布，不自动改变同一有效资源格的收益。若后续要地块肥沃度、稀疏林低收益，应放到共享资源配置中，而不是按叶片数量估算。</p>
+    <p>现状核对：样场树已经是真实 3D 模型实例，暂时只负责画面；正式代码已有森林格、林区阻挡和伐木场收入。现有暂定伐木规则为半径 7 格、每有效格 10 木／分钟（资源等级另有倍率），本轮未修改数值。已作者模型的海岸试玩目前仍隐藏伐木场，需要批准的建筑模型和森林资产接入，不能把“代码存在”误认为“这个试玩已可采集”。</p>
+    <p>性能上建议林区统一生成导航边界，树共享材质、分批绘制、使用合适 LOD 与视野裁剪，不给每一片叶子或每棵树加独立运行脚本。当前通用树两个 LOD 仍有约 8.1 万／4.7 万三角，后续森林密集战斗必须单独测量，不能直接承诺不卡。</p>
+  </section>
+  <section id="pipeline">
+    <h2>哪些用模型，哪些用材质</h2>
+    <table><thead><tr><th>内容</th><th>推荐路线</th><th>依据</th></tr></thead><tbody>
+      <tr><td>树、灌木、突出地表的石头</td><td>现成合规 3D 素材优先，缺少的地域／造型再用概念图生成模型</td><td>轮廓与遮挡来自几何体，树叶可用透明裁切贴图，不需每片叶都是厚实体。</td></tr>
+      <tr><td>草地、干草地、泥土、泥地、石砾、路</td><td>六层可平铺 PBR 材质＋地表混合</td><td>小样不是纹理成品；复用既有 Terrain 地面流程，不将整张地图送 Tripo 做网格。</td></tr>
+      <tr><td>悬崖、高地</td><td>地形高度＋岩壁材质；轮廓突出的岩块用批准模型</td><td>地形、资源占地和导航范围要一致；现有渲染管线不迁移。</td></tr>
+      <tr><td>河流、水面</td><td>地形河床＋水面渲染</td><td>浅滩与通路先由地图规则决定，不能仅靠画面看起来像能过河。</td></tr>
+    </tbody></table>
+    <p>免费候选：<a href="https://polyhaven.com/a/fir_tree_01">Poly Haven Fir Tree 01</a> 提供 CC0 针叶树与 LOD，但完整源约 800 万三角，不能原样铺满 RTS 地图；<a href="https://assetstore.unity.com/packages/3d/vegetation/trees/palm-tree-pack-free-214483">Palm Tree Pack Free</a> 列为免费，并列出 Built-in 管线兼容（2021.3.30f1）。它尚未在本项目版本验证，树种、面数和许可证再分发限制也需导入检查。免费不代表可把商店原包上传公开 Git。本轮只找候选，没有下载／导入这些包。</p>
+    <p>所有最终新树仍先进入 <code>art/Blender主文件/ZombieGame_Environment.blend</code>，记录来源和验收，再给 Unity 引用。概念图生成保留现有所有 .blend 和未保存工作，没有新建替代游戏模型；Unity 按用户选择另做基础地形／水面的独立预览，不改变正式玩法。</p>
+  </section>
+  <section id="research">
+    <h2>参考 RTS 的什么，不照搬什么</h2>
+    <ul>
+      <li><a href="https://www.numantiangames.com/News/2017-10-02-they-are-billions-update-build-your-colony/">《亿万僵尸》开发者：建造与资源</a>——采集建筑按覆盖范围内的资源格产出，覆盖树越多收益越高，建造时显示预计收益；资源来源不会耗尽。适合我们当前持续经营、防守扩张的方向。</li>
+      <li><a href="https://www.ageofempires.com/news/age-of-empires-iv-update-9-1-109/">《帝国时代4》官方更新</a>——森林中的树在采集完前仍保留移动阻挡，完全采完后才开放通路；地中海、戈壁等生态也有树林。其逐棵耗尽机制是另一种选择，不与当前持续产出同时混用。</li>
+      <li><a href="https://support.ageofempires.com/hc/en-us/articles/4869788243220-Introduction-to-Generated-Maps">《帝国时代4》地图生成说明</a>——地图布局参数安排资源、玩家和地形，再选择生态外观。我们也应先保证资源可达、进攻通道和防御节奏，再做自然摆放。</li>
+      <li><a href="https://support.ageofempires.com/hc/en-us/articles/11726608098708-Mastering-the-Scenario-Tree">《帝国时代4》地图编辑分层</a>——地表纹理、草、森林区域、不可通行图、水体分别处理。支持我们采用“材质地面＋模型植被＋独立资源与导航定义”，而非一个模型解决整张地图。</li>
+    </ul>
+    <p>以上游戏机制来自官方资料；双用途树分类、模型复用和地图生产流程是对我们项目的设计建议，不是对这些游戏内部代码或面数的推测。</p>
+  </section>
+  <footer>2026-10-13 · 十张概念，旧稿保留 · 原生图片生成工具 · 提示词存于 manifest.json · 待用户评审；Unity 独立环境预览另行验收，未接入正式玩法</footer>
+</main>
+</body>
+</html>
