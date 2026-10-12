@@ -89,6 +89,20 @@ namespace ZombieGame.Tests.EnvironmentShowcase
                     x = Mathf.Clamp01(config.grass_focus_center.x + ((float)random.NextDouble() * 2 - 1) * config.grass_focus_extent.x) * config.map_size;
                     z = Mathf.Clamp01(config.grass_focus_center.y + ((float)random.NextDouble() * 2 - 1) * config.grass_focus_extent.y) * config.map_size;
                 }
+                else if (category == "rock" && ground.biome != null && ground.biome.plateau_enabled && random.NextDouble() < ground.biome.talus_rock_fraction)
+                {
+                    var profile = ground.biome;
+                    float angle = (float)random.NextDouble() * Mathf.PI * 2;
+                    float eroded_radius = 1 + (Mathf.Sin(angle * 7) + Mathf.Sin(angle * 13) * .4f) * profile.erosion_strength;
+                    float foot_distance = 1 + (float)random.NextDouble() * (profile.talus_width * .65f) +
+                        (profile.dry_basin ? profile.cliff_edge_width * 2 : 0);
+                    float physical_radius = new Vector2(Mathf.Cos(angle) * profile.plateau_radius.x,
+                        Mathf.Sin(angle) * profile.plateau_radius.y).magnitude;
+                    float normalized_distance = eroded_radius + foot_distance / physical_radius;
+                    x = profile.plateau_center.x * config.map_size + Mathf.Cos(angle) * profile.plateau_radius.x * normalized_distance;
+                    z = profile.plateau_center.y * config.map_size + Mathf.Sin(angle) * profile.plateau_radius.y * normalized_distance;
+                    if (x < 0 || z < 0 || x > config.map_size || z > config.map_size) continue;
+                }
                 if (!can_place_category(x, z, category)) continue;
                 float scale = Mathf.Lerp(scale_range.x, scale_range.y, (float)random.NextDouble());
                 Vector3 point = ground.sample_ground(x, z);
@@ -108,7 +122,8 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             if (z - ground.shoreline_z(x) <= config.shore_blend_width ||
                 Mathf.Abs(x - ground.road_x(z)) <= config.road_half_width + config.road_edge_width) return false;
             float forest = ground.forest_weight(x, z);
-            if (category == "rock") return forest > .3f || ground.terrain_data.GetSteepness(x / config.map_size, z / config.map_size) > 12;
+            if (category == "rock") return ground.terrain_data.GetSteepness(x / config.map_size, z / config.map_size) < 38 &&
+                (ground.talus_weight(x, z) > .2f || forest > .3f || ground.terrain_data.GetSteepness(x / config.map_size, z / config.map_size) > 12);
             if (!ground.can_place_greenery(x, z)) return false;
             if (category == "tree") return forest > .65f && random.NextDouble() < forest;
             if (category == "shrub") return forest > .15f && forest < .9f && random.NextDouble() < .6f;

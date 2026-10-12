@@ -1,0 +1,25 @@
+{
+  "status": "technical_checks_passed_visual_review_required",
+  "scope": "Independent four-biome terrain preview; not production navigation or battle performance",
+  "unity": "6000.6.1f1 Built-in",
+  "device": "Apple M2 Pro (Mac14,9)",
+  "resolution": "1440x900",
+  "source_blend": "art/Blender主文件/ZombieGame_Environment.blend",
+  "source_sha256": "22cf18b836561446acae85f98b97086e40cac6ec23e88f91eebe05c8310ad56f",
+  "source_models_unchanged": true,
+  "new_pbr_sources": ["rock_face_03", "cliff_side", "gravelly_sand"],
+  "license_manifest": "art/environment/showcase_biome_sources.json",
+  "checks": ["Six-layer ground", "Actual cliff slopes and flat plateau", "Height bounds and matching TerrainCollider", "Original five landmark heights", "Same-frame cliff material on/off pixels", "Same-frame talus material on/off pixels", "Source and grass/rock contribution"],
+  "biomes": [
+    {"id": "europe", "passed": true, "maximum_slope_degrees": 80.2811, "cliff_material_rgb_delta": 0.0080071, "talus_material_rgb_delta": 0.0117872, "p95_ms_range": [16.6744, 17.5285]},
+    {"id": "mountains", "passed": true, "maximum_slope_degrees": 84.2697, "cliff_material_rgb_delta": 0.0188027, "talus_material_rgb_delta": 0.0127453, "p95_ms_range": [17.2933, 17.5821]},
+    {"id": "winter", "passed": true, "maximum_slope_degrees": 82.1491, "cliff_material_rgb_delta": 0.0132577, "talus_material_rgb_delta": 0.0102765, "p95_ms_range": [17.4408, 17.5935]},
+    {"id": "desert", "passed": true, "maximum_slope_degrees": 82.0198, "cliff_material_rgb_delta": 0.0296816, "talus_material_rgb_delta": 0.0103241, "p95_ms_range": [17.5007, 17.5900]}
+  ],
+  "maximum_old_landmark_height_delta_m": 0.004154,
+  "frame_rate_cap": 60,
+  "timing_note": "Eight 180-frame samples per biome, including near/middle cliff and near/middle/far grass on/off; includes 60Hz waiting, no slow-frame filtering. Earlier cliffs-v1 run while Mac was locked had substantial spikes and remains preserved; do not claim a guaranteed frame rate from this repeat alone.",
+  "full_evidence": "Builds/ArtReview/EnvironmentShowcase/cliffs-final/showcase-report.json",
+  "earlier_evidence": "Builds/ArtReview/EnvironmentShowcase/cliffs-v1/showcase-report.json",
+  "limitations": ["Terrain heightfield has no caves or overhang", "Winter/desert lack approved regional vegetation", "Height blending, wind, complex water and medieval landmark props remain deferred", "Formal battle and navigation unchanged and not tested by this art-only scene"]
+}

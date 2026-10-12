@@ -74,6 +74,21 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             material_instance.SetColor("_DryTint", biome == null ? config.dry_tint : biome.ground_tints[1]);
             material_instance.SetColor("_SoilTint", biome == null ? config.soil_tint : biome.ground_tints[2]);
             material_instance.SetColor("_MudTint", biome == null ? config.mud_tint : biome.ground_tints[3]);
+            if (biome == null) return;
+            material_instance.SetVector("_PlateauCenter", new Vector4(biome.plateau_center.x * config.map_size + origin.x, biome.plateau_center.y * config.map_size + origin.z, 0, 0));
+            material_instance.SetVector("_PlateauRadius", new Vector4(biome.plateau_radius.x, biome.plateau_radius.y, biome.cliff_edge_width, biome.talus_width));
+            material_instance.SetFloat("_PlateauEnabled", biome.plateau_enabled ? 1 : 0);
+            material_instance.SetFloat("_PlateauLedge", biome.dry_basin ? 1 : 0);
+            material_instance.SetFloat("_ErosionStrength", biome.erosion_strength);
+            material_instance.SetFloat("_HasCliffPbr", biome.cliff_albedo_smoothness && biome.cliff_normal ? 1 : 0);
+            material_instance.SetFloat("_HasTalusPbr", biome.talus_albedo_smoothness && biome.talus_normal ? 1 : 0);
+            material_instance.SetFloat("_CliffTileSize", biome.cliff_tile_size);
+            material_instance.SetFloat("_TalusTileSize", biome.talus_tile_size);
+            material_instance.SetFloat("_CliffNormalStrength", biome.cliff_normal_strength);
+            if (biome.cliff_albedo_smoothness) material_instance.SetTexture("_CliffPbr", biome.cliff_albedo_smoothness);
+            if (biome.cliff_normal) material_instance.SetTexture("_CliffNormal", biome.cliff_normal);
+            if (biome.talus_albedo_smoothness) material_instance.SetTexture("_TalusPbr", biome.talus_albedo_smoothness);
+            if (biome.talus_normal) material_instance.SetTexture("_TalusNormal", biome.talus_normal);
         }
 
         private float[,] build_heights()
@@ -85,12 +100,30 @@ namespace ZombieGame.Tests.EnvironmentShowcase
                 {
                     float world_x = x * config.map_size / (resolution - 1);
                     float world_z = z * config.map_size / (resolution - 1);
-                    result[z, x] = sample_authored_height(world_x, world_z) / config.height_range;
+                    float height = sample_authored_height(world_x, world_z);
+                    if (float.IsNaN(height) || float.IsInfinity(height) || height < 0 || height >= config.height_range)
+                        throw new InvalidOperationException("Showcase height outside authored bounds before Terrain clamp: " + height + " at " + world_x + "," + world_z);
+                    result[z, x] = height / config.height_range;
                 }
             return result;
         }
 
         private float sample_authored_height(float x, float z)
+        {
+            float original = sample_original_height(x, z);
+            if (biome == null || !biome.plateau_enabled) return original;
+            float signed_distance = plateau_edge_distance(x, z);
+            float interior = 1 - Mathf.SmoothStep(0, 1, Mathf.InverseLerp(-biome.cliff_edge_width, 0, signed_distance));
+            if (biome.dry_basin)
+            {
+                float ledge = 1 - Mathf.SmoothStep(0, 1, Mathf.InverseLerp(biome.cliff_edge_width, biome.cliff_edge_width * 2, signed_distance));
+                original = Mathf.Lerp(original, Mathf.Max(original, biome.plateau_height * .48f), ledge);
+            }
+            return Mathf.Lerp(original, biome.plateau_height, interior);
+        }
+
+        /// <summary>Previous accepted four-biome relief, kept unchanged outside the explicit NE landform.</summary>
+        public float sample_original_height(float x, float z)
         {
             float size = config.map_size;
             float ridge = Mathf.Exp(-((x - size * .73f) * (x - size * .73f) / (size * size * .009f) +
@@ -101,6 +134,27 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             if (biome != null && biome.dry_basin)
                 rolling += Mathf.Sin(x / 15 + z / 27) * .5f + .5f;
             return (1.8f + rolling + ridge * config.hill_height * relief) * shore;
+        }
+
+        public float plateau_edge_distance(float x, float z)
+        {
+            if (biome == null || !biome.plateau_enabled) return float.PositiveInfinity;
+            var delta = new Vector2((x - biome.plateau_center.x * config.map_size) / biome.plateau_radius.x,
+                (z - biome.plateau_center.y * config.map_size) / biome.plateau_radius.y);
+            float angle = Mathf.Atan2(delta.y, delta.x);
+            float eroded_radius = 1 + (Mathf.Sin(angle * 7) + Mathf.Sin(angle * 13) * .4f) * biome.erosion_strength;
+            // Radial metres along this ellipse direction, not the shorter-axis scale.
+            float physical_radius = Mathf.Max(Mathf.Min(biome.plateau_radius.x, biome.plateau_radius.y),
+                Vector2.Scale(delta, biome.plateau_radius).magnitude / Mathf.Max(delta.magnitude, .0001f));
+            return (delta.magnitude - eroded_radius) * physical_radius;
+        }
+
+        public float talus_weight(float x, float z)
+        {
+            if (biome == null || !biome.plateau_enabled) return 0;
+            float distance = plateau_edge_distance(x, z) - (biome.dry_basin ? biome.cliff_edge_width * 2 : 0);
+            return Mathf.SmoothStep(0, 1, Mathf.InverseLerp(-.5f, 1, distance)) *
+                (1 - Mathf.SmoothStep(0, 1, Mathf.InverseLerp(1, biome.talus_width, distance)));
         }
 
         public float shoreline_z(float x) => config.map_size * .18f + Mathf.Sin(x / config.map_size * 5.8f) * 5;
@@ -146,6 +200,9 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             float dirt = Mathf.Clamp01(path_soil * .45f + forest_weight(x, z) * .36f);
             float dry_strength = biome == null ? config.dry_grass_strength : biome.dry_strength;
             if (biome != null && biome.dry_basin) dirt = path_soil * .35f + stone * .1f;
+            float talus = talus_weight(x, z);
+            stone = Mathf.Max(stone, talus * .52f);
+            dirt = Mathf.Clamp01(dirt + talus * .32f);
             float upper_snow = biome != null && biome.upper_snow ?
                 Mathf.SmoothStep(0, 1, Mathf.InverseLerp(7, 13, terrain_data.GetInterpolatedHeight(u, v))) : 0;
             weights[0] = (1 - dry * dry_strength) * (1 - dirt) * (1 - upper_snow);
@@ -173,6 +230,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
         {
             return z - shoreline_z(x) > config.shore_blend_width &&
                 Mathf.Abs(x - road_x(z)) > config.road_half_width + config.road_edge_width &&
+                talus_weight(x, z) < .35f &&
                 terrain_data.GetSteepness(x / config.map_size, z / config.map_size) < config.slope_rock_start + 4;
         }
 

@@ -38,7 +38,7 @@ namespace ZombieGame.Tests.EditorTools
         private static void validate_source(SourceRecord source)
         {
             if (source == null || source.license != "CC0-1.0" ||
-                Array.IndexOf(new[] { "snow_02", "sand_01", "rocky_terrain_02", "forest_ground_04", "rock_boulder_dry" }, source.id) < 0 ||
+                Array.IndexOf(new[] { "snow_02", "sand_01", "rocky_terrain_02", "forest_ground_04", "rock_boulder_dry", "rock_face_03", "cliff_side", "gravelly_sand" }, source.id) < 0 ||
                 source.source != "https://polyhaven.com/a/" + source.id || source.files == null || source.files.Length != 3)
                 throw new InvalidOperationException("Unapproved biome source/license: " + source?.id);
             var channels = new HashSet<string>();
@@ -76,7 +76,8 @@ namespace ZombieGame.Tests.EditorTools
             layer.smoothness = 1;
             layer.normalScale = source.id == "rocky_terrain_02" ? .25f : .35f;
             // rocky_terrain_02 is a 90m aerial scan, not a small repeatable brick-sized rock tile.
-            layer.tileSize = Vector2.one * (source.id == "rocky_terrain_02" ? 65 : source.id == "sand_01" ? 8 : 5);
+            layer.tileSize = Vector2.one * (source.id == "rocky_terrain_02" ? 65 : source.id == "sand_01" ? 8 : source.id == "gravelly_sand" ? 2.5f :
+                source.id == "rock_face_03" || source.id == "cliff_side" ? 4 : 5);
             EditorUtility.SetDirty(layer);
             return layer;
         }
@@ -120,7 +121,7 @@ namespace ZombieGame.Tests.EditorTools
 
         private static void assign_profiles(Dictionary<string, TerrainLayer> layers)
         {
-            foreach (string id in new[] { "snow_02", "sand_01", "rocky_terrain_02", "forest_ground_04", "rock_boulder_dry" })
+            foreach (string id in new[] { "snow_02", "sand_01", "rocky_terrain_02", "forest_ground_04", "rock_boulder_dry", "rock_face_03", "cliff_side", "gravelly_sand" })
                 if (!layers.ContainsKey(id)) throw new InvalidOperationException("Required biome layer missing: " + id);
             var config = AssetDatabase.LoadAssetAtPath<EnvironmentShowcaseConfig>(EnvironmentShowcaseTools.CONFIG_PATH);
             if (!config || !config.grass_layer_override) throw new InvalidOperationException("Prepare showcase grass and config before biome profiles.");
@@ -144,6 +145,7 @@ namespace ZombieGame.Tests.EditorTools
             alpine.fog = new Color(.56f, .63f, .68f);
             alpine.sun = new Color(.96f, .98f, 1);
             alpine.missing_art = "Native broadleaf tree reused only in low valleys; alpine conifers and buildings absent.";
+            alpine.plateau_height = 17;
             var winter = create_profile("winter", "Winter", layers);
             winter.layer_overrides[0] = layers["snow_02"];
             winter.layer_overrides[1] = layers["snow_02"];
@@ -160,6 +162,7 @@ namespace ZombieGame.Tests.EditorTools
             winter.fog = new Color(.62f, .68f, .73f);
             winter.water = new Color(.53f, .64f, .68f);
             winter.missing_art = "No approved snow-covered/leafless trees: green vegetation deliberately hidden; basic ice-coloured surface, not simulated ice.";
+            winter.plateau_height = 13;
             var desert = create_profile("desert", "Desert", layers);
             desert.layer_overrides[0] = layers["sand_01"];
             desert.layer_overrides[1] = layers["sand_01"];
@@ -183,9 +186,27 @@ namespace ZombieGame.Tests.EditorTools
             desert.fog = new Color(.68f, .61f, .48f);
             desert.water = new Color(.18f, .38f, .36f);
             desert.missing_art = "No approved palms, desert shrubs or regional architecture: source rocks only; shallow wet basin preview.";
+            desert.plateau_height = 15;
+            desert.erosion_strength = .08f;
             config.biomes = new[] { europe, alpine, winter, desert };
+            foreach (var profile in config.biomes) assign_landform_pbr(profile, layers);
             config.validate_config();
             EditorUtility.SetDirty(config);
+        }
+
+        private static void assign_landform_pbr(EnvironmentShowcaseConfig.BiomeProfile profile, Dictionary<string, TerrainLayer> layers)
+        {
+            if (!profile.dry_basin) profile.erosion_strength = .03f;
+            string cliff_id = profile.id == "desert" ? "cliff_side" : "rock_face_03";
+            var cliff = layers[cliff_id];
+            var talus = layers["gravelly_sand"];
+            profile.cliff_albedo_smoothness = cliff.diffuseTexture;
+            profile.cliff_normal = cliff.normalMapTexture;
+            profile.talus_albedo_smoothness = talus.diffuseTexture;
+            profile.talus_normal = talus.normalMapTexture;
+            profile.cliff_source_record = MANIFEST + "#" + cliff_id + "; steep Stone pixels only, 4m triplanar";
+            profile.talus_source_record = MANIFEST + "#gravelly_sand; plateau-foot Stone pixels only, 2.5m";
+            profile.layer_semantics[4] += "; local " + cliff_id + " cliff / gravelly_sand talus PBR";
         }
 
         private static EnvironmentShowcaseConfig.BiomeProfile create_profile(string id, string label, Dictionary<string, TerrainLayer> layers)

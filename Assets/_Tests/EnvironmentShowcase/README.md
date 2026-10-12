@@ -8,7 +8,7 @@
 仅实验场使用真实高度变化，含湿岸、蜿蜒道路、低密草甸、林缘土壤和按坡度裸露的石层。
 没有修改正式地图、寻路、接触系统、UnitBalance 或已经验收的单位表现。
 
-按 B 循环 Europe / Mountains / Winter / Desert，也可按对应 HUD 按钮；1/2/3 或滚轮切换近中远，Tab 切五个观察位置，G 开关草细节，H 隐藏 HUD。
+按 B 循环 Europe / Mountains / Winter / Desert，也可按对应 HUD 按钮；1/2/3 或滚轮切换近中远，Tab 切八个观察位置，G 开关草细节，H 隐藏 HUD。
 首次进入 Europe 草甸／林缘中景。四区域是同一场景控制器的资源化配置，不是四个复制控制器。
 HUD 显示同一视角本机近 600 帧中位数与 p95 帧时间，属纯环境结果，不代表战斗压力性能。
 
@@ -37,7 +37,7 @@ Base Color + alpha 走颜色空间，Normal_GL 走 Normal 类型，roughness/alp
 实际变好与否须核对打包近中远截图，不把参数修改声称视觉验收完成。
 双面 cutout 专用 Built-in PBR shader 保留真实 alpha，不造草片或更改网格；树 LOD 两个源 FBX 共用其原相对变换。
 可执行文件使用 `-showcaseCheck -showcaseOutput <绝对目录> -showcaseBiome all` 做四区域验收；也可只测 europe / mountains / winter / desert 或 0–3。应在与前后图相同分辨率运行。
-输出包括地形显示/隐藏的同帧像素对比、五个位置图、近中远草开/关图，以及包含机器、分辨率、真实坡度、六层平均权重、草开/关帧时间的 JSON。
+输出包括地形显示/隐藏的同帧像素对比、八个位置图、近中远草开/关图，以及包含机器、分辨率、真实坡度、六层平均权重、草开/关帧时间的 JSON。
 植被只在 `Camera.onPreCull` 为该观察相机每次 render 提交，含手动 capture，不与 LateUpdate 重复提交；截图必须有真实草／树贡献，不能用数量替代像素验收。
 每区域子目录存独立图与 JSON，根目录 JSON 汇总区域结果。包含 source semantics、明确缺失的 art、草有意关闭与否、岩石同帧开关像素；各区域保留近中远草开关及林缘／道路／岸边观察图。
 `terrain_passed` 独立报告地形基础检查；`source_complete` 要求该区域配置应有的草／树／灌木与来源岩石齐全。
@@ -53,6 +53,16 @@ Winter / Desert 明确没有批准的对应植被模型，关闭绿色植被，�
 独立 Built-in Terrain shader 维持原生 terrain 顶点／雾／标准 PBR 4+2 pass；加入 24m 低对比 macro 颜色变化、
 两组偏移邻居采样渐混以打散重复（道路不做 ghost 混合），真实 Normal 28–100m 渐淡。
 没有伪造 Height/AO，也没有称偏移采样为全功能 stochastic／triplanar。
+新增东北台地/崖边由原生 Terrain 高度场承担：中心(.77,.81)、半径17×11m，Europe/Mountains/Winter/Desert 平顶分别11/17/13/15m、边缘2.2m，沙漠有风蚀轮廓及第二级台阶。
+非沙漠轮廓仅 .03 轻微不规则，沙漠 .08；第二级台阶由独立 dry_basin / _PlateauLedge 控制，不能因欧洲也有轮廓扰动而启用沙漠台阶。
+CPU 高度、Shader 坡脚、石头散布和 QA 采用同方向真实椭圆径向米制，避免用短半径放大长轴的边缘／碎石宽度。
+完整崖边、风蚀最大范围与6m坡脚严格在地图内；无加1m容差。原草甸/路/岸/林/坡观察点的高度作为回归检查，不使用clamp掩盖越界。
+这不是90°垂直面或悬挑模型；Terrain heightfield不能提供overhang。本轮未造独立岩壁模型。
+Stone层只在约49–74°的陡坡渐入真实世界空间三轴投影；欧洲/高山/冬季用rock_face_03，沙漠用cliff_side，4m展示尺度。真实法线投影回Terrain切线空间，保留近远detail fade。
+6m坡脚采用gravelly_sand 2.5m PBR，在Stone权重内局部替换并增加合理裸土过渡，不全图替换原Stone；小石只重新分配既有预算55%至坡脚、原RockNatural整体2–4倍不变。
+新增Cliff face / Plateau top / Talus foot观察点；QA记录全高度范围、Collider一致性、>65°陡坡、平顶高度/坡度、旧5观察点高度回归、坡脚权重与同帧崖/石像素。
+新增 cliff-material-on/off、talus-material-on/off 同帧图与 RGB delta：只暂时关闭对应 _HasCliffPbr / _HasTalusPbr、刷新 Terrain 后 render 并 finally 恢复；保持高度场、草和石头不变，独立验证新贴图实际贡献。两项分别要求 >.0001，不以几何显示／隐藏代替材质验收。
+对照原批准的biomes-final/{biome}/view-0..4与新版同名图，保持同分辨率/相机/曝光核对；新增cliff近/中各60暖帧＋180实测帧，非只引用原树林性能。
 草主要集中在可调草甸样区，少量散于全图，避免把极小草源均匀撒满后在近镜头也几乎看不到。
 新增区域材质由 `art/environment/showcase_biome_sources.json` 固定来源／作者／CC0 许可／SHA-256。`ShowcaseBiomeImport.prepare_biomes()` 只生成独立 layers。
 Europe 使用真实 Grass_A、枯草、森林腐殖土、湿泥、自然岩地、既有乡土道路。Rocky_terrain_02 是大尺度航拍，实验 tile65m，不缩成砖块。
@@ -68,6 +78,10 @@ Desert 真实 Sand_01、裸土、无植被 Rock_boulder_dry 岩（5m tile）、�
 主协调已核对欧洲林缘以及冬季／沙漠裸岩截图；仍是地表样场，不能视为完成中世纪场景布置或最终美术验收。
 
 ## 可复现准备
+
+悬崖扩展的四区域打包检查与岩壁／坡脚材质像素对比通过，见 `validation-cliffs.json`。
+完整证据保留在 `Builds/ArtReview/EnvironmentShowcase/cliffs-final`；本轮重复采样 p95 16.67–17.60ms，包含60Hz等待。
+早先锁屏运行 `cliffs-v1` 出现明显慢帧，证据保留，不据单次重测保证稳定帧率，也不视为万人战斗结论。
 
 从项目根目录运行：
 

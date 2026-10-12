@@ -23,6 +23,20 @@ Shader "Hidden/ZombieGame/EnvironmentShowcase/TerrainAddPbr"
         _BreakupStrength("Neighbour blend", Range(0,1)) = .52
         _DetailFadeStart("Detail fade start", Float) = 28
         _DetailFadeEnd("Detail fade end", Float) = 100
+        _CliffPbr("Approved cliff RGB + smoothness", 2D) = "white" {}
+        _CliffNormal("Approved cliff normal GL", 2D) = "bump" {}
+        _TalusPbr("Approved talus RGB + smoothness", 2D) = "white" {}
+        _TalusNormal("Approved talus normal GL", 2D) = "bump" {}
+        _PlateauCenter("Plateau world centre XZ", Vector) = (41,47,0,0)
+        _PlateauRadius("Plateau radii / edge / talus", Vector) = (18,11,2.2,6)
+        _PlateauEnabled("Plateau enabled", Float) = 0
+        _PlateauLedge("Secondary weathered ledge", Float) = 0
+        _ErosionStrength("Weathered rim", Float) = 0
+        _HasCliffPbr("Verified cliff PBR present", Float) = 0
+        _HasTalusPbr("Verified talus PBR present", Float) = 0
+        _CliffTileSize("Cliff metres", Float) = 4
+        _TalusTileSize("Talus metres", Float) = 2.5
+        _CliffNormalStrength("Cliff normal strength", Float) = .3
     }
     SubShader
     {

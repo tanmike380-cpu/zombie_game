@@ -29,7 +29,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
         private float previous_shadow_distance;
         private int previous_shadow_cascades;
         private Light sun;
-        public static readonly string[] VIEW_NAMES = { "Meadow overview", "Road seam", "Wet shoreline", "Forest edge", "Actual rocky slope" };
+        public static readonly string[] VIEW_NAMES = { "Meadow overview", "Road seam", "Wet shoreline", "Forest edge", "Actual rocky slope", "Cliff face", "Plateau top", "Talus foot" };
         private static readonly Vector2[] VIEW_POINTS = { new Vector2(.5f, .53f), new Vector2(.42f, .48f),
             new Vector2(.43f, .235f), new Vector2(.61f, .57f), new Vector2(.70f, .72f) };
 
@@ -129,9 +129,17 @@ namespace ZombieGame.Tests.EnvironmentShowcase
 
         public void set_view(int requested_view, int requested_zoom)
         {
-            view_index = Mathf.Clamp(requested_view, 0, VIEW_POINTS.Length - 1);
+            view_index = Mathf.Clamp(requested_view, 0, VIEW_NAMES.Length - 1);
             zoom_index = Mathf.Clamp(requested_zoom, 0, config.camera_sizes.Length - 1);
-            var view_point = VIEW_POINTS[view_index];
+            var view_point = view_index < VIEW_POINTS.Length ? VIEW_POINTS[view_index] : new Vector2(.77f, .81f);
+            var profile = current_biome;
+            if (view_index >= VIEW_POINTS.Length && profile != null)
+            {
+                view_point = profile.plateau_center;
+                if (view_index != 6)
+                    view_point.y -= (profile.plateau_radius.y + (view_index == 7 ? profile.talus_width * .45f +
+                        (profile.dry_basin ? profile.cliff_edge_width * 2 : 0) : -profile.cliff_edge_width * .5f)) / config.map_size;
+            }
             Vector3 focus = ground.sample_ground(view_point.x * config.map_size, view_point.y * config.map_size);
             Quaternion rotation = Quaternion.Euler(config.camera_pitch, config.camera_yaw, 0);
             review_camera.transform.SetPositionAndRotation(focus - rotation * Vector3.forward * config.camera_sizes[zoom_index] * 2.3f, rotation);
@@ -164,7 +172,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             if (Input.GetKeyDown(KeyCode.Alpha1)) set_view(view_index, 0);
             if (Input.GetKeyDown(KeyCode.Alpha2)) set_view(view_index, 1);
             if (Input.GetKeyDown(KeyCode.Alpha3)) set_view(view_index, 2);
-            if (Input.GetKeyDown(KeyCode.Tab)) set_view((view_index + 1) % VIEW_POINTS.Length, zoom_index);
+            if (Input.GetKeyDown(KeyCode.Tab)) set_view((view_index + 1) % VIEW_NAMES.Length, zoom_index);
             if (Input.GetKeyDown(KeyCode.B) && config.biomes != null && config.biomes.Length > 0) set_biome((biome_index + 1) % config.biomes.Length);
             if (Input.GetKeyDown(KeyCode.G)) { foliage.show_grass = !foliage.show_grass; reset_frame_samples(); }
             if (Input.GetKeyDown(KeyCode.H)) show_hud = !show_hud;
@@ -221,7 +229,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
                 if (GUILayout.Button(new[] { "Near", "Middle", "Far" }[index])) set_view(view_index, index);
             GUILayout.EndHorizontal();
             GUILayout.BeginHorizontal();
-            if (GUILayout.Button("Next view")) set_view((view_index + 1) % VIEW_POINTS.Length, zoom_index);
+            if (GUILayout.Button("Next view")) set_view((view_index + 1) % VIEW_NAMES.Length, zoom_index);
             if (GUILayout.Button(foliage.show_grass ? "Grass ON" : "Grass OFF")) { foliage.show_grass = !foliage.show_grass; reset_frame_samples(); }
             GUILayout.EndHorizontal();
             GUILayout.Label("Grass " + foliage.grass_instances + " | trees " + foliage.tree_instances + " | shrubs " + foliage.shrub_instances +

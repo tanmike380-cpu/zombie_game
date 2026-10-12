@@ -20,6 +20,14 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             public Color ambient = new Color(.34f, .39f, .34f), sun = new Color(1, .94f, .84f);
             public Color fog = new Color(.40f, .49f, .50f), water = new Color(.16f, .31f, .33f);
             public float sun_intensity = 1;
+            public bool plateau_enabled = true;
+            public Vector2 plateau_center = new Vector2(.77f, .81f);
+            public Vector2 plateau_radius = new Vector2(17, 11);
+            public float plateau_height = 11, cliff_edge_width = 2.2f, talus_width = 6;
+            public float erosion_strength = 0, talus_rock_fraction = .55f;
+            public Texture2D cliff_albedo_smoothness, cliff_normal, talus_albedo_smoothness, talus_normal;
+            public string cliff_source_record, talus_source_record;
+            public float cliff_tile_size = 4, talus_tile_size = 2.5f, cliff_normal_strength = .3f;
         }
 
         [Header("Independent region profiles; six source slots remain explicit")]
@@ -124,13 +132,36 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             validate_sources(shrub_prefabs, shrub_source_record, "shrub");
             validate_sources(rock_prefabs, rock_source_record, "rock");
             if (biomes != null)
+            {
                 foreach (var biome in biomes)
+                {
                     if (biome == null || string.IsNullOrWhiteSpace(biome.id) || string.IsNullOrWhiteSpace(biome.source_record) ||
                         biome.layer_overrides == null || biome.layer_overrides.Length != 6 || biome.layer_semantics == null || biome.layer_semantics.Length != 6 ||
                         biome.ground_tints == null || biome.ground_tints.Length != 4 || biome.relief_multiplier <= 0 ||
                         hill_height * biome.relief_multiplier + 3 >= height_range || biome.rock_full <= biome.rock_start ||
                         biome.grass_density < 0 || biome.tree_density < 0 || biome.shrub_density < 0 || biome.rock_density < 0)
                         throw new InvalidOperationException("Showcase biome provenance, six semantics or relief bounds invalid: " + biome?.id);
+                    else validate_plateau(biome);
+                }
+            }
+        }
+
+        private void validate_plateau(BiomeProfile biome)
+        {
+            if (!biome.plateau_enabled) return;
+            if (biome.plateau_height <= 4 || biome.plateau_height >= height_range - .5f || biome.cliff_edge_width < 1 ||
+                biome.talus_width < 2 || biome.plateau_radius.x < 8 || biome.plateau_radius.y < 8 ||
+                biome.cliff_tile_size <= 0 || biome.talus_tile_size <= 0 || biome.erosion_strength < 0 || biome.erosion_strength > .15f ||
+                biome.talus_rock_fraction < 0 || biome.talus_rock_fraction > .8f || biome.plateau_center.x < .7f || biome.plateau_center.y < .8f ||
+                biome.plateau_center.x * map_size + biome.plateau_radius.x * (1 + biome.erosion_strength * 1.4f) + biome.cliff_edge_width * 2 + biome.talus_width > map_size ||
+                biome.plateau_center.y * map_size + biome.plateau_radius.y * (1 + biome.erosion_strength * 1.4f) + biome.cliff_edge_width * 2 + biome.talus_width > map_size)
+                throw new InvalidOperationException("Showcase plateau bounds/height/projection invalid: " + biome.id);
+            if ((biome.cliff_albedo_smoothness || biome.cliff_normal) &&
+                (!biome.cliff_albedo_smoothness || !biome.cliff_normal || string.IsNullOrWhiteSpace(biome.cliff_source_record)))
+                throw new InvalidOperationException("Cliff PBR requires paired approved base+normal and source record: " + biome.id);
+            if ((biome.talus_albedo_smoothness || biome.talus_normal) &&
+                (!biome.talus_albedo_smoothness || !biome.talus_normal || string.IsNullOrWhiteSpace(biome.talus_source_record)))
+                throw new InvalidOperationException("Talus PBR requires paired approved base+normal and source record: " + biome.id);
         }
 
         private static void validate_source(GameObject prefab, string source_record, string category)
