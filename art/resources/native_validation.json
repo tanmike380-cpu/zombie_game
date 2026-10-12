@@ -1,16 +1,16 @@
 {
   "status": "native_source_fidelity_pass",
-  "source_sha256": "c007b74c92a1c5a93fcf3a829ca4c73e192ec3c6037dc8779a85da42b8f8b0fb",
+  "source_sha256": "37fcad0d37b78aea743399c0fc144c4c3d6038ede7c01c35474d051f651bee03",
   "records": [
     {
-      "id": "OreRock",
+      "id": "IronOreRock",
       "status": "pass",
-      "native_mesh_uv_normal_signature": "be7443c8cbd1be28e86988c690749ffe856537ed9fa5fe05e08675052dc53ae6"
+      "native_mesh_uv_normal_signature": "b929b1a03734f655b262a57f2732d6f624cc12f93a70f8f6fd7e01e2b9d1582f"
     },
     {
       "id": "GoldOreRock",
       "status": "pass",
-      "native_mesh_uv_normal_signature": "1e2bf1a3ea53ea53731e8d61f072ab53cd1c0bad8dc89469ffdf8965a2858489"
+      "native_mesh_uv_normal_signature": "173f1bc536f598946999aab2ff2eadf55b61956a5b86e249a1374225607e5d20"
     }
   ]
 }

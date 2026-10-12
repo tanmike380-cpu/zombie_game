@@ -730,6 +730,11 @@
     },
     {
       "id": "MiddleEasternCourtyard",
+      "source_triangles": 10028,
+      "effective_triangles": 10026,
+      "degenerate_triangle_count": 2,
+      "degenerate_triangle_exact_fbx_sha256": "a62b35ed830786e8a056e73c1fb0a94cb476deb210da419afca59c307f15a082",
+      "degenerate_triangle_acceptance": "Only this exact FBX hash may import 10026 triangles: 10028 source triangles minus exactly two duplicate-position, zero-area triangles. No generic triangle-count tolerance or area-threshold deletion is authorized.",
       "source_scene": "Scene",
       "source_collection": "环境地标 · MiddleEasternCourtyard",
       "source_objects": [

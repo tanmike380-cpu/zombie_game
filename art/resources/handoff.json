@@ -1,19 +1,19 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "status": "parent_approved_preview_source_pending_unity_visual_acceptance",
   "source_blend": "art/Blender主文件/ZombieGame_Resources.blend",
-  "source_sha256": "c007b74c92a1c5a93fcf3a829ca4c73e192ec3c6037dc8779a85da42b8f8b0fb",
+  "source_sha256": "37fcad0d37b78aea743399c0fc144c4c3d6038ede7c01c35474d051f651bee03",
   "source_scene": "Scene",
   "source_collection": "资源素材 · 用户提供矿石",
   "source_manifest": "art/resources/source_manifest.json",
   "records": [
     {
-      "id": "OreRock",
+      "id": "IronOreRock",
       "source_scene": "Scene",
-      "source_collection": "资源素材 · OreRock",
-      "source_root": "OreRock_Root",
+      "source_collection": "资源素材 · IronOreRock",
+      "source_root": "IronOreRock_Root",
       "source_objects": [
-        "OreRock"
+        "IronOreRock"
       ],
       "gallery_position": [
         0,
@@ -23,15 +23,15 @@
       "native_import": {
         "pieces": [
           {
-            "name": "b0e4c353_e38b_4d40_9333_009da33483f8",
-            "mesh": "b0e4c353_e38b_4d40_9333_009da33483f8",
+            "name": "tripo_node_3e9f0c53",
+            "mesh": "tripo_mesh_3e9f0c53",
             "vertices": 4404,
             "triangles": 8618,
             "evaluated_triangles": 8618,
             "bounds_min": [
               -0.499755859375,
               -0.422119140625,
-              -2.6818710807674506e-08
+              -1.5527360730516193e-08
             ],
             "bounds_max": [
               0.499755859375,
@@ -41,10 +41,10 @@
             "dimensions_m": [
               0.99951171875,
               0.84423828125,
-              0.7143554955687108
+              0.7143554842773607
             ],
             "uv_layers": [
-              "Attribute"
+              "b0e4c353_e38b_4d40_9333_009da33483f8_NewUVMap"
             ],
             "parent": null,
             "matrix_world": [
@@ -52,18 +52,18 @@
                 1.0,
                 0.0,
                 0.0,
-                0.0
-              ],
-              [
-                0.0,
-                7.549790126404332e-08,
-                -1.0,
-                0.0
+                -1.4901161193847656e-08
               ],
               [
                 0.0,
                 1.0,
-                7.549790126404332e-08,
+                4.371138828673793e-08,
+                0.0
+              ],
+              [
+                0.0,
+                -4.371138828673793e-08,
+                1.0,
                 0.0
               ],
               [
@@ -80,7 +80,7 @@
             ],
             "modifiers": [],
             "materials": [
-              "b0e4c353_e38b_4d40_9333_009da33483f8"
+              "tripo_mat_3e9f0c53"
             ]
           }
         ],
@@ -88,7 +88,7 @@
         "bounds_min": [
           -0.499755859375,
           -0.422119140625,
-          -2.6818710807674506e-08
+          -1.5527360730516193e-08
         ],
         "bounds_max": [
           0.499755859375,
@@ -98,21 +98,21 @@
         "dimensions_blender_xyz_m": [
           0.99951171875,
           0.84423828125,
-          0.7143554955687108
+          0.7143554842773607
         ]
       },
       "source_pivot_translation_m": [
         -0.0,
         -0.0,
-        2.6818710807674506e-08
+        1.5527360730516193e-08
       ],
       "unit_calibration_uniform_scale": 1,
       "unit_note": "Blender native FBX unit conversion only; no manual rescale, axis deformation or vertex edit",
-      "geometry_policy": "Original native mesh/UV/custom normals preserved. Parent/root translation only. Restored provided color image; no new geometry.",
+      "geometry_policy": "Original native mesh/UV/custom normals preserved. Parent/root translation only. Bound supplied PBR images; no new geometry.",
       "pieces": [
         {
-          "name": "OreRock",
-          "mesh": "b0e4c353_e38b_4d40_9333_009da33483f8",
+          "name": "IronOreRock",
+          "mesh": "tripo_mesh_3e9f0c53",
           "vertices": 4404,
           "triangles": 8618,
           "evaluated_triangles": 8618,
@@ -132,27 +132,27 @@
             0.71435546875
           ],
           "uv_layers": [
-            "Attribute"
+            "b0e4c353_e38b_4d40_9333_009da33483f8_NewUVMap"
           ],
-          "parent": "OreRock_Root",
+          "parent": "IronOreRock_Root",
           "matrix_world": [
             [
               1.0,
               0.0,
               0.0,
-              0.0
-            ],
-            [
-              0.0,
-              7.549790126404332e-08,
-              -1.0,
-              0.0
+              -1.4901161193847656e-08
             ],
             [
               0.0,
               1.0,
-              7.549790126404332e-08,
-              2.6818710807674506e-08
+              4.371138828673793e-08,
+              0.0
+            ],
+            [
+              0.0,
+              -4.371138828673793e-08,
+              1.0,
+              1.5527360730516193e-08
             ],
             [
               0.0,
@@ -164,11 +164,11 @@
           "hide_viewport": false,
           "hide_render": false,
           "collections": [
-            "资源素材 · OreRock"
+            "资源素材 · IronOreRock"
           ],
           "modifiers": [],
           "materials": [
-            "OreRock_UserBaseColor"
+            "IronOreRock_UserPBR"
           ]
         }
       ],
@@ -189,8 +189,8 @@
         0.71435546875
       ],
       "source_blend": "art/Blender主文件/ZombieGame_Resources.blend",
-      "model_path": "Assets/_Tests/EnvironmentShowcase/Art/Resources/OreRock/OreRock.fbx",
-      "model_sha256": "1dbe62bd6d3ef616fb59d9df17dc2aa6ee2d9900390fe8e97a140ef8121b94fc",
+      "model_path": "Assets/_Tests/EnvironmentShowcase/Art/Resources/IronOreRock/IronOreRock.fbx",
+      "model_sha256": "dc40c7012eb37a9e5dae25361377e0d0c716d1b5cb460c5222dde25e3c2ca9e9",
       "dimensions_unity_xyz_m": [
         0.99951171875,
         0.71435546875,
@@ -199,8 +199,8 @@
       "pivot_bounds": {
         "pieces": [
           {
-            "name": "OreRock",
-            "mesh": "b0e4c353_e38b_4d40_9333_009da33483f8",
+            "name": "IronOreRock",
+            "mesh": "tripo_mesh_3e9f0c53",
             "vertices": 4404,
             "triangles": 8618,
             "evaluated_triangles": 8618,
@@ -220,27 +220,27 @@
               0.71435546875
             ],
             "uv_layers": [
-              "Attribute"
+              "b0e4c353_e38b_4d40_9333_009da33483f8_NewUVMap"
             ],
-            "parent": "OreRock_Root",
+            "parent": "IronOreRock_Root",
             "matrix_world": [
               [
                 1.0,
                 0.0,
                 0.0,
-                0.0
-              ],
-              [
-                0.0,
-                7.549790126404332e-08,
-                -1.0,
-                0.0
+                -1.4901161193847656e-08
               ],
               [
                 0.0,
                 1.0,
-                7.549790126404332e-08,
-                2.6818710807674506e-08
+                4.371138828673793e-08,
+                0.0
+              ],
+              [
+                0.0,
+                -4.371138828673793e-08,
+                1.0,
+                1.5527360730516193e-08
               ],
               [
                 0.0,
@@ -252,11 +252,11 @@
             "hide_viewport": false,
             "hide_render": false,
             "collections": [
-              "资源素材 · OreRock"
+              "资源素材 · IronOreRock"
             ],
             "modifiers": [],
             "materials": [
-              "OreRock_UserBaseColor"
+              "IronOreRock_UserPBR"
             ]
           }
         ],
@@ -284,16 +284,16 @@
       "unity_import_scale": 1,
       "placement_note": "Whole assembly uniform scale only; no mesh refit. About six decorative instances are a Unity fixture, not mining/income gameplay.",
       "material_slots": [
-        "OreRock_UserBaseColor"
+        "IronOreRock_UserPBR"
       ],
       "materials": [
         {
-          "name": "OreRock_UserBaseColor",
+          "name": "IronOreRock_UserPBR",
           "alpha_mode": "opaque",
           "double_sided": true,
           "channels": {
             "base_color": {
-              "path": "Assets/_Tests/EnvironmentShowcase/Art/Resources/OreRock/Textures/rock+3d+model_basecolor.jpg",
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Resources/IronOreRock/Textures/tripo_rgb_98c3e0a5-5eca-4dc2-a25b-e7f5cf82cd2b.jpg",
               "sha256": "37739816a2803d225b5b3162f97c533d285140bf01d10e15ea3857f11280cace",
               "resolution": [
                 2048,
@@ -301,15 +301,46 @@
               ],
               "colorspace": "sRGB",
               "component": "rgb"
+            },
+            "normal": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Resources/IronOreRock/Textures/tripo_normal_9a147e8f-1d4f-4150-acf2-ee0f87bc54bc.jpg",
+              "sha256": "6ca367e1e07aaffa647af7383d12e644956d7a3c97afe51e8f01a9b872881311",
+              "resolution": [
+                2048,
+                2048
+              ],
+              "colorspace": "linear",
+              "component": "rgb"
+            },
+            "metallic": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Resources/IronOreRock/Textures/iron_rock_3d_model_metallic.JPEG",
+              "sha256": "97fff9c8750bdf0901e7b29e997c6526124304bbe35054f465c51a94a9537048",
+              "resolution": [
+                2048,
+                2048
+              ],
+              "colorspace": "linear",
+              "component": "red"
+            },
+            "roughness": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Resources/IronOreRock/Textures/iron_rock_3d_model_roughness.JPEG",
+              "sha256": "423a85af99efbe946a9cac8d436e1f2654420b6ba2eebbadb3ca733d1b6fc7c7",
+              "resolution": [
+                2048,
+                2048
+              ],
+              "colorspace": "linear",
+              "component": "red"
             }
           },
-          "roughness_constant_if_missing": 0.85,
-          "metallic": 0,
-          "normal_strength": 0,
+          "metallic": 1,
+          "metallic_multiplier": 1,
+          "normal_strength": 1,
+          "normal_convention": "unverified",
+          "normal_preview_assumption": "as_encoded_no_green_flip; NOT asserted OpenGL",
+          "normal_visual_check_required": true,
+          "roughness_to_smoothness": "Convert once; Standard metallic R uses source metallic, smoothness A = 1 - source roughness",
           "missing_channels": [
-            "normal",
-            "roughness",
-            "metallic",
             "height",
             "AO"
           ],
@@ -333,15 +364,15 @@
       "native_import": {
         "pieces": [
           {
-            "name": "tripo_96cb023a_050d_4e09_aed4_e38b6af0ec33",
-            "mesh": "tripo_96cb023a_050d_4e09_aed4_e38b6af0ec33",
+            "name": "tripo_node_04ea4f60",
+            "mesh": "tripo_mesh_04ea4f60",
             "vertices": 4225,
             "triangles": 8281,
             "evaluated_triangles": 8281,
             "bounds_min": [
               -0.499755859375,
               -0.499755859375,
-              -3.747246779539637e-08
+              -2.169561774678641e-08
             ],
             "bounds_max": [
               0.499755859375,
@@ -351,10 +382,10 @@
             "dimensions_m": [
               0.99951171875,
               0.99951171875,
-              0.4760742562224678
+              0.47607424044561775
             ],
             "uv_layers": [
-              "Attribute"
+              "tripo_96cb023a_050d_4e09_aed4_e38b6af0ec33_NewUVMap"
             ],
             "parent": null,
             "matrix_world": [
@@ -362,18 +393,18 @@
                 1.0,
                 0.0,
                 0.0,
-                0.0
-              ],
-              [
-                0.0,
-                7.549790126404332e-08,
-                -1.0,
-                0.0
+                -1.4901161193847656e-08
               ],
               [
                 0.0,
                 1.0,
-                7.549790126404332e-08,
+                4.371138828673793e-08,
+                0.0
+              ],
+              [
+                0.0,
+                -4.371138828673793e-08,
+                1.0,
                 0.0
               ],
               [
@@ -390,7 +421,7 @@
             ],
             "modifiers": [],
             "materials": [
-              "tripo_96cb023a_050d_4e09_aed4_e38b6af0ec33"
+              "tripo_mat_04ea4f60"
             ]
           }
         ],
@@ -398,7 +429,7 @@
         "bounds_min": [
           -0.499755859375,
           -0.499755859375,
-          -3.747246779539637e-08
+          -2.169561774678641e-08
         ],
         "bounds_max": [
           0.499755859375,
@@ -408,21 +439,21 @@
         "dimensions_blender_xyz_m": [
           0.99951171875,
           0.99951171875,
-          0.4760742562224678
+          0.47607424044561775
         ]
       },
       "source_pivot_translation_m": [
         -0.0,
         -0.0,
-        3.747246779539637e-08
+        2.169561774678641e-08
       ],
       "unit_calibration_uniform_scale": 1,
       "unit_note": "Blender native FBX unit conversion only; no manual rescale, axis deformation or vertex edit",
-      "geometry_policy": "Original native mesh/UV/custom normals preserved. Parent/root translation only. Restored provided color image; no new geometry.",
+      "geometry_policy": "Original native mesh/UV/custom normals preserved. Parent/root translation only. Bound supplied PBR images; no new geometry.",
       "pieces": [
         {
           "name": "GoldOreRock",
-          "mesh": "tripo_96cb023a_050d_4e09_aed4_e38b6af0ec33",
+          "mesh": "tripo_mesh_04ea4f60",
           "vertices": 4225,
           "triangles": 8281,
           "evaluated_triangles": 8281,
@@ -442,7 +473,7 @@
             0.4760742485523224
           ],
           "uv_layers": [
-            "Attribute"
+            "tripo_96cb023a_050d_4e09_aed4_e38b6af0ec33_NewUVMap"
           ],
           "parent": "GoldOreRock_Root",
           "matrix_world": [
@@ -454,15 +485,15 @@
             ],
             [
               0.0,
-              7.549790126404332e-08,
-              -1.0,
+              1.0,
+              4.371138828673793e-08,
               0.0
             ],
             [
               0.0,
+              -4.371138828673793e-08,
               1.0,
-              7.549790126404332e-08,
-              3.747246779539637e-08
+              2.169561774678641e-08
             ],
             [
               0.0,
@@ -478,7 +509,7 @@
           ],
           "modifiers": [],
           "materials": [
-            "GoldOreRock_UserBaseColor"
+            "GoldOreRock_UserPBR"
           ]
         }
       ],
@@ -500,7 +531,7 @@
       ],
       "source_blend": "art/Blender主文件/ZombieGame_Resources.blend",
       "model_path": "Assets/_Tests/EnvironmentShowcase/Art/Resources/GoldOreRock/GoldOreRock.fbx",
-      "model_sha256": "47e73566e19efe96fa6daaaab53add2a97f9d12ad056fa28ca40b56b753829ae",
+      "model_sha256": "c2b75665d571bcfc46d43f7ac146f96a235c9efa7fcce2d9fec779c278a6491d",
       "dimensions_unity_xyz_m": [
         0.99951171875,
         0.4760742485523224,
@@ -510,7 +541,7 @@
         "pieces": [
           {
             "name": "GoldOreRock",
-            "mesh": "tripo_96cb023a_050d_4e09_aed4_e38b6af0ec33",
+            "mesh": "tripo_mesh_04ea4f60",
             "vertices": 4225,
             "triangles": 8281,
             "evaluated_triangles": 8281,
@@ -530,7 +561,7 @@
               0.4760742485523224
             ],
             "uv_layers": [
-              "Attribute"
+              "tripo_96cb023a_050d_4e09_aed4_e38b6af0ec33_NewUVMap"
             ],
             "parent": "GoldOreRock_Root",
             "matrix_world": [
@@ -542,15 +573,15 @@
               ],
               [
                 0.0,
-                7.549790126404332e-08,
-                -1.0,
+                1.0,
+                4.371138828673793e-08,
                 0.0
               ],
               [
                 0.0,
+                -4.371138828673793e-08,
                 1.0,
-                7.549790126404332e-08,
-                3.747246779539637e-08
+                2.169561774678641e-08
               ],
               [
                 0.0,
@@ -566,7 +597,7 @@
             ],
             "modifiers": [],
             "materials": [
-              "GoldOreRock_UserBaseColor"
+              "GoldOreRock_UserPBR"
             ]
           }
         ],
@@ -594,16 +625,16 @@
       "unity_import_scale": 1,
       "placement_note": "Whole assembly uniform scale only; no mesh refit. About six decorative instances are a Unity fixture, not mining/income gameplay.",
       "material_slots": [
-        "GoldOreRock_UserBaseColor"
+        "GoldOreRock_UserPBR"
       ],
       "materials": [
         {
-          "name": "GoldOreRock_UserBaseColor",
+          "name": "GoldOreRock_UserPBR",
           "alpha_mode": "opaque",
           "double_sided": true,
           "channels": {
             "base_color": {
-              "path": "Assets/_Tests/EnvironmentShowcase/Art/Resources/GoldOreRock/Textures/gold+ore+rock+3d+model_basecolor.jpg",
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Resources/GoldOreRock/Textures/tripo_rgb_398671df-111f-42a0-a3be-6dd3337fb028.jpg",
               "sha256": "60563b01b5e900b06979916cbaee1d768f652e889835fb8e2b3d918728a0d79a",
               "resolution": [
                 2048,
@@ -611,15 +642,46 @@
               ],
               "colorspace": "sRGB",
               "component": "rgb"
+            },
+            "normal": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Resources/GoldOreRock/Textures/tripo_normal_953a4708-b36f-4fec-a076-84a394c53d00.jpg",
+              "sha256": "9b22b25f9bd4e6e5517208da64c5f071f679dba41824d7a3246baa8568010048",
+              "resolution": [
+                2048,
+                2048
+              ],
+              "colorspace": "linear",
+              "component": "rgb"
+            },
+            "metallic": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Resources/GoldOreRock/Textures/gold_rock_3d_model_metallic.JPEG",
+              "sha256": "ee4c5c1843fb56439e6903a5c6bc3f4894f0f695d775e103510bdf76a1c447f5",
+              "resolution": [
+                2048,
+                2048
+              ],
+              "colorspace": "linear",
+              "component": "red"
+            },
+            "roughness": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Resources/GoldOreRock/Textures/gold_rock_3d_model_roughness.JPEG",
+              "sha256": "7009213781e13ff510c373dfc2fb7f265c9d1df3cbc3986dffc4ce6e96abce4f",
+              "resolution": [
+                2048,
+                2048
+              ],
+              "colorspace": "linear",
+              "component": "red"
             }
           },
-          "roughness_constant_if_missing": 0.85,
-          "metallic": 0,
-          "normal_strength": 0,
+          "metallic": 1,
+          "metallic_multiplier": 1,
+          "normal_strength": 1,
+          "normal_convention": "unverified",
+          "normal_preview_assumption": "as_encoded_no_green_flip; NOT asserted OpenGL",
+          "normal_visual_check_required": true,
+          "roughness_to_smoothness": "Convert once; Standard metallic R uses source metallic, smoothness A = 1 - source roughness",
           "missing_channels": [
-            "normal",
-            "roughness",
-            "metallic",
             "height",
             "AO"
           ],

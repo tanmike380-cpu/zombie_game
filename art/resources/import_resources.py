@@ -4,6 +4,7 @@ Run in isolated Blender --background --disable-autoexec, never the live zombie G
 The user's source license is unverified; this pipeline does not transmit any files.
 """
 import argparse
+from datetime import datetime
 import hashlib
 import json
 import math
@@ -23,13 +24,23 @@ RESOURCE_DIRECTORY = PROJECT_ROOT / "art/resources"
 FORMAL_SOURCE = PROJECT_ROOT / "art/Blender主文件/ZombieGame_Resources.blend"
 PARENT_COLLECTION = "资源素材 · 用户提供矿石"
 PACKAGES = (
-    {"id": "OreRock", "archive": "/Users/tankaixi/Downloads/rock 3d model.zip",
-     "archive_sha256": "497fd69dcb274218b0702616b23f03497f3e64fbadbc359f8adf967fb52ff652",
-     "fbx": "rock+3d+model.fbx", "base_color": "rock+3d+model.fbm/rock+3d+model_basecolor.jpg",
+    {"id": "IronOreRock", "archive": "/Users/tankaixi/Downloads/iron+rock+3d+model.zip",
+     "archive_sha256": "ddc7fb536024e7c482a67660e91240e12995bb244b56607a28b58f001a74e9ed",
+     "fbx": "tripo_convert_3e9f0c53-ed90-4031-9cb9-a5b79f880e8a.fbx",
+     "channels": {
+         "base_color": "tripo_convert_3e9f0c53-ed90-4031-9cb9-a5b79f880e8a.fbm/tripo_rgb_98c3e0a5-5eca-4dc2-a25b-e7f5cf82cd2b.jpg",
+         "normal": "tripo_convert_3e9f0c53-ed90-4031-9cb9-a5b79f880e8a.fbm/tripo_normal_9a147e8f-1d4f-4150-acf2-ee0f87bc54bc.jpg",
+         "metallic": "tripo_convert_3e9f0c53-ed90-4031-9cb9-a5b79f880e8a.fbm/iron_rock_3d_model_metallic.JPEG",
+         "roughness": "tripo_convert_3e9f0c53-ed90-4031-9cb9-a5b79f880e8a.fbm/iron_rock_3d_model_roughness.JPEG"},
      "gallery_position": [0, 0, 0]},
-    {"id": "GoldOreRock", "archive": "/Users/tankaixi/Downloads/gold ore rock 3d model.zip",
-     "archive_sha256": "71288cfb7d90a52d15654e8d40deceac8e14ae8df208b626247a45547964acb8",
-     "fbx": "gold+ore+rock+3d+model.fbx", "base_color": "gold+ore+rock+3d+model.fbm/gold+ore+rock+3d+model_basecolor.jpg",
+    {"id": "GoldOreRock", "archive": "/Users/tankaixi/Downloads/gold+rock+3d+model.zip",
+     "archive_sha256": "28b2194c829088bc5f762b0b26be7c1493573e8cd4890a35c3441b42cc7ca3df",
+     "fbx": "tripo_convert_04ea4f60-d19b-472b-8fbf-5821421f6ec8.fbx",
+     "channels": {
+         "base_color": "tripo_convert_04ea4f60-d19b-472b-8fbf-5821421f6ec8.fbm/tripo_rgb_398671df-111f-42a0-a3be-6dd3337fb028.jpg",
+         "normal": "tripo_convert_04ea4f60-d19b-472b-8fbf-5821421f6ec8.fbm/tripo_normal_953a4708-b36f-4fec-a076-84a394c53d00.jpg",
+         "metallic": "tripo_convert_04ea4f60-d19b-472b-8fbf-5821421f6ec8.fbm/gold_rock_3d_model_metallic.JPEG",
+         "roughness": "tripo_convert_04ea4f60-d19b-472b-8fbf-5821421f6ec8.fbm/gold_rock_3d_model_roughness.JPEG"},
      "gallery_position": [6, 0, 0]},
 )
 
@@ -41,15 +52,15 @@ def save_report(report, filename):
 
 
 def extract_package(package):
-    """Extract only two pinned FBX/JPG members; reject additional or unsafe archive entries."""
+    """Extract only five pinned FBX/PBR-image members; reject additional or unsafe entries."""
     archive_path = Path(package["archive"])
     if get_file_hash(archive_path) != package["archive_sha256"]:
         raise ValueError(f"User package changed: {archive_path}")
     directory = RESOURCE_DIRECTORY / "user-src" / package["id"]
     members = {}
     with zipfile.ZipFile(archive_path) as archive:
-        expected_names = {package["fbx"], package["base_color"]}
-        if len(archive.infolist()) != 2 or set(archive.namelist()) != expected_names:
+        expected_names = {package["fbx"], *package["channels"].values()}
+        if len(archive.infolist()) != 5 or set(archive.namelist()) != expected_names:
             raise ValueError(f"Unexpected members in {archive_path}")
         for entry in archive.infolist():
             member_path = PurePosixPath(entry.filename)
@@ -80,19 +91,34 @@ def read_bounds(objects):
             "dimensions_blender_xyz_m": [bounds_max[axis] - bounds_min[axis] for axis in range(3)]}
 
 
-def restore_base_color(objects, image_path, asset_id):
-    """Bind only the provided JPG; no fabricated normal, metallic or roughness textures."""
-    image = bpy.data.images.load(str(image_path), check_existing=True)
-    image.colorspace_settings.name = "sRGB"
-    material = bpy.data.materials.new(asset_id + "_UserBaseColor")
+def restore_pbr_channels(objects, source_record):
+    """Bind four real supplied PBR images; preserve unverified normal convention explicitly."""
+    material = bpy.data.materials.new(source_record["id"] + "_UserPBR")
     material.use_nodes = True
     material.use_backface_culling = False
-    shader = material.node_tree.nodes.get("Principled BSDF")
-    shader.inputs["Roughness"].default_value = .85
-    shader.inputs["Metallic"].default_value = 0
-    node = material.node_tree.nodes.new("ShaderNodeTexImage")
-    node.image = image
-    material.node_tree.links.new(node.outputs["Color"], shader.inputs["Base Color"])
+    shader = next((node for node in material.node_tree.nodes if node.type == "BSDF_PRINCIPLED"), None)
+    if shader is None:
+        shader = material.node_tree.nodes.new("ShaderNodeBsdfPrincipled")
+        output = next((node for node in material.node_tree.nodes if node.type == "OUTPUT_MATERIAL"), None)
+        if output is None:
+            output = material.node_tree.nodes.new("ShaderNodeOutputMaterial")
+        material.node_tree.links.new(shader.outputs["BSDF"], output.inputs["Surface"])
+    for channel, member in source_record["channels"].items():
+        image_path = PROJECT_ROOT / source_record["members"][member]["path"]
+        image = bpy.data.images.load(str(image_path), check_existing=True)
+        image.colorspace_settings.name = "sRGB" if channel == "base_color" else "Non-Color"
+        node = material.node_tree.nodes.new("ShaderNodeTexImage")
+        node.image = image
+        node.label = channel
+        if channel == "normal":
+            normal = material.node_tree.nodes.new("ShaderNodeNormalMap")
+            normal.inputs["Strength"].default_value = 1
+            material.node_tree.links.new(node.outputs["Color"], normal.inputs["Color"])
+            material.node_tree.links.new(normal.outputs["Normal"], shader.inputs["Normal"])
+        else:
+            socket_name = {"base_color": "Base Color", "metallic": "Metallic", "roughness": "Roughness"}[channel]
+            material.node_tree.links.new(node.outputs["Color"], shader.inputs[socket_name])
+    material["normal_convention"] = "unverified; no green flip; as-encoded Blender preview; Unity must visually verify tangent Y direction"
     for obj in objects:
         slot_count = max(1, len(obj.data.materials))
         obj.data.materials.clear()
@@ -136,7 +162,7 @@ def import_resource(source_record, parent_collection):
         obj.matrix_world = world_matrix
         obj["user_original_object"] = original_name
         obj["user_source_archive_sha256"] = source_record["archive_sha256"]
-    restore_base_color(imported, PROJECT_ROOT / source_record["members"][source_record["base_color"]]["path"], asset_id)
+    restore_pbr_channels(imported, source_record)
     grounded_bounds = read_bounds(imported)
     if any(abs(actual - expected) > .00001 for actual, expected in zip(grounded_bounds["dimensions_blender_xyz_m"], dimensions)):
         raise ValueError(f"Source proportions changed: {asset_id}")
@@ -144,7 +170,7 @@ def import_resource(source_record, parent_collection):
             "source_root": root.name, "source_objects": [obj.name for obj in imported], "gallery_position": source_record["gallery_position"],
             "native_import": native_bounds, "source_pivot_translation_m": list(-pivot),
             "unit_calibration_uniform_scale": 1, "unit_note": "Blender native FBX unit conversion only; no manual rescale, axis deformation or vertex edit",
-            "geometry_policy": "Original native mesh/UV/custom normals preserved. Parent/root translation only. Restored provided color image; no new geometry.",
+            "geometry_policy": "Original native mesh/UV/custom normals preserved. Parent/root translation only. Bound supplied PBR images; no new geometry.",
             **grounded_bounds}
 
 
@@ -168,11 +194,109 @@ def prepare_resources():
     if signatures != read_geometry_signatures() or bpy.data.libraries or any(image.source == "FILE" and not image.packed_file for image in bpy.data.images):
         raise ValueError("Resource category reopen/portable validation failed")
     source_hash = get_file_hash(FORMAL_SOURCE)
-    save_report({"schema_version": 1, "source_blend": str(FORMAL_SOURCE.relative_to(PROJECT_ROOT)), "source_sha256": source_hash,
-                 "sources": sources, "license_status": "user_provided_unverified_not_CC0", "uploads": "none"}, "source_manifest.json")
+    save_report({"schema_version": 2, "source_blend": str(FORMAL_SOURCE.relative_to(PROJECT_ROOT)), "source_sha256": source_hash,
+                 "sources": sources, "license_status": "user_provided_unverified_not_CC0", "uploads": "none",
+                 "normal_convention": "unverified; original pixels retained; Unity tangent-Y visual check required"}, "source_manifest.json")
     save_report({"status": "formal_new_category_reopen_pass_pending_parent_preview", "source_blend": str(FORMAL_SOURCE.relative_to(PROJECT_ROOT)),
                  "source_sha256": source_hash, "source_bytes": FORMAL_SOURCE.stat().st_size, "packed_images": sum(bool(image.packed_file) for image in bpy.data.images),
                  "geometry_uv_material_transform_signatures": signatures, "records": records}, "source_validation.json")
+
+
+def snapshot_old_resources(expected_hash):
+    """Make recoverable inactive copies before replacing the user's exact old resource category."""
+    if get_file_hash(FORMAL_SOURCE) != expected_hash or set(bpy.data.objects.keys()) != {"OreRock", "OreRock_Root", "GoldOreRock", "GoldOreRock_Root"}:
+        raise ValueError("Old category changed or has new user objects; refusing replacement")
+    recovery_parent = RESOURCE_DIRECTORY / "user-src/recovery"
+    for existing in sorted(recovery_parent.glob("before-pbr-replacement-*")):
+        saved_source = existing / FORMAL_SOURCE.name
+        if saved_source.is_file() and get_file_hash(saved_source) == expected_hash:
+            return existing  # A prior unsaved preparation attempt already protected the exact old source.
+    directory = RESOURCE_DIRECTORY / "user-src/recovery" / f"before-pbr-replacement-{datetime.now():%Y%m%d-%H%M%S}"
+    directory.mkdir(parents=True, exist_ok=False)
+    shutil.copy2(FORMAL_SOURCE, directory / FORMAL_SOURCE.name)
+    for filename in ("source_manifest.json", "source_validation.json", "native_validation.json", "export_validation.json", "handoff.json", "README.md"):
+        old_file = RESOURCE_DIRECTORY / filename
+        if old_file.exists():
+            shutil.copy2(old_file, directory / filename)
+    preview_directory = RESOURCE_DIRECTORY / "previews"
+    if preview_directory.exists():
+        shutil.move(str(preview_directory), str(directory / "old-previews"))
+    for asset_id in ("OreRock", "GoldOreRock"):
+        old_raw = RESOURCE_DIRECTORY / "user-src" / asset_id
+        if old_raw.exists():
+            shutil.move(str(old_raw), str(directory / asset_id))
+    return directory
+
+
+def replace_resources(expected_hash):
+    """Replace only the two authorized old models, removing old geometry/material/images from active .blend."""
+    if not bpy.app.background or Path(bpy.data.filepath).resolve() != FORMAL_SOURCE:
+        raise ValueError("Replacement requires fresh isolated formal Resources process")
+    recovery = snapshot_old_resources(expected_hash)
+    sources = [extract_package(package) for package in PACKAGES]
+    removed = {"objects": list(bpy.data.objects.keys()), "meshes": list(bpy.data.meshes.keys()),
+               "materials": list(bpy.data.materials.keys()), "images": list(bpy.data.images.keys())}
+    for obj in list(bpy.data.objects):
+        bpy.data.objects.remove(obj, do_unlink=True)
+    for collection in list(bpy.data.collections):
+        if collection.name == PARENT_COLLECTION or collection.name.startswith("资源素材 · "):
+            bpy.data.collections.remove(collection, do_unlink=True)
+    for mesh in list(bpy.data.meshes):
+        bpy.data.meshes.remove(mesh)
+    for material in list(bpy.data.materials):
+        bpy.data.materials.remove(material)
+    for image in list(bpy.data.images):
+        bpy.data.images.remove(image)
+    parent = bpy.data.collections.new(PARENT_COLLECTION)
+    bpy.context.scene.collection.children.link(parent)
+    records = [import_resource(source, parent) for source in sources]
+    signatures = read_geometry_signatures()
+    bpy.ops.outliner.orphans_purge(do_recursive=True)
+    bpy.ops.file.pack_all()
+    if get_file_hash(FORMAL_SOURCE) != expected_hash:
+        raise ValueError("Formal source changed concurrently; refusing save")
+    bpy.ops.wm.save_as_mainfile(filepath=str(FORMAL_SOURCE), compress=True)
+    bpy.ops.wm.open_mainfile(filepath=str(FORMAL_SOURCE))
+    expected_objects = {"IronOreRock", "IronOreRock_Root", "GoldOreRock", "GoldOreRock_Root"}
+    if set(bpy.data.objects.keys()) != expected_objects or signatures != read_geometry_signatures():
+        raise ValueError("New category reopen/object/geometry verification failed")
+    if len(bpy.data.images) != 8 or any(not image.packed_file for image in bpy.data.images) or bpy.data.libraries:
+        raise ValueError("New category must have exactly eight portable PBR images")
+    if any("UserBaseColor" in material.name for material in bpy.data.materials) or "资源素材 · OreRock" in bpy.data.collections:
+        raise ValueError("Old resource art remains active")
+    source_hash = get_file_hash(FORMAL_SOURCE)
+    save_report({"schema_version": 2, "source_blend": str(FORMAL_SOURCE.relative_to(PROJECT_ROOT)), "source_sha256": source_hash,
+                 "sources": sources, "license_status": "user_provided_unverified_not_CC0", "uploads": "none",
+                 "normal_convention": "unverified; original pixels retained; Unity tangent-Y visual check required"}, "source_manifest.json")
+    save_report({"status": "formal_replacement_reopen_pass_pending_parent_preview", "source_blend": str(FORMAL_SOURCE.relative_to(PROJECT_ROOT)),
+                 "source_sha256": source_hash, "source_bytes": FORMAL_SOURCE.stat().st_size, "packed_images": len(bpy.data.images),
+                 "predecessor_sha256": expected_hash, "recovery_snapshot_directory": str(recovery.relative_to(PROJECT_ROOT)),
+                 "removed_old_active_datablocks": removed, "active_objects": sorted(expected_objects),
+                 "active_images": list(bpy.data.images.keys()), "geometry_uv_material_transform_signatures": signatures,
+                 "records": records}, "source_validation.json")
+
+
+def export_pbr_material(material, texture_directory):
+    """Export exact packed PBR files and declare normal convention uncertainty rather than fake GL."""
+    channels = {}
+    for node in material.node_tree.nodes:
+        if node.type != "TEX_IMAGE" or node.label not in ("base_color", "normal", "metallic", "roughness"):
+            continue
+        image = node.image
+        if not image.packed_file:
+            raise ValueError(f"Unpacked PBR image: {image.name}")
+        texture_path = texture_directory / Path(image.filepath).name
+        texture_path.write_bytes(bytes(image.packed_file.data))
+        channels[node.label] = {"path": str(texture_path.relative_to(PROJECT_ROOT)), "sha256": get_file_hash(texture_path),
+                                "resolution": list(image.size), "colorspace": "sRGB" if node.label == "base_color" else "linear",
+                                "component": "red" if node.label in ("metallic", "roughness") else "rgb"}
+    if set(channels) != {"base_color", "normal", "metallic", "roughness"}:
+        raise ValueError(f"Missing supplied PBR channel: {material.name}")
+    return {"name": material.name, "alpha_mode": "opaque", "double_sided": True, "channels": channels,
+            "metallic": 1, "metallic_multiplier": 1, "normal_strength": 1,
+            "normal_convention": "unverified", "normal_preview_assumption": "as_encoded_no_green_flip; NOT asserted OpenGL",
+            "normal_visual_check_required": True, "roughness_to_smoothness": "Convert once; Standard metallic R uses source metallic, smoothness A = 1 - source roughness",
+            "missing_channels": ["height", "AO"], "license_status": "user_provided_unverified_not_CC0"}
 
 
 def export_resources(expected_hash):
@@ -190,9 +314,7 @@ def export_resources(expected_hash):
         texture_directory = output_directory / "Textures"
         texture_directory.mkdir(parents=True, exist_ok=True)
         material = meshes[0].data.materials[0]
-        image = next(node.image for node in material.node_tree.nodes if node.type == "TEX_IMAGE")
-        texture_path = texture_directory / Path(image.filepath).name
-        texture_path.write_bytes(bytes(image.packed_file.data))
+        material_record = export_pbr_material(material, texture_directory)
         model_path = output_directory / f"{asset_id}.fbx"
         gallery_position = root.location.copy()
         try:
@@ -217,12 +339,8 @@ def export_resources(expected_hash):
                         "dimensions_unity_xyz_m": [dimensions[0], dimensions[2], dimensions[1]], "pivot_bounds": pivot_bounds,
                         "unit_m": 1, "placement_scale": 1, "axis_forward": "-Z", "axis_up": "Y", "unity_import_scale": 1,
                         "placement_note": "Whole assembly uniform scale only; no mesh refit. About six decorative instances are a Unity fixture, not mining/income gameplay.",
-                        "material_slots": [material.name], "materials": [{"name": material.name, "alpha_mode": "opaque", "double_sided": True,
-                          "channels": {"base_color": {"path": str(texture_path.relative_to(PROJECT_ROOT)), "sha256": get_file_hash(texture_path),
-                                                       "resolution": list(image.size), "colorspace": "sRGB", "component": "rgb"}},
-                          "roughness_constant_if_missing": .85, "metallic": 0, "normal_strength": 0,
-                          "missing_channels": ["normal", "roughness", "metallic", "height", "AO"], "license_status": "user_provided_unverified_not_CC0"}]})
-    save_report({"schema_version": 1, "status": "source_export_complete_pending_parent_preview", "source_blend": str(FORMAL_SOURCE.relative_to(PROJECT_ROOT)),
+                        "material_slots": [material.name], "materials": [material_record]})
+    save_report({"schema_version": 2, "status": "source_export_complete_pending_parent_preview", "source_blend": str(FORMAL_SOURCE.relative_to(PROJECT_ROOT)),
                  "source_sha256": expected_hash, "source_scene": bpy.context.scene.name, "source_collection": PARENT_COLLECTION,
                  "source_manifest": "art/resources/source_manifest.json", "records": records}, "handoff.json")
 
@@ -250,9 +368,9 @@ def validate_exports():
         for piece, original in zip(actual["pieces"], expected["pieces"]):
             if not piece["uv_layers"] or piece["uv_layers"] != original["uv_layers"] or piece["materials"] != original["materials"]:
                 raise ValueError(f"Roundtrip UV/material slots failed: {expected['id']}")
-        texture = expected["materials"][0]["channels"]["base_color"]
-        if get_file_hash(PROJECT_ROOT / texture["path"]) != texture["sha256"]:
-            raise ValueError(f"Color bytes changed: {expected['id']}")
+        for texture in expected["materials"][0]["channels"].values():
+            if get_file_hash(PROJECT_ROOT / texture["path"]) != texture["sha256"]:
+                raise ValueError(f"PBR bytes changed: {expected['id']}: {texture['path']}")
         results.append({"id": expected["id"], "status": "pass", **actual})
     save_report({"status": "fbx_roundtrip_pass", "source_blend": handoff["source_blend"], "source_sha256": handoff["source_sha256"], "records": results}, "export_validation.json")
 
@@ -266,39 +384,6 @@ def read_native_mesh_signature(obj):
               "uv_layers": {layer.name: [list(corner.uv) for corner in layer.data] for layer in mesh.uv_layers},
               "corner_normals_6dp": [[round(value, 6) for value in normal.vector] for normal in mesh.corner_normals]}
     return hashlib.sha256(json.dumps(record, sort_keys=True).encode()).hexdigest()
-
-
-def repair_initial_parent_translation(expected_hash):
-    """Correct new-category parenting cache after recoverable snapshot, never edit mesh data."""
-    if not bpy.app.background or Path(bpy.data.filepath).resolve() != FORMAL_SOURCE or get_file_hash(FORMAL_SOURCE) != expected_hash:
-        raise ValueError("Fresh initial resource category changed; refusing pivot correction")
-    recovery = RESOURCE_DIRECTORY / "user-src/recovery" / "Resources-before-parent-pivot-fix.blend"
-    if recovery.exists():
-        raise ValueError("Recovery snapshot already exists; refusing repeated repair")
-    recovery.parent.mkdir(parents=True, exist_ok=True)
-    shutil.copy2(FORMAL_SOURCE, recovery)
-    prior_signatures = {package["id"]: read_native_mesh_signature(bpy.data.objects[package["id"]]) for package in PACKAGES}
-    obj = bpy.data.objects["GoldOreRock"]
-    obj.location.x -= 6
-    bpy.context.view_layer.update()
-    if abs(obj.matrix_world.translation.x - 6) > .001:
-        raise ValueError("Resource gallery parenting correction failed")
-    bpy.ops.wm.save_as_mainfile(filepath=str(FORMAL_SOURCE), compress=True)
-    bpy.ops.wm.open_mainfile(filepath=str(FORMAL_SOURCE))
-    for package in PACKAGES:
-        if read_native_mesh_signature(bpy.data.objects[package["id"]]) != prior_signatures[package["id"]]:
-            raise ValueError("Root repair changed original mesh/UV/custom normals")
-    new_hash = get_file_hash(FORMAL_SOURCE)
-    manifest = json.loads((RESOURCE_DIRECTORY / "source_manifest.json").read_text(encoding="utf-8"))
-    manifest["source_sha256"] = new_hash
-    save_report(manifest, "source_manifest.json")
-    validation = json.loads((RESOURCE_DIRECTORY / "source_validation.json").read_text(encoding="utf-8"))
-    for record in validation["records"]:
-        record.update(read_bounds([bpy.data.objects[name] for name in record["source_objects"]]))
-    validation.update(source_sha256=new_hash, source_bytes=FORMAL_SOURCE.stat().st_size, geometry_uv_material_transform_signatures=read_geometry_signatures(),
-                      predecessor_sha256=expected_hash, recovery_snapshot=str(recovery.relative_to(PROJECT_ROOT)),
-                      audit_note="Corrected initial new root parenting cache: gallery x=6, exported pivot x=0. Mesh/UV/custom-normal signature unchanged.")
-    save_report(validation, "source_validation.json")
 
 
 def validate_native_sources():
@@ -370,7 +455,7 @@ def render_resources():
 def parse_arguments():
     """Select one explicit resource pipeline stage."""
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("mode", choices=("prepare", "export", "verify", "render", "verify-native", "repair-initial-pivot"))
+    parser.add_argument("mode", choices=("prepare", "replace", "export", "verify", "render", "verify-native"))
     parser.add_argument("--expected-sha256")
     return parser.parse_args(sys.argv[sys.argv.index("--") + 1:])
 
@@ -379,13 +464,13 @@ if __name__ == "__main__":
     arguments = parse_arguments()
     if arguments.mode == "prepare":
         prepare_resources()
+    elif arguments.mode == "replace":
+        replace_resources(arguments.expected_sha256)
     elif arguments.mode == "export":
         export_resources(arguments.expected_sha256)
     elif arguments.mode == "render":
         render_resources()
     elif arguments.mode == "verify-native":
         validate_native_sources()
-    elif arguments.mode == "repair-initial-pivot":
-        repair_initial_parent_translation(arguments.expected_sha256)
     else:
         validate_exports()

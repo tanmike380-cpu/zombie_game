@@ -1,0 +1,26 @@
+{
+  "reason": "User explicitly requested removing the two original ores from Downloads, Blender and Unity and activating only the latest PBR exports.",
+  "operation": "recoverable_move_not_permanent_erasure",
+  "trash_directory": "/Users/tankaixi/.Trash/zombie-game-retired-ores-cVOSHf",
+  "retired_downloads": [
+    {
+      "path": "/Users/tankaixi/Downloads/rock 3d model.zip",
+      "sha256": "497fd69dcb274218b0702616b23f03497f3e64fbadbc359f8adf967fb52ff652"
+    },
+    {
+      "path": "/Users/tankaixi/Downloads/gold ore rock 3d model.zip",
+      "sha256": "71288cfb7d90a52d15654e8d40deceac8e14ae8df208b626247a45547964acb8"
+    }
+  ],
+  "retired_unity_exports": [
+    "Assets/_Tests/EnvironmentShowcase/Art/Resources/OreRock",
+    "Assets/_Tests/EnvironmentShowcase/Art/Resources/GoldOreRock"
+  ],
+  "unity_note": "Directories including their folder metadata were moved together. New GoldOreRock occupies the same logical ID but has new FBX, PBR textures and metadata. No old ore generated Prefab/material existed because the previous import stopped before the resource step.",
+  "retired_blender_sha256": "c007b74c92a1c5a93fcf3a829ca4c73e192ec3c6037dc8779a85da42b8f8b0fb",
+  "blender_recovery": "art/resources/user-src/recovery/before-pbr-replacement-20261012-233014/ZombieGame_Resources.blend",
+  "active_blender": "art/Blender主文件/ZombieGame_Resources.blend",
+  "active_blender_sha256": "37fcad0d37b78aea743399c0fc144c4c3d6038ede7c01c35474d051f651bee03",
+  "active_ids": ["IronOreRock", "GoldOreRock"],
+  "recovery_policy": "Retired assets are not active sources or runtime fixtures. Trash, ignored recovery snapshots and local Git history remain recoverable; unrelated Downloads and Blender files were preserved."
+}

@@ -1,27 +1,47 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "source_blend": "art/Blender主文件/ZombieGame_Resources.blend",
-  "source_sha256": "c007b74c92a1c5a93fcf3a829ca4c73e192ec3c6037dc8779a85da42b8f8b0fb",
+  "source_sha256": "37fcad0d37b78aea743399c0fc144c4c3d6038ede7c01c35474d051f651bee03",
   "sources": [
     {
-      "id": "OreRock",
-      "archive": "/Users/tankaixi/Downloads/rock 3d model.zip",
-      "archive_sha256": "497fd69dcb274218b0702616b23f03497f3e64fbadbc359f8adf967fb52ff652",
-      "fbx": "rock+3d+model.fbx",
-      "base_color": "rock+3d+model.fbm/rock+3d+model_basecolor.jpg",
+      "id": "IronOreRock",
+      "archive": "/Users/tankaixi/Downloads/iron+rock+3d+model.zip",
+      "archive_sha256": "ddc7fb536024e7c482a67660e91240e12995bb244b56607a28b58f001a74e9ed",
+      "fbx": "tripo_convert_3e9f0c53-ed90-4031-9cb9-a5b79f880e8a.fbx",
+      "channels": {
+        "base_color": "tripo_convert_3e9f0c53-ed90-4031-9cb9-a5b79f880e8a.fbm/tripo_rgb_98c3e0a5-5eca-4dc2-a25b-e7f5cf82cd2b.jpg",
+        "normal": "tripo_convert_3e9f0c53-ed90-4031-9cb9-a5b79f880e8a.fbm/tripo_normal_9a147e8f-1d4f-4150-acf2-ee0f87bc54bc.jpg",
+        "metallic": "tripo_convert_3e9f0c53-ed90-4031-9cb9-a5b79f880e8a.fbm/iron_rock_3d_model_metallic.JPEG",
+        "roughness": "tripo_convert_3e9f0c53-ed90-4031-9cb9-a5b79f880e8a.fbm/iron_rock_3d_model_roughness.JPEG"
+      },
       "gallery_position": [
         0,
         0,
         0
       ],
       "members": {
-        "rock+3d+model.fbx": {
-          "path": "art/resources/user-src/OreRock/rock+3d+model.fbx",
-          "bytes": 339584,
-          "sha256": "91dfefb41084220a8f0a21e45294369b6ba33df59a9342a9c55b932704329492"
+        "tripo_convert_3e9f0c53-ed90-4031-9cb9-a5b79f880e8a.fbx": {
+          "path": "art/resources/user-src/IronOreRock/tripo_convert_3e9f0c53-ed90-4031-9cb9-a5b79f880e8a.fbx",
+          "bytes": 312028,
+          "sha256": "09503183d72ba890bdf552a3af3a44d8c74f1cb8b6751bd398d5eab1b8f285c3"
         },
-        "rock+3d+model.fbm/rock+3d+model_basecolor.jpg": {
-          "path": "art/resources/user-src/OreRock/rock+3d+model.fbm/rock+3d+model_basecolor.jpg",
+        "tripo_convert_3e9f0c53-ed90-4031-9cb9-a5b79f880e8a.fbm/iron_rock_3d_model_metallic.JPEG": {
+          "path": "art/resources/user-src/IronOreRock/tripo_convert_3e9f0c53-ed90-4031-9cb9-a5b79f880e8a.fbm/iron_rock_3d_model_metallic.JPEG",
+          "bytes": 646166,
+          "sha256": "97fff9c8750bdf0901e7b29e997c6526124304bbe35054f465c51a94a9537048"
+        },
+        "tripo_convert_3e9f0c53-ed90-4031-9cb9-a5b79f880e8a.fbm/iron_rock_3d_model_roughness.JPEG": {
+          "path": "art/resources/user-src/IronOreRock/tripo_convert_3e9f0c53-ed90-4031-9cb9-a5b79f880e8a.fbm/iron_rock_3d_model_roughness.JPEG",
+          "bytes": 706936,
+          "sha256": "423a85af99efbe946a9cac8d436e1f2654420b6ba2eebbadb3ca733d1b6fc7c7"
+        },
+        "tripo_convert_3e9f0c53-ed90-4031-9cb9-a5b79f880e8a.fbm/tripo_normal_9a147e8f-1d4f-4150-acf2-ee0f87bc54bc.jpg": {
+          "path": "art/resources/user-src/IronOreRock/tripo_convert_3e9f0c53-ed90-4031-9cb9-a5b79f880e8a.fbm/tripo_normal_9a147e8f-1d4f-4150-acf2-ee0f87bc54bc.jpg",
+          "bytes": 1420912,
+          "sha256": "6ca367e1e07aaffa647af7383d12e644956d7a3c97afe51e8f01a9b872881311"
+        },
+        "tripo_convert_3e9f0c53-ed90-4031-9cb9-a5b79f880e8a.fbm/tripo_rgb_98c3e0a5-5eca-4dc2-a25b-e7f5cf82cd2b.jpg": {
+          "path": "art/resources/user-src/IronOreRock/tripo_convert_3e9f0c53-ed90-4031-9cb9-a5b79f880e8a.fbm/tripo_rgb_98c3e0a5-5eca-4dc2-a25b-e7f5cf82cd2b.jpg",
           "bytes": 1848203,
           "sha256": "37739816a2803d225b5b3162f97c533d285140bf01d10e15ea3857f11280cace"
         }
@@ -32,25 +52,45 @@
     },
     {
       "id": "GoldOreRock",
-      "archive": "/Users/tankaixi/Downloads/gold ore rock 3d model.zip",
-      "archive_sha256": "71288cfb7d90a52d15654e8d40deceac8e14ae8df208b626247a45547964acb8",
-      "fbx": "gold+ore+rock+3d+model.fbx",
-      "base_color": "gold+ore+rock+3d+model.fbm/gold+ore+rock+3d+model_basecolor.jpg",
+      "archive": "/Users/tankaixi/Downloads/gold+rock+3d+model.zip",
+      "archive_sha256": "28b2194c829088bc5f762b0b26be7c1493573e8cd4890a35c3441b42cc7ca3df",
+      "fbx": "tripo_convert_04ea4f60-d19b-472b-8fbf-5821421f6ec8.fbx",
+      "channels": {
+        "base_color": "tripo_convert_04ea4f60-d19b-472b-8fbf-5821421f6ec8.fbm/tripo_rgb_398671df-111f-42a0-a3be-6dd3337fb028.jpg",
+        "normal": "tripo_convert_04ea4f60-d19b-472b-8fbf-5821421f6ec8.fbm/tripo_normal_953a4708-b36f-4fec-a076-84a394c53d00.jpg",
+        "metallic": "tripo_convert_04ea4f60-d19b-472b-8fbf-5821421f6ec8.fbm/gold_rock_3d_model_metallic.JPEG",
+        "roughness": "tripo_convert_04ea4f60-d19b-472b-8fbf-5821421f6ec8.fbm/gold_rock_3d_model_roughness.JPEG"
+      },
       "gallery_position": [
         6,
         0,
         0
       ],
       "members": {
-        "gold+ore+rock+3d+model.fbx": {
-          "path": "art/resources/user-src/GoldOreRock/gold+ore+rock+3d+model.fbx",
-          "bytes": 320160,
-          "sha256": "770bbefef7af430bed553ea272de2618955976da535a4b9b1ff52fb1c7f97ba8"
+        "tripo_convert_04ea4f60-d19b-472b-8fbf-5821421f6ec8.fbx": {
+          "path": "art/resources/user-src/GoldOreRock/tripo_convert_04ea4f60-d19b-472b-8fbf-5821421f6ec8.fbx",
+          "bytes": 294604,
+          "sha256": "ac7e3de133e19c740689379c00fbf0d9a1e3757b39b1406c1dd9dc9119dae214"
         },
-        "gold+ore+rock+3d+model.fbm/gold+ore+rock+3d+model_basecolor.jpg": {
-          "path": "art/resources/user-src/GoldOreRock/gold+ore+rock+3d+model.fbm/gold+ore+rock+3d+model_basecolor.jpg",
+        "tripo_convert_04ea4f60-d19b-472b-8fbf-5821421f6ec8.fbm/gold_rock_3d_model_metallic.JPEG": {
+          "path": "art/resources/user-src/GoldOreRock/tripo_convert_04ea4f60-d19b-472b-8fbf-5821421f6ec8.fbm/gold_rock_3d_model_metallic.JPEG",
+          "bytes": 1036888,
+          "sha256": "ee4c5c1843fb56439e6903a5c6bc3f4894f0f695d775e103510bdf76a1c447f5"
+        },
+        "tripo_convert_04ea4f60-d19b-472b-8fbf-5821421f6ec8.fbm/tripo_rgb_398671df-111f-42a0-a3be-6dd3337fb028.jpg": {
+          "path": "art/resources/user-src/GoldOreRock/tripo_convert_04ea4f60-d19b-472b-8fbf-5821421f6ec8.fbm/tripo_rgb_398671df-111f-42a0-a3be-6dd3337fb028.jpg",
           "bytes": 1554955,
           "sha256": "60563b01b5e900b06979916cbaee1d768f652e889835fb8e2b3d918728a0d79a"
+        },
+        "tripo_convert_04ea4f60-d19b-472b-8fbf-5821421f6ec8.fbm/gold_rock_3d_model_roughness.JPEG": {
+          "path": "art/resources/user-src/GoldOreRock/tripo_convert_04ea4f60-d19b-472b-8fbf-5821421f6ec8.fbm/gold_rock_3d_model_roughness.JPEG",
+          "bytes": 1023290,
+          "sha256": "7009213781e13ff510c373dfc2fb7f265c9d1df3cbc3986dffc4ce6e96abce4f"
+        },
+        "tripo_convert_04ea4f60-d19b-472b-8fbf-5821421f6ec8.fbm/tripo_normal_953a4708-b36f-4fec-a076-84a394c53d00.jpg": {
+          "path": "art/resources/user-src/GoldOreRock/tripo_convert_04ea4f60-d19b-472b-8fbf-5821421f6ec8.fbm/tripo_normal_953a4708-b36f-4fec-a076-84a394c53d00.jpg",
+          "bytes": 1196352,
+          "sha256": "9b22b25f9bd4e6e5517208da64c5f071f679dba41824d7a3246baa8568010048"
         }
       },
       "license_status": "user_provided_unverified_not_CC0",
@@ -59,5 +99,6 @@
     }
   ],
   "license_status": "user_provided_unverified_not_CC0",
-  "uploads": "none"
+  "uploads": "none",
+  "normal_convention": "unverified; original pixels retained; Unity tangent-Y visual check required"
 }

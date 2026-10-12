@@ -286,6 +286,39 @@
     },
     {
       "id": "MiddleEasternCourtyard",
+      "source_triangles": 10028,
+      "effective_triangles": 10026,
+      "degenerate_triangle_count": 2,
+      "degenerate_triangle_exact_fbx_sha256": "a62b35ed830786e8a056e73c1fb0a94cb476deb210da419afca59c307f15a082",
+      "read_only_degenerate_supplement": {
+        "date": "2026-10-12",
+        "source_sha256": "dfd40cfc85891b05f660d56f7016fa163391d8627e80002d48f691cf6a9e017d",
+        "object": "MiddleEasternCourtyard",
+        "material": "MiddleEasternCourtyard_ClayPlaster",
+        "coordinate_space": "Blender export-local XYZ in meters; indices zero-based",
+        "exact_zero_area_count": 2,
+        "duplicate_complete_triangle_count": 0,
+        "triangles": [
+          {
+            "fbx_triangle_and_polygon": 687,
+            "source_loop_triangle": 1375,
+            "source_polygon": 687,
+            "vertices": [958, 1191, 952],
+            "area_m2": 0,
+            "positions": [[3.644437313079834, 2.1628153324127197, 0.6113701462745667], [3.6444549560546875, 2.1628401279449463, 0.6113773584365845], [3.6444549560546875, 2.1628401279449463, 0.6113773584365845]]
+          },
+          {
+            "fbx_triangle_and_polygon": 1254,
+            "source_loop_triangle": 2459,
+            "source_polygon": 1254,
+            "vertices": [1191, 386, 952],
+            "area_m2": 0,
+            "positions": [[3.6444549560546875, 2.1628401279449463, 0.6113773584365845], [3.645124673843384, 2.1628401279449463, 0.6113768815994263], [3.6444549560546875, 2.1628401279449463, 0.6113773584365845]]
+          }
+        ],
+        "smallest_nonzero_area_m2": 7.37577585453558e-12,
+        "scope": "Appended read-only diagnostic evidence; original FBX roundtrip result remains 10028. No model/source/export mutation. Other nonzero triangles must be retained."
+      },
       "status": "pass",
       "triangles": 10028,
       "dimensions_blender_xyz_m": [
