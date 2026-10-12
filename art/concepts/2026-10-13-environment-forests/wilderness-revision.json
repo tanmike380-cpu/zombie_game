@@ -1,0 +1,63 @@
+{
+  "user_request": "Untouched wilderness without paths, wheel ruts, paved areas or human traces. Natural open ground is not an artificial road. No rivers in this new batch.",
+  "generator": "built-in image_gen editing",
+  "prompt": "Use case: precise-object-edit\nInput image: one environment concept sheet, edit target.\nPrimary request: Remove ALL human-made paths, roads, wheel ruts, worn trails and paving from this wilderness sheet. Replace every continuous dirt track and road loop with untrampled natural terrain matching the surrounding grass, sparse desert vegetation or naturally scattered earth and gravel. This is a deserted medieval-apocalypse wilderness without any evidence of people walking here. Retain generous naturally open terrain for RTS movement, but no visible route, strip, paired ruts or loop. Bare earth occurs only in irregular discontinuous natural patches or geological/wet banks, never forming a winding road. If a lower swatch depicts packed road replace that swatch with natural leaf litter or untrampled coarse soil. Preserve the original camera, composition, landscape heights, cliffs, trees, coast or contained pond, lighting, palette, realism, individual lower asset studies and number/layout of surface swatches. No rivers, buildings, units, modern objects, bridges, signs, text, UI or watermark. Change only evidence of paths into natural wilderness. High visual fidelity.",
+  "active_reference_ids": [
+    "05-grassland-slopes",
+    "07-mediterranean-seacoast",
+    "09-temperate-pond"
+  ],
+  "images": [
+    {
+      "id": "05-grassland-slopes",
+      "file": "05-grassland-slopes-wilderness-v2.png",
+      "edit_target": "05-grassland-slopes.png",
+      "generated_source": "/Users/tankaixi/.codex/generated_images/01a0b065-006f-78f2-8269-19a4b6e193b4/exec-6b34baba-7bc2-4033-bb38-9eca59d045e1.png",
+      "sha256": "5f96a2355edb50d09f5e60364134cc19bb0eea6112eb779fdf6234828debd0ba",
+      "visual_check": "Actual generated output inspected: no continuous track or road loop; camera, vegetation, cliffs/water and lower studies preserved."
+    },
+    {
+      "id": "07-mediterranean-seacoast",
+      "file": "07-mediterranean-seacoast-wilderness-v2.png",
+      "edit_target": "07-mediterranean-seacoast.png",
+      "generated_source": "/Users/tankaixi/.codex/generated_images/01a0b065-006f-78f2-8269-19a4b6e193b4/exec-efbe961a-2bf8-4e3f-b53b-a88079a45d50.png",
+      "sha256": "cd31777eba5d044e777cfba6843b7808caf310dc54bd516501a016eadb759867",
+      "visual_check": "Actual generated output inspected: no continuous track or road loop; camera, vegetation, cliffs/water and lower studies preserved."
+    },
+    {
+      "id": "09-temperate-pond",
+      "file": "09-temperate-pond-wilderness-v2.png",
+      "edit_target": "09-temperate-pond.png",
+      "generated_source": "/Users/tankaixi/.codex/generated_images/01a0b065-006f-78f2-8269-19a4b6e193b4/exec-2c0e7e13-b20e-4c89-8607-70c829f0cbfe.png",
+      "sha256": "164152f5fa1dc485a800122a93024c12588392ede5e1864ce1fd811bea507be0",
+      "visual_check": "Actual generated output inspected: no continuous track or road loop; camera, vegetation, cliffs/water and lower studies preserved."
+    },
+    {
+      "id": "06-alpine-highland-cliffs",
+      "file": "06-alpine-highland-cliffs-wilderness-v2.png",
+      "edit_target": "06-alpine-highland-cliffs.png",
+      "generated_source": "/Users/tankaixi/.codex/generated_images/01a0b065-006f-78f2-8269-19a4b6e193b4/exec-be45cf8d-6547-4a28-9efb-988b6a681bc9.png",
+      "sha256": "5b491f5a6bafea18f385a94b7211ad2e2449c6cceb8eb2ffcf075659ff94df8d",
+      "visual_check": "Actual generated output inspected: no continuous track or road loop; camera, vegetation, cliffs/water and lower studies preserved."
+    },
+    {
+      "id": "08-north-african-desert-sea",
+      "file": "08-north-african-desert-sea-wilderness-v2.png",
+      "edit_target": "08-north-african-desert-sea.png",
+      "generated_source": "/Users/tankaixi/.codex/generated_images/01a0b065-006f-78f2-8269-19a4b6e193b4/exec-815a8fa3-7f37-4bce-860b-b73ec8426518.png",
+      "sha256": "795cd3c6707312603eded15be1c1b5d5c58a4535d431c12471b9cb40ef00f582",
+      "visual_check": "Actual generated output inspected: no continuous track or road loop; camera, vegetation, cliffs/water and lower studies preserved."
+    },
+    {
+      "id": "10-arid-oasis-pond",
+      "file": "10-arid-oasis-pond-wilderness-v2.png",
+      "edit_target": "10-arid-oasis-pond.png",
+      "generated_source": "/Users/tankaixi/.codex/generated_images/01a0b065-006f-78f2-8269-19a4b6e193b4/exec-e8c25335-10df-4540-8950-b6b281354bba.png",
+      "sha256": "d7c6ad20f3bb2e49b4354122d0aae8164388d0637cb031c09fb29c50160d947e",
+      "visual_check": "Actual generated output inspected: no continuous track or road loop; camera, vegetation, cliffs/water and lower studies preserved."
+    }
+  ],
+  "preservation": "All ten original concept images remain; 05–10 revised images use new sibling filenames.",
+  "unity_road_policy": "Keep six semantic terrain assets, but Road weight is zero in the new concept layout; no artificial vegetation clearance or path curve.",
+  "quality_status": "Concept art revised; Unity visual parity is not approved."
+}
