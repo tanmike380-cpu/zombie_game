@@ -19,9 +19,11 @@
   "category_blend_files": {
     "human": "art/Blender主文件/ZombieGame_with_ani_human.blend",
     "zombie": "art/Blender主文件/ZombieGame_with_ani_zombie.blend",
-    "environment": "art/Blender主文件/ZombieGame_Environment.blend"
+    "environment": "art/Blender主文件/ZombieGame_Environment.blend",
+    "resources": "art/Blender主文件/ZombieGame_Resources.blend"
   },
   "category_source_confirmation": "2026-10-11: User confirmed the live ZombieGame_with_ani_zombie.blend as the formal zombie source and separate ZombieGame_Environment.blend as the formal environment source. Preserve unsaved live zombie edits; environment integration is limited to the isolated showcase pending visual approval.",
+  "resources_source_confirmation": "2026-10-12: User requested a separate Resources category aligned with Human/Zombie. Imported the two user-downloaded ore FBX models without geometry/UV changes; packed original color textures. art/resources/handoff.json records the verified source, exports and unverified source license. Preview decoration only; no mining gameplay or public upload approval.",
   "wall_review_source": "art/models/modular-stone-wall/ModularStoneWall.blend",
   "wall_review_page": "Builds/ArtReview/ModularStoneWall/review.html"
 }

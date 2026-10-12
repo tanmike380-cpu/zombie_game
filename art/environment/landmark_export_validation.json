@@ -1,0 +1,372 @@
+{
+  "status": "fbx_roundtrip_pass",
+  "source_blend": "art/Blender主文件/ZombieGame_Environment.blend",
+  "source_sha256": "dfd40cfc85891b05f660d56f7016fa163391d8627e80002d48f691cf6a9e017d",
+  "records": [
+    {
+      "id": "EuropeanStoneHouse",
+      "status": "pass",
+      "triangles": 835,
+      "dimensions_blender_xyz_m": [
+        4.778983116149902,
+        6.989511489868164,
+        3.924915339148839
+      ],
+      "bounds_min": [
+        -2.389491558074951,
+        -3.494755744934082,
+        -2.6384671514279034e-07
+      ],
+      "pieces": [
+        {
+          "name": "EuropeanStoneHouse",
+          "mesh": "Cube.001",
+          "vertices": 461,
+          "triangles": 835,
+          "evaluated_triangles": 835,
+          "bounds_min": [
+            -2.389491558074951,
+            -3.494755744934082,
+            -2.6384671514279034e-07
+          ],
+          "bounds_max": [
+            2.389491558074951,
+            3.494755744934082,
+            3.924915075302124
+          ],
+          "dimensions_m": [
+            4.778983116149902,
+            6.989511489868164,
+            3.924915339148839
+          ],
+          "uv_layers": [
+            "UVMap"
+          ],
+          "parent": null,
+          "matrix_world": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              7.549790126404332e-08,
+              -1.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              7.549790126404332e-08,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "hide_viewport": false,
+          "hide_render": false,
+          "collections": [
+            "Collection"
+          ],
+          "modifiers": [],
+          "materials": [
+            "EuropeanStoneHouse_AuthoredAtlas"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "NorthAfricanRuins",
+      "status": "pass",
+      "triangles": 1916,
+      "dimensions_blender_xyz_m": [
+        7.285520076751709,
+        7.321697235107422,
+        4.93019633829449
+      ],
+      "bounds_min": [
+        -3.6427600383758545,
+        -3.6067655086517334,
+        -5.30466870429791e-08
+      ],
+      "pieces": [
+        {
+          "name": "NorthAfricanRuins_Arch",
+          "mesh": "RuinArchOne200.002",
+          "vertices": 796,
+          "triangles": 1480,
+          "evaluated_triangles": 1480,
+          "bounds_min": [
+            -3.6427600383758545,
+            -3.6067655086517334,
+            -5.30466870429791e-08
+          ],
+          "bounds_max": [
+            3.6427600383758545,
+            -0.1932336986064911,
+            4.930196285247803
+          ],
+          "dimensions_m": [
+            7.285520076751709,
+            3.4135318100452423,
+            4.93019633829449
+          ],
+          "uv_layers": [
+            "geom-RuinArchOne200-map1"
+          ],
+          "parent": null,
+          "matrix_world": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              7.549790126404332e-08,
+              -1.0,
+              -1.8999996185302734
+            ],
+            [
+              0.0,
+              1.0,
+              7.549790126404332e-08,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "hide_viewport": false,
+          "hide_render": false,
+          "collections": [
+            "Collection"
+          ],
+          "modifiers": [],
+          "materials": [
+            "ConcreteMossy1",
+            "Concrete1",
+            "BrickOldSharp03"
+          ]
+        },
+        {
+          "name": "NorthAfricanRuins_Corner",
+          "mesh": "foundationRuinOne200.002",
+          "vertices": 72,
+          "triangles": 120,
+          "evaluated_triangles": 120,
+          "bounds_min": [
+            -1.474593162536621,
+            -0.3149319589138031,
+            1.2374262325920427e-07
+          ],
+          "bounds_max": [
+            1.474593162536621,
+            3.7149317264556885,
+            2.0635550022125244
+          ],
+          "dimensions_m": [
+            2.949186325073242,
+            4.029863685369492,
+            2.063554878469901
+          ],
+          "uv_layers": [
+            "geom-foundationRuinOne200-map1"
+          ],
+          "parent": null,
+          "matrix_world": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              7.549790126404332e-08,
+              -1.0,
+              1.6999998092651367
+            ],
+            [
+              0.0,
+              1.0,
+              7.549790126404332e-08,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "hide_viewport": false,
+          "hide_render": false,
+          "collections": [
+            "Collection"
+          ],
+          "modifiers": [],
+          "materials": [
+            "BrickOldRound1",
+            "LoneBrick1"
+          ]
+        },
+        {
+          "name": "NorthAfricanRuins_FallenPillar",
+          "mesh": "RuinPillarOne200.002",
+          "vertices": 162,
+          "triangles": 316,
+          "evaluated_triangles": 316,
+          "bounds_min": [
+            2.629014730453491,
+            1.429014801979065,
+            -2.800861587104464e-08
+          ],
+          "bounds_max": [
+            3.370985269546509,
+            2.170985460281372,
+            2.6142196655273438
+          ],
+          "dimensions_m": [
+            0.7419705390930176,
+            0.7419706583023071,
+            2.6142196935359596
+          ],
+          "uv_layers": [
+            "geom-RuinPillarOne200-map1"
+          ],
+          "parent": null,
+          "matrix_world": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              3.0
+            ],
+            [
+              0.0,
+              7.549790126404332e-08,
+              -1.0,
+              1.8000001907348633
+            ],
+            [
+              0.0,
+              1.0,
+              7.549790126404332e-08,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "hide_viewport": false,
+          "hide_render": false,
+          "collections": [
+            "Collection"
+          ],
+          "modifiers": [],
+          "materials": [
+            "ConcreteRuff01"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MiddleEasternCourtyard",
+      "status": "pass",
+      "triangles": 10028,
+      "dimensions_blender_xyz_m": [
+        7.774509906768799,
+        7.641497373580933,
+        2.9639325370318197
+      ],
+      "bounds_min": [
+        -3.8872549533843994,
+        -4.42548942565918,
+        -2.2841145863594647e-08
+      ],
+      "pieces": [
+        {
+          "name": "MiddleEasternCourtyard",
+          "mesh": "RuinWallSegOne300.002",
+          "vertices": 5078,
+          "triangles": 10028,
+          "evaluated_triangles": 10028,
+          "bounds_min": [
+            -3.8872549533843994,
+            -4.42548942565918,
+            -2.2841145863594647e-08
+          ],
+          "bounds_max": [
+            3.8872549533843994,
+            3.216007947921753,
+            2.963932514190674
+          ],
+          "dimensions_m": [
+            7.774509906768799,
+            7.641497373580933,
+            2.9639325370318197
+          ],
+          "uv_layers": [
+            "LandmarkUV_2m",
+            "UVMap",
+            "NativeSourceUV_geom-RuinWallSegOne300-map1",
+            "NativeSourceUV_geom-foundationRuinOne200-map1",
+            "NativeSourceUV_geom-CathedralRuinOne300-map1"
+          ],
+          "parent": null,
+          "matrix_world": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              7.549790126404332e-08,
+              -1.0,
+              2.3000001907348633
+            ],
+            [
+              0.0,
+              1.0,
+              7.549790126404332e-08,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "hide_viewport": false,
+          "hide_render": false,
+          "collections": [
+            "Collection"
+          ],
+          "modifiers": [],
+          "materials": [
+            "MiddleEasternCourtyard_ClayPlaster",
+            "MiddleEasternCourtyard_WeatheredClay",
+            "WoodDebris17"
+          ]
+        }
+      ]
+    }
+  ]
+}

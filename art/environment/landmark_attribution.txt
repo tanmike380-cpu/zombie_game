@@ -1,0 +1,30 @@
+EnvironmentShowcase neutral landmarks — attribution and redistribution notice
+
+EuropeanStoneHouse:
+“Ruined Farmhouse” by bobjh, https://opengameart.org/content/ruined-farmhouse
+Model: Creative Commons Attribution 4.0 International
+https://creativecommons.org/licenses/by/4.0/
+Changes: translation-only grounded pivot, native mesh/UV retained; legacy material restored with original baked diffuse and normal atlas; explicit roughness constant; source auto-smooth compatibility node removed. FBX export and packed Blender derivative.
+
+The farmhouse wall atlas derives from “Three Castle Head Dunlough Tower House 2009 09 10” by Andreas F. Borchert:
+https://commons.wikimedia.org/wiki/File:Three_Castle_Head_Dunlough_Tower_House_2009_09_10.jpg
+Texture atlas and its derivative normal map are redistributed under Creative Commons Attribution-ShareAlike 3.0 Unported:
+https://creativecommons.org/licenses/by-sa/3.0/
+Atlas derivative was made by bobjh; texture bytes were not modified in this project. Keep this notice when redistributing these maps or modified versions, and license adapted maps under the same or compatible ShareAlike license. The mixed-license farmhouse is not CC0.
+
+NorthAfricanRuins / MiddleEasternCourtyard source wall and timber modules:
+“3TD Fantasy Ruins Pack” by Ron Kapaun / 3 Tier Digital Studios
+https://opengameart.org/content/3td-fantasy-ruins-pack
+Blender conversion by velocirection:
+https://opengameart.org/content/3td-fantasy-ruins-pack-for-blender
+CC0 1.0 Universal: https://creativecommons.org/publicdomain/zero/1.0/
+NorthAfricanRuins: original source mesh, UV and materials; uniform 0.55 scale and rigid assembly. Older abandoned gateway ruins, not a claim of exact sixteenth-century regional construction.
+MiddleEasternCourtyard: user-authorized new courtyard design using native broken wall modules, L-corners and selected original timber faces, with authored window openings, light bevel and plaster UV; no procedural replacement of existing game models.
+
+MiddleEasternCourtyard clay surface:
+“Clay Plaster” by Amal Kumar / Poly Haven
+https://polyhaven.com/a/clay_plaster
+CC0: https://polyhaven.com/license
+Unchanged diffuse / OpenGL normal / roughness PNGs; source 2 m tile mapped in Blender, lower-wall tint explicitly recorded. Timber retains original 3TD artist atlas.
+
+All three are independent preview landmarks, with final user visual acceptance pending Unity review. No gameplay building/balance claim is made.

@@ -1,0 +1,16 @@
+{
+  "status": "native_source_fidelity_pass",
+  "source_sha256": "c007b74c92a1c5a93fcf3a829ca4c73e192ec3c6037dc8779a85da42b8f8b0fb",
+  "records": [
+    {
+      "id": "OreRock",
+      "status": "pass",
+      "native_mesh_uv_normal_signature": "be7443c8cbd1be28e86988c690749ffe856537ed9fa5fe05e08675052dc53ae6"
+    },
+    {
+      "id": "GoldOreRock",
+      "status": "pass",
+      "native_mesh_uv_normal_signature": "1e2bf1a3ea53ea53731e8d61f072ab53cd1c0bad8dc89469ffdf8965a2858489"
+    }
+  ]
+}

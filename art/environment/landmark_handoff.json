@@ -1,0 +1,1009 @@
+{
+  "schema_version": 1,
+  "status": "parent_approved_preview_source_pending_unity_visual_acceptance",
+  "source_blend": "art/Blender主文件/ZombieGame_Environment.blend",
+  "source_sha256": "dfd40cfc85891b05f660d56f7016fa163391d8627e80002d48f691cf6a9e017d",
+  "source_scene": "Scene",
+  "source_collection": "环境地标 · 中立荒废建筑",
+  "license_manifest": "art/environment/landmark_source_manifest.json",
+  "attribution": "art/environment/landmark_attribution.txt",
+  "records": [
+    {
+      "id": "EuropeanStoneHouse",
+      "source_scene": "Scene",
+      "source_collection": "环境地标 · EuropeanStoneHouse",
+      "source_objects": [
+        "EuropeanStoneHouse"
+      ],
+      "triangles": 835,
+      "pieces": [
+        {
+          "name": "EuropeanStoneHouse",
+          "mesh": "Cube.002",
+          "vertices": 461,
+          "triangles": 835,
+          "evaluated_triangles": 835,
+          "bounds_min": [
+            45.61050796508789,
+            8.505244255065918,
+            0.0
+          ],
+          "bounds_max": [
+            50.38949203491211,
+            15.494755744934082,
+            3.924914836883545
+          ],
+          "dimensions_m": [
+            4.778984069824219,
+            6.989511489868164,
+            3.924914836883545
+          ],
+          "uv_layers": [
+            "UVMap"
+          ],
+          "parent": null,
+          "matrix_world": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              48.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              12.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "hide_viewport": false,
+          "hide_render": false,
+          "collections": [
+            "环境地标 · EuropeanStoneHouse"
+          ],
+          "modifiers": [],
+          "materials": [
+            "EuropeanStoneHouse_AuthoredAtlas"
+          ]
+        }
+      ],
+      "dimensions_blender_xyz_m": [
+        4.778984069824219,
+        6.989511489868164,
+        3.924914836883545
+      ],
+      "bounds_min": [
+        45.61050796508789,
+        8.505244255065918,
+        0.0
+      ],
+      "gallery_translation": [
+        48,
+        12,
+        0
+      ],
+      "materials": [
+        {
+          "name": "EuropeanStoneHouse_AuthoredAtlas",
+          "channels": {
+            "base_color": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Landmarks/EuropeanStoneHouse/Textures/ruined_farmhouse.png",
+              "sha256": "7da9d544508eb4aeaf4862f4184ed8df14dbae584733da3b1f05bd203d8bcea1",
+              "resolution": [
+                2048,
+                2048
+              ],
+              "colorspace": "sRGB",
+              "component": "rgb"
+            },
+            "normal_gl": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Landmarks/EuropeanStoneHouse/Textures/ruined_farmhouseNormal.png",
+              "sha256": "e08fea1ff36f44eefe1368e034bcf462459cebd2052f5df3671791f01911cb24",
+              "resolution": [
+                2048,
+                2048
+              ],
+              "colorspace": "linear",
+              "component": "rgb"
+            }
+          },
+          "alpha_mode": "opaque",
+          "double_sided": true,
+          "metallic": 0,
+          "roughness_constant_if_missing": 0.9200000166893005,
+          "normal_strength": 0.44999998807907104,
+          "base_color_tint_linear": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "roughness_to_smoothness": "Convert once in Unity; absent roughness uses explicit authored constant, not fake PBR map",
+          "source_diffuse_note": "Original legacy artist atlas, may contain baked shading"
+        }
+      ],
+      "material_slots": [
+        "EuropeanStoneHouse_AuthoredAtlas"
+      ],
+      "assembly_local_matrices_blender": {
+        "EuropeanStoneHouse": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "model_path": "Assets/_Tests/EnvironmentShowcase/Art/Landmarks/EuropeanStoneHouse/EuropeanStoneHouse.fbx",
+      "model_sha256": "8af098ef9c34dd8c9c2cd926f5c2f3f8150dd1e5af5e9e6c6cd681fb9b3786ad",
+      "source_blend": "art/Blender主文件/ZombieGame_Environment.blend",
+      "unit_m": 1,
+      "placement_scale": 1,
+      "axis_forward": "-Z",
+      "axis_up": "Y",
+      "axis_conversion": "FBX baked once. Unity import scale 1. Whole assembly only; never center/refit parts",
+      "uv0_note": "FBX UV0 is author atlas for Europe/NorthAfrica and combined clay/wood UV for new courtyard",
+      "placement_note": "Neutral ground landmark; whole root uniform scale only. Native roofless interiors expose Terrain, no invented floor.",
+      "dimensions_unity_xyz_m": [
+        4.778984069824219,
+        3.924914836883545,
+        6.989511489868164
+      ]
+    },
+    {
+      "id": "NorthAfricanRuins",
+      "source_scene": "Scene",
+      "source_collection": "环境地标 · NorthAfricanRuins",
+      "source_objects": [
+        "NorthAfricanRuins_Arch",
+        "NorthAfricanRuins_Corner",
+        "NorthAfricanRuins_FallenPillar"
+      ],
+      "triangles": 1916,
+      "pieces": [
+        {
+          "name": "NorthAfricanRuins_Arch",
+          "mesh": "RuinArchOne200.001",
+          "vertices": 796,
+          "triangles": 1480,
+          "evaluated_triangles": 1480,
+          "bounds_min": [
+            58.35723876953125,
+            8.393234252929688,
+            0.0
+          ],
+          "bounds_max": [
+            65.64276123046875,
+            11.806766510009766,
+            4.930196285247803
+          ],
+          "dimensions_m": [
+            7.2855224609375,
+            3.413532257080078,
+            4.930196285247803
+          ],
+          "uv_layers": [
+            "geom-RuinArchOne200-map1"
+          ],
+          "parent": null,
+          "matrix_world": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              62.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              10.100000381469727
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "hide_viewport": false,
+          "hide_render": false,
+          "collections": [
+            "环境地标 · NorthAfricanRuins"
+          ],
+          "modifiers": [],
+          "materials": [
+            "ConcreteMossy1",
+            "Concrete1",
+            "BrickOldSharp03"
+          ]
+        },
+        {
+          "name": "NorthAfricanRuins_Corner",
+          "mesh": "foundationRuinOne200.001",
+          "vertices": 72,
+          "triangles": 120,
+          "evaluated_triangles": 120,
+          "bounds_min": [
+            60.52540588378906,
+            11.685068130493164,
+            0.0
+          ],
+          "bounds_max": [
+            63.47459411621094,
+            15.71493148803711,
+            2.0635547637939453
+          ],
+          "dimensions_m": [
+            2.949188232421875,
+            4.029863357543945,
+            2.0635547637939453
+          ],
+          "uv_layers": [
+            "geom-foundationRuinOne200-map1"
+          ],
+          "parent": null,
+          "matrix_world": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              62.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              13.699999809265137
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "hide_viewport": false,
+          "hide_render": false,
+          "collections": [
+            "环境地标 · NorthAfricanRuins"
+          ],
+          "modifiers": [],
+          "materials": [
+            "BrickOldRound1",
+            "LoneBrick1"
+          ]
+        },
+        {
+          "name": "NorthAfricanRuins_FallenPillar",
+          "mesh": "RuinPillarOne200.001",
+          "vertices": 162,
+          "triangles": 316,
+          "evaluated_triangles": 316,
+          "bounds_min": [
+            64.62901306152344,
+            13.429015159606934,
+            0.0
+          ],
+          "bounds_max": [
+            65.37098693847656,
+            14.170985221862793,
+            2.6142196655273438
+          ],
+          "dimensions_m": [
+            0.741973876953125,
+            0.7419700622558594,
+            2.6142196655273438
+          ],
+          "uv_layers": [
+            "geom-RuinPillarOne200-map1"
+          ],
+          "parent": null,
+          "matrix_world": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              65.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              13.800000190734863
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "hide_viewport": false,
+          "hide_render": false,
+          "collections": [
+            "环境地标 · NorthAfricanRuins"
+          ],
+          "modifiers": [],
+          "materials": [
+            "ConcreteRuff01"
+          ]
+        }
+      ],
+      "dimensions_blender_xyz_m": [
+        7.2855224609375,
+        7.321697235107422,
+        4.930196285247803
+      ],
+      "bounds_min": [
+        58.35723876953125,
+        8.393234252929688,
+        0.0
+      ],
+      "gallery_translation": [
+        62,
+        12,
+        0
+      ],
+      "materials": [
+        {
+          "name": "ConcreteMossy1",
+          "channels": {
+            "base_color": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Landmarks/NorthAfricanRuins/Textures/3td_Concrete_mossy_01.jpg",
+              "sha256": "597f0229ab0120d0c601ee71fccc02df64ef5913c6ac60c15e168bf191caa38c",
+              "resolution": [
+                512,
+                512
+              ],
+              "colorspace": "sRGB",
+              "component": "rgb"
+            },
+            "normal_gl": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Landmarks/NorthAfricanRuins/Textures/3td_Concrete_mossy_01_NRM.png",
+              "sha256": "bd89bc64a5daf1c4143614c72847a8a11ed5dead42242cd71758747fd9d235b8",
+              "resolution": [
+                512,
+                512
+              ],
+              "colorspace": "linear",
+              "component": "rgb"
+            }
+          },
+          "alpha_mode": "opaque",
+          "double_sided": true,
+          "metallic": 0,
+          "roughness_constant_if_missing": 0.95,
+          "normal_strength": 0.5,
+          "base_color_tint_linear": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "roughness_to_smoothness": "Convert once in Unity; absent roughness uses explicit authored constant, not fake PBR map",
+          "source_diffuse_note": "Original legacy artist atlas, may contain baked shading"
+        },
+        {
+          "name": "Concrete1",
+          "channels": {
+            "base_color": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Landmarks/NorthAfricanRuins/Textures/3td_Concrete_01.jpg",
+              "sha256": "05b3ec3e4437dde5ec8b8cd37bbced764dc7e3d9bacaa5b6d29e036e93f47057",
+              "resolution": [
+                512,
+                512
+              ],
+              "colorspace": "sRGB",
+              "component": "rgb"
+            },
+            "normal_gl": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Landmarks/NorthAfricanRuins/Textures/3td_BrickOldSharp_02_NRM.png",
+              "sha256": "71f354e881f21336a98d424a1bf985a3ccb1e65f86226a5709adf4941338e83a",
+              "resolution": [
+                512,
+                512
+              ],
+              "colorspace": "linear",
+              "component": "rgb"
+            }
+          },
+          "alpha_mode": "opaque",
+          "double_sided": true,
+          "metallic": 0,
+          "roughness_constant_if_missing": 0.95,
+          "normal_strength": 0.5,
+          "base_color_tint_linear": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "roughness_to_smoothness": "Convert once in Unity; absent roughness uses explicit authored constant, not fake PBR map",
+          "source_diffuse_note": "Original legacy artist atlas, may contain baked shading"
+        },
+        {
+          "name": "BrickOldSharp03",
+          "channels": {
+            "base_color": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Landmarks/NorthAfricanRuins/Textures/3td_BrickOldSharp_03.jpg",
+              "sha256": "cd6bda1cfc0c453ceb9d6b9b13a5018c6eb314a187b922ff61590779e4d37945",
+              "resolution": [
+                512,
+                512
+              ],
+              "colorspace": "sRGB",
+              "component": "rgb"
+            },
+            "normal_gl": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Landmarks/NorthAfricanRuins/Textures/3td_BrickOldSharp_03_NRM.png",
+              "sha256": "5d621b625d6d7fd372254138b017e54299e283613b607cecfd508d73226d9ce2",
+              "resolution": [
+                512,
+                512
+              ],
+              "colorspace": "linear",
+              "component": "rgb"
+            }
+          },
+          "alpha_mode": "opaque",
+          "double_sided": true,
+          "metallic": 0,
+          "roughness_constant_if_missing": 0.95,
+          "normal_strength": 0.5,
+          "base_color_tint_linear": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "roughness_to_smoothness": "Convert once in Unity; absent roughness uses explicit authored constant, not fake PBR map",
+          "source_diffuse_note": "Original legacy artist atlas, may contain baked shading"
+        },
+        {
+          "name": "BrickOldRound1",
+          "channels": {
+            "base_color": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Landmarks/NorthAfricanRuins/Textures/3td_BrickOldRound_01.jpg",
+              "sha256": "69a9a087323fea4020712cfab9c818bcf01962b7e2d2476c9c557070873a280b",
+              "resolution": [
+                512,
+                512
+              ],
+              "colorspace": "sRGB",
+              "component": "rgb"
+            },
+            "normal_gl": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Landmarks/NorthAfricanRuins/Textures/3td_BrickOldRound_01_NRM.png",
+              "sha256": "570a5b26d7c30b0f951ffe8a9be378dc6913cce5d57cbc3f6d928b5e2a41536b",
+              "resolution": [
+                512,
+                512
+              ],
+              "colorspace": "linear",
+              "component": "rgb"
+            }
+          },
+          "alpha_mode": "opaque",
+          "double_sided": true,
+          "metallic": 0,
+          "roughness_constant_if_missing": 0.95,
+          "normal_strength": 0.5,
+          "base_color_tint_linear": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "roughness_to_smoothness": "Convert once in Unity; absent roughness uses explicit authored constant, not fake PBR map",
+          "source_diffuse_note": "Original legacy artist atlas, may contain baked shading"
+        },
+        {
+          "name": "LoneBrick1",
+          "channels": {
+            "base_color": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Landmarks/NorthAfricanRuins/Textures/3td_LoneBrick_01.jpg",
+              "sha256": "f8c6c23ddb05b1d71139c2abb8c3226005f784821d8058b3eeb47a5418cc4d09",
+              "resolution": [
+                256,
+                128
+              ],
+              "colorspace": "sRGB",
+              "component": "rgb"
+            },
+            "normal_gl": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Landmarks/NorthAfricanRuins/Textures/3td_LoneBrick_01_NRM.png",
+              "sha256": "6f31db953b93c5d86b28e55d14a13ab7e7a8ef3efd4c7d8f776c5ea753f6d37a",
+              "resolution": [
+                256,
+                128
+              ],
+              "colorspace": "linear",
+              "component": "rgb"
+            }
+          },
+          "alpha_mode": "opaque",
+          "double_sided": true,
+          "metallic": 0,
+          "roughness_constant_if_missing": 0.95,
+          "normal_strength": 0.5,
+          "base_color_tint_linear": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "roughness_to_smoothness": "Convert once in Unity; absent roughness uses explicit authored constant, not fake PBR map",
+          "source_diffuse_note": "Original legacy artist atlas, may contain baked shading"
+        },
+        {
+          "name": "ConcreteRuff01",
+          "channels": {
+            "base_color": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Landmarks/NorthAfricanRuins/Textures/3td_ConcreteRough_01.jpg",
+              "sha256": "fc6824693dace54e4acff1f5eede4c42203ede37dccb30301709b6b53f8276e0",
+              "resolution": [
+                512,
+                512
+              ],
+              "colorspace": "sRGB",
+              "component": "rgb"
+            },
+            "normal_gl": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Landmarks/NorthAfricanRuins/Textures/3td_ConcreteRough_01_NRM.png",
+              "sha256": "24537e957ff94ee53fcf0f38af75afd3d169a820ddf5e022312c6d85c4ad2d35",
+              "resolution": [
+                512,
+                512
+              ],
+              "colorspace": "linear",
+              "component": "rgb"
+            }
+          },
+          "alpha_mode": "opaque",
+          "double_sided": true,
+          "metallic": 0,
+          "roughness_constant_if_missing": 0.95,
+          "normal_strength": 0.5,
+          "base_color_tint_linear": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "roughness_to_smoothness": "Convert once in Unity; absent roughness uses explicit authored constant, not fake PBR map",
+          "source_diffuse_note": "Original legacy artist atlas, may contain baked shading"
+        }
+      ],
+      "material_slots": [
+        "ConcreteMossy1",
+        "Concrete1",
+        "BrickOldSharp03",
+        "BrickOldRound1",
+        "LoneBrick1",
+        "ConcreteRuff01"
+      ],
+      "assembly_local_matrices_blender": {
+        "NorthAfricanRuins_Arch": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            -1.8999996185302734
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "NorthAfricanRuins_Corner": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            1.6999998092651367
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "NorthAfricanRuins_FallenPillar": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            3.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            1.8000001907348633
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "model_path": "Assets/_Tests/EnvironmentShowcase/Art/Landmarks/NorthAfricanRuins/NorthAfricanRuins.fbx",
+      "model_sha256": "d2051e8210d474a33aa8fa492a4a9a1dd9e6301d2c288698522ddeba1aaa29f3",
+      "source_blend": "art/Blender主文件/ZombieGame_Environment.blend",
+      "unit_m": 1,
+      "placement_scale": 1,
+      "axis_forward": "-Z",
+      "axis_up": "Y",
+      "axis_conversion": "FBX baked once. Unity import scale 1. Whole assembly only; never center/refit parts",
+      "uv0_note": "FBX UV0 is author atlas for Europe/NorthAfrica and combined clay/wood UV for new courtyard",
+      "placement_note": "Neutral ground landmark; whole root uniform scale only. Native roofless interiors expose Terrain, no invented floor.",
+      "dimensions_unity_xyz_m": [
+        7.2855224609375,
+        4.930196285247803,
+        7.321697235107422
+      ]
+    },
+    {
+      "id": "MiddleEasternCourtyard",
+      "source_scene": "Scene",
+      "source_collection": "环境地标 · MiddleEasternCourtyard",
+      "source_objects": [
+        "MiddleEasternCourtyard"
+      ],
+      "triangles": 10028,
+      "pieces": [
+        {
+          "name": "MiddleEasternCourtyard",
+          "mesh": "RuinWallSegOne300.001",
+          "vertices": 5078,
+          "triangles": 10028,
+          "evaluated_triangles": 10028,
+          "bounds_min": [
+            72.11274719238281,
+            7.57451057434082,
+            0.0
+          ],
+          "bounds_max": [
+            79.88725280761719,
+            15.216008186340332,
+            2.963932514190674
+          ],
+          "dimensions_m": [
+            7.774505615234375,
+            7.641497611999512,
+            2.963932514190674
+          ],
+          "uv_layers": [
+            "LandmarkUV_2m",
+            "UVMap",
+            "NativeSourceUV_geom-RuinWallSegOne300-map1",
+            "NativeSourceUV_geom-foundationRuinOne200-map1",
+            "NativeSourceUV_geom-CathedralRuinOne300-map1"
+          ],
+          "parent": null,
+          "matrix_world": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              76.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              14.300000190734863
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "hide_viewport": false,
+          "hide_render": false,
+          "collections": [
+            "环境地标 · MiddleEasternCourtyard"
+          ],
+          "modifiers": [],
+          "materials": [
+            "MiddleEasternCourtyard_ClayPlaster",
+            "MiddleEasternCourtyard_WeatheredClay",
+            "WoodDebris17"
+          ]
+        }
+      ],
+      "dimensions_blender_xyz_m": [
+        7.774505615234375,
+        7.641497611999512,
+        2.963932514190674
+      ],
+      "bounds_min": [
+        72.11274719238281,
+        7.57451057434082,
+        0.0
+      ],
+      "gallery_translation": [
+        76,
+        12,
+        0
+      ],
+      "materials": [
+        {
+          "name": "MiddleEasternCourtyard_ClayPlaster",
+          "channels": {
+            "base_color": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Landmarks/MiddleEasternCourtyard/Textures/clay_plaster_diff_1k.png",
+              "sha256": "d7f41da274e0a9f9ddd5b45a3f25ac66c90c6810ab9e613a97a0369c263d9887",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "sRGB",
+              "component": "rgb"
+            },
+            "normal_gl": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Landmarks/MiddleEasternCourtyard/Textures/clay_plaster_nor_gl_1k.png",
+              "sha256": "b41bda0045405286641c22f47b30277bdf7072e9c53dedd3cbe7854bcd776aec",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "linear",
+              "component": "rgb"
+            },
+            "roughness": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Landmarks/MiddleEasternCourtyard/Textures/clay_plaster_rough_1k.png",
+              "sha256": "e55f81b83e45efd262e27c2811c7eb7e07956320f24207b1006d580026079afe",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "linear",
+              "component": "red"
+            }
+          },
+          "alpha_mode": "opaque",
+          "double_sided": true,
+          "metallic": 0,
+          "roughness_constant_if_missing": 0.9200000166893005,
+          "normal_strength": 0.44999998807907104,
+          "base_color_tint_linear": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "roughness_to_smoothness": "Convert once in Unity; absent roughness uses explicit authored constant, not fake PBR map",
+          "source_diffuse_note": "Poly Haven CC0 photographed clay plaster"
+        },
+        {
+          "name": "MiddleEasternCourtyard_WeatheredClay",
+          "channels": {
+            "base_color": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Landmarks/MiddleEasternCourtyard/Textures/clay_plaster_diff_1k.png",
+              "sha256": "d7f41da274e0a9f9ddd5b45a3f25ac66c90c6810ab9e613a97a0369c263d9887",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "sRGB",
+              "component": "rgb"
+            },
+            "normal_gl": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Landmarks/MiddleEasternCourtyard/Textures/clay_plaster_nor_gl_1k.png",
+              "sha256": "b41bda0045405286641c22f47b30277bdf7072e9c53dedd3cbe7854bcd776aec",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "linear",
+              "component": "rgb"
+            },
+            "roughness": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Landmarks/MiddleEasternCourtyard/Textures/clay_plaster_rough_1k.png",
+              "sha256": "e55f81b83e45efd262e27c2811c7eb7e07956320f24207b1006d580026079afe",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "linear",
+              "component": "red"
+            }
+          },
+          "alpha_mode": "opaque",
+          "double_sided": true,
+          "metallic": 0,
+          "roughness_constant_if_missing": 0.9200000166893005,
+          "normal_strength": 0.44999998807907104,
+          "base_color_tint_linear": [
+            0.48,
+            0.39,
+            0.3,
+            1.0
+          ],
+          "roughness_to_smoothness": "Convert once in Unity; absent roughness uses explicit authored constant, not fake PBR map",
+          "source_diffuse_note": "Poly Haven CC0 photographed clay plaster"
+        },
+        {
+          "name": "WoodDebris17",
+          "channels": {
+            "base_color": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Landmarks/MiddleEasternCourtyard/Textures/3td_WoodDebris_17.jpg",
+              "sha256": "30df68c3f7946118f44cf1f72a7b57a6632c1e2143e4299dbf1713c59143e6a0",
+              "resolution": [
+                512,
+                512
+              ],
+              "colorspace": "sRGB",
+              "component": "rgb"
+            },
+            "normal_gl": {
+              "path": "Assets/_Tests/EnvironmentShowcase/Art/Landmarks/MiddleEasternCourtyard/Textures/3td_WoodDebris_17_NRM.png",
+              "sha256": "d7ad6f9acd96d24404adc1063743d14dc9d51df7fd978d775994a46579db8690",
+              "resolution": [
+                512,
+                512
+              ],
+              "colorspace": "linear",
+              "component": "rgb"
+            }
+          },
+          "alpha_mode": "opaque",
+          "double_sided": true,
+          "metallic": 0,
+          "roughness_constant_if_missing": 0.95,
+          "normal_strength": 0.5,
+          "base_color_tint_linear": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "roughness_to_smoothness": "Convert once in Unity; absent roughness uses explicit authored constant, not fake PBR map",
+          "source_diffuse_note": "Original legacy artist atlas, may contain baked shading"
+        }
+      ],
+      "material_slots": [
+        "MiddleEasternCourtyard_ClayPlaster",
+        "MiddleEasternCourtyard_WeatheredClay",
+        "WoodDebris17"
+      ],
+      "assembly_local_matrices_blender": {
+        "MiddleEasternCourtyard": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            2.3000001907348633
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "model_path": "Assets/_Tests/EnvironmentShowcase/Art/Landmarks/MiddleEasternCourtyard/MiddleEasternCourtyard.fbx",
+      "model_sha256": "a62b35ed830786e8a056e73c1fb0a94cb476deb210da419afca59c307f15a082",
+      "source_blend": "art/Blender主文件/ZombieGame_Environment.blend",
+      "unit_m": 1,
+      "placement_scale": 1,
+      "axis_forward": "-Z",
+      "axis_up": "Y",
+      "axis_conversion": "FBX baked once. Unity import scale 1. Whole assembly only; never center/refit parts",
+      "uv0_note": "FBX UV0 is author atlas for Europe/NorthAfrica and combined clay/wood UV for new courtyard",
+      "placement_note": "Neutral ground landmark; whole root uniform scale only. Native roofless interiors expose Terrain, no invented floor.",
+      "dimensions_unity_xyz_m": [
+        7.774505615234375,
+        2.963932514190674,
+        7.641497611999512
+      ]
+    }
+  ]
+}

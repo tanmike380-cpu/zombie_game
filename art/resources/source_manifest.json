@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "source_blend": "art/Blender主文件/ZombieGame_Resources.blend",
+  "source_sha256": "c007b74c92a1c5a93fcf3a829ca4c73e192ec3c6037dc8779a85da42b8f8b0fb",
+  "sources": [
+    {
+      "id": "OreRock",
+      "archive": "/Users/tankaixi/Downloads/rock 3d model.zip",
+      "archive_sha256": "497fd69dcb274218b0702616b23f03497f3e64fbadbc359f8adf967fb52ff652",
+      "fbx": "rock+3d+model.fbx",
+      "base_color": "rock+3d+model.fbm/rock+3d+model_basecolor.jpg",
+      "gallery_position": [
+        0,
+        0,
+        0
+      ],
+      "members": {
+        "rock+3d+model.fbx": {
+          "path": "art/resources/user-src/OreRock/rock+3d+model.fbx",
+          "bytes": 339584,
+          "sha256": "91dfefb41084220a8f0a21e45294369b6ba33df59a9342a9c55b932704329492"
+        },
+        "rock+3d+model.fbm/rock+3d+model_basecolor.jpg": {
+          "path": "art/resources/user-src/OreRock/rock+3d+model.fbm/rock+3d+model_basecolor.jpg",
+          "bytes": 1848203,
+          "sha256": "37739816a2803d225b5b3162f97c533d285140bf01d10e15ea3857f11280cace"
+        }
+      },
+      "license_status": "user_provided_unverified_not_CC0",
+      "source_author": "not supplied",
+      "usage": "local independent showcase only; no redistribution/upload authorization"
+    },
+    {
+      "id": "GoldOreRock",
+      "archive": "/Users/tankaixi/Downloads/gold ore rock 3d model.zip",
+      "archive_sha256": "71288cfb7d90a52d15654e8d40deceac8e14ae8df208b626247a45547964acb8",
+      "fbx": "gold+ore+rock+3d+model.fbx",
+      "base_color": "gold+ore+rock+3d+model.fbm/gold+ore+rock+3d+model_basecolor.jpg",
+      "gallery_position": [
+        6,
+        0,
+        0
+      ],
+      "members": {
+        "gold+ore+rock+3d+model.fbx": {
+          "path": "art/resources/user-src/GoldOreRock/gold+ore+rock+3d+model.fbx",
+          "bytes": 320160,
+          "sha256": "770bbefef7af430bed553ea272de2618955976da535a4b9b1ff52fb1c7f97ba8"
+        },
+        "gold+ore+rock+3d+model.fbm/gold+ore+rock+3d+model_basecolor.jpg": {
+          "path": "art/resources/user-src/GoldOreRock/gold+ore+rock+3d+model.fbm/gold+ore+rock+3d+model_basecolor.jpg",
+          "bytes": 1554955,
+          "sha256": "60563b01b5e900b06979916cbaee1d768f652e889835fb8e2b3d918728a0d79a"
+        }
+      },
+      "license_status": "user_provided_unverified_not_CC0",
+      "source_author": "not supplied",
+      "usage": "local independent showcase only; no redistribution/upload authorization"
+    }
+  ],
+  "license_status": "user_provided_unverified_not_CC0",
+  "uploads": "none"
+}

@@ -1,0 +1,400 @@
+{
+  "status": "isolated_visual_review_pending",
+  "source": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/landmarks-src/Landmarks_Review_v7.blend",
+  "records": [
+    {
+      "id": "EuropeanStoneHouse",
+      "source_scene": "Scene",
+      "source_collection": "环境地标 · EuropeanStoneHouse",
+      "source_objects": [
+        "EuropeanStoneHouse"
+      ],
+      "triangles": 835,
+      "pieces": [
+        {
+          "name": "EuropeanStoneHouse",
+          "mesh": "Cube.002",
+          "vertices": 461,
+          "triangles": 835,
+          "evaluated_triangles": 835,
+          "bounds_min": [
+            45.61050796508789,
+            8.505244255065918,
+            0.0
+          ],
+          "bounds_max": [
+            50.38949203491211,
+            15.494755744934082,
+            3.924914836883545
+          ],
+          "dimensions_m": [
+            4.778984069824219,
+            6.989511489868164,
+            3.924914836883545
+          ],
+          "uv_layers": [
+            "UVMap"
+          ],
+          "parent": null,
+          "matrix_world": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              48.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              12.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "hide_viewport": false,
+          "hide_render": false,
+          "collections": [
+            "环境地标 · EuropeanStoneHouse"
+          ],
+          "modifiers": [],
+          "materials": [
+            "EuropeanStoneHouse_AuthoredAtlas"
+          ]
+        }
+      ],
+      "dimensions_blender_xyz_m": [
+        4.778984069824219,
+        6.989511489868164,
+        3.924914836883545
+      ],
+      "bounds_min": [
+        45.61050796508789,
+        8.505244255065918,
+        0.0
+      ],
+      "gallery_translation": [
+        48,
+        12,
+        0
+      ]
+    },
+    {
+      "id": "NorthAfricanRuins",
+      "source_scene": "Scene",
+      "source_collection": "环境地标 · NorthAfricanRuins",
+      "source_objects": [
+        "NorthAfricanRuins_Arch",
+        "NorthAfricanRuins_Corner",
+        "NorthAfricanRuins_FallenPillar"
+      ],
+      "triangles": 1916,
+      "pieces": [
+        {
+          "name": "NorthAfricanRuins_Arch",
+          "mesh": "RuinArchOne200.001",
+          "vertices": 796,
+          "triangles": 1480,
+          "evaluated_triangles": 1480,
+          "bounds_min": [
+            58.35723876953125,
+            8.393234252929688,
+            0.0
+          ],
+          "bounds_max": [
+            65.64276123046875,
+            11.806766510009766,
+            4.930196285247803
+          ],
+          "dimensions_m": [
+            7.2855224609375,
+            3.413532257080078,
+            4.930196285247803
+          ],
+          "uv_layers": [
+            "geom-RuinArchOne200-map1"
+          ],
+          "parent": null,
+          "matrix_world": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              62.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              10.100000381469727
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "hide_viewport": false,
+          "hide_render": false,
+          "collections": [
+            "环境地标 · NorthAfricanRuins"
+          ],
+          "modifiers": [],
+          "materials": [
+            "ConcreteMossy1",
+            "Concrete1",
+            "BrickOldSharp03"
+          ]
+        },
+        {
+          "name": "NorthAfricanRuins_Corner",
+          "mesh": "foundationRuinOne200.001",
+          "vertices": 72,
+          "triangles": 120,
+          "evaluated_triangles": 120,
+          "bounds_min": [
+            60.52540588378906,
+            11.685068130493164,
+            0.0
+          ],
+          "bounds_max": [
+            63.47459411621094,
+            15.71493148803711,
+            2.0635547637939453
+          ],
+          "dimensions_m": [
+            2.949188232421875,
+            4.029863357543945,
+            2.0635547637939453
+          ],
+          "uv_layers": [
+            "geom-foundationRuinOne200-map1"
+          ],
+          "parent": null,
+          "matrix_world": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              62.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              13.699999809265137
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "hide_viewport": false,
+          "hide_render": false,
+          "collections": [
+            "环境地标 · NorthAfricanRuins"
+          ],
+          "modifiers": [],
+          "materials": [
+            "BrickOldRound1",
+            "LoneBrick1"
+          ]
+        },
+        {
+          "name": "NorthAfricanRuins_FallenPillar",
+          "mesh": "RuinPillarOne200.001",
+          "vertices": 162,
+          "triangles": 316,
+          "evaluated_triangles": 316,
+          "bounds_min": [
+            64.62901306152344,
+            13.429015159606934,
+            0.0
+          ],
+          "bounds_max": [
+            65.37098693847656,
+            14.170985221862793,
+            2.6142196655273438
+          ],
+          "dimensions_m": [
+            0.741973876953125,
+            0.7419700622558594,
+            2.6142196655273438
+          ],
+          "uv_layers": [
+            "geom-RuinPillarOne200-map1"
+          ],
+          "parent": null,
+          "matrix_world": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              65.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              13.800000190734863
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "hide_viewport": false,
+          "hide_render": false,
+          "collections": [
+            "环境地标 · NorthAfricanRuins"
+          ],
+          "modifiers": [],
+          "materials": [
+            "ConcreteRuff01"
+          ]
+        }
+      ],
+      "dimensions_blender_xyz_m": [
+        7.2855224609375,
+        7.321697235107422,
+        4.930196285247803
+      ],
+      "bounds_min": [
+        58.35723876953125,
+        8.393234252929688,
+        0.0
+      ],
+      "gallery_translation": [
+        62,
+        12,
+        0
+      ]
+    },
+    {
+      "id": "MiddleEasternCourtyard",
+      "source_scene": "Scene",
+      "source_collection": "环境地标 · MiddleEasternCourtyard",
+      "source_objects": [
+        "MiddleEasternCourtyard"
+      ],
+      "triangles": 10028,
+      "pieces": [
+        {
+          "name": "MiddleEasternCourtyard",
+          "mesh": "RuinWallSegOne300.001",
+          "vertices": 5078,
+          "triangles": 10028,
+          "evaluated_triangles": 10028,
+          "bounds_min": [
+            72.11274719238281,
+            7.57451057434082,
+            0.0
+          ],
+          "bounds_max": [
+            79.88725280761719,
+            15.216008186340332,
+            2.963932514190674
+          ],
+          "dimensions_m": [
+            7.774505615234375,
+            7.641497611999512,
+            2.963932514190674
+          ],
+          "uv_layers": [
+            "LandmarkUV_2m",
+            "UVMap",
+            "NativeSourceUV_geom-RuinWallSegOne300-map1",
+            "NativeSourceUV_geom-foundationRuinOne200-map1",
+            "NativeSourceUV_geom-CathedralRuinOne300-map1"
+          ],
+          "parent": null,
+          "matrix_world": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              76.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              14.300000190734863
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "hide_viewport": false,
+          "hide_render": false,
+          "collections": [
+            "环境地标 · MiddleEasternCourtyard"
+          ],
+          "modifiers": [],
+          "materials": [
+            "MiddleEasternCourtyard_ClayPlaster",
+            "MiddleEasternCourtyard_WeatheredClay",
+            "WoodDebris17"
+          ]
+        }
+      ],
+      "dimensions_blender_xyz_m": [
+        7.774505615234375,
+        7.641497611999512,
+        2.963932514190674
+      ],
+      "bounds_min": [
+        72.11274719238281,
+        7.57451057434082,
+        0.0
+      ],
+      "gallery_translation": [
+        76,
+        12,
+        0
+      ]
+    }
+  ]
+}

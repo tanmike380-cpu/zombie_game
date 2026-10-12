@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "formal_source_blend": "art/Blender主文件/ZombieGame_Environment.blend",
+  "formal_source_sha256": "dfd40cfc85891b05f660d56f7016fa163391d8627e80002d48f691cf6a9e017d",
+  "formal_category_validation": "art/environment/landmark_category_validation.json",
+  "export_validation": "art/environment/landmark_export_validation.json",
+  "scope": "Three neutral abandoned landmarks for EnvironmentShowcase preview; not production art acceptance. Historical regional inspiration, not a claim of exact sixteenth-century construction.",
+  "sources": [
+    {
+      "id": "ruined_farmhouse",
+      "title": "Ruined Farmhouse",
+      "author": "bobjh",
+      "source_url": "https://opengameart.org/content/ruined-farmhouse",
+      "download_url": "https://opengameart.org/sites/default/files/ruined_farmhouse.7z",
+      "archive_sha256": "3ffdcd059fd84fbbcdd7cc3a8486e0e51fb689fbace938b2caeea6625250532b",
+      "source_blend": "art/environment/landmarks-src/ruined_farmhouse/ruined_farmhouse.blend",
+      "source_sha256": "c8b96e2bd9d2526d1982b18e6b6985191bd416b3108a9422f8a002847dd29cc6",
+      "model_license": "CC-BY-4.0",
+      "model_license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "separate_atlas_license": "CC-BY-SA-3.0",
+      "separate_atlas_license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "atlas_derivative_of": {
+        "title": "Three Castle Head Dunlough Tower House 2009 09 10",
+        "author": "Andreas F. Borchert",
+        "url": "https://commons.wikimedia.org/wiki/File:Three_Castle_Head_Dunlough_Tower_House_2009_09_10.jpg"
+      },
+      "maps": {
+        "ruined_farmhouse.png": "7da9d544508eb4aeaf4862f4184ed8df14dbae584733da3b1f05bd203d8bcea1",
+        "ruined_farmhouseNormal.png": "e08fea1ff36f44eefe1368e034bcf462459cebd2052f5df3671791f01911cb24"
+      },
+      "changes": "Original mesh and atlas UV preserved; translation-only grounded pivot. Legacy Blender-Internal material restored to Principled using unchanged author's diffuse/normal atlas bytes. Auto-smooth compatibility node removed. Roughness absent: explicit 0.92 constant. No generated floor. Atlas and derived normal redistributed under CC BY-SA 3.0, attribution retained.",
+      "used_by": ["EuropeanStoneHouse"]
+    },
+    {
+      "id": "3td_fantasy_ruins_pack",
+      "title": "3TD Fantasy Ruins Pack for Blender",
+      "author": "Ron Kapaun / 3 Tier Digital Studios; Blender conversion by velocirection",
+      "source_url": "https://opengameart.org/content/3td-fantasy-ruins-pack",
+      "conversion_url": "https://opengameart.org/content/3td-fantasy-ruins-pack-for-blender",
+      "download_url": "https://opengameart.org/sites/default/files/fantasy_ruins_pack_for_blender.blend",
+      "source_blend": "art/environment/landmarks-src/fantasy_ruins_pack_for_blender.blend",
+      "source_sha256": "1f712b434c09e61c85ffb7f5f3753ccfa239a2dfe62a0ebdfe7e5103d36862e1",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "changes": "NorthAfricanRuins retains native arch/corner/broken pillar mesh UV and packed maps, uniformly scaled 0.55 and rigidly assembled. These are older abandoned stone ruins surviving in the setting, not newly built 16th-century architecture. MiddleEasternCourtyard uses native broken wall/L-corner modules and selected WoodDebris17 faces; new user-authorized U-shaped clay courtyard design with two self-intersection-aware Boolean windows and slight bevel on new design only. No decimation or Unity refitting.",
+      "used_by": ["NorthAfricanRuins", "MiddleEasternCourtyard"]
+    },
+    {
+      "id": "clay_plaster",
+      "title": "Clay Plaster",
+      "author": "Amal Kumar / Poly Haven",
+      "source_url": "https://polyhaven.com/a/clay_plaster",
+      "api_url": "https://api.polyhaven.com/files/clay_plaster",
+      "license": "CC0-1.0",
+      "license_url": "https://polyhaven.com/license",
+      "download_urls": {
+        "base_color": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/clay_plaster/clay_plaster_diff_1k.png",
+        "normal_gl": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/clay_plaster/clay_plaster_nor_gl_1k.png",
+        "roughness": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/clay_plaster/clay_plaster_rough_1k.png"
+      },
+      "maps": {
+        "clay_plaster_diff_1k.png": "d7f41da274e0a9f9ddd5b45a3f25ac66c90c6810ab9e613a97a0369c263d9887",
+        "clay_plaster_nor_gl_1k.png": "b41bda0045405286641c22f47b30277bdf7072e9c53dedd3cbe7854bcd776aec",
+        "clay_plaster_rough_1k.png": "e55f81b83e45efd262e27c2811c7eb7e07956320f24207b1006d580026079afe"
+      },
+      "changes": "Original 1k PNG bytes retained. Authored metric UV0 uses source 2 m tile; native wall UV backed up separately. Weathered lower clay reuses these images with explicit linear tint [0.48,0.39,0.30,1]. Timber UV0 remains original author atlas. No fabricated AO or roughness maps.",
+      "used_by": ["MiddleEasternCourtyard"]
+    }
+  ],
+  "attribution_file": "art/environment/landmark_attribution.txt",
+  "reconstruction_recipe": "tools/environment_landmarks.py",
+  "source_policy": "Only the formal category .blend and test exports are authoritative derivatives; ignored raw downloads and review files are not the master. All used images are packed in the formal .blend. Mixed licenses must never be described collectively as CC0."
+}

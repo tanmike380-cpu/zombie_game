@@ -1,0 +1,173 @@
+{
+  "status": "fbx_roundtrip_pass",
+  "source_blend": "art/Blender主文件/ZombieGame_Resources.blend",
+  "source_sha256": "c007b74c92a1c5a93fcf3a829ca4c73e192ec3c6037dc8779a85da42b8f8b0fb",
+  "records": [
+    {
+      "id": "OreRock",
+      "status": "pass",
+      "pieces": [
+        {
+          "name": "OreRock",
+          "mesh": "b0e4c353_e38b_4d40_9333_009da33483f8.001",
+          "vertices": 4404,
+          "triangles": 8618,
+          "evaluated_triangles": 8618,
+          "bounds_min": [
+            -0.499755859375,
+            -0.4221191704273224,
+            1.0021950203054075e-07
+          ],
+          "bounds_max": [
+            0.499755859375,
+            0.4221191108226776,
+            0.7143555283546448
+          ],
+          "dimensions_m": [
+            0.99951171875,
+            0.84423828125,
+            0.7143554281351427
+          ],
+          "uv_layers": [
+            "Attribute"
+          ],
+          "parent": "OreRock_Root",
+          "matrix_world": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              -1.0,
+              2.0663208033511182e-07,
+              2.0247564509626257e-15
+            ],
+            [
+              0.0,
+              -2.0663208033511182e-07,
+              -1.0,
+              2.6818710807674506e-08
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "hide_viewport": false,
+          "hide_render": false,
+          "collections": [
+            "Collection"
+          ],
+          "modifiers": [],
+          "materials": [
+            "OreRock_UserBaseColor"
+          ]
+        }
+      ],
+      "triangles": 8618,
+      "bounds_min": [
+        -0.499755859375,
+        -0.4221191704273224,
+        1.0021950203054075e-07
+      ],
+      "bounds_max": [
+        0.499755859375,
+        0.4221191108226776,
+        0.7143555283546448
+      ],
+      "dimensions_blender_xyz_m": [
+        0.99951171875,
+        0.84423828125,
+        0.7143554281351427
+      ]
+    },
+    {
+      "id": "GoldOreRock",
+      "status": "pass",
+      "pieces": [
+        {
+          "name": "GoldOreRock",
+          "mesh": "tripo_96cb023a_050d_4e09_aed4_e38b6af0ec33.001",
+          "vertices": 4225,
+          "triangles": 8281,
+          "evaluated_triangles": 8281,
+          "bounds_min": [
+            -0.499755859375,
+            -0.499755859375,
+            -3.5889911487174686e-08
+          ],
+          "bounds_max": [
+            0.499755859375,
+            0.499755859375,
+            0.4760742783546448
+          ],
+          "dimensions_m": [
+            0.99951171875,
+            0.99951171875,
+            0.47607431424455626
+          ],
+          "uv_layers": [
+            "Attribute"
+          ],
+          "parent": "GoldOreRock_Root",
+          "matrix_world": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              -1.0,
+              2.0663208033511182e-07,
+              2.829092584928205e-15
+            ],
+            [
+              0.0,
+              -2.0663208033511182e-07,
+              -1.0,
+              3.747246779539637e-08
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "hide_viewport": false,
+          "hide_render": false,
+          "collections": [
+            "Collection"
+          ],
+          "modifiers": [],
+          "materials": [
+            "GoldOreRock_UserBaseColor"
+          ]
+        }
+      ],
+      "triangles": 8281,
+      "bounds_min": [
+        -0.499755859375,
+        -0.499755859375,
+        -3.5889911487174686e-08
+      ],
+      "bounds_max": [
+        0.499755859375,
+        0.499755859375,
+        0.4760742783546448
+      ],
+      "dimensions_blender_xyz_m": [
+        0.99951171875,
+        0.99951171875,
+        0.47607431424455626
+      ]
+    }
+  ]
+}

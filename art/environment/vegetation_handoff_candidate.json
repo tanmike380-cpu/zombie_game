@@ -3,7 +3,8 @@
   "status": "formal_category_source_test_only",
   "preview_approval": "User confirmed separate formal environment category on 2026-10-11; portable v3 tree comparison visually approved by parent; asset integration remains limited to independent EnvironmentShowcase test",
   "source_blend": "art/Blender主文件/ZombieGame_Environment.blend",
-  "source_sha256": "22cf18b836561446acae85f98b97086e40cac6ec23e88f91eebe05c8310ad56f",
+  "source_sha256": "dfd40cfc85891b05f660d56f7016fa163391d8627e80002d48f691cf6a9e017d",
+  "latest_source_extension_validation": "art/environment/landmark_category_validation.json",
   "license": "CC0-1.0",
   "license_url": "https://polyhaven.com/license",
   "records": [

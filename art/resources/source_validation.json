@@ -1,0 +1,380 @@
+{
+  "status": "formal_new_category_reopen_pass_pending_parent_preview",
+  "source_blend": "art/Blender主文件/ZombieGame_Resources.blend",
+  "source_sha256": "c007b74c92a1c5a93fcf3a829ca4c73e192ec3c6037dc8779a85da42b8f8b0fb",
+  "source_bytes": 4096342,
+  "packed_images": 2,
+  "geometry_uv_material_transform_signatures": {
+    "GoldOreRock": "4b85ecd749c4bc14fcae3489ddec060ad2a7741f931e9f54b4c25bb1a1dea2cb",
+    "OreRock": "e00f9defded5e86a9c6dab19ca5690d3262493841bb7d6a16c66790f8454a3fc"
+  },
+  "records": [
+    {
+      "id": "OreRock",
+      "source_scene": "Scene",
+      "source_collection": "资源素材 · OreRock",
+      "source_root": "OreRock_Root",
+      "source_objects": [
+        "OreRock"
+      ],
+      "gallery_position": [
+        0,
+        0,
+        0
+      ],
+      "native_import": {
+        "pieces": [
+          {
+            "name": "b0e4c353_e38b_4d40_9333_009da33483f8",
+            "mesh": "b0e4c353_e38b_4d40_9333_009da33483f8",
+            "vertices": 4404,
+            "triangles": 8618,
+            "evaluated_triangles": 8618,
+            "bounds_min": [
+              -0.499755859375,
+              -0.422119140625,
+              -2.6818710807674506e-08
+            ],
+            "bounds_max": [
+              0.499755859375,
+              0.422119140625,
+              0.71435546875
+            ],
+            "dimensions_m": [
+              0.99951171875,
+              0.84423828125,
+              0.7143554955687108
+            ],
+            "uv_layers": [
+              "Attribute"
+            ],
+            "parent": null,
+            "matrix_world": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                7.549790126404332e-08,
+                -1.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                7.549790126404332e-08,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "hide_viewport": false,
+            "hide_render": false,
+            "collections": [
+              "Collection"
+            ],
+            "modifiers": [],
+            "materials": [
+              "b0e4c353_e38b_4d40_9333_009da33483f8"
+            ]
+          }
+        ],
+        "triangles": 8618,
+        "bounds_min": [
+          -0.499755859375,
+          -0.422119140625,
+          -2.6818710807674506e-08
+        ],
+        "bounds_max": [
+          0.499755859375,
+          0.422119140625,
+          0.71435546875
+        ],
+        "dimensions_blender_xyz_m": [
+          0.99951171875,
+          0.84423828125,
+          0.7143554955687108
+        ]
+      },
+      "source_pivot_translation_m": [
+        -0.0,
+        -0.0,
+        2.6818710807674506e-08
+      ],
+      "unit_calibration_uniform_scale": 1,
+      "unit_note": "Blender native FBX unit conversion only; no manual rescale, axis deformation or vertex edit",
+      "geometry_policy": "Original native mesh/UV/custom normals preserved. Parent/root translation only. Restored provided color image; no new geometry.",
+      "pieces": [
+        {
+          "name": "OreRock",
+          "mesh": "b0e4c353_e38b_4d40_9333_009da33483f8",
+          "vertices": 4404,
+          "triangles": 8618,
+          "evaluated_triangles": 8618,
+          "bounds_min": [
+            -0.499755859375,
+            -0.422119140625,
+            0.0
+          ],
+          "bounds_max": [
+            0.499755859375,
+            0.422119140625,
+            0.71435546875
+          ],
+          "dimensions_m": [
+            0.99951171875,
+            0.84423828125,
+            0.71435546875
+          ],
+          "uv_layers": [
+            "Attribute"
+          ],
+          "parent": "OreRock_Root",
+          "matrix_world": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              7.549790126404332e-08,
+              -1.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              7.549790126404332e-08,
+              2.6818710807674506e-08
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "hide_viewport": false,
+          "hide_render": false,
+          "collections": [
+            "资源素材 · OreRock"
+          ],
+          "modifiers": [],
+          "materials": [
+            "OreRock_UserBaseColor"
+          ]
+        }
+      ],
+      "triangles": 8618,
+      "bounds_min": [
+        -0.499755859375,
+        -0.422119140625,
+        0.0
+      ],
+      "bounds_max": [
+        0.499755859375,
+        0.422119140625,
+        0.71435546875
+      ],
+      "dimensions_blender_xyz_m": [
+        0.99951171875,
+        0.84423828125,
+        0.71435546875
+      ]
+    },
+    {
+      "id": "GoldOreRock",
+      "source_scene": "Scene",
+      "source_collection": "资源素材 · GoldOreRock",
+      "source_root": "GoldOreRock_Root",
+      "source_objects": [
+        "GoldOreRock"
+      ],
+      "gallery_position": [
+        6,
+        0,
+        0
+      ],
+      "native_import": {
+        "pieces": [
+          {
+            "name": "tripo_96cb023a_050d_4e09_aed4_e38b6af0ec33",
+            "mesh": "tripo_96cb023a_050d_4e09_aed4_e38b6af0ec33",
+            "vertices": 4225,
+            "triangles": 8281,
+            "evaluated_triangles": 8281,
+            "bounds_min": [
+              -0.499755859375,
+              -0.499755859375,
+              -3.747246779539637e-08
+            ],
+            "bounds_max": [
+              0.499755859375,
+              0.499755859375,
+              0.47607421875
+            ],
+            "dimensions_m": [
+              0.99951171875,
+              0.99951171875,
+              0.4760742562224678
+            ],
+            "uv_layers": [
+              "Attribute"
+            ],
+            "parent": null,
+            "matrix_world": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                7.549790126404332e-08,
+                -1.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                7.549790126404332e-08,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "hide_viewport": false,
+            "hide_render": false,
+            "collections": [
+              "Collection"
+            ],
+            "modifiers": [],
+            "materials": [
+              "tripo_96cb023a_050d_4e09_aed4_e38b6af0ec33"
+            ]
+          }
+        ],
+        "triangles": 8281,
+        "bounds_min": [
+          -0.499755859375,
+          -0.499755859375,
+          -3.747246779539637e-08
+        ],
+        "bounds_max": [
+          0.499755859375,
+          0.499755859375,
+          0.47607421875
+        ],
+        "dimensions_blender_xyz_m": [
+          0.99951171875,
+          0.99951171875,
+          0.4760742562224678
+        ]
+      },
+      "source_pivot_translation_m": [
+        -0.0,
+        -0.0,
+        3.747246779539637e-08
+      ],
+      "unit_calibration_uniform_scale": 1,
+      "unit_note": "Blender native FBX unit conversion only; no manual rescale, axis deformation or vertex edit",
+      "geometry_policy": "Original native mesh/UV/custom normals preserved. Parent/root translation only. Restored provided color image; no new geometry.",
+      "pieces": [
+        {
+          "name": "GoldOreRock",
+          "mesh": "tripo_96cb023a_050d_4e09_aed4_e38b6af0ec33",
+          "vertices": 4225,
+          "triangles": 8281,
+          "evaluated_triangles": 8281,
+          "bounds_min": [
+            5.500244140625,
+            -0.499755859375,
+            0.0
+          ],
+          "bounds_max": [
+            6.499755859375,
+            0.499755859375,
+            0.4760742485523224
+          ],
+          "dimensions_m": [
+            0.99951171875,
+            0.99951171875,
+            0.4760742485523224
+          ],
+          "uv_layers": [
+            "Attribute"
+          ],
+          "parent": "GoldOreRock_Root",
+          "matrix_world": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              6.0
+            ],
+            [
+              0.0,
+              7.549790126404332e-08,
+              -1.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              7.549790126404332e-08,
+              3.747246779539637e-08
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "hide_viewport": false,
+          "hide_render": false,
+          "collections": [
+            "资源素材 · GoldOreRock"
+          ],
+          "modifiers": [],
+          "materials": [
+            "GoldOreRock_UserBaseColor"
+          ]
+        }
+      ],
+      "triangles": 8281,
+      "bounds_min": [
+        5.500244140625,
+        -0.499755859375,
+        0.0
+      ],
+      "bounds_max": [
+        6.499755859375,
+        0.499755859375,
+        0.4760742485523224
+      ],
+      "dimensions_blender_xyz_m": [
+        0.99951171875,
+        0.99951171875,
+        0.4760742485523224
+      ]
+    }
+  ],
+  "predecessor_sha256": "1208508245d54fd7785fc83b4dd5a59e4a89f3f625f94344841d964da38ad94c",
+  "recovery_snapshot": "art/resources/user-src/recovery/Resources-before-parent-pivot-fix.blend",
+  "audit_note": "Corrected initial new root parenting cache: gallery x=6, exported pivot x=0. Mesh/UV/custom-normal signature unchanged."
+}
