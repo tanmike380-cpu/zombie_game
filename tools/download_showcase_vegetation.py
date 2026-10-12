@@ -2,16 +2,33 @@
 
 import concurrent.futures
 import hashlib
+import http.client
 import json
 import logging
 from pathlib import Path
 import urllib.request
+import urllib.error
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 SOURCE_ROOT = PROJECT_ROOT / "art/environment/polyhaven-src"
 ASSET_IDS = ("grass_bermuda_01", "grass_medium_01", "shrub_02", "tree_small_02")
-BIOME_TEXTURE_IDS = ("snow_02", "sand_01", "rocky_terrain_02", "forest_ground_04", "rock_boulder_dry")
+BIOME_TEXTURE_IDS = ("snow_02", "sand_01", "rocky_terrain_02", "forest_ground_04", "rock_boulder_dry",
+                     "rock_face_03", "cliff_side", "gravelly_sand")
+MAX_DOWNLOAD_ATTEMPTS = 3
+
+
+def read_download_payload(url):
+    """Retry incomplete network responses; never persist a partial asset."""
+    for attempt in range(MAX_DOWNLOAD_ATTEMPTS):
+        request = urllib.request.Request(url, headers={"User-Agent": "ZombieGame-AssetImport/1.0"})
+        try:
+            with urllib.request.urlopen(request, timeout=45) as response:
+                return response.read()
+        except (http.client.IncompleteRead, urllib.error.URLError, TimeoutError, ConnectionError) as error:
+            if attempt + 1 == MAX_DOWNLOAD_ATTEMPTS:
+                raise RuntimeError(f"Asset download failed after {MAX_DOWNLOAD_ATTEMPTS} attempts: {url}") from error
+            logging.warning("Retrying interrupted asset download (%d/%d): %s", attempt + 1, MAX_DOWNLOAD_ATTEMPTS, url)
 
 
 def get_json(url):
@@ -28,9 +45,7 @@ def download_file(asset_id, relative_path, record):
     if destination.exists() and hashlib.md5(destination.read_bytes()).hexdigest() != record["md5"]:
         raise ValueError(f"Locally modified source preserved: {destination}")
     if not destination.exists():
-        request = urllib.request.Request(record["url"], headers={"User-Agent": "ZombieGame-AssetImport/1.0"})
-        with urllib.request.urlopen(request, timeout=120) as response:
-            payload = response.read()
+        payload = read_download_payload(record["url"])
         if hashlib.md5(payload).hexdigest() != record["md5"]:
             raise ValueError(f"Source checksum mismatch: {asset_id}/{relative_path}")
         destination.write_bytes(payload)
@@ -64,7 +79,7 @@ def download_asset(asset_id):
 
 
 def download_biome_textures():
-    """Pin real 2K snow, sand, natural rock and forest-soil channels for test biomes."""
+    """Pin real 2K ground, cliff and scree channels for independent test biomes."""
     manifest_path = SOURCE_ROOT.parent / "showcase_biome_sources.json"
     if manifest_path.exists():
         pinned = json.loads(manifest_path.read_text(encoding="utf-8"))

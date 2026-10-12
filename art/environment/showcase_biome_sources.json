@@ -182,6 +182,117 @@
           "channel": "Rough"
         }
       ]
+    },
+    {
+      "id": "rock_face_03",
+      "source": "https://polyhaven.com/a/rock_face_03",
+      "authors": {
+        "Dario Barresi": "Photography",
+        "Rico Cilliers": "Processing"
+      },
+      "license": "CC0-1.0",
+      "license_url": "https://polyhaven.com/license",
+      "texture_resolution": "2K",
+      "files": [
+        {
+          "path": "art/environment/polyhaven-src/rock_face_03/textures/rock_face_03_diff_2k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/rock_face_03/rock_face_03_diff_2k.jpg",
+          "bytes": 3814362,
+          "md5": "657add9e8a8dffaeed19bdfc58078b59",
+          "sha256": "644ee79df7ffbf5f6afc330b64dd3f33794bab8820915fe61ffe0c88ecfd7ece",
+          "channel": "Diffuse"
+        },
+        {
+          "path": "art/environment/polyhaven-src/rock_face_03/textures/rock_face_03_nor_gl_2k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/rock_face_03/rock_face_03_nor_gl_2k.jpg",
+          "bytes": 4473242,
+          "md5": "279b33e71ae6275cafa24e6597024c98",
+          "sha256": "a498cef4ba6191f6959b6d03fb835263c77271948264a289af24497ab7111dec",
+          "channel": "nor_gl"
+        },
+        {
+          "path": "art/environment/polyhaven-src/rock_face_03/textures/rock_face_03_rough_2k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/rock_face_03/rock_face_03_rough_2k.jpg",
+          "bytes": 2601552,
+          "md5": "8895a8b199487fd6cfeed2fed1fb39b4",
+          "sha256": "9ca3e9e196685f702328f24d66f039b72f5330fc35cf2a2c265cfa50a7916301",
+          "channel": "Rough"
+        }
+      ]
+    },
+    {
+      "id": "cliff_side",
+      "source": "https://polyhaven.com/a/cliff_side",
+      "authors": {
+        "James Ray Cock": "Photography",
+        "Jenelle van Heerden": "Processing",
+        "Dario Barresi": "Photography"
+      },
+      "license": "CC0-1.0",
+      "license_url": "https://polyhaven.com/license",
+      "texture_resolution": "2K",
+      "files": [
+        {
+          "path": "art/environment/polyhaven-src/cliff_side/textures/cliff_side_diff_2k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/cliff_side/cliff_side_diff_2k.jpg",
+          "bytes": 3387348,
+          "md5": "6d129836144e271b30071281241e237d",
+          "sha256": "bc6f92d72eb6383ecc3a1094ed9f5b37efb36ccf83cf29699bb5990e6775afee",
+          "channel": "Diffuse"
+        },
+        {
+          "path": "art/environment/polyhaven-src/cliff_side/textures/cliff_side_nor_gl_2k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/cliff_side/cliff_side_nor_gl_2k.jpg",
+          "bytes": 3585856,
+          "md5": "8209033c3ad15185977d91c92cf5866f",
+          "sha256": "eec5c0bb3daa1ad72f0f9c1d19caf78e84dfedcf3283b35b5a5dcf163718025f",
+          "channel": "nor_gl"
+        },
+        {
+          "path": "art/environment/polyhaven-src/cliff_side/textures/cliff_side_rough_2k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/cliff_side/cliff_side_rough_2k.jpg",
+          "bytes": 1765122,
+          "md5": "44abb195b6c4c7b6da902e97e5bbbef2",
+          "sha256": "7fd4f6d289b1b44c812533eaea7802e640dda55070b9746025a9d33117a1bd1f",
+          "channel": "Rough"
+        }
+      ]
+    },
+    {
+      "id": "gravelly_sand",
+      "source": "https://polyhaven.com/a/gravelly_sand",
+      "authors": {
+        "Dario Barresi": "All"
+      },
+      "license": "CC0-1.0",
+      "license_url": "https://polyhaven.com/license",
+      "texture_resolution": "2K",
+      "files": [
+        {
+          "path": "art/environment/polyhaven-src/gravelly_sand/textures/gravelly_sand_diff_2k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/gravelly_sand/gravelly_sand_diff_2k.jpg",
+          "bytes": 4402825,
+          "md5": "b90aa766dac59af8c136321149ca86bc",
+          "sha256": "cdab7130a67bc70f8c241b9ab2cd41b731d2baf1ec533939a333573b80070dd6",
+          "channel": "Diffuse"
+        },
+        {
+          "path": "art/environment/polyhaven-src/gravelly_sand/textures/gravelly_sand_nor_gl_2k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/gravelly_sand/gravelly_sand_nor_gl_2k.jpg",
+          "bytes": 5955314,
+          "md5": "cad65c6ba322bbd7f89e72f00d9508cf",
+          "sha256": "191985454de9403961aab2a6ffd33b6ca1e4c2715712e03f3c928a8140322719",
+          "channel": "nor_gl"
+        },
+        {
+          "path": "art/environment/polyhaven-src/gravelly_sand/textures/gravelly_sand_rough_2k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/gravelly_sand/gravelly_sand_rough_2k.jpg",
+          "bytes": 1825952,
+          "md5": "ffa5636da8fad6a051030218f2c01a92",
+          "sha256": "da39087ed3beced52f7ca68f77610ecaa048113c33e49a47cb6e7d930733fcaa",
+          "channel": "Rough"
+        }
+      ]
     }
   ]
 }
