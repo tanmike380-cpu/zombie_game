@@ -78,11 +78,15 @@
   "unity_preview": {
     "user_selected": "grassland_slopes_seacoast_pond",
     "reference_ids": ["05-grassland-slopes", "07-mediterranean-seacoast", "09-temperate-pond"],
-    "status": "implementation_in_progress_separate_handoff",
+    "status": "independent_technical_preview_checked_visual_target_not_met",
     "scope": "Assets/_Tests/EnvironmentShowcase only; existing approved asset references, new basic ground/water presentation, no production mechanics or Blender mesh changes",
     "no_river": true,
     "no_roads": true,
-    "reference_revision": "wilderness-revision.json"
+    "reference_revision": "wilderness-revision.json",
+    "scene": "Assets/_Tests/EnvironmentShowcase/Scenes/EnvironmentShowcase.unity",
+    "validation": "Assets/_Tests/EnvironmentShowcase/validation-wilderness.json",
+    "launch_shortcut": "Builds/OpenWilderness.command",
+    "visual_review": "Actual player reviewed: roads absent, but ground remains uniform, source tree crowns sparse and water ripples too regular. Technical checks do not establish concept parity; not approved for replacing the production game environment."
   },
   "research": [
     {
