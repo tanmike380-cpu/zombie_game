@@ -1,0 +1,2346 @@
+{
+  "schema_version": 1,
+  "review_date": "2026-10-14",
+  "assets": [
+    {
+      "id": "island_tree_01",
+      "title": "Island Tree 01",
+      "authors": {
+        "Rob Tuytel": "scanning, processing",
+        "Rico Cilliers": "cleanup, processing"
+      },
+      "source_url": "https://polyhaven.com/a/island_tree_01",
+      "license": "CC0-1.0",
+      "license_url": "https://polyhaven.com/license",
+      "official_info": {
+        "date_published": 1666310400,
+        "sponsors": [
+          "78546118"
+        ],
+        "name": "Island Tree 01",
+        "type": 2,
+        "staging": null,
+        "info": null,
+        "authors": {
+          "Rob Tuytel": "scanning, processing",
+          "Rico Cilliers": "cleanup, processing"
+        },
+        "tags": [
+          "tree",
+          "natural",
+          "nature",
+          "green",
+          "plant",
+          "outdoor",
+          "leaf",
+          "botany",
+          "leaves",
+          "forest",
+          "bush",
+          "jungle",
+          "foliage",
+          "island",
+          "coastal",
+          "geometry nodes",
+          "trunk",
+          "bark"
+        ],
+        "geonodes": true,
+        "categories": [
+          "nature",
+          "plants",
+          "trees",
+          "collection: verdant_trail"
+        ],
+        "max_resolution": [
+          8192,
+          8192
+        ],
+        "polycount": 3729692,
+        "files_hash": "29bbda3fd0ebe9974d015ba2a9d939525eb6811b",
+        "texel_density": 41158.77489289984,
+        "dimensions": [
+          12464.419603347778,
+          4818.506717681885,
+          5027.44660153985
+        ],
+        "lods": true,
+        "description": "Free 8K tree model with twisted gnarled trunk, high-detail bark, exposed roots and a dense, wind-sculpted coastal canopy of small green leaves.",
+        "category_id": "6f8ff47d-ba79-5786-8199-a90ccceb01fd",
+        "category": "Nature/Trees/Coastal Trees",
+        "collections": [
+          "verdant_trail"
+        ],
+        "attributes": {
+          "condition": [
+            "weathered"
+          ],
+          "material": [
+            "wood"
+          ],
+          "lods": true,
+          "geonodes": true
+        },
+        "img_version": "39983d06",
+        "download_count": 71955,
+        "thumbnail_url": "https://cdn.polyhaven.com/asset_img/thumbs/island_tree_01.png?width=256&height=256&format=webp&v=39983d06"
+      },
+      "official_info_api": "https://api.polyhaven.com/info/island_tree_01",
+      "official_files_api": "https://api.polyhaven.com/files/island_tree_01",
+      "resolution": "1k",
+      "files": [
+        {
+          "path": "art/environment/polyhaven-src/island_tree_01/island_tree_01_1k.fbx",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/fbx/1k/island_tree_01/island_tree_01_1k.fbx",
+          "bytes": 48055820,
+          "md5": "29529d696d22fc1672961ecf42a501b4",
+          "sha256": "3f193c0ca27977b001682aa4ba3eef654b31c1af60a166af4024a11cc19a2948"
+        },
+        {
+          "path": "art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_branches_diff_1k.png",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/island_tree_01/island_tree_01_branches_diff_1k.png",
+          "bytes": 5300342,
+          "md5": "06881375b8ce350a45746e30b68a5d4c",
+          "sha256": "4485125d88b9dcce618220e8850f8b3ec586d9cdebe08e28aca777206eef56e2"
+        },
+        {
+          "path": "art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_branches_nor_gl_1k.png",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/island_tree_01/island_tree_01_branches_nor_gl_1k.png",
+          "bytes": 5400459,
+          "md5": "df3d91a9c29266f44b0b17da135a2899",
+          "sha256": "e72c3bf652d998d75ef98fc51fb7a10de3b7efd072c191a8eb9c92b6f93340f0"
+        },
+        {
+          "path": "art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_branches_rough_1k.png",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/island_tree_01/island_tree_01_branches_rough_1k.png",
+          "bytes": 1625206,
+          "md5": "8bd9e066f93c242ef468c7c6ea6dc382",
+          "sha256": "c6db3c33f23654a8d31dcf5609d19d97ab1036b36b3d9a6bcd50ecc975f8fb3c"
+        },
+        {
+          "path": "art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_diff_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/island_tree_01/island_tree_01_diff_1k.jpg",
+          "bytes": 791327,
+          "md5": "8a67489846657df6b859d97e0b80fcf4",
+          "sha256": "51bff9a3a6ed7d89ff4c73f01708b7267ed8d7a82b0cb12343741894f708218f"
+        },
+        {
+          "path": "art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_leaves_alpha_1k.png",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/island_tree_01/island_tree_01_leaves_alpha_1k.png",
+          "bytes": 57438,
+          "md5": "5ad9fb9a06e70c069bd3d3ba23577375",
+          "sha256": "f4341f147988dbe6b58d9ca841a8f0e4bcff25bc40d05f9877da82006d489c39"
+        },
+        {
+          "path": "art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_leaves_diff_1k.png",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/island_tree_01/island_tree_01_leaves_diff_1k.png",
+          "bytes": 1638916,
+          "md5": "f5dcd85f170c154cba9cb8367af5dbdd",
+          "sha256": "63d3563a22a62151f338ceb4e992de7c31b62e8e3582e2762d5071f02d286349"
+        },
+        {
+          "path": "art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_leaves_nor_gl_1k.png",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/island_tree_01/island_tree_01_leaves_nor_gl_1k.png",
+          "bytes": 2886859,
+          "md5": "13a7610b0459f3175ca049b70eadbfea",
+          "sha256": "e58402f30c7108ec6321e0c689009508f6ab138c81612d9a67238038ac108211"
+        },
+        {
+          "path": "art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_leaves_rough_1k.png",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/island_tree_01/island_tree_01_leaves_rough_1k.png",
+          "bytes": 879599,
+          "md5": "6195150c02ed2522f8ab60c2ec02f1b9",
+          "sha256": "b7e9a1857f63617344968bb43693786bfed7dd15bedca3193ce333f233fbab78"
+        },
+        {
+          "path": "art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_nor_gl_1k.exr",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/island_tree_01/island_tree_01_nor_gl_1k.exr",
+          "bytes": 2415664,
+          "md5": "2967bc2e9d8b2256165537c395181aa7",
+          "sha256": "5047921e146d2a13be79d72b19478d8cf2eb17d5550eb99530b0704fa0aece38"
+        },
+        {
+          "path": "art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_rough_1k.exr",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/island_tree_01/island_tree_01_rough_1k.exr",
+          "bytes": 875265,
+          "md5": "58ebd5b8589f82ee2bc0d23b5332c02d",
+          "sha256": "23e8c08ab5c6245badbaf19318e2419076ec01154e2f23b8b924323fcafa2e31"
+        },
+        {
+          "path": "art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_ao_1k.png",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/island_tree_01/island_tree_01_ao_1k.png",
+          "bytes": 1466902,
+          "md5": "5c4b3fc9c33ab832c867d1d338125beb",
+          "sha256": "5f09cbd4263be3bfe892bf7e7b97a131125807f86f68b1b484db33e5f296cba0"
+        },
+        {
+          "path": "art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_arm_1k.png",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/island_tree_01/island_tree_01_arm_1k.png",
+          "bytes": 3650724,
+          "md5": "2c19b2ffa5c9ba40ed15cf284f307aaa",
+          "sha256": "a795eb6f32fb5f2db14e4693db9b599121b981ac623682396ad3cc8ce2ac1050"
+        },
+        {
+          "path": "art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_branches_ao_1k.png",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/island_tree_01/island_tree_01_branches_ao_1k.png",
+          "bytes": 1709788,
+          "md5": "a40f205b8693365549a8d820e1541367",
+          "sha256": "e9e7f624504a589feb2613c5f9864fbe484a636de2c1ecb4041d94fbc1a6e4c2"
+        },
+        {
+          "path": "art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_branches_arm_1k.png",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/island_tree_01/island_tree_01_branches_arm_1k.png",
+          "bytes": 999330,
+          "md5": "cfa9063c4a95cbd947fd01cb5ce9f530",
+          "sha256": "932b8dc3c91b8be2a43e7f10f9cd0aefc3fd2ba047fb12c4baf1923afae69b6f"
+        },
+        {
+          "path": "art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_branches_disp_1k.png",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/island_tree_01/island_tree_01_branches_disp_1k.png",
+          "bytes": 1536806,
+          "md5": "644a56e5a38453f25d1d670c4824e5e3",
+          "sha256": "d372f1f0da5140ee5f3a41611063289de4cb92c774dd00e30d345d63b1909fd7"
+        },
+        {
+          "path": "art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_branches_nor_dx_1k.png",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/island_tree_01/island_tree_01_branches_nor_dx_1k.png",
+          "bytes": 5400494,
+          "md5": "1231b4f76d6ce842f385e0813965ba03",
+          "sha256": "93ec63093fbf36e098e20a41d9cb7ae300b5ebc86fad9dc30ba6dc86301589cf"
+        },
+        {
+          "path": "art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_diff_1k.png",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/island_tree_01/island_tree_01_diff_1k.png",
+          "bytes": 5136957,
+          "md5": "4c9373994c58e8a81cf4b355b6b0199c",
+          "sha256": "519a34062e3eb42e14d9f2b6454669d8e71ccf0ab0b95fe05e00f31ee7ffdf29"
+        },
+        {
+          "path": "art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_disp_1k.png",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/island_tree_01/island_tree_01_disp_1k.png",
+          "bytes": 1468977,
+          "md5": "aeacb0da09a4879b6ce01a2de3332630",
+          "sha256": "1d7b9eb9c85f034616363c76c3a9bbabbe29d5a5e527fef53ddd3c87d9b3fceb"
+        },
+        {
+          "path": "art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_leaves_ao_1k.png",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/island_tree_01/island_tree_01_leaves_ao_1k.png",
+          "bytes": 561215,
+          "md5": "6b66d8620510b53b8dbc31dd7a3481d9",
+          "sha256": "bc3a165c6ba04ec309405f5aed2ca4e06fc1711dda7a3cd94133c4c1ae5e4b32"
+        },
+        {
+          "path": "art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_leaves_arm_1k.png",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/island_tree_01/island_tree_01_leaves_arm_1k.png",
+          "bytes": 610698,
+          "md5": "b44f5325361582ede9bc656897f4c517",
+          "sha256": "611eca02546f9569527d4ea98745f08fdd134e6fc974be0fb4bdc4608053eece"
+        },
+        {
+          "path": "art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_leaves_disp_1k.png",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/island_tree_01/island_tree_01_leaves_disp_1k.png",
+          "bytes": 784681,
+          "md5": "d0ce66a3296508433d61f37159edbf5c",
+          "sha256": "c6b15b91c804d3b6631f7a373d851564c0aa05e3f0f6955f3780f1445c48f38f"
+        },
+        {
+          "path": "art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_leaves_nor_dx_1k.png",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/island_tree_01/island_tree_01_leaves_nor_dx_1k.png",
+          "bytes": 2887427,
+          "md5": "3cbd9a01cd97922f8b089d0aef5961aa",
+          "sha256": "c1587e728db4578fb0049d6aef4a54f6f4a655dae513cad4feb1aca80d28f0d4"
+        },
+        {
+          "path": "art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_nor_dx_1k.png",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/island_tree_01/island_tree_01_nor_dx_1k.png",
+          "bytes": 5360314,
+          "md5": "69ad8759a18b5b74c78033156b4af6b5",
+          "sha256": "371c98a7f0833fefc666b3bc3e2cb9a6e90cdfdb6f3fd052e8f0abd28c5c9272"
+        },
+        {
+          "path": "art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_nor_gl_1k.png",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/island_tree_01/island_tree_01_nor_gl_1k.png",
+          "bytes": 5360645,
+          "md5": "64fa9f4b2982f0d8984a5b9245d9d528",
+          "sha256": "039b67b309fd3cf7333fbd8e2a8db0f253a87def5e7e9d88b06401d8f605ed1f"
+        },
+        {
+          "path": "art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_rough_1k.png",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/island_tree_01/island_tree_01_rough_1k.png",
+          "bytes": 1566548,
+          "md5": "1a5ffcb729c7605f981cef4f3a1c31fd",
+          "sha256": "eab3874d010768431baac106ca2904e8bfb7736e6fa17fecf24855ca37bcf565"
+        },
+        {
+          "path": "art/environment/polyhaven-src/island_tree_01/island_tree_01_1k.blend",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/blend/1k/island_tree_01/island_tree_01_1k.blend",
+          "bytes": 58077856,
+          "md5": "9482a71fc5482b65d3e07babb7c3a936",
+          "sha256": "127d2b17778e0dd28508195e9095fe6e78cbcb6c6adb02faf3034506e29c9cd3"
+        }
+      ],
+      "texture_channels": {
+        "AO": {
+          "path": "art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_ao_1k.png",
+          "colorspace": "linear",
+          "sha256": "5f09cbd4263be3bfe892bf7e7b97a131125807f86f68b1b484db33e5f296cba0",
+          "component": "red"
+        },
+        "arm": {
+          "path": "art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_arm_1k.png",
+          "colorspace": "linear",
+          "sha256": "a795eb6f32fb5f2db14e4693db9b599121b981ac623682396ad3cc8ce2ac1050",
+          "component": "red"
+        },
+        "branches_ao": {
+          "path": "art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_branches_ao_1k.png",
+          "colorspace": "linear",
+          "sha256": "e9e7f624504a589feb2613c5f9864fbe484a636de2c1ecb4041d94fbc1a6e4c2",
+          "component": "red"
+        },
+        "branches_arm": {
+          "path": "art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_branches_arm_1k.png",
+          "colorspace": "linear",
+          "sha256": "932b8dc3c91b8be2a43e7f10f9cd0aefc3fd2ba047fb12c4baf1923afae69b6f",
+          "component": "red"
+        },
+        "branches_diff": {
+          "path": "art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_branches_diff_1k.png",
+          "colorspace": "sRGB",
+          "sha256": "4485125d88b9dcce618220e8850f8b3ec586d9cdebe08e28aca777206eef56e2",
+          "component": "rgb"
+        },
+        "branches_disp": {
+          "path": "art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_branches_disp_1k.png",
+          "colorspace": "linear",
+          "sha256": "d372f1f0da5140ee5f3a41611063289de4cb92c774dd00e30d345d63b1909fd7",
+          "component": "red"
+        },
+        "branches_nor_dx": {
+          "path": "art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_branches_nor_dx_1k.png",
+          "colorspace": "linear",
+          "sha256": "93ec63093fbf36e098e20a41d9cb7ae300b5ebc86fad9dc30ba6dc86301589cf",
+          "component": "rgb"
+        },
+        "branches_nor_gl": {
+          "path": "art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_branches_nor_gl_1k.png",
+          "colorspace": "linear",
+          "sha256": "e72c3bf652d998d75ef98fc51fb7a10de3b7efd072c191a8eb9c92b6f93340f0",
+          "component": "rgb"
+        },
+        "branches_rough": {
+          "path": "art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_branches_rough_1k.png",
+          "colorspace": "linear",
+          "sha256": "c6db3c33f23654a8d31dcf5609d19d97ab1036b36b3d9a6bcd50ecc975f8fb3c",
+          "component": "red"
+        },
+        "Diffuse": {
+          "path": "art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_diff_1k.png",
+          "colorspace": "sRGB",
+          "sha256": "519a34062e3eb42e14d9f2b6454669d8e71ccf0ab0b95fe05e00f31ee7ffdf29",
+          "component": "rgb"
+        },
+        "Displacement": {
+          "path": "art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_disp_1k.png",
+          "colorspace": "linear",
+          "sha256": "1d7b9eb9c85f034616363c76c3a9bbabbe29d5a5e527fef53ddd3c87d9b3fceb",
+          "component": "red"
+        },
+        "leaves_alpha": {
+          "path": "art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_leaves_alpha_1k.png",
+          "colorspace": "linear",
+          "sha256": "f4341f147988dbe6b58d9ca841a8f0e4bcff25bc40d05f9877da82006d489c39",
+          "component": "red"
+        },
+        "leaves_ao": {
+          "path": "art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_leaves_ao_1k.png",
+          "colorspace": "linear",
+          "sha256": "bc3a165c6ba04ec309405f5aed2ca4e06fc1711dda7a3cd94133c4c1ae5e4b32",
+          "component": "red"
+        },
+        "leaves_arm": {
+          "path": "art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_leaves_arm_1k.png",
+          "colorspace": "linear",
+          "sha256": "611eca02546f9569527d4ea98745f08fdd134e6fc974be0fb4bdc4608053eece",
+          "component": "red"
+        },
+        "leaves_diff": {
+          "path": "art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_leaves_diff_1k.png",
+          "colorspace": "sRGB",
+          "sha256": "63d3563a22a62151f338ceb4e992de7c31b62e8e3582e2762d5071f02d286349",
+          "component": "rgb"
+        },
+        "leaves_disp": {
+          "path": "art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_leaves_disp_1k.png",
+          "colorspace": "linear",
+          "sha256": "c6b15b91c804d3b6631f7a373d851564c0aa05e3f0f6955f3780f1445c48f38f",
+          "component": "red"
+        },
+        "leaves_nor_dx": {
+          "path": "art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_leaves_nor_dx_1k.png",
+          "colorspace": "linear",
+          "sha256": "c1587e728db4578fb0049d6aef4a54f6f4a655dae513cad4feb1aca80d28f0d4",
+          "component": "rgb"
+        },
+        "leaves_nor_gl": {
+          "path": "art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_leaves_nor_gl_1k.png",
+          "colorspace": "linear",
+          "sha256": "e58402f30c7108ec6321e0c689009508f6ab138c81612d9a67238038ac108211",
+          "component": "rgb"
+        },
+        "leaves_rough": {
+          "path": "art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_leaves_rough_1k.png",
+          "colorspace": "linear",
+          "sha256": "b7e9a1857f63617344968bb43693786bfed7dd15bedca3193ce333f233fbab78",
+          "component": "red"
+        },
+        "nor_dx": {
+          "path": "art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_nor_dx_1k.png",
+          "colorspace": "linear",
+          "sha256": "371c98a7f0833fefc666b3bc3e2cb9a6e90cdfdb6f3fd052e8f0abd28c5c9272",
+          "component": "rgb"
+        },
+        "nor_gl": {
+          "path": "art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_nor_gl_1k.png",
+          "colorspace": "linear",
+          "sha256": "039b67b309fd3cf7333fbd8e2a8db0f253a87def5e7e9d88b06401d8f605ed1f",
+          "component": "rgb"
+        },
+        "Rough": {
+          "path": "art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_rough_1k.png",
+          "colorspace": "linear",
+          "sha256": "eab3874d010768431baac106ca2904e8bfb7736e6fa17fecf24855ca37bcf565",
+          "component": "red"
+        }
+      },
+      "model_path": "art/environment/polyhaven-src/island_tree_01/island_tree_01_1k.fbx",
+      "model_sha256": "3f193c0ca27977b001682aa4ba3eef654b31c1af60a166af4024a11cc19a2948",
+      "geometry_policy": "Original source unchanged; no decimation, refit, UV or normal editing",
+      "review_status": "rejected_for_dense_rts_forest_hero_only_candidate",
+      "native_inspection": {
+        "blender_version": "5.2.2 LTS",
+        "meshes": [
+          {
+            "name": "island_tree_01_LOD0",
+            "vertices": 1218741,
+            "triangles": 1599403,
+            "materials": [
+              "island_tree_01",
+              "island_tree_01_leaves",
+              "island_tree_01_branches"
+            ],
+            "triangles_by_material": {
+              "0": 34787,
+              "1": 1060032,
+              "2": 504584
+            },
+            "bounds_blender_min": [
+              -2.3444457054138184,
+              -2.2341415882110596,
+              -0.020328320562839508
+            ],
+            "bounds_blender_max": [
+              2.4107038974761963,
+              2.583538770675659,
+              5.007119178771973
+            ],
+            "dimensions_blender_xyz_m": [
+              4.755149602890015,
+              4.817680358886719,
+              5.027447499334812
+            ],
+            "uv_layers": [
+              "UVMap"
+            ],
+            "active_uv": "UVMap",
+            "has_custom_normals": true,
+            "parent": null,
+            "matrix_world": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                1.6292067073209182e-07,
+                0.0
+              ],
+              [
+                0.0,
+                -1.6292067073209182e-07,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "modifiers": []
+          }
+        ],
+        "materials_from_fbx": [
+          {
+            "name": "Dots Stroke",
+            "backface_culling": false,
+            "images": []
+          },
+          {
+            "name": "island_tree_01",
+            "backface_culling": false,
+            "images": [
+              {
+                "node": "Image Texture",
+                "image": "island_tree_01_diff.png",
+                "filepath": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_diff_1k.jpg",
+                "resolution": [
+                  1024,
+                  1024
+                ],
+                "colorspace": "sRGB"
+              },
+              {
+                "node": "Image Texture.001",
+                "image": "island_tree_01_nor_gl.png",
+                "filepath": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_nor_gl_1k.exr",
+                "resolution": [
+                  1024,
+                  1024
+                ],
+                "colorspace": "Non-Color"
+              },
+              {
+                "node": "Image Texture.002",
+                "image": "island_tree_01_rough.png",
+                "filepath": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_rough_1k.exr",
+                "resolution": [
+                  1024,
+                  1024
+                ],
+                "colorspace": "Non-Color"
+              }
+            ]
+          },
+          {
+            "name": "island_tree_01_branches",
+            "backface_culling": false,
+            "images": [
+              {
+                "node": "Image Texture",
+                "image": "island_tree_01_branches_diff.png",
+                "filepath": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_branches_diff_1k.png",
+                "resolution": [
+                  1024,
+                  1024
+                ],
+                "colorspace": "sRGB"
+              },
+              {
+                "node": "Image Texture.001",
+                "image": "island_tree_01_branches_nor_gl.png",
+                "filepath": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_branches_nor_gl_1k.png",
+                "resolution": [
+                  1024,
+                  1024
+                ],
+                "colorspace": "Non-Color"
+              },
+              {
+                "node": "Image Texture.002",
+                "image": "island_tree_01_branches_rough.png",
+                "filepath": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_branches_rough_1k.png",
+                "resolution": [
+                  1024,
+                  1024
+                ],
+                "colorspace": "Non-Color"
+              }
+            ]
+          },
+          {
+            "name": "island_tree_01_leaves",
+            "backface_culling": false,
+            "images": [
+              {
+                "node": "Image Texture",
+                "image": "island_tree_01_leaves_diff.png",
+                "filepath": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_leaves_diff_1k.png",
+                "resolution": [
+                  1024,
+                  1024
+                ],
+                "colorspace": "sRGB"
+              },
+              {
+                "node": "Image Texture.001",
+                "image": "island_tree_01_leaves_alpha.png",
+                "filepath": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_leaves_alpha_1k.png",
+                "resolution": [
+                  1024,
+                  1024
+                ],
+                "colorspace": "Non-Color"
+              },
+              {
+                "node": "Image Texture.002",
+                "image": "island_tree_01_leaves_nor_gl.png",
+                "filepath": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_leaves_nor_gl_1k.png",
+                "resolution": [
+                  1024,
+                  1024
+                ],
+                "colorspace": "Non-Color"
+              },
+              {
+                "node": "Image Texture.003",
+                "image": "island_tree_01_leaves_rough.png",
+                "filepath": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_leaves_rough_1k.png",
+                "resolution": [
+                  1024,
+                  1024
+                ],
+                "colorspace": "Non-Color"
+              }
+            ]
+          },
+          {
+            "name": "Material",
+            "backface_culling": false,
+            "images": []
+          }
+        ],
+        "scene_unit_scale": 1.0,
+        "note": "FBX import material approximation, not full original Blender leaf-translucency graph",
+        "native_lod_names": [
+          "island_tree_01_LOD0"
+        ]
+      },
+      "native_blend_path": "art/environment/polyhaven-src/island_tree_01/island_tree_01_1k.blend",
+      "native_blend_sha256": "127d2b17778e0dd28508195e9095fe6e78cbcb6c6adb02faf3034506e29c9cd3",
+      "native_blend_inspection": {
+        "meshes": [
+          {
+            "name": "island_tree_01_branches_a_LOD0",
+            "vertices": 308,
+            "triangles": 570,
+            "materials": [
+              "island_tree_01_branches"
+            ],
+            "triangles_by_material": {
+              "0": 570
+            },
+            "bounds_blender_min": [
+              -5.494009494781494,
+              -0.017329005524516106,
+              -0.0003773199568968266
+            ],
+            "bounds_blender_max": [
+              -5.253145694732666,
+              0.09585757553577423,
+              0.4126223921775818
+            ],
+            "dimensions_blender_xyz_m": [
+              0.24086380004882812,
+              0.11318658106029034,
+              0.4129997121344786
+            ],
+            "uv_layers": [
+              "UVMap"
+            ],
+            "active_uv": "UVMap",
+            "has_custom_normals": false,
+            "parent": null,
+            "matrix_world": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                -5.359748840332031
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "modifiers": []
+          },
+          {
+            "name": "island_tree_01_branches_a_LOD1",
+            "vertices": 108,
+            "triangles": 171,
+            "materials": [
+              "island_tree_01_branches"
+            ],
+            "triangles_by_material": {
+              "0": 171
+            },
+            "bounds_blender_min": [
+              -5.494874477386475,
+              -0.01707557961344719,
+              -0.0003773199568968266
+            ],
+            "bounds_blender_max": [
+              -5.253063201904297,
+              0.09575927257537842,
+              0.40990641713142395
+            ],
+            "dimensions_blender_xyz_m": [
+              0.24181127548217773,
+              0.11283485218882561,
+              0.4102837370883208
+            ],
+            "uv_layers": [
+              "UVMap"
+            ],
+            "active_uv": "UVMap",
+            "has_custom_normals": false,
+            "parent": null,
+            "matrix_world": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                -5.359748840332031
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "modifiers": []
+          },
+          {
+            "name": "island_tree_01_branches_b_LOD0",
+            "vertices": 246,
+            "triangles": 451,
+            "materials": [
+              "island_tree_01_branches"
+            ],
+            "triangles_by_material": {
+              "0": 451
+            },
+            "bounds_blender_min": [
+              -5.206230163574219,
+              -0.0544438436627388,
+              -0.0021028886549174786
+            ],
+            "bounds_blender_max": [
+              -5.057007312774658,
+              0.14828220009803772,
+              0.3012103736400604
+            ],
+            "dimensions_blender_xyz_m": [
+              0.14922285079956055,
+              0.20272604376077652,
+              0.3033132622949779
+            ],
+            "uv_layers": [
+              "UVMap"
+            ],
+            "active_uv": "UVMap",
+            "has_custom_normals": false,
+            "parent": null,
+            "matrix_world": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                -5.12269401550293
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "modifiers": []
+          },
+          {
+            "name": "island_tree_01_branches_b_LOD1",
+            "vertices": 88,
+            "triangles": 135,
+            "materials": [
+              "island_tree_01_branches"
+            ],
+            "triangles_by_material": {
+              "0": 135
+            },
+            "bounds_blender_min": [
+              -5.198748588562012,
+              -0.05430576205253601,
+              -0.0021028886549174786
+            ],
+            "bounds_blender_max": [
+              -5.0569963455200195,
+              0.14483889937400818,
+              0.29976171255111694
+            ],
+            "dimensions_blender_xyz_m": [
+              0.1417522430419922,
+              0.1991446614265442,
+              0.3018646012060344
+            ],
+            "uv_layers": [
+              "UVMap"
+            ],
+            "active_uv": "UVMap",
+            "has_custom_normals": false,
+            "parent": null,
+            "matrix_world": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                -5.12269401550293
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "modifiers": []
+          },
+          {
+            "name": "island_tree_01_branches_c_LOD0",
+            "vertices": 477,
+            "triangles": 882,
+            "materials": [
+              "island_tree_01_branches"
+            ],
+            "triangles_by_material": {
+              "0": 882
+            },
+            "bounds_blender_min": [
+              -4.963623523712158,
+              -0.06615421921014786,
+              -0.0023263089824467897
+            ],
+            "bounds_blender_max": [
+              -4.67917013168335,
+              0.10320887714624405,
+              0.3600413203239441
+            ],
+            "dimensions_blender_xyz_m": [
+              0.2844533920288086,
+              0.1693630963563919,
+              0.3623676293063909
+            ],
+            "uv_layers": [
+              "UVMap"
+            ],
+            "active_uv": "UVMap",
+            "has_custom_normals": false,
+            "parent": null,
+            "matrix_world": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                -4.804218292236328
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "modifiers": []
+          },
+          {
+            "name": "island_tree_01_branches_c_LOD1",
+            "vertices": 168,
+            "triangles": 264,
+            "materials": [
+              "island_tree_01_branches"
+            ],
+            "triangles_by_material": {
+              "0": 264
+            },
+            "bounds_blender_min": [
+              -4.963562488555908,
+              -0.06564581394195557,
+              -0.002195765031501651
+            ],
+            "bounds_blender_max": [
+              -4.6796135902404785,
+              0.10304813832044601,
+              0.3598898947238922
+            ],
+            "dimensions_blender_xyz_m": [
+              0.2839488983154297,
+              0.16869395226240158,
+              0.36208565975539386
+            ],
+            "uv_layers": [
+              "UVMap"
+            ],
+            "active_uv": "UVMap",
+            "has_custom_normals": false,
+            "parent": null,
+            "matrix_world": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                -4.804218292236328
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "modifiers": []
+          },
+          {
+            "name": "island_tree_01_branches_d_LOD0",
+            "vertices": 462,
+            "triangles": 851,
+            "materials": [
+              "island_tree_01_branches"
+            ],
+            "triangles_by_material": {
+              "0": 851
+            },
+            "bounds_blender_min": [
+              -4.627399444580078,
+              -0.10091276466846466,
+              -0.00194802216719836
+            ],
+            "bounds_blender_max": [
+              -4.368785381317139,
+              0.219762921333313,
+              0.36353442072868347
+            ],
+            "dimensions_blender_xyz_m": [
+              0.25861406326293945,
+              0.32067568600177765,
+              0.36548244289588183
+            ],
+            "uv_layers": [
+              "UVMap"
+            ],
+            "active_uv": "UVMap",
+            "has_custom_normals": false,
+            "parent": null,
+            "matrix_world": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                -4.510013580322266
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "modifiers": []
+          },
+          {
+            "name": "island_tree_01_branches_d_LOD1",
+            "vertices": 163,
+            "triangles": 254,
+            "materials": [
+              "island_tree_01_branches"
+            ],
+            "triangles_by_material": {
+              "0": 254
+            },
+            "bounds_blender_min": [
+              -4.6273298263549805,
+              -0.09972446411848068,
+              -0.0019424144411459565
+            ],
+            "bounds_blender_max": [
+              -4.368863582611084,
+              0.21919965744018555,
+              0.36360102891921997
+            ],
+            "dimensions_blender_xyz_m": [
+              0.2584662437438965,
+              0.31892412155866623,
+              0.3655434433603659
+            ],
+            "uv_layers": [
+              "UVMap"
+            ],
+            "active_uv": "UVMap",
+            "has_custom_normals": false,
+            "parent": null,
+            "matrix_world": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                -4.510013580322266
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "modifiers": []
+          },
+          {
+            "name": "island_tree_01_geometry_nodes",
+            "vertices": 17444,
+            "triangles": 34787,
+            "materials": [
+              "island_tree_01"
+            ],
+            "triangles_by_material": {
+              "0": 34787
+            },
+            "bounds_blender_min": [
+              -10.053421020507812,
+              -2.2341415882110596,
+              -0.020327899605035782
+            ],
+            "bounds_blender_max": [
+              -5.298272132873535,
+              2.5835378170013428,
+              5.0071187019348145
+            ],
+            "dimensions_blender_xyz_m": [
+              4.755148887634277,
+              4.817679405212402,
+              5.02744660153985
+            ],
+            "uv_layers": [
+              "UVMap"
+            ],
+            "active_uv": "UVMap",
+            "has_custom_normals": false,
+            "parent": null,
+            "matrix_world": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                -7.708975791931152
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "modifiers": [
+              "NODES"
+            ]
+          },
+          {
+            "name": "island_tree_01_leaves_a_LOD0",
+            "vertices": 985,
+            "triangles": 1268,
+            "materials": [
+              "island_tree_01_leaves",
+              "island_tree_01_branches"
+            ],
+            "triangles_by_material": {
+              "0": 888,
+              "1": 380
+            },
+            "bounds_blender_min": [
+              -6.329958915710449,
+              -0.01769261807203293,
+              -0.002625439316034317
+            ],
+            "bounds_blender_max": [
+              -6.19468355178833,
+              0.0636938288807869,
+              0.1896309107542038
+            ],
+            "dimensions_blender_xyz_m": [
+              0.13527536392211914,
+              0.08138644695281982,
+              0.1922563500702381
+            ],
+            "uv_layers": [
+              "UVMap"
+            ],
+            "active_uv": "UVMap",
+            "has_custom_normals": false,
+            "parent": null,
+            "matrix_world": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                -6.25727653503418
+              ],
+              [
+                0.0,
+                -4.371138828673793e-08,
+                -1.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                -4.371138828673793e-08,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "modifiers": []
+          },
+          {
+            "name": "island_tree_01_leaves_a_LOD1",
+            "vertices": 434,
+            "triangles": 380,
+            "materials": [
+              "island_tree_01_leaves",
+              "island_tree_01_branches"
+            ],
+            "triangles_by_material": {
+              "0": 309,
+              "1": 71
+            },
+            "bounds_blender_min": [
+              -6.330105781555176,
+              -0.017493735998868942,
+              -0.002746538957580924
+            ],
+            "bounds_blender_max": [
+              -6.194665431976318,
+              0.06382561475038528,
+              0.1896309107542038
+            ],
+            "dimensions_blender_xyz_m": [
+              0.13544034957885742,
+              0.08131935074925423,
+              0.19237744971178472
+            ],
+            "uv_layers": [
+              "UVMap"
+            ],
+            "active_uv": "UVMap",
+            "has_custom_normals": false,
+            "parent": null,
+            "matrix_world": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                -6.25727653503418
+              ],
+              [
+                0.0,
+                -4.371138828673793e-08,
+                -1.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                -4.371138828673793e-08,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "modifiers": []
+          },
+          {
+            "name": "island_tree_01_leaves_b_LOD0",
+            "vertices": 1191,
+            "triangles": 1531,
+            "materials": [
+              "island_tree_01_leaves",
+              "island_tree_01_branches"
+            ],
+            "triangles_by_material": {
+              "1": 451,
+              "0": 1080
+            },
+            "bounds_blender_min": [
+              -6.0950727462768555,
+              -0.10737401247024536,
+              -0.0004565193667076528
+            ],
+            "bounds_blender_max": [
+              -5.929133415222168,
+              0.06141573190689087,
+              0.22384348511695862
+            ],
+            "dimensions_blender_xyz_m": [
+              0.1659393310546875,
+              0.16878974437713623,
+              0.22430000448366627
+            ],
+            "uv_layers": [
+              "UVMap"
+            ],
+            "active_uv": "UVMap",
+            "has_custom_normals": false,
+            "parent": null,
+            "matrix_world": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                -6.020221710205078
+              ],
+              [
+                0.0,
+                -4.371138828673793e-08,
+                -1.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                -4.371138828673793e-08,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "modifiers": []
+          },
+          {
+            "name": "island_tree_01_leaves_b_LOD1",
+            "vertices": 516,
+            "triangles": 459,
+            "materials": [
+              "island_tree_01_leaves",
+              "island_tree_01_branches"
+            ],
+            "triangles_by_material": {
+              "1": 98,
+              "0": 361
+            },
+            "bounds_blender_min": [
+              -6.095149993896484,
+              -0.10763688385486603,
+              -0.0004511669394560158
+            ],
+            "bounds_blender_max": [
+              -5.928899765014648,
+              0.061518505215644836,
+              0.22398845851421356
+            ],
+            "dimensions_blender_xyz_m": [
+              0.16625022888183594,
+              0.16915538907051086,
+              0.22443962545366958
+            ],
+            "uv_layers": [
+              "UVMap"
+            ],
+            "active_uv": "UVMap",
+            "has_custom_normals": false,
+            "parent": null,
+            "matrix_world": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                -6.020221710205078
+              ],
+              [
+                0.0,
+                -4.371138828673793e-08,
+                -1.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                -4.371138828673793e-08,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "modifiers": []
+          },
+          {
+            "name": "island_tree_01_leaves_c_LOD0",
+            "vertices": 2295,
+            "triangles": 2970,
+            "materials": [
+              "island_tree_01_leaves",
+              "island_tree_01_branches"
+            ],
+            "triangles_by_material": {
+              "1": 906,
+              "0": 2064
+            },
+            "bounds_blender_min": [
+              -5.780249118804932,
+              -0.08967004716396332,
+              -0.0012010758509859443
+            ],
+            "bounds_blender_max": [
+              -5.560530662536621,
+              0.0691065788269043,
+              0.2582162320613861
+            ],
+            "dimensions_blender_xyz_m": [
+              0.21971845626831055,
+              0.15877662599086761,
+              0.25941730791237205
+            ],
+            "uv_layers": [
+              "UVMap"
+            ],
+            "active_uv": "UVMap",
+            "has_custom_normals": false,
+            "parent": null,
+            "matrix_world": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                -5.701745986938477
+              ],
+              [
+                0.0,
+                -4.371138828673793e-08,
+                -1.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                -4.371138828673793e-08,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "modifiers": []
+          },
+          {
+            "name": "island_tree_01_leaves_c_LOD1",
+            "vertices": 1002,
+            "triangles": 891,
+            "materials": [
+              "island_tree_01_leaves",
+              "island_tree_01_branches"
+            ],
+            "triangles_by_material": {
+              "1": 181,
+              "0": 710
+            },
+            "bounds_blender_min": [
+              -5.779987812042236,
+              -0.08958156406879425,
+              -0.00114630616735667
+            ],
+            "bounds_blender_max": [
+              -5.560497760772705,
+              0.06923652440309525,
+              0.2578340470790863
+            ],
+            "dimensions_blender_xyz_m": [
+              0.21949005126953125,
+              0.1588180884718895,
+              0.258980353246443
+            ],
+            "uv_layers": [
+              "UVMap"
+            ],
+            "active_uv": "UVMap",
+            "has_custom_normals": false,
+            "parent": null,
+            "matrix_world": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                -5.701745986938477
+              ],
+              [
+                0.0,
+                -4.371138828673793e-08,
+                -1.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                -4.371138828673793e-08,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "modifiers": []
+          },
+          {
+            "name": "island_tree_01_LOD0",
+            "vertices": 1218741,
+            "triangles": 1599403,
+            "materials": [
+              "island_tree_01",
+              "island_tree_01_leaves",
+              "island_tree_01_branches"
+            ],
+            "triangles_by_material": {
+              "0": 34787,
+              "1": 1060032,
+              "2": 504584
+            },
+            "bounds_blender_min": [
+              -2.3444457054138184,
+              -2.2341415882110596,
+              -0.020327899605035782
+            ],
+            "bounds_blender_max": [
+              2.4107038974761963,
+              2.583538055419922,
+              5.0071187019348145
+            ],
+            "dimensions_blender_xyz_m": [
+              4.755149602890015,
+              4.8176796436309814,
+              5.02744660153985
+            ],
+            "uv_layers": [
+              "UVMap"
+            ],
+            "active_uv": "UVMap",
+            "has_custom_normals": false,
+            "parent": null,
+            "matrix_world": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "modifiers": []
+          },
+          {
+            "name": "island_tree_01_LOD1",
+            "vertices": 547612,
+            "triangles": 519809,
+            "materials": [
+              "island_tree_01",
+              "island_tree_01_leaves",
+              "island_tree_01_branches"
+            ],
+            "triangles_by_material": {
+              "1": 362800,
+              "0": 17393,
+              "2": 139616
+            },
+            "bounds_blender_min": [
+              -2.344745397567749,
+              -2.234727382659912,
+              -0.020327899605035782
+            ],
+            "bounds_blender_max": [
+              2.410998582839966,
+              2.5837793350219727,
+              5.007004737854004
+            ],
+            "dimensions_blender_xyz_m": [
+              4.755743980407715,
+              4.818506717681885,
+              5.02733263745904
+            ],
+            "uv_layers": [
+              "UVMap"
+            ],
+            "active_uv": "UVMap",
+            "has_custom_normals": false,
+            "parent": null,
+            "matrix_world": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "modifiers": []
+          }
+        ],
+        "native_lod_names": [
+          "island_tree_01_branches_a_LOD0",
+          "island_tree_01_branches_a_LOD1",
+          "island_tree_01_branches_b_LOD0",
+          "island_tree_01_branches_b_LOD1",
+          "island_tree_01_branches_c_LOD0",
+          "island_tree_01_branches_c_LOD1",
+          "island_tree_01_branches_d_LOD0",
+          "island_tree_01_branches_d_LOD1",
+          "island_tree_01_leaves_a_LOD0",
+          "island_tree_01_leaves_a_LOD1",
+          "island_tree_01_leaves_b_LOD0",
+          "island_tree_01_leaves_b_LOD1",
+          "island_tree_01_leaves_c_LOD0",
+          "island_tree_01_leaves_c_LOD1",
+          "island_tree_01_LOD0",
+          "island_tree_01_LOD1"
+        ],
+        "collections": [
+          "island_tree_01",
+          "island_tree_01_branches_LOD0",
+          "island_tree_01_branches_LOD1",
+          "island_tree_01_geometry",
+          "island_tree_01_geometry_nodes",
+          "island_tree_01_leaves_LOD0",
+          "island_tree_01_leaves_LOD1",
+          "island_tree_01_LOD0",
+          "island_tree_01_LOD1"
+        ],
+        "geometry_edited": false
+      },
+      "material_channel_groups": [
+        {
+          "name": "island_tree_01",
+          "metallic": 0,
+          "alpha_mode": "opaque",
+          "double_sided": false,
+          "roughness_to_smoothness": "Convert once: smoothness = 1 - source roughness",
+          "channels": {
+            "base_color": {
+              "path": "art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_diff_1k.png",
+              "colorspace": "sRGB",
+              "sha256": "519a34062e3eb42e14d9f2b6454669d8e71ccf0ab0b95fe05e00f31ee7ffdf29",
+              "component": "rgb"
+            },
+            "normal_gl": {
+              "path": "art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_nor_gl_1k.png",
+              "colorspace": "linear",
+              "sha256": "039b67b309fd3cf7333fbd8e2a8db0f253a87def5e7e9d88b06401d8f605ed1f",
+              "component": "rgb"
+            },
+            "roughness": {
+              "path": "art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_rough_1k.png",
+              "colorspace": "linear",
+              "sha256": "eab3874d010768431baac106ca2904e8bfb7736e6fa17fecf24855ca37bcf565",
+              "component": "red"
+            },
+            "AO": {
+              "path": "art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_ao_1k.png",
+              "colorspace": "linear",
+              "sha256": "5f09cbd4263be3bfe892bf7e7b97a131125807f86f68b1b484db33e5f296cba0",
+              "component": "red"
+            }
+          }
+        },
+        {
+          "name": "island_tree_01_leaves",
+          "metallic": 0,
+          "alpha_mode": "cutout",
+          "double_sided": true,
+          "roughness_to_smoothness": "Convert once: smoothness = 1 - source roughness",
+          "channels": {
+            "base_color": {
+              "path": "art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_leaves_diff_1k.png",
+              "colorspace": "sRGB",
+              "sha256": "63d3563a22a62151f338ceb4e992de7c31b62e8e3582e2762d5071f02d286349",
+              "component": "rgb"
+            },
+            "normal_gl": {
+              "path": "art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_leaves_nor_gl_1k.png",
+              "colorspace": "linear",
+              "sha256": "e58402f30c7108ec6321e0c689009508f6ab138c81612d9a67238038ac108211",
+              "component": "rgb"
+            },
+            "roughness": {
+              "path": "art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_leaves_rough_1k.png",
+              "colorspace": "linear",
+              "sha256": "b7e9a1857f63617344968bb43693786bfed7dd15bedca3193ce333f233fbab78",
+              "component": "red"
+            },
+            "AO": {
+              "path": "art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_leaves_ao_1k.png",
+              "colorspace": "linear",
+              "sha256": "bc3a165c6ba04ec309405f5aed2ca4e06fc1711dda7a3cd94133c4c1ae5e4b32",
+              "component": "red"
+            },
+            "alpha": {
+              "path": "art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_leaves_alpha_1k.png",
+              "colorspace": "linear",
+              "sha256": "f4341f147988dbe6b58d9ca841a8f0e4bcff25bc40d05f9877da82006d489c39",
+              "component": "red"
+            }
+          }
+        },
+        {
+          "name": "island_tree_01_branches",
+          "metallic": 0,
+          "alpha_mode": "opaque",
+          "double_sided": false,
+          "roughness_to_smoothness": "Convert once: smoothness = 1 - source roughness",
+          "channels": {
+            "base_color": {
+              "path": "art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_branches_diff_1k.png",
+              "colorspace": "sRGB",
+              "sha256": "4485125d88b9dcce618220e8850f8b3ec586d9cdebe08e28aca777206eef56e2",
+              "component": "rgb"
+            },
+            "normal_gl": {
+              "path": "art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_branches_nor_gl_1k.png",
+              "colorspace": "linear",
+              "sha256": "e72c3bf652d998d75ef98fc51fb7a10de3b7efd072c191a8eb9c92b6f93340f0",
+              "component": "rgb"
+            },
+            "roughness": {
+              "path": "art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_branches_rough_1k.png",
+              "colorspace": "linear",
+              "sha256": "c6db3c33f23654a8d31dcf5609d19d97ab1036b36b3d9a6bcd50ecc975f8fb3c",
+              "component": "red"
+            },
+            "AO": {
+              "path": "art/environment/polyhaven-src/island_tree_01/textures/island_tree_01_branches_ao_1k.png",
+              "colorspace": "linear",
+              "sha256": "e9e7f624504a589feb2613c5f9864fbe484a636de2c1ecb4041d94fbc1a6e4c2",
+              "component": "red"
+            }
+          }
+        }
+      ],
+      "native_full_tree_lods": [
+        {
+          "name": "island_tree_01_LOD0",
+          "triangles": 1599403
+        },
+        {
+          "name": "island_tree_01_LOD1",
+          "triangles": 519809
+        }
+      ],
+      "selection": {
+        "dense_forest_approved": false,
+        "selected_forest_lods": [],
+        "reason": "FBX only has 1,599,403-triangle LOD0. Blend full-tree LOD1 is 519,809 triangles; helper branch/leaf LODs and Geometry Nodes base are not complete trees.",
+        "hero_preview": "Optional single original FBX tree only if parent explicitly accepts cost; not a forest replacement"
+      },
+      "unit_note": "Native FBX imported with scale 1 into Blender; readback world bounds retained. Unity measures its own whole-root bounds; no per-axis or per-piece refitting."
+    },
+    {
+      "id": "boulder_01",
+      "title": "Boulder 01",
+      "authors": {
+        "Rico Cilliers": "All"
+      },
+      "source_url": "https://polyhaven.com/a/boulder_01",
+      "license": "CC0-1.0",
+      "license_url": "https://polyhaven.com/license",
+      "official_info": {
+        "lods": true,
+        "name": "Boulder 01",
+        "categories": [
+          "rocks",
+          "nature",
+          "collection: verdant_trail"
+        ],
+        "type": 2,
+        "version_required": {
+          "blend": "4.0.1"
+        },
+        "tags": [
+          "rocks",
+          "boulder",
+          "lichen",
+          "landscape",
+          "rock",
+          "geology",
+          "formation",
+          "weathered",
+          "rock face",
+          "cliff"
+        ],
+        "authors": {
+          "Rico Cilliers": "All"
+        },
+        "info": null,
+        "date_published": 1707177600,
+        "staging": null,
+        "max_resolution": [
+          8192,
+          8192
+        ],
+        "polycount": 123976,
+        "texel_density": 2771.1478433030898,
+        "dimensions": [
+          1272.6830840110779,
+          1830.7338953018188,
+          1003.8918256759644
+        ],
+        "sponsors": [
+          "82322099"
+        ],
+        "files_hash": "83e2b16d6a089f8077d3eebe0462615c2ba0e7f6",
+        "description": "Free 8K photoreal boulder model with weathered, jagged surfaces, subtle lichen and rusty mineral streaks, and rugged, cliff-like rock face detail.",
+        "category_id": "229f6baa-7051-5eb5-8f2d-ed2aba17c8ea",
+        "category": "Nature/Rocks & Stone/Boulders",
+        "collections": [
+          "verdant_trail"
+        ],
+        "attributes": {
+          "condition": [
+            "weathered"
+          ],
+          "material": [
+            "stone"
+          ],
+          "lods": true
+        },
+        "img_version": "b3b100e5",
+        "download_count": 45774,
+        "thumbnail_url": "https://cdn.polyhaven.com/asset_img/thumbs/boulder_01.png?width=256&height=256&format=webp&v=b3b100e5"
+      },
+      "official_info_api": "https://api.polyhaven.com/info/boulder_01",
+      "official_files_api": "https://api.polyhaven.com/files/boulder_01",
+      "resolution": "2k",
+      "files": [
+        {
+          "path": "art/environment/polyhaven-src/boulder_01/boulder_01_2k.fbx",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/fbx/2k/boulder_01/boulder_01_2k.fbx",
+          "bytes": 6482860,
+          "md5": "e20c1ed68dc10e039761d6bda58c8ef4",
+          "sha256": "b1125cd1e08a425fa89bc62b96279b40e9a921618e12bfbbe0d575cb78f53c95"
+        },
+        {
+          "path": "art/environment/polyhaven-src/boulder_01/textures/boulder_01_nor_gl_2k.exr",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/2k/boulder_01/boulder_01_nor_gl_2k.exr",
+          "bytes": 9451901,
+          "md5": "42b8a522a3418fac8bb9de32f5266867",
+          "sha256": "73683b485cf8e5768a62a3d56ddc5a511b4f8cf90348d9064755824a5207c060"
+        },
+        {
+          "path": "art/environment/polyhaven-src/boulder_01/textures/boulder_01_diff_2k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/boulder_01/boulder_01_diff_2k.jpg",
+          "bytes": 3672483,
+          "md5": "63571077317c9a2d1db95894e0268a07",
+          "sha256": "90bbaa17c1fe0254d2b0b6e5148264fa834953a72724d566f14af029eebe3ca3"
+        },
+        {
+          "path": "art/environment/polyhaven-src/boulder_01/textures/boulder_01_rough_2k.exr",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/2k/boulder_01/boulder_01_rough_2k.exr",
+          "bytes": 1767701,
+          "md5": "ec8605524663b1933c4bf98169e92850",
+          "sha256": "8d295ee0bcbebecfc1c92ab159828a33a69095fada961a7d6ae46df3cc986aca"
+        },
+        {
+          "path": "art/environment/polyhaven-src/boulder_01/textures/boulder_01_diff_2k.png",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/boulder_01/boulder_01_diff_2k.png",
+          "bytes": 21373302,
+          "md5": "5ab83faba3ff9d0594258939e4f3d13c",
+          "sha256": "e29bc8c99e8c5a738e59f41c6e0c9e6f8733d3abbd9a6ff882352163cd71fec1"
+        },
+        {
+          "path": "art/environment/polyhaven-src/boulder_01/textures/boulder_01_nor_dx_2k.png",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/boulder_01/boulder_01_nor_dx_2k.png",
+          "bytes": 22138310,
+          "md5": "e14e1fcd7ac1a86a459f1264c183dae7",
+          "sha256": "40877c2831c0dcd8dae53a55d000771ad1fb2f8cf8657ceacd4f2e2e078d761c"
+        },
+        {
+          "path": "art/environment/polyhaven-src/boulder_01/textures/boulder_01_nor_gl_2k.png",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/boulder_01/boulder_01_nor_gl_2k.png",
+          "bytes": 22138290,
+          "md5": "2dc898e3bd8776c4462f2b4a7e1e2cfb",
+          "sha256": "213bb8573f2012a153e3528f234b77843a98fddbdcd58a3418cd42a3cc8e4b96"
+        },
+        {
+          "path": "art/environment/polyhaven-src/boulder_01/textures/boulder_01_arm_2k.png",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/boulder_01/boulder_01_arm_2k.png",
+          "bytes": 13733909,
+          "md5": "fbb1de2a1b14e79dfebb0c412a7e05c7",
+          "sha256": "6a1363580cd4d9657e3331bee7dfcc04fe91b35ae2a88f304e854ed6a3a53013"
+        },
+        {
+          "path": "art/environment/polyhaven-src/boulder_01/textures/boulder_01_ao_2k.png",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/boulder_01/boulder_01_ao_2k.png",
+          "bytes": 5705839,
+          "md5": "c3d30deafdbf5e9676900310189608d5",
+          "sha256": "0747af8fd71c0df0c2c1ed6adf93a97c9449aa86f980cd9614da8763983836a9"
+        },
+        {
+          "path": "art/environment/polyhaven-src/boulder_01/textures/boulder_01_rough_2k.png",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/boulder_01/boulder_01_rough_2k.png",
+          "bytes": 6271648,
+          "md5": "e9435fb64e5592ede6cb2c44770910bd",
+          "sha256": "c8c9a954f79e2cc13fcbe95ce4bab3126ade9ac5cbbcf05fb70ad5236d8fb22f"
+        }
+      ],
+      "texture_channels": {
+        "Diffuse": {
+          "path": "art/environment/polyhaven-src/boulder_01/textures/boulder_01_diff_2k.png",
+          "colorspace": "sRGB",
+          "sha256": "e29bc8c99e8c5a738e59f41c6e0c9e6f8733d3abbd9a6ff882352163cd71fec1",
+          "component": "rgb"
+        },
+        "nor_dx": {
+          "path": "art/environment/polyhaven-src/boulder_01/textures/boulder_01_nor_dx_2k.png",
+          "colorspace": "linear",
+          "sha256": "40877c2831c0dcd8dae53a55d000771ad1fb2f8cf8657ceacd4f2e2e078d761c",
+          "component": "rgb"
+        },
+        "nor_gl": {
+          "path": "art/environment/polyhaven-src/boulder_01/textures/boulder_01_nor_gl_2k.png",
+          "colorspace": "linear",
+          "sha256": "213bb8573f2012a153e3528f234b77843a98fddbdcd58a3418cd42a3cc8e4b96",
+          "component": "rgb"
+        },
+        "arm": {
+          "path": "art/environment/polyhaven-src/boulder_01/textures/boulder_01_arm_2k.png",
+          "colorspace": "linear",
+          "sha256": "6a1363580cd4d9657e3331bee7dfcc04fe91b35ae2a88f304e854ed6a3a53013",
+          "component": "red"
+        },
+        "AO": {
+          "path": "art/environment/polyhaven-src/boulder_01/textures/boulder_01_ao_2k.png",
+          "colorspace": "linear",
+          "sha256": "0747af8fd71c0df0c2c1ed6adf93a97c9449aa86f980cd9614da8763983836a9",
+          "component": "red"
+        },
+        "Rough": {
+          "path": "art/environment/polyhaven-src/boulder_01/textures/boulder_01_rough_2k.png",
+          "colorspace": "linear",
+          "sha256": "c8c9a954f79e2cc13fcbe95ce4bab3126ade9ac5cbbcf05fb70ad5236d8fb22f",
+          "component": "red"
+        }
+      },
+      "model_path": "art/environment/polyhaven-src/boulder_01/boulder_01_2k.fbx",
+      "model_sha256": "b1125cd1e08a425fa89bc62b96279b40e9a921618e12bfbbe0d575cb78f53c95",
+      "geometry_policy": "Original source unchanged; no decimation, refit, UV or normal editing",
+      "review_status": "native_lod_candidate_ready_for_unity_visual_review",
+      "native_inspection": {
+        "blender_version": "5.2.2 LTS",
+        "meshes": [
+          {
+            "name": "boulder_01_LOD0",
+            "vertices": 33063,
+            "triangles": 66122,
+            "materials": [
+              "boulder_01"
+            ],
+            "triangles_by_material": {
+              "0": 66122
+            },
+            "bounds_blender_min": [
+              -0.7481597065925598,
+              -0.8818937540054321,
+              -0.07364301383495331
+            ],
+            "bounds_blender_max": [
+              0.5239759087562561,
+              0.9484405517578125,
+              0.9301872849464417
+            ],
+            "dimensions_blender_xyz_m": [
+              1.272135615348816,
+              1.8303343057632446,
+              1.003830298781395
+            ],
+            "uv_layers": [
+              "UVMap"
+            ],
+            "active_uv": "UVMap",
+            "has_custom_normals": true,
+            "parent": null,
+            "matrix_world": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                4.371138828673793e-08,
+                0.0
+              ],
+              [
+                0.0,
+                -4.371138828673793e-08,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "modifiers": []
+          },
+          {
+            "name": "boulder_01_LOD1",
+            "vertices": 16532,
+            "triangles": 33060,
+            "materials": [
+              "boulder_01"
+            ],
+            "triangles_by_material": {
+              "0": 33060
+            },
+            "bounds_blender_min": [
+              -0.748157799243927,
+              -0.8822934031486511,
+              -0.07324522733688354
+            ],
+            "bounds_blender_max": [
+              0.5242701172828674,
+              0.9481316208839417,
+              0.929914116859436
+            ],
+            "dimensions_blender_xyz_m": [
+              1.2724279165267944,
+              1.8304250240325928,
+              1.0031593441963196
+            ],
+            "uv_layers": [
+              "UVMap"
+            ],
+            "active_uv": "UVMap",
+            "has_custom_normals": true,
+            "parent": null,
+            "matrix_world": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                4.371138828673793e-08,
+                0.0
+              ],
+              [
+                0.0,
+                -4.371138828673793e-08,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "modifiers": []
+          },
+          {
+            "name": "boulder_01_LOD2",
+            "vertices": 8267,
+            "triangles": 16530,
+            "materials": [
+              "boulder_01"
+            ],
+            "triangles_by_material": {
+              "0": 16530
+            },
+            "bounds_blender_min": [
+              -0.7484129667282104,
+              -0.8807294368743896,
+              -0.07326822727918625
+            ],
+            "bounds_blender_max": [
+              0.5242701172828674,
+              0.9470296502113342,
+              0.9302489161491394
+            ],
+            "dimensions_blender_xyz_m": [
+              1.2726830840110779,
+              1.8277590870857239,
+              1.0035171434283257
+            ],
+            "uv_layers": [
+              "UVMap"
+            ],
+            "active_uv": "UVMap",
+            "has_custom_normals": true,
+            "parent": null,
+            "matrix_world": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                4.371138828673793e-08,
+                0.0
+              ],
+              [
+                0.0,
+                -4.371138828673793e-08,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "modifiers": []
+          },
+          {
+            "name": "boulder_01_LOD3",
+            "vertices": 4134,
+            "triangles": 8264,
+            "materials": [
+              "boulder_01"
+            ],
+            "triangles_by_material": {
+              "0": 8264
+            },
+            "bounds_blender_min": [
+              -0.7481110692024231,
+              -0.8819288611412048,
+              -0.0716821625828743
+            ],
+            "bounds_blender_max": [
+              0.5223388671875,
+              0.9470296502113342,
+              0.9302489161491394
+            ],
+            "dimensions_blender_xyz_m": [
+              1.270449936389923,
+              1.828958511352539,
+              1.0019310787320137
+            ],
+            "uv_layers": [
+              "UVMap"
+            ],
+            "active_uv": "UVMap",
+            "has_custom_normals": true,
+            "parent": null,
+            "matrix_world": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                4.371138828673793e-08,
+                0.0
+              ],
+              [
+                0.0,
+                -4.371138828673793e-08,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "modifiers": []
+          }
+        ],
+        "materials_from_fbx": [
+          {
+            "name": "boulder_01",
+            "backface_culling": false,
+            "images": [
+              {
+                "node": "Image Texture",
+                "image": "boulder_01_diff.png",
+                "filepath": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/boulder_01/textures/boulder_01_diff_2k.jpg",
+                "resolution": [
+                  2048,
+                  2048
+                ],
+                "colorspace": "sRGB"
+              },
+              {
+                "node": "Image Texture.001",
+                "image": "boulder_01_nor_gl.png",
+                "filepath": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/boulder_01/textures/boulder_01_nor_gl_2k.exr",
+                "resolution": [
+                  2048,
+                  2048
+                ],
+                "colorspace": "Non-Color"
+              },
+              {
+                "node": "Image Texture.002",
+                "image": "boulder_01_rough.png",
+                "filepath": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/environment/polyhaven-src/boulder_01/textures/boulder_01_rough_2k.exr",
+                "resolution": [
+                  2048,
+                  2048
+                ],
+                "colorspace": "Non-Color"
+              }
+            ]
+          },
+          {
+            "name": "Dots Stroke",
+            "backface_culling": false,
+            "images": []
+          },
+          {
+            "name": "Material",
+            "backface_culling": false,
+            "images": []
+          }
+        ],
+        "scene_unit_scale": 1.0,
+        "note": "FBX import material approximation, not full original Blender leaf-translucency graph",
+        "native_lod_names": [
+          "boulder_01_LOD0",
+          "boulder_01_LOD1",
+          "boulder_01_LOD2",
+          "boulder_01_LOD3"
+        ]
+      },
+      "material_channel_groups": [
+        {
+          "name": "boulder_01",
+          "metallic": 0,
+          "alpha_mode": "opaque",
+          "double_sided": false,
+          "roughness_to_smoothness": "Convert once: smoothness = 1 - source roughness",
+          "channels": {
+            "base_color": {
+              "path": "art/environment/polyhaven-src/boulder_01/textures/boulder_01_diff_2k.png",
+              "colorspace": "sRGB",
+              "sha256": "e29bc8c99e8c5a738e59f41c6e0c9e6f8733d3abbd9a6ff882352163cd71fec1",
+              "component": "rgb"
+            },
+            "normal_gl": {
+              "path": "art/environment/polyhaven-src/boulder_01/textures/boulder_01_nor_gl_2k.png",
+              "colorspace": "linear",
+              "sha256": "213bb8573f2012a153e3528f234b77843a98fddbdcd58a3418cd42a3cc8e4b96",
+              "component": "rgb"
+            },
+            "roughness": {
+              "path": "art/environment/polyhaven-src/boulder_01/textures/boulder_01_rough_2k.png",
+              "colorspace": "linear",
+              "sha256": "c8c9a954f79e2cc13fcbe95ce4bab3126ade9ac5cbbcf05fb70ad5236d8fb22f",
+              "component": "red"
+            },
+            "AO": {
+              "path": "art/environment/polyhaven-src/boulder_01/textures/boulder_01_ao_2k.png",
+              "colorspace": "linear",
+              "sha256": "0747af8fd71c0df0c2c1ed6adf93a97c9449aa86f980cd9614da8763983836a9",
+              "component": "red"
+            }
+          }
+        }
+      ],
+      "selection": {
+        "near_native_object": "boulder_01_LOD2",
+        "far_native_object": "boulder_01_LOD3",
+        "near_triangles": 16530,
+        "far_triangles": 8264,
+        "note": "Original author LODs only. Disable other overlapping native meshes; source bounds/pivot retained; ground whole root from measured bounds, uniform scale only.",
+        "identity": "Licensed natural stone deposit candidate, not user's Tripo stone mine; no mining/economy behavior"
+      },
+      "unit_note": "Native FBX imported with scale 1 into Blender; readback world bounds retained. Unity measures its own whole-root bounds; no per-axis or per-piece refitting."
+    }
+  ],
+  "scope": "Native CC0 candidates only; no Blender category mutation or geometry edits",
+  "status": "native_verification_complete_boulder_visual_review_pending_tree_rejected_for_forest",
+  "stone_identity": "Licensed natural stone deposit candidate; NOT user Tripo stone mine",
+  "big_oak_status": "Not acquired; account-library addition incomplete"
+}
