@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-14",
+  "status": "source_fixture_checks_passed_user_visual_review_pending",
+  "layout_argument": "-showcaseLayout dark",
+  "scene": "Assets/_Tests/EnvironmentShowcase/Scenes/EnvironmentShowcase.unity",
+  "config": "Assets/_Tests/EnvironmentShowcase/Settings/DarkWildernessConfig.asset",
+  "reference_manifest": "art/concepts/2026-10-13-environment-forests/dark-revision.json",
+  "scope": "Independent Unity Terrain environment review. No economy, combat, navigation or unit-balance changes. Not a replacement for the production map.",
+  "terrain": {
+    "map_size_m": 128,
+    "layers": ["Grass_A", "Grass_Dry", "Dirt", "Mud", "Stone", "Road"],
+    "road_weight": 0,
+    "water": "Sea and closed pond; no river",
+    "footing": "Whole-model footprints have priority over adjacent soft terrain transitions; source meshes and assembly transforms are unchanged."
+  },
+  "sources": {
+    "historical_buildings": "Assets/_Tests/EnvironmentShowcase/Settings/dark-frozen-source-record.json",
+    "historical_mapping": "Assets/_Game/Art/CoastalImports/manifest.json",
+    "neutral_buildings": "art/environment/landmark_handoff.json",
+    "gold_and_iron": "art/resources/handoff.json",
+    "free_candidates": "art/environment/2026-10-14-free-source-review.json"
+  },
+  "fixtures": {
+    "buildings": {"Headquarters": 1, "Workshop": 1, "Pasture": 1, "EuropeanStoneHouse": 2, "NorthAfricanRuins": 1, "MiddleEasternCourtyard": 1},
+    "ore_displays": {"IronOreRock": 3, "GoldOreRock": 3, "BoulderNative": 3},
+    "stone_identity": "CC0 Poly Haven Boulder 01 natural-stone visual candidate; not an existing user-authored Tripo stone mine."
+  },
+  "controls": {"Tab": "Slopes / coast / pond / overview", "1/2/3": "Near / middle / far", "Mouse wheel": "Zoom", "G": "Grass visibility", "H": "Diagnostic HUD visibility"},
+  "validation": "Assets/_Tests/EnvironmentShowcase/validation-dark-wilderness.json",
+  "local_launcher": "Builds/OpenDarkWilderness.command",
+  "build_method": "ZombieGame.Tests.EditorTools.DarkWildernessTools.prepare_and_build_dark_preview",
+  "limitations": [
+    "Dense woodland source is missing; no unsuitable tree was duplicated to simulate an approved forest.",
+    "Grass geometric heights are verified, but individual alpha-card blades remain visually fine at RTS distance. Further art-source review is required.",
+    "Basic water presentation does not constitute concept-image parity or final water art.",
+    "Gold and iron licensing remains unverified: local private review only. No source models have been publicly pushed during this task.",
+    "Historical buildings use frozen accepted exports, not a fresh export of the user's current unsaved Blender layout."
+  ]
+}

@@ -11,10 +11,24 @@ namespace ZombieGame.Tests.EnvironmentShowcase
         public readonly List<GameObject> ores = new List<GameObject>();
         public readonly List<string> sources = new List<string>();
         public readonly List<Vector3> expected_dimensions = new List<Vector3>();
+        public readonly List<EnvironmentShowcaseConfig.SourceAsset> placed_sources=new List<EnvironmentShowcaseConfig.SourceAsset>();
+        public readonly List<DarkWildernessConfig.Placement> placements=new List<DarkWildernessConfig.Placement>();
         public bool show_buildings = true, show_ores = true;
 
         public ShowcaseLandmarks(EnvironmentShowcaseConfig config, ShowcaseTerrain ground, Transform parent)
         {
+            if(config.dark_enabled)
+            {
+                if(!config.dark_layout.props_enabled) return;
+                foreach(var placement in config.dark_layout.placements)
+                {
+                    var source=config.dark_layout.find_source(config,placement.source_id);
+                    var instance=place_source(source,placement.center,placement.yaw,placement.uniform_scale,config,ground,parent);
+                    if(placement.ore) ores.Add(instance); else buildings.Add(instance);
+                    placed_sources.Add(source);placements.Add(placement);
+                }
+                return;
+            }
             if (!ground.routes.enabled) return;
             var layout = config.route_layout;
             for (int index = 0; index < layout.landmarks.Length; index++)
@@ -34,7 +48,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             var instance = UnityEngine.Object.Instantiate(source.prefab, parent);
             instance.name = source.id + " — neutral art fixture, whole scale " + uniform_scale;
             var rotation = Quaternion.Euler(0,yaw,0);
-            var source_offset = rotation * new Vector3(source.native_bounds_center.x,0,source.native_bounds_center.z) * uniform_scale;
+            var source_offset = rotation * new Vector3(source.native_bounds_center.x,source.native_min_y,source.native_bounds_center.z) * uniform_scale;
             // One whole-root translation centers its authored footprint on the pad; children are never refitted.
             instance.transform.position = ground.sample_ground(center.x * config.map_size, center.y * config.map_size) - source_offset;
             instance.transform.rotation = rotation * source.prefab.transform.localRotation;

@@ -82,18 +82,21 @@ MonoBehaviour:
     landmark_clear_radius: 7
     landmark_pad_radius: 5.7
   concept_layout: {fileID: 11400000, guid: db28a5962145a45ff804dce689d8cb6b, type: 2}
+  dark_layout: {fileID: 11400000, guid: 1e37f21c93ec24ee88ddda698bbf22d5, type: 2}
   landmark_sources:
   - id: EuropeanStoneHouse
     source_record: "art/environment/landmark_handoff.json#EuropeanStoneHouse; art/Blender\u4E3B\u6587\u4EF6/ZombieGame_Environment.blend; SHA256=dfd40cfc85891b05f660d56f7016fa163391d8627e80002d48f691cf6a9e017d; Scene=Scene; Collection=\u73AF\u5883\u5730\u6807 \xB7 EuropeanStoneHouse; scale=1, once-baked axes; authored_triangles=835; effective_triangles=835; degenerate_triangles=0"
     prefab: {fileID: 1783395682626955510, guid: 122de176034b44923a0b206b5cc41ff4, type: 3}
     native_dimensions: {x: 4.778984, y: 3.9249148, z: 6.9895115}
     native_bounds_center: {x: 0, y: 1.9624574, z: 0}
+    native_min_y: 0
     material_bindings:
     - material: {fileID: 2100000, guid: 09e8301957faa41d6aa6da25c32fd36c, type: 2}
       base_color: {fileID: 2800000, guid: 9168203bc95ce498daf367ea9e9a0b91, type: 3}
       normal: {fileID: 2800000, guid: c2b661a4759cb4dffb7d1e20e3e4d6a6, type: 3}
       roughness: {fileID: 0}
       metallic: {fileID: 0}
+      occlusion: {fileID: 0}
       import_channels_pass: 1
       metallic_max_red: 0
       metallic_multiplier: 0
@@ -103,12 +106,14 @@ MonoBehaviour:
     prefab: {fileID: 122649777870623997, guid: 8de65b19a5f404e308827406c406fc7a, type: 3}
     native_dimensions: {x: 7.2855225, y: 4.9301963, z: 7.321697}
     native_bounds_center: {x: 0.00000023841858, y: 2.4650981, z: -0.05408287}
+    native_min_y: 0
     material_bindings:
     - material: {fileID: 2100000, guid: aa7b25799c19b419098fefad67eb0200, type: 2}
       base_color: {fileID: 2800000, guid: c0ab489ef51514a0a94ca6c1b261bd98, type: 3}
       normal: {fileID: 2800000, guid: ab02d44cd3e564b658b2a122965d00c8, type: 3}
       roughness: {fileID: 0}
       metallic: {fileID: 0}
+      occlusion: {fileID: 0}
       import_channels_pass: 1
       metallic_max_red: 0
       metallic_multiplier: 0
@@ -118,6 +123,7 @@ MonoBehaviour:
       normal: {fileID: 2800000, guid: aa60ff0e8ee6944dcb31b9fb8d46487e, type: 3}
       roughness: {fileID: 0}
       metallic: {fileID: 0}
+      occlusion: {fileID: 0}
       import_channels_pass: 1
       metallic_max_red: 0
       metallic_multiplier: 0
@@ -127,6 +133,7 @@ MonoBehaviour:
       normal: {fileID: 2800000, guid: 01df9562246344ebb884d3bcfc62447a, type: 3}
       roughness: {fileID: 0}
       metallic: {fileID: 0}
+      occlusion: {fileID: 0}
       import_channels_pass: 1
       metallic_max_red: 0
       metallic_multiplier: 0
@@ -136,6 +143,7 @@ MonoBehaviour:
       normal: {fileID: 2800000, guid: e1229d4bebb8b42b0868d146ffa049c9, type: 3}
       roughness: {fileID: 0}
       metallic: {fileID: 0}
+      occlusion: {fileID: 0}
       import_channels_pass: 1
       metallic_max_red: 0
       metallic_multiplier: 0
@@ -145,6 +153,7 @@ MonoBehaviour:
       normal: {fileID: 2800000, guid: c86e2ca2d1ce648118e74c2d70898de8, type: 3}
       roughness: {fileID: 0}
       metallic: {fileID: 0}
+      occlusion: {fileID: 0}
       import_channels_pass: 1
       metallic_max_red: 0
       metallic_multiplier: 0
@@ -154,6 +163,7 @@ MonoBehaviour:
       normal: {fileID: 2800000, guid: 58834978024ca4d56bcf1c8548afdfad, type: 3}
       roughness: {fileID: 0}
       metallic: {fileID: 0}
+      occlusion: {fileID: 0}
       import_channels_pass: 1
       metallic_max_red: 0
       metallic_multiplier: 0
@@ -163,12 +173,14 @@ MonoBehaviour:
     prefab: {fileID: 135574410185833631, guid: 9ec1389ba56d8410385abd880c663d84, type: 3}
     native_dimensions: {x: 7.7745056, y: 2.9639325, z: 7.6414976}
     native_bounds_center: {x: 0, y: 1.4819663, z: 2.904741}
+    native_min_y: 0
     material_bindings:
     - material: {fileID: 2100000, guid: 245ca0ae8eb4345ab81e406e187b1827, type: 2}
       base_color: {fileID: 2800000, guid: ba8a5b72ca98d4790b38675ae2e50c64, type: 3}
       normal: {fileID: 2800000, guid: 26ea274a27eab4daab7f4e6cde6ddd5b, type: 3}
       roughness: {fileID: 2800000, guid: b6f471eda32f847f0ba595a84063033b, type: 3}
       metallic: {fileID: 0}
+      occlusion: {fileID: 0}
       import_channels_pass: 1
       metallic_max_red: 0
       metallic_multiplier: 0
@@ -178,6 +190,7 @@ MonoBehaviour:
       normal: {fileID: 2800000, guid: 26ea274a27eab4daab7f4e6cde6ddd5b, type: 3}
       roughness: {fileID: 2800000, guid: b6f471eda32f847f0ba595a84063033b, type: 3}
       metallic: {fileID: 0}
+      occlusion: {fileID: 0}
       import_channels_pass: 1
       metallic_max_red: 0
       metallic_multiplier: 0
@@ -187,6 +200,7 @@ MonoBehaviour:
       normal: {fileID: 2800000, guid: d6e919507dfc24a1685729795e67fd4b, type: 3}
       roughness: {fileID: 0}
       metallic: {fileID: 0}
+      occlusion: {fileID: 0}
       import_channels_pass: 1
       metallic_max_red: 0
       metallic_multiplier: 0
@@ -197,12 +211,14 @@ MonoBehaviour:
     prefab: {fileID: 4689653461755136067, guid: dac84c5f3b5a74112a7f59697e69c82f, type: 3}
     native_dimensions: {x: 0.9995117, y: 0.71435547, z: 0.8442383}
     native_bounds_center: {x: 0, y: 0.35717773, z: 0}
+    native_min_y: 0
     material_bindings:
     - material: {fileID: 2100000, guid: 603a13c160d544d7cbd9d03047e2353e, type: 2}
       base_color: {fileID: 2800000, guid: 1048a45afa9524a428baef69f11c860b, type: 3}
       normal: {fileID: 2800000, guid: 05b4b66cb55db4ef7a7ab5c57deb6601, type: 3}
       roughness: {fileID: 2800000, guid: 651f2c63a1c8941cb983a995f74616d6, type: 3}
       metallic: {fileID: 2800000, guid: 1bf33501888314254b2d79a99dd896ab, type: 3}
+      occlusion: {fileID: 0}
       import_channels_pass: 1
       metallic_max_red: 0.39607844
       metallic_multiplier: 1
@@ -212,12 +228,14 @@ MonoBehaviour:
     prefab: {fileID: 6878578747612230363, guid: f8a51e3385a3b4d578caeb7477ace736, type: 3}
     native_dimensions: {x: 0.9995117, y: 0.47607425, z: 0.9995117}
     native_bounds_center: {x: 0, y: 0.23803712, z: 0}
+    native_min_y: 0
     material_bindings:
     - material: {fileID: 2100000, guid: 35a8e26d159e74ecf95c8f0efdcbc810, type: 2}
       base_color: {fileID: 2800000, guid: fc026f0c8b9824a8495a20450ce8af52, type: 3}
       normal: {fileID: 2800000, guid: a03e90b382ab04d7586f7ba36f33515b, type: 3}
       roughness: {fileID: 2800000, guid: d7aa18dc154f14fbebf401ae0df09d75, type: 3}
       metallic: {fileID: 2800000, guid: 18cdd24872b724b328ade4d549fcdcfe, type: 3}
+      occlusion: {fileID: 0}
       import_channels_pass: 1
       metallic_max_red: 1
       metallic_multiplier: 1

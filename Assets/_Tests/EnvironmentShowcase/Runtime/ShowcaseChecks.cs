@@ -38,6 +38,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             public float cliff_material_mean_rgb_delta, talus_material_mean_rgb_delta;
             public RouteReport routes;
             public ConceptReport concept;
+            public DarkSourceReport dark_source;
             public HeightExpectation[] height_expectations;
             public string[] implemented = { "Six real PBR layers", "Actual isolated terrain slope blending", "Semantic shore/road/forest soils",
                 "World-scale low-contrast macro colour variation", "Two shifted neighbour samples for tile breakup",
@@ -139,7 +140,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             }
             if (showcase.config.concept_enabled)
             {
-                var concept_checks=run_concept_checks();
+                var concept_checks=showcase.config.dark_enabled ? run_dark_checks() : run_concept_checks();
                 while(concept_checks.MoveNext()) yield return concept_checks.Current;
                 finish_report();
                 yield break;

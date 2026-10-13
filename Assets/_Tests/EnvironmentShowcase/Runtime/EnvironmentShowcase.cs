@@ -20,7 +20,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
         public int view_index { get; private set; }
         public int biome_index { get; private set; }
         public EnvironmentShowcaseConfig.BiomeProfile current_biome => config.biomes != null && config.biomes.Length > 0 ? config.biomes[biome_index] : null;
-        public string missing_art => config.concept_enabled ? config.concept_layout.missing_art : current_biome == null ? "" : ground != null && ground.routes.enabled ? current_biome.route_missing_art : current_biome.missing_art;
+        public string missing_art => config.dark_enabled ? config.dark_layout.tree_source+(config.dark_layout.stone_candidate?.prefab ? " Licensed natural stone candidate present, not a Tripo stone mine; visual review pending." : " Stone source unavailable.")+" Environment props only; no economy." : config.concept_enabled ? config.active_concept_layout.missing_art : current_biome == null ? "" : ground != null && ground.routes.enabled ? current_biome.route_missing_art : current_biome.missing_art;
         private readonly float[] frame_samples = new float[600];
         private int frame_cursor;
         private int frame_count;
@@ -56,13 +56,16 @@ namespace ZombieGame.Tests.EnvironmentShowcase
                 if (!config) throw new InvalidOperationException("Environment showcase requires its independent authored config asset.");
                 previous_route_layout = config.route_layout != null && config.route_layout.enabled;
                 config.concept_enabled = false;
+                config.dark_enabled=false;
                 var arguments = Environment.GetCommandLineArgs();
                 for (int index = 0; index + 1 < arguments.Length; index++)
                     if (arguments[index] == "-showcaseLayout")
                     {
                         string layout_name = arguments[index + 1];
-                        if (layout_name != "cliffs" && layout_name != "routes" && layout_name != "concept") throw new InvalidOperationException("Use -showcaseLayout routes / cliffs / concept, got: " + layout_name);
-                        config.concept_enabled = layout_name == "concept";
+                        if (layout_name != "cliffs" && layout_name != "routes" && layout_name != "concept" && layout_name!="dark") throw new InvalidOperationException("Use -showcaseLayout routes / cliffs / concept / dark, got: " + layout_name);
+                        config.dark_enabled=layout_name=="dark";
+                        if(config.dark_enabled && (!config.dark_layout||!config.dark_layout.layout)) throw new InvalidOperationException("Prepare independent DarkWildernessConfig before starting dark layout.");
+                        config.concept_enabled = layout_name == "concept" || config.dark_enabled;
                         if (!config.concept_enabled) config.route_layout.enabled = layout_name == "routes";
                     }
                 config.validate_config();
@@ -98,22 +101,22 @@ namespace ZombieGame.Tests.EnvironmentShowcase
         private void configure_lighting()
         {
             RenderSettings.ambientMode = AmbientMode.Flat;
-            RenderSettings.ambientLight = current_biome == null ? config.ambient_color : current_biome.ambient;
+            RenderSettings.ambientLight = config.dark_enabled ? config.dark_layout.ambient : current_biome == null ? config.ambient_color : current_biome.ambient;
             RenderSettings.fog = true;
             RenderSettings.fogMode = FogMode.Linear;
-            RenderSettings.fogColor = current_biome == null ? config.fog_color : current_biome.fog;
+            RenderSettings.fogColor = config.dark_enabled ? config.dark_layout.fog : current_biome == null ? config.fog_color : current_biome.fog;
             RenderSettings.fogStartDistance = config.fog_start;
             RenderSettings.fogEndDistance = config.fog_end;
             if (!sun)
             {
                 var sun_object = new GameObject("Showcase afternoon sun");
                 sun_object.transform.SetParent(transform, false);
-                sun_object.transform.rotation = Quaternion.Euler(config.concept_enabled ? config.concept_layout.sun_rotation : config.sun_rotation);
+                sun_object.transform.rotation = Quaternion.Euler(config.concept_enabled ? config.active_concept_layout.sun_rotation : config.sun_rotation);
                 sun = sun_object.AddComponent<Light>();
             }
             sun.type = LightType.Directional;
-            sun.color = current_biome == null ? config.sun_color : current_biome.sun;
-            sun.intensity = current_biome == null ? config.sun_intensity : current_biome.sun_intensity;
+            sun.color = config.dark_enabled ? config.dark_layout.sun : current_biome == null ? config.sun_color : current_biome.sun;
+            sun.intensity = config.dark_enabled ? config.dark_layout.sun_intensity : current_biome == null ? config.sun_intensity : current_biome.sun_intensity;
             sun.shadows = LightShadows.Soft;
             sun.shadowBias = .025f;
             sun.shadowNormalBias = .35f;
@@ -164,7 +167,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             view_index = Mathf.Clamp(requested_view, 0, view_names.Length - 1);
             if (config.concept_enabled)
             {
-                set_focus(config.concept_layout.views[view_index],requested_zoom);
+                set_focus(config.active_concept_layout.views[view_index],requested_zoom);
                 if(view_index==3) review_camera.orthographicSize *= 1.45f;
                 return;
             }
@@ -188,9 +191,9 @@ namespace ZombieGame.Tests.EnvironmentShowcase
         {
             zoom_index = Mathf.Clamp(requested_zoom,0,config.camera_sizes.Length - 1);
             Vector3 focus = ground.sample_ground(view_point.x * config.map_size, view_point.y * config.map_size);
-            Quaternion rotation = Quaternion.Euler(config.concept_enabled ? config.concept_layout.camera_pitch : config.camera_pitch,
-                config.concept_enabled ? config.concept_layout.camera_yaw : config.camera_yaw, 0);
-            float camera_size=config.concept_enabled ? config.concept_layout.camera_sizes[zoom_index] : config.camera_sizes[zoom_index];
+            Quaternion rotation = Quaternion.Euler(config.concept_enabled ? config.active_concept_layout.camera_pitch : config.camera_pitch,
+                config.concept_enabled ? config.active_concept_layout.camera_yaw : config.camera_yaw, 0);
+            float camera_size=config.concept_enabled ? config.active_concept_layout.camera_sizes[zoom_index] : config.camera_sizes[zoom_index];
             if(config.concept_enabled && view_index==2) camera_size*=.82f;
             review_camera.transform.SetPositionAndRotation(focus - rotation * Vector3.forward * camera_size * 2.3f, rotation);
             review_camera.orthographicSize = camera_size;
@@ -277,7 +280,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             // Built-in ASCII HUD: desktop system fonts are not reliably available in a packaged player.
             GUILayout.Label("ENVIRONMENT ART LAB - Six PBR layers - " + config.map_size + " m");
             GUILayout.Label(config.concept_enabled ? "1/2/3: zoom | Tab: 05 slopes / 07 coast / 09 pond / overview | G: grass | H: HUD" : "B: region | 1/2/3: zoom | Tab: view | G: grass | H: HUD | L: layout");
-            GUILayout.Label(config.concept_enabled ? "WILDERNESS PREVIEW - no roads/rivers; visual review pending" : ground.routes.enabled ? "ROUTES: river / forest belts / neutral landmarks (art only)" : "CLIFFS: preserved previous layout baseline");
+            GUILayout.Label(config.dark_enabled ? "DARK WILDERNESS - source buildings and ore displays; art review pending" : config.concept_enabled ? "WILDERNESS PREVIEW - no roads/rivers; visual review pending" : ground.routes.enabled ? "ROUTES: river / forest belts / neutral landmarks (art only)" : "CLIFFS: preserved previous layout baseline");
             GUILayout.BeginHorizontal();
             if (!config.concept_enabled && config.biomes != null)
                 for (int index = 0; index < config.biomes.Length; index++)
@@ -306,6 +309,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
         {
             concept_water?.Dispose();
             if(config) config.concept_enabled=false;
+            if(config) config.dark_enabled=false;
             Camera.onPreCull -= submit_foliage;
             foliage?.Dispose();
             landmarks?.Dispose();

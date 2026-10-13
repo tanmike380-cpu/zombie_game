@@ -1,0 +1,89 @@
+{
+    "policy": "Parent-authorized reuse of already-accepted exports. Freeze current dependency checksums; no current Blender master validation or re-export. Source assembly transforms/materials unchanged.",
+    "files": [
+        {
+            "path": "Assets/_Game/Scripts/Presentation/ImportedColour.shader",
+            "sha256": "23c707abae1b41c430e9dd8efb4f8a72b0e12c48a7058b88e7e27c6bb03e226b"
+        },
+        {
+            "path": "Assets/_Game/Art/CoastalImports/Headquarters/tripo_image_b9b5ab31_0.png",
+            "sha256": "ceba56381367c027cdc81d5fc97912efbe2f8f3392ce96d099c7102e30c5e207"
+        },
+        {
+            "path": "Assets/_Game/Resources/CoastalBuildings/Headquarters-0.mat",
+            "sha256": "06f5fb0710dc13fb53d200ebe737a4733776de65cdfb431ef31f329b7d0e4ed1"
+        },
+        {
+            "path": "Assets/_Game/Resources/CoastalBuildings/Headquarters.prefab",
+            "sha256": "cc811615968f8484be80453a5806fb17868626120d3f0a9d88605127c1c0c7d0"
+        },
+        {
+            "path": "Assets/_Game/Art/CoastalImports/Headquarters/Headquarters.fbx",
+            "sha256": "caade4d341502d965706f9904daa935636f9882db3f0311dceb85485c932c58d"
+        },
+        {
+            "path": "Assets/_Game/Resources/CoastalBuildings/Workshop.prefab",
+            "sha256": "1e362bd17d4354f0e462b8c881a468aff3d95c956e7d23497152aa99c68778a6"
+        },
+        {
+            "path": "Assets/_Game/Resources/CoastalBuildings/Workshop-0.mat",
+            "sha256": "83ffe0073493c64a8c5f0740ce47bae04390e0d8266382f8d6b31c1c82b82cd5"
+        },
+        {
+            "path": "Assets/_Game/Art/CoastalImports/Workshop/Workshop.fbx",
+            "sha256": "f38b563e805dd7a40126534b3465bcc2277113e6a08f96cde14b2d5dad19b5b4"
+        },
+        {
+            "path": "Assets/_Game/Art/CoastalImports/Workshop/tripo_image_24a2e25a_0.png",
+            "sha256": "5713bc3e480d68a803c552a1d17b064f70706596f7d43fda050faef2df20ef45"
+        },
+        {
+            "path": "Assets/_Game/Resources/CoastalBuildings/Pasture.prefab",
+            "sha256": "f5c4311dc5c7b771e2b35344f19a202292363a3c1e3545eb468b5ec9c6159f8f"
+        },
+        {
+            "path": "Assets/_Game/Resources/CoastalBuildings/Pasture-4.mat",
+            "sha256": "4ad65db95b5937dee4d6ee901df87d748360a7542f1825e789a455058885ab5c"
+        },
+        {
+            "path": "Assets/_Game/Resources/CoastalBuildings/Pasture-6.mat",
+            "sha256": "e62c8393c151670ede515a020bda052b2deb65f1523efbbd9bee485d10f4d949"
+        },
+        {
+            "path": "Assets/_Game/Resources/CoastalBuildings/Pasture-2.mat",
+            "sha256": "2d85ca250017892f48654e70ed63f4cfe7d9eef35cd56ad755b6847e319b6274"
+        },
+        {
+            "path": "Assets/_Game/Resources/CoastalBuildings/Pasture-5.mat",
+            "sha256": "79e4c41174d5064b19b3d2ff97a9e537fd59280604c561a5702e0fd4632a7636"
+        },
+        {
+            "path": "Assets/_Game/Art/CoastalImports/Pasture/Pasture.fbx",
+            "sha256": "2c5b73f3b8f628f69521bf7012de26debb262d368cbd4af7daba84e28c468acc"
+        },
+        {
+            "path": "Assets/_Game/Resources/CoastalBuildings/Pasture-3.mat",
+            "sha256": "fc70069e616e00445804bd3470161dc998d3aecf269e0f871c65b6bb3b4e648e"
+        },
+        {
+            "path": "Assets/_Game/Resources/CoastalBuildings/Pasture-0.mat",
+            "sha256": "0c985a15f2cdc8d945bad2d85b368372b67cfeec3f91022f8958ac89c4b0de1b"
+        },
+        {
+            "path": "Assets/_Game/Resources/CoastalBuildings/Pasture-1.mat",
+            "sha256": "c97693ef39cc44173d7c065fc4282e0dbd8531251c0b38c8eb2201078e1f78cd"
+        },
+        {
+            "path": "Assets/_Game/Art/CoastalImports/Pasture/tripo_image_87142fc2_0.png",
+            "sha256": "fedbc161c3e6c9fe7e827c5724793d68bf98f7179456bd862571063bd67bdfc8"
+        },
+        {
+            "path": "Assets/_Game/Resources/CoastalBuildings/Pasture-8.mat",
+            "sha256": "bb3fdc5322fc2f033611cc56f754d70d32bf066c0b5f04d059bb5073280588d7"
+        },
+        {
+            "path": "Assets/_Game/Resources/CoastalBuildings/Pasture-7.mat",
+            "sha256": "aed5aa96d77d2bcb16b053598455509bd8ea976b55b91b4ad0d5dfcc38e8fb31"
+        }
+    ]
+}

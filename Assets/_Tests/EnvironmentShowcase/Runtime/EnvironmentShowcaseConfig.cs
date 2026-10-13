@@ -37,6 +37,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             public GameObject prefab;
             public Vector3 native_dimensions;
             public Vector3 native_bounds_center;
+            public float native_min_y;
             public SourceMaterialBinding[] material_bindings;
         }
 
@@ -44,6 +45,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
         {
             public Material material;
             public Texture2D base_color, normal, roughness, metallic;
+            public Texture2D occlusion;
             public bool import_channels_pass;
             public float metallic_max_red, metallic_multiplier;
             public string normal_note;
@@ -84,7 +86,10 @@ namespace ZombieGame.Tests.EnvironmentShowcase
 
         public RouteLayout route_layout = new RouteLayout();
         public ConceptLayoutConfig concept_layout;
+        public DarkWildernessConfig dark_layout;
         [NonSerialized] public bool concept_enabled;
+        [NonSerialized] public bool dark_enabled;
+        public ConceptLayoutConfig active_concept_layout => dark_enabled ? dark_layout.layout : concept_layout;
         public SourceAsset[] landmark_sources = Array.Empty<SourceAsset>();
         public SourceAsset[] ore_sources = Array.Empty<SourceAsset>();
 

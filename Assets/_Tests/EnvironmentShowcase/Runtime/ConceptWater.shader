@@ -13,6 +13,7 @@ Shader "ZombieGame/EnvironmentShowcase/ConceptWater"
         _PoolCenter("Pool world center",Vector)=(0,0,0,0)
         _PoolRadius("Pool radii metres",Vector)=(15,11,0,0)
         _CoastX("Local coastline metres",Float)=32
+        _NaturalPreview("Independent irregular dark preview",Float)=0
     }
     SubShader
     {
@@ -23,7 +24,13 @@ Shader "ZombieGame/EnvironmentShowcase/ConceptWater"
         sampler2D _HeightField;
         float4 _TerrainOrigin,_PoolCenter,_PoolRadius;
         half4 _Deep,_Shallow;
-        float _TerrainSize,_HeightRange,_WaterLevel,_IsPond,_CoastX;
+        float _TerrainSize,_HeightRange,_WaterLevel,_IsPond,_CoastX,_NaturalPreview;
+        float water_noise(float2 sample_position)
+        {
+            float2 cell=floor(sample_position),fraction=frac(sample_position);fraction=fraction*fraction*(3-2*fraction);
+            float4 corners=frac(sin(float4(dot(cell,float2(127.1,311.7)),dot(cell+float2(1,0),float2(127.1,311.7)),dot(cell+float2(0,1),float2(127.1,311.7)),dot(cell+1,float2(127.1,311.7))))*43758.5453);
+            return lerp(lerp(corners.x,corners.y,fraction.x),lerp(corners.z,corners.w,fraction.x),fraction.y);
+        }
         struct Input {float3 worldPos;};
         void surf(Input input,inout SurfaceOutputStandard output)
         {
@@ -38,10 +45,13 @@ Shader "ZombieGame/EnvironmentShowcase/ConceptWater"
             float phase=dot(input.worldPos.xz,float2(3.9,2.57))+sin(dot(input.worldPos.xz,float2(.71,.83)))*1.7-_Time.y*.42;
             float second_phase=dot(input.worldPos.xz,float2(-2.19,1.11))-_Time.y*.23;
             float ripple=sin(phase)*.65+sin(second_phase)*.35;
+            if(_NaturalPreview>.5) ripple=(water_noise(input.worldPos.xz*.7+_Time.y*float2(.03,.015))-.5)*.65+(water_noise(input.worldPos.xz*2.1-_Time.y*float2(.012,.03))-.5)*.35;
             output.Albedo=lerp(_Shallow.rgb,_Deep.rgb,saturate(depth/(_IsPond>.5?1.0:.85)))*(1+ripple*.05);
             float shore=(1-smoothstep(.04,.22,depth))*(.5+.5*sin(phase*2));
+            if(_NaturalPreview>.5) shore=(1-smoothstep(.02,.10,depth))*(.3+.7*water_noise(input.worldPos.xz*1.4+_Time.y*.01));
             output.Albedo=lerp(output.Albedo,half3(.48,.57,.53),shore*(_IsPond>.5?.08:.3));
             output.Normal=normalize(half3(cos(phase)*.035,cos(second_phase)*.025,1));
+            if(_NaturalPreview>.5) output.Normal=normalize(half3(ripple*.06,(water_noise(input.worldPos.xz*.9+_Time.y*.02)-.5)*.05,1));
             output.Smoothness=.4; output.Metallic=0; output.Occlusion=1; output.Alpha=1;
         }
         ENDCG

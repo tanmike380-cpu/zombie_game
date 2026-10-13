@@ -25,6 +25,16 @@ namespace ZombieGame.Tests.EnvironmentShowcase
         public int rock_instances { get; private set; }
         public int visible_batches { get; private set; }
         public readonly List<Vector2> tree_positions = new List<Vector2>();
+        [Serializable] public sealed class GrassProbe
+        {
+            public string source;
+            public int samples,top_at_or_below_anchor;
+            public float world_y_min=float.PositiveInfinity,world_y_max=float.NegativeInfinity;
+            public float height_span_min=float.PositiveInfinity,height_span_max;
+            public float minimum_top_above_anchor=float.PositiveInfinity,maximum_top_above_anchor;
+            public float maximum_terrain_corner_span;
+        }
+        public readonly List<GrassProbe> grass_probes=new List<GrassProbe>();
 
         private sealed class SourcePart
         {
@@ -58,13 +68,14 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             int grass_count = Mathf.RoundToInt(config.grass_count * (biome == null ? 1 : biome.grass_density));
             int tree_count = Mathf.RoundToInt(config.tree_count * (biome == null ? 1 : biome.tree_density));
             if (terrain.concept != null) tree_count = terrain.concept.layout.tree_budget;
+            if(config.dark_enabled && config.dark_layout.tree_prefabs.Length==0) tree_count=0;
             if (terrain.routes.enabled && (biome == null || biome.tree_density > 0)) tree_count = terrain.routes.layout.tree_budget;
             int shrub_count = Mathf.RoundToInt(config.shrub_count * (biome == null ? 1 : biome.shrub_density));
             int rock_count = Mathf.RoundToInt(config.rock_count * (biome == null ? 1 : biome.rock_density));
             if (config.grass_variants != null && config.grass_variants.Length > 0)
                 grass_instances = add_variants(config.grass_variants, grass_count, config.grass_scale_range, "grass");
             else if (config.grass_prefab) grass_instances = add_prefab(config.grass_prefab, grass_count, config.grass_scale_range, "grass");
-            tree_instances = add_variants(config.tree_prefabs, tree_count, config.tree_scale_range, "tree");
+            tree_instances = add_variants(config.dark_enabled ? config.dark_layout.tree_prefabs : config.tree_prefabs, tree_count, config.tree_scale_range, "tree");
             shrub_instances = add_variants(config.shrub_prefabs, shrub_count, config.shrub_scale_range, "shrub");
             rock_instances = add_variants(config.rock_prefabs, rock_count, config.rock_scale_range, "rock");
         }
@@ -80,6 +91,8 @@ namespace ZombieGame.Tests.EnvironmentShowcase
 
         private int add_prefab(GameObject prefab, int count, Vector2 scale_range, string category)
         {
+            bool is_short_grass=config.dark_enabled && category=="grass" && prefab.name.StartsWith("GrassBermuda",StringComparison.Ordinal);
+            if(config.dark_enabled && category=="grass") scale_range=is_short_grass ? config.dark_layout.bermuda_scale_range : config.dark_layout.medium_scale_range;
             var parts = read_source_parts(prefab,category);
             if (parts.Count == 0) throw new InvalidOperationException("Approved showcase asset has no renderable static source meshes: " + prefab.name);
             var cells = new Dictionary<Vector2Int, List<Matrix4x4>>();
@@ -111,11 +124,17 @@ namespace ZombieGame.Tests.EnvironmentShowcase
                     if (x < 0 || z < 0 || x > config.map_size || z > config.map_size) continue;
                 }
                 if (!can_place_category(x, z, category)) continue;
+                if(config.dark_enabled && category=="grass")
+                {
+                    float plant_patch=Mathf.PerlinNoise(x/12+3.7f,z/12);
+                    if(is_short_grass ? plant_patch>.62f : plant_patch<.42f) continue;
+                }
                 float scale = Mathf.Lerp(scale_range.x, scale_range.y, (float)random.NextDouble());
                 Vector3 point = ground.sample_ground(x, z);
                 var matrix = Matrix4x4.TRS(point, Quaternion.Euler(0, (float)random.NextDouble() * 360, 0) * prefab.transform.localRotation,
                     prefab.transform.localScale * scale);
                 var cell = new Vector2Int(Mathf.FloorToInt(x / config.grass_chunk_size), Mathf.FloorToInt(z / config.grass_chunk_size));
+                if(config.dark_enabled && category=="grass") measure_grass_probe(prefab.name,point.y,matrix,parts);
                 if (!cells.TryGetValue(cell, out var instances)) { instances = new List<Matrix4x4>(); cells.Add(cell, instances); }
                 instances.Add(matrix);
                 if (category == "tree") tree_positions.Add(new Vector2(x,z));
@@ -136,6 +155,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
                 float density = ground.forest_weight(x,z);
                 if (category == "tree") return random.NextDouble() < density;
                 if (category == "shrub") return random.NextDouble() < Mathf.Max(.1f,density*.7f);
+                if(config.dark_enabled) return random.NextDouble()<Mathf.Lerp(.15f,.95f,Mathf.PerlinNoise(x/5,z/5))*(1-ground.concept.exposed_soil(x,z)*.9f);
                 return random.NextDouble() < .7f;
             }
             if (ground.routes.enabled && (ground.routes.measure_river(x,z) < ground.routes.layout.river_half_width + 2 ||
@@ -192,6 +212,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
                         material.SetFloat("_AlphaToMask",1);
                         material.SetFloat("_MipBias",category == "tree" ? .45f : .15f);
                         if(category == "tree") material.SetColor("_Color",new Color(.82f,.87f,.75f,1));
+                        if(config.dark_enabled && category=="grass") material.SetColor("_Color",new Color(.82f,.86f,.74f,1));
                     }
                     materials.Add(material);
                     var part = new SourcePart { mesh = filter.sharedMesh, material = material, submesh_index = submesh_index,
@@ -256,6 +277,36 @@ namespace ZombieGame.Tests.EnvironmentShowcase
                 Mathf.Abs(x_axis.x) + Mathf.Abs(y_axis.x) + Mathf.Abs(z_axis.x),
                 Mathf.Abs(x_axis.y) + Mathf.Abs(y_axis.y) + Mathf.Abs(z_axis.y),
                 Mathf.Abs(x_axis.z) + Mathf.Abs(y_axis.z) + Mathf.Abs(z_axis.z)) * 2);
+        }
+
+        /// <summary>Once at construction, sample 32 actual submitted matrices per source. Bounds are geometric, not alpha-visible blade coverage.</summary>
+        private void measure_grass_probe(string source,float anchor_height,Matrix4x4 instance,List<SourcePart> parts)
+        {
+            var probe=grass_probes.Find(item=>item.source==source);
+            if(probe==null){probe=new GrassProbe{source=source};grass_probes.Add(probe);}
+            if(probe.samples>=32) return;
+            var bounds=new Bounds();bool first=true;
+            foreach(var part in parts)
+            {
+                var part_bounds=transform_bounds(part.mesh.bounds,instance*part.relative_transform);
+                if(first){bounds=part_bounds;first=false;}else bounds.Encapsulate(part_bounds);
+            }
+            float top=bounds.max.y-anchor_height;
+            probe.samples++;
+            probe.world_y_min=Mathf.Min(probe.world_y_min,bounds.min.y);
+            probe.world_y_max=Mathf.Max(probe.world_y_max,bounds.max.y);
+            probe.height_span_min=Mathf.Min(probe.height_span_min,bounds.size.y);
+            probe.height_span_max=Mathf.Max(probe.height_span_max,bounds.size.y);
+            probe.minimum_top_above_anchor=Mathf.Min(probe.minimum_top_above_anchor,top);
+            probe.maximum_top_above_anchor=Mathf.Max(probe.maximum_top_above_anchor,top);
+            if(top<=.01f) probe.top_at_or_below_anchor++;
+            float minimum=float.PositiveInfinity,maximum=float.NegativeInfinity;
+            foreach(float x in new[]{bounds.min.x,bounds.max.x}) foreach(float z in new[]{bounds.min.z,bounds.max.z})
+            {
+                float height=ground.sample_ground(x-ground.origin.x,z-ground.origin.z).y;
+                minimum=Mathf.Min(minimum,height);maximum=Mathf.Max(maximum,height);
+            }
+            probe.maximum_terrain_corner_span=Mathf.Max(probe.maximum_terrain_corner_span,maximum-minimum);
         }
 
         public void draw_batches(Camera camera)

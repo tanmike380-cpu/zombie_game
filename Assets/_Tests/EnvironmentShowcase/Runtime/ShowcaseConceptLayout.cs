@@ -8,10 +8,14 @@ namespace ZombieGame.Tests.EnvironmentShowcase
     {
         public readonly ConceptLayoutConfig layout;
         private readonly float size;
+        public readonly ShowcaseDarkFootprints footprints;
+        public readonly DarkWildernessConfig dark;
 
-        public ShowcaseConceptLayout(ConceptLayoutConfig source, float map_size)
+        public ShowcaseConceptLayout(ConceptLayoutConfig source, float map_size,DarkWildernessConfig dark_source=null,EnvironmentShowcaseConfig config=null)
         {
             layout = source; size = map_size;
+            dark=dark_source;
+            if(dark) footprints=new ShowcaseDarkFootprints(dark,config,sample_base_height);
         }
 
         public float coast_edge(float z) => layout.coast_x + (Mathf.PerlinNoise(z/19,7.1f)-.5f)*14 + Mathf.Sin(z/5)*1.4f;
@@ -26,6 +30,12 @@ namespace ZombieGame.Tests.EnvironmentShowcase
         }
 
         public float sample_height(float x, float z)
+        {
+            float original=sample_base_height(x,z);
+            return footprints==null ? original : footprints.sample_height(x,z,original);
+        }
+
+        private float sample_base_height(float x,float z)
         {
             float distance = x - coast_edge(z);
             float gentle = 3.8f + .32f*Mathf.Sin(x/18)*Mathf.Sin(z/21);
@@ -49,7 +59,22 @@ namespace ZombieGame.Tests.EnvironmentShowcase
         }
 
         public float measure_wet_edge(float x, float z) => Mathf.Min(Mathf.Abs(x-coast_edge(z)),Mathf.Abs(pond_edge_distance(x,z)));
-        public bool can_place(float x, float z) => x > coast_edge(z)+7 && pond_edge_distance(x,z) > 1;
+        public bool can_place(float x, float z) => x > coast_edge(z)+7 && pond_edge_distance(x,z) > 1 && !(footprints?.contains(x,z)??false);
+
+        public float exposed_soil(float x,float z)
+        {
+            if(!dark) return 0;
+            float weight=footprints?.soil_weight(x,z)??0;
+            for(int index=0;index<dark.exposed_centers.Length;index++)
+            {
+                var delta=new Vector2(x,z)-dark.exposed_centers[index]*size;
+                var radius=dark.exposed_radii[index];
+                float distance=new Vector2(delta.x/radius.x,delta.y/radius.y).magnitude;
+                float broken_edge=(Mathf.PerlinNoise(x/4,z/4)-.5f)*.32f;
+                weight=Mathf.Max(weight,1-Mathf.SmoothStep(0,1,Mathf.InverseLerp(.45f,1.2f,distance+broken_edge)));
+            }
+            return weight;
+        }
         public float forest_weight(float x, float z)
         {
             if (!can_place(x,z)) return 0;

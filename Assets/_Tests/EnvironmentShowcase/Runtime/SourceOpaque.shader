@@ -14,6 +14,8 @@ Shader "ZombieGame/EnvironmentShowcase/SourceOpaque"
         _RoughnessConstant("Authored fallback, not a scanned map",Range(0,1))=.9
         _BumpScale("Source normal strength",Float)=0
         _Cull("Source sides",Float)=0
+        _OcclusionMap("Actual source AO, if present",2D)="white"{}
+        _HasOcclusion("Actual AO present",Float)=0
     }
     SubShader
     {
@@ -23,10 +25,11 @@ Shader "ZombieGame/EnvironmentShowcase/SourceOpaque"
         #pragma surface surf Standard fullforwardshadows addshadow
         #pragma target 3.0
         #include "UnityStandardUtils.cginc"
-        sampler2D _MainTex,_BumpMap,_Roughness,_MetallicMap;
+        sampler2D _MainTex,_BumpMap,_Roughness,_MetallicMap,_OcclusionMap;
         fixed4 _Color;
         half _HasRoughness,_RoughnessConstant,_BumpScale;
         half _HasMetallic,_MetallicConstant,_MetallicMultiplier;
+        half _HasOcclusion;
         struct Input {float2 uv_MainTex; float facing:VFACE;};
         void surf(Input input,inout SurfaceOutputStandard output)
         {
@@ -34,7 +37,7 @@ Shader "ZombieGame/EnvironmentShowcase/SourceOpaque"
             output.Normal=UnpackScaleNormal(tex2D(_BumpMap,input.uv_MainTex),_BumpScale)*(input.facing>=0?1:-1);
             output.Metallic=saturate(lerp(_MetallicConstant,tex2D(_MetallicMap,input.uv_MainTex).r*_MetallicMultiplier,_HasMetallic));
             output.Smoothness=1-lerp(_RoughnessConstant,tex2D(_Roughness,input.uv_MainTex).r,_HasRoughness);
-            output.Occlusion=1;
+            output.Occlusion=lerp(1,tex2D(_OcclusionMap,input.uv_MainTex).r,_HasOcclusion);
             output.Alpha=1;
         }
         ENDCG

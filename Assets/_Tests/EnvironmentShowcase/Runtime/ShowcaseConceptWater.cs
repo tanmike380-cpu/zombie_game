@@ -37,6 +37,8 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             material.SetFloat("_TerrainSize",ground.terrain_data.size.x); material.SetFloat("_HeightRange",ground.terrain_data.size.y);
             material.SetFloat("_WaterLevel",level); material.SetColor("_Deep",deep); material.SetColor("_Shallow",shallow);
             material.SetFloat("_IsPond",pool?1:0);
+            material.SetFloat("_NaturalPreview",ground.concept.dark?1:0);
+            if(ground.concept.dark) Debug.Log("[DarkWater] "+name+" natural="+material.GetFloat("_NaturalPreview")+" shader="+material.shader.name);
             var layout=ground.concept.layout;
             material.SetFloat("_CoastX",layout.coast_x);
             material.SetVector("_PoolCenter",ground.origin+new Vector3(layout.pond_center.x*ground.terrain_data.size.x,0,layout.pond_center.y*ground.terrain_data.size.z));
