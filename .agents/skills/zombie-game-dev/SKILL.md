@@ -16,4 +16,6 @@ description: Coordinate every Zombie Game development task, keeping Blender as t
 
 Unity 不创造替代模型，不用基本体补外观，不独立拉伸模型，不重拼 Blender 已验收建筑。资产与占地冲突时报告并按用户选择处理。画面失真先查源资产、比例/坐标、材质和渲染。
 
+环境地图在 Unity 中编排，不要求先在 Blender 制作整张地图。用户于 2026-10-13 指定环境素材优先级：优先免费、优质、许可合适的现成资产；实际画面不达概念方向时先定位导入问题或源模型缺项，源不足就交付单体概念图让用户用 Tripo 制作，不自行硬造替代模型。具体资产筛选和交接见 `../zombie-game-unity/references/terrain-art.md`。
+
 保留用户原对象、灯光、相机、材质、动作和布局。临时导出/渲染可分开，但须追溯到主文件的 Scene/Collection/Object/Action。修复须回归与视觉核对；编译通过不是验收。交接给出主文件、集合、导出、Unity Prefab/场景和实测；未完成项明确标记。保存 Git 不等于获准推送。

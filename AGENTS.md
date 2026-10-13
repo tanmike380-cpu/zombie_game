@@ -17,6 +17,12 @@
   Use the user-specified six-layer PBR ground workflow, compatible with the verified render
   pipeline; reuse or source licensed free assets, never silently return to single-grass ground
   or migrate the whole render pipeline. Keep navigation and accepted unit presentation intact.
+- Environment maps are composed in Unity Terrain, not necessarily modeled as a whole in Blender.
+  Prefer high-quality licensed free environment assets. Inspect actual player visuals; if source
+  shape/material quality cannot match the concept, stop forcing it and give the user isolated
+  asset concepts to make in Tripo. Do not independently author replacement world models.
+  Traceable licensed free environment models are allowed by the user's 2026-10-13 instruction;
+  modified/exported models still go through the designated Blender environment source/handoff.
 
 ## Gameplay invariants
 
