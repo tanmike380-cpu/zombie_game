@@ -31,17 +31,18 @@
 <body>
 <main>
   <h1>树林、地形与水面 · 十组概念</h1>
-  <p>当前方向：无人踏足的末世荒野，不画小路、车辙或人为铺面。统一为写实倾向的 RTS 斜俯视：自然色彩、略冷阴影、适量暖光；树林、悬崖、海岸和封闭水池划分区域，军队从自然开阔地穿行，不依赖道路。</p>
+  <p>当前评审：更冷、更阴郁的末世荒野。降低晴天金黄与鲜亮黄绿，改为阴天灰绿植被、冷灰岩石和暗蓝绿水面；保留土壤棕色、干草和沙漠灰赭色，暗部仍可读。无人迹、无小路、无河流的约束不变。</p>
   <p class="note">这是新生成的二维美术评审图，不是 Unity 实机画面，也不是可直接使用的模型或 PBR 材质。下方材质小样仅供外观参考。整体图不要直接交给 Tripo 生成一个大模型；选定后，树、岩石等资产应分别做独立图与视图。</p>
   <nav><a href="#new-concepts">新增六组地形概念</a><a href="#concepts">四组地域树林</a><a href="#gameplay">资源林与装饰</a><a href="#pipeline">哪些做模型</a><a href="#research">RTS 调研</a><a href="manifest.json">完整提示词与来源记录</a></nav>
-  <p class="note">用户选择先将 05 草原斜坡＋07 海岸＋09 水池做成独立 Unity 环境预览。下方 05–10 默认显示无路荒野修订版，原图保留；新布局不生成道路或河流。第一批 01–04 是历史地域草稿，里面的道路和河流不作为本次实施方向。Unity 独立技术预览已检查，道路权重为零；实际画面仍存在地面均一、树冠稀碎、水纹过规则的问题，未达到概念图质量，未替换正式场景，也未做战斗／寻路验收。重开预览使用项目 Builds/OpenWilderness.command；不要直接双击原 app，否则会打开旧测试布局。</p>
+  <p class="note">05–10 当前默认显示冷暗 v3，每张下方可以展开同构图的明亮 v2 对比；所有原稿保留。01–04 是历史地域草稿，不代表最终色调或路网。此次仅修订二维概念，尚未导入 Blender／Unity，不改变人物、建筑或正式游戏。上一轮 Unity 无路技术预览已检查，但地面、树冠和水面仍明显不及概念，未获美术验收。</p>
+  <p>观察 <a href="https://store.steampowered.com/app/644930/They_Are_Billions/">《亿万僵尸》官方展示画面</a>：既有黄褐沙漠和橄榄绿地面，也有冷白／冷蓝区域及暖色灯火，不是全图冷蓝。开发者说明采用 <a href="https://numantiangames.com/News/2017-05-31-new-game-they-are-billions/">超细节、手绘触感的美术</a>。“冷暗荒野＋自然暖土色”是我们的视觉提炼，不是官方色值；没有复制其贴图。提示词和新图来源见 <a href="dark-revision.json">冷暗修订记录</a>。</p>
   <div class="cards" id="new-concepts">
-    <article><h2>05 · 草原斜坡 · 无路</h2><a href="05-grassland-slopes-wilderness-v2.png"><img src="05-grassland-slopes-wilderness-v2.png" alt="圆缓3D草坡、林缘、自然开阔地与分层地表，无人工道路"></a><p>柔和圆坡、自然草色与高度变化，局部裸岩、落叶和不连续裸土。留出开阔地，但不画人工路径。</p><small>第一轮 Unity 参考之一；底部地形块仅为形态说明，不是直接可导入网格。<a href="05-grassland-slopes.png">原稿留档</a></small></article>
-    <article><h2>06 · 高地与悬崖 · 无路</h2><a href="06-alpine-highland-cliffs-wilderness-v2.png"><img src="06-alpine-highland-cliffs-wilderness-v2.png" alt="无人工路的高山台地、断崖、碎石坡与针叶林"></a><p>上层平缓台地、下层谷地、自然缓坡与陡崖分开。灰岩、碎石、草和林下落叶自然过渡，无人为路线。</p><small>独立巨岩和针叶模型仍待来源与模型制作；不能用小石头随机堆砌代替。<a href="06-alpine-highland-cliffs.png">原稿留档</a></small></article>
-    <article><h2>07 · 地中海海岸 · 无路</h2><a href="07-mediterranean-seacoast-wilderness-v2.png"><img src="07-mediterranean-seacoast-wilderness-v2.png" alt="开放蓝色海面、石灰岩高岸、沙滩与无人草坡"></a><p>大海沿地图一侧延伸，岸边浅、远处深；石灰岩崖、草坡、散落土石和自然沙湾构成陆地层次。</p><small>第一轮 Unity 参考之一；橄榄／柏树属于待补地域模型，现成通用树不是同种替代验收。<a href="07-mediterranean-seacoast.png">原稿留档</a></small></article>
-    <article><h2>08 · 北非沙漠海岸 · 无路</h2><a href="08-north-african-desert-sea-wilderness-v2.png"><img src="08-north-african-desert-sea-wilderness-v2.png" alt="无人北非砂岩海岸、天然沙砾、旱生疏林与开放海面"></a><p>有层理的砂岩断崖、稀疏干草、旱生树与海湾。天然风化地表没有道路、车辙或人的痕迹。</p><small>北非树与海枣需独立模型，本轮是概念评审。<a href="08-north-african-desert-sea.png">原稿留档</a></small></article>
-    <article><h2>09 · 温带自然水池 · 无路</h2><a href="09-temperate-pond-wilderness-v2.png"><img src="09-temperate-pond-wilderness-v2.png" alt="封闭自然池塘、湿泥、草坡与林缘，无人工环路"></a><p>独立封闭池塘，无河流入出口、无环岸道路；不规则岸线由草、石子、湿泥和水生植物交错构成。</p><small>第一轮 Unity 参考之一；芦苇、水生植物、独立巨石模型暂无源，缺项不能靠临时拼模型隐藏。<a href="09-temperate-pond.png">原稿留档</a></small></article>
-    <article><h2>10 · 沙漠绿洲水池 · 无路</h2><a href="10-arid-oasis-pond-wilderness-v2.png"><img src="10-arid-oasis-pond-wilderness-v2.png" alt="无人封闭绿洲水池、海枣林、干旱边缘与砂岩高地"></a><p>湿润池边集中海枣林，远离水的区域稀疏旱灌；风化沙地自然开阔，不画穿林小路或车辙。</p><small>只有封闭水池，不加河流。模型制作在概念确认后按资产逐个进行。<a href="10-arid-oasis-pond.png">原稿留档</a></small></article>
+    <article><h2>05 · 草原斜坡 · 冷暗荒野</h2><a href="05-grassland-slopes-wilderness-dark-v3.png"><img src="05-grassland-slopes-wilderness-dark-v3.png" alt="圆缓3D草坡、林缘、自然开阔地与分层地表，无人工道路"></a><p>柔和圆坡、自然草色与高度变化，局部裸岩、落叶和不连续裸土。留出开阔地，但不画人工路径。</p><small>第一轮 Unity 参考之一；底部地形块仅为形态说明，不是直接可导入网格。<a href="05-grassland-slopes.png">原稿留档</a></small><details><summary>展开对照：上一版明亮荒野</summary><a href="05-grassland-slopes-wilderness-v2.png"><img loading="lazy" src="05-grassland-slopes-wilderness-v2.png" alt="同构图的上一版明亮荒野，用于冷暖对照"></a></details></article>
+    <article><h2>06 · 高地与悬崖 · 冷暗荒野</h2><a href="06-alpine-highland-cliffs-wilderness-dark-v3.png"><img src="06-alpine-highland-cliffs-wilderness-dark-v3.png" alt="无人工路的高山台地、断崖、碎石坡与针叶林"></a><p>上层平缓台地、下层谷地、自然缓坡与陡崖分开。灰岩、碎石、草和林下落叶自然过渡，无人为路线。</p><small>独立巨岩和针叶模型仍待来源与模型制作；不能用小石头随机堆砌代替。<a href="06-alpine-highland-cliffs.png">原稿留档</a></small><details><summary>展开对照：上一版明亮荒野</summary><a href="06-alpine-highland-cliffs-wilderness-v2.png"><img loading="lazy" src="06-alpine-highland-cliffs-wilderness-v2.png" alt="同构图的上一版明亮荒野，用于冷暖对照"></a></details></article>
+    <article><h2>07 · 地中海海岸 · 冷暗荒野</h2><a href="07-mediterranean-seacoast-wilderness-dark-v3.png"><img src="07-mediterranean-seacoast-wilderness-dark-v3.png" alt="开放蓝色海面、石灰岩高岸、沙滩与无人草坡"></a><p>大海沿地图一侧延伸，岸边浅、远处深；石灰岩崖、草坡、散落土石和自然沙湾构成陆地层次。</p><small>第一轮 Unity 参考之一；橄榄／柏树属于待补地域模型，现成通用树不是同种替代验收。<a href="07-mediterranean-seacoast.png">原稿留档</a></small><details><summary>展开对照：上一版明亮荒野</summary><a href="07-mediterranean-seacoast-wilderness-v2.png"><img loading="lazy" src="07-mediterranean-seacoast-wilderness-v2.png" alt="同构图的上一版明亮荒野，用于冷暖对照"></a></details></article>
+    <article><h2>08 · 北非沙漠海岸 · 冷暗荒野</h2><a href="08-north-african-desert-sea-wilderness-dark-v3.png"><img src="08-north-african-desert-sea-wilderness-dark-v3.png" alt="无人北非砂岩海岸、天然沙砾、旱生疏林与开放海面"></a><p>有层理的砂岩断崖、稀疏干草、旱生树与海湾。天然风化地表没有道路、车辙或人的痕迹。</p><small>北非树与海枣需独立模型，本轮是概念评审。<a href="08-north-african-desert-sea.png">原稿留档</a></small><details><summary>展开对照：上一版明亮荒野</summary><a href="08-north-african-desert-sea-wilderness-v2.png"><img loading="lazy" src="08-north-african-desert-sea-wilderness-v2.png" alt="同构图的上一版明亮荒野，用于冷暖对照"></a></details></article>
+    <article><h2>09 · 温带自然水池 · 冷暗荒野</h2><a href="09-temperate-pond-wilderness-dark-v3.png"><img src="09-temperate-pond-wilderness-dark-v3.png" alt="封闭自然池塘、湿泥、草坡与林缘，无人工环路"></a><p>独立封闭池塘，无河流入出口、无环岸道路；不规则岸线由草、石子、湿泥和水生植物交错构成。</p><small>第一轮 Unity 参考之一；芦苇、水生植物、独立巨石模型暂无源，缺项不能靠临时拼模型隐藏。<a href="09-temperate-pond.png">原稿留档</a></small><details><summary>展开对照：上一版明亮荒野</summary><a href="09-temperate-pond-wilderness-v2.png"><img loading="lazy" src="09-temperate-pond-wilderness-v2.png" alt="同构图的上一版明亮荒野，用于冷暖对照"></a></details></article>
+    <article><h2>10 · 沙漠绿洲水池 · 冷暗荒野</h2><a href="10-arid-oasis-pond-wilderness-dark-v3.png"><img src="10-arid-oasis-pond-wilderness-dark-v3.png" alt="无人封闭绿洲水池、海枣林、干旱边缘与砂岩高地"></a><p>湿润池边集中海枣林，远离水的区域稀疏旱灌；风化沙地自然开阔，不画穿林小路或车辙。</p><small>只有封闭水池，不加河流。模型制作在概念确认后按资产逐个进行。<a href="10-arid-oasis-pond.png">原稿留档</a></small><details><summary>展开对照：上一版明亮荒野</summary><a href="10-arid-oasis-pond-wilderness-v2.png"><img loading="lazy" src="10-arid-oasis-pond-wilderness-v2.png" alt="同构图的上一版明亮荒野，用于冷暖对照"></a></details></article>
   </div>
   <div class="cards" id="concepts">
     <article><h2>01 · 欧洲温带阔叶林</h2><a href="01-europe-temperate.png"><img src="01-europe-temperate.png" alt="欧洲阔叶树林、石灰岩悬崖、河谷、宽土路与树形材质参考"></a><p>橡树型厚树冠＋桦树型细树干；林下叠加落叶、泥土、草与石子。成片森林构成资源区域，林缘更疏。三棵独立树、低灌木和六种地表外观小样。</p><small>欧洲树种方案是待评审的新方向；不是现有通用树已经完成的效果。</small></article>
@@ -61,6 +62,7 @@
   </section>
   <section id="pipeline">
     <h2>哪些用模型，哪些用材质</h2>
+    <p class="note">最新制作顺序：先用免费、优质、许可合适的素材，在 Unity 直接构建地形、混合地表、摆放植被与水面；不是先在 Blender 造整张地图。实际画面不达概念时先检查导入；源本身不够好就停止硬凑，提供缺项和独立单体概念，由用户用 Tripo 制作。Agent 不自行硬造替代世界模型。</p>
     <table><thead><tr><th>内容</th><th>推荐路线</th><th>依据</th></tr></thead><tbody>
       <tr><td>树、灌木、突出地表的石头</td><td>现成合规 3D 素材优先，缺少的地域／造型再用概念图生成模型</td><td>轮廓与遮挡来自几何体，树叶可用透明裁切贴图，不需每片叶都是厚实体。</td></tr>
       <tr><td>草地、干草地、泥土、泥地、石砾</td><td>可平铺 PBR 材质＋地表混合</td><td>保留六层资产，其中 Road 在本次荒野预览权重为零。小样不是纹理成品，不将整张地图送 Tripo 做网格。</td></tr>
@@ -68,7 +70,7 @@
       <tr><td>海面、封闭水池</td><td>地形海床／池底＋水面渲染</td><td>本次不做河流；可行走边界应与实际地形一致，不能仅靠视觉判断浅水能通过。</td></tr>
     </tbody></table>
     <p>免费候选：<a href="https://polyhaven.com/a/fir_tree_01">Poly Haven Fir Tree 01</a> 提供 CC0 针叶树与 LOD，但完整源约 800 万三角，不能原样铺满 RTS 地图；<a href="https://assetstore.unity.com/packages/3d/vegetation/trees/palm-tree-pack-free-214483">Palm Tree Pack Free</a> 列为免费，并列出 Built-in 管线兼容（2021.3.30f1）。它尚未在本项目版本验证，树种、面数和许可证再分发限制也需导入检查。免费不代表可把商店原包上传公开 Git。本轮只找候选，没有下载／导入这些包。</p>
-    <p>所有最终新树仍先进入 <code>art/Blender主文件/ZombieGame_Environment.blend</code>，记录来源和验收，再给 Unity 引用。概念图生成保留现有所有 .blend 和未保存工作，没有新建替代游戏模型；Unity 按用户选择另做基础地形／水面的独立预览，不改变正式玩法。</p>
+    <p>无需编辑的免费源包可直接在 Unity 预览，记录出处、许可和引用；需要修模／导出的独立树、岩等资产由 Blender 专责存入 <code>art/Blender主文件/ZombieGame_Environment.blend</code> 再交接。用户新做模型也遵循分类源登记。此次概念调色保留所有 .blend 和未保存工作，没有生成替代游戏模型，也未导入 Unity 或改变正式玩法。</p>
   </section>
   <section id="research">
     <h2>参考 RTS 的什么，不照搬什么</h2>
@@ -80,7 +82,7 @@
     </ul>
     <p>以上游戏机制来自官方资料；双用途树分类、模型复用和地图生产流程是对我们项目的设计建议，不是对这些游戏内部代码或面数的推测。</p>
   </section>
-  <footer>2026-10-13 · 十组环境方向，其中 05–10 已另存六张无路荒野修订；旧稿全部保留 · 原生图片编辑工具 · 提示词存于 manifest.json · Unity 独立环境预览另行验收，未接入正式玩法</footer>
+  <footer>2026-10-13 · 十组历史环境方向＋六张无路 v2＋六张冷暗 v3；旧稿全部保留 · 原生图片编辑工具 · 提示词见 dark-revision.json · 冷暗概念待评审，未导入 Blender／Unity</footer>
 </main>
 </body>
 </html>

@@ -1,0 +1,73 @@
+{
+  "date": "2026-10-13",
+  "status": "concept_review_pending_user_acceptance",
+  "scope": "Six current no-road environment concept boards only; historical 01–04, human/building art, all Blender files, Unity and gameplay unchanged.",
+  "generator": "native built-in image_gen edit",
+  "edit_taxonomy": "lighting-weather",
+  "prompt": "Use case: lighting-weather\nAsset type: edited medieval-apocalypse RTS wilderness concept sheet, NOT a Unity screenshot or PBR texture.\nInput image: edit target, existing road-free environment board.\nPrimary request: Make this EXACT scene moderately cooler, darker, more somber and ominous: an abandoned wilderness suitable for zombie-survival RTS, informed by the oppressive readable terrain mood of They Are Billions, without copying its assets. Replace cheerful golden daytime illumination with dim diffuse overcast daylight, subtle cool slate-grey atmospheric distance and deeper contact shadows. Remove luminous sunny yellow/lime foliage; use muted olive-grey and grey-green vegetation with dark wooded interiors. Stone reads cool neutral grey; water darker desaturated blue-green, NOT holiday turquoise. Maintain detailed textured midtones and clear land-water-cliff boundaries for RTS gameplay; exposure only moderately lower, blacks must retain detail, no dark vignette, no blanket blue filter, no pure-white wash. Retain restrained natural earth-brown warmth, dry grass straw-brown and desert sand beige/grey ochre where appropriate: deserts must remain geographically distinct, not turn into blue tundra. No glowing effects or invented darkness props.\nInvariants: Preserve exact camera, perspective, terrain forms and elevations, tree/plant species, water bodies, coastline, asset silhouettes, sheet composition, isolated bottom studies and swatch layout. Apply same coherent cooler material/light treatment to inset studies. ONLY revise light/mood/material color balance, no new objects. Preserve NO human tracks/roads/wheel ruts/paving, NO rivers, NO buildings/units/bones/ruins/gravestones or extra props. Do not add new water. No labels, text, watermark or UI. Crisp rich 3D-like detail, natural readable shadow transitions, not a blurry or monochrome scene.\nFor the North African/desert boards specifically, preserve weathered sandstone as grey-beige/soft muted ochre (not blue slate); keep sand natural grey-beige. For temperate/alpine boards, neutral grey rock may have cool slate shadows.",
+  "images": [
+    {
+      "id": "05-grassland-slopes",
+      "file": "05-grassland-slopes-wilderness-dark-v3.png",
+      "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-13-environment-forests/05-grassland-slopes-wilderness-dark-v3.png",
+      "generated_source": "/Users/tankaixi/.codex/generated_images/01a0b065-006f-78f2-8269-19a4b6e193b4/exec-c21560ac-86c7-4f4a-ab8e-80cf668b1c18.png",
+      "edit_target": "05-grassland-slopes-wilderness-v2.png",
+      "sha256": "b0b10242cf93a14aeb46c4cc3d0d30b63763e365a601fd31120ec11d55fecd23"
+    },
+    {
+      "id": "06-alpine-highland-cliffs",
+      "file": "06-alpine-highland-cliffs-wilderness-dark-v3.png",
+      "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-13-environment-forests/06-alpine-highland-cliffs-wilderness-dark-v3.png",
+      "generated_source": "/Users/tankaixi/.codex/generated_images/01a0b065-006f-78f2-8269-19a4b6e193b4/exec-d2bcc6eb-ef75-43c6-913f-c2a989ee7c39.png",
+      "edit_target": "06-alpine-highland-cliffs-wilderness-v2.png",
+      "sha256": "5bd11ce414c35b43ea03752e2276b1600db8aa946023eac5f83844e816ba3200"
+    },
+    {
+      "id": "07-mediterranean-seacoast",
+      "file": "07-mediterranean-seacoast-wilderness-dark-v3.png",
+      "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-13-environment-forests/07-mediterranean-seacoast-wilderness-dark-v3.png",
+      "generated_source": "/Users/tankaixi/.codex/generated_images/01a0b065-006f-78f2-8269-19a4b6e193b4/exec-e6fc175d-0074-4998-9b5c-f139be99ca23.png",
+      "edit_target": "07-mediterranean-seacoast-wilderness-v2.png",
+      "sha256": "55d21e454414b076ec33e061d4ac1db6879ace84906b96c2881f385a9d267325"
+    },
+    {
+      "id": "08-north-african-desert-sea",
+      "file": "08-north-african-desert-sea-wilderness-dark-v3.png",
+      "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-13-environment-forests/08-north-african-desert-sea-wilderness-dark-v3.png",
+      "generated_source": "/Users/tankaixi/.codex/generated_images/01a0b065-006f-78f2-8269-19a4b6e193b4/exec-72e08ead-b3ff-4df9-b04e-9bf51afecd6a.png",
+      "edit_target": "08-north-african-desert-sea-wilderness-v2.png",
+      "sha256": "a852fccf46c415e4589b036797fd38709512b213ba5dcf7f3b6ae186ab834ef3"
+    },
+    {
+      "id": "09-temperate-pond",
+      "file": "09-temperate-pond-wilderness-dark-v3.png",
+      "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-13-environment-forests/09-temperate-pond-wilderness-dark-v3.png",
+      "generated_source": "/Users/tankaixi/.codex/generated_images/01a0b065-006f-78f2-8269-19a4b6e193b4/exec-3b7a4a80-f5fa-4ed9-a50d-1ef4c7fb0bff.png",
+      "edit_target": "09-temperate-pond-wilderness-v2.png",
+      "sha256": "80cb29ecee0c12954172bb178ad2802fc1916e773c6ab767a46c442a656326ce"
+    },
+    {
+      "id": "10-arid-oasis-pond",
+      "file": "10-arid-oasis-pond-wilderness-dark-v3.png",
+      "path": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/2026-10-13-environment-forests/10-arid-oasis-pond-wilderness-dark-v3.png",
+      "generated_source": "/Users/tankaixi/.codex/generated_images/01a0b065-006f-78f2-8269-19a4b6e193b4/exec-a4c5fb8a-018f-47f3-afd2-637c22dc1a25.png",
+      "edit_target": "10-arid-oasis-pond-wilderness-v2.png",
+      "sha256": "7105bde8580a329719ac5ec5801d35f232ce1bc557e769870b4fd5cd577ea286"
+    }
+  ],
+  "research": [
+    {
+      "url": "https://store.steampowered.com/app/644930/They_Are_Billions/",
+      "evidence": "Actual official trailer and screenshot viewed in browser: muted olive/brown ground, cold snow/blue notes, warm window lights, bright yellow-beige desert and orange fire. Visual inference, not measured grading values or a claim that all maps are uniformly cold."
+    },
+    {
+      "url": "https://numantiangames.com/News/2017-05-31-new-game-they-are-billions/",
+      "evidence": "Developer describes detailed art with a hand-drawn touch and an oppressive surrounding-infected atmosphere."
+    }
+  ],
+  "palette_decision": "Reduce sunny gold/lime; diffuse overcast, olive/grey-green plants, deeper legible shadows, grey rock, darker blue-green water. Preserve soil/straw/desert beige/ochre. No global monochrome-blue/night blackout.",
+  "visual_review": "Root and independent art specialist inspected all six: moderate colder/darker treatment, no major composition deformation, no added roads/rivers, plant/rock/water boundaries and lower studies remain readable. Pond09 is darkest: do not reduce exposure further without user preference.",
+  "preservation": "Brighter v2 and original files preserved; human/building warmth is unchanged.",
+  "unity_imported": false,
+  "blender_modified": false
+}
