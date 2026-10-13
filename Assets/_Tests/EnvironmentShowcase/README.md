@@ -1,5 +1,15 @@
 # 独立环境渲染实验场
 
+## 冷暗荒野＋原建筑与矿脉（dark-v1，待玩家美术评审）
+
+最新独立预览使用 `-showcaseLayout dark`。本机双击 `Builds/OpenDarkWilderness.command`；不要直接双击 app，其默认仍是历史 routes。Tab 切草坡／海岸／封闭水池／全景，1／2／3及滚轮缩放，H 隐藏诊断文字。先关闭上一份环境预览，避免多窗口消耗性能。
+
+包含主基地、作坊、牧场及4栋中立建筑，金矿／铁矿／天然石矿候选各3处。模型保持原比例、子件变换与材质；地形直接用 Unity Terrain 编排。矿点仅陈列，不接经济、寻路或战斗，正式地图和 UnitBalance 未改。
+
+源交接见 `Settings/dark-handoff.json`，技术结果见 `validation-dark-wilderness.json`。最终16件源模型／贴地／材质绑定／同帧可见性与3组石矿LOD检查通过，原 routes／cliffs 四区域及 concept 十二视图回归通过，未放宽旧阈值。石矿是许可明确的 Poly Haven Boulder 01 原作者LOD2／3，不是用户缺失的 Tripo 石矿。金、铁的许可未确认，只供本地私人评审。
+
+尚未达到概念图的丰盛程度：浓密树林缺合适来源，草卡片在RTS视角仍细碎，水面和地形平台边缘仍需美术打磨。技术通过不等于画风验收；本版不会自动替换正式场景，也不是万人战斗性能结论。旧版本保留。菜单 `Zombie Game → Environment Showcase → Prepare and build dark wilderness` 可重建这份独立预览。
+
 ## 无人荒野概念技术预览（未美术验收）
 
 最终真实播放器技术检查及旧routes／cliffs四区域回归通过；记录见 `validation-wilderness.json`。完整12近中远图及同帧差异图在 `Builds/ArtReview/EnvironmentShowcase/concept-wilderness-final`，旧回归分别在 `concept-routes-regression`／`concept-cliffs-regression`。父协调已实看中景并明确未通过美术目标：草坡仍扁均一、水波斜条纹过明显、树冠疏碎。此版仅保存独立技术预览，不继续以提高密度或放宽测试凑完成。1440×900 M2 Pro、60Hz限帧下12组各180帧p95 17.15–17.46ms，含主动等待；不是稳定战斗／万人性能结论。

@@ -76,6 +76,24 @@
   ],
   "current_revision": "dark-revision.json",
   "previous_revision": "wilderness-revision.json",
+  "unity_dark_preview": {
+    "request_date": "2026-10-14",
+    "reference_revision": "dark-revision.json",
+    "status": "technical_fixture_checks_passed_user_visual_review_pending",
+    "scene": "Assets/_Tests/EnvironmentShowcase/Scenes/EnvironmentShowcase.unity",
+    "layout_argument": "-showcaseLayout dark",
+    "config": "Assets/_Tests/EnvironmentShowcase/Settings/DarkWildernessConfig.asset",
+    "handoff": "Assets/_Tests/EnvironmentShowcase/Settings/dark-handoff.json",
+    "validation": "Assets/_Tests/EnvironmentShowcase/validation-dark-wilderness.json",
+    "launch_shortcut": "Builds/OpenDarkWilderness.command",
+    "scope": "Independent Unity Terrain composition with existing source buildings and ore fixtures; no production economy, navigation, unit balance or Blender source edits.",
+    "free_candidate_sources": "art/environment/2026-10-14-free-source-review.json",
+    "limitations": [
+      "Gold and iron reuse existing Resources exports; natural Boulder 01 is a CC0 stone-display candidate, not an existing Tripo stone-mine model.",
+      "A suitable dense RTS forest source is still missing. Island Tree native full-tree LODs were rejected for forest use; no procedural replacement trees or new decimation.",
+      "Player captures and technical checks do not establish visual equivalence to these 2D concepts. User art approval remains required."
+    ]
+  },
   "unity_preview": {
     "user_selected": "grassland_slopes_seacoast_pond",
     "reference_ids": ["05-grassland-slopes", "07-mediterranean-seacoast", "09-temperate-pond"],
@@ -127,7 +145,7 @@
     "decoration": "Low grass, shrubs and clearly unreachable background vegetation have no economic cells; do not disguise reachable full-sized woodland as unharvestable decoration.",
     "economy": "Reuse current provisional per-effective-cell wood income. Keep existing renewable throughput behavior unless user chooses finite harvesting later.",
     "performance": "Reuse meshes/materials with instancing, suitable LOD and chunk culling. Forest blocking is based on logical patches, not one actively carving NavMesh obstacle or Update script per tree.",
-    "source_pipeline": "Approved new models must first be recorded in ZombieGame_Environment.blend, then handed to Unity; no procedural replacement trees."
+    "source_pipeline": "Terrain composition and material blending happen directly in Unity. Licensed, unmodified free environment sources may be reviewed directly in an isolated Unity preview with provenance; source mesh changes and authored exports still belong in the formal Blender environment category. Never create procedural replacement trees or force an unsuitable source into the concept."
   },
   "existing_asset_audit": {
     "source": "art/Blender主文件/ZombieGame_Environment.blend",

@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-14",
+  "status": "technical_fixture_preview_passed_not_final_art_accepted",
+  "visual_accepted": false,
+  "production_map_replaced": false,
+  "build": {
+    "unity_version": "6000.6.1f1",
+    "log": "Builds/EnvironmentShowcase-dark-build-v8.log",
+    "exit_code": 0,
+    "assembly_sha256": "994ab5cda4fa58d026b4f809e7b84f577986b720bd1e8fe05d78b97f5df771cc",
+    "editor_only_readability_cleanup_runtime_dll_identical_to_v7": true,
+    "duplicate_lod_group_errors": 0,
+    "shader_and_csharp_errors": 0
+  },
+  "player": {
+    "report": "Builds/ArtReview/EnvironmentShowcase/dark-final-v8/showcase-report.json",
+    "report_sha256": "91bfd7a7bcc6f7f351d556fde72d5a320b128a41590a28861c57a31b2dd90cff",
+    "exit_code": 0,
+    "source_fixture_checks_passed": true,
+    "building_count": 7,
+    "iron_count": 3,
+    "gold_count": 3,
+    "natural_stone_candidate_count": 3,
+    "all_16_whole_source_transform_checks_passed": true,
+    "all_16_material_binding_and_same_frame_pixel_checks_passed": true,
+    "all_16_ground_checks_passed": true,
+    "maximum_building_footprint_height_span_m": 0,
+    "maximum_ground_anchor_error_m": 0,
+    "all_3_boulder_lod_checks_passed": true,
+    "road_weight": 0,
+    "no_river": true,
+    "resolution": [1440, 900],
+    "art_frame": "Builds/ArtReview/EnvironmentShowcase/dark-final-v8/dark-0-middle.png",
+    "art_frame_sha256": "20087ef63ee3cd8ea17da6c90239f87abc82c8a77cd47503c60514d92ab48856"
+  },
+  "regressions": {
+    "routes": {"directory": "Builds/ArtReview/EnvironmentShowcase/dark-routes-regression-v7", "passed_regions": ["europe", "mountains", "winter", "desert"]},
+    "cliffs": {"directory": "Builds/ArtReview/EnvironmentShowcase/dark-cliffs-regression-v7", "passed_regions": ["europe", "mountains", "winter", "desert"]},
+    "concept": {"report": "Builds/ArtReview/EnvironmentShowcase/dark-concept-regression-v7/showcase-report.json", "passed": true, "timing_views": 12},
+    "old_thresholds_relaxed": false
+  },
+  "resolved_regressions": [
+    "Only the wrapper instance's duplicate native LODGroup was removed; original FBX and LOD geometry stay unchanged.",
+    "Hard model footprints now take priority over all adjacent soft terrain transitions. V6 ground-check failures are preserved in Builds/ArtReview/EnvironmentShowcase/dark-final."
+  ],
+  "grass_probe": {
+    "sample_count_per_source": 32,
+    "bermuda_geometric_height_m": [0.2511612, 0.3037257],
+    "medium_geometric_height_m": [0.3229169, 0.4190295],
+    "top_at_or_below_root_terrain_anchor": 0,
+    "limitation": "Geometric bounds do not measure visible alpha-card blade coverage. Actual views still show fine, sparse grass; not a dense meadow or forest acceptance."
+  },
+  "preserved_scope": ["Assets/_Game", "balance", "Packages", "ProjectSettings", "User's current unsaved Blender layout"],
+  "limitations": [
+    "Dense forest source missing; Island Tree rejected for RTS forest budget. Big Oak Tree FREE is awaiting user account/library action.",
+    "Environment is visually sparser and water simpler than the concept references; terrain platform fringes still need visual smoothing. User approval remains pending.",
+    "This is not a battle, economy, navigation or ten-thousand-unit performance test.",
+    "Raw local player captures are ignored build artifacts. This tracked summary and reproducible source/config remain in the repository."
+  ]
+}
