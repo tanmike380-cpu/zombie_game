@@ -31,12 +31,29 @@ namespace ZombieGame.Tests.EnvironmentShowcase
 
         public float sample_height(float x, float z)
         {
+            if(dark && dark.flat_ground) return sample_flat_height(x,z);
             float original=sample_base_height(x,z);
             return footprints==null ? original : footprints.sample_height(x,z,original);
         }
 
+        /// <summary>All inland ground is one level. Shore and pond-bank transitions belong to non-walkable boundaries.</summary>
+        private float sample_flat_height(float x,float z)
+        {
+            float coast_distance = x-coast_edge(z);
+            float seabed = .08f+.84f*Mathf.SmoothStep(0,1,Mathf.InverseLerp(-10,0,coast_distance));
+            float height = Mathf.Lerp(seabed,dark.flat_height,Mathf.SmoothStep(0,1,Mathf.InverseLerp(0,3.5f,coast_distance)));
+            float pond_distance = pond_edge_distance(x,z);
+            if(pond_distance < layout.pond_bank_width)
+            {
+                float basin = layout.pond_level-layout.pond_depth+layout.pond_depth*Mathf.SmoothStep(0,1,Mathf.InverseLerp(-10,0,pond_distance));
+                height = Mathf.Lerp(basin,dark.flat_height,Mathf.SmoothStep(0,1,Mathf.InverseLerp(0,layout.pond_bank_width,pond_distance)));
+            }
+            return height;
+        }
+
         private float sample_base_height(float x,float z)
         {
+            if(dark && dark.flat_ground) return sample_flat_height(x,z);
             float distance = x - coast_edge(z);
             float gentle = 3.8f + .32f*Mathf.Sin(x/18)*Mathf.Sin(z/21);
             var delta = new Vector2((x-layout.meadow_center.x*size)/layout.meadow_radius.x,(z-layout.meadow_center.y*size)/layout.meadow_radius.y);
@@ -72,6 +89,22 @@ namespace ZombieGame.Tests.EnvironmentShowcase
                 float distance=new Vector2(delta.x/radius.x,delta.y/radius.y).magnitude;
                 float broken_edge=(Mathf.PerlinNoise(x/4,z/4)-.5f)*.32f;
                 weight=Mathf.Max(weight,1-Mathf.SmoothStep(0,1,Mathf.InverseLerp(.45f,1.2f,distance+broken_edge)));
+            }
+            return weight;
+        }
+
+        /// <summary>Source grass/shrub patches, not a forest substitute or authored road.</summary>
+        public float vegetation_weight(float x,float z)
+        {
+            if(!dark || !dark.flat_ground) return 0;
+            float weight = 0;
+            for(int index=0;index<dark.vegetation_centers.Length;index++)
+            {
+                var radius = dark.vegetation_radii[index];
+                var delta = new Vector2(x,z)-dark.vegetation_centers[index]*size;
+                float distance = new Vector2(delta.x/radius.x,delta.y/radius.y).magnitude;
+                float edge = (Mathf.PerlinNoise(x/7,z/7)-.5f)*.25f;
+                weight = Mathf.Max(weight,1-Mathf.SmoothStep(0,1,Mathf.InverseLerp(.50f,1.05f,distance+edge)));
             }
             return weight;
         }

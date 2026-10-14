@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 namespace ZombieGame.Tests.EnvironmentShowcase
 {
@@ -28,6 +29,14 @@ namespace ZombieGame.Tests.EnvironmentShowcase
         public Color grass_tint=new Color(.66f,.77f,.67f), dry_tint=new Color(.70f,.68f,.61f), soil_tint=new Color(.78f,.76f,.70f);
         public Vector2[] exposed_centers={new Vector2(.52f,.37f),new Vector2(.69f,.47f),new Vector2(.85f,.78f)};
         public Vector2[] exposed_radii={new Vector2(10,6),new Vector2(12,7),new Vector2(8,5)};
+        public bool flat_ground;
+        public float flat_height = 4.2f;
+        public AmbientMode ambient_mode = AmbientMode.Flat;
+        public Color ambient_sky = new Color(.30f,.34f,.38f);
+        public Color ambient_equator = new Color(.25f,.27f,.25f);
+        public Color ambient_ground = new Color(.16f,.17f,.15f);
+        public Vector2[] vegetation_centers = Array.Empty<Vector2>();
+        public Vector2[] vegetation_radii = Array.Empty<Vector2>();
 
         public EnvironmentShowcaseConfig.SourceAsset find_source(EnvironmentShowcaseConfig config,string id)
         {

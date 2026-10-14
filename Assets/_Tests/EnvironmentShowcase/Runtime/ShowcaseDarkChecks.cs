@@ -43,7 +43,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
         private IEnumerator sample_dark_sources()
         {
             var evidence=new DarkSourceReport{buildings=showcase.landmarks.buildings.Count,no_river=!showcase.ground.routes.enabled,
-                forest_source_available=showcase.config.dark_layout.tree_prefabs.Length>0,visual_accepted=false,grass_probes=showcase.foliage.grass_probes.ToArray()};
+                forest_source_available=showcase.config.active_dark_layout.tree_prefabs.Length>0,visual_accepted=false,grass_probes=showcase.foliage.grass_probes.ToArray()};
             var fixtures=new List<GameObject>(showcase.landmarks.buildings);
             fixtures.AddRange(showcase.landmarks.ores);
             var results=new List<FixtureReport>();

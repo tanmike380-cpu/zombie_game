@@ -83,6 +83,7 @@ MonoBehaviour:
     landmark_pad_radius: 5.7
   concept_layout: {fileID: 11400000, guid: db28a5962145a45ff804dce689d8cb6b, type: 2}
   dark_layout: {fileID: 11400000, guid: 1e37f21c93ec24ee88ddda698bbf22d5, type: 2}
+  flat_layout: {fileID: 11400000, guid: 79fde12f5dd58477aa1427c34f4ae54c, type: 2}
   landmark_sources:
   - id: EuropeanStoneHouse
     source_record: "art/environment/landmark_handoff.json#EuropeanStoneHouse; art/Blender\u4E3B\u6587\u4EF6/ZombieGame_Environment.blend; SHA256=dfd40cfc85891b05f660d56f7016fa163391d8627e80002d48f691cf6a9e017d; Scene=Scene; Collection=\u73AF\u5883\u5730\u6807 \xB7 EuropeanStoneHouse; scale=1, once-baked axes; authored_triangles=835; effective_triangles=835; degenerate_triangles=0"

@@ -20,7 +20,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
         public int view_index { get; private set; }
         public int biome_index { get; private set; }
         public EnvironmentShowcaseConfig.BiomeProfile current_biome => config.biomes != null && config.biomes.Length > 0 ? config.biomes[biome_index] : null;
-        public string missing_art => config.dark_enabled ? config.dark_layout.tree_source+(config.dark_layout.stone_candidate?.prefab ? " Licensed natural stone candidate present, not a Tripo stone mine; visual review pending." : " Stone source unavailable.")+" Environment props only; no economy." : config.concept_enabled ? config.active_concept_layout.missing_art : current_biome == null ? "" : ground != null && ground.routes.enabled ? current_biome.route_missing_art : current_biome.missing_art;
+        public string missing_art => config.dark_enabled ? config.active_dark_layout.tree_source+(config.active_dark_layout.stone_candidate?.prefab ? " Licensed natural stone candidate present, not a Tripo stone mine; visual review pending." : " Stone source unavailable.")+" Environment props only; no economy." : config.concept_enabled ? config.active_concept_layout.missing_art : current_biome == null ? "" : ground != null && ground.routes.enabled ? current_biome.route_missing_art : current_biome.missing_art;
         private readonly float[] frame_samples = new float[600];
         private int frame_cursor;
         private int frame_count;
@@ -57,14 +57,16 @@ namespace ZombieGame.Tests.EnvironmentShowcase
                 previous_route_layout = config.route_layout != null && config.route_layout.enabled;
                 config.concept_enabled = false;
                 config.dark_enabled=false;
+                config.flat_enabled=false;
                 var arguments = Environment.GetCommandLineArgs();
                 for (int index = 0; index + 1 < arguments.Length; index++)
                     if (arguments[index] == "-showcaseLayout")
                     {
                         string layout_name = arguments[index + 1];
-                        if (layout_name != "cliffs" && layout_name != "routes" && layout_name != "concept" && layout_name!="dark") throw new InvalidOperationException("Use -showcaseLayout routes / cliffs / concept / dark, got: " + layout_name);
-                        config.dark_enabled=layout_name=="dark";
-                        if(config.dark_enabled && (!config.dark_layout||!config.dark_layout.layout)) throw new InvalidOperationException("Prepare independent DarkWildernessConfig before starting dark layout.");
+                        if (layout_name != "cliffs" && layout_name != "routes" && layout_name != "concept" && layout_name!="dark" && layout_name!="flat") throw new InvalidOperationException("Use -showcaseLayout routes / cliffs / concept / dark / flat, got: " + layout_name);
+                        config.flat_enabled=layout_name=="flat";
+                        config.dark_enabled=layout_name=="dark"||config.flat_enabled;
+                        if(config.dark_enabled && (!config.active_dark_layout||!config.active_dark_layout.layout)) throw new InvalidOperationException("Prepare independent wilderness preset before starting this layout.");
                         config.concept_enabled = layout_name == "concept" || config.dark_enabled;
                         if (!config.concept_enabled) config.route_layout.enabled = layout_name == "routes";
                     }
@@ -101,10 +103,17 @@ namespace ZombieGame.Tests.EnvironmentShowcase
         private void configure_lighting()
         {
             RenderSettings.ambientMode = AmbientMode.Flat;
-            RenderSettings.ambientLight = config.dark_enabled ? config.dark_layout.ambient : current_biome == null ? config.ambient_color : current_biome.ambient;
+            RenderSettings.ambientLight = config.dark_enabled ? config.active_dark_layout.ambient : current_biome == null ? config.ambient_color : current_biome.ambient;
+            if(config.flat_enabled)
+            {
+                RenderSettings.ambientMode = config.active_dark_layout.ambient_mode;
+                RenderSettings.ambientSkyColor = config.active_dark_layout.ambient_sky;
+                RenderSettings.ambientEquatorColor = config.active_dark_layout.ambient_equator;
+                RenderSettings.ambientGroundColor = config.active_dark_layout.ambient_ground;
+            }
             RenderSettings.fog = true;
             RenderSettings.fogMode = FogMode.Linear;
-            RenderSettings.fogColor = config.dark_enabled ? config.dark_layout.fog : current_biome == null ? config.fog_color : current_biome.fog;
+            RenderSettings.fogColor = config.dark_enabled ? config.active_dark_layout.fog : current_biome == null ? config.fog_color : current_biome.fog;
             RenderSettings.fogStartDistance = config.fog_start;
             RenderSettings.fogEndDistance = config.fog_end;
             if (!sun)
@@ -115,8 +124,8 @@ namespace ZombieGame.Tests.EnvironmentShowcase
                 sun = sun_object.AddComponent<Light>();
             }
             sun.type = LightType.Directional;
-            sun.color = config.dark_enabled ? config.dark_layout.sun : current_biome == null ? config.sun_color : current_biome.sun;
-            sun.intensity = config.dark_enabled ? config.dark_layout.sun_intensity : current_biome == null ? config.sun_intensity : current_biome.sun_intensity;
+            sun.color = config.dark_enabled ? config.active_dark_layout.sun : current_biome == null ? config.sun_color : current_biome.sun;
+            sun.intensity = config.dark_enabled ? config.active_dark_layout.sun_intensity : current_biome == null ? config.sun_intensity : current_biome.sun_intensity;
             sun.shadows = LightShadows.Soft;
             sun.shadowBias = .025f;
             sun.shadowNormalBias = .35f;
@@ -280,7 +289,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             // Built-in ASCII HUD: desktop system fonts are not reliably available in a packaged player.
             GUILayout.Label("ENVIRONMENT ART LAB - Six PBR layers - " + config.map_size + " m");
             GUILayout.Label(config.concept_enabled ? "1/2/3: zoom | Tab: 05 slopes / 07 coast / 09 pond / overview | G: grass | H: HUD" : "B: region | 1/2/3: zoom | Tab: view | G: grass | H: HUD | L: layout");
-            GUILayout.Label(config.dark_enabled ? "DARK WILDERNESS - source buildings and ore displays; art review pending" : config.concept_enabled ? "WILDERNESS PREVIEW - no roads/rivers; visual review pending" : ground.routes.enabled ? "ROUTES: river / forest belts / neutral landmarks (art only)" : "CLIFFS: preserved previous layout baseline");
+            GUILayout.Label(config.flat_enabled ? "FLAT WILDERNESS - level land, no roads/rivers; visual review pending" : config.dark_enabled ? "DARK WILDERNESS - source buildings and ore displays; art review pending" : config.concept_enabled ? "WILDERNESS PREVIEW - no roads/rivers; visual review pending" : ground.routes.enabled ? "ROUTES: river / forest belts / neutral landmarks (art only)" : "CLIFFS: preserved previous layout baseline");
             GUILayout.BeginHorizontal();
             if (!config.concept_enabled && config.biomes != null)
                 for (int index = 0; index < config.biomes.Length; index++)
@@ -310,6 +319,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             concept_water?.Dispose();
             if(config) config.concept_enabled=false;
             if(config) config.dark_enabled=false;
+            if(config) config.flat_enabled=false;
             Camera.onPreCull -= submit_foliage;
             foliage?.Dispose();
             landmarks?.Dispose();

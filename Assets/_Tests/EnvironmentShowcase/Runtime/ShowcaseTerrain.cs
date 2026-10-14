@@ -21,7 +21,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
         {
             config = settings;
             biome = profile;
-            if (config.concept_enabled) concept = new ShowcaseConceptLayout(config.active_concept_layout,config.map_size,config.dark_enabled?config.dark_layout:null,config);
+            if (config.concept_enabled) concept = new ShowcaseConceptLayout(config.active_concept_layout,config.map_size,config.dark_enabled?config.active_dark_layout:null,config);
             routes = new ShowcaseRoutes(settings);
             layer_instances = load_layers();
             terrain_data = new TerrainData { name = "Showcase real relief", heightmapResolution = config.heightmap_resolution,
@@ -103,9 +103,9 @@ namespace ZombieGame.Tests.EnvironmentShowcase
                 material_instance.SetFloat("_MacroStrength",.35f);
                 if(config.dark_enabled)
                 {
-                    material_instance.SetColor("_GrassTint",config.dark_layout.grass_tint);
-                    material_instance.SetColor("_DryTint",config.dark_layout.dry_tint);
-                    material_instance.SetColor("_SoilTint",config.dark_layout.soil_tint);
+                    material_instance.SetColor("_GrassTint",config.active_dark_layout.grass_tint);
+                    material_instance.SetColor("_DryTint",config.active_dark_layout.dry_tint);
+                    material_instance.SetColor("_SoilTint",config.active_dark_layout.soil_tint);
                     material_instance.SetFloat("_BreakupStrength",.25f);
                 }
             }
@@ -224,6 +224,10 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             float shore_distance = z - shoreline_z(x);
             float wet = 1 - Mathf.SmoothStep(0, 1, Mathf.Clamp01(shore_distance / config.shore_blend_width));
             if (concept != null) wet = (1-Mathf.SmoothStep(0,1,Mathf.InverseLerp(.2f,1.6f,concept.measure_wet_edge(x,z))))*(.6f+.4f*Mathf.PerlinNoise(x/5,z/5));
+            if(config.flat_enabled)
+            {
+                wet = 1-Mathf.SmoothStep(0,1,Mathf.InverseLerp(.25f,2.8f,concept.measure_wet_edge(x,z)));
+            }
             if (routes.enabled) wet = Mathf.Max(wet, 1 - Mathf.SmoothStep(0,1,Mathf.InverseLerp(routes.layout.river_half_width,
                 routes.layout.river_half_width + 3, routes.measure_river(x,z))));
             float road_distance = routes.enabled ? routes.measure_road(x,z) : Mathf.Abs(x - road_x(z));
@@ -235,20 +239,25 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             float path_soil = 1 - Mathf.Clamp01((road_distance - road_half_width) / (road_edge_width * 2.4f));
             float dirt = Mathf.Clamp01(path_soil * .45f + forest_weight(x, z) * .36f);
             if(concept != null) dirt=Mathf.Clamp01(forest_weight(x,z)*.35f+stone*.28f);
+            if(config.flat_enabled)
+            {
+                dirt = Mathf.Max(concept.exposed_soil(x,z)*.78f,wet*.35f);
+                dry = Mathf.SmoothStep(0,1,Mathf.InverseLerp(.42f,.64f,patch))*(1-concept.vegetation_weight(x,z));
+            }
             if(config.dark_enabled)
             {
                 float exposed=concept.exposed_soil(x,z);
                 dirt=Mathf.Max(dirt,exposed*.85f);
                 stone=Mathf.Max(stone,exposed*.30f*(.35f+.65f*patch));
                 if(x-concept.coast_edge(z)>7 && (concept.footprints?.softened_footing(x,z)??0)>0) stone=0;
-                wet*=.5f;
+                if(!config.flat_enabled) wet*=.5f;
             }
             if (routes.enabled) dirt = Mathf.Max(dirt, (1 - Mathf.SmoothStep(0,1,Mathf.InverseLerp(routes.layout.landmark_pad_radius,
                 routes.layout.landmark_clear_radius, routes.measure_courtyard(x,z)))) * .8f);
             float dry_strength = biome == null ? config.dry_grass_strength : biome.dry_strength;
             if(concept != null)
             {
-                dry=Mathf.Max(dry,Mathf.InverseLerp(6,10,terrain_data.GetInterpolatedHeight(u,v))*.55f);
+                if(!config.flat_enabled) dry=Mathf.Max(dry,Mathf.InverseLerp(6,10,terrain_data.GetInterpolatedHeight(u,v))*.55f);
                 dry_strength=.7f*(1-forest_weight(x,z)*.7f);
             }
             if (biome != null && biome.dry_basin) dirt = path_soil * .35f + stone * .1f;

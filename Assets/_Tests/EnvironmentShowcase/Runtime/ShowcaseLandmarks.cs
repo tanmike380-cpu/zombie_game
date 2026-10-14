@@ -19,10 +19,10 @@ namespace ZombieGame.Tests.EnvironmentShowcase
         {
             if(config.dark_enabled)
             {
-                if(!config.dark_layout.props_enabled) return;
-                foreach(var placement in config.dark_layout.placements)
+                if(!config.active_dark_layout.props_enabled) return;
+                foreach(var placement in config.active_dark_layout.placements)
                 {
-                    var source=config.dark_layout.find_source(config,placement.source_id);
+                    var source=config.active_dark_layout.find_source(config,placement.source_id);
                     var instance=place_source(source,placement.center,placement.yaw,placement.uniform_scale,config,ground,parent);
                     if(placement.ore) ores.Add(instance); else buildings.Add(instance);
                     placed_sources.Add(source);placements.Add(placement);

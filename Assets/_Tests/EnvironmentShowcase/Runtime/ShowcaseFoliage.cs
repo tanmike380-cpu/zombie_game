@@ -19,6 +19,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
         public bool show_decorations = true;
         public bool show_rocks = true;
         public bool show_trees = true;
+        public bool show_shrubs = true;
         public int grass_instances { get; private set; }
         public int tree_instances { get; private set; }
         public int shrub_instances { get; private set; }
@@ -35,6 +36,14 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             public float maximum_terrain_corner_span;
         }
         public readonly List<GrassProbe> grass_probes=new List<GrassProbe>();
+        public readonly List<GrassProbe> shrub_probes=new List<GrassProbe>();
+        [Serializable] public sealed class VisibilityProbe
+        {
+            public int grass_matrix_submissions,shrub_matrix_submissions;
+            public int grass_camera_distance_rejected,shrub_camera_distance_rejected;
+            public string[] material_bindings;
+            public string distance_policy = "Flat only: metres from orthographic ground focus; legacy modes retain camera XZ distance.";
+        }
 
         private sealed class SourcePart
         {
@@ -56,6 +65,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             public bool is_grass;
             public bool is_rock;
             public bool is_tree;
+            public bool is_shrub;
             public float lod_height;
         }
 
@@ -68,14 +78,14 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             int grass_count = Mathf.RoundToInt(config.grass_count * (biome == null ? 1 : biome.grass_density));
             int tree_count = Mathf.RoundToInt(config.tree_count * (biome == null ? 1 : biome.tree_density));
             if (terrain.concept != null) tree_count = terrain.concept.layout.tree_budget;
-            if(config.dark_enabled && config.dark_layout.tree_prefabs.Length==0) tree_count=0;
+            if(config.dark_enabled && config.active_dark_layout.tree_prefabs.Length==0) tree_count=0;
             if (terrain.routes.enabled && (biome == null || biome.tree_density > 0)) tree_count = terrain.routes.layout.tree_budget;
             int shrub_count = Mathf.RoundToInt(config.shrub_count * (biome == null ? 1 : biome.shrub_density));
             int rock_count = Mathf.RoundToInt(config.rock_count * (biome == null ? 1 : biome.rock_density));
             if (config.grass_variants != null && config.grass_variants.Length > 0)
                 grass_instances = add_variants(config.grass_variants, grass_count, config.grass_scale_range, "grass");
             else if (config.grass_prefab) grass_instances = add_prefab(config.grass_prefab, grass_count, config.grass_scale_range, "grass");
-            tree_instances = add_variants(config.dark_enabled ? config.dark_layout.tree_prefabs : config.tree_prefabs, tree_count, config.tree_scale_range, "tree");
+            tree_instances = add_variants(config.dark_enabled ? config.active_dark_layout.tree_prefabs : config.tree_prefabs, tree_count, config.tree_scale_range, "tree");
             shrub_instances = add_variants(config.shrub_prefabs, shrub_count, config.shrub_scale_range, "shrub");
             rock_instances = add_variants(config.rock_prefabs, rock_count, config.rock_scale_range, "rock");
         }
@@ -92,7 +102,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
         private int add_prefab(GameObject prefab, int count, Vector2 scale_range, string category)
         {
             bool is_short_grass=config.dark_enabled && category=="grass" && prefab.name.StartsWith("GrassBermuda",StringComparison.Ordinal);
-            if(config.dark_enabled && category=="grass") scale_range=is_short_grass ? config.dark_layout.bermuda_scale_range : config.dark_layout.medium_scale_range;
+            if(config.dark_enabled && category=="grass") scale_range=is_short_grass ? config.active_dark_layout.bermuda_scale_range : config.active_dark_layout.medium_scale_range;
             var parts = read_source_parts(prefab,category);
             if (parts.Count == 0) throw new InvalidOperationException("Approved showcase asset has no renderable static source meshes: " + prefab.name);
             var cells = new Dictionary<Vector2Int, List<Matrix4x4>>();
@@ -103,7 +113,16 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             {
                 float x = (float)random.NextDouble() * config.map_size;
                 float z = (float)random.NextDouble() * config.map_size;
-                if (tree_candidates != null) { x = tree_candidates[attempt].x; z = tree_candidates[attempt].y; }
+                if(config.flat_enabled && (category=="grass" || category=="shrub"))
+                {
+                    var preset = config.active_dark_layout;
+                    int patch_index = random.Next(preset.vegetation_centers.Length);
+                    var center = preset.vegetation_centers[patch_index]*config.map_size;
+                    var radius = preset.vegetation_radii[patch_index];
+                    x = center.x+((float)random.NextDouble()*2-1)*radius.x;
+                    z = center.y+((float)random.NextDouble()*2-1)*radius.y;
+                }
+                else if (tree_candidates != null) { x = tree_candidates[attempt].x; z = tree_candidates[attempt].y; }
                 else if (category == "grass" && random.NextDouble() < config.grass_focus_fraction)
                 {
                     x = Mathf.Clamp01(config.grass_focus_center.x + ((float)random.NextDouble() * 2 - 1) * config.grass_focus_extent.x) * config.map_size;
@@ -135,6 +154,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
                     prefab.transform.localScale * scale);
                 var cell = new Vector2Int(Mathf.FloorToInt(x / config.grass_chunk_size), Mathf.FloorToInt(z / config.grass_chunk_size));
                 if(config.dark_enabled && category=="grass") measure_grass_probe(prefab.name,point.y,matrix,parts);
+                if(config.flat_enabled && category=="shrub") measure_grass_probe(prefab.name,point.y,matrix,parts,true);
                 if (!cells.TryGetValue(cell, out var instances)) { instances = new List<Matrix4x4>(); cells.Add(cell, instances); }
                 instances.Add(matrix);
                 if (category == "tree") tree_positions.Add(new Vector2(x,z));
@@ -146,6 +166,14 @@ namespace ZombieGame.Tests.EnvironmentShowcase
 
         private bool can_place_category(float x, float z, string category)
         {
+            if(config.flat_enabled && (category=="grass" || category=="shrub"))
+            {
+                if(x<0 || z<0 || x>config.map_size || z>config.map_size || !ground.can_place_greenery(x,z)) return false;
+                float vegetation = ground.concept.vegetation_weight(x,z);
+                float exposed = ground.concept.exposed_soil(x,z);
+                if(category=="shrub") return vegetation>.20f && vegetation<.85f && exposed<.25f;
+                return vegetation>.45f && exposed<.35f && random.NextDouble()<vegetation;
+            }
             if (ground.concept != null)
             {
                 if (!ground.concept.can_place(x,z)) return false;
@@ -262,7 +290,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
                         var mesh_bounds = transform_bounds(part.mesh.bounds, matrices[index]);
                         if (index == 0) bounds = mesh_bounds; else bounds.Encapsulate(mesh_bounds);
                     }
-                    batches.Add(new DrawBatch { part = part, matrices = matrices, bounds = bounds, lod_height = lod_height, is_grass = category == "grass", is_rock = category == "rock", is_tree = category == "tree",
+                    batches.Add(new DrawBatch { part = part, matrices = matrices, bounds = bounds, lod_height = lod_height, is_grass = category == "grass", is_rock = category == "rock", is_tree = category == "tree", is_shrub = category == "shrub",
                         draw_distance = category == "grass" ? config.grass_draw_distance : category == "tree" ? config.tree_draw_distance :
                             category == "shrub" ? config.shrub_draw_distance : config.rock_draw_distance });
                 }
@@ -280,10 +308,11 @@ namespace ZombieGame.Tests.EnvironmentShowcase
         }
 
         /// <summary>Once at construction, sample 32 actual submitted matrices per source. Bounds are geometric, not alpha-visible blade coverage.</summary>
-        private void measure_grass_probe(string source,float anchor_height,Matrix4x4 instance,List<SourcePart> parts)
+        private void measure_grass_probe(string source,float anchor_height,Matrix4x4 instance,List<SourcePart> parts,bool is_shrub=false)
         {
-            var probe=grass_probes.Find(item=>item.source==source);
-            if(probe==null){probe=new GrassProbe{source=source};grass_probes.Add(probe);}
+            var probes = is_shrub ? shrub_probes : grass_probes;
+            var probe=probes.Find(item=>item.source==source);
+            if(probe==null){probe=new GrassProbe{source=source};probes.Add(probe);}
             if(probe.samples>=32) return;
             var bounds=new Bounds();bool first=true;
             foreach(var part in parts)
@@ -319,12 +348,13 @@ namespace ZombieGame.Tests.EnvironmentShowcase
                 if (batch.is_grass && !show_grass) continue;
                 if (batch.is_rock && !show_rocks) continue;
                 if (batch.is_tree && !show_trees) continue;
+                if (batch.is_shrub && !show_shrubs) continue;
                 if (batch.lod_height > 0)
                 {
                     float relative_height = batch.lod_height / (camera.orthographicSize * 2);
                     if (relative_height < batch.part.lod_min_height || relative_height >= batch.part.lod_max_height) continue;
                 }
-                Vector3 planar_delta = batch.bounds.center - camera.transform.position;
+                Vector3 planar_delta = batch.bounds.center - measure_distance_anchor(camera);
                 planar_delta.y = 0;
                 if (planar_delta.sqrMagnitude > batch.draw_distance * batch.draw_distance ||
                     !GeometryUtility.TestPlanesAABB(frustum_planes, batch.bounds)) continue;
@@ -334,6 +364,46 @@ namespace ZombieGame.Tests.EnvironmentShowcase
                     true, 0, camera, LightProbeUsage.Off);
                 visible_batches++;
             }
+        }
+
+        private Vector3 measure_distance_anchor(Camera camera)
+        {
+            if(!config.flat_enabled || !camera.orthographic) return camera.transform.position;
+            var ray = camera.ViewportPointToRay(new Vector3(.5f,.5f,0));
+            float distance = (config.active_dark_layout.flat_height-ray.origin.y)/ray.direction.y;
+            return ray.GetPoint(distance);
+        }
+
+        /// <summary>QA snapshot of actual source matrix submissions, with the former camera-distance exclusions for comparison.</summary>
+        public VisibilityProbe sample_visibility(Camera camera)
+        {
+            var evidence = new VisibilityProbe();
+            GeometryUtility.CalculateFrustumPlanes(camera,frustum_planes);
+            var anchor = measure_distance_anchor(camera);
+            foreach(var batch in batches)
+            {
+                if(!GeometryUtility.TestPlanesAABB(frustum_planes,batch.bounds)) continue;
+                var old_delta = batch.bounds.center-camera.transform.position;
+                var delta = batch.bounds.center-anchor;
+                old_delta.y = 0;
+                delta.y = 0;
+                if(old_delta.sqrMagnitude>batch.draw_distance*batch.draw_distance)
+                {
+                    if(batch.is_grass) evidence.grass_camera_distance_rejected += batch.matrices.Length;
+                    if(batch.is_shrub) evidence.shrub_camera_distance_rejected += batch.matrices.Length;
+                }
+                if(delta.sqrMagnitude>batch.draw_distance*batch.draw_distance) continue;
+                if(batch.is_grass) evidence.grass_matrix_submissions += batch.matrices.Length;
+                if(batch.is_shrub) evidence.shrub_matrix_submissions += batch.matrices.Length;
+            }
+            var bindings = new List<string>();
+            foreach(var material in materials)
+            {
+                bindings.Add(material.name+"; shader="+material.shader.name+"; base="+material.GetTexture("_MainTex")?.name+
+                    "; Cull="+material.GetFloat("_Cull")+"; Cutoff="+material.GetFloat("_Cutoff")+"; AlphaToMask="+material.GetFloat("_AlphaToMask"));
+            }
+            evidence.material_bindings = bindings.ToArray();
+            return evidence;
         }
 
         public void Dispose()
