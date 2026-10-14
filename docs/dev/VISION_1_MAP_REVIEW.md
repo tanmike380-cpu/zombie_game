@@ -39,6 +39,16 @@ Unity 专责完善自然语义地表分区、布局、光照、水体和同源�
 - 05:41 Lauris Kaplinski 橡树正式源就绪：`Vision1 · Lauris71原生橡树`，原作者完整 LOD0／LOD1 分别为 5,303／842 三角，每级 36 子件，未采用近景 billboard。许可是 CC BY-SA 3.0，不是 CC0。原 RGBA atlas 保留；源缺少真实 Normal／Roughness／AO，因此明示常量，不伪称完整扫描 PBR。它适合开阔橡树林，不代表已经解决概念图中的封闭浓树冠。
 - 橡树正式环境源更新为 `cf8310ae2f8d643653fd8cf9e96ef7dea0570f586a76e2d0f62911c7d3803301`，112,264,846 bytes。原模型、UV、布局、使用中材质、灯相机与 73 张旧 packed 图重开守卫通过；另外恢复三个无用户材质并明确设保留标志；新总数 75 图。FBX 米单位、完整装配和 UV 往返检查通过，误差不超过 0.0000027m。
 - 官方 `unity@unity-agent-plugin` 已安装启用，Unity CLI 更新为当前 beta.13；新项目添加 `com.unity.pipeline` 0.8.0-exp.1。尚需在真实 Editor 中确认连接／播放，不能把“插件已安装”称为“Editor 已连接”。旧 clone 的 Packages 不修改。
+- 06:18 含橡树版本构建成功，实际玩家近／中／远树贡献约 0.05176／0.01700／0.01003，原装配与材质检查通过；实际摆放 21 棵，未强行占满 32 预算。整体草检查仍失败（0.000192 < 0.0003），保留 `vision-oak-v1` 失败证据。原 flat、dark 技术回归通过；不把不同观察位置的草像素差当成严格同视角比较。
+- 06:27 正确项目 GUI Editor 已在后台打开，官方本机连接回报 ready；通过其 API 核对 project 为当前目录、初始旧门楼场景未保存状态为 false，没有关闭 Blender。Mac 锁屏使桌面鼠标／窗口检查不可用；不绕过锁屏，改由已经授权的 Unity 本机 Editor 接口检查场景与播放。未修改 Codex 沙箱网络策略或账户权限。
+
+## Unity 本机连接说明
+
+官方 Codex Unity 技能插件已安装；当前聊天直接使用 Unity CLI 与项目内 Pipeline 包通信。连接只针对当前已打开的本机 Editor，不等于云端 Codex 可以自动控制这台 Mac；没有启用付费 Unity AI 生成，也没有消耗 AI 额度。
+
+后续检查先确认 `unity status --format json` 的 `project` 是正式目录，所有操作显式指定 `--project-path`。不要将命令指向旧 clone，也不要从 Shell 输出完整 Unity 启动参数（其中可能有令牌）。有实时 Editor 时，通过它的接口修改场景／资产，不直接写场景 YAML；C# 源改动后重新编译。没有连接时先核对编译错误与包状态，不强关未保存窗口。
+
+Blender 导出依然经过分类源 → handoff 中的源／导出 SHA、真实单位、网格／UV／LOD 校验 → Unity 导入。连接插件不会取代来源检查，也不允许 Unity 自造或重新拟合模型。
 
 ## 晨起打开入口
 

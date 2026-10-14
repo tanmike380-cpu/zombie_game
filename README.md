@@ -4,6 +4,8 @@ A **1–2 player cooperative Survival RTS** set in a fictionalized ancient/medie
 
 ## Documentation
 
+- [Vision 1 map review and workspace / 当前地图与正式目录](docs/dev/VISION_1_MAP_REVIEW.md): the daily workspace is `/Users/tankaixi/Documents/ChatGPT/zombie game`, branch `vision-1`. The older `/Users/tankaixi/zombie_game` clone is preserved, not the current development copy. Map-art previews are independent of the accepted combat scenes.
+
 - [Tripo → Unity combat-animation workflow / 新动画路线](docs/dev/TRIPO_UNITY_ANIMATION_WORKFLOW.md): character binding in Tripo, approved weapon assembly and complex combat-animation prototyping in Unity; Blender remains the source-model and skinning-repair workspace.
 
 - [Infantry roster and equipment / 步兵名单与装备](design/03_player_units.md): Tianchao and Byzantine each have four infantry types, each with militia, veteran and elite variants. Militia and veterans carry 30 rounds; elites carry **50 rounds total** and gain **one tile of attack range** over the same type's base range. Veteran/elite damage increases are intended but their amounts remain undecided; current damage is unchanged. These rules are authored only in `balance/unit_balance.json`; experience and promotion are not implemented by this documentation update.
@@ -62,6 +64,8 @@ Important current combat rules:
 这是一款以中国古代/中古代架空背景为基础的 **1–2 人合作 Survival RTS**。
 
 ## 文档规则
+
+当前正式日常开发目录是 `/Users/tankaixi/Documents/ChatGPT/zombie game`，最新分支为 `vision-1`（用户称“Vision 1”）。旧 `/Users/tankaixi/zombie_game` 保留但不再作为当前入口。Unity 应打开前者；地图制作、打开方式与实际检查记录见[Vision 1 地图说明](docs/dev/VISION_1_MAP_REVIEW.md)，不覆盖已验收战斗场景。
 
 最新步兵方案：天朝、拜占庭各4种，共8种步兵，每种分民兵／老兵／精英。民兵与老兵携弹上限均为30发；精英为**总计50发，不是额外50发**，同兵种基础射程增加1格。老兵、精英伤害递增方向已记录，具体加成待定，当前伤害不擅改。数值唯一来源为 `balance/unit_balance.json`；本轮不自动实现经验晋升或启用尚未完成的阵营单位。
 
