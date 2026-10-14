@@ -34,6 +34,11 @@ Unity 专责完善自然语义地表分区、布局、光照、水体和同源�
 - 04:30 首次真实玩家检查：阴影同帧 RGB 差值 0.01361，证实投地阴影已经出现；可见陆地草／干草／土／泥／石平均权重约 62.9／10.1／23.8／0.7／2.5%，Road 为零。单栋欧洲房屋触到新池岸导致足迹高差 0.164m，未放宽原 0.08m 阈值，后续只移动整栋房屋避开池岸。保留失败报告 `vision-initial-v1/showcase-report.json`。
 - 草蕨源已追加到 `ZombieGame_Environment.blend` 的 `Vision1 · CC0植物原型`，三个子集合为 `Vision1 · Fern02A`、`Vision1 · Fern02B`、`Vision1 · GrassMedium02E`；原网格、UV、原环境对象、灯、相机及 61 张旧贴图守卫均保留。新源 SHA 为 `8ee96a9c1d426b66701bca637b1857d84899f02758e6338d052caaeb4622f252`，105.07 MiB，用 LFS 存新版本。完整交接和往返验证在 `art/environment/vision-vegetation-handoff.json` 与 `art/environment/vision-sources/`。
 - Jacaranda 树候选原 FBX 实际 3,863,832 三角，作者完整 LOD1 仍为 1,845,603；网页的较小统计不能代替展开成本。原生低级别仅作有限棵数候选实测，不直接量产森林，不冒称中世纪欧洲树种；没有用细枝灌木冒充树冠。
+- 04:51 草蕨正式源提交 `314f658` 已上传并核对远端。它们的 FBX 使用厘米，Unity 显式读取文件单位后保留原大小；首次单位检查发现 100 倍错误并阻止导入，没有把错误结果交付。
+- 05:33 草床玩家检查仍未通过整体草覆盖阈值：0.000171 < 0.0003。单源可见性检查不能代替画面密度验收；三类新植物确实可见，但草的实际贡献太小，继续排查原透明叶片、mip 与落地位置，不降低原阈值。
+- 05:41 Lauris Kaplinski 橡树正式源就绪：`Vision1 · Lauris71原生橡树`，原作者完整 LOD0／LOD1 分别为 5,303／842 三角，每级 36 子件，未采用近景 billboard。许可是 CC BY-SA 3.0，不是 CC0。原 RGBA atlas 保留；源缺少真实 Normal／Roughness／AO，因此明示常量，不伪称完整扫描 PBR。它适合开阔橡树林，不代表已经解决概念图中的封闭浓树冠。
+- 橡树正式环境源更新为 `cf8310ae2f8d643653fd8cf9e96ef7dea0570f586a76e2d0f62911c7d3803301`，112,264,846 bytes。原模型、UV、布局、使用中材质、灯相机与 73 张旧 packed 图重开守卫通过；另外恢复三个无用户材质并明确设保留标志；新总数 75 图。FBX 米单位、完整装配和 UV 往返检查通过，误差不超过 0.0000027m。
+- 官方 `unity@unity-agent-plugin` 已安装启用，Unity CLI 更新为当前 beta.13；新项目添加 `com.unity.pipeline` 0.8.0-exp.1。尚需在真实 Editor 中确认连接／播放，不能把“插件已安装”称为“Editor 已连接”。旧 clone 的 Packages 不修改。
 
 ## 晨起打开入口
 

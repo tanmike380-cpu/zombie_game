@@ -3,9 +3,16 @@
   "status": "formal_category_source_test_only",
   "preview_approval": "User confirmed separate formal environment category on 2026-10-11; portable v3 tree comparison visually approved by parent; asset integration remains limited to independent EnvironmentShowcase test",
   "source_blend": "art/Blender主文件/ZombieGame_Environment.blend",
-  "source_sha256": "8ee96a9c1d426b66701bca637b1857d84899f02758e6338d052caaeb4622f252",
+  "source_sha256": "cf8310ae2f8d643653fd8cf9e96ef7dea0570f586a76e2d0f62911c7d3803301",
   "export_source_sha256": "22cf18b836561446acae85f98b97086e40cac6ec23e88f91eebe05c8310ad56f",
   "category_revision": {
+    "before_sha256": "8ee96a9c1d426b66701bca637b1857d84899f02758e6338d052caaeb4622f252",
+    "after_sha256": "cf8310ae2f8d643653fd8cf9e96ef7dea0570f586a76e2d0f62911c7d3803301",
+    "added_asset_collections": ["Vision1 · Lauris71原生橡树 · LOD0", "Vision1 · Lauris71原生橡树 · LOD1"],
+    "preservation_evidence": "art/environment/vision-sources/OakLauris71/source-validation.json",
+    "note": "Current category reference only. Prior geometry/UV/layout/used material graphs/73 packed images and all prior FBX hashes preserved. Old zero-user materials retained with fake-user flags. Historical export/source QA is unchanged."
+  },
+  "previous_category_revision": {
     "before_sha256": "dfd40cfc85891b05f660d56f7016fa163391d8627e80002d48f691cf6a9e017d",
     "after_sha256": "8ee96a9c1d426b66701bca637b1857d84899f02758e6338d052caaeb4622f252",
     "added_asset_collections": ["Vision1 · Fern02A", "Vision1 · Fern02B", "Vision1 · GrassMedium02E"],

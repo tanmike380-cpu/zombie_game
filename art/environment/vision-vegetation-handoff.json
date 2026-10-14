@@ -2,9 +2,34 @@
   "schema_version": 1,
   "status": "approved_for_local_preview",
   "source_blend": "art/Blender主文件/ZombieGame_Environment.blend",
-  "source_sha256": "8ee96a9c1d426b66701bca637b1857d84899f02758e6338d052caaeb4622f252",
+  "source_sha256": "cf8310ae2f8d643653fd8cf9e96ef7dea0570f586a76e2d0f62911c7d3803301",
+  "export_source_sha256": "8ee96a9c1d426b66701bca637b1857d84899f02758e6338d052caaeb4622f252",
+  "category_revision": {
+    "before_sha256": "8ee96a9c1d426b66701bca637b1857d84899f02758e6338d052caaeb4622f252",
+    "after_sha256": "cf8310ae2f8d643653fd8cf9e96ef7dea0570f586a76e2d0f62911c7d3803301",
+    "added_asset_collections": ["Vision1 · Lauris71原生橡树 · LOD0", "Vision1 · Lauris71原生橡树 · LOD1"],
+    "preservation_evidence": "art/environment/vision-sources/OakLauris71/source-validation.json",
+    "note": "Current category reference only. All three original Vision geometry/UV/slots/packed maps/layout and FBX hashes preserved; historical Vision native/export QA stays bound to 8ee."
+  },
   "source_scene": "Scene",
   "source_collection": "Vision1 · CC0植物原型",
+  "fbx_unit_conversion": {
+    "scope": "All three Vision records only; historical exports/importer defaults are unchanged",
+    "blender_scene_unit_scale_length": 1.0,
+    "export_global_scale": 1.0,
+    "export_apply_unit_scale": true,
+    "export_apply_scale_options": "FBX_SCALE_NONE",
+    "export_use_space_transform": true,
+    "export_bake_space_transform": true,
+    "fbx_unit_scale_factor": 1.0,
+    "fbx_original_unit_scale_factor": 1.0,
+    "fbx_length_unit": "centimeter",
+    "unity_use_file_scale": true,
+    "unity_global_scale": 1.0,
+    "file_centimeters_to_unity_meters": 0.01,
+    "policy": "Apply file-unit conversion once. Do not also scale the root by 0.01 or pre-scale vertices.",
+    "evidence": "Exact Fern02A, Fern02B and GrassMedium02E FBX binary GlobalSettings parsed individually: each UnitScaleFactor=1 and OriginalUnitScaleFactor=1. Export helper uses identical settings for all three records; Blender roundtrip parses file units into the recorded physical meter dimensions. Metadata clarification only: no source or FBX re-export."
+  },
   "records": [
     {
       "id": "Fern02A",

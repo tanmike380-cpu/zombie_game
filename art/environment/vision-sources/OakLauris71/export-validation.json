@@ -1,0 +1,407 @@
+{
+  "status": "fbx_roundtrip_native_uv_shared_root_pass",
+  "source_sha256": "cf8310ae2f8d643653fd8cf9e96ef7dea0570f586a76e2d0f62911c7d3803301",
+  "exact_binary_unit_validation": {
+    "OakLauris71_LOD0": {"model_sha256": "1a9029c36b3f2031475798047374ba4e7544d5f7203824cd33f46ea8daf8be56", "UnitScaleFactor": 100, "OriginalUnitScaleFactor": 100, "triangles": 5303, "degenerate_triangle_count": 0},
+    "OakLauris71_LOD1": {"model_sha256": "349649b685ac65f40c158ac6045f7952a3804261aaf5818d380d2199d8277d52", "UnitScaleFactor": 100, "OriginalUnitScaleFactor": 100, "triangles": 842, "degenerate_triangle_count": 0}
+  },
+  "exporter_warning_note": "Blender emits registration warnings for repeated objects sharing a native mesh with one atlas material. All 72 roundtrip material slots were individually verified against the intended atlas, as were their native UV coordinates and assembled world vertices. No source mesh unlink/reshape was performed.",
+  "records": [
+    {
+      "id": "OakLauris71_LOD0",
+      "model_sha256": "1a9029c36b3f2031475798047374ba4e7544d5f7203824cd33f46ea8daf8be56",
+      "piece_count": 36,
+      "triangles": 5303,
+      "bounds_min_blender_m": [
+        -5.828022003173828,
+        -4.425436973571777,
+        -1.4276479021191335e-07
+      ],
+      "dimensions_blender_xyz_m": [
+        10.831123352050781,
+        9.197855472564697,
+        11.651166104984028
+      ],
+      "piece_checks": [
+        {
+          "name": "OakLauris71_LOD0__Branch_1.001",
+          "assembly_world_vertex_error_m": 1.974164862832927e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD0__Branch_1.003",
+          "assembly_world_vertex_error_m": 2.0265579223632812e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD0__Branch_1B.001",
+          "assembly_world_vertex_error_m": 2.6973983046972182e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD0__Branch_1B.002",
+          "assembly_world_vertex_error_m": 2.5344242603146195e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD0__Branch_1B.003",
+          "assembly_world_vertex_error_m": 1.922192036699903e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD0__Branch_1B.004",
+          "assembly_world_vertex_error_m": 2.0265579223632812e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD0__Branch_2.001",
+          "assembly_world_vertex_error_m": 2.1851423716334533e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD0__Branch_2.002",
+          "assembly_world_vertex_error_m": 1.5451289888400699e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD0__Branch_2.003",
+          "assembly_world_vertex_error_m": 2.132480599880018e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD0__Branch_2.004",
+          "assembly_world_vertex_error_m": 2.0265579223632812e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD0__Branch_2.005",
+          "assembly_world_vertex_error_m": 2.1457672119140625e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD0__Branch_2B.001",
+          "assembly_world_vertex_error_m": 1.9231159454466913e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD0__Branch_2B.002",
+          "assembly_world_vertex_error_m": 1.5266237824995157e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD0__Branch_2B.003",
+          "assembly_world_vertex_error_m": 1.8352036855626884e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD0__Branch_2B.004",
+          "assembly_world_vertex_error_m": 1.9551777204104336e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD0__Branch_2B.005",
+          "assembly_world_vertex_error_m": 1.8196508315174278e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD0__Branch_2B.006",
+          "assembly_world_vertex_error_m": 1.5266237824995157e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD0__Branch_2B.007",
+          "assembly_world_vertex_error_m": 1.8196508315174278e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD0__Branch_2B.008",
+          "assembly_world_vertex_error_m": 1.7841612752790171e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD0__Branch_2B.009",
+          "assembly_world_vertex_error_m": 1.4502435994859265e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD0__Branch_3.001",
+          "assembly_world_vertex_error_m": 2.242909398344371e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD0__Branch_3.002",
+          "assembly_world_vertex_error_m": 1.8206267773272114e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD0__Branch_3.003",
+          "assembly_world_vertex_error_m": 1.723388707018013e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD0__Branch_3.004",
+          "assembly_world_vertex_error_m": 2.0265579223632812e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD0__Branch_3.005",
+          "assembly_world_vertex_error_m": 1.6214216361922555e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD0__Branch_3.006",
+          "assembly_world_vertex_error_m": 1.922192036699903e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD0__Branch_3B.001",
+          "assembly_world_vertex_error_m": 1.7192608239479013e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD0__Branch_3B.002",
+          "assembly_world_vertex_error_m": 1.9804534585280597e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD0__Branch_3B.003",
+          "assembly_world_vertex_error_m": 2.107395108446812e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD0__Branch_3B.004",
+          "assembly_world_vertex_error_m": 1.3058723390225556e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD0__Branch_3B.005",
+          "assembly_world_vertex_error_m": 2.0265579223632812e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD0__Branch_3B.006",
+          "assembly_world_vertex_error_m": 1.8706744702428836e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD0__Branch_3B.007",
+          "assembly_world_vertex_error_m": 1.7202937233044877e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD0__Branch_3B.008",
+          "assembly_world_vertex_error_m": 1.7192608239479013e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD0__Branch_3B.009",
+          "assembly_world_vertex_error_m": 2.2492363767758854e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD0__Quercus_A",
+          "assembly_world_vertex_error_m": 1.922192036699903e-06,
+          "uv_loop_error": 0.0
+        }
+      ]
+    },
+    {
+      "id": "OakLauris71_LOD1",
+      "model_sha256": "349649b685ac65f40c158ac6045f7952a3804261aaf5818d380d2199d8277d52",
+      "piece_count": 36,
+      "triangles": 842,
+      "bounds_min_blender_m": [
+        -5.898064613342285,
+        -4.490140914916992,
+        -1.4276479021191335e-07
+      ],
+      "dimensions_blender_xyz_m": [
+        10.947087287902832,
+        9.406145095825195,
+        11.572485112857564
+      ],
+      "piece_checks": [
+        {
+          "name": "OakLauris71_LOD1__Branch_1.002",
+          "assembly_world_vertex_error_m": 1.8963740193764012e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD1__Branch_1.004",
+          "assembly_world_vertex_error_m": 2.0265579223632812e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD1__Branch_2.006",
+          "assembly_world_vertex_error_m": 2.5344242603146195e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD1__Branch_2.007",
+          "assembly_world_vertex_error_m": 2.384185791015625e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD1__Branch_2.008",
+          "assembly_world_vertex_error_m": 2.132480599880018e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD1__Branch_2.009",
+          "assembly_world_vertex_error_m": 1.974164862832927e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD1__Branch_3.007",
+          "assembly_world_vertex_error_m": 1.9304912973286683e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD1__Branch_3.008",
+          "assembly_world_vertex_error_m": 1.7192608239479013e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD1__Branch_3.009",
+          "assembly_world_vertex_error_m": 1.9678561710380527e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD1__Branch_3.010",
+          "assembly_world_vertex_error_m": 1.922192036699903e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD1__Branch_3.011",
+          "assembly_world_vertex_error_m": 1.7560624912567418e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD1__Branch_4.001",
+          "assembly_world_vertex_error_m": 1.430511474609375e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD1__Branch_4.002",
+          "assembly_world_vertex_error_m": 1.922192036699903e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD1__Branch_4.003",
+          "assembly_world_vertex_error_m": 2.1788330944102098e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD1__Branch_4.004",
+          "assembly_world_vertex_error_m": 1.2894456179609261e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD1__Branch_4.005",
+          "assembly_world_vertex_error_m": 2.0265579223632812e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD1__Branch_4.006",
+          "assembly_world_vertex_error_m": 1.6689466843883373e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD1__Branch_4.007",
+          "assembly_world_vertex_error_m": 1.5125963140069866e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD1__Branch_4.009",
+          "assembly_world_vertex_error_m": 2.081900739261267e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD1__Branch_4.010",
+          "assembly_world_vertex_error_m": 2.3481506828775654e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD1__Plane.006",
+          "assembly_world_vertex_error_m": 2.0265579223632812e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD1__Plane.007",
+          "assembly_world_vertex_error_m": 1.8506258364033728e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD1__Plane.013",
+          "assembly_world_vertex_error_m": 1.8544613344793373e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD1__Plane.018",
+          "assembly_world_vertex_error_m": 1.1920928955078125e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD1__Plane.019",
+          "assembly_world_vertex_error_m": 1.7192608239479013e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD1__Plane.022",
+          "assembly_world_vertex_error_m": 1.7357134555054946e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD1__Plane.025",
+          "assembly_world_vertex_error_m": 2.0955080784853634e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD1__Plane.026",
+          "assembly_world_vertex_error_m": 1.5497207641601562e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD1__Plane.029",
+          "assembly_world_vertex_error_m": 1.7192608239479013e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD1__Plane.030",
+          "assembly_world_vertex_error_m": 1.673182111694598e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD1__Plane.032",
+          "assembly_world_vertex_error_m": 1.5542989743239043e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD1__Plane.033",
+          "assembly_world_vertex_error_m": 1.7192608239479013e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD1__Plane.035",
+          "assembly_world_vertex_error_m": 2.0265579223632812e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD1__Plane.039",
+          "assembly_world_vertex_error_m": 1.5078914929239175e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD1__Plane.041",
+          "assembly_world_vertex_error_m": 1.5277869245977755e-06,
+          "uv_loop_error": 0.0
+        },
+        {
+          "name": "OakLauris71_LOD1__Quercus_A_LOD1",
+          "assembly_world_vertex_error_m": 1.922192036699903e-06,
+          "uv_loop_error": 0.0
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+Oak tree / Quercus Robur
+Author: Lauris Kaplinski (lauris71), 28 December 2011
+Shinya game project: http://khayyam.kaplinski.com/
+Source: https://opengameart.org/content/oak-tree
+Selected licence: Creative Commons Attribution-ShareAlike 3.0 Unported
+https://creativecommons.org/licenses/by-sa/3.0/
+https://creativecommons.org/licenses/by-sa/3.0/legalcode
+The author page offers SA3.0/GPL3.0 alternatives; the packed original Blender Text explicitly grants SA3.0. This package selects SA, not GPL.
+Tree, original atlases and converted tree derivatives retain this attribution and ShareAlike. No CC0 or whole-project licence claim.
+Changes: legacy shader compatibility, explicit UVTex sampling, RGBA cutout .5, roughness constant .8, common-root floor/gallery translations, FBX axis/unit conversion. No geometry/UV edits, no decimation, no billboard.
+No endorsement by the original author; licence provides no warranties.
