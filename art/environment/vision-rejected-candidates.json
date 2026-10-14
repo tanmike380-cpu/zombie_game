@@ -1,0 +1,28 @@
+{
+  "scope": "Vision 1 environment research; none of these candidates is used in the saved map.",
+  "candidates": [
+    {
+      "id": "polyhaven_jacaranda_native",
+      "source_url": "https://polyhaven.com/a/jacaranda_tree",
+      "original_lod0_triangles": 3863832,
+      "complete_author_lod1_triangles": 1845603,
+      "status": "not_selected",
+      "reason": "Excessive expanded geometry cost for ordinary forest use; not the target European species. No decimation or partial foliage deletion.",
+      "local_export": "art/environment/vision-tree-candidates/JacarandaLOD1/"
+    },
+    {
+      "id": "yughues_grass_pack_03",
+      "source_url": "https://opengameart.org/content/grass-pack-03",
+      "author": "Yughues / Nobiax",
+      "license": "CC0",
+      "archive_sha256": "f8c6a0e1fbbb3506054d3b1c7530154e2968017878a100897b05b544383b7af4",
+      "fbx_sha256": "8902ec204f78622b47240508e390909192cdf4270ac016e430b77488e45c7f5d",
+      "native_strip_width_m": 0.5,
+      "native_strip_height_m": 0.1,
+      "native_strip_triangles": 6,
+      "status": "rejected",
+      "reason": "A flat strip, not a thick 3D clump readable from the RTS view. Missing real roughness and AO maps.",
+      "local_evidence": "Builds/EnvironmentCandidateDownloads/groundcover-20261015-Q0uBhq/native-inspection.json"
+    }
+  ]
+}

@@ -110,6 +110,7 @@ namespace ZombieGame.Tests.EditorTools
                 if(!existing.vision_layout) throw new InvalidOperationException("Existing Vision config has no independent preset: "+CONFIG_PATH);
                 move_vision_house(existing.vision_layout);
                 configure_vision_ground_zones(existing.vision_layout);
+                configure_vision_water_response(existing.vision_layout);
                 existing.vision_layout.validate_vision_regions();
                 return existing;
             }
@@ -153,6 +154,7 @@ namespace ZombieGame.Tests.EditorTools
             preset.vegetation_radii = new[]{new Vector2(12,10),new Vector2(15,9),new Vector2(10,13),new Vector2(14,10)};
             move_vision_house(preset);
             configure_vision_ground_zones(preset);
+            configure_vision_water_response(preset);
             // Source transforms, scale ranges and 16 fixture assembly references are copied unchanged from flat-v3.
             preset.validate_vision_regions();
             AssetDatabase.CreateAsset(preset,ROOT+"Settings/VisionWildernessConfig.asset");
@@ -173,6 +175,18 @@ namespace ZombieGame.Tests.EditorTools
             preset.layout.camera_sizes[1] = 23;
             preset.vision_surface_revision = 2;
             EditorUtility.SetDirty(preset.layout);
+            EditorUtility.SetDirty(preset);
+        }
+
+        private static void configure_vision_water_response(DarkWildernessConfig preset)
+        {
+            if(preset.vision_water_response_revision >= 1) return;
+            preset.vision_water_bed_visibility = .48f;
+            preset.vision_water_bed_depth_m = .75f;
+            preset.vision_water_wave_strength = .16f;
+            preset.vision_water_smoothness = .78f;
+            preset.vision_water_sky_response = .18f;
+            preset.vision_water_response_revision = 1;
             EditorUtility.SetDirty(preset);
         }
 

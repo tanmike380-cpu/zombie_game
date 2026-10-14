@@ -55,6 +55,12 @@ namespace ZombieGame.Tests.EnvironmentShowcase
         public float vision_macro_scale = 30;
         public float vision_water_variation = .10f;
         public float vision_water_depth_range = 1.8f;
+        public int vision_water_response_revision;
+        [Range(0,1)] public float vision_water_bed_visibility = .48f;
+        public float vision_water_bed_depth_m = .75f;
+        [Range(0,1)] public float vision_water_wave_strength = .16f;
+        [Range(0,1)] public float vision_water_smoothness = .78f;
+        [Range(0,1)] public float vision_water_sky_response = .18f;
         public float vision_shadow_distance = 150;
         public int vision_shadow_cascades = 2;
         public ShadowResolution vision_shadow_resolution = ShadowResolution.High;
@@ -78,6 +84,8 @@ namespace ZombieGame.Tests.EnvironmentShowcase
                 throw new InvalidOperationException("Vision requires exactly six layer override slots.");
             if(vision_base_soil < 0 || vision_base_soil > 1 || vision_macro_scale <= 0 || vision_water_depth_range <= 0)
                 throw new InvalidOperationException("Vision surface scale or base soil weight is invalid.");
+            if(vision_water_response_revision > 0 && vision_water_bed_depth_m <= 0)
+                throw new InvalidOperationException("Vision shallow-bed attenuation depth must be positive.");
             if(vision_shadow_distance <= 0 || (vision_shadow_cascades != 1 && vision_shadow_cascades != 2 && vision_shadow_cascades != 4))
                 throw new InvalidOperationException("Vision camera-relative shadow budget is invalid.");
             validate_regions(vision_soil_regions,"soil");

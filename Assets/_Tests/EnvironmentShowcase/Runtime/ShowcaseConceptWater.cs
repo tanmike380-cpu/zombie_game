@@ -43,6 +43,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
                 material.SetFloat("_VisionWater",1);
                 material.SetFloat("_VisionVariation",ground.concept.dark.vision_water_variation);
                 material.SetFloat("_VisionDepthRange",ground.concept.dark.vision_water_depth_range);
+                configure_vision_response(material,ground);
             }
             if(ground.concept.dark) Debug.Log("[DarkWater] "+name+" natural="+material.GetFloat("_NaturalPreview")+" shader="+material.shader.name);
             var layout=ground.concept.layout;
@@ -50,6 +51,25 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             material.SetVector("_PoolCenter",ground.origin+new Vector3(layout.pond_center.x*ground.terrain_data.size.x,0,layout.pond_center.y*ground.terrain_data.size.z));
             material.SetVector("_PoolRadius",new Vector4(layout.pond_radius.x,layout.pond_radius.y,0,0));
             return material;
+        }
+
+        private static void configure_vision_response(Material material,ShowcaseTerrain ground)
+        {
+            var preset = ground.concept.dark;
+            if(preset.vision_water_response_revision < 1) return;
+            var layers = ground.terrain_data.terrainLayers;
+            if(layers.Length != 6 || !layers[3] || !layers[3].diffuseTexture)
+                throw new InvalidOperationException("Vision shallow water requires the existing six-layer Mud diffuse source.");
+            var mud = layers[3];
+            material.SetTexture("_VisionBed",mud.diffuseTexture);
+            material.SetVector("_VisionBedTile",new Vector4(mud.tileSize.x,mud.tileSize.y,mud.tileOffset.x,mud.tileOffset.y));
+            material.SetFloat("_VisionResponse",1);
+            material.SetFloat("_VisionBedVisibility",preset.vision_water_bed_visibility);
+            material.SetFloat("_VisionBedDepth",preset.vision_water_bed_depth_m);
+            material.SetFloat("_VisionWaveStrength",preset.vision_water_wave_strength);
+            material.SetFloat("_VisionSmoothness",preset.vision_water_smoothness);
+            material.SetFloat("_VisionSkyResponse",preset.vision_water_sky_response);
+            material.SetColor("_VisionSkyColor",preset.ambient_sky);
         }
 
         private static Renderer create_surface(Transform parent, string name, Vector3 position, Vector2 extent, Material material)

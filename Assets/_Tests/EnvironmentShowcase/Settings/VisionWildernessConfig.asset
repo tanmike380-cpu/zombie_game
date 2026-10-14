@@ -330,6 +330,12 @@ MonoBehaviour:
   vision_macro_scale: 30
   vision_water_variation: 0.1
   vision_water_depth_range: 1.8
+  vision_water_response_revision: 1
+  vision_water_bed_visibility: 0.48
+  vision_water_bed_depth_m: 0.75
+  vision_water_wave_strength: 0.16
+  vision_water_smoothness: 0.78
+  vision_water_sky_response: 0.18
   vision_shadow_distance: 150
   vision_shadow_cascades: 2
   vision_shadow_resolution: 2

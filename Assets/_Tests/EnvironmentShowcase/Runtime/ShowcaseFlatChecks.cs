@@ -39,6 +39,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             public float[] vision_oak_pixel_deltas;
             public bool vision_oak_pass;
             public FixedPlantFrame[] matched_plants_frames;
+            public VisionWaterResponseCheck[] vision_water_response;
         }
 
         private IEnumerator run_flat_checks()
@@ -97,6 +98,11 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             yield return new WaitForEndOfFrame();
             report.flat.pond_pixel_delta = compare_same_frame_renderer(showcase.concept_water.pond,"flat-pond");
             report.flat.water_pixel_pass = report.flat.sea_pixel_delta>.001f && report.flat.pond_pixel_delta>.001f;
+            if(showcase.config.vision_enabled)
+            {
+                var water_checks = capture_vision_water_response();
+                while(water_checks.MoveNext()) yield return water_checks.Current;
+            }
             showcase.set_focus(showcase.config.active_dark_layout.vegetation_centers[0],1);
             for(int frame=0;frame<30;frame++) yield return null;
             yield return new WaitForEndOfFrame();

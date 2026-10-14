@@ -1,5 +1,5 @@
 {
-  "snapshot": "vision-surface-v2",
+  "snapshot": "vision-water-v3",
   "scope": "Independent 128m environment art preview; not production-map, gameplay, battle-performance or visual acceptance.",
   "unity_version": "6000.6.1f1",
   "resolution": "1440x900",
@@ -11,6 +11,12 @@
   "grass_pixel_pass": false,
   "new_clumps_native_geometry_and_visibility_pass": true,
   "native_oak_near_middle_far_pixel_pass": true,
+  "vision_water_response": {
+    "coast_same_frame_rgb_delta": 0.003828490851446986,
+    "pond_same_frame_rgb_delta": 0.013552239164710045,
+    "switch_restoration_passed": true,
+    "limitation": "Opaque shallow-bed and sky-colour approximations; no true refraction or scene reflection."
+  },
   "tree_instances": 21,
   "grass_instances": 6000,
   "shrub_instances": 140,
@@ -21,11 +27,26 @@
     "dark": true,
     "flat": true
   },
+  "final_shared_shader_regression_evidence": "Builds/ArtReview/EnvironmentShowcase/vision-final-{routes,cliffs,concept,dark,flat}-regression/",
+  "live_editor_verification": {
+    "scene": "Assets/_Tests/EnvironmentShowcase/Scenes/EnvironmentVision.unity",
+    "playing": true,
+    "runtime_enabled": true,
+    "vision_enabled": true,
+    "frame_wait_met": true,
+    "frame_initial": 1927,
+    "frame_changed": 1934,
+    "frame_wait_elapsed_ms": 111,
+    "console_errors": 0,
+    "run_in_background": true,
+    "capture": "art/environment/inspection/vision-1/live-editor.png",
+    "capture_sha256": "49608fce3c6d1f24e6b7ea282c32088de4bce379807609b3a95127a890278f0b"
+  },
   "shared_unit_balance_cpu_assertions_passed": 57,
   "concept_document_unit_tests_passed": 27,
   "production_gameplay_or_balance_files_changed": false,
   "evidence_root": "Builds/ArtReview/EnvironmentShowcase/",
-  "failed_evidence_preserved": ["vision-initial-v1", "vision-clumps-v1", "vision-grassbeds-v1", "vision-oak-v1", "vision-surface-v2"],
+  "failed_evidence_preserved": ["vision-initial-v1", "vision-clumps-v1", "vision-grassbeds-v1", "vision-oak-v1", "vision-surface-v2", "vision-water-v3"],
   "missing_art": ["RTS-readable thick natural grass clump", "reeds and waterside vegetation", "long authored cliff modules", "dense-crown forest source"],
   "timing_limit": "Capped environment frame timings include active waits and other workstation activity; no battle or 10K performance claim."
 }

@@ -45,6 +45,10 @@ Unity 专责完善自然语义地表分区、布局、光照、水体和同源�
 - 重建原 `EnvironmentShowcase.app`，使用原场景／Config 而非修改过的 Vision clone：routes、cliffs 四区域以及 concept、dark、flat 技术检查全部通过。详细本机证据为 `Builds/ArtReview/EnvironmentShowcase/vision-original-*-regression/`。共享 UnitBalance 57 条与概念文档 27 项再次通过；`Assets/_Game`、`balance` 无修改。
 - 新草候选 Yughues/Nobiax Grass Pack #03（作者页 CC0）原生预览是 0.5m宽／0.1m高、6三角的纸带，不符合宽实草簇，已否决，未进入正式源。记录在 `Builds/EnvironmentCandidateDownloads/groundcover-20261015-Q0uBhq/`。本轮仍缺宽0.6–0.9m、高0.35–0.6m、俯视有真实厚度的自然草簇，以及芦苇／水岸植物与长崖模块；不靠纸带、放大细草或增加蓝雾假装完成。
 - 未采用的 Jacaranda 高成本候选导出留在本机 `art/environment/vision-tree-candidates/`，不上传，也没有删除。正式采用源和交接独立跟踪。
+- Water response revision 1 单轮实测：近岸增加低幅细波、浅底衰减与弱水光，复用现有 Mud diffuse，池／海同帧前后 RGB 差值为 0.01355／0.00383，开关恢复通过。原图 `vision-water-v3/vision-water-*-{surface2,response}.png` 已人工检查。仍是 opaque 浅底近似／本地天空色响应，不是真实折射、场景反射、SSR 或 GrabPass；没有引入新资产、全场滤镜或管线迁移。整体草检查继续保持 FAIL。
+- 最终共享 shader 再重建原播放器，`vision-final-{routes,cliffs,concept,dark,flat}-regression` 五组全部通过（routes／cliffs 均四区域）。正式源 SHA 仍为 cf83…，没有因为最后水面修改改动 Blender／单位源。
+- 07:29 真实 GUI Editor 播放核对通过：活动场景为 `EnvironmentVision.unity`，runtime enabled／vision 为 true，21树／6000草；帧号由1927变1934，111ms内条件成立，不是只截一张冻结画面。Console 编译／运行错误0。首次隐藏HUD后 Undo 的帧末脏标记触发保存守卫；分开保存我们自己的预览后再进入Play，未强行覆盖其他场景。HUD 默认隐藏，H 可重显。
+- 本机连接截图工具实际将图片放到 `Assets/Builds`，已将仅有的自生成截图／metadata 整体移到 `Builds/EditorCaptureRecovery/`，原始像素保留且可恢复；正式展示图跟踪在 `art/environment/inspection/vision-1/`。没有删除用户模型或其他资产。
 
 ## Unity 本机连接说明
 
@@ -56,7 +60,21 @@ Blender 导出依然经过分类源 → handoff 中的源／导出 SHA、真实�
 
 ## 晨起打开入口
 
-地图入口和最终检查结果在本轮构建、玩家核对后补全；当前不能把在制场景描述成完成版本。Unity 应打开上述正式目录，不是旧 `main` 副本。
+Unity 应打开本文顶部的正式目录，不是旧 `main` 副本。新场景是 `Assets/_Tests/EnvironmentShowcase/Scenes/EnvironmentVision.unity`。
+
+菜单 `Zombie Game → Environment Showcase → Vision-1 → Open saved Vision review and Play` 打开并播放已保存预览；如果已经在 Play，先点上方播放按钮停止，再使用菜单。也可以在 Project 面板双击该场景，点击顶部 ▶。菜单会拒绝覆盖当前未保存场景。
+
+按 `Tab` 在聚落／海岸／水池／全景之间切换，`1／2／3` 或滚轮调近／中／远景，`H` 显示／隐藏说明，`G` 对照草开关。本机独立播放器为 `Builds/EnvironmentVision.app`，默认已是 Vision，不需要像旧 app 额外传布局参数。Builds 不进 Git，换电脑需在上述菜单 Prepare／Build 入口重建。
+
+这是 128×128m 的**地图美术预览**，不是正式 256×256 战斗地图；建筑和矿脉在本场景只作原模型陈列，不接采集、战斗或经济。已确认的 RTS 操控、寻路、单位反馈和玩法场景保持原样。这轮没有把预览自动替换为正式战场。
+
+尚未达到概念图的完整丰满程度；尤其宽实草簇、水岸植物和完整长崖源仍不足。新草整体检查未通过，不因保存或上传便把它描述成美术验收完成。
+
+当前交付是已保存、已实际播放的预览，等待用户评审；不要自动继续重排已交付构图或替换源来追求一个虚假的 PASS。后续按评审及新增合格源继续。
+
+![真实 Editor 播放画面](../../art/environment/inspection/vision-1/live-editor.png)
+
+[水池近景](../../art/environment/inspection/vision-1/vision-water-pond-response.png) · [海岸近景](../../art/environment/inspection/vision-1/vision-water-coast-response.png)
 
 ## 夜间继续机制
 

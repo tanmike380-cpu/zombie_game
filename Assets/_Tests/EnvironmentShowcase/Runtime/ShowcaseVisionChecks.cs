@@ -8,6 +8,65 @@ namespace ZombieGame.Tests.EnvironmentShowcase
 {
     public sealed partial class ShowcaseChecks
     {
+        [Serializable] private sealed class VisionWaterResponseCheck
+        {
+            public string surface,before_screenshot,after_screenshot;
+            public float mean_rgb_delta,orthographic_size;
+            public Vector3 camera_position,camera_euler;
+            public bool response_restored;
+            public string note = "Same-frame surface2 versus Vision water response. Existing Mud projected with actual heightfield attenuation, not true refraction; local Fresnel sky approximation, not scene reflection. Pixel contribution is not art acceptance.";
+        }
+
+        private IEnumerator capture_vision_water_response()
+        {
+            var evidence = new List<VisionWaterResponseCheck>();
+            for(int view=1;view<=2;view++)
+            {
+                showcase.set_view(view,0);
+                for(int frame=0;frame<30;frame++) yield return null;
+                yield return new WaitForEndOfFrame();
+                var renderer = view == 1 ? showcase.concept_water.sea : showcase.concept_water.pond;
+                evidence.Add(compare_vision_water_response(renderer,view == 1 ? "coast" : "pond"));
+            }
+            report.flat.vision_water_response = evidence.ToArray();
+        }
+
+        private VisionWaterResponseCheck compare_vision_water_response(Renderer renderer,string surface)
+        {
+            var material = renderer.sharedMaterial;
+            float previous = material.GetFloat("_VisionResponse");
+            var camera = showcase.review_camera;
+            var check = new VisionWaterResponseCheck
+            {
+                surface=surface,
+                camera_position=camera.transform.position,
+                camera_euler=camera.transform.eulerAngles,
+                orthographic_size=camera.orthographicSize,
+                before_screenshot="vision-water-"+surface+"-surface2.png",
+                after_screenshot="vision-water-"+surface+"-response.png"
+            };
+            Texture2D before = null;
+            Texture2D after = null;
+            try
+            {
+                material.SetFloat("_VisionResponse",0);
+                before = capture_camera();
+                material.SetFloat("_VisionResponse",1);
+                after = capture_camera();
+                File.WriteAllBytes(Path.Combine(output_directory,check.before_screenshot),before.EncodeToPNG());
+                File.WriteAllBytes(Path.Combine(output_directory,check.after_screenshot),after.EncodeToPNG());
+                check.mean_rgb_delta = measure_pixel_delta(before.GetPixels32(),after.GetPixels32());
+            }
+            finally
+            {
+                material.SetFloat("_VisionResponse",previous);
+                check.response_restored = material.GetFloat("_VisionResponse") == previous;
+                if(before) Destroy(before);
+                if(after) Destroy(after);
+            }
+            return check;
+        }
+
         [Serializable] private sealed class FixedPlantFrame
         {
             public string screenshot;
