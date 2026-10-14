@@ -4,3 +4,5 @@
 *.unity whitespace=-blank-at-eol
 *.mat whitespace=-blank-at-eol
 *.prefab whitespace=-blank-at-eol
+# New formal environment versions use LFS; existing commits are not rewritten.
+"art/Blender主文件/ZombieGame_Environment.blend" filter=lfs diff=lfs merge=lfs -text

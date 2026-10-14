@@ -1,0 +1,516 @@
+{
+  "schema_version": 1,
+  "status": "approved_for_local_preview",
+  "source_blend": "art/Blender主文件/ZombieGame_Environment.blend",
+  "source_sha256": "8ee96a9c1d426b66701bca637b1857d84899f02758e6338d052caaeb4622f252",
+  "source_scene": "Scene",
+  "source_collection": "Vision1 · CC0植物原型",
+  "records": [
+    {
+      "id": "Fern02A",
+      "source_scene": "Scene",
+      "source_collection": "Vision1 · Fern02A",
+      "source_object": "Fern02A",
+      "original_source": "Builds/EnvironmentCandidateDownloads/blender-20261015-vE1sPP/fern_02/fern_02_1k.fbx",
+      "original_sha256": "6d8238b9cc1bbb5f5766396c2db26f2219c0d0e5ca226fb81dcc44bdb35045e8",
+      "original_object": "fern_02_a",
+      "source_url": "https://polyhaven.com/a/fern_02",
+      "authors": {
+        "Rob Tuytel": "scanning",
+        "Rico Cilliers": "modeling"
+      },
+      "license": "CC0-1.0",
+      "license_url": "https://polyhaven.com/license",
+      "native_import": {
+        "name": "fern_02_a",
+        "mesh": "Plane.006",
+        "vertices": 525,
+        "triangles": 784,
+        "evaluated_triangles": 784,
+        "bounds_min": [
+          -0.2976572513580322,
+          -1.3021531105041504,
+          -0.02877352014183998
+        ],
+        "bounds_max": [
+          0.2542833685874939,
+          -0.6887320280075073,
+          0.2580300271511078
+        ],
+        "dimensions_m": [
+          0.5519406199455261,
+          0.6134210824966431,
+          0.28680354729294777
+        ],
+        "uv_layers": [
+          "UVMap"
+        ],
+        "parent": null,
+        "matrix_world": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            -1.1920928955078125e-07
+          ],
+          [
+            0.0,
+            1.0,
+            4.371138828673793e-08,
+            -1.0000001192092896
+          ],
+          [
+            0.0,
+            -4.371138828673793e-08,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "hide_viewport": false,
+        "hide_render": false,
+        "collections": [
+          "Collection"
+        ],
+        "modifiers": [],
+        "materials": [
+          "fern_02"
+        ]
+      },
+      "triangles": 784,
+      "dimensions_blender_xyz_m": [
+        0.5519406199455261,
+        0.6134210824966431,
+        0.28680354729294777
+      ],
+      "dimensions_unity_xyz_m": [
+        0.5519406199455261,
+        0.28680354729294777,
+        0.6134210824966431
+      ],
+      "pivot_bounds_min": [
+        -0.27597030997276306,
+        0,
+        -0.30671054124832153
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "material_slots": [
+        "Fern02A_OriginalPBR"
+      ],
+      "materials": [
+        {
+          "name": "Fern02A_OriginalPBR",
+          "channels": {
+            "base_color": {
+              "path": "art/environment/vision-sources/Fern02A/Textures/fern_02_diff_1k.png",
+              "sha256": "f8f504bce117647f1df386cd7bc99a79c664bb49f82d1dd6412c83a700c48e94",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "sRGB",
+              "component": "rgb"
+            },
+            "normal_gl": {
+              "path": "art/environment/vision-sources/Fern02A/Textures/fern_02_nor_gl_1k.png",
+              "sha256": "438c065c60754ad410c5b4690df6547d06d9907b8d2c9c3a908cb135ffd52b97",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "linear",
+              "component": "rgb"
+            },
+            "roughness": {
+              "path": "art/environment/vision-sources/Fern02A/Textures/fern_02_rough_1k.png",
+              "sha256": "1485a265bcd40e5d9362c0ed56f9024df3ab5241dc9f83c8011165d2223c5d20",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "linear",
+              "component": "red"
+            },
+            "alpha": {
+              "path": "art/environment/vision-sources/Fern02A/Textures/fern_02_alpha_1k.png",
+              "sha256": "ea3c64284c7ebdeedf484d2d816eae92825ec526140c3bb83859ddc7a64001f9",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "linear",
+              "component": "red"
+            }
+          },
+          "metallic": 0,
+          "alpha_mode": "cutout",
+          "alpha_cutoff": 0.5,
+          "double_sided": true,
+          "normal_convention": "OpenGL official nor_gl",
+          "roughness_to_smoothness": "Unity converts once: smoothness = 1 - roughness"
+        }
+      ],
+      "unit_m": 1,
+      "placement_scale": 1,
+      "axis_forward": "-Z",
+      "axis_up": "Y",
+      "lod_index": 0,
+      "lod_screen_relative_transition": null,
+      "geometry_policy": "Original native mesh/UV/custom normals/proportions; whole-object translation only; no decimation",
+      "gallery_position": [
+        92,
+        22,
+        0
+      ],
+      "model_path": "art/environment/vision-sources/Fern02A/Fern02A.fbx",
+      "model_sha256": "a16760ae1766c0ca7a72e2c4e7188374672cf39c989264243911b6bdc3cca6b6",
+      "source_blend": "art/Blender主文件/ZombieGame_Environment.blend"
+    },
+    {
+      "id": "Fern02B",
+      "source_scene": "Scene",
+      "source_collection": "Vision1 · Fern02B",
+      "source_object": "Fern02B",
+      "original_source": "Builds/EnvironmentCandidateDownloads/blender-20261015-vE1sPP/fern_02/fern_02_1k.fbx",
+      "original_sha256": "6d8238b9cc1bbb5f5766396c2db26f2219c0d0e5ca226fb81dcc44bdb35045e8",
+      "original_object": "fern_02_b",
+      "source_url": "https://polyhaven.com/a/fern_02",
+      "authors": {
+        "Rob Tuytel": "scanning",
+        "Rico Cilliers": "modeling"
+      },
+      "license": "CC0-1.0",
+      "license_url": "https://polyhaven.com/license",
+      "native_import": {
+        "name": "fern_02_b",
+        "mesh": "Plane.005",
+        "vertices": 1590,
+        "triangles": 2384,
+        "evaluated_triangles": 2384,
+        "bounds_min": [
+          -0.528143048286438,
+          -0.47181466221809387,
+          -0.030510280281305313
+        ],
+        "bounds_max": [
+          0.46160435676574707,
+          0.4218750596046448,
+          0.39718443155288696
+        ],
+        "dimensions_m": [
+          0.9897474050521851,
+          0.8936897218227386,
+          0.4276947118341923
+        ],
+        "uv_layers": [
+          "UVMap"
+        ],
+        "parent": null,
+        "matrix_world": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            -4.76837158203125e-07
+          ],
+          [
+            0.0,
+            1.0,
+            4.371138828673793e-08,
+            5.960464477539062e-07
+          ],
+          [
+            0.0,
+            -4.371138828673793e-08,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "hide_viewport": false,
+        "hide_render": false,
+        "collections": [
+          "Collection"
+        ],
+        "modifiers": [],
+        "materials": [
+          "fern_02.001"
+        ]
+      },
+      "triangles": 2384,
+      "dimensions_blender_xyz_m": [
+        0.9897474050521851,
+        0.8936897218227386,
+        0.4276947118341923
+      ],
+      "dimensions_unity_xyz_m": [
+        0.9897474050521851,
+        0.4276947118341923,
+        0.8936897218227386
+      ],
+      "pivot_bounds_min": [
+        -0.49487370252609253,
+        0,
+        -0.4468448609113693
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "material_slots": [
+        "Fern02B_OriginalPBR"
+      ],
+      "materials": [
+        {
+          "name": "Fern02B_OriginalPBR",
+          "channels": {
+            "base_color": {
+              "path": "art/environment/vision-sources/Fern02B/Textures/fern_02_diff_1k.png",
+              "sha256": "f8f504bce117647f1df386cd7bc99a79c664bb49f82d1dd6412c83a700c48e94",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "sRGB",
+              "component": "rgb"
+            },
+            "normal_gl": {
+              "path": "art/environment/vision-sources/Fern02B/Textures/fern_02_nor_gl_1k.png",
+              "sha256": "438c065c60754ad410c5b4690df6547d06d9907b8d2c9c3a908cb135ffd52b97",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "linear",
+              "component": "rgb"
+            },
+            "roughness": {
+              "path": "art/environment/vision-sources/Fern02B/Textures/fern_02_rough_1k.png",
+              "sha256": "1485a265bcd40e5d9362c0ed56f9024df3ab5241dc9f83c8011165d2223c5d20",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "linear",
+              "component": "red"
+            },
+            "alpha": {
+              "path": "art/environment/vision-sources/Fern02B/Textures/fern_02_alpha_1k.png",
+              "sha256": "ea3c64284c7ebdeedf484d2d816eae92825ec526140c3bb83859ddc7a64001f9",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "linear",
+              "component": "red"
+            }
+          },
+          "metallic": 0,
+          "alpha_mode": "cutout",
+          "alpha_cutoff": 0.5,
+          "double_sided": true,
+          "normal_convention": "OpenGL official nor_gl",
+          "roughness_to_smoothness": "Unity converts once: smoothness = 1 - roughness"
+        }
+      ],
+      "unit_m": 1,
+      "placement_scale": 1,
+      "axis_forward": "-Z",
+      "axis_up": "Y",
+      "lod_index": 0,
+      "lod_screen_relative_transition": null,
+      "geometry_policy": "Original native mesh/UV/custom normals/proportions; whole-object translation only; no decimation",
+      "gallery_position": [
+        96,
+        22,
+        0
+      ],
+      "model_path": "art/environment/vision-sources/Fern02B/Fern02B.fbx",
+      "model_sha256": "94a3e6242649393d5ad6bf3c92a49ba8362291511ca2add663fa458d45273782",
+      "source_blend": "art/Blender主文件/ZombieGame_Environment.blend"
+    },
+    {
+      "id": "GrassMedium02E",
+      "source_scene": "Scene",
+      "source_collection": "Vision1 · GrassMedium02E",
+      "source_object": "GrassMedium02E",
+      "original_source": "Builds/EnvironmentCandidateDownloads/blender-20261015-vE1sPP/grass_medium_02/grass_medium_02_1k.fbx",
+      "original_sha256": "459230e3f17dd40f55372c71d802a2ad7475a661a9ad22d9ab622b5c2d24ae57",
+      "original_object": "grass_medium_02_e",
+      "source_url": "https://polyhaven.com/a/grass_medium_02",
+      "authors": {
+        "Rico Cilliers": "All"
+      },
+      "license": "CC0-1.0",
+      "license_url": "https://polyhaven.com/license",
+      "native_import": {
+        "name": "grass_medium_02_e",
+        "mesh": "Plane.014",
+        "vertices": 1542,
+        "triangles": 1664,
+        "evaluated_triangles": 1664,
+        "bounds_min": [
+          0.8994961380958557,
+          -0.25784456729888916,
+          -0.003431675024330616
+        ],
+        "bounds_max": [
+          1.2550654411315918,
+          0.17540200054645538,
+          0.3998044431209564
+        ],
+        "dimensions_m": [
+          0.3555693030357361,
+          0.43324656784534454,
+          0.40323611814528704
+        ],
+        "uv_layers": [
+          "UVMap"
+        ],
+        "parent": null,
+        "matrix_world": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            1.1127846240997314
+          ],
+          [
+            0.0,
+            1.0,
+            1.6292067073209182e-07,
+            0.0
+          ],
+          [
+            0.0,
+            -1.6292067073209182e-07,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "hide_viewport": false,
+        "hide_render": false,
+        "collections": [
+          "Collection"
+        ],
+        "modifiers": [],
+        "materials": [
+          "grass_medium_02"
+        ]
+      },
+      "triangles": 1664,
+      "dimensions_blender_xyz_m": [
+        0.3555693030357361,
+        0.43324656784534454,
+        0.40323611814528704
+      ],
+      "dimensions_unity_xyz_m": [
+        0.3555693030357361,
+        0.40323611814528704,
+        0.43324656784534454
+      ],
+      "pivot_bounds_min": [
+        -0.17778465151786804,
+        0,
+        -0.21662328392267227
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "material_slots": [
+        "GrassMedium02E_OriginalPBR"
+      ],
+      "materials": [
+        {
+          "name": "GrassMedium02E_OriginalPBR",
+          "channels": {
+            "base_color": {
+              "path": "art/environment/vision-sources/GrassMedium02E/Textures/grass_medium_02_diff_1k.png",
+              "sha256": "5895add2d440b2aabe02cc8b0971b1f64956cf61d89e9a595944a64a38b5521d",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "sRGB",
+              "component": "rgb"
+            },
+            "normal_gl": {
+              "path": "art/environment/vision-sources/GrassMedium02E/Textures/grass_medium_02_nor_gl_1k.png",
+              "sha256": "14e3cc483b803e43efdbda306cb02254d1ada0ad991cea3296799d8e1d42675f",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "linear",
+              "component": "rgb"
+            },
+            "roughness": {
+              "path": "art/environment/vision-sources/GrassMedium02E/Textures/grass_medium_02_rough_1k.png",
+              "sha256": "21bfff99b79749720da3bf43415a0b41dd3eda141db97c9bbec7f86f4388e121",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "linear",
+              "component": "red"
+            },
+            "alpha": {
+              "path": "art/environment/vision-sources/GrassMedium02E/Textures/grass_medium_02_alpha_1k.png",
+              "sha256": "15976877b3dbd22cd496a9549f1eb7d86710846a3631fb87eedbf046519e339f",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "linear",
+              "component": "red"
+            }
+          },
+          "metallic": 0,
+          "alpha_mode": "cutout",
+          "alpha_cutoff": 0.5,
+          "double_sided": true,
+          "normal_convention": "OpenGL official nor_gl",
+          "roughness_to_smoothness": "Unity converts once: smoothness = 1 - roughness"
+        }
+      ],
+      "unit_m": 1,
+      "placement_scale": 1,
+      "axis_forward": "-Z",
+      "axis_up": "Y",
+      "lod_index": 0,
+      "lod_screen_relative_transition": null,
+      "geometry_policy": "Original native mesh/UV/custom normals/proportions; whole-object translation only; no decimation",
+      "gallery_position": [
+        100,
+        22,
+        0
+      ],
+      "model_path": "art/environment/vision-sources/GrassMedium02E/GrassMedium02E.fbx",
+      "model_sha256": "48a587ec26ef33fd9a7b16b47339635a6c3dac205638ca25786b3435e4febc89",
+      "source_blend": "art/Blender主文件/ZombieGame_Environment.blend"
+    }
+  ],
+  "raw_not_for_git": "Builds/EnvironmentCandidateDownloads/blender-20261015-vE1sPP",
+  "missing_sources": [
+    "RTS-appropriate dense tree crown",
+    "reed/cattail water-edge clump"
+  ],
+  "jacaranda_rejection": "Official FBX has only LOD0: 3,863,832 triangles; not metadata 312K; no tree appended or decimated"
+}

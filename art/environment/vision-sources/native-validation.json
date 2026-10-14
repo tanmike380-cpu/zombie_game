@@ -1,0 +1,33 @@
+{
+  "status": "original_geometry_uv_and_map_bytes_pass",
+  "source_sha256": "8ee96a9c1d426b66701bca637b1857d84899f02758e6338d052caaeb4622f252",
+  "records": [
+    {
+      "id": "Fern02A",
+      "native_geometry_uv_sha256": "88758f0ea51a31b40866b94ea625360765e92e9654fb3c5746c2665f9bb40050",
+      "native_equals_formal": true,
+      "source_triangles": 784,
+      "degenerate_triangle_count": 0,
+      "model_sha256": "a16760ae1766c0ca7a72e2c4e7188374672cf39c989264243911b6bdc3cca6b6",
+      "original_model_sha256": "6d8238b9cc1bbb5f5766396c2db26f2219c0d0e5ca226fb81dcc44bdb35045e8"
+    },
+    {
+      "id": "Fern02B",
+      "native_geometry_uv_sha256": "052a9118375c214bb80d025f8724cd603ed39aed8bd5aba852031fb993373820",
+      "native_equals_formal": true,
+      "source_triangles": 2384,
+      "degenerate_triangle_count": 0,
+      "model_sha256": "94a3e6242649393d5ad6bf3c92a49ba8362291511ca2add663fa458d45273782",
+      "original_model_sha256": "6d8238b9cc1bbb5f5766396c2db26f2219c0d0e5ca226fb81dcc44bdb35045e8"
+    },
+    {
+      "id": "GrassMedium02E",
+      "native_geometry_uv_sha256": "de186ebb6b9efb2962aee93b01d00564803f2b3689c979d8c898cacbe2f7c1e6",
+      "native_equals_formal": true,
+      "source_triangles": 1664,
+      "degenerate_triangle_count": 0,
+      "model_sha256": "48a587ec26ef33fd9a7b16b47339635a6c3dac205638ca25786b3435e4febc89",
+      "original_model_sha256": "459230e3f17dd40f55372c71d802a2ad7475a661a9ad22d9ab622b5c2d24ae57"
+    }
+  ]
+}

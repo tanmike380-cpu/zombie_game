@@ -1,0 +1,1294 @@
+{
+  "status": "formal_reopen_preservation_pass",
+  "before_sha256": "dfd40cfc85891b05f660d56f7016fa163391d8627e80002d48f691cf6a9e017d",
+  "after_sha256": "8ee96a9c1d426b66701bca637b1857d84899f02758e6338d052caaeb4622f252",
+  "after_bytes": 110171856,
+  "recovery_snapshot": "Builds/EnvironmentCandidateDownloads/blender-20261015-vE1sPP/before-vision-environment.blend",
+  "preserved": {
+    "geometry": {
+      "EuropeanStoneHouse": "571ab3a0ffd5f5e7a6c2073f812922207a0bba64aade4e20806f666bf7f08728",
+      "GrassBermuda": "1b0cee56c32361f564594a3e040d97e02c0406ba886067d17b40b203405f1c7a",
+      "GrassMedium": "3f263009849c874164d06f67f90a5f988d85f9c59803e4f69a8aa2fc3f2657d5",
+      "MiddleEasternCourtyard": "3005ee1922cae9ab3afccb1574f6313d74c2f22b00940831857433b9a0921e76",
+      "NorthAfricanRuins_Arch": "98d51397f1a63fe01bde3c4dd3e2e31c32ff80ce1a53d84ecaa779e0b9a32e5f",
+      "NorthAfricanRuins_Corner": "7aa99cd8d60fd868ae39bb158719206d3aae8077595135f76cd3545eeecabf9d",
+      "NorthAfricanRuins_FallenPillar": "48675a62eabe8446edf01a2813a1afa34dcc62c95abf8e3951937834679ea11b",
+      "RockNatural": "4fb42021409ce26835c1d08770d31efe1adcf582b8971b3debf56d2e3ada7ae6",
+      "ShrubA": "401ab70e775559fe4a2a270a8dcfa37dbc10c61254c2c078bc75b5b6694622d5",
+      "ShrubB": "67dc8ea619b09398f9af489bb18fdccab323fb953aaa12a07e649925dab63e77",
+      "TreeSmall_LOD0": "83ec0498ec8c303c319a629f48e3aab725011c78c6a42b248a826006f5558857",
+      "TreeSmall_LOD1": "9dfed748a5cff4e09b8ed8e74c80db76c665a77e08dfd1ec0c403c6fbfd0a6d3"
+    },
+    "objects": {
+      "EuropeanStoneHouse": {
+        "matrix": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            48.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            12.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "type": "MESH",
+        "data": "Cube.002",
+        "parent": null,
+        "hide": [
+          false,
+          false
+        ]
+      },
+      "GrassBermuda": {
+        "matrix": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0066118985414505005
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            0.013970472849905491
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            0.008790871128439903
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "type": "MESH",
+        "data": "Plane.001",
+        "parent": null,
+        "hide": [
+          false,
+          false
+        ]
+      },
+      "GrassMedium": {
+        "matrix": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            5.999105930328369
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            0.004762772470712662
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            0.005577980075031519
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "type": "MESH",
+        "data": "Plane.002",
+        "parent": null,
+        "hide": [
+          false,
+          false
+        ]
+      },
+      "MiddleEasternCourtyard": {
+        "matrix": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            76.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            14.300000190734863
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "type": "MESH",
+        "data": "RuinWallSegOne300.001",
+        "parent": null,
+        "hide": [
+          false,
+          false
+        ]
+      },
+      "NorthAfricanRuins_Arch": {
+        "matrix": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            62.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            10.100000381469727
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "type": "MESH",
+        "data": "RuinArchOne200.001",
+        "parent": null,
+        "hide": [
+          false,
+          false
+        ]
+      },
+      "NorthAfricanRuins_Corner": {
+        "matrix": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            62.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            13.699999809265137
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "type": "MESH",
+        "data": "foundationRuinOne200.001",
+        "parent": null,
+        "hide": [
+          false,
+          false
+        ]
+      },
+      "NorthAfricanRuins_FallenPillar": {
+        "matrix": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            65.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            13.800000190734863
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "type": "MESH",
+        "data": "RuinPillarOne200.001",
+        "parent": null,
+        "hide": [
+          false,
+          false
+        ]
+      },
+      "RockNatural": {
+        "matrix": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            36.00305938720703
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            -0.017873704433441162
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            0.0017508829478174448
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "type": "MESH",
+        "data": "realCap_Model_3.001",
+        "parent": null,
+        "hide": [
+          false,
+          false
+        ]
+      },
+      "ShrubA": {
+        "matrix": [
+          [
+            0.03452039137482643,
+            0.9823991060256958,
+            -0.18357637524604797,
+            11.90927791595459
+          ],
+          [
+            -0.9854696989059448,
+            0.002893571276217699,
+            -0.16982664167881012,
+            -0.03400068357586861
+          ],
+          [
+            -0.16630636155605316,
+            0.1867714375257492,
+            0.9682244658470154,
+            0.004702075384557247
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "type": "MESH",
+        "data": "Plane.003",
+        "parent": null,
+        "hide": [
+          false,
+          false
+        ]
+      },
+      "ShrubB": {
+        "matrix": [
+          [
+            -0.25249558687210083,
+            0.8604887127876282,
+            -0.4424987733364105,
+            17.996376037597656
+          ],
+          [
+            -0.9481835961341858,
+            -0.12888965010643005,
+            0.2904055118560791,
+            0.11413850635290146
+          ],
+          [
+            0.19285716116428375,
+            0.492896169424057,
+            0.8484453558921814,
+            0.001109421718865633
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "type": "MESH",
+        "data": "Plane.004",
+        "parent": null,
+        "hide": [
+          false,
+          false
+        ]
+      },
+      "TreeSmall_LOD0": {
+        "matrix": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            23.848899841308594
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            0.7633556127548218
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            0.024194231256842613
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "type": "MESH",
+        "data": "BezierCurve.001",
+        "parent": null,
+        "hide": [
+          false,
+          false
+        ]
+      },
+      "TreeSmall_LOD1": {
+        "matrix": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            29.848899841308594
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            0.7633556127548218
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            0.024063272401690483
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "type": "MESH",
+        "data": "BezierCurve.006",
+        "parent": null,
+        "hide": [
+          false,
+          false
+        ]
+      }
+    },
+    "collections": {
+      "Collection": {
+        "objects": [],
+        "children": []
+      },
+      "环境地标 · EuropeanStoneHouse": {
+        "objects": [
+          "EuropeanStoneHouse"
+        ],
+        "children": []
+      },
+      "环境地标 · MiddleEasternCourtyard": {
+        "objects": [
+          "MiddleEasternCourtyard"
+        ],
+        "children": []
+      },
+      "环境地标 · NorthAfricanRuins": {
+        "objects": [
+          "NorthAfricanRuins_Arch",
+          "NorthAfricanRuins_Corner",
+          "NorthAfricanRuins_FallenPillar"
+        ],
+        "children": []
+      },
+      "环境地标 · 中立荒废建筑": {
+        "objects": [],
+        "children": [
+          "环境地标 · EuropeanStoneHouse",
+          "环境地标 · MiddleEasternCourtyard",
+          "环境地标 · NorthAfricanRuins"
+        ]
+      },
+      "环境素材 · Poly Haven · GrassBermuda": {
+        "objects": [
+          "GrassBermuda"
+        ],
+        "children": []
+      },
+      "环境素材 · Poly Haven · GrassMedium": {
+        "objects": [
+          "GrassMedium"
+        ],
+        "children": []
+      },
+      "环境素材 · Poly Haven · RockNatural": {
+        "objects": [
+          "RockNatural"
+        ],
+        "children": []
+      },
+      "环境素材 · Poly Haven · ShrubA": {
+        "objects": [
+          "ShrubA"
+        ],
+        "children": []
+      },
+      "环境素材 · Poly Haven · ShrubB": {
+        "objects": [
+          "ShrubB"
+        ],
+        "children": []
+      },
+      "环境素材 · Poly Haven · TreeSmall_LOD0": {
+        "objects": [
+          "TreeSmall_LOD0"
+        ],
+        "children": []
+      },
+      "环境素材 · Poly Haven · TreeSmall_LOD1": {
+        "objects": [
+          "TreeSmall_LOD1"
+        ],
+        "children": []
+      },
+      "环境评审 · Poly Haven 植被": {
+        "objects": [],
+        "children": [
+          "环境素材 · Poly Haven · GrassBermuda",
+          "环境素材 · Poly Haven · GrassMedium",
+          "环境素材 · Poly Haven · RockNatural",
+          "环境素材 · Poly Haven · ShrubA",
+          "环境素材 · Poly Haven · ShrubB",
+          "环境素材 · Poly Haven · TreeSmall_LOD0",
+          "环境素材 · Poly Haven · TreeSmall_LOD1"
+        ]
+      }
+    },
+    "images": {
+      "3td_BrickOldRound_01.jpg": {
+        "sha256": "69a9a087323fea4020712cfab9c818bcf01962b7e2d2476c9c557070873a280b",
+        "colorspace": "sRGB"
+      },
+      "3td_BrickOldRound_01_NRM.png": {
+        "sha256": "570a5b26d7c30b0f951ffe8a9be378dc6913cce5d57cbc3f6d928b5e2a41536b",
+        "colorspace": "sRGB"
+      },
+      "3td_BrickOldSharp_02_NRM.png": {
+        "sha256": "71f354e881f21336a98d424a1bf985a3ccb1e65f86226a5709adf4941338e83a",
+        "colorspace": "sRGB"
+      },
+      "3td_BrickOldSharp_03.jpg.001": {
+        "sha256": "cd6bda1cfc0c453ceb9d6b9b13a5018c6eb314a187b922ff61590779e4d37945",
+        "colorspace": "sRGB"
+      },
+      "3td_BrickOldSharp_03_NRM.png": {
+        "sha256": "5d621b625d6d7fd372254138b017e54299e283613b607cecfd508d73226d9ce2",
+        "colorspace": "sRGB"
+      },
+      "3td_Concrete_01.jpg.001": {
+        "sha256": "05b3ec3e4437dde5ec8b8cd37bbced764dc7e3d9bacaa5b6d29e036e93f47057",
+        "colorspace": "sRGB"
+      },
+      "3td_Concrete_mossy_01.jpg": {
+        "sha256": "597f0229ab0120d0c601ee71fccc02df64ef5913c6ac60c15e168bf191caa38c",
+        "colorspace": "sRGB"
+      },
+      "3td_Concrete_mossy_01_NRM.png.001": {
+        "sha256": "bd89bc64a5daf1c4143614c72847a8a11ed5dead42242cd71758747fd9d235b8",
+        "colorspace": "sRGB"
+      },
+      "3td_ConcreteRough_01.jpg.001": {
+        "sha256": "fc6824693dace54e4acff1f5eede4c42203ede37dccb30301709b6b53f8276e0",
+        "colorspace": "sRGB"
+      },
+      "3td_ConcreteRough_01_NRM.png.001": {
+        "sha256": "24537e957ff94ee53fcf0f38af75afd3d169a820ddf5e022312c6d85c4ad2d35",
+        "colorspace": "sRGB"
+      },
+      "3td_LoneBrick_01.jpg": {
+        "sha256": "f8c6c23ddb05b1d71139c2abb8c3226005f784821d8058b3eeb47a5418cc4d09",
+        "colorspace": "sRGB"
+      },
+      "3td_LoneBrick_01_NRM.png": {
+        "sha256": "6f31db953b93c5d86b28e55d14a13ab7e7a8ef3efd4c7d8f776c5ea753f6d37a",
+        "colorspace": "sRGB"
+      },
+      "3td_WoodDebris_17.jpg": {
+        "sha256": "30df68c3f7946118f44cf1f72a7b57a6632c1e2143e4299dbf1713c59143e6a0",
+        "colorspace": "sRGB"
+      },
+      "3td_WoodDebris_17_NRM.png": {
+        "sha256": "d7ad6f9acd96d24404adc1063743d14dc9d51df7fd978d775994a46579db8690",
+        "colorspace": "sRGB"
+      },
+      "clay_plaster_diff_1k.png": {
+        "sha256": "d7f41da274e0a9f9ddd5b45a3f25ac66c90c6810ab9e613a97a0369c263d9887",
+        "colorspace": "sRGB"
+      },
+      "clay_plaster_nor_gl_1k.png": {
+        "sha256": "b41bda0045405286641c22f47b30277bdf7072e9c53dedd3cbe7854bcd776aec",
+        "colorspace": "Non-Color"
+      },
+      "clay_plaster_rough_1k.png": {
+        "sha256": "e55f81b83e45efd262e27c2811c7eb7e07956320f24207b1006d580026079afe",
+        "colorspace": "Non-Color"
+      },
+      "grass_bermuda_01_alpha.png": {
+        "sha256": "e58b3052aad2f107cdd763e437f80ed8fb5a31bcc43b44023f7f767cb3d9888e",
+        "colorspace": "Non-Color"
+      },
+      "grass_bermuda_01_diff.png": {
+        "sha256": "ef202eeb8f8fb3312446009acecc87e5679a7d612e4dee859d8a849e00af5fcb",
+        "colorspace": "sRGB"
+      },
+      "grass_bermuda_01_nor_gl.png": {
+        "sha256": "7aab2717abf1395f618639038c873901ef56ccddaceb785120d3c92bf25efe85",
+        "colorspace": "Non-Color"
+      },
+      "grass_bermuda_01_rough.png": {
+        "sha256": "d2f7d214ed82da77531027b8f865613d41d0b92582e5054a79fc025970e34cf8",
+        "colorspace": "Non-Color"
+      },
+      "grass_medium_01_alpha.png": {
+        "sha256": "711a8e49af758d6a6ce1f610db858899a27be19da6d1866bd35c13bc7b8ffeff",
+        "colorspace": "Non-Color"
+      },
+      "grass_medium_01_diff.png": {
+        "sha256": "71495bd6a11fddcab0aaff38246fea1a7b802a705483f1c7cbca53955daa8050",
+        "colorspace": "sRGB"
+      },
+      "grass_medium_01_dry_diff.png": {
+        "sha256": "da85639d6eb8f029b50e7920aaf7e649940541bb24fe6ad239dbae7400af2eb2",
+        "colorspace": "sRGB"
+      },
+      "grass_medium_01_nor_gl.png": {
+        "sha256": "7e9c4ca6dfca96b67e799a268493a6871ffaa215624dd1ade8b09044095f2a1d",
+        "colorspace": "Non-Color"
+      },
+      "grass_medium_01_rough.png": {
+        "sha256": "79a4d6ac2b567c4b7a394a11e1a57c7823730c02878f792153ce5a41dfacedee",
+        "colorspace": "Non-Color"
+      },
+      "rock_07_diff.png": {
+        "sha256": "8ff1965aa1664cc4abcc0131c44ee2b97ab14d6e131d7a51429ff261eeb101c8",
+        "colorspace": "sRGB"
+      },
+      "rock_07_nor_gl.png": {
+        "sha256": "ecf06ffadebdae6897dca07cbaa484b4028be2bdf383253753ef60cebd284628",
+        "colorspace": "Non-Color"
+      },
+      "rock_07_rough.png": {
+        "sha256": "b115b3985ffd08c2e96e48313ff47d2048ad70fe1a6237d9d0d0468ae2de0261",
+        "colorspace": "Non-Color"
+      },
+      "ruined_farmhouse.png": {
+        "sha256": "7da9d544508eb4aeaf4862f4184ed8df14dbae584733da3b1f05bd203d8bcea1",
+        "colorspace": "sRGB"
+      },
+      "ruined_farmhouseNormal.png": {
+        "sha256": "e08fea1ff36f44eefe1368e034bcf462459cebd2052f5df3671791f01911cb24",
+        "colorspace": "Non-Color"
+      },
+      "shrub_02_alpha.png": {
+        "sha256": "5c2c31bac311051db77443e1780078403c2df0a832c40fe6ed7bcd982695cdf0",
+        "colorspace": "Non-Color"
+      },
+      "shrub_02_alpha.png.001": {
+        "sha256": "5c2c31bac311051db77443e1780078403c2df0a832c40fe6ed7bcd982695cdf0",
+        "colorspace": "Non-Color"
+      },
+      "shrub_02_diff.png": {
+        "sha256": "9956eff294034d70516d867e9668428a23d782feb3d4c34061dce5e44bacd5a8",
+        "colorspace": "sRGB"
+      },
+      "shrub_02_diff.png.001": {
+        "sha256": "9956eff294034d70516d867e9668428a23d782feb3d4c34061dce5e44bacd5a8",
+        "colorspace": "sRGB"
+      },
+      "shrub_02_mask.png": {
+        "sha256": "5079f3b1136b10f715934f401c7f75b3fa015e24c92680f8758e09f8f0cdf7e2",
+        "colorspace": "Non-Color"
+      },
+      "shrub_02_mask.png.001": {
+        "sha256": "5079f3b1136b10f715934f401c7f75b3fa015e24c92680f8758e09f8f0cdf7e2",
+        "colorspace": "Non-Color"
+      },
+      "shrub_02_nor_gl.png": {
+        "sha256": "e7a55808cea62a123f3f27a92d83a0d55aaadfe64bc7f75853f8f49f37fd63c9",
+        "colorspace": "Non-Color"
+      },
+      "shrub_02_nor_gl.png.001": {
+        "sha256": "e7a55808cea62a123f3f27a92d83a0d55aaadfe64bc7f75853f8f49f37fd63c9",
+        "colorspace": "Non-Color"
+      },
+      "shrub_02_rough.png": {
+        "sha256": "a9f6cda20dc287fb27ab5c9a399284ae02e8abf032ad324f3083ebcf7f1987a5",
+        "colorspace": "Non-Color"
+      },
+      "shrub_02_rough.png.001": {
+        "sha256": "a9f6cda20dc287fb27ab5c9a399284ae02e8abf032ad324f3083ebcf7f1987a5",
+        "colorspace": "Non-Color"
+      },
+      "tree_small_02_branch_diff.png": {
+        "sha256": "a93ce54213c4a98cd01cb5c5f7ab46b77defcd66e1dd082e6912f6e60632e630",
+        "colorspace": "sRGB"
+      },
+      "tree_small_02_branch_diff.png.001": {
+        "sha256": "a93ce54213c4a98cd01cb5c5f7ab46b77defcd66e1dd082e6912f6e60632e630",
+        "colorspace": "sRGB"
+      },
+      "tree_small_02_branch_nor_gl.png": {
+        "sha256": "0338a1400391893fdf6c6cbd1c22a573d6ab2300ad771d4916184bf206e1a671",
+        "colorspace": "Non-Color"
+      },
+      "tree_small_02_branch_nor_gl.png.001": {
+        "sha256": "0338a1400391893fdf6c6cbd1c22a573d6ab2300ad771d4916184bf206e1a671",
+        "colorspace": "Non-Color"
+      },
+      "tree_small_02_branch_rough.png": {
+        "sha256": "f285a54d141f30e39c7741e84a813c5cbccd9e9ee397af687176213f77d3e9a5",
+        "colorspace": "Non-Color"
+      },
+      "tree_small_02_branch_rough.png.001": {
+        "sha256": "f285a54d141f30e39c7741e84a813c5cbccd9e9ee397af687176213f77d3e9a5",
+        "colorspace": "Non-Color"
+      },
+      "tree_small_02_diff.png": {
+        "sha256": "4e0093f407b3a1120a36de49a48ebe5a465a9a9b77e361c7a3e66866e115e404",
+        "colorspace": "sRGB"
+      },
+      "tree_small_02_diff.png.001": {
+        "sha256": "4e0093f407b3a1120a36de49a48ebe5a465a9a9b77e361c7a3e66866e115e404",
+        "colorspace": "sRGB"
+      },
+      "tree_small_02_leaves_alpha.png": {
+        "sha256": "4f143e2dda8a6a572f427ac378b92255d21761e4611de0d26e21816c01aa533b",
+        "colorspace": "sRGB"
+      },
+      "tree_small_02_leaves_alpha.png.001": {
+        "sha256": "4f143e2dda8a6a572f427ac378b92255d21761e4611de0d26e21816c01aa533b",
+        "colorspace": "sRGB"
+      },
+      "tree_small_02_leaves_diff.png": {
+        "sha256": "d3fc48522c76aa1f91076c6b86f302669822ebe4e2acabd67d42c4d57eaa5ba0",
+        "colorspace": "sRGB"
+      },
+      "tree_small_02_leaves_diff.png.001": {
+        "sha256": "d3fc48522c76aa1f91076c6b86f302669822ebe4e2acabd67d42c4d57eaa5ba0",
+        "colorspace": "sRGB"
+      },
+      "tree_small_02_leaves_nor_gl.png": {
+        "sha256": "fa4ad390f2e68b745db8f568cad64c3272696c5e01312ae564795e37724d79b8",
+        "colorspace": "Non-Color"
+      },
+      "tree_small_02_leaves_nor_gl.png.001": {
+        "sha256": "fa4ad390f2e68b745db8f568cad64c3272696c5e01312ae564795e37724d79b8",
+        "colorspace": "Non-Color"
+      },
+      "tree_small_02_leaves_rough.png": {
+        "sha256": "f005213467e38bcb355b00c9a6eb9896b8d810ee885d5c7fa308d9f3326ef602",
+        "colorspace": "Non-Color"
+      },
+      "tree_small_02_leaves_rough.png.001": {
+        "sha256": "f005213467e38bcb355b00c9a6eb9896b8d810ee885d5c7fa308d9f3326ef602",
+        "colorspace": "Non-Color"
+      },
+      "tree_small_02_nor_gl.png": {
+        "sha256": "cf999e30663267b55b6fab43ca97c1e96176bdc67268e6c25854d53f15267d64",
+        "colorspace": "Non-Color"
+      },
+      "tree_small_02_nor_gl.png.001": {
+        "sha256": "cf999e30663267b55b6fab43ca97c1e96176bdc67268e6c25854d53f15267d64",
+        "colorspace": "Non-Color"
+      },
+      "tree_small_02_rough.png": {
+        "sha256": "1ed5ad24397c065beb2b2d3521470730f24e957cbd5fb323ad3f9b6d267b4585",
+        "colorspace": "Non-Color"
+      },
+      "tree_small_02_rough.png.001": {
+        "sha256": "1ed5ad24397c065beb2b2d3521470730f24e957cbd5fb323ad3f9b6d267b4585",
+        "colorspace": "Non-Color"
+      }
+    },
+    "scene": {
+      "name": "Scene",
+      "camera": null,
+      "world": "World",
+      "unit_scale": 1.0
+    }
+  },
+  "new_collections": [
+    "Vision1 · CC0植物原型",
+    "Vision1 · Fern02A",
+    "Vision1 · Fern02B",
+    "Vision1 · GrassMedium02E"
+  ],
+  "new_packed_images": 18,
+  "records": [
+    {
+      "id": "Fern02A",
+      "source_scene": "Scene",
+      "source_collection": "Vision1 · Fern02A",
+      "source_object": "Fern02A",
+      "original_source": "Builds/EnvironmentCandidateDownloads/blender-20261015-vE1sPP/fern_02/fern_02_1k.fbx",
+      "original_sha256": "6d8238b9cc1bbb5f5766396c2db26f2219c0d0e5ca226fb81dcc44bdb35045e8",
+      "original_object": "fern_02_a",
+      "source_url": "https://polyhaven.com/a/fern_02",
+      "authors": {
+        "Rob Tuytel": "scanning",
+        "Rico Cilliers": "modeling"
+      },
+      "license": "CC0-1.0",
+      "license_url": "https://polyhaven.com/license",
+      "native_import": {
+        "name": "fern_02_a",
+        "mesh": "Plane.006",
+        "vertices": 525,
+        "triangles": 784,
+        "evaluated_triangles": 784,
+        "bounds_min": [
+          -0.2976572513580322,
+          -1.3021531105041504,
+          -0.02877352014183998
+        ],
+        "bounds_max": [
+          0.2542833685874939,
+          -0.6887320280075073,
+          0.2580300271511078
+        ],
+        "dimensions_m": [
+          0.5519406199455261,
+          0.6134210824966431,
+          0.28680354729294777
+        ],
+        "uv_layers": [
+          "UVMap"
+        ],
+        "parent": null,
+        "matrix_world": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            -1.1920928955078125e-07
+          ],
+          [
+            0.0,
+            1.0,
+            4.371138828673793e-08,
+            -1.0000001192092896
+          ],
+          [
+            0.0,
+            -4.371138828673793e-08,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "hide_viewport": false,
+        "hide_render": false,
+        "collections": [
+          "Collection"
+        ],
+        "modifiers": [],
+        "materials": [
+          "fern_02"
+        ]
+      },
+      "triangles": 784,
+      "dimensions_blender_xyz_m": [
+        0.5519406199455261,
+        0.6134210824966431,
+        0.28680354729294777
+      ],
+      "dimensions_unity_xyz_m": [
+        0.5519406199455261,
+        0.28680354729294777,
+        0.6134210824966431
+      ],
+      "pivot_bounds_min": [
+        -0.27597030997276306,
+        0,
+        -0.30671054124832153
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "material_slots": [
+        "Fern02A_OriginalPBR"
+      ],
+      "materials": [
+        {
+          "name": "Fern02A_OriginalPBR",
+          "channels": {
+            "base_color": {
+              "path": "art/environment/vision-sources/Fern02A/Textures/fern_02_diff_1k.png",
+              "sha256": "f8f504bce117647f1df386cd7bc99a79c664bb49f82d1dd6412c83a700c48e94",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "sRGB",
+              "component": "rgb"
+            },
+            "normal_gl": {
+              "path": "art/environment/vision-sources/Fern02A/Textures/fern_02_nor_gl_1k.png",
+              "sha256": "438c065c60754ad410c5b4690df6547d06d9907b8d2c9c3a908cb135ffd52b97",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "linear",
+              "component": "rgb"
+            },
+            "roughness": {
+              "path": "art/environment/vision-sources/Fern02A/Textures/fern_02_rough_1k.png",
+              "sha256": "1485a265bcd40e5d9362c0ed56f9024df3ab5241dc9f83c8011165d2223c5d20",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "linear",
+              "component": "red"
+            },
+            "alpha": {
+              "path": "art/environment/vision-sources/Fern02A/Textures/fern_02_alpha_1k.png",
+              "sha256": "ea3c64284c7ebdeedf484d2d816eae92825ec526140c3bb83859ddc7a64001f9",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "linear",
+              "component": "red"
+            }
+          },
+          "metallic": 0,
+          "alpha_mode": "cutout",
+          "alpha_cutoff": 0.5,
+          "double_sided": true,
+          "normal_convention": "OpenGL official nor_gl",
+          "roughness_to_smoothness": "Unity converts once: smoothness = 1 - roughness"
+        }
+      ],
+      "unit_m": 1,
+      "placement_scale": 1,
+      "axis_forward": "-Z",
+      "axis_up": "Y",
+      "lod_index": 0,
+      "lod_screen_relative_transition": null,
+      "geometry_policy": "Original native mesh/UV/custom normals/proportions; whole-object translation only; no decimation",
+      "gallery_position": [
+        92,
+        22,
+        0
+      ],
+      "model_path": "art/environment/vision-sources/Fern02A/Fern02A.fbx",
+      "model_sha256": "a16760ae1766c0ca7a72e2c4e7188374672cf39c989264243911b6bdc3cca6b6",
+      "source_blend": "art/Blender主文件/ZombieGame_Environment.blend"
+    },
+    {
+      "id": "Fern02B",
+      "source_scene": "Scene",
+      "source_collection": "Vision1 · Fern02B",
+      "source_object": "Fern02B",
+      "original_source": "Builds/EnvironmentCandidateDownloads/blender-20261015-vE1sPP/fern_02/fern_02_1k.fbx",
+      "original_sha256": "6d8238b9cc1bbb5f5766396c2db26f2219c0d0e5ca226fb81dcc44bdb35045e8",
+      "original_object": "fern_02_b",
+      "source_url": "https://polyhaven.com/a/fern_02",
+      "authors": {
+        "Rob Tuytel": "scanning",
+        "Rico Cilliers": "modeling"
+      },
+      "license": "CC0-1.0",
+      "license_url": "https://polyhaven.com/license",
+      "native_import": {
+        "name": "fern_02_b",
+        "mesh": "Plane.005",
+        "vertices": 1590,
+        "triangles": 2384,
+        "evaluated_triangles": 2384,
+        "bounds_min": [
+          -0.528143048286438,
+          -0.47181466221809387,
+          -0.030510280281305313
+        ],
+        "bounds_max": [
+          0.46160435676574707,
+          0.4218750596046448,
+          0.39718443155288696
+        ],
+        "dimensions_m": [
+          0.9897474050521851,
+          0.8936897218227386,
+          0.4276947118341923
+        ],
+        "uv_layers": [
+          "UVMap"
+        ],
+        "parent": null,
+        "matrix_world": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            -4.76837158203125e-07
+          ],
+          [
+            0.0,
+            1.0,
+            4.371138828673793e-08,
+            5.960464477539062e-07
+          ],
+          [
+            0.0,
+            -4.371138828673793e-08,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "hide_viewport": false,
+        "hide_render": false,
+        "collections": [
+          "Collection"
+        ],
+        "modifiers": [],
+        "materials": [
+          "fern_02.001"
+        ]
+      },
+      "triangles": 2384,
+      "dimensions_blender_xyz_m": [
+        0.9897474050521851,
+        0.8936897218227386,
+        0.4276947118341923
+      ],
+      "dimensions_unity_xyz_m": [
+        0.9897474050521851,
+        0.4276947118341923,
+        0.8936897218227386
+      ],
+      "pivot_bounds_min": [
+        -0.49487370252609253,
+        0,
+        -0.4468448609113693
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "material_slots": [
+        "Fern02B_OriginalPBR"
+      ],
+      "materials": [
+        {
+          "name": "Fern02B_OriginalPBR",
+          "channels": {
+            "base_color": {
+              "path": "art/environment/vision-sources/Fern02B/Textures/fern_02_diff_1k.png",
+              "sha256": "f8f504bce117647f1df386cd7bc99a79c664bb49f82d1dd6412c83a700c48e94",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "sRGB",
+              "component": "rgb"
+            },
+            "normal_gl": {
+              "path": "art/environment/vision-sources/Fern02B/Textures/fern_02_nor_gl_1k.png",
+              "sha256": "438c065c60754ad410c5b4690df6547d06d9907b8d2c9c3a908cb135ffd52b97",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "linear",
+              "component": "rgb"
+            },
+            "roughness": {
+              "path": "art/environment/vision-sources/Fern02B/Textures/fern_02_rough_1k.png",
+              "sha256": "1485a265bcd40e5d9362c0ed56f9024df3ab5241dc9f83c8011165d2223c5d20",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "linear",
+              "component": "red"
+            },
+            "alpha": {
+              "path": "art/environment/vision-sources/Fern02B/Textures/fern_02_alpha_1k.png",
+              "sha256": "ea3c64284c7ebdeedf484d2d816eae92825ec526140c3bb83859ddc7a64001f9",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "linear",
+              "component": "red"
+            }
+          },
+          "metallic": 0,
+          "alpha_mode": "cutout",
+          "alpha_cutoff": 0.5,
+          "double_sided": true,
+          "normal_convention": "OpenGL official nor_gl",
+          "roughness_to_smoothness": "Unity converts once: smoothness = 1 - roughness"
+        }
+      ],
+      "unit_m": 1,
+      "placement_scale": 1,
+      "axis_forward": "-Z",
+      "axis_up": "Y",
+      "lod_index": 0,
+      "lod_screen_relative_transition": null,
+      "geometry_policy": "Original native mesh/UV/custom normals/proportions; whole-object translation only; no decimation",
+      "gallery_position": [
+        96,
+        22,
+        0
+      ],
+      "model_path": "art/environment/vision-sources/Fern02B/Fern02B.fbx",
+      "model_sha256": "94a3e6242649393d5ad6bf3c92a49ba8362291511ca2add663fa458d45273782",
+      "source_blend": "art/Blender主文件/ZombieGame_Environment.blend"
+    },
+    {
+      "id": "GrassMedium02E",
+      "source_scene": "Scene",
+      "source_collection": "Vision1 · GrassMedium02E",
+      "source_object": "GrassMedium02E",
+      "original_source": "Builds/EnvironmentCandidateDownloads/blender-20261015-vE1sPP/grass_medium_02/grass_medium_02_1k.fbx",
+      "original_sha256": "459230e3f17dd40f55372c71d802a2ad7475a661a9ad22d9ab622b5c2d24ae57",
+      "original_object": "grass_medium_02_e",
+      "source_url": "https://polyhaven.com/a/grass_medium_02",
+      "authors": {
+        "Rico Cilliers": "All"
+      },
+      "license": "CC0-1.0",
+      "license_url": "https://polyhaven.com/license",
+      "native_import": {
+        "name": "grass_medium_02_e",
+        "mesh": "Plane.014",
+        "vertices": 1542,
+        "triangles": 1664,
+        "evaluated_triangles": 1664,
+        "bounds_min": [
+          0.8994961380958557,
+          -0.25784456729888916,
+          -0.003431675024330616
+        ],
+        "bounds_max": [
+          1.2550654411315918,
+          0.17540200054645538,
+          0.3998044431209564
+        ],
+        "dimensions_m": [
+          0.3555693030357361,
+          0.43324656784534454,
+          0.40323611814528704
+        ],
+        "uv_layers": [
+          "UVMap"
+        ],
+        "parent": null,
+        "matrix_world": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            1.1127846240997314
+          ],
+          [
+            0.0,
+            1.0,
+            1.6292067073209182e-07,
+            0.0
+          ],
+          [
+            0.0,
+            -1.6292067073209182e-07,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "hide_viewport": false,
+        "hide_render": false,
+        "collections": [
+          "Collection"
+        ],
+        "modifiers": [],
+        "materials": [
+          "grass_medium_02"
+        ]
+      },
+      "triangles": 1664,
+      "dimensions_blender_xyz_m": [
+        0.3555693030357361,
+        0.43324656784534454,
+        0.40323611814528704
+      ],
+      "dimensions_unity_xyz_m": [
+        0.3555693030357361,
+        0.40323611814528704,
+        0.43324656784534454
+      ],
+      "pivot_bounds_min": [
+        -0.17778465151786804,
+        0,
+        -0.21662328392267227
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "material_slots": [
+        "GrassMedium02E_OriginalPBR"
+      ],
+      "materials": [
+        {
+          "name": "GrassMedium02E_OriginalPBR",
+          "channels": {
+            "base_color": {
+              "path": "art/environment/vision-sources/GrassMedium02E/Textures/grass_medium_02_diff_1k.png",
+              "sha256": "5895add2d440b2aabe02cc8b0971b1f64956cf61d89e9a595944a64a38b5521d",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "sRGB",
+              "component": "rgb"
+            },
+            "normal_gl": {
+              "path": "art/environment/vision-sources/GrassMedium02E/Textures/grass_medium_02_nor_gl_1k.png",
+              "sha256": "14e3cc483b803e43efdbda306cb02254d1ada0ad991cea3296799d8e1d42675f",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "linear",
+              "component": "rgb"
+            },
+            "roughness": {
+              "path": "art/environment/vision-sources/GrassMedium02E/Textures/grass_medium_02_rough_1k.png",
+              "sha256": "21bfff99b79749720da3bf43415a0b41dd3eda141db97c9bbec7f86f4388e121",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "linear",
+              "component": "red"
+            },
+            "alpha": {
+              "path": "art/environment/vision-sources/GrassMedium02E/Textures/grass_medium_02_alpha_1k.png",
+              "sha256": "15976877b3dbd22cd496a9549f1eb7d86710846a3631fb87eedbf046519e339f",
+              "resolution": [
+                1024,
+                1024
+              ],
+              "colorspace": "linear",
+              "component": "red"
+            }
+          },
+          "metallic": 0,
+          "alpha_mode": "cutout",
+          "alpha_cutoff": 0.5,
+          "double_sided": true,
+          "normal_convention": "OpenGL official nor_gl",
+          "roughness_to_smoothness": "Unity converts once: smoothness = 1 - roughness"
+        }
+      ],
+      "unit_m": 1,
+      "placement_scale": 1,
+      "axis_forward": "-Z",
+      "axis_up": "Y",
+      "lod_index": 0,
+      "lod_screen_relative_transition": null,
+      "geometry_policy": "Original native mesh/UV/custom normals/proportions; whole-object translation only; no decimation",
+      "gallery_position": [
+        100,
+        22,
+        0
+      ],
+      "model_path": "art/environment/vision-sources/GrassMedium02E/GrassMedium02E.fbx",
+      "model_sha256": "48a587ec26ef33fd9a7b16b47339635a6c3dac205638ca25786b3435e4febc89",
+      "source_blend": "art/Blender主文件/ZombieGame_Environment.blend"
+    }
+  ]
+}
