@@ -11,6 +11,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
         public EnvironmentShowcaseConfig.BiomeProfile biome { get; private set; }
         private readonly TerrainLayer[] layer_instances;
         private Material material_instance;
+        private bool owns_terrain = true;
         public Terrain terrain { get; private set; }
         public TerrainData terrain_data { get; private set; }
         public ShowcaseRoutes routes { get; private set; }
@@ -46,6 +47,19 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             terrain.Flush();
         }
 
+        /// <summary>Read the saved Editor reference through the same sampling/placement code without owning its assets.</summary>
+        public ShowcaseTerrain(EnvironmentShowcaseConfig settings,Terrain saved_terrain,EnvironmentShowcaseConfig.BiomeProfile profile)
+        {
+            config = settings;
+            biome = profile;
+            terrain = saved_terrain;
+            terrain_data = saved_terrain.terrainData;
+            concept = new ShowcaseConceptLayout(config.active_concept_layout,config.map_size,config.active_dark_layout,config);
+            routes = new ShowcaseRoutes(settings);
+            layer_instances = System.Array.Empty<TerrainLayer>();
+            owns_terrain = false;
+        }
+
         private TerrainLayer[] load_layers()
         {
             var profile = TerrainPresentation.load_config();
@@ -56,6 +70,8 @@ namespace ZombieGame.Tests.EnvironmentShowcase
                 var source = layer_index == 0 && config.grass_layer_override ? config.grass_layer_override : Resources.Load<TerrainLayer>(resource_path);
                 if (biome != null && biome.layer_overrides[layer_index]) source = biome.layer_overrides[layer_index];
                 if (concept != null && layer_index == 4 && concept.layout.stone_layer) source = concept.layout.stone_layer;
+                if(config.vision_enabled && config.active_dark_layout.vision_layer_overrides[layer_index])
+                    source = config.active_dark_layout.vision_layer_overrides[layer_index];
                 if (!source || !source.diffuseTexture || !source.normalMapTexture)
                     throw new InvalidOperationException("Missing prepared PBR terrain layer: " + resource_path);
                 result[layer_index] = UnityEngine.Object.Instantiate(source);
@@ -107,6 +123,11 @@ namespace ZombieGame.Tests.EnvironmentShowcase
                     material_instance.SetColor("_DryTint",config.active_dark_layout.dry_tint);
                     material_instance.SetColor("_SoilTint",config.active_dark_layout.soil_tint);
                     material_instance.SetFloat("_BreakupStrength",.25f);
+                    if(config.vision_enabled)
+                    {
+                        material_instance.SetFloat("_MacroScale",config.active_dark_layout.vision_macro_scale);
+                        material_instance.SetFloat("_MacroStrength",.20f);
+                    }
                 }
             }
         }
@@ -214,6 +235,11 @@ namespace ZombieGame.Tests.EnvironmentShowcase
         /// <summary>Six normalized weights; soil/wetness/slope are spatially meaningful, not random splats.</summary>
         public void sample_weights(float u, float v, float[] weights)
         {
+            if(config.vision_enabled && config.active_dark_layout.vision_surface_regions)
+            {
+                VisionGroundSurface.sample_weights(config,concept,terrain_data,u,v,weights);
+                return;
+            }
             float x = u * config.map_size, z = v * config.map_size;
             float patch = Mathf.PerlinNoise(x / config.macro_patch_size + config.seed * .011f, z / config.macro_patch_size);
             float dry = Mathf.SmoothStep(0, 1, Mathf.InverseLerp(.38f, .78f, patch));
@@ -307,6 +333,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
 
         public void Dispose()
         {
+            if(!owns_terrain) return;
             if (terrain) { terrain.gameObject.SetActive(false); UnityEngine.Object.Destroy(terrain.gameObject); }
             if (terrain_data) UnityEngine.Object.Destroy(terrain_data);
             if (material_instance) UnityEngine.Object.Destroy(material_instance);

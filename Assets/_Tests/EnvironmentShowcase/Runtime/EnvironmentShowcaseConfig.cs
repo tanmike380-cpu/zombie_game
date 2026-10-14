@@ -88,10 +88,12 @@ namespace ZombieGame.Tests.EnvironmentShowcase
         public ConceptLayoutConfig concept_layout;
         public DarkWildernessConfig dark_layout;
         public DarkWildernessConfig flat_layout;
+        public DarkWildernessConfig vision_layout;
         [NonSerialized] public bool concept_enabled;
         [NonSerialized] public bool dark_enabled;
         [NonSerialized] public bool flat_enabled;
-        public DarkWildernessConfig active_dark_layout => flat_enabled ? flat_layout : dark_layout;
+        [NonSerialized] public bool vision_enabled;
+        public DarkWildernessConfig active_dark_layout => vision_enabled ? vision_layout : flat_enabled ? flat_layout : dark_layout;
         public ConceptLayoutConfig active_concept_layout => dark_enabled ? active_dark_layout.layout : concept_layout;
         public SourceAsset[] landmark_sources = Array.Empty<SourceAsset>();
         public SourceAsset[] ore_sources = Array.Empty<SourceAsset>();

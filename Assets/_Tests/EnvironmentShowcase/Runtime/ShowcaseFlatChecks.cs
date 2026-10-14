@@ -25,21 +25,50 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             public string[] overlap_pairs;
             public ShowcaseFoliage.VisibilityProbe vegetation_middle;
             public ShowcaseFoliage.GrassProbe[] shrub_bounds;
+            public float[] visible_land_layer_mean_weights;
+            public int visible_land_samples;
+            public string layer_sample_note = "Whole-map means remain in layer_mean_weights; visible land means exclude actual submerged sea/pond samples, not low grass areas.";
+            public float vision_shadow_pixel_delta;
+            public bool vision_shadow_pixel_pass;
+            public int active_prop_shadow_casters;
+            public int prop_renderers_without_shadows;
+            public string vision_shadow_resolution;
+            public VisionClumpCheck[] vision_clumps;
+            public bool vision_clumps_pass;
+            public ShowcaseFoliage.SourceVisibilityProbe[] vision_oak_views;
+            public float[] vision_oak_pixel_deltas;
+            public bool vision_oak_pass;
+            public FixedPlantFrame[] matched_plants_frames;
         }
 
         private IEnumerator run_flat_checks()
         {
             showcase.show_hud = false;
-            report.biome = "flat-v1";
-            report.biome_label = "Flat wilderness technical preview; art visual acceptance false";
+            report.biome = showcase.config.vision_enabled ? "vision-1" : "flat-v1";
+            report.biome_label = showcase.config.vision_enabled ? "Vision-1 level wilderness technical preview; art acceptance false" : "Flat wilderness technical preview; art visual acceptance false";
             report.unavailable_art = showcase.missing_art;
             report.implemented = new[]{"One inland height; no separate building pads", "Compact source settlement and mineral clusters", "Local approved grass/shrub patches, unchanged instance budgets", "Sea and closed pond; six PBR slots with Road zero"};
+            if(showcase.config.vision_enabled)
+                report.implemented = new[]{"One inland height; no separate building pads", "Compact frozen-source settlement and mineral clusters", "6000 grass and 140 mid-layer plants redistributed into source-specific beds; not a forest", "Sea and closed pond; six PBR slots with Road zero"};
             inspect_ground();
             report.flat = measure_flat_geometry();
             report.run_in_background = Application.runInBackground;
             report.target_frame_rate = Application.targetFrameRate;
             report.shadow_distance = QualitySettings.shadowDistance;
             report.shadow_cascades = QualitySettings.shadowCascades==0?1:QualitySettings.shadowCascades;
+            var matched_frames = capture_matched_plants_frames();
+            while(matched_frames.MoveNext()) yield return matched_frames.Current;
+            if(showcase.config.vision_enabled)
+            {
+                showcase.set_flat_comparison_view(1);
+                for(int frame=0;frame<45;frame++) yield return null;
+                yield return new WaitForEndOfFrame();
+                save_camera_image("vision-1-matched-flat-v3-middle.png");
+                report.flat.vision_shadow_pixel_delta = compare_same_frame_vision_shadows();
+                report.flat.vision_shadow_pixel_pass = report.flat.vision_shadow_pixel_delta > .0001f;
+                report.flat.vision_shadow_resolution = QualitySettings.shadowResolution.ToString();
+                inspect_vision_shadow_casters(report.flat);
+            }
             for(int view=0;view<4;view++)
             {
                 for(int zoom=0;zoom<3;zoom++)
@@ -83,9 +112,22 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             report.flat.shrub_bounds = showcase.foliage.shrub_probes.ToArray();
             var source_checks = sample_dark_sources();
             while(source_checks.MoveNext()) yield return source_checks.Current;
+            if(showcase.config.vision_enabled)
+            {
+                var clump_checks = run_vision_clump_checks();
+                while(clump_checks.MoveNext()) yield return clump_checks.Current;
+                if(showcase.config.active_dark_layout.tree_prefabs.Length > 0)
+                {
+                    var oak_checks = run_vision_oak_checks();
+                    while(oak_checks.MoveNext()) yield return oak_checks.Current;
+                }
+            }
             report.timings = timings.ToArray();
             report.terrain_passed = report.terrain_pixel_pass && report.layer_pass && report.shader_pass && report.flat.level_ground_pass && report.flat.maximum_road_weight==0 && report.flat.no_river && report.flat.pool_closed_pass && report.flat.water_pixel_pass;
             report.flat.technical_pass = report.terrain_passed && report.dark_source.passed && report.flat.fixture_overlap_pass && report.grass_pixel_pass && report.flat.shrubs_pixel_pass;
+            if(showcase.config.vision_enabled) report.flat.technical_pass &= report.flat.vision_shadow_pixel_pass && report.flat.vision_clumps_pass;
+            if(showcase.config.vision_enabled && showcase.config.active_dark_layout.tree_prefabs.Length > 0)
+                report.flat.technical_pass &= report.flat.vision_oak_pass;
             report.passed = report.flat.technical_pass;
             report.source_complete = false;
             report.error = report.passed ? "Technical checks passed; art_visual_accepted=false. Dense tree crowns, broader RTS-readable grass clumps, reeds and long authored cliff modules unavailable. No gameplay acceptance." : "Flat technical check failed; inspect individual flags. Art not accepted.";
@@ -95,6 +137,8 @@ namespace ZombieGame.Tests.EnvironmentShowcase
         {
             var ground = showcase.ground;
             var evidence = new FlatReport{walkable_height_m=showcase.config.active_dark_layout.flat_height,no_river=!ground.routes.enabled};
+            if(showcase.config.vision_enabled)
+                evidence.density_note = "Legacy vegetation-area comparison retained, not the new per-source bed density. See vision_clumps nominal/eligible support areas; neither is alpha coverage.";
             var weights = new float[6];
             for(int z=0;z<=128;z++)
             {
@@ -120,7 +164,71 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             evidence.grass_instances_per_eligible_m2 = showcase.foliage.grass_instances/Mathf.Max(1,evidence.eligible_grass_area_m2);
             evidence.overlap_pairs = find_flat_fixture_overlaps();
             evidence.fixture_overlap_pass = evidence.overlap_pairs.Length==0;
+            if(showcase.config.vision_enabled) measure_visible_land_layers(evidence);
             return evidence;
+        }
+
+        private void measure_visible_land_layers(FlatReport evidence)
+        {
+            var ground = showcase.ground;
+            var weights = new float[6];
+            evidence.visible_land_layer_mean_weights = new float[6];
+            const int SAMPLE_GRID = 40;
+            for(int z=0;z<SAMPLE_GRID;z++)
+            {
+                for(int x=0;x<SAMPLE_GRID;x++)
+                {
+                    float u = x/(float)(SAMPLE_GRID-1);
+                    float v = z/(float)(SAMPLE_GRID-1);
+                    float world_x = u*showcase.config.map_size;
+                    float world_z = v*showcase.config.map_size;
+                    float height = ground.sample_ground(world_x,world_z).y;
+                    bool sea_submerged = height < ground.concept.layout.sea_level && world_x <= ground.concept.coast_edge(world_z)+3.5f;
+                    bool pond_submerged = height < ground.concept.layout.pond_level && ground.concept.pond_edge_distance(world_x,world_z)<ground.concept.layout.pond_bank_width;
+                    if(sea_submerged || pond_submerged) continue;
+                    ground.sample_weights(u,v,weights);
+                    evidence.visible_land_samples++;
+                    for(int index=0;index<6;index++) evidence.visible_land_layer_mean_weights[index] += weights[index];
+                }
+            }
+            for(int index=0;index<6;index++) evidence.visible_land_layer_mean_weights[index] /= Mathf.Max(1,evidence.visible_land_samples);
+        }
+
+        private void inspect_vision_shadow_casters(FlatReport evidence)
+        {
+            foreach(var fixture in showcase.landmarks.buildings)
+            {
+                foreach(var renderer in fixture.GetComponentsInChildren<MeshRenderer>())
+                {
+                    if(!renderer.enabled) continue;
+                    if(renderer.shadowCastingMode == UnityEngine.Rendering.ShadowCastingMode.Off)
+                        evidence.prop_renderers_without_shadows++;
+                    else evidence.active_prop_shadow_casters++;
+                }
+            }
+        }
+
+        private float compare_same_frame_vision_shadows()
+        {
+            var light = showcase.review_sun;
+            var previous = light.shadows;
+            Texture2D visible = null;
+            Texture2D hidden = null;
+            try
+            {
+                visible = capture_camera();
+                light.shadows = LightShadows.None;
+                hidden = capture_camera();
+                File.WriteAllBytes(Path.Combine(output_directory,"vision-shadow-on.png"),visible.EncodeToPNG());
+                File.WriteAllBytes(Path.Combine(output_directory,"vision-shadow-off.png"),hidden.EncodeToPNG());
+                return measure_pixel_delta(visible.GetPixels32(),hidden.GetPixels32());
+            }
+            finally
+            {
+                light.shadows = previous;
+                if(visible) Destroy(visible);
+                if(hidden) Destroy(hidden);
+            }
         }
 
         private float measure_flat_pool_rim()

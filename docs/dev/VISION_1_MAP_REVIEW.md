@@ -39,8 +39,12 @@ Unity 专责完善自然语义地表分区、布局、光照、水体和同源�
 - 05:41 Lauris Kaplinski 橡树正式源就绪：`Vision1 · Lauris71原生橡树`，原作者完整 LOD0／LOD1 分别为 5,303／842 三角，每级 36 子件，未采用近景 billboard。许可是 CC BY-SA 3.0，不是 CC0。原 RGBA atlas 保留；源缺少真实 Normal／Roughness／AO，因此明示常量，不伪称完整扫描 PBR。它适合开阔橡树林，不代表已经解决概念图中的封闭浓树冠。
 - 橡树正式环境源更新为 `cf8310ae2f8d643653fd8cf9e96ef7dea0570f586a76e2d0f62911c7d3803301`，112,264,846 bytes。原模型、UV、布局、使用中材质、灯相机与 73 张旧 packed 图重开守卫通过；另外恢复三个无用户材质并明确设保留标志；新总数 75 图。FBX 米单位、完整装配和 UV 往返检查通过，误差不超过 0.0000027m。
 - 官方 `unity@unity-agent-plugin` 已安装启用，Unity CLI 更新为当前 beta.13；新项目添加 `com.unity.pipeline` 0.8.0-exp.1。尚需在真实 Editor 中确认连接／播放，不能把“插件已安装”称为“Editor 已连接”。旧 clone 的 Packages 不修改。
-- 06:18 含橡树版本构建成功，实际玩家近／中／远树贡献约 0.05176／0.01700／0.01003，原装配与材质检查通过；实际摆放 21 棵，未强行占满 32 预算。整体草检查仍失败（0.000192 < 0.0003），保留 `vision-oak-v1` 失败证据。原 flat、dark 技术回归通过；不把不同观察位置的草像素差当成严格同视角比较。
-- 06:27 正确项目 GUI Editor 已在后台打开，官方本机连接回报 ready；通过其 API 核对 project 为当前目录、初始旧门楼场景未保存状态为 false，没有关闭 Blender。Mac 锁屏使桌面鼠标／窗口检查不可用；不绕过锁屏，改由已经授权的 Unity 本机 Editor 接口检查场景与播放。未修改 Codex 沙箱网络策略或账户权限。
+- 06:09 含橡树版本构建成功，实际玩家近／中／远树贡献约 0.05176／0.01700／0.01003，原装配与材质检查通过；实际摆放 21 棵，未强行占满 32 预算。整体草检查仍失败（0.000192 < 0.0003），保留 `vision-oak-v1` 失败证据。原 flat、dark 技术回归通过；不把不同观察位置的草像素差当成严格同视角比较。
+- 06:18 正确项目 GUI Editor 已在后台打开，官方本机连接回报 ready；通过其 API 核对 project 为当前目录、初始旧门楼场景未保存状态为 false，没有关闭 Blender。Mac 锁屏使桌面鼠标／窗口检查不可用；不绕过锁屏，改由已经授权的 Unity 本机 Editor 接口检查场景与播放。未修改 Codex 沙箱网络策略或账户权限。
+- Surface revision 2：绿草／枯草／裸土分区与初始聚落取景已保存；真正同焦点、角度、投影的植物诊断图另存 `matched-flat-v3-plants-*`，不改原草验收镜头。新近／中／远树、阴影、闭合水池、平地与16原模型检查通过，但整体草贡献仍为 0.00017790，未过原 0.0003 门槛，因此新地图仍是**未美术验收的预览**，不是全部技术通过。
+- 重建原 `EnvironmentShowcase.app`，使用原场景／Config 而非修改过的 Vision clone：routes、cliffs 四区域以及 concept、dark、flat 技术检查全部通过。详细本机证据为 `Builds/ArtReview/EnvironmentShowcase/vision-original-*-regression/`。共享 UnitBalance 57 条与概念文档 27 项再次通过；`Assets/_Game`、`balance` 无修改。
+- 新草候选 Yughues/Nobiax Grass Pack #03（作者页 CC0）原生预览是 0.5m宽／0.1m高、6三角的纸带，不符合宽实草簇，已否决，未进入正式源。记录在 `Builds/EnvironmentCandidateDownloads/groundcover-20261015-Q0uBhq/`。本轮仍缺宽0.6–0.9m、高0.35–0.6m、俯视有真实厚度的自然草簇，以及芦苇／水岸植物与长崖模块；不靠纸带、放大细草或增加蓝雾假装完成。
+- 未采用的 Jacaranda 高成本候选导出留在本机 `art/environment/vision-tree-candidates/`，不上传，也没有删除。正式采用源和交接独立跟踪。
 
 ## Unity 本机连接说明
 

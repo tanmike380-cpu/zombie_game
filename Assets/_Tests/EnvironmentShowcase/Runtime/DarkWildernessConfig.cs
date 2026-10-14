@@ -37,6 +37,69 @@ namespace ZombieGame.Tests.EnvironmentShowcase
         public Color ambient_ground = new Color(.16f,.17f,.15f);
         public Vector2[] vegetation_centers = Array.Empty<Vector2>();
         public Vector2[] vegetation_radii = Array.Empty<Vector2>();
+        [Serializable] public sealed class SurfaceRegion
+        {
+            public Vector2 center,radius;
+            public float strength;
+        }
+        public SurfaceRegion[] vision_soil_regions = Array.Empty<SurfaceRegion>();
+        public SurfaceRegion[] vision_dry_regions = Array.Empty<SurfaceRegion>();
+        public SurfaceRegion[] vision_meadow_regions = Array.Empty<SurfaceRegion>();
+        public int vision_surface_revision;
+        public TerrainLayer[] vision_layer_overrides = new TerrainLayer[6];
+        public bool vision_surface_regions;
+        public int vision_grass_budget = 12000;
+        public int vision_shrub_budget = 140;
+        public int vision_rock_budget = 80;
+        public float vision_base_soil = .18f;
+        public float vision_macro_scale = 30;
+        public float vision_water_variation = .10f;
+        public float vision_water_depth_range = 1.8f;
+        public float vision_shadow_distance = 150;
+        public int vision_shadow_cascades = 2;
+        public ShadowResolution vision_shadow_resolution = ShadowResolution.High;
+        [Serializable] public sealed class PlantPatch
+        {
+            public string source_id,category;
+            public int count;
+            public Vector2[] centers,radii;
+            public Vector2 scale_range;
+            public bool core_bed;
+        }
+        public PlantPatch[] vision_plant_patches = Array.Empty<PlantPatch>();
+        public Vector2[] vision_tree_centers = Array.Empty<Vector2>();
+        public Vector2[] vision_tree_radii = Array.Empty<Vector2>();
+        public float vision_tree_spacing = 5.8f;
+        public float vision_tree_chunk_size = 64;
+
+        public void validate_vision_regions()
+        {
+            if(vision_layer_overrides == null || vision_layer_overrides.Length != 6)
+                throw new InvalidOperationException("Vision requires exactly six layer override slots.");
+            if(vision_base_soil < 0 || vision_base_soil > 1 || vision_macro_scale <= 0 || vision_water_depth_range <= 0)
+                throw new InvalidOperationException("Vision surface scale or base soil weight is invalid.");
+            if(vision_shadow_distance <= 0 || (vision_shadow_cascades != 1 && vision_shadow_cascades != 2 && vision_shadow_cascades != 4))
+                throw new InvalidOperationException("Vision camera-relative shadow budget is invalid.");
+            validate_regions(vision_soil_regions,"soil");
+            validate_regions(vision_dry_regions,"dry");
+            validate_regions(vision_meadow_regions,"meadow");
+            VisionPlantLayout.validate_patches(this);
+            if(vision_tree_centers == null || vision_tree_radii == null || vision_tree_centers.Length != vision_tree_radii.Length || vision_tree_spacing <= 0 || vision_tree_chunk_size <= 0)
+                throw new InvalidOperationException("Vision original-tree group layout is invalid.");
+            foreach(var radius in vision_tree_radii)
+                if(radius.x <= 0 || radius.y <= 0) throw new InvalidOperationException("Vision tree group radii must be positive.");
+        }
+
+        private static void validate_regions(SurfaceRegion[] regions,string semantic)
+        {
+            if(regions == null) throw new InvalidOperationException("Vision region array missing: "+semantic);
+            foreach(var region in regions)
+            {
+                if(region == null || region.radius.x <= 0 || region.radius.y <= 0 || region.strength < 0 || region.strength > 1 ||
+                    region.center.x < 0 || region.center.x > 1 || region.center.y < 0 || region.center.y > 1)
+                    throw new InvalidOperationException("Vision natural region is invalid: "+semantic);
+            }
+        }
 
         public EnvironmentShowcaseConfig.SourceAsset find_source(EnvironmentShowcaseConfig config,string id)
         {

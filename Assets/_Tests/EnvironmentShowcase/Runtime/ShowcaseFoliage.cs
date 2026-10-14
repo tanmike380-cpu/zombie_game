@@ -20,6 +20,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
         public bool show_rocks = true;
         public bool show_trees = true;
         public bool show_shrubs = true;
+        public string hidden_source = "";
         public int grass_instances { get; private set; }
         public int tree_instances { get; private set; }
         public int shrub_instances { get; private set; }
@@ -47,6 +48,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
 
         private sealed class SourcePart
         {
+            public string source_id;
             public Mesh mesh;
             public Material material;
             public int submesh_index;
@@ -54,6 +56,8 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             public float lod_min_height = 0;
             public float lod_max_height = float.PositiveInfinity;
             public float source_lod_height;
+            public Vector3[] diagnostic_vertices;
+            public int lod_index = -1;
         }
 
         private sealed class DrawBatch
@@ -82,6 +86,12 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             if (terrain.routes.enabled && (biome == null || biome.tree_density > 0)) tree_count = terrain.routes.layout.tree_budget;
             int shrub_count = Mathf.RoundToInt(config.shrub_count * (biome == null ? 1 : biome.shrub_density));
             int rock_count = Mathf.RoundToInt(config.rock_count * (biome == null ? 1 : biome.rock_density));
+            if(config.vision_enabled)
+            {
+                grass_count = config.active_dark_layout.vision_grass_budget;
+                shrub_count = config.active_dark_layout.vision_shrub_budget;
+                rock_count = config.active_dark_layout.vision_rock_budget;
+            }
             if (config.grass_variants != null && config.grass_variants.Length > 0)
                 grass_instances = add_variants(config.grass_variants, grass_count, config.grass_scale_range, "grass");
             else if (config.grass_prefab) grass_instances = add_prefab(config.grass_prefab, grass_count, config.grass_scale_range, "grass");
@@ -95,7 +105,13 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             if (prefabs == null || prefabs.Length == 0) return 0;
             int total = 0;
             for (int index = 0; index < prefabs.Length; index++)
-                if (prefabs[index]) total += add_prefab(prefabs[index], count / prefabs.Length + (index < count % prefabs.Length ? 1 : 0), scale_range, category);
+            {
+                if(!prefabs[index]) continue;
+                int source_count = count/prefabs.Length+(index < count%prefabs.Length ? 1 : 0);
+                if(config.vision_enabled && config.active_dark_layout.vision_plant_patches != null && config.active_dark_layout.vision_plant_patches.Length > 0 && (category == "grass" || category == "shrub"))
+                    source_count = VisionPlantLayout.find_patch(config.active_dark_layout,prefabs[index].name).count;
+                total += add_prefab(prefabs[index],source_count,scale_range,category);
+            }
             return total;
         }
 
@@ -103,6 +119,12 @@ namespace ZombieGame.Tests.EnvironmentShowcase
         {
             bool is_short_grass=config.dark_enabled && category=="grass" && prefab.name.StartsWith("GrassBermuda",StringComparison.Ordinal);
             if(config.dark_enabled && category=="grass") scale_range=is_short_grass ? config.active_dark_layout.bermuda_scale_range : config.active_dark_layout.medium_scale_range;
+            DarkWildernessConfig.PlantPatch source_patch = null;
+            if(config.vision_enabled && config.active_dark_layout.vision_plant_patches != null && config.active_dark_layout.vision_plant_patches.Length > 0 && (category == "grass" || category == "shrub"))
+            {
+                source_patch = VisionPlantLayout.find_patch(config.active_dark_layout,prefab.name);
+                scale_range = source_patch.scale_range;
+            }
             var parts = read_source_parts(prefab,category);
             if (parts.Count == 0) throw new InvalidOperationException("Approved showcase asset has no renderable static source meshes: " + prefab.name);
             var cells = new Dictionary<Vector2Int, List<Matrix4x4>>();
@@ -113,7 +135,13 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             {
                 float x = (float)random.NextDouble() * config.map_size;
                 float z = (float)random.NextDouble() * config.map_size;
-                if(config.flat_enabled && (category=="grass" || category=="shrub"))
+                if(source_patch != null)
+                {
+                    var candidate = VisionPlantLayout.sample_candidate(source_patch,random,config.map_size);
+                    x = candidate.x;
+                    z = candidate.y;
+                }
+                else if(config.flat_enabled && (category=="grass" || category=="shrub"))
                 {
                     var preset = config.active_dark_layout;
                     int patch_index = random.Next(preset.vegetation_centers.Length);
@@ -142,19 +170,23 @@ namespace ZombieGame.Tests.EnvironmentShowcase
                     z = profile.plateau_center.y * config.map_size + Mathf.Sin(angle) * profile.plateau_radius.y * normalized_distance;
                     if (x < 0 || z < 0 || x > config.map_size || z > config.map_size) continue;
                 }
-                if (!can_place_category(x, z, category)) continue;
-                if(config.dark_enabled && category=="grass")
+                if (!can_place_category(x, z, category,source_patch)) continue;
+                if(config.dark_enabled && category=="grass" && source_patch == null)
                 {
                     float plant_patch=Mathf.PerlinNoise(x/12+3.7f,z/12);
                     if(is_short_grass ? plant_patch>.62f : plant_patch<.42f) continue;
                 }
                 float scale = Mathf.Lerp(scale_range.x, scale_range.y, (float)random.NextDouble());
                 Vector3 point = ground.sample_ground(x, z);
-                var matrix = Matrix4x4.TRS(point, Quaternion.Euler(0, (float)random.NextDouble() * 360, 0) * prefab.transform.localRotation,
-                    prefab.transform.localScale * scale);
-                var cell = new Vector2Int(Mathf.FloorToInt(x / config.grass_chunk_size), Mathf.FloorToInt(z / config.grass_chunk_size));
+                var yaw = Quaternion.Euler(0,(float)random.NextDouble()*360,0);
+                var matrix = Matrix4x4.TRS(point,yaw*prefab.transform.localRotation,prefab.transform.localScale*scale);
+                if(config.vision_enabled)
+                    matrix = Matrix4x4.TRS(point,yaw,Vector3.one*scale)*prefab.transform.localToWorldMatrix;
+                float chunk_size = config.vision_enabled && category == "tree" ? config.active_dark_layout.vision_tree_chunk_size : config.grass_chunk_size;
+                var cell = new Vector2Int(Mathf.FloorToInt(x/chunk_size),Mathf.FloorToInt(z/chunk_size));
                 if(config.dark_enabled && category=="grass") measure_grass_probe(prefab.name,point.y,matrix,parts);
                 if(config.flat_enabled && category=="shrub") measure_grass_probe(prefab.name,point.y,matrix,parts,true);
+                if(config.vision_enabled) measure_source_ground(prefab.name,point.y,matrix,parts);
                 if (!cells.TryGetValue(cell, out var instances)) { instances = new List<Matrix4x4>(); cells.Add(cell, instances); }
                 instances.Add(matrix);
                 if (category == "tree") tree_positions.Add(new Vector2(x,z));
@@ -164,8 +196,15 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             return placed;
         }
 
-        private bool can_place_category(float x, float z, string category)
+        private bool can_place_category(float x, float z, string category,DarkWildernessConfig.PlantPatch source_patch=null)
         {
+            if(source_patch != null)
+            {
+                if(x < 0 || z < 0 || x > config.map_size || z > config.map_size || !ground.can_place_greenery(x,z)) return false;
+                if(!source_patch.core_bed && VisionPlantLayout.measure_core_beds(config.active_dark_layout,x,z,config.map_size) > .25f) return false;
+                float mask = VisionPlantLayout.measure_patch(source_patch,x,z,config.map_size);
+                return ground.concept.exposed_soil(x,z) < .65f && random.NextDouble() < mask;
+            }
             if(config.flat_enabled && (category=="grass" || category=="shrub"))
             {
                 if(x<0 || z<0 || x>config.map_size || z>config.map_size || !ground.can_place_greenery(x,z)) return false;
@@ -177,6 +216,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             if (ground.concept != null)
             {
                 if (!ground.concept.can_place(x,z)) return false;
+                if(config.vision_enabled && category == "tree" && Mathf.Abs(ground.sample_authored_height(x,z)-config.active_dark_layout.flat_height) > .003f) return false;
                 float slope = ground.terrain_data.GetSteepness(x/config.map_size,z/config.map_size);
                 if (category == "rock") return slope < 35 && ground.concept.is_local_rock_patch(x,z);
                 if (!ground.can_place_greenery(x,z)) return false;
@@ -204,7 +244,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
         private List<Vector2> build_forest_candidates()
         {
             var candidates = new List<Vector2>();
-            float spacing = ground.concept!=null ? 2.55f : ground.routes.layout.tree_spacing;
+            float spacing = config.vision_enabled ? config.active_dark_layout.vision_tree_spacing : ground.concept!=null ? 2.55f : ground.routes.layout.tree_spacing;
             for (float z = spacing; z < config.map_size - spacing; z += spacing)
                 for (float x = spacing; x < config.map_size - spacing; x += spacing)
                 {
@@ -243,10 +283,11 @@ namespace ZombieGame.Tests.EnvironmentShowcase
                         if(config.dark_enabled && category=="grass") material.SetColor("_Color",new Color(.82f,.86f,.74f,1));
                     }
                     materials.Add(material);
-                    var part = new SourcePart { mesh = filter.sharedMesh, material = material, submesh_index = submesh_index,
+                    var part = new SourcePart { source_id = prefab.name, mesh = filter.sharedMesh, material = material, submesh_index = submesh_index,
                         relative_transform = prefab.transform.worldToLocalMatrix * filter.transform.localToWorldMatrix };
+                    if(config.vision_enabled && filter.sharedMesh.isReadable) part.diagnostic_vertices = filter.sharedMesh.vertices;
                     read_source_lod(prefab, renderer, part);
-                    if(ground.concept != null && category=="tree" && part.source_lod_height>0)
+                    if(ground.concept != null && category=="tree" && part.source_lod_height>0 && !config.vision_enabled)
                     {
                         // Select the two already-approved source meshes; no re-meshing or extra trees.
                         if(float.IsPositiveInfinity(part.lod_max_height)) part.lod_min_height=ground.concept.layout.tree_near_lod_threshold;
@@ -258,6 +299,60 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             return parts;
         }
 
+        [Serializable] public sealed class SourceGroundProbe
+        {
+            public string source;
+            public int exact_vertex_instance_samples;
+            public float minimum_anchor_height=float.PositiveInfinity,maximum_anchor_height=float.NegativeInfinity;
+            public float minimum_vertex_above_anchor=float.PositiveInfinity,maximum_vertex_above_anchor=float.NegativeInfinity;
+            public string note = "Exact original readable source vertices transformed by actual draw matrices; 32 instance samples, not renderer AABB or alpha-visible blades.";
+        }
+        public readonly List<SourceGroundProbe> source_ground_probes = new List<SourceGroundProbe>();
+
+        private void measure_source_ground(string source,float anchor,Matrix4x4 instance,List<SourcePart> parts)
+        {
+            if(parts.Count == 0 || parts[0].diagnostic_vertices == null) return;
+            var probe = source_ground_probes.Find(item=>item.source == source);
+            if(probe == null)
+            {
+                probe = new SourceGroundProbe{source=source};
+                source_ground_probes.Add(probe);
+            }
+            if(probe.exact_vertex_instance_samples >= 32) return;
+            probe.exact_vertex_instance_samples++;
+            probe.minimum_anchor_height = Mathf.Min(probe.minimum_anchor_height,anchor);
+            probe.maximum_anchor_height = Mathf.Max(probe.maximum_anchor_height,anchor);
+            foreach(var part in parts)
+            {
+                if(part.diagnostic_vertices == null) continue;
+                var matrix = instance*part.relative_transform;
+                foreach(var vertex in part.diagnostic_vertices)
+                {
+                    float relative = matrix.MultiplyPoint3x4(vertex).y-anchor;
+                    probe.minimum_vertex_above_anchor = Mathf.Min(probe.minimum_vertex_above_anchor,relative);
+                    probe.maximum_vertex_above_anchor = Mathf.Max(probe.maximum_vertex_above_anchor,relative);
+                }
+            }
+        }
+
+        public Vector2[] sample_source_surface_settings(string source)
+        {
+            var settings = new List<Vector2>();
+            foreach(var part in batches)
+                if(part.part.source_id == source) settings.Add(new Vector2(part.part.material.GetFloat("_AlphaToMask"),part.part.material.GetFloat("_MipBias")));
+            return settings.ToArray();
+        }
+
+        public void set_source_surface_settings(string source,float coverage,float mip_bias)
+        {
+            foreach(var batch in batches)
+            {
+                if(batch.part.source_id != source) continue;
+                batch.part.material.SetFloat("_AlphaToMask",coverage);
+                batch.part.material.SetFloat("_MipBias",mip_bias);
+            }
+        }
+
         private static void read_source_lod(GameObject prefab, Renderer renderer, SourcePart part)
         {
             var group = renderer.GetComponentInParent<LODGroup>();
@@ -267,6 +362,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             {
                 if (Array.IndexOf(lods[lod_index].renderers, renderer) < 0) continue;
                 part.lod_min_height = lods[lod_index].screenRelativeTransitionHeight;
+                part.lod_index = lod_index;
                 part.lod_max_height = lod_index == 0 ? float.PositiveInfinity : lods[lod_index - 1].screenRelativeTransitionHeight;
                 part.source_lod_height = group.size * (prefab.transform.worldToLocalMatrix * group.transform.localToWorldMatrix).MultiplyVector(Vector3.up).magnitude;
                 return;
@@ -345,6 +441,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             GeometryUtility.CalculateFrustumPlanes(camera, frustum_planes);
             foreach (var batch in batches)
             {
+                if(batch.part.source_id == hidden_source) continue;
                 if (batch.is_grass && !show_grass) continue;
                 if (batch.is_rock && !show_rocks) continue;
                 if (batch.is_tree && !show_trees) continue;
@@ -366,11 +463,77 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             }
         }
 
+        [Serializable] public sealed class SourceVisibilityProbe
+        {
+            public string source;
+            public int source_triangles,submitted_matrix_submesh_count,submitted_triangles,submitted_batches;
+            public bool has_submitted_bounds;
+            public Vector3 submitted_bounds_min,submitted_bounds_max;
+            public Vector3 camera_position;
+            public float camera_orthographic_size;
+            public int submitted_lod0_matrix_submeshes,submitted_lod1_matrix_submeshes;
+            public string bounds_note = "Conservative world mesh AABB of actual batch submissions, not alpha-visible coverage; matrix count is per mesh/submesh, triangles exclude shadows/additional passes.";
+        }
+
+        public Vector2 find_source_focus(string source_id)
+        {
+            DrawBatch selected = null;
+            foreach(var batch in batches)
+            {
+                if(batch.part.source_id != source_id) continue;
+                if(selected == null || batch.matrices.Length > selected.matrices.Length) selected = batch;
+            }
+            if(selected == null) throw new InvalidOperationException("Vision source has no actual batches: "+source_id);
+            return new Vector2(selected.bounds.center.x-ground.origin.x,selected.bounds.center.z-ground.origin.z)/config.map_size;
+        }
+
+        /// <summary>Use the draw path's distance/frustum/LOD predicates to report source-only native submissions.</summary>
+        public SourceVisibilityProbe sample_source_visibility(Camera camera,string source_id)
+        {
+            var evidence = new SourceVisibilityProbe{source=source_id,camera_position=camera.transform.position,camera_orthographic_size=camera.orthographicSize};
+            var unique_parts = new HashSet<SourcePart>();
+            GeometryUtility.CalculateFrustumPlanes(camera,frustum_planes);
+            var anchor = measure_distance_anchor(camera);
+            var bounds = new Bounds();
+            foreach(var batch in batches)
+            {
+                if(batch.part.source_id != source_id) continue;
+                int triangles = (int)batch.part.mesh.GetIndexCount(batch.part.submesh_index)/3;
+                if(unique_parts.Add(batch.part)) evidence.source_triangles += triangles;
+                if(!show_decorations || !SystemInfo.supportsInstancing || source_id == hidden_source ||
+                    (batch.is_grass && !show_grass) || (batch.is_shrub && !show_shrubs)) continue;
+                if(batch.lod_height > 0)
+                {
+                    float relative_height = batch.lod_height/(camera.orthographicSize*2);
+                    if(relative_height < batch.part.lod_min_height || relative_height >= batch.part.lod_max_height) continue;
+                }
+                var delta = batch.bounds.center-anchor;
+                delta.y = 0;
+                if(delta.sqrMagnitude > batch.draw_distance*batch.draw_distance || !GeometryUtility.TestPlanesAABB(frustum_planes,batch.bounds)) continue;
+                evidence.submitted_batches++;
+                evidence.submitted_matrix_submesh_count += batch.matrices.Length;
+                if(batch.part.lod_index == 0) evidence.submitted_lod0_matrix_submeshes += batch.matrices.Length;
+                if(batch.part.lod_index == 1) evidence.submitted_lod1_matrix_submeshes += batch.matrices.Length;
+                evidence.submitted_triangles += triangles*batch.matrices.Length;
+                if(!evidence.has_submitted_bounds) bounds = batch.bounds;
+                else bounds.Encapsulate(batch.bounds);
+                evidence.has_submitted_bounds = true;
+            }
+            if(evidence.has_submitted_bounds)
+            {
+                evidence.submitted_bounds_min = bounds.min;
+                evidence.submitted_bounds_max = bounds.max;
+            }
+            return evidence;
+        }
+
         private Vector3 measure_distance_anchor(Camera camera)
         {
             if(!config.flat_enabled || !camera.orthographic) return camera.transform.position;
             var ray = camera.ViewportPointToRay(new Vector3(.5f,.5f,0));
+            if(Mathf.Abs(ray.direction.y)<.0001f) return camera.transform.position;
             float distance = (config.active_dark_layout.flat_height-ray.origin.y)/ray.direction.y;
+            if(distance<0) return camera.transform.position;
             return ray.GetPoint(distance);
         }
 
@@ -408,7 +571,12 @@ namespace ZombieGame.Tests.EnvironmentShowcase
 
         public void Dispose()
         {
-            foreach (var material in materials) if (material) UnityEngine.Object.Destroy(material);
+            foreach (var material in materials)
+            {
+                if(!material) continue;
+                if(Application.isPlaying) UnityEngine.Object.Destroy(material);
+                else UnityEngine.Object.DestroyImmediate(material);
+            }
             batches.Clear();
             materials.Clear();
         }

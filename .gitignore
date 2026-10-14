@@ -90,3 +90,5 @@ sysinfo.txt
 /art/Blender主文件/zombie_sources/before_import.blend
 /art/Blender主文件/zombie_sources/*.zip
 /art/environment/inspection/landmarks/v[2-9]/
+# Unapproved high-cost tree research exports stay local; selected sources have separate handoffs.
+/art/environment/vision-tree-candidates/

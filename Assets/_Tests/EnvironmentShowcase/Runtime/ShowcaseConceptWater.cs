@@ -10,7 +10,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
         private readonly Texture2D height_field;
         private readonly Material sea_material, pond_material;
 
-        public ShowcaseConceptWater(ShowcaseTerrain ground, Transform parent)
+        public ShowcaseConceptWater(ShowcaseTerrain ground, Transform parent,bool preserve_readable_height=false)
         {
             var layout = ground.concept.layout;
             var data = ground.terrain_data;
@@ -19,7 +19,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             var heights = data.GetHeights(0,0,resolution,resolution);
             var pixels = new Color[resolution*resolution];
             for (int z=0;z<resolution;z++) for (int x=0;x<resolution;x++) pixels[z*resolution+x]=new Color(heights[z,x],0,0,1);
-            height_field.SetPixels(pixels); height_field.Apply(false,true);
+            height_field.SetPixels(pixels); height_field.Apply(false,!preserve_readable_height);
             sea_material = create_material("Concept sea",ground,layout.sea_level,layout.sea_deep,layout.sea_shallow,false);
             pond_material = create_material("Concept isolated pond",ground,layout.pond_level,layout.pond_deep,layout.pond_shallow,true);
             sea = create_surface(parent,"Concept open sea — basic water",new Vector3(-90,layout.sea_level,0),new Vector2(188,400),sea_material);
@@ -38,6 +38,12 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             material.SetFloat("_WaterLevel",level); material.SetColor("_Deep",deep); material.SetColor("_Shallow",shallow);
             material.SetFloat("_IsPond",pool?1:0);
             material.SetFloat("_NaturalPreview",ground.concept.dark?1:0);
+            if(ground.concept.dark && ground.concept.dark.vision_surface_regions)
+            {
+                material.SetFloat("_VisionWater",1);
+                material.SetFloat("_VisionVariation",ground.concept.dark.vision_water_variation);
+                material.SetFloat("_VisionDepthRange",ground.concept.dark.vision_water_depth_range);
+            }
             if(ground.concept.dark) Debug.Log("[DarkWater] "+name+" natural="+material.GetFloat("_NaturalPreview")+" shader="+material.shader.name);
             var layout=ground.concept.layout;
             material.SetFloat("_CoastX",layout.coast_x);
@@ -51,7 +57,8 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             var surface=GameObject.CreatePrimitive(PrimitiveType.Plane);
             surface.name=name; surface.transform.SetParent(parent,false); surface.transform.position=position;
             surface.transform.localScale=new Vector3(extent.x/10,1,extent.y/10);
-            UnityEngine.Object.Destroy(surface.GetComponent<Collider>());
+            if(Application.isPlaying) UnityEngine.Object.Destroy(surface.GetComponent<Collider>());
+            else UnityEngine.Object.DestroyImmediate(surface.GetComponent<Collider>());
             var renderer=surface.GetComponent<Renderer>(); renderer.sharedMaterial=material;
             renderer.shadowCastingMode=UnityEngine.Rendering.ShadowCastingMode.Off;
             return renderer;

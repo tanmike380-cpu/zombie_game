@@ -111,6 +111,18 @@ namespace ZombieGame.Tests.EnvironmentShowcase
         public float forest_weight(float x, float z)
         {
             if (!can_place(x,z)) return 0;
+            if(dark && dark.vision_surface_regions && dark.vision_tree_centers.Length > 0)
+            {
+                float vision_weight = 0;
+                for(int index=0;index<dark.vision_tree_centers.Length;index++)
+                {
+                    var delta = new Vector2(x,z)-dark.vision_tree_centers[index]*size;
+                    var radius = dark.vision_tree_radii[index];
+                    float distance = new Vector2(delta.x/radius.x,delta.y/radius.y).magnitude;
+                    vision_weight = Mathf.Max(vision_weight,1-Mathf.SmoothStep(0,1,Mathf.InverseLerp(.5f,1.05f,distance)));
+                }
+                return vision_weight;
+            }
             float weight = .06f;
             foreach (var center in layout.forest_centers)
                 weight = Mathf.Max(weight,1-Mathf.SmoothStep(0,1,Mathf.InverseLerp(5,15,Vector2.Distance(new Vector2(x,z),center*size))));

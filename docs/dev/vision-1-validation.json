@@ -1,0 +1,31 @@
+{
+  "snapshot": "vision-surface-v2",
+  "scope": "Independent 128m environment art preview; not production-map, gameplay, battle-performance or visual acceptance.",
+  "unity_version": "6000.6.1f1",
+  "resolution": "1440x900",
+  "formal_environment_sha256": "cf8310ae2f8d643653fd8cf9e96ef7dea0570f586a76e2d0f62911c7d3803301",
+  "vision_technical_pass": false,
+  "art_visual_accepted": false,
+  "grass_mean_rgb_delta": 0.00017789982666727155,
+  "grass_threshold_unchanged": 0.0003,
+  "grass_pixel_pass": false,
+  "new_clumps_native_geometry_and_visibility_pass": true,
+  "native_oak_near_middle_far_pixel_pass": true,
+  "tree_instances": 21,
+  "grass_instances": 6000,
+  "shrub_instances": 140,
+  "original_config_regressions": {
+    "routes_all_four_regions": true,
+    "cliffs_all_four_regions": true,
+    "concept": true,
+    "dark": true,
+    "flat": true
+  },
+  "shared_unit_balance_cpu_assertions_passed": 57,
+  "concept_document_unit_tests_passed": 27,
+  "production_gameplay_or_balance_files_changed": false,
+  "evidence_root": "Builds/ArtReview/EnvironmentShowcase/",
+  "failed_evidence_preserved": ["vision-initial-v1", "vision-clumps-v1", "vision-grassbeds-v1", "vision-oak-v1", "vision-surface-v2"],
+  "missing_art": ["RTS-readable thick natural grass clump", "reeds and waterside vegetation", "long authored cliff modules", "dense-crown forest source"],
+  "timing_limit": "Capped environment frame timings include active waits and other workstation activity; no battle or 10K performance claim."
+}

@@ -14,24 +14,27 @@ namespace ZombieGame.Tests.EditorTools
         private const string HANDOFF_PATH = "art/environment/vegetation_handoff.json";
         private const string GENERATED_ROOT = "Assets/_Tests/EnvironmentShowcase/Art/VegetationGenerated/";
         [Serializable] private sealed class Handoff { public string status, source_blend, source_sha256; public ModelRecord[] records; }
-        [Serializable] private sealed class ModelRecord
+        [Serializable] internal sealed class ModelRecord
         {
             public string id, model_path, model_sha256, source_scene, source_collection, source_object, axis_forward, axis_up;
             public string[] material_slots;
             public float[] dimensions_unity_xyz_m;
+            public float[] pivot_bounds_min;
+            public string license;
             public MaterialRecord[] materials;
             public int triangles, lod_index;
             public float lod_screen_relative_transition, placement_scale, unit_m;
         }
-        [Serializable] private sealed class MaterialRecord
+        [Serializable] internal sealed class MaterialRecord
         {
             public string name, alpha_mode;
+            public string normal_convention;
             public float alpha_cutoff, metallic;
             public bool double_sided;
             public ChannelRecord channels;
         }
-        [Serializable] private sealed class ChannelRecord { public TextureRecord base_color, normal_gl, roughness, alpha; }
-        [Serializable] private sealed class TextureRecord { public string path, sha256, colorspace, component; public int[] resolution; }
+        [Serializable] internal sealed class ChannelRecord { public TextureRecord base_color, normal_gl, roughness, alpha; }
+        [Serializable] internal sealed class TextureRecord { public string path, sha256, colorspace, component; public int[] resolution; }
 
         [MenuItem("Zombie Game/Environment Showcase/Import approved vegetation handoff")]
         public static void import_approved_handoff()
@@ -146,18 +149,19 @@ namespace ZombieGame.Tests.EditorTools
             }
         }
 
-        private static GameObject prepare_prefab(ModelRecord record, Dictionary<string, Material> material_cache)
+        internal static GameObject prepare_prefab(ModelRecord record, Dictionary<string, Material> material_cache,string generated_root=GENERATED_ROOT,bool strict_geometry=false,bool use_native_file_units=false,bool keep_readable=false)
         {
             AssetDatabase.ImportAsset(record.model_path, ImportAssetOptions.ForceSynchronousImport);
             var importer = (ModelImporter)AssetImporter.GetAtPath(record.model_path);
             importer.globalScale = 1;
-            importer.useFileScale = false;
+            importer.useFileScale = use_native_file_units;
             importer.importAnimation = false;
             importer.importCameras = false;
             importer.importLights = false;
             importer.addCollider = false;
             importer.materialImportMode = ModelImporterMaterialImportMode.None;
             importer.meshCompression = ModelImporterMeshCompression.Off;
+            if(strict_geometry) importer.importNormals = ModelImporterNormals.Import;
             importer.isReadable = true;
             importer.SaveAndReimport();
             var materials = new Dictionary<string, Material>();
@@ -167,7 +171,7 @@ namespace ZombieGame.Tests.EditorTools
                     (material.channels.alpha == null ? "opaque" : material.channels.alpha.sha256) + material.alpha_cutoff + material.double_sided;
                 if (!material_cache.TryGetValue(key, out var prepared))
                 {
-                    prepared = prepare_material(record.id, material);
+                    prepared = prepare_material(record.id, material,generated_root,strict_geometry ? 1 : .35f);
                     material_cache.Add(key, prepared);
                 }
                 materials.Add(material.name, prepared);
@@ -178,7 +182,10 @@ namespace ZombieGame.Tests.EditorTools
             try
             {
                 instance.name = record.id;
-                verify_imported_bounds(instance, record);
+                verify_imported_bounds(instance, record,strict_geometry);
+                if(strict_geometry) verify_source_geometry(instance,record);
+                if(use_native_file_units)
+                    Debug.Log("[VisionSourceUnits] "+record.id+": ModelImporter.globalScale=1; useFileScale=true; FBX declared unit conversion applied once. Exact source dimensions verified, no bounds refit or vertex edits.");
                 foreach (var filter in instance.GetComponentsInChildren<MeshFilter>(true))
                 {
                     var renderer = filter.GetComponent<MeshRenderer>();
@@ -193,17 +200,30 @@ namespace ZombieGame.Tests.EditorTools
                     }
                     renderer.sharedMaterials = assigned;
                 }
-                return PrefabUtility.SaveAsPrefabAsset(instance, GENERATED_ROOT + record.id + ".prefab");
+                return PrefabUtility.SaveAsPrefabAsset(instance, generated_root + record.id + ".prefab");
             }
             finally
             {
                 UnityEngine.Object.DestroyImmediate(instance);
-                importer.isReadable = false;
+                importer.isReadable = keep_readable;
                 importer.SaveAndReimport();
             }
         }
 
-        private static void verify_imported_bounds(GameObject instance, ModelRecord record)
+        private static void verify_source_geometry(GameObject instance,ModelRecord record)
+        {
+            int triangles = 0;
+            foreach(var filter in instance.GetComponentsInChildren<MeshFilter>(true))
+            {
+                if(!filter.sharedMesh || filter.sharedMesh.uv.Length != filter.sharedMesh.vertexCount)
+                    throw new InvalidOperationException("Vision source mesh/UV missing: "+record.id);
+                triangles += filter.sharedMesh.triangles.Length/3;
+            }
+            if(triangles != record.triangles || instance.GetComponentsInChildren<LODGroup>(true).Length != 0)
+                throw new InvalidOperationException("Vision single-level original source geometry mismatch: "+record.id+" triangles="+triangles+" expected="+record.triangles);
+        }
+
+        private static void verify_imported_bounds(GameObject instance, ModelRecord record,bool strict_geometry=false)
         {
             bool has_vertex = false;
             var bounds = new Bounds();
@@ -221,22 +241,28 @@ namespace ZombieGame.Tests.EditorTools
             if (!has_vertex) throw new InvalidOperationException("Imported source has no vertices: " + record.id);
             var expected = new Vector3(record.dimensions_unity_xyz_m[0], record.dimensions_unity_xyz_m[1], record.dimensions_unity_xyz_m[2]);
             for (int axis = 0; axis < 3; axis++)
-                if (Mathf.Abs(bounds.size[axis] - expected[axis]) > Mathf.Max(.001f, expected[axis] * .02f))
+                if (Mathf.Abs(bounds.size[axis] - expected[axis]) > Mathf.Max(.001f, expected[axis] * (strict_geometry ? .002f : .02f)))
                     throw new InvalidOperationException("Approved source Unity axis/unit size mismatch; do not refit mesh: " + record.id +
                         ", actual=" + bounds.size + ", expected=" + expected);
             if (Mathf.Abs(bounds.min.y) > .003f)
                 throw new InvalidOperationException("Approved source root does not rest at ground; return source to Blender: " + record.id + ", bounds min.y=" + bounds.min.y);
         }
 
-        private static Material prepare_material(string source_id, MaterialRecord record)
+        private static Material prepare_material(string source_id, MaterialRecord record,string generated_root=GENERATED_ROOT,float smoothness_multiplier=.35f)
         {
             string safe_name = record.name.Replace("/", "_").Replace("\\", "_").Replace(":", "_");
-            string stem = GENERATED_ROOT + source_id + "_" + safe_name;
-            pack_pbr_channels(record.channels, stem, record.alpha_cutoff);
+            string stem = generated_root + source_id + "_" + safe_name;
+            pack_pbr_channels(record.channels, stem, record.alpha_cutoff,smoothness_multiplier);
             prepare_texture(record.channels.normal_gl.path, true, false);
+            if(smoothness_multiplier == 1)
+            {
+                var normal_importer = (TextureImporter)AssetImporter.GetAtPath(record.channels.normal_gl.path);
+                normal_importer.flipGreenChannel = false;
+                normal_importer.SaveAndReimport();
+            }
             prepare_texture(record.channels.roughness.path, false, false);
             if (record.channels.alpha != null) prepare_texture(record.channels.alpha.path, false, false);
-            prepare_texture(stem + "_albedo_alpha.png", false, true, record.alpha_mode == "cutout", record.alpha_cutoff);
+            prepare_texture(stem + "_albedo_alpha.png", false, true, record.alpha_mode == "cutout", record.alpha_cutoff,generated_root);
             prepare_texture(stem + "_metallic_smoothness.png", false, false);
             string material_path = stem + ".mat";
             var shader = Shader.Find("ZombieGame/EnvironmentShowcase/VegetationPbr");
@@ -260,7 +286,7 @@ namespace ZombieGame.Tests.EditorTools
             return material;
         }
 
-        private static void prepare_texture(string path, bool is_normal, bool is_color, bool is_cutout = false, float cutoff = .5f)
+        private static void prepare_texture(string path, bool is_normal, bool is_color, bool is_cutout = false, float cutoff = .5f,string generated_root=GENERATED_ROOT)
         {
             AssetDatabase.ImportAsset(path, ImportAssetOptions.ForceSynchronousImport);
             var importer = (TextureImporter)AssetImporter.GetAtPath(path);
@@ -273,7 +299,7 @@ namespace ZombieGame.Tests.EditorTools
             importer.wrapMode = TextureWrapMode.Repeat;
             importer.alphaSource = TextureImporterAlphaSource.FromInput;
             importer.alphaIsTransparency = is_color;
-            if (path.StartsWith(GENERATED_ROOT, StringComparison.Ordinal) && path.EndsWith("_albedo_alpha.png", StringComparison.Ordinal))
+            if (path.StartsWith(generated_root, StringComparison.Ordinal) && path.EndsWith("_albedo_alpha.png", StringComparison.Ordinal))
             {
                 importer.mipMapsPreserveCoverage = is_cutout;
                 importer.alphaTestReferenceValue = cutoff;
@@ -320,7 +346,7 @@ namespace ZombieGame.Tests.EditorTools
             return texture;
         }
 
-        private static void pack_pbr_channels(ChannelRecord channels, string stem, float cutoff)
+        private static void pack_pbr_channels(ChannelRecord channels, string stem, float cutoff,float smoothness_multiplier=.35f)
         {
             var color = decode_texture(channels.base_color, false);
             var rough = decode_texture(channels.roughness, true);
@@ -338,7 +364,7 @@ namespace ZombieGame.Tests.EditorTools
                 for (int index = 0; index < pixels.Length; index++)
                 {
                     pixels[index].a = alpha_pixels == null ? (byte)255 : alpha_pixels[index].r;
-                    packed_pixels[index] = new Color32(0, 0, 0, (byte)Mathf.RoundToInt((255 - rough_pixels[index].r) * .35f));
+                    packed_pixels[index] = new Color32(0, 0, 0, (byte)Mathf.RoundToInt((255 - rough_pixels[index].r) * smoothness_multiplier));
                 }
                 if (alpha) pad_cutout_colors(pixels, color.width, color.height, cutoff);
                 color.SetPixels32(pixels);

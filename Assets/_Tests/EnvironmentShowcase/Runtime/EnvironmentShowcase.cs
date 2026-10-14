@@ -8,11 +8,13 @@ namespace ZombieGame.Tests.EnvironmentShowcase
     public sealed class EnvironmentShowcase : MonoBehaviour
     {
         public EnvironmentShowcaseConfig config;
+        public string default_layout = "";
+        public GameObject editor_reference_root;
         public ShowcaseTerrain ground { get; private set; }
         public ShowcaseFoliage foliage { get; private set; }
         public ShowcaseLandmarks landmarks { get; private set; }
         public ShowcaseConceptWater concept_water { get; private set; }
-        public string[] view_names => config.concept_enabled ? new[] {"Concept 05 - Rounded grass slopes","Concept 07 - Limestone seacoast","Concept 09 - Closed natural pond","Concept composite overview"} : VIEW_NAMES;
+        public string[] view_names => config.vision_enabled ? new[]{"Vision level meadow and settlement","Vision natural coast","Vision closed pond","Vision composite overview"} : config.concept_enabled ? new[] {"Concept 05 - Rounded grass slopes","Concept 07 - Limestone seacoast","Concept 09 - Closed natural pond","Concept composite overview"} : VIEW_NAMES;
         public Camera review_camera { get; private set; }
         public Renderer water_renderer => water_transform ? water_transform.GetComponent<Renderer>() : null;
         public bool show_hud = true;
@@ -35,8 +37,10 @@ namespace ZombieGame.Tests.EnvironmentShowcase
         private bool previous_run_in_background;
         private float previous_shadow_distance;
         private int previous_shadow_cascades;
+        private ShadowResolution previous_shadow_resolution;
         private int previous_antialiasing;
         private Light sun;
+        public Light review_sun => sun;
         public static readonly string[] VIEW_NAMES = { "Meadow overview", "Road seam", "Wet shoreline", "Forest edge", "Actual rocky slope", "Cliff face", "Plateau top", "Talus foot",
             "River ford", "Continuous forest belt", "Neutral landmark", "Ore source detail", "Route panorama" };
         private static readonly Vector2[] VIEW_POINTS = { new Vector2(.5f, .53f), new Vector2(.42f, .48f),
@@ -49,6 +53,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             previous_run_in_background = Application.runInBackground;
             previous_shadow_distance = QualitySettings.shadowDistance;
             previous_shadow_cascades = QualitySettings.shadowCascades;
+            previous_shadow_resolution = QualitySettings.shadowResolution;
             previous_antialiasing = QualitySettings.antiAliasing;
             Application.runInBackground = true;
             try
@@ -58,19 +63,17 @@ namespace ZombieGame.Tests.EnvironmentShowcase
                 config.concept_enabled = false;
                 config.dark_enabled=false;
                 config.flat_enabled=false;
+                config.vision_enabled=false;
+                if(editor_reference_root) editor_reference_root.SetActive(false);
+                if(!string.IsNullOrEmpty(default_layout)) select_layout(default_layout);
                 var arguments = Environment.GetCommandLineArgs();
                 for (int index = 0; index + 1 < arguments.Length; index++)
                     if (arguments[index] == "-showcaseLayout")
                     {
-                        string layout_name = arguments[index + 1];
-                        if (layout_name != "cliffs" && layout_name != "routes" && layout_name != "concept" && layout_name!="dark" && layout_name!="flat") throw new InvalidOperationException("Use -showcaseLayout routes / cliffs / concept / dark / flat, got: " + layout_name);
-                        config.flat_enabled=layout_name=="flat";
-                        config.dark_enabled=layout_name=="dark"||config.flat_enabled;
-                        if(config.dark_enabled && (!config.active_dark_layout||!config.active_dark_layout.layout)) throw new InvalidOperationException("Prepare independent wilderness preset before starting this layout.");
-                        config.concept_enabled = layout_name == "concept" || config.dark_enabled;
-                        if (!config.concept_enabled) config.route_layout.enabled = layout_name == "routes";
+                        select_layout(arguments[index + 1]);
                     }
                 config.validate_config();
+                if(config.vision_enabled) config.active_dark_layout.validate_vision_regions();
                 if(config.concept_enabled) QualitySettings.antiAliasing=4;
                 configure_lighting();
                 ground = new ShowcaseTerrain(config, transform, current_biome);
@@ -83,9 +86,11 @@ namespace ZombieGame.Tests.EnvironmentShowcase
                 set_view(ground.routes.enabled ? 10 : 0, 1);
                 QualitySettings.vSyncCount = 0;
                 Application.targetFrameRate = config.target_frame_rate;
-                QualitySettings.shadowDistance = config.shadow_distance;
+                QualitySettings.shadowDistance = config.vision_enabled ? config.active_dark_layout.vision_shadow_distance : config.shadow_distance;
                 // Unity represents a single directional shadow map with zero cascades.
-                QualitySettings.shadowCascades = config.shadow_cascades == 1 ? 0 : config.shadow_cascades;
+                int cascades = config.vision_enabled ? config.active_dark_layout.vision_shadow_cascades : config.shadow_cascades;
+                QualitySettings.shadowCascades = cascades == 1 ? 0 : cascades;
+                if(config.vision_enabled) QualitySettings.shadowResolution = config.active_dark_layout.vision_shadow_resolution;
                 Debug.Log("[EnvironmentShowcase] Built-in six-layer PBR terrain, actual isolated hills; grass=" + foliage.grass_instances +
                     ", trees=" + foliage.tree_instances + ", shrubs=" + foliage.shrub_instances + ", rocks=" + foliage.rock_instances + ". No gameplay or NavMesh altered.");
                 if (Array.IndexOf(Environment.GetCommandLineArgs(), "-showcaseCheck") >= 0)
@@ -98,6 +103,19 @@ namespace ZombieGame.Tests.EnvironmentShowcase
                 if (Array.IndexOf(Environment.GetCommandLineArgs(), "-showcaseCheck") >= 0 && !GetComponent<ShowcaseChecks>())
                     gameObject.AddComponent<ShowcaseChecks>();
             }
+        }
+
+        private void select_layout(string layout_name)
+        {
+            if(layout_name!="cliffs" && layout_name!="routes" && layout_name!="concept" && layout_name!="dark" && layout_name!="flat" && layout_name!="vision")
+                throw new InvalidOperationException("Unknown environment preset: "+layout_name);
+            config.vision_enabled = layout_name=="vision";
+            config.flat_enabled = layout_name=="flat" || config.vision_enabled;
+            config.dark_enabled = layout_name=="dark" || config.flat_enabled;
+            config.concept_enabled = layout_name=="concept" || config.dark_enabled;
+            if(config.dark_enabled && (!config.active_dark_layout || !config.active_dark_layout.layout))
+                throw new InvalidOperationException("Prepare independent wilderness preset before starting this layout.");
+            if(!config.concept_enabled) config.route_layout.enabled = layout_name=="routes";
         }
 
         private void configure_lighting()
@@ -166,7 +184,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             review_camera.nearClipPlane = .1f;
             review_camera.farClipPlane = 500;
             review_camera.clearFlags = CameraClearFlags.SolidColor;
-            review_camera.backgroundColor = current_biome == null ? config.fog_color : current_biome.fog;
+            review_camera.backgroundColor = config.vision_enabled ? config.active_dark_layout.fog : current_biome == null ? config.fog_color : current_biome.fog;
             review_camera.allowHDR = false;
             review_camera.allowMSAA = true;
         }
@@ -177,7 +195,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             if (config.concept_enabled)
             {
                 set_focus(config.active_concept_layout.views[view_index],requested_zoom);
-                if(view_index==3) review_camera.orthographicSize *= 1.45f;
+                if(view_index==3 && !config.vision_enabled) review_camera.orthographicSize *= 1.45f;
                 return;
             }
             zoom_index = Mathf.Clamp(requested_zoom, 0, config.camera_sizes.Length - 1);
@@ -204,8 +222,45 @@ namespace ZombieGame.Tests.EnvironmentShowcase
                 config.concept_enabled ? config.active_concept_layout.camera_yaw : config.camera_yaw, 0);
             float camera_size=config.concept_enabled ? config.active_concept_layout.camera_sizes[zoom_index] : config.camera_sizes[zoom_index];
             if(config.concept_enabled && view_index==2) camera_size*=.82f;
+            if(config.vision_enabled) focus = clamp_vision_focus(focus,camera_size);
             review_camera.transform.SetPositionAndRotation(focus - rotation * Vector3.forward * camera_size * 2.3f, rotation);
             review_camera.orthographicSize = camera_size;
+            reset_frame_samples();
+        }
+
+        private Vector3 clamp_vision_focus(Vector3 focus,float camera_size)
+        {
+            float pitch = config.active_concept_layout.camera_pitch*Mathf.Deg2Rad;
+            float yaw = config.active_concept_layout.camera_yaw*Mathf.Deg2Rad;
+            float half_width = camera_size*review_camera.aspect;
+            float half_depth = camera_size/Mathf.Max(.1f,Mathf.Sin(pitch));
+            float extent_x = Mathf.Min(config.map_size*.5f-1,Mathf.Abs(Mathf.Cos(yaw))*half_width+Mathf.Abs(Mathf.Sin(yaw))*half_depth);
+            float extent_z = Mathf.Min(config.map_size*.5f-1,Mathf.Abs(Mathf.Sin(yaw))*half_width+Mathf.Abs(Mathf.Cos(yaw))*half_depth);
+            focus.x = Mathf.Clamp(focus.x,ground.origin.x+extent_x,ground.origin.x+config.map_size-extent_x);
+            focus.z = Mathf.Clamp(focus.z,ground.origin.z+extent_z,ground.origin.z+config.map_size-extent_z);
+            return focus;
+        }
+
+        /// <summary>Exact flat-v3 framing for root's same-camera comparison, without modifying either preset asset.</summary>
+        public void set_flat_comparison_view(int requested_zoom)
+        {
+            zoom_index = Mathf.Clamp(requested_zoom,0,2);
+            var rotation = Quaternion.Euler(42,-12,0);
+            var focus = ground.sample_ground(.61f*config.map_size,.50f*config.map_size);
+            float size = new[]{11f,23f,43f}[zoom_index];
+            review_camera.transform.SetPositionAndRotation(focus-rotation*Vector3.forward*size*2.3f,rotation);
+            review_camera.orthographicSize = size;
+            reset_frame_samples();
+        }
+
+        /// <summary>Diagnostic only: exact original flat-v3 plant focus and pond-derived projection, never the acceptance camera.</summary>
+        public void set_flat_plants_comparison_view(int requested_zoom)
+        {
+            var rotation = Quaternion.Euler(42,-12,0);
+            var focus = ground.sample_ground(.43f*config.map_size,.59f*config.map_size);
+            float size = requested_zoom == 0 ? 9.02f : 18.86f;
+            review_camera.transform.SetPositionAndRotation(focus-rotation*Vector3.forward*size*2.3f,rotation);
+            review_camera.orthographicSize = size;
             reset_frame_samples();
         }
 
@@ -230,7 +285,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
                 water_material.color = current_biome.water;
                 water_material.SetFloat("_Glossiness", current_biome.id == "winter" ? .2f : .72f);
             }
-            review_camera.backgroundColor = current_biome.fog;
+            review_camera.backgroundColor = config.vision_enabled ? config.active_dark_layout.fog : current_biome.fog;
             set_view(view_index, zoom_index);
         }
 
@@ -289,7 +344,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             // Built-in ASCII HUD: desktop system fonts are not reliably available in a packaged player.
             GUILayout.Label("ENVIRONMENT ART LAB - Six PBR layers - " + config.map_size + " m");
             GUILayout.Label(config.concept_enabled ? "1/2/3: zoom | Tab: 05 slopes / 07 coast / 09 pond / overview | G: grass | H: HUD" : "B: region | 1/2/3: zoom | Tab: view | G: grass | H: HUD | L: layout");
-            GUILayout.Label(config.flat_enabled ? "FLAT WILDERNESS - level land, no roads/rivers; visual review pending" : config.dark_enabled ? "DARK WILDERNESS - source buildings and ore displays; art review pending" : config.concept_enabled ? "WILDERNESS PREVIEW - no roads/rivers; visual review pending" : ground.routes.enabled ? "ROUTES: river / forest belts / neutral landmarks (art only)" : "CLIFFS: preserved previous layout baseline");
+            GUILayout.Label(config.vision_enabled ? "VISION-1 - level wilderness study; art review pending" : config.flat_enabled ? "FLAT WILDERNESS - level land, no roads/rivers; visual review pending" : config.dark_enabled ? "DARK WILDERNESS - source buildings and ore displays; art review pending" : config.concept_enabled ? "WILDERNESS PREVIEW - no roads/rivers; visual review pending" : ground.routes.enabled ? "ROUTES: river / forest belts / neutral landmarks (art only)" : "CLIFFS: preserved previous layout baseline");
             GUILayout.BeginHorizontal();
             if (!config.concept_enabled && config.biomes != null)
                 for (int index = 0; index < config.biomes.Length; index++)
@@ -320,6 +375,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             if(config) config.concept_enabled=false;
             if(config) config.dark_enabled=false;
             if(config) config.flat_enabled=false;
+            if(config) config.vision_enabled=false;
             Camera.onPreCull -= submit_foliage;
             foliage?.Dispose();
             landmarks?.Dispose();
@@ -330,6 +386,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             Application.runInBackground = previous_run_in_background;
             QualitySettings.shadowDistance = previous_shadow_distance;
             QualitySettings.shadowCascades = previous_shadow_cascades;
+            QualitySettings.shadowResolution = previous_shadow_resolution;
             QualitySettings.antiAliasing = previous_antialiasing;
             if (config && config.route_layout != null) config.route_layout.enabled = previous_route_layout;
         }
