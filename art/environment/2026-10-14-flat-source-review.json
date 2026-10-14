@@ -1,0 +1,66 @@
+{
+  "review_date": "2026-10-14",
+  "scope": "Independent flat Unity environment preview; no source model changes and no replacement of the formal playable map.",
+  "direction": {
+    "walkable_ground": "One level inland surface; sea and closed pond basins only, no continuous playable hills or isolated building pads.",
+    "composition": "Grouped settlement and ore clusters, coherent ground-cover patches, clear open operating areas.",
+    "roads": "Road slot retained with zero weight; no paths, ruts, paving or rivers.",
+    "render_pipeline": "Existing Built-in pipeline retained. No implicit URP/HDRP migration."
+  },
+  "reuse": [
+    "Existing frozen buildings referenced by Settings/dark-frozen-source-record.json",
+    "User iron and gold exports referenced by art/resources/handoff.json",
+    "Existing CC0 grass/shrubs and original boulder_01; no mesh stretching or replacement geometry"
+  ],
+  "missing_assets": [
+    {
+      "id": "broad_natural_grass_clump",
+      "requirement": "A wider irregular clump with meaningful leaf/blade coverage from RTS near/middle distance, rather than individual tiny lawn blades; original source proportions and suitable LODs.",
+      "status": "Existing grass is rendered and above ground, but remains fine green speckles even when concentrated in patches. No verified alpha/cull/binding defect. Do not keep increasing its count or scale as a substitute for a suitable source shape."
+    },
+    {
+      "id": "dense_broadleaf_tree",
+      "requirement": "Whole tree with broad, dense but irregular crown readable from normal RTS overhead camera; game-suitable source LODs.",
+      "status": "Not supplied by current accepted vegetation source; tree count remains zero in this preview instead of forcing the sparse-crown source.",
+      "next_candidate": "https://assetstore.unity.com/packages/3d/vegetation/big-oak-tree-free-279431",
+      "candidate_state": "Store lists FREE, 96.5 MB and Built-in compatibility at Unity 2021.3.8f1. User authorized agent download. Clicking Add to My Assets redirected the in-app browser to the Unity account sign-in page; waiting for user sign-in. No downloaded package, EULA acceptance, import or visual approval yet. Actual Unity 6000.6 model/material/LOD inspection pending."
+    },
+    {
+      "id": "long_natural_cliff",
+      "requirement": "Independent natural layered cliff segment and end treatment for flat-map borders; not a deformed boulder.",
+      "status": "No verified long-cliff mesh in current handoff. Existing rock_face_03 and cliff_side are PBR textures, not cliff models. Terrain shoreline is presentation infrastructure, not an accepted authored cliff module."
+    },
+    {
+      "id": "pond_reeds",
+      "requirement": "Optional reeds/cattail clump readable along pond rim.",
+      "status": "Missing from current verified library; do not replace with enlarged lawn grass."
+    }
+  ],
+  "additional_candidates_reviewed_not_imported": [
+    {
+      "url": "https://polyhaven.com/a/pine_tree_01",
+      "license": "CC0; https://polyhaven.com/license",
+      "source_page_triangles": "17M",
+      "decision": "Raw source too heavy for direct repeated forest placement; conifer silhouette not the requested dense broadleaf target. No custom decimation or import in this pass."
+    },
+    {
+      "url": "https://polyhaven.com/a/fir_tree_01",
+      "license": "CC0; https://polyhaven.com/license",
+      "source_page_triangles": "8M",
+      "decision": "Source LOD suitability unverified and different canopy type; not a replacement broadleaf forest."
+    },
+    {
+      "url": "https://polyhaven.com/a/searsia_lucida",
+      "license": "CC0; https://polyhaven.com/license",
+      "source_api_triangles": 841648,
+      "decision": "Dry Karoo shrub, not forest tree; high raw mesh cost. Not imported."
+    },
+    {
+      "url": "https://polyhaven.com/a/searsia_burchellii",
+      "license": "CC0; https://polyhaven.com/license",
+      "source_page_triangles": "1M",
+      "decision": "Sprawling dry shrub, not forest tree. Not imported."
+    }
+  ],
+  "acceptance": "Actual player frames must be reviewed separately from compile, geometry, source-integrity and pixel checks. This record is not artistic approval or a combat-performance result."
+}

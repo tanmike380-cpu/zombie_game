@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-15",
+  "status": "technical_pass_art_visual_not_accepted",
+  "technical_pass": true,
+  "art_visual_accepted": false,
+  "scope": "Isolated environment technical preview. No navigation/blocking/economy/combat validation or production-map replacement.",
+  "build": {
+    "method": "ZombieGame.Tests.EditorTools.FlatWildernessTools.prepare_and_build_flat_preview",
+    "log": "Builds/EnvironmentShowcase-flat-build-v3.log",
+    "exit_code": 0,
+    "csharp_shader_errors": false,
+    "application": "Builds/EnvironmentShowcase.app"
+  },
+  "player": {
+    "layout": "flat",
+    "report": "Builds/ArtReview/EnvironmentShowcase/flat-final-v3/showcase-report.json",
+    "log": "Builds/EnvironmentShowcase-flat-final-v3-player.log",
+    "exit_code": 0,
+    "resolution": "1440x900",
+    "machine": "Mac14,9 / Apple M2 Pro / Metal",
+    "terrain_pixel_delta": 0.0982672125,
+    "grass_pixel_delta": 0.0015533668,
+    "shrub_pixel_delta": 0.0023525730,
+    "sea_pixel_delta": 0.0220326148,
+    "pond_pixel_delta": 0.0485560298,
+    "source_fixtures": 16,
+    "source_fixture_pass": true,
+    "boulder_lod_pass": true,
+    "source_oriented_pair_tests": 120,
+    "source_bound_overlap_pairs": [],
+    "snapshot_restoration": "Grass/shrub/terrain/water/object visibility restored in existing or new try/finally capture helpers; no source assembly changes."
+  },
+  "geometry": {
+    "inland_height_m": 4.2,
+    "walkable_samples": 10953,
+    "maximum_walkable_height_delta_m": 0.0002193451,
+    "road_maximum_weight": 0,
+    "no_river": true,
+    "closed_pool_pass": true,
+    "minimum_pool_rim_clearance_m": 0.59978056,
+    "fixture_root_threshold_m": 0.003,
+    "building_ground_threshold_m": 0.08,
+    "ore_ground_threshold_m": 0.5
+  },
+  "ground": {
+    "mean_weight_grid": "40x40 across complete finite map, including seabed; weights are not a visual acceptance score",
+    "layers": ["Grass_A", "Grass_Dry", "Dirt", "Mud", "Stone", "Road"],
+    "mean_weights": [0.6867669821,0.1762440652,0.0839352757,0.0300722048,0.0229871869,0],
+    "visual_limit": "Grass-family layers still dominate. Surface detail/readable macro-region quality remains pending user art review."
+  },
+  "plants": {
+    "grass_instances": 24000,
+    "shrub_instances": 140,
+    "tree_instances": 0,
+    "eligible_grass_area_grid_m2": 821,
+    "grass_instances_per_eligible_m2": 29.23264313,
+    "density_caveat": "1m-grid eligible area estimate; not actual leaf coverage or a claim of uniform per-cell density.",
+    "plant_middle_matrix_submissions": {"grass": 11588,"shrub": 52},
+    "old_camera_distance_rejected_at_this_view": {"grass": 0,"shrub": 0},
+    "display_evidence": "No confirmed alpha-channel, double-sided, material-binding or buried-top failure. Runtime Cull0/Cutoff0.5/AlphaToMask1, source textures, coverage mip metadata and authored instance transform reviewed. 32 transformed conservative shrub mesh-bound samples per source have top above anchor >1.13m; not alpha-visible leaf coverage.",
+    "limited_correction": "Flat-only orthographic distance anchor follows terrain focus. No old-mode culling, cutoff, source mesh, scale ranges or instance budgets changed. At the diagnostic middle view former distance culling rejected zero, so it is not asserted as the main reason for sparse plants.",
+    "missing_art": ["Suitable dense-crown whole trees","Broader RTS-readable natural grass clumps/full shrub silhouettes","Reeds/cattail clumps","Long authored stratified cliff modules"]
+  },
+  "timing": {
+    "sample_frames_per_view": 180,
+    "views": 12,
+    "target_frame_rate": 60,
+    "median_ms_range": [16.66675,16.6669159],
+    "p95_ms_range": [16.6697903,16.8506298],
+    "caveat": "This single local environment-only run includes the 60Hz frame-cap wait. Not a battle benchmark, uncapped headroom measurement or guarantee of stable future forest/mass-unit performance. Earlier runs retained."
+  },
+  "regressions": {
+    "routes": {"passed": true,"regions": 4,"report": "Builds/ArtReview/EnvironmentShowcase/flat-regression-v3/routes/showcase-report.json"},
+    "cliffs": {"passed": true,"regions": 4,"report": "Builds/ArtReview/EnvironmentShowcase/flat-regression-v3/cliffs/showcase-report.json"},
+    "concept": {"passed": true,"views": 12,"report": "Builds/ArtReview/EnvironmentShowcase/flat-regression-v3/concept/showcase-report.json"},
+    "dark": {"passed": true,"scope": "Existing light 16-source/3LOD checks, not a full terrain/art test","report": "Builds/ArtReview/EnvironmentShowcase/flat-regression-v3/dark/showcase-report.json"},
+    "original_thresholds_preserved": true
+  },
+  "review_images": [
+    "Builds/ArtReview/EnvironmentShowcase/flat-final-v3/flat-settlement-middle.png",
+    "Builds/ArtReview/EnvironmentShowcase/flat-final-v3/flat-plants-near.png",
+    "Builds/ArtReview/EnvironmentShowcase/flat-final-v3/flat-plants-middle.png",
+    "Builds/ArtReview/EnvironmentShowcase/flat-final-v3/flat-coast-middle.png",
+    "Builds/ArtReview/EnvironmentShowcase/flat-final-v3/flat-pond-middle.png"
+  ],
+  "visual_limitations": "Plants remain thin points/twig outlines, water basic, and finite Terrain boundary is visible in pond middle/far framing. These real screenshots are retained; no technical pass is called concept/art parity.",
+  "prior_trials_retained": "flat-first-v1 was first-frame only; flat-final-v2 failed one native-stone overlap pair. v3 moved only that whole fixture center, not the model or test threshold.",
+  "license": "Mixed licensed source handoffs; gold/iron permission unverified. Local private review only. No public upload or Git commit by this agent.",
+  "launcher": "Builds/OpenFlatWilderness.command"
+}

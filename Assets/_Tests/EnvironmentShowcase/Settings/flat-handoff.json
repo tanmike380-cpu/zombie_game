@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-15",
+  "status": "independent_technical_preview_not_art_accepted",
+  "layout_argument": "-showcaseLayout flat",
+  "scene": "Assets/_Tests/EnvironmentShowcase/Scenes/EnvironmentShowcase.unity",
+  "config": "Assets/_Tests/EnvironmentShowcase/Settings/FlatWildernessConfig.asset",
+  "geometry_config": "Assets/_Tests/EnvironmentShowcase/Settings/FlatConceptLayout.asset",
+  "scope": "Same controller, independent preset; environment presentation only. No production NavMesh, blocking, economy or battle changes.",
+  "terrain": {
+    "map_size_m": 128,
+    "inland_height_m": 4.2,
+    "inland_mask": "coast distance >= 7m and closed pond edge distance >= pond_bank_width + 1m; all such ground has the same height",
+    "boundary_relief": "Only sea bed/coastal drop and closed pond depression/bank. No grass hill or individual raised building pad.",
+    "layers": ["Grass_A", "Grass_Dry", "Dirt", "Mud", "Stone", "Road"],
+    "road_weight": 0,
+    "river": false,
+    "layout": "Seven source buildings form a compact settlement. Three iron, three gold and three native natural-stone fixtures form separate clusters; exact source-oriented bounds are checked for overlap. No small-rock cliff substitutes.",
+    "water": "Separate sea 1.1m and closed pond 3.6m surfaces; low-cost depth-colour and noise normal presentation, not final water art"
+  },
+  "sources": {
+    "historical_buildings": "Assets/_Tests/EnvironmentShowcase/Settings/dark-frozen-source-record.json; historical accepted exports, not current master re-export",
+    "neutral_buildings": "art/environment/landmark_handoff.json",
+    "gold_and_iron": "art/resources/handoff.json",
+    "grass_and_shrubs": "art/environment/vegetation_handoff_candidate.json",
+    "natural_stone": "art/environment/2026-10-14-free-source-review.json#boulder_01; untouched native LOD2/LOD3; natural stone candidate, not a user Tripo stone mine",
+    "ground": "art/environment/showcase_ground_source.json and art/environment/showcase_biome_sources.json; six source slots maintained"
+  },
+  "source_policy": "All mesh, UV, assembly transforms and material references preserved; only whole uniform placement scale and whole-root translation/rotation. No Blender source edits or new model creation.",
+  "display_diagnosis": {
+    "materials": "Actual source cutout base+alpha, Cull0, Cutoff0.5, coverage-preserving mipmaps; no confirmed channel/culling import failure. Runtime source bounds and on/off contribution recorded.",
+    "distance": "Flat only: orthographic draw distance measured from ground focus, removing camera-elevation framing bias. Old modes retain their exact prior camera-XZ culling.",
+    "limitation": "The measured plants still read as fine points/thin twigs at RTS range. Number or pixel contribution is not proof of a readable meadow/canopy. No style iteration, cutoff lowering or oversized scaling used to disguise missing art."
+  },
+  "instance_budgets": {"grass": 24000, "shrubs": 140, "trees": 0, "small_rocks_maximum": 180},
+  "limitations": [
+    "Suitable dense-crown whole trees missing; rejected high-polygon and unsuitable sparse-crown sources remain unused here.",
+    "Broader natural RTS-readable grass clumps and fuller shrub silhouettes missing; current approved small plants do not deliver the concept meadow.",
+    "Reeds/cattail shoreline clumps and long authored stratified cliff modules missing. Native Boulder is not a stretched/stacked cliff.",
+    "Mixed source licenses; gold/iron permission not independently verified. Local private review only, no public upload approval.",
+    "Art visual acceptance remains false, independent of technical check pass. Timings are environment-only on this machine, not battle or mass-unit performance."
+  ],
+  "preserved_layouts": ["routes", "cliffs", "concept", "dark"],
+  "build_method": "ZombieGame.Tests.EditorTools.FlatWildernessTools.prepare_and_build_flat_preview",
+  "local_launcher": "Builds/OpenFlatWilderness.command",
+  "validation": "Assets/_Tests/EnvironmentShowcase/validation-flat-wilderness.json"
+}

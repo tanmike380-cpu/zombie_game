@@ -168,3 +168,17 @@ python3 tools/download_showcase_vegetation.py
 随后 Unity 执行 `ZombieGame.Tests.EditorTools.EnvironmentShowcaseTools.prepare_and_build_root_approved_preview()`；
 已准备的工作区可用 `build_prepared_preview_player()` 避免全量重导入。
 地表来源追加后用 `build_refreshed_biome_preview()` 只刷新独立材质与区域配置＋构建，不重导入批准网格。
+
+### 独立平地预览（2026-10-15，未美术验收）
+
+双击 `Builds/OpenFlatWilderness.command`，或运行以下命令；双击原 app 的默认 routes 行为未变。
+
+```sh
+'Builds/EnvironmentShowcase.app/Contents/MacOS/Zombie Game' -showcaseLayout flat -screen-width 1440 -screen-height 900 -screen-fullscreen 0
+```
+
+同控制器的 `FlatWildernessConfig.asset`／`FlatConceptLayout.asset` 提供独立版本，内陆同高4.2m，仅海／封闭池塘边界下凹；无路无河、不设独立建筑高台。冻结源整体等比保留，七建筑形成聚落、金铁石各三件成簇。草24000、灌木140、树0，数量不是美术质量证明。
+
+仅 flat 修正正交镜头相机位置导致的距离剔除偏置，改以地面焦点计距离；旧模式策略保持。当前小草仍像细点，灌木为细枝轮廓；检查不能替代浓密整树、较宽自然草丛、芦苇和长崖模块缺源。技术 pass 与 `art_visual_accepted=false` 分开，未接玩法、阻挡或经济，也不声称战斗帧率。
+
+交接见 `Settings/flat-handoff.json`，实测见 `validation-flat-wilderness.json`；构建入口 `ZombieGame.Tests.EditorTools.FlatWildernessTools.prepare_and_build_flat_preview()`，玩家检查追加 `-showcaseCheck -showcaseOutput <directory>`。`Tab`切聚落／海岸／池塘／全景，`1/2/3`近中远，`G`草开关，`H` HUD。
