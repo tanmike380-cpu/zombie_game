@@ -1,0 +1,168 @@
+[
+  {
+    "collection": "Zombie · Normal · Animated",
+    "source": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/Blender主文件/zombie_sources/normal/tripo_convert_d9e01d9b-7e4d-470c-8ae2-fad160a003e7.fbx",
+    "objects": [
+      "Armature",
+      "tripo_node_d9e01d9b"
+    ],
+    "actions": [
+      {
+        "name": "Armature|僵尸慢慢悠悠的走 / 看到敌人冲上去抓.001",
+        "frames": [
+          1.0,
+          144.0
+        ],
+        "slots": [
+          "OBSlot"
+        ],
+        "curves": 659,
+        "keyframes": 32448,
+        "varying_curves": 93,
+        "mesh_vertex_max_delta_1_20": 0.5003934800392177
+      },
+      {
+        "name": "Armature|Savage zombie melee attack. Brief anticipation, then suddenly l",
+        "frames": [
+          1.0,
+          120.0
+        ],
+        "slots": [
+          "OBSlot"
+        ],
+        "curves": 659,
+        "keyframes": 27068,
+        "varying_curves": 93,
+        "mesh_vertex_max_delta_1_20": 0.031395750916447175
+      },
+      {
+        "name": "Armature|这是一只僵尸，他在慢慢悠悠的走路.001",
+        "frames": [
+          1.0,
+          120.0
+        ],
+        "slots": [
+          "OBSlot"
+        ],
+        "curves": 659,
+        "keyframes": 27208,
+        "varying_curves": 91,
+        "mesh_vertex_max_delta_1_20": 0.33294553887602824
+      },
+      {
+        "name": "Armature|Unsettling zombie idle animation. Hunched body, drooping uneven",
+        "frames": [
+          1.0,
+          72.0
+        ],
+        "slots": [
+          "OBSlot"
+        ],
+        "curves": 659,
+        "keyframes": 16518,
+        "varying_curves": 91,
+        "mesh_vertex_max_delta_1_20": 0.052372502170069786
+      },
+      {
+        "name": "Armature|Feral zombie charge after spotting an enemy. Strong forward lea",
+        "frames": [
+          1.0,
+          120.0
+        ],
+        "slots": [
+          "OBSlot"
+        ],
+        "curves": 659,
+        "keyframes": 27148,
+        "varying_curves": 91,
+        "mesh_vertex_max_delta_1_20": 0.05076274597738368
+      }
+    ],
+    "bones": 65,
+    "vertex_groups": 52,
+    "armature_modifier_valid": true
+  },
+  {
+    "collection": "Zombie · Explore · Animated",
+    "source": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/Blender主文件/zombie_sources/explore/tripo_convert_28e507cc-e072-4141-96ec-e6dd00cff48c.fbx",
+    "objects": [
+      "Armature.001",
+      "tripo_node_28e507cc"
+    ],
+    "actions": [
+      {
+        "name": "Armature.001|Unsettling zombie idle animation. Hunched body, drooping uneven",
+        "frames": [
+          1.0,
+          72.0
+        ],
+        "slots": [
+          "OBSlot"
+        ],
+        "curves": 659,
+        "keyframes": 16408,
+        "varying_curves": 91,
+        "mesh_vertex_max_delta_1_20": 0.0497714829991415
+      },
+      {
+        "name": "Armature.001|Feral zombie charge after spotting an enemy. Strong forward lea",
+        "frames": [
+          1.0,
+          120.0
+        ],
+        "slots": [
+          "OBSlot"
+        ],
+        "curves": 659,
+        "keyframes": 27158,
+        "varying_curves": 91,
+        "mesh_vertex_max_delta_1_20": 0.05069205555950471
+      },
+      {
+        "name": "Armature.001|Slow shambling zombie walk for an RTS game. Slightly hunched po",
+        "frames": [
+          1.0,
+          120.0
+        ],
+        "slots": [
+          "OBSlot"
+        ],
+        "curves": 659,
+        "keyframes": 27278,
+        "varying_curves": 91,
+        "mesh_vertex_max_delta_1_20": 0.5992543576349637
+      },
+      {
+        "name": "Armature.001|Savage zombie melee attack. Brief anticipation, then suddenly l",
+        "frames": [
+          1.0,
+          120.0
+        ],
+        "slots": [
+          "OBSlot"
+        ],
+        "curves": 659,
+        "keyframes": 26948,
+        "varying_curves": 91,
+        "mesh_vertex_max_delta_1_20": 0.029357084741136567
+      },
+      {
+        "name": "Armature.001|这是一只僵尸，他在慢慢悠悠的走路.001",
+        "frames": [
+          1.0,
+          120.0
+        ],
+        "slots": [
+          "OBSlot"
+        ],
+        "curves": 659,
+        "keyframes": 27258,
+        "varying_curves": 91,
+        "mesh_vertex_max_delta_1_20": 0.3275221256137654
+      }
+    ],
+    "bones": 65,
+    "vertex_groups": 52,
+    "armature_modifier_valid": true
+  }
+]

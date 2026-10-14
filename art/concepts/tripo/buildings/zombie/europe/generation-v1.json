@@ -1,0 +1,99 @@
+{
+  "date": "2026-10-12",
+  "mode": "built-in image_gen",
+  "scope": "Europe concepts only; no Blender or Unity files modified",
+  "palace_v2_revision": {"output":"17-europe-infected-imperial-palace/three-views-v2.png","supersedes_for_current_use":"17-europe-infected-imperial-palace/three-views-v1.png","reason":"User requested substantially more magnificent expansive imperial city, comparable to Asian and Middle Eastern palaces.","references":["/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/tripo/buildings/zombie/asia/16-asia-infected-imperial-palace/three-views-v1.png","/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/tripo/buildings/zombie/middleeast/18-middleeast-infected-imperial-palace/three-views-v1.png","/Users/tankaixi/Documents/ChatGPT/zombie game/art/concepts/tripo/buildings/zombie/europe/17-europe-infected-imperial-palace/three-views-v1.png"],"prompt":"Use case: stylized-concept. Revise infected European imperial palace into a truly VAST Byzantine imperial PALACE CITY, not a concentrated church-like single block. Image 1 and 2 are reference ONLY for vast horizontal complex scale and THREE STACKED ROW layout, image 3 establishes European architectural vocabulary and gray-brown stone/dark slate roofs/dark purple fungal infection palette. Output one wide landscape sheet with three full-width horizontal rows: FRONT top, BACK middle, RIGHT SIDE bottom. Each complete palace-city spans 95% of image width with 2.5% safe margin, same scale and full silhouette, no cropping, zero perspective true orthographic elevations. Architecture: expand actual compound at least fourfold horizontally relative to image 3: huge continuous defensive ramparts, many rhythmic square fortress towers, long double-storey arcaded palace wings, five connected palace courts at successive depths, multiple independent grand domed audience halls and pavilions, largest imperial central dome plus 8-12 lesser domes, colossal ceremonial central gate. Broad low silhouette, total width roughly 8 times maximum height, sprawling layered imperial seat comparable in scale to references 1 and 2. No minarets, no Chinese roofs, no turquoise tiles, no tiny isolated cathedral or single central block. Preserve desaturated gray-brown masonry, dark roofs, restrained purple-black cysts and black-brown root infection across entire compound. Distinct rear has extensive fortified service/imperial apartment facade rather than repeating front ceremonial gate; side expresses the full deep succession of courts and palace wings. Three views must represent the SAME complete structure. Plain pale gray neutral background, crisp detailed concept render, no landscape or people. Small labels FRONT, BACK, RIGHT SIDE in left margin of respective rows, clear blank horizontal gutters between rows for later cropping.","generated_source":"/Users/tankaixi/.codex/generated_images/01a130c9-148d-73e1-91fe-ef5d4a325b94/exec-340d71b7-d6bd-4ea6-bcf1-1afcfd522fab.png","validation":{"inspected":true,"layout":"Three stacked full-width rows: FRONT / BACK / RIGHT SIDE","result":"Expanded actual palace compound with long arcaded wings, numerous domes and towers, extensive ramparts. Gray-brown stone, dark roofs, purple-black infection retained. Complete silhouette uncropped.","crop_handoff":"Original dimensions 2172 x 724; row boundaries approximately y=242 and y=474, verify at original resolution before cutting."}},
+  "assets": [
+    {
+      "id": "01-europe-cathedral",
+      "source_references": [
+        "01-europe-cathedral/reference.png"
+      ],
+      "output": "01-europe-cathedral/three-views-v1.png",
+      "prompt": "Create one wide landscape three-panel modeling turnaround concept sheet, FRONT / BACK / RIGHT SIDE left to right, one same building at same scale aligned ground line. True orthographic elevations, camera horizontal no perspective, no three-quarter view, no visible second wall in front/back. Complete silhouette with generous margins. Plain pale warm-gray background. Faithfully preserve referenced building identity, footprint, heights, materials, roof shape, damage and desaturated purple-black fungal infection; coherent gray stone, weathered brown wood, olive moss palette, no neon. Rich crisp stylized 3D concept rendering. Infer unseen rear coherently, do not duplicate front entrance onto rear. Small exact labels FRONT, BACK, RIGHT SIDE beneath. No other buildings, people, scenery or annotations. Reference image is identity input: ruined Gothic cathedral, one tall damaged bell tower, slate-roof nave, rose window and arched front portal, flying buttresses, broken high crossing with purple growth. Preserve asymmetric single tower and all major volumes.",
+      "generated_source": "/Users/tankaixi/.codex/generated_images/01a130c9-148d-73e1-91fe-ef5d4a325b94/exec-f573d1a7-141c-4f2b-a06f-2fa22e6ac4c3.png",
+      "validation": {
+        "inspected": true,
+        "views": "front/back/right side",
+        "palette": "desaturated gray-brown regional materials, dark purple pods, black-brown roots",
+        "note": "Original identity and major volumes preserved; inferred hidden surfaces remain concept proposals."
+      }
+    },
+    {
+      "id": "02-europe-tenement",
+      "source_references": [
+        "02-europe-tenement/reference.png"
+      ],
+      "output": "02-europe-tenement/three-views-v1.png",
+      "prompt": "Create one wide landscape three-panel modeling turnaround concept sheet, FRONT / BACK / RIGHT SIDE left to right, one same building at same scale aligned ground line. True orthographic elevations, camera horizontal no perspective, no three-quarter view, no visible second wall in front/back. Complete silhouette with generous margins. Plain pale warm-gray background. Faithfully preserve referenced building identity, footprint, heights, materials, roof shape, damage and desaturated purple-black fungal infection; coherent gray stone, weathered brown wood, olive moss palette, no neon. Rich crisp stylized 3D concept rendering. Infer unseen rear coherently, do not duplicate front entrance onto rear. Small exact labels FRONT, BACK, RIGHT SIDE beneath. No other buildings, people, scenery or annotations. CRITICAL camera correction for referenced half-timber house: FRONT is narrow triangular gable facade containing small tiled door porch, BACK is opposite narrow triangular gable facade WITHOUT porch (not a long sloped-roof wall), RIGHT SIDE is long rectangular wall under broad sloping tiled roof with NO visible front gable surface or front door, only porch edge protruding at its LEFT end. Exactly orthographic 0,180,90 degree cameras at ground horizontal axis, parallel verticals. Preserve two story plaster timber house, side chimney, red tiles and purple infection.",
+      "generated_source": "/Users/tankaixi/.codex/generated_images/01a130c9-148d-73e1-91fe-ef5d4a325b94/exec-3b214aef-fdc3-4aac-ae18-9c90e7233dbf.png",
+      "validation": {
+        "inspected": true,
+        "views": "front/back/right side",
+        "palette": "desaturated gray-brown regional materials, dark purple pods, black-brown roots",
+        "note": "Initial output rejected due to wrong back/side orientation; corrected generation inspected."
+      }
+    },
+    {
+      "id": "03-europe-watermill",
+      "source_references": [
+        "03-europe-watermill/reference.png"
+      ],
+      "output": "03-europe-watermill/three-views-v1.png",
+      "prompt": "Create one wide landscape three-panel modeling turnaround concept sheet, FRONT / BACK / RIGHT SIDE left to right, one same building at same scale aligned ground line. True orthographic elevations, camera horizontal no perspective, no three-quarter view, no visible second wall in front/back. Complete silhouette with generous margins. Plain pale warm-gray background. Faithfully preserve referenced building identity, footprint, heights, materials, roof shape, damage and desaturated purple-black fungal infection; coherent gray stone, weathered brown wood, olive moss palette, no neon. Rich crisp stylized 3D concept rendering. Infer unseen rear coherently, do not duplicate front entrance onto rear. Small exact labels FRONT, BACK, RIGHT SIDE beneath. No other buildings, people, scenery or annotations. Reference is identity input. European stone-and-timber two-height L-shaped watermill, taller main gabled volume, stone chimney, small left lower wing and porch, one huge wooden waterwheel attached to right wall. In right elevation wheel must be face-on circular; front elevation wheel edge-on. Preserve same wheel position in all views.",
+      "generated_source": "/Users/tankaixi/.codex/generated_images/01a130c9-148d-73e1-91fe-ef5d4a325b94/exec-91a331a3-956a-4647-870a-ac5414a356e0.png",
+      "validation": {
+        "inspected": true,
+        "views": "front/back/right side",
+        "palette": "desaturated gray-brown regional materials, dark purple pods, black-brown roots",
+        "note": "Original identity and major volumes preserved; inferred hidden surfaces remain concept proposals."
+      }
+    },
+    {
+      "id": "04-europe-keep",
+      "source_references": [
+        "04-europe-keep/reference.png"
+      ],
+      "output": "04-europe-keep/three-views-v1.png",
+      "prompt": "Create one wide landscape three-panel modeling turnaround concept sheet, FRONT / BACK / RIGHT SIDE left to right, one same building at same scale aligned ground line. True orthographic elevations, camera horizontal no perspective, no three-quarter view, no visible second wall in front/back. Complete silhouette with generous margins. Plain pale warm-gray background. Faithfully preserve referenced building identity, footprint, heights, materials, roof shape, damage and desaturated purple-black fungal infection; coherent gray stone, weathered brown wood, olive moss palette, no neon. Rich crisp stylized 3D concept rendering. Infer unseen rear coherently, do not duplicate front entrance onto rear. Small exact labels FRONT, BACK, RIGHT SIDE beneath. No other buildings, people, scenery or annotations. Reference is identity input. Single massive round stone keep, cylindrical crenellated body, narrow lancet windows, low rectangular projecting front entrance vestibule with crenellations, purple cysts and black roots. Back has no matching front vestibule.",
+      "generated_source": "/Users/tankaixi/.codex/generated_images/01a130c9-148d-73e1-91fe-ef5d4a325b94/exec-00c4a2a4-7722-4823-b7fd-e95f7f463ca4.png",
+      "validation": {
+        "inspected": true,
+        "views": "front/back/right side",
+        "palette": "desaturated gray-brown regional materials, dark purple pods, black-brown roots",
+        "note": "Original identity and major volumes preserved; inferred hidden surfaces remain concept proposals."
+      }
+    },
+    {
+      "id": "05-europe-barn",
+      "source_references": [
+        "05-europe-barn/reference.png"
+      ],
+      "output": "05-europe-barn/three-views-v1.png",
+      "prompt": "Create one wide landscape three-panel modeling turnaround concept sheet, FRONT / BACK / RIGHT SIDE left to right, one same building at same scale aligned ground line. True orthographic elevations, camera horizontal no perspective, no three-quarter view, no visible second wall in front/back. Complete silhouette with generous margins. Plain pale warm-gray background. Faithfully preserve referenced building identity, footprint, heights, materials, roof shape, damage and desaturated purple-black fungal infection; coherent gray stone, weathered brown wood, olive moss palette, no neon. Rich crisp stylized 3D concept rendering. Infer unseen rear coherently, do not duplicate front entrance onto rear. Small exact labels FRONT, BACK, RIGHT SIDE beneath. No other buildings, people, scenery or annotations. Reference is identity input. Long low European timber and fieldstone barn, weathered straw thatched gabled roof with damage, small open stable lean-to at front-left, plank doors on long front wall, purple pods and black root infection. Right end is a narrow gable, front and back long facades.",
+      "generated_source": "/Users/tankaixi/.codex/generated_images/01a130c9-148d-73e1-91fe-ef5d4a325b94/exec-2e63ee58-adc9-4926-9dde-34f6d08e274a.png",
+      "validation": {
+        "inspected": true,
+        "views": "front/back/right side",
+        "palette": "desaturated gray-brown regional materials, dark purple pods, black-brown roots",
+        "note": "Original identity and major volumes preserved; inferred hidden surfaces remain concept proposals."
+      }
+    },
+    {
+      "id": "17-europe-infected-imperial-palace",
+      "source_references": [
+        "01-europe-cathedral/reference.png",
+        "04-europe-keep/reference.png"
+      ],
+      "output": "17-europe-infected-imperial-palace/three-views-v1.png",
+      "prompt": "Create one wide landscape three-panel modeling turnaround concept sheet, FRONT / BACK / RIGHT SIDE left to right, one same building at same scale aligned ground line. True orthographic elevations, camera horizontal no perspective, no three-quarter view, no visible second wall in front/back. Complete silhouette with generous margins. Plain pale warm-gray background. Faithfully preserve referenced building identity, footprint, heights, materials, roof shape, damage and desaturated purple-black fungal infection; coherent gray stone, weathered brown wood, olive moss palette, no neon. Rich crisp stylized 3D concept rendering. Infer unseen rear coherently, do not duplicate front entrance onto rear. Small exact labels FRONT, BACK, RIGHT SIDE beneath. No other buildings, people, scenery or annotations. NEW DESIGN: enormous magnificent infected Byzantine imperial palace-city inspired by Constantinople's Great Palace, NOT a cathedral and NOT a small church. Reference images ONLY guide desaturated stone/material/infection palette. Vast multi-tier walled imperial compound, monumental central domed audience palace, extensive arcaded palace wings and courtyards, broad ceremonial gate, rhythmic square towers and double fortress ramparts, several subordinate shallow domes and muted dark slate/bronze roofs. Imposing horizontal scale and imperial architecture clearly exceeds ordinary buildings. Fully infected by the same restrained dark-purple fungal cysts and black-brown tendrils, visible cracks and roof breaches but recognizable imperial magnificence. Three true orthographic elevations of this SAME complete compound, coherent dome and tower positions, full unclipped silhouettes. NO minarets, no modern city skyline. Rear is fortified palace facade distinct from ceremonial front.",
+      "generated_source": "/Users/tankaixi/.codex/generated_images/01a130c9-148d-73e1-91fe-ef5d4a325b94/exec-a65567ff-20c1-4191-a05a-ab0985deff22.png",
+      "validation": {
+        "inspected": true,
+        "views": "front/back/right side",
+        "palette": "desaturated gray-brown regional materials, dark purple pods, black-brown roots",
+        "note": "New imperial palace concept: central dome, extensive palace wings, ramparts, distinct fortified rear."
+      }
+    }
+  ]
+}

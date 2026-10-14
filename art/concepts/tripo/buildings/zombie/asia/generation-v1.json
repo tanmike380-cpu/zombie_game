@@ -1,0 +1,64 @@
+{
+  "date": "2026-10-12",
+  "tool": "built-in image_gen",
+  "scope": "asia only",
+  "assets": [
+    {
+      "folder": "06-pagoda-core",
+      "prompt": "Use case: stylized-concept. Create a wide three-column architectural turnaround sheet of exactly the infected Chinese pagoda in the reference. Three separate nonoverlapping views ordered FRONT, BACK, RIGHT SIDE, small labels. True orthographic straight-on elevation cameras, no three-quarter perspective, no looking down; same scale, ground baseline, full spire and base with generous margins. Preserve seven-tier pagoda silhouette, curved charcoal tiled roofs, aged muted reddish brown timber, gray brown stone base, broken upper roof and dark purple egg-like infection and black tendrils. Each view is same building rotated, consistent roof levels and structural proportions; rear should be plausible rear, not copy of entrance. Neutral pale gray background, soft even lighting, high detail realistic RTS concept materials. No new bright colors, people, scenery, additional buildings, cropping or perspective.",
+      "generated_source": "/Users/tankaixi/.codex/generated_images/01a129cc-bd3f-7b93-b45a-8a4072b1fa08/exec-1e68a29c-3b9d-45ad-bba2-d825eb1c366a.png",
+      "output": "06-pagoda-core/three-views-v1.png",
+      "check": "Three labeled elevations, complete spire/base; muted reference palette retained. AI rear/side inferred, not measured geometry.",
+      "reference": "06-pagoda-core/reference.png"
+    },
+    {
+      "folder": "07-courtyard-house",
+      "prompt": "Use case: stylized-concept. Make a wide three-column turnaround sheet of EXACTLY the reference infected Chinese building. LEFT FRONT elevation, MIDDLE BACK elevation, RIGHT RIGHT-SIDE elevation, small labels. True straight-on orthographic elevations with horizontal camera, NO three-quarter view, NO looking down, same scale and ground baseline, full building with margins. Same single coherent structure rotated; retain roof, damage, proportions and decorations; unseen rear logically reconstructed, no front door copied to back. Preserve muted charcoal gray roof tiles, weathered brown timber, gray-brown masonry, dark purple infection sacs and black-brown roots. Neutral pale gray studio background, soft even light, detailed realistic RTS concept materials. No bright colors, people, landscape, cropping. Square single-storey enclosed courtyard house: front central gate, long gray tiled front wing, taller rear hall, two side wings, cracked cream-gray plaster on brick plinth. Show true external elevations, rear hall roof correctly rises above gate in front view.",
+      "generated_source": "/Users/tankaixi/.codex/generated_images/01a129cc-bd3f-7b93-b45a-8a4072b1fa08/exec-bc271b4b-a685-4437-8c5b-0d5fb215dad1.png",
+      "output": "07-courtyard-house/three-views-v1.png",
+      "check": "Three complete labeled elevations; front/back differentiated, muted palette preserved. Rear and side are AI reconstructions.",
+      "reference": "07-courtyard-house/reference.png"
+    },
+    {
+      "folder": "08-timber-shrine",
+      "prompt": "Use case: stylized-concept. Make a wide three-column turnaround sheet of EXACTLY the reference infected Chinese building. LEFT FRONT elevation, MIDDLE BACK elevation, RIGHT RIGHT-SIDE elevation, small labels. True straight-on orthographic elevations with horizontal camera, NO three-quarter view, NO looking down, same scale and ground baseline, full building with margins. Same single coherent structure rotated; retain roof, damage, proportions and decorations; unseen rear logically reconstructed, no front door copied to back. Preserve muted charcoal gray roof tiles, weathered brown timber, gray-brown masonry, dark purple infection sacs and black-brown roots. Neutral pale gray studio background, soft even light, detailed realistic RTS concept materials. No bright colors, people, landscape, cropping. Wide Chinese timber ancestral shrine: huge ornate curved tiled roof, low side wings, reddish brown columns and broad frontal stone stairs. Right roof broken and purple infected. Rear a believable closed rear wall, front portico only in front.",
+      "generated_source": "/Users/tankaixi/.codex/generated_images/01a129cc-bd3f-7b93-b45a-8a4072b1fa08/exec-a6f40d5c-a238-4491-a5ae-0cfd9f0477b9.png",
+      "output": "08-timber-shrine/three-views-v1.png",
+      "check": "Three complete labeled elevations; front/back differentiated, muted palette preserved. Rear and side are AI reconstructions.",
+      "reference": "08-timber-shrine/reference.png"
+    },
+    {
+      "folder": "09-watch-hall",
+      "prompt": "Use case: stylized-concept. Wide three-column architectural turnaround sheet, left FRONT, middle BACK, right RIGHT SIDE, small labels. True straight-on orthographic elevations, camera horizontal, no perspective or three-quarter views. Same one coherent building rotated, same scale/ground baseline, whole silhouette fully inside generous margins. Soft studio lighting and neutral pale gray background. Preserve reference palette: weathered dark brown timber, muted gray-brown masonry, charcoal gray tiles, dark purple infection sacs with black-brown roots, no neon greens or reds. Detailed realistic RTS concept materials. Preserve EXACT reference Chinese narrow tall four-storey watch hall, off-white cracked plaster, barred windows, broken curved roof and jutting open upper right balcony, uneven purple growths. Front entrance stairs only front. Back and right side structurally consistent with balcony on same real-world side.",
+      "generated_source": "/Users/tankaixi/.codex/generated_images/01a129cc-bd3f-7b93-b45a-8a4072b1fa08/exec-cab7d60a-817c-425c-903e-4d6d0b0bcb3b.png",
+      "output": "09-watch-hall/three-views-draft-v1.png",
+      "check": "Draft: side view too oblique; correction required.",
+      "reference": "09-watch-hall/reference.png"
+    },
+    {
+      "folder": "10-stilt-house",
+      "prompt": "Use case: stylized-concept. Wide three-column architectural turnaround sheet, left FRONT, middle BACK, right RIGHT SIDE, small labels. True straight-on orthographic elevations, camera horizontal, no perspective or three-quarter views. Same one coherent building rotated, same scale/ground baseline, whole silhouette fully inside generous margins. Soft studio lighting and neutral pale gray background. Preserve reference palette: weathered dark brown timber, muted gray-brown masonry, charcoal gray tiles, dark purple infection sacs with black-brown roots, no neon greens or reds. Detailed realistic RTS concept materials. Preserve EXACT reference Chinese single-storey wide stilt house with broad dark tiled roof, broken infected right roof, elevated deck on wooden poles, central front stairs, narrow right-side reed awning and railings. Rear has rear timber/plaster wall rather than copied front entrance.",
+      "generated_source": "/Users/tankaixi/.codex/generated_images/01a129cc-bd3f-7b93-b45a-8a4072b1fa08/exec-69908650-81b0-487f-9ca6-2feeb5914911.png",
+      "output": "10-stilt-house/three-views-v1.png",
+      "check": "Complete labeled elevations, consistent palette and stilt/platform silhouette.",
+      "reference": "10-stilt-house/reference.png"
+    },
+    {
+      "folder": "16-asia-infected-imperial-palace",
+      "prompt": "Use case: stylized-concept. Wide three-column architectural turnaround sheet, left FRONT, middle BACK, right RIGHT SIDE, small labels. True straight-on orthographic elevations, camera horizontal, no perspective or three-quarter views. Same one coherent building rotated, same scale/ground baseline, whole silhouette fully inside generous margins. Soft studio lighting and neutral pale gray background. Preserve reference palette: weathered dark brown timber, muted gray-brown masonry, charcoal gray tiles, dark purple infection sacs with black-brown roots, no neon greens or reds. Detailed realistic RTS concept materials. NEW monumental infected Chinese imperial palace citadel, use reference only as material/color/architectural style. Vast majestic palace complex with huge imposing central imperial throne hall, multiple stacked sweeping roofs, terraces, long symmetrical flanking palace wings, outer enclosing stone walls, grand ceremonial front gate and broad stairs, very strong emperor capital silhouette and coherent complete complex. Clearly larger and grander than ordinary shrine. Old desaturated bronze-gold roof accents sparingly, mostly dark gray tile and ancient weathered timber, monumental gray-brown stone terraces. Strong dark purple infection sacs and black roots bursting through roof/walls, age/damage while retaining grand imperial dignity. Rear elevation retains tall central hall and enclosure but is unmistakably closed rear palace; side elevation shows coherent length of complex. One consistent palace design in all views.",
+      "generated_source": "/Users/tankaixi/.codex/generated_images/01a129cc-bd3f-7b93-b45a-8a4072b1fa08/exec-859e3b9a-156e-4d88-9590-e0cdd666ac7a.png",
+      "output": "16-asia-infected-imperial-palace/three-views-v1.png",
+      "check": "Complete majestic infected imperial complex, same muted palette, front/back/right side in three horizontal rows to fit wide facade.",
+      "reference": "08-timber-shrine/reference.png"
+    },
+    {
+      "folder": "09-watch-hall",
+      "prompt": "Precise object edit: repair ONLY viewing angles on this watch hall turnaround. Preserve same tower, palette, materials, dimensions, damage, sacs, height, tiers, balconies, labels and three-column sheet. Make all three images TRUE ORTHOGRAPHIC axis-aligned elevations. FRONT left camera exactly square to front door facade; BACK middle square to rear; RIGHT SIDE right camera exactly square to right wall, rotate entire tower 90 degrees from front so NO front-door facade is visible in right panel. Right wall and projecting balconies face viewer directly, roof gable side profile visible, NO three-quarter angle, NO corner view, NO perspective depth convergence. Same scale/baseline, full object uncropped. Neutral background. Do not redesign.",
+      "reference": "09-watch-hall/three-views-draft-v1.png",
+      "generated_source": "/Users/tankaixi/.codex/generated_images/01a129cc-bd3f-7b93-b45a-8a4072b1fa08/exec-6a767410-d3f1-44a1-8779-7b17fe048b3f.png",
+      "output": "09-watch-hall/three-views-v1.png",
+      "check": "Corrected front/rear/right elevation; complete uncropped silhouette and matched dark purple infection. Side now aligned; AI views remain interpretive not calibrated."
+    }
+  ],
+  "notes": "Original reference images untouched. Final six sheets each contain three views. Palace uses horizontal rows to preserve facade detail. Draft watch-hall retained but not accepted input. No image editing through Python. AI views are concept reconstructions, not measured orthographic CAD."
+}

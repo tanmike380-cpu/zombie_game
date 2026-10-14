@@ -1,0 +1,64 @@
+{
+  "date": "2026-10-12",
+  "collections": [
+    {
+      "previous_path": "art/concepts/2026-10-11-zombie-lairs",
+      "canonical_path": "art/concepts/tripo/buildings/zombie",
+      "compatibility_symlink": "tripo/buildings/zombie",
+      "file_count": 20,
+      "png_count": 15,
+      "all_files_hash_verified_before_metadata_update": true,
+      "png_sha256": {
+        "middleeast/15-middleeast-bazaar/reference.png": "e04a4533898a677a90e0165b8d35b17c4a6278e93c7dae23aa0823a899eccfc0",
+        "middleeast/11-middleeast-cistern/reference.png": "64f0e41e05585ea4a7527345cba9f59016ff6e7189ac331c9bf08d2d14e850cd",
+        "middleeast/12-middleeast-adobe/reference.png": "b0cb29a75e9a0b0e7f14b7037304fb12f477b54f8393e0fbe60ee2ff7f77bf3c",
+        "middleeast/13-middleeast-caravanserai/reference.png": "9f53e6777b51288bbc1d415c518eb2d77399b4fb09983c1d83988cff83689c59",
+        "middleeast/14-middleeast-basalt-house/reference.png": "b2cb1084c8218d0a4d01950190f76aaaf58a7bb556b0884e21711e55e68f63c3",
+        "asia/08-timber-shrine/reference.png": "6f5741607e2335bfe9179f123f2aaf3bc768e7c8b983e9f74cc3cacac6a88ff2",
+        "asia/09-watch-hall/reference.png": "47f15acd0c3fdc20f6980027ebf7997821f62f96a5aae33fdeca7c4cd046be65",
+        "asia/07-courtyard-house/reference.png": "62d384c5116fea18533ce879dc68142d630c9a25f0549417cf869576213e3248",
+        "asia/06-pagoda-core/reference.png": "9a1728830f9d7d432e6c7c285f1f8f9582b986e4cba332656f0bb6f1df5ded7f",
+        "asia/10-stilt-house/reference.png": "6549ef63251546c328c0131c9576127db2390d2678a02e676584b73570c30304",
+        "europe/02-europe-tenement/reference.png": "fcda1e8c51ce28b435d3e1f88a3cba45289c624706e2143447e630caeb8a69a1",
+        "europe/04-europe-keep/reference.png": "1c28704ac0fd1b9322f8c0cc78707930d7c5a74947c6e0911cb7afb75e3b63e3",
+        "europe/01-europe-cathedral/reference.png": "9063d11932df85e3f94bc18ecfd96376c5bb51b491b0248c143e85d26b0b8a79",
+        "europe/05-europe-barn/reference.png": "5c1040530c2b5f0dec1ed8f25abe5c2cced7d8493261669dee62111f4067a593",
+        "europe/03-europe-watermill/reference.png": "e3c9091b37c0feefdd9dcd83c941195fd258aa7f7ab84ad4a7de783d14ae5dd3"
+      }
+    },
+    {
+      "previous_path": "art/concepts/2026-10-10-resource-nodes",
+      "canonical_path": "art/concepts/tripo/resource",
+      "compatibility_symlink": "tripo/resource",
+      "file_count": 29,
+      "png_count": 24,
+      "all_files_hash_verified_before_metadata_update": true,
+      "png_sha256": {
+        "01-natural/gold/side.png": "a7e2dab7680b2d4a88d591bddcd5c65577acc11ea0f5afa6e820a186d33c7f26",
+        "01-natural/gold/reference.png": "fa8f68d8b3c00626f10df44de062371ae5da57d7dad54dfb9ec813caf854618b",
+        "01-natural/gold/back.png": "3453241babb5b9d26e7db232633c8283f4afadae226823d0b174821e8e4f9d83",
+        "01-natural/gold/front.png": "cd205720d3313560f87dc708261258f60dd9d324abf1c2b911712c3284c1da0b",
+        "01-natural/iron/side.png": "03066a5e084f891fc420837e4651bc753d59c57fef4ec59372192806b0297ea2",
+        "01-natural/iron/reference.png": "e736873d8378fbe85816d3cc06218a9274dd8ea94ae9e72002c90cc00c34104b",
+        "01-natural/iron/back.png": "7ca780b5854a302e7f15268245ae39e8f04ed3bc2fa09feadce9bf80d594b6ad",
+        "01-natural/iron/front.png": "a2f8e8c18c7aad0b13fcd2d0b2d8e85c9b3e199f0a0d7cf50e4cb18736ccc906",
+        "01-natural/stone/side.png": "42f14ce9f9560bef09cb0dd756a4b9fe4e012b248e92c44e946ecee9781e98ac",
+        "01-natural/stone/reference.png": "6b4ca26b715022970c5f5a4e31bea628c4b81a8b938898fed92bba4d0b17471e",
+        "01-natural/stone/back.png": "3ec35b04f7199d4ecdc35f04dd4d54f6b5cab0352041d96d5a829f4136af9dc7",
+        "01-natural/stone/front.png": "2be6c8c9d626ccb8ad3b0fa6f0f635a0f7cf04208f920f743aaff0a27c0e7173",
+        "05-crystalline/gold/reference.png": "35dcf856f030b832cc44217485f04f4f8a0fcc69baf0cac3950b46b01ad54ee2",
+        "05-crystalline/iron/reference.png": "c0c3ff19103b8b8c88b16b8c2471e61d389cad6a6690def56f8ceb5dc6031ce4",
+        "05-crystalline/stone/reference.png": "25ad0104ebd88c3aa931ee1dae5fcde86f206a51aa6aac14a1fbcb303a66eb11",
+        "04-quarry/gold/reference.png": "2301b2ff0bd3c1199303bcbca37361d61ef0eaba1b8c656722d34c735edd0094",
+        "04-quarry/iron/reference.png": "eae9ff04108e73ac5443632a5ec66a29444a5801899f0194cbadd5299aa48790",
+        "04-quarry/stone/reference.png": "0ae765a276d4edf686ddd9b1b012dfca023a70088f513b9d04d04c6ecf134bd9",
+        "03-dark/gold/reference.png": "f173aa502ecd580bda35f60a786b1388c1adc0483073094d55c4a97556cebd56",
+        "03-dark/iron/reference.png": "33a575bbde86b59acd0ae49a1157ad6e2f4424deb63fab2d4a967ce7699011c2",
+        "03-dark/stone/reference.png": "e9cf6e1fb8bac0e072e12e967095860ed44d49d015ab7de60b2530e0052d4ecf",
+        "02-painted/gold/reference.png": "ac47f9d00a2f086c7f09dc9dce69c3f7838cd7399999a1ca0483624ef4760eb4",
+        "02-painted/iron/reference.png": "549c1ed373f38ca3919a150285763fae977e69f753754ea2ec4593d0251db249",
+        "02-painted/stone/reference.png": "927abe079881dcffff3a5bcd2a31b69975cbeab609858af268380f6e4d38f264"
+      }
+    }
+  ]
+}

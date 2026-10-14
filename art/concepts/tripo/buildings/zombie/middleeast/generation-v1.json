@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-12",
+  "mode": "built-in image_gen",
+  "scope": "Middle Eastern zombie building concept turnarounds only; no Blender or Unity assets modified",
+  "originals_preserved": true,
+  "assets": [
+    {
+      "asset": "11-middleeast-cistern",
+      "prompt": "Use case: stylized-concept. Create a large landscape three-panel modeling reference sheet of ONE identical building, accurate FRONT elevation left, BACK elevation center, RIGHT SIDE elevation right, labeled FRONT / BACK / RIGHT SIDE. True orthographic camera horizontal, no three-quarter perspective, never repeat the front as the back. Entire building and ground base visible at the SAME SCALE and shared ground baseline in all panels, generous gaps, light neutral gray background, crisp detailed game concept render, soft neutral light. Preserve the reference building's silhouette, parts, materials and muted palette: weathered ochre/sandstone or dark basalt where shown, dusty turquoise accents, charcoal black tendrils, muted plum purple fungal bulbs and mushrooms. No neon green, no characters, no scenery, no additional buildings. Back and side must be structurally coherent inferred unseen surfaces, not a redesign. Input image 1 is identity reference. Subject: infected domed cistern palace exactly as reference, giant fractured central ochre dome with purple pods, two lower flanking domed wings, tall rectangular wind tower at rear right, turquoise mosaic bands, central pointed-arch entry and steps, two small front pools. Keep all components and their positions.",
+      "source": "11-middleeast-cistern/reference.png",
+      "output": "11-middleeast-cistern/three-views-v1.png",
+      "validation": {
+        "visual_inspected": true,
+        "views": [
+          "FRONT",
+          "BACK",
+          "RIGHT SIDE"
+        ],
+        "full_building_visible": true,
+        "palette": "muted stone / dusty turquoise / dark purple sacs / black-brown tendrils",
+        "note": "Distinct front, rear and side elevations. Original silhouette and major architectural parts retained. Unseen surfaces inferred; concept reference, not measured CAD."
+      }
+    },
+    {
+      "asset": "12-middleeast-adobe",
+      "prompt": "Use case: stylized-concept. Create a large landscape three-panel modeling reference sheet of ONE identical building, accurate FRONT elevation left, BACK elevation center, RIGHT SIDE elevation right, labeled FRONT / BACK / RIGHT SIDE. True orthographic camera horizontal, no three-quarter perspective, never repeat the front as the back. Entire building and ground base visible at the SAME SCALE and shared ground baseline in all panels, generous gaps, light neutral gray background, crisp detailed game concept render, soft neutral light. Preserve the reference building's silhouette, parts, materials and muted palette: weathered ochre/sandstone or dark basalt where shown, dusty turquoise accents, charcoal black tendrils, muted plum purple fungal bulbs and mushrooms. No neon green, no characters, no scenery, no additional buildings. Back and side must be structurally coherent inferred unseen surfaces, not a redesign. Input image is strict identity reference. Small infected adobe hut attached to exceptionally tall square slotted windcatcher tower on left, flat parapet hut roof, wooden doorway front, side window with tattered cloth awning, dark roots and purple pods climbing tower. Preserve exactly this humble scale and proportion.",
+      "source": "12-middleeast-adobe/reference.png",
+      "output": "12-middleeast-adobe/three-views-v1.png",
+      "validation": {
+        "visual_inspected": true,
+        "views": [
+          "FRONT",
+          "BACK",
+          "RIGHT SIDE"
+        ],
+        "full_building_visible": true,
+        "palette": "muted stone / dusty turquoise / dark purple sacs / black-brown tendrils",
+        "note": "Distinct front, rear and side elevations. Original silhouette and major architectural parts retained. Unseen surfaces inferred; concept reference, not measured CAD."
+      }
+    },
+    {
+      "asset": "13-middleeast-caravanserai",
+      "prompt": "Use case: stylized-concept. Create a large landscape three-panel modeling reference sheet of ONE identical building, accurate FRONT elevation left, BACK elevation center, RIGHT SIDE elevation right, labeled FRONT / BACK / RIGHT SIDE. True orthographic camera horizontal, no three-quarter perspective, never repeat the front as the back. Entire building and ground base visible at the SAME SCALE and shared ground baseline in all panels, generous gaps, light neutral gray background, crisp detailed game concept render, soft neutral light. Preserve the reference building's silhouette, parts, materials and muted palette: weathered ochre/sandstone or dark basalt where shown, dusty turquoise accents, charcoal black tendrils, muted plum purple fungal bulbs and mushrooms. No neon green, no characters, no scenery, no additional buildings. Back and side must be structurally coherent inferred unseen surfaces, not a redesign. Input image is strict identity reference. Large single square courtyard caravanserai, central monumental turquoise-tiled pointed front gate flanked by two small domed turrets, low perimeter walls, inner courtyard fountain and arched galleries, rear raised iwan with tiled dome, one collapsed right-front corner. Preserve the existing plan and ruin positions. Show accurate facade elevations not overhead views.",
+      "source": "13-middleeast-caravanserai/reference.png",
+      "output": "13-middleeast-caravanserai/three-views-v1.png",
+      "validation": {
+        "visual_inspected": true,
+        "views": [
+          "FRONT",
+          "BACK",
+          "RIGHT SIDE"
+        ],
+        "full_building_visible": true,
+        "palette": "muted stone / dusty turquoise / dark purple sacs / black-brown tendrils",
+        "note": "Distinct front, rear and side elevations. Original silhouette and major architectural parts retained. Unseen surfaces inferred; concept reference, not measured CAD."
+      }
+    },
+    {
+      "asset": "14-middleeast-basalt-house",
+      "prompt": "Use case: stylized-concept. Create a large landscape three-panel modeling reference sheet of ONE identical building, accurate FRONT elevation left, BACK elevation center, RIGHT SIDE elevation right, labeled FRONT / BACK / RIGHT SIDE. True orthographic camera horizontal, no three-quarter perspective, never repeat the front as the back. Entire building and ground base visible at the SAME SCALE and shared ground baseline in all panels, generous gaps, light neutral gray background, crisp detailed game concept render, soft neutral light. Preserve the reference building's silhouette, parts, materials and muted palette: weathered ochre/sandstone or dark basalt where shown, dusty turquoise accents, charcoal black tendrils, muted plum purple fungal bulbs and mushrooms. No neon green, no characters, no scenery, no additional buildings. Back and side must be structurally coherent inferred unseen surfaces, not a redesign. Input image is strict identity reference. Stepped rooftop basalt stone house with worn pale plaster infill, front arched doorway and steps, front-right low timber awning, rooftop central stair and small upper room, rooftop tattered fabric canopy, enormous purple infection sac along building LEFT flank. Keep that sac position and its visibility appropriate to each view; do not mirror it to right. Distinguish rear wall from front entry.",
+      "source": "14-middleeast-basalt-house/reference.png",
+      "output": "14-middleeast-basalt-house/three-views-v1.png",
+      "validation": {
+        "visual_inspected": true,
+        "views": [
+          "FRONT",
+          "BACK",
+          "RIGHT SIDE"
+        ],
+        "full_building_visible": true,
+        "palette": "muted stone / dusty turquoise / dark purple sacs / black-brown tendrils",
+        "note": "Distinct front, rear and side elevations. Original silhouette and major architectural parts retained. Unseen surfaces inferred; concept reference, not measured CAD."
+      }
+    },
+    {
+      "asset": "15-middleeast-bazaar",
+      "prompt": "Use case: stylized-concept. Create a large landscape three-panel modeling reference sheet of ONE identical building, accurate FRONT elevation left, BACK elevation center, RIGHT SIDE elevation right, labeled FRONT / BACK / RIGHT SIDE. True orthographic camera horizontal, no three-quarter perspective, never repeat the front as the back. Entire building and ground base visible at the SAME SCALE and shared ground baseline in all panels, generous gaps, light neutral gray background, crisp detailed game concept render, soft neutral light. Preserve the reference building's silhouette, parts, materials and muted palette: weathered ochre/sandstone or dark basalt where shown, dusty turquoise accents, charcoal black tendrils, muted plum purple fungal bulbs and mushrooms. No neon green, no characters, no scenery, no additional buildings. Back and side must be structurally coherent inferred unseen surfaces, not a redesign. Input image is strict identity reference. One long row of three sandstone barrel-vaulted bazaar shops, weathered turquoise wooden doors and faded dusty mauve striped front fabric awnings, broken small wooden stall on left, smaller flat end annex on right with lattice window, central barrel vault split and infected, dark roots and purple mushrooms and pods. Front shows three shop portals; rear is solid service wall without repeated front striped storefronts; RIGHT end view is narrow because building is much wider than deep. Preserve exact three barrel vaults.",
+      "source": "15-middleeast-bazaar/reference.png",
+      "output": "15-middleeast-bazaar/three-views-v1.png",
+      "validation": {
+        "visual_inspected": true,
+        "views": [
+          "FRONT",
+          "BACK",
+          "RIGHT SIDE"
+        ],
+        "full_building_visible": true,
+        "palette": "muted stone / dusty turquoise / dark purple sacs / black-brown tendrils",
+        "note": "Distinct front, rear and side elevations. Original silhouette and major architectural parts retained. Unseen surfaces inferred; concept reference, not measured CAD."
+      }
+    },
+    {
+      "asset": "18-middleeast-infected-imperial-palace",
+      "prompt": "Use case: stylized-concept. Create a large landscape three-panel modeling reference sheet of ONE identical building, accurate FRONT elevation left, BACK elevation center, RIGHT SIDE elevation right, labeled FRONT / BACK / RIGHT SIDE. True orthographic camera horizontal, no three-quarter perspective, never repeat the front as the back. Entire building and ground base visible at the SAME SCALE and shared ground baseline in all panels, generous gaps, light neutral gray background, crisp detailed game concept render, soft neutral light. Use the reference's materials and muted palette: weathered ochre/sandstone or dark basalt where shown, dusty turquoise accents, charcoal black tendrils, muted plum purple fungal bulbs and mushrooms. No neon green, no characters, no outside scenery. Back and side must be structurally coherent views of the SAME new palace. Input image is STYLE AND MATERIAL reference only. Design a NEW monumental infected Ottoman imperial palace fortress inspired by Istanbul and the immense Topkapi-style imperial compound: a vast and grand coherent palace city on one enormous rectangular fortified podium, layered royal courtyards and terraced palace halls, grand front twin-towered imperial gate, long columned galleries, several cascading domed audience pavilions, a tall central imperial justice tower, strong fortified corners and ornate but restrained turquoise tilework. Palace not a standalone mosque, no forest of minarets. Monumental scale unmistakably larger and grander than reference caravanserai, intricate but readable broad silhouette. Low saturation weathered gray-brown sandstone, dark desaturated teal roofs/tiles, charcoal-black tendrils enveloping walls and rupturing selected domes, dusty dark-purple sacs and shelf fungi, infected abandoned grandeur. Same palace plan/proportions in each true elevation. Front ceremonial gate differs from rear palace terrace facade; right side shows long compound depth. Light neutral background. Large landscape image with sufficient resolution for rich architectural detail.",
+      "source": "13-middleeast-caravanserai/reference.png",
+      "output": "18-middleeast-infected-imperial-palace/three-views-v1.png",
+      "validation": {
+        "visual_inspected": true,
+        "views": [
+          "FRONT",
+          "BACK",
+          "RIGHT SIDE"
+        ],
+        "full_building_visible": true,
+        "palette": "muted stone / dusty turquoise / dark purple sacs / black-brown tendrils",
+        "note": "Three stacked rows instead of columns preserve detail of the extremely wide monumental palace compound. Distinct front gate, rear terraced palace and long side elevation. Concept interpretation, not measured CAD."
+      }
+    }
+  ]
+}

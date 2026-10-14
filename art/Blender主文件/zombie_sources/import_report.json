@@ -1,0 +1,122 @@
+[
+  {
+    "collection": "Zombie · Normal · Animated",
+    "source": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/Blender主文件/zombie_sources/normal/tripo_convert_d9e01d9b-7e4d-470c-8ae2-fad160a003e7.fbx",
+    "objects": [
+      "Armature",
+      "tripo_node_d9e01d9b"
+    ],
+    "actions": [
+      {
+        "name": "Armature|僵尸慢慢悠悠的走 / 看到敌人冲上去抓.001",
+        "frames": [
+          1.0,
+          144.0
+        ],
+        "slots": [
+          "OBSlot"
+        ]
+      },
+      {
+        "name": "Armature|Savage zombie melee attack. Brief anticipation, then suddenly l",
+        "frames": [
+          1.0,
+          120.0
+        ],
+        "slots": [
+          "OBSlot"
+        ]
+      },
+      {
+        "name": "Armature|这是一只僵尸，他在慢慢悠悠的走路.001",
+        "frames": [
+          1.0,
+          120.0
+        ],
+        "slots": [
+          "OBSlot"
+        ]
+      },
+      {
+        "name": "Armature|Unsettling zombie idle animation. Hunched body, drooping uneven",
+        "frames": [
+          1.0,
+          72.0
+        ],
+        "slots": [
+          "OBSlot"
+        ]
+      },
+      {
+        "name": "Armature|Feral zombie charge after spotting an enemy. Strong forward lea",
+        "frames": [
+          1.0,
+          120.0
+        ],
+        "slots": [
+          "OBSlot"
+        ]
+      }
+    ]
+  },
+  {
+    "collection": "Zombie · Explore · Animated",
+    "source": "/Users/tankaixi/Documents/ChatGPT/zombie game/art/Blender主文件/zombie_sources/explore/tripo_convert_28e507cc-e072-4141-96ec-e6dd00cff48c.fbx",
+    "objects": [
+      "Armature.001",
+      "tripo_node_28e507cc"
+    ],
+    "actions": [
+      {
+        "name": "Armature.001|Unsettling zombie idle animation. Hunched body, drooping uneven",
+        "frames": [
+          1.0,
+          72.0
+        ],
+        "slots": [
+          "OBSlot"
+        ]
+      },
+      {
+        "name": "Armature.001|Feral zombie charge after spotting an enemy. Strong forward lea",
+        "frames": [
+          1.0,
+          120.0
+        ],
+        "slots": [
+          "OBSlot"
+        ]
+      },
+      {
+        "name": "Armature.001|Slow shambling zombie walk for an RTS game. Slightly hunched po",
+        "frames": [
+          1.0,
+          120.0
+        ],
+        "slots": [
+          "OBSlot"
+        ]
+      },
+      {
+        "name": "Armature.001|Savage zombie melee attack. Brief anticipation, then suddenly l",
+        "frames": [
+          1.0,
+          120.0
+        ],
+        "slots": [
+          "OBSlot"
+        ]
+      },
+      {
+        "name": "Armature.001|这是一只僵尸，他在慢慢悠悠的走路.001",
+        "frames": [
+          1.0,
+          120.0
+        ],
+        "slots": [
+          "OBSlot"
+        ]
+      }
+    ]
+  }
+]

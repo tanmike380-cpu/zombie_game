@@ -32015,5 +32015,23 @@
         }
       ]
     }
+  ],
+  "additional_concept_collections": [
+    {
+      "path": "buildings/zombie",
+      "manifest": "buildings/zombie/manifest.json",
+      "png_count": 91,
+      "status": "18-concepts-with-54-separate-views; awaiting-review; no-runtime-implementation",
+      "asset_count": 18,
+      "individual_view_count": 54
+    },
+    {
+      "path": "resource",
+      "manifest": "resource/manifest.json",
+      "selected_views_manifest": "resource/01-natural/views-manifest.json",
+      "png_count": 24,
+      "selected_style": "01-natural",
+      "status": "selected-natural-views-and-preserved-candidates; no-runtime-implementation"
+    }
   ]
 }

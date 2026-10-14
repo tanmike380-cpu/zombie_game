@@ -1,0 +1,203 @@
+{
+  "method": "User-requested mechanical panel extraction with sips, no resizing or redraw; 1px outer canvas omitted to avoid zero-offset fallback",
+  "assets": [
+    {
+      "source": "01-europe-cathedral/three-views-v1.png",
+      "output": "01-europe-cathedral/front.png",
+      "crop_xywh": [
+        1,
+        1,
+        689,
+        757
+      ],
+      "sha256": "f60b35ebbc2eadfe268f00bcc55bb04457fb9b9417f5de373d441d80d3a948ed"
+    },
+    {
+      "source": "01-europe-cathedral/three-views-v1.png",
+      "output": "01-europe-cathedral/back.png",
+      "crop_xywh": [
+        690,
+        1,
+        690,
+        757
+      ],
+      "sha256": "7caba618c248ea8b65de1b0eb41683334f54546b0c36ed7647076d447a9eb46e"
+    },
+    {
+      "source": "01-europe-cathedral/three-views-v1.png",
+      "output": "01-europe-cathedral/side.png",
+      "crop_xywh": [
+        1380,
+        1,
+        693,
+        757
+      ],
+      "sha256": "b984ae031e77fdc0e28dda27a7dbbdb9bd03c340b59175d4e30bb374059ebc15"
+    },
+    {
+      "source": "02-europe-tenement/three-views-v1.png",
+      "output": "02-europe-tenement/front.png",
+      "crop_xywh": [
+        1,
+        1,
+        554,
+        808
+      ],
+      "sha256": "384bd0f8a19d4d2462d3a4a8123abec389bb7e5078948a4699ca109655ace10f"
+    },
+    {
+      "source": "02-europe-tenement/three-views-v1.png",
+      "output": "02-europe-tenement/back.png",
+      "crop_xywh": [
+        555,
+        1,
+        550,
+        808
+      ],
+      "sha256": "a72b80180331710f2cb11e41159aa1237cd4c1ce37e683333b667f9231e92ca1"
+    },
+    {
+      "source": "02-europe-tenement/three-views-v1.png",
+      "output": "02-europe-tenement/side.png",
+      "crop_xywh": [
+        1105,
+        1,
+        837,
+        808
+      ],
+      "sha256": "e58f9f92fdff3e195dd18b927cf3f4ca53e763b1456d64423f29fcb87e39babe"
+    },
+    {
+      "source": "03-europe-watermill/three-views-v1.png",
+      "output": "03-europe-watermill/front.png",
+      "crop_xywh": [
+        1,
+        1,
+        703,
+        808
+      ],
+      "sha256": "b2bb4a4aaa9c7aeb947bfaa2aabb6faffadb0b93055ffc19da90eae9d22e3ccd"
+    },
+    {
+      "source": "03-europe-watermill/three-views-v1.png",
+      "output": "03-europe-watermill/back.png",
+      "crop_xywh": [
+        704,
+        1,
+        686,
+        808
+      ],
+      "sha256": "0112dd875f24210c1f2feedf586531e0c9b2d3bf80038580f9835e5b77d924aa"
+    },
+    {
+      "source": "03-europe-watermill/three-views-v1.png",
+      "output": "03-europe-watermill/side.png",
+      "crop_xywh": [
+        1390,
+        1,
+        552,
+        808
+      ],
+      "sha256": "b5a05a6f0a449fd809b4ab5cd87143923ab7aed9fb9a2d1276531619c667fa17"
+    },
+    {
+      "source": "04-europe-keep/three-views-v1.png",
+      "output": "04-europe-keep/front.png",
+      "crop_xywh": [
+        1,
+        1,
+        634,
+        792
+      ],
+      "sha256": "171d327aa7d729ab20fc03fc6e1589a58a94d9cb110554e3442037df9d4f0641"
+    },
+    {
+      "source": "04-europe-keep/three-views-v1.png",
+      "output": "04-europe-keep/back.png",
+      "crop_xywh": [
+        635,
+        1,
+        615,
+        792
+      ],
+      "sha256": "b038671c2ba8f688c6a7bf7295a88d9f7d57975a0661e7a683154a5e20e51d6f"
+    },
+    {
+      "source": "04-europe-keep/three-views-v1.png",
+      "output": "04-europe-keep/side.png",
+      "crop_xywh": [
+        1250,
+        1,
+        733,
+        792
+      ],
+      "sha256": "84d867372bb295553048ce29afb51ef744fa9f03c116937365f0f3feb38e5702"
+    },
+    {
+      "source": "05-europe-barn/three-views-v1.png",
+      "output": "05-europe-barn/front.png",
+      "crop_xywh": [
+        1,
+        1,
+        764,
+        792
+      ],
+      "sha256": "ad5106b18741e05223e62467c9bbb60112a8835ad4083b24692e565994eb9ad1"
+    },
+    {
+      "source": "05-europe-barn/three-views-v1.png",
+      "output": "05-europe-barn/back.png",
+      "crop_xywh": [
+        765,
+        1,
+        745,
+        792
+      ],
+      "sha256": "1082ec9325538a0b2ef3857bd0e31e1f946bc2856168a3c57feaf99bdb6cf198"
+    },
+    {
+      "source": "05-europe-barn/three-views-v1.png",
+      "output": "05-europe-barn/side.png",
+      "crop_xywh": [
+        1510,
+        1,
+        473,
+        792
+      ],
+      "sha256": "d7abe6f1653522926efe1ff0ad628ec16a34f652e069805bf379bb5930fd7026"
+    },
+    {
+      "source": "17-europe-infected-imperial-palace/three-views-v2.png",
+      "output": "17-europe-infected-imperial-palace/front.png",
+      "crop_xywh": [
+        1,
+        1,
+        2171,
+        241
+      ],
+      "sha256": "d53eeae4cd7339d1511add8f5a89a4c917ae2847d662738c56e28b03c0f98e7b"
+    },
+    {
+      "source": "17-europe-infected-imperial-palace/three-views-v2.png",
+      "output": "17-europe-infected-imperial-palace/back.png",
+      "crop_xywh": [
+        1,
+        242,
+        2171,
+        232
+      ],
+      "sha256": "aa76fd9ae17fa311d16c0ada2304439d33268962af969f7555f710deea70ad7a"
+    },
+    {
+      "source": "17-europe-infected-imperial-palace/three-views-v2.png",
+      "output": "17-europe-infected-imperial-palace/side.png",
+      "crop_xywh": [
+        1,
+        474,
+        2171,
+        250
+      ],
+      "sha256": "85878dc88c617297491f79653711b630a37e92316511aab4d41e36c4369caf1d"
+    }
+  ]
+}

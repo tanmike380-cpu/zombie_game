@@ -1,0 +1,239 @@
+{
+  "method": "sips cropToHeightWidth + cropOffset; no resampling; original sheets retained",
+  "files": [
+    {
+      "input": "06-pagoda-core/three-views-v1.png",
+      "output": "06-pagoda-core/front.png",
+      "bounds_xywh": [
+        1,
+        1,
+        512,
+        1023
+      ],
+      "width": 512,
+      "height": 1023,
+      "sha256": "9b290b1bde97826e79fc289c672306ecca2d2932bf506e4fa1bfe29a51e6ea58"
+    },
+    {
+      "input": "06-pagoda-core/three-views-v1.png",
+      "output": "06-pagoda-core/back.png",
+      "bounds_xywh": [
+        512,
+        1,
+        512,
+        1023
+      ],
+      "width": 512,
+      "height": 1023,
+      "sha256": "95fac323d8a6806f9d21119ffbc3622e8dd02b4ab13501ac1082252937369ead"
+    },
+    {
+      "input": "06-pagoda-core/three-views-v1.png",
+      "output": "06-pagoda-core/side.png",
+      "bounds_xywh": [
+        1024,
+        1,
+        512,
+        1023
+      ],
+      "width": 512,
+      "height": 1023,
+      "sha256": "7b636eeddbedf464b582c18a2eb55feaf443458248106546a167cf86433af9b8"
+    },
+    {
+      "input": "07-courtyard-house/three-views-v1.png",
+      "output": "07-courtyard-house/front.png",
+      "bounds_xywh": [
+        1,
+        1,
+        770,
+        723
+      ],
+      "width": 770,
+      "height": 723,
+      "sha256": "231b76d2b121fac931329edc5d5b27e6754db9003b7f183e17a773edba32f12a"
+    },
+    {
+      "input": "07-courtyard-house/three-views-v1.png",
+      "output": "07-courtyard-house/back.png",
+      "bounds_xywh": [
+        770,
+        1,
+        758,
+        723
+      ],
+      "width": 758,
+      "height": 723,
+      "sha256": "991902d43e247e57952e63ee740b3d3bf8a270f0b55eddab42e3fd8ad572a7ef"
+    },
+    {
+      "input": "07-courtyard-house/three-views-v1.png",
+      "output": "07-courtyard-house/side.png",
+      "bounds_xywh": [
+        1528,
+        1,
+        644,
+        723
+      ],
+      "width": 644,
+      "height": 723,
+      "sha256": "ccd50a425ae2a06eb6a0875672a7f372ddb5e736a69a6953b370477797a96d6f"
+    },
+    {
+      "input": "08-timber-shrine/three-views-v1.png",
+      "output": "08-timber-shrine/front.png",
+      "bounds_xywh": [
+        1,
+        1,
+        797,
+        723
+      ],
+      "width": 797,
+      "height": 723,
+      "sha256": "c8334971fefe368d56752f0919f1147d54a790e5b6901f34cbe05579e77c2bd9"
+    },
+    {
+      "input": "08-timber-shrine/three-views-v1.png",
+      "output": "08-timber-shrine/back.png",
+      "bounds_xywh": [
+        797,
+        1,
+        808,
+        723
+      ],
+      "width": 808,
+      "height": 723,
+      "sha256": "0f9a7f6893c166bad8b074cb16ebb8c1589505001bbd8db711cd448aa7cc890b"
+    },
+    {
+      "input": "08-timber-shrine/three-views-v1.png",
+      "output": "08-timber-shrine/side.png",
+      "bounds_xywh": [
+        1605,
+        1,
+        567,
+        723
+      ],
+      "width": 567,
+      "height": 723,
+      "sha256": "af8aa1fadc2d5ed4e309cf0fbab9a3efd2b3f164b97d5f2d37e6b00964246cfd"
+    },
+    {
+      "input": "09-watch-hall/three-views-v1.png",
+      "output": "09-watch-hall/front.png",
+      "bounds_xywh": [
+        1,
+        1,
+        507,
+        1023
+      ],
+      "width": 507,
+      "height": 1023,
+      "sha256": "f5c6caa9db72eb966e40904d95617e0d8cf25bd81a91b2f588de80fd54505577"
+    },
+    {
+      "input": "09-watch-hall/three-views-v1.png",
+      "output": "09-watch-hall/back.png",
+      "bounds_xywh": [
+        507,
+        1,
+        527,
+        1023
+      ],
+      "width": 527,
+      "height": 1023,
+      "sha256": "58e552db2bbaa316f68afbf8740ec58262581e1d5aaa6d6b00fcb69f75123129"
+    },
+    {
+      "input": "09-watch-hall/three-views-v1.png",
+      "output": "09-watch-hall/side.png",
+      "bounds_xywh": [
+        1034,
+        1,
+        502,
+        1023
+      ],
+      "width": 502,
+      "height": 1023,
+      "sha256": "0a34213f7671021702650049aea5dea29bccc4d1341258870bde5b73f3090556"
+    },
+    {
+      "input": "10-stilt-house/three-views-v1.png",
+      "output": "10-stilt-house/front.png",
+      "bounds_xywh": [
+        1,
+        1,
+        806,
+        723
+      ],
+      "width": 806,
+      "height": 723,
+      "sha256": "104007df59bca7c53797c55306e3301f0c66a34c17fdee75bf4f207386607c2b"
+    },
+    {
+      "input": "10-stilt-house/three-views-v1.png",
+      "output": "10-stilt-house/back.png",
+      "bounds_xywh": [
+        806,
+        1,
+        805,
+        723
+      ],
+      "width": 805,
+      "height": 723,
+      "sha256": "8a9be869755cde3c770429092220cc9b2cfad915a1d79ead9fb3e7a37f20a169"
+    },
+    {
+      "input": "10-stilt-house/three-views-v1.png",
+      "output": "10-stilt-house/side.png",
+      "bounds_xywh": [
+        1611,
+        1,
+        561,
+        723
+      ],
+      "width": 561,
+      "height": 723,
+      "sha256": "dcf54bb5b65550d5012b694eacff58bbcf8b283ff3a9d1274b7ee6f1b0fb6c80"
+    },
+    {
+      "input": "16-asia-infected-imperial-palace/three-views-v1.png",
+      "output": "16-asia-infected-imperial-palace/front.png",
+      "bounds_xywh": [
+        1,
+        1,
+        1941,
+        270
+      ],
+      "width": 1941,
+      "height": 270,
+      "sha256": "359f90330fca96e616dc0d97c86818af3d9b40d66bd29a3dc359ce0c82c2eb3b"
+    },
+    {
+      "input": "16-asia-infected-imperial-palace/three-views-v1.png",
+      "output": "16-asia-infected-imperial-palace/back.png",
+      "bounds_xywh": [
+        1,
+        270,
+        1941,
+        267
+      ],
+      "width": 1941,
+      "height": 267,
+      "sha256": "260339ac7429059fe2eacb47abb9cfa52019e65307226b1c6427f4b9073287bd"
+    },
+    {
+      "input": "16-asia-infected-imperial-palace/three-views-v1.png",
+      "output": "16-asia-infected-imperial-palace/side.png",
+      "bounds_xywh": [
+        1,
+        537,
+        1941,
+        272
+      ],
+      "width": 1941,
+      "height": 272,
+      "sha256": "875ff642dd7496b6454998e3714bd6d96659eac5bbee92ac2e5291f277268f82"
+    }
+  ]
+}

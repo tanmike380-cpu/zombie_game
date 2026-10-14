@@ -1,0 +1,210 @@
+{
+  "schema_version": 1,
+  "superseding_cleanup_record": "side-cleanup-v1.json",
+  "date": "2026-10-12",
+  "method": "macOS sips mechanical PNG cropping; no AI redraw, no resize",
+  "originals_preserved": true,
+  "validation": "All 18 standalone outputs visually inspected; exact source rectangles retained, except outermost 1px canvas discarded because sips treats zero cropOffset as centered crop.",
+  "assets": [
+    {
+      "source": "11-middleeast-cistern/three-views-v1.png",
+      "output": "11-middleeast-cistern/front.png",
+      "bounds": {
+        "x": 1,
+        "y": 1,
+        "width": 675,
+        "height": 792
+      },
+      "sha256": "4382d039ff593340cb7344b698c91c959f08c2b8638b69cb080658af2cdc982d"
+    },
+    {
+      "source": "11-middleeast-cistern/three-views-v1.png",
+      "output": "11-middleeast-cistern/back.png",
+      "bounds": {
+        "x": 676,
+        "y": 1,
+        "width": 701,
+        "height": 792
+      },
+      "sha256": "587de7924e3a72de1a052411280e5adb18e3896435239b95ae7b92c082324017"
+    },
+    {
+      "source": "11-middleeast-cistern/three-views-v1.png",
+      "output": "11-middleeast-cistern/side.png",
+      "bounds": {
+        "x": 1377,
+        "y": 1,
+        "width": 606,
+        "height": 792
+      },
+      "sha256": "df2a95f2b344ef7a67afe5ca53092eea56d466810749a5ddd4f4c0ab91f87ac7"
+    },
+    {
+      "source": "12-middleeast-adobe/three-views-v1.png",
+      "output": "12-middleeast-adobe/front.png",
+      "bounds": {
+        "x": 1,
+        "y": 1,
+        "width": 654,
+        "height": 792
+      },
+      "sha256": "1504104271490ac497638dfb0b115ac23d5b3299acedaa13732ddccc42dc42bc"
+    },
+    {
+      "source": "12-middleeast-adobe/three-views-v1.png",
+      "output": "12-middleeast-adobe/back.png",
+      "bounds": {
+        "x": 655,
+        "y": 1,
+        "width": 669,
+        "height": 792
+      },
+      "sha256": "cf24c58286794b69fc0b5410e21f21254c76cbf7564d41e794109471fce5c550"
+    },
+    {
+      "source": "12-middleeast-adobe/three-views-v1.png",
+      "output": "12-middleeast-adobe/side.png",
+      "bounds": {
+        "x": 1324,
+        "y": 1,
+        "width": 659,
+        "height": 792
+      },
+      "sha256": "bdf2f69e6cbb4a262d6124ba924f41615d092cfb0a3021351fe47a2b25ac5505"
+    },
+    {
+      "source": "13-middleeast-caravanserai/three-views-v1.png",
+      "output": "13-middleeast-caravanserai/front.png",
+      "bounds": {
+        "x": 1,
+        "y": 1,
+        "width": 687,
+        "height": 792
+      },
+      "sha256": "c2d58ff1e774b776c046914bc71e2e0ab58ad231f540c15b781937ffadd52198"
+    },
+    {
+      "source": "13-middleeast-caravanserai/three-views-v1.png",
+      "output": "13-middleeast-caravanserai/back.png",
+      "bounds": {
+        "x": 688,
+        "y": 1,
+        "width": 647,
+        "height": 792
+      },
+      "sha256": "0ef6fbe2eeb6a89f1ad16a164cbac74d64c2372544b7e82893b951de7eca9ab1"
+    },
+    {
+      "source": "13-middleeast-caravanserai/three-views-v1.png",
+      "output": "13-middleeast-caravanserai/side.png",
+      "bounds": {
+        "x": 1335,
+        "y": 1,
+        "width": 646,
+        "height": 792
+      },
+      "sha256": "5a486e309691d61c7ac160bafb66aa40559e9a35298548c8f28bd51bae580a4d"
+    },
+    {
+      "source": "14-middleeast-basalt-house/three-views-v1.png",
+      "output": "14-middleeast-basalt-house/front.png",
+      "bounds": {
+        "x": 1,
+        "y": 1,
+        "width": 717,
+        "height": 792
+      },
+      "sha256": "b6258961684a8c391282b25e82f8340dcd39c5eb73f32387fa4e5fc0edfad670"
+    },
+    {
+      "source": "14-middleeast-basalt-house/three-views-v1.png",
+      "output": "14-middleeast-basalt-house/back.png",
+      "bounds": {
+        "x": 718,
+        "y": 1,
+        "width": 637,
+        "height": 792
+      },
+      "sha256": "b4f408c381fd132ee769d956b05d45ccc996f11865afaffc06ed28561dbf044b"
+    },
+    {
+      "source": "14-middleeast-basalt-house/three-views-v1.png",
+      "output": "14-middleeast-basalt-house/side.png",
+      "bounds": {
+        "x": 1355,
+        "y": 1,
+        "width": 628,
+        "height": 792
+      },
+      "sha256": "226101c2934ee56e4d612a716f3f14e28886ddbd443f3600bf765ec09e92a2a4"
+    },
+    {
+      "source": "15-middleeast-bazaar/three-views-v1.png",
+      "output": "15-middleeast-bazaar/front.png",
+      "bounds": {
+        "x": 1,
+        "y": 1,
+        "width": 916,
+        "height": 757
+      },
+      "sha256": "9f83abf7ae71eca77841dcc1885eba5c1e55febab5c3bcfa3a6a1750cd1a7134"
+    },
+    {
+      "source": "15-middleeast-bazaar/three-views-v1.png",
+      "output": "15-middleeast-bazaar/back.png",
+      "bounds": {
+        "x": 917,
+        "y": 1,
+        "width": 824,
+        "height": 757
+      },
+      "sha256": "71a18fc4590544a8d8d81d3b67cb21a8a069a03f3b743b1c8b6b18d4c4ca73fd"
+    },
+    {
+      "source": "15-middleeast-bazaar/three-views-v1.png",
+      "output": "15-middleeast-bazaar/side.png",
+      "bounds": {
+        "x": 1741,
+        "y": 1,
+        "width": 332,
+        "height": 757
+      },
+      "sha256": "10bd4b23f18c2229371689a25c848074af860fb4cc4da4282b903d42b57135b7"
+    },
+    {
+      "source": "18-middleeast-infected-imperial-palace/three-views-v1.png",
+      "output": "18-middleeast-infected-imperial-palace/front.png",
+      "bounds": {
+        "x": 1,
+        "y": 1,
+        "width": 1941,
+        "height": 277
+      },
+      "sha256": "151c51f5e9370df74bdcafa64cd250e7d41b0bf297b9404ad3cc29fe780a0397"
+    },
+    {
+      "source": "18-middleeast-infected-imperial-palace/three-views-v1.png",
+      "output": "18-middleeast-infected-imperial-palace/back.png",
+      "bounds": {
+        "x": 1,
+        "y": 278,
+        "width": 1941,
+        "height": 252
+      },
+      "sha256": "37d0ef1e00c4b772185cba1ea6400bddba2aa6d87316c46a625b4aca7b0b74d4",
+      "note": "Bottom label omitted to avoid including next row's finials."
+    },
+    {
+      "source": "18-middleeast-infected-imperial-palace/three-views-v1.png",
+      "output": "18-middleeast-infected-imperial-palace/side.png",
+      "bounds": {
+        "x": 1,
+        "y": 540,
+        "width": 1941,
+        "height": 269
+      },
+      "sha256": "a8ab41e0046dd0d5f3800622e2ceac6ded8b4de59f9d0f34a2716a57298bf0c5",
+      "note": "Original BACK label overlaps next row's tallest finials vertically; small residual previous-row label retained to avoid cutting architectural tips."
+    }
+  ]
+}

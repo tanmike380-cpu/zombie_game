@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-13",
+  "method": "Built-in image_gen targeted text cleanup, followed by sips removal of tool-added white padding",
+  "source": "18-middleeast-infected-imperial-palace/side-crop-v1.png",
+  "clean_output": "18-middleeast-infected-imperial-palace/side-clean-v1.png",
+  "final": "18-middleeast-infected-imperial-palace/side.png",
+  "final_dimensions": [
+    2171,
+    301
+  ],
+  "final_sha256": "ec0f3e08b195226b33633625c63a7dcaf2aad39aefd64a45495044d81576b919",
+  "crop_of_clean": {
+    "x": 1,
+    "y": 211,
+    "width": 2171,
+    "height": 301
+  },
+  "prompt": "Use case: precise-object-edit. Edit this exact existing ultra-wide architectural SIDE reference image. ONLY REMOVE the erroneous partial word BACK at the very top center edge, replacing those letters with the matching plain neutral gray background. This is tiny local text cleanup, NOT a redesign. Preserve all building appearance, every palace wall, dome, tower, finial tip, infection, material and exact architectural silhouette. Preserve existing composition, colors, same ultra-wide aspect ratio, same framing and scale. Keep the correct RIGHT SIDE label at the bottom. No changes to architectural geometry or details, no new text, no border. The architecture must remain visually identical.",
+  "validation": "BACK removed; RIGHT SIDE retained. Major architectural arrangement and silhouettes retained. Fine texture resampled/re-rendered: not pixel-identical nor pure crop. Original mechanical crop preserved. This supersedes side.png entry in crop-v1.json."
+}

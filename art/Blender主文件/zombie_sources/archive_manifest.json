@@ -1,0 +1,12 @@
+[
+  {
+    "archive": "normal+zombia+with+ani.zip",
+    "sha256": "94cea5fbac905d96434afc7d010b0abde4fa6a04656c1cb5a1ad9e3c9c5694c4",
+    "folder": "normal"
+  },
+  {
+    "archive": "explore+zombie+with+ani.zip",
+    "sha256": "14a0f903109482f8b930cd330564affeee78a3e0b73bf7e3ac5f6e0265f8345a",
+    "folder": "explore"
+  }
+]

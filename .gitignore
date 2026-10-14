@@ -85,3 +85,8 @@ sysinfo.txt
 /art/environment/vegetation_preparation.json
 /art/environment/vegetation_preparation_v2.json
 /art/environment/inspection/tree_lod_comparison.png
+# Local recovery copies and repeated render inspections, not authored sources.
+/art/Blender主文件/ZombieGame_Master.blend/
+/art/Blender主文件/zombie_sources/before_import.blend
+/art/Blender主文件/zombie_sources/*.zip
+/art/environment/inspection/landmarks/v[2-9]/

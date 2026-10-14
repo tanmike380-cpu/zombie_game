@@ -1,0 +1,725 @@
+{
+  "version": 2,
+  "date": "2026-10-13",
+  "status": "18-concepts-with-54-separate-views; awaiting-review; no-runtime-implementation",
+  "assets": [
+    {
+      "id": "zombie-lairs/europe/01-europe-cathedral",
+      "category": "zombie-lair",
+      "culture": "europe",
+      "views": [
+        {
+          "name": "reference",
+          "source": "tripo/buildings/zombie/europe/01-europe-cathedral/reference.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "9063d11932df85e3f94bc18ecfd96376c5bb51b491b0248c143e85d26b0b8a79"
+        },
+        {
+          "name": "front",
+          "source": "tripo/buildings/zombie/europe/01-europe-cathedral/front.png",
+          "width": 689,
+          "height": 757,
+          "sha256": "f60b35ebbc2eadfe268f00bcc55bb04457fb9b9417f5de373d441d80d3a948ed",
+          "copy_source": true
+        },
+        {
+          "name": "back",
+          "source": "tripo/buildings/zombie/europe/01-europe-cathedral/back.png",
+          "width": 690,
+          "height": 757,
+          "sha256": "7caba618c248ea8b65de1b0eb41683334f54546b0c36ed7647076d447a9eb46e",
+          "copy_source": true
+        },
+        {
+          "name": "side",
+          "source": "tripo/buildings/zombie/europe/01-europe-cathedral/side.png",
+          "width": 693,
+          "height": 757,
+          "sha256": "b984ae031e77fdc0e28dda27a7dbbdb9bd03c340b59175d4e30bb374059ebc15",
+          "copy_source": true
+        }
+      ],
+      "preview": "tripo/buildings/zombie/europe/01-europe-cathedral/three-views-v1.png",
+      "projection": "AI concept elevations; inferred unseen geometry; not measured CAD or shared-mesh renders"
+    },
+    {
+      "id": "zombie-lairs/europe/02-europe-tenement",
+      "category": "zombie-lair",
+      "culture": "europe",
+      "views": [
+        {
+          "name": "reference",
+          "source": "tripo/buildings/zombie/europe/02-europe-tenement/reference.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "fcda1e8c51ce28b435d3e1f88a3cba45289c624706e2143447e630caeb8a69a1"
+        },
+        {
+          "name": "front",
+          "source": "tripo/buildings/zombie/europe/02-europe-tenement/front.png",
+          "width": 554,
+          "height": 808,
+          "sha256": "384bd0f8a19d4d2462d3a4a8123abec389bb7e5078948a4699ca109655ace10f",
+          "copy_source": true
+        },
+        {
+          "name": "back",
+          "source": "tripo/buildings/zombie/europe/02-europe-tenement/back.png",
+          "width": 550,
+          "height": 808,
+          "sha256": "a72b80180331710f2cb11e41159aa1237cd4c1ce37e683333b667f9231e92ca1",
+          "copy_source": true
+        },
+        {
+          "name": "side",
+          "source": "tripo/buildings/zombie/europe/02-europe-tenement/side.png",
+          "width": 837,
+          "height": 808,
+          "sha256": "e58f9f92fdff3e195dd18b927cf3f4ca53e763b1456d64423f29fcb87e39babe",
+          "copy_source": true
+        }
+      ],
+      "preview": "tripo/buildings/zombie/europe/02-europe-tenement/three-views-v1.png",
+      "projection": "AI concept elevations; inferred unseen geometry; not measured CAD or shared-mesh renders"
+    },
+    {
+      "id": "zombie-lairs/europe/03-europe-watermill",
+      "category": "zombie-lair",
+      "culture": "europe",
+      "views": [
+        {
+          "name": "reference",
+          "source": "tripo/buildings/zombie/europe/03-europe-watermill/reference.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "e3c9091b37c0feefdd9dcd83c941195fd258aa7f7ab84ad4a7de783d14ae5dd3"
+        },
+        {
+          "name": "front",
+          "source": "tripo/buildings/zombie/europe/03-europe-watermill/front.png",
+          "width": 703,
+          "height": 808,
+          "sha256": "b2bb4a4aaa9c7aeb947bfaa2aabb6faffadb0b93055ffc19da90eae9d22e3ccd",
+          "copy_source": true
+        },
+        {
+          "name": "back",
+          "source": "tripo/buildings/zombie/europe/03-europe-watermill/back.png",
+          "width": 686,
+          "height": 808,
+          "sha256": "0112dd875f24210c1f2feedf586531e0c9b2d3bf80038580f9835e5b77d924aa",
+          "copy_source": true
+        },
+        {
+          "name": "side",
+          "source": "tripo/buildings/zombie/europe/03-europe-watermill/side.png",
+          "width": 552,
+          "height": 808,
+          "sha256": "b5a05a6f0a449fd809b4ab5cd87143923ab7aed9fb9a2d1276531619c667fa17",
+          "copy_source": true
+        }
+      ],
+      "preview": "tripo/buildings/zombie/europe/03-europe-watermill/three-views-v1.png",
+      "projection": "AI concept elevations; inferred unseen geometry; not measured CAD or shared-mesh renders"
+    },
+    {
+      "id": "zombie-lairs/europe/04-europe-keep",
+      "category": "zombie-lair",
+      "culture": "europe",
+      "views": [
+        {
+          "name": "reference",
+          "source": "tripo/buildings/zombie/europe/04-europe-keep/reference.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "1c28704ac0fd1b9322f8c0cc78707930d7c5a74947c6e0911cb7afb75e3b63e3"
+        },
+        {
+          "name": "front",
+          "source": "tripo/buildings/zombie/europe/04-europe-keep/front.png",
+          "width": 634,
+          "height": 792,
+          "sha256": "171d327aa7d729ab20fc03fc6e1589a58a94d9cb110554e3442037df9d4f0641",
+          "copy_source": true
+        },
+        {
+          "name": "back",
+          "source": "tripo/buildings/zombie/europe/04-europe-keep/back.png",
+          "width": 615,
+          "height": 792,
+          "sha256": "b038671c2ba8f688c6a7bf7295a88d9f7d57975a0661e7a683154a5e20e51d6f",
+          "copy_source": true
+        },
+        {
+          "name": "side",
+          "source": "tripo/buildings/zombie/europe/04-europe-keep/side.png",
+          "width": 733,
+          "height": 792,
+          "sha256": "84d867372bb295553048ce29afb51ef744fa9f03c116937365f0f3feb38e5702",
+          "copy_source": true
+        }
+      ],
+      "preview": "tripo/buildings/zombie/europe/04-europe-keep/three-views-v1.png",
+      "projection": "AI concept elevations; inferred unseen geometry; not measured CAD or shared-mesh renders"
+    },
+    {
+      "id": "zombie-lairs/europe/05-europe-barn",
+      "category": "zombie-lair",
+      "culture": "europe",
+      "views": [
+        {
+          "name": "reference",
+          "source": "tripo/buildings/zombie/europe/05-europe-barn/reference.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "5c1040530c2b5f0dec1ed8f25abe5c2cced7d8493261669dee62111f4067a593"
+        },
+        {
+          "name": "front",
+          "source": "tripo/buildings/zombie/europe/05-europe-barn/front.png",
+          "width": 764,
+          "height": 792,
+          "sha256": "ad5106b18741e05223e62467c9bbb60112a8835ad4083b24692e565994eb9ad1",
+          "copy_source": true
+        },
+        {
+          "name": "back",
+          "source": "tripo/buildings/zombie/europe/05-europe-barn/back.png",
+          "width": 745,
+          "height": 792,
+          "sha256": "1082ec9325538a0b2ef3857bd0e31e1f946bc2856168a3c57feaf99bdb6cf198",
+          "copy_source": true
+        },
+        {
+          "name": "side",
+          "source": "tripo/buildings/zombie/europe/05-europe-barn/side.png",
+          "width": 473,
+          "height": 792,
+          "sha256": "d7abe6f1653522926efe1ff0ad628ec16a34f652e069805bf379bb5930fd7026",
+          "copy_source": true
+        }
+      ],
+      "preview": "tripo/buildings/zombie/europe/05-europe-barn/three-views-v1.png",
+      "projection": "AI concept elevations; inferred unseen geometry; not measured CAD or shared-mesh renders"
+    },
+    {
+      "id": "zombie-lairs/asia/06-pagoda-core",
+      "category": "zombie-lair",
+      "culture": "asia",
+      "views": [
+        {
+          "name": "reference",
+          "source": "tripo/buildings/zombie/asia/06-pagoda-core/reference.png",
+          "copy_source": true,
+          "width": 1145,
+          "height": 1374,
+          "sha256": "9a1728830f9d7d432e6c7c285f1f8f9582b986e4cba332656f0bb6f1df5ded7f"
+        },
+        {
+          "name": "front",
+          "source": "tripo/buildings/zombie/asia/06-pagoda-core/front.png",
+          "width": 512,
+          "height": 1023,
+          "sha256": "9b290b1bde97826e79fc289c672306ecca2d2932bf506e4fa1bfe29a51e6ea58",
+          "copy_source": true
+        },
+        {
+          "name": "back",
+          "source": "tripo/buildings/zombie/asia/06-pagoda-core/back.png",
+          "width": 512,
+          "height": 1023,
+          "sha256": "95fac323d8a6806f9d21119ffbc3622e8dd02b4ab13501ac1082252937369ead",
+          "copy_source": true
+        },
+        {
+          "name": "side",
+          "source": "tripo/buildings/zombie/asia/06-pagoda-core/side.png",
+          "width": 512,
+          "height": 1023,
+          "sha256": "7b636eeddbedf464b582c18a2eb55feaf443458248106546a167cf86433af9b8",
+          "copy_source": true
+        }
+      ],
+      "preview": "tripo/buildings/zombie/asia/06-pagoda-core/three-views-v1.png",
+      "projection": "AI concept elevations; inferred unseen geometry; not measured CAD or shared-mesh renders"
+    },
+    {
+      "id": "zombie-lairs/asia/07-courtyard-house",
+      "category": "zombie-lair",
+      "culture": "asia",
+      "views": [
+        {
+          "name": "reference",
+          "source": "tripo/buildings/zombie/asia/07-courtyard-house/reference.png",
+          "copy_source": true,
+          "width": 1536,
+          "height": 1024,
+          "sha256": "62d384c5116fea18533ce879dc68142d630c9a25f0549417cf869576213e3248"
+        },
+        {
+          "name": "front",
+          "source": "tripo/buildings/zombie/asia/07-courtyard-house/front.png",
+          "width": 770,
+          "height": 723,
+          "sha256": "231b76d2b121fac931329edc5d5b27e6754db9003b7f183e17a773edba32f12a",
+          "copy_source": true
+        },
+        {
+          "name": "back",
+          "source": "tripo/buildings/zombie/asia/07-courtyard-house/back.png",
+          "width": 758,
+          "height": 723,
+          "sha256": "991902d43e247e57952e63ee740b3d3bf8a270f0b55eddab42e3fd8ad572a7ef",
+          "copy_source": true
+        },
+        {
+          "name": "side",
+          "source": "tripo/buildings/zombie/asia/07-courtyard-house/side.png",
+          "width": 644,
+          "height": 723,
+          "sha256": "ccd50a425ae2a06eb6a0875672a7f372ddb5e736a69a6953b370477797a96d6f",
+          "copy_source": true
+        }
+      ],
+      "preview": "tripo/buildings/zombie/asia/07-courtyard-house/three-views-v1.png",
+      "projection": "AI concept elevations; inferred unseen geometry; not measured CAD or shared-mesh renders"
+    },
+    {
+      "id": "zombie-lairs/asia/08-timber-shrine",
+      "category": "zombie-lair",
+      "culture": "asia",
+      "views": [
+        {
+          "name": "reference",
+          "source": "tripo/buildings/zombie/asia/08-timber-shrine/reference.png",
+          "copy_source": true,
+          "width": 1374,
+          "height": 1145,
+          "sha256": "6f5741607e2335bfe9179f123f2aaf3bc768e7c8b983e9f74cc3cacac6a88ff2"
+        },
+        {
+          "name": "front",
+          "source": "tripo/buildings/zombie/asia/08-timber-shrine/front.png",
+          "width": 797,
+          "height": 723,
+          "sha256": "c8334971fefe368d56752f0919f1147d54a790e5b6901f34cbe05579e77c2bd9",
+          "copy_source": true
+        },
+        {
+          "name": "back",
+          "source": "tripo/buildings/zombie/asia/08-timber-shrine/back.png",
+          "width": 808,
+          "height": 723,
+          "sha256": "0f9a7f6893c166bad8b074cb16ebb8c1589505001bbd8db711cd448aa7cc890b",
+          "copy_source": true
+        },
+        {
+          "name": "side",
+          "source": "tripo/buildings/zombie/asia/08-timber-shrine/side.png",
+          "width": 567,
+          "height": 723,
+          "sha256": "af8aa1fadc2d5ed4e309cf0fbab9a3efd2b3f164b97d5f2d37e6b00964246cfd",
+          "copy_source": true
+        }
+      ],
+      "preview": "tripo/buildings/zombie/asia/08-timber-shrine/three-views-v1.png",
+      "projection": "AI concept elevations; inferred unseen geometry; not measured CAD or shared-mesh renders"
+    },
+    {
+      "id": "zombie-lairs/asia/09-watch-hall",
+      "category": "zombie-lair",
+      "culture": "asia",
+      "views": [
+        {
+          "name": "reference",
+          "source": "tripo/buildings/zombie/asia/09-watch-hall/reference.png",
+          "copy_source": true,
+          "width": 1145,
+          "height": 1374,
+          "sha256": "47f15acd0c3fdc20f6980027ebf7997821f62f96a5aae33fdeca7c4cd046be65"
+        },
+        {
+          "name": "front",
+          "source": "tripo/buildings/zombie/asia/09-watch-hall/front.png",
+          "width": 507,
+          "height": 1023,
+          "sha256": "f5c6caa9db72eb966e40904d95617e0d8cf25bd81a91b2f588de80fd54505577",
+          "copy_source": true
+        },
+        {
+          "name": "back",
+          "source": "tripo/buildings/zombie/asia/09-watch-hall/back.png",
+          "width": 527,
+          "height": 1023,
+          "sha256": "58e552db2bbaa316f68afbf8740ec58262581e1d5aaa6d6b00fcb69f75123129",
+          "copy_source": true
+        },
+        {
+          "name": "side",
+          "source": "tripo/buildings/zombie/asia/09-watch-hall/side.png",
+          "width": 502,
+          "height": 1023,
+          "sha256": "0a34213f7671021702650049aea5dea29bccc4d1341258870bde5b73f3090556",
+          "copy_source": true
+        }
+      ],
+      "preview": "tripo/buildings/zombie/asia/09-watch-hall/three-views-v1.png",
+      "projection": "AI concept elevations; inferred unseen geometry; not measured CAD or shared-mesh renders"
+    },
+    {
+      "id": "zombie-lairs/asia/10-stilt-house",
+      "category": "zombie-lair",
+      "culture": "asia",
+      "views": [
+        {
+          "name": "reference",
+          "source": "tripo/buildings/zombie/asia/10-stilt-house/reference.png",
+          "copy_source": true,
+          "width": 1536,
+          "height": 1024,
+          "sha256": "6549ef63251546c328c0131c9576127db2390d2678a02e676584b73570c30304"
+        },
+        {
+          "name": "front",
+          "source": "tripo/buildings/zombie/asia/10-stilt-house/front.png",
+          "width": 806,
+          "height": 723,
+          "sha256": "104007df59bca7c53797c55306e3301f0c66a34c17fdee75bf4f207386607c2b",
+          "copy_source": true
+        },
+        {
+          "name": "back",
+          "source": "tripo/buildings/zombie/asia/10-stilt-house/back.png",
+          "width": 805,
+          "height": 723,
+          "sha256": "8a9be869755cde3c770429092220cc9b2cfad915a1d79ead9fb3e7a37f20a169",
+          "copy_source": true
+        },
+        {
+          "name": "side",
+          "source": "tripo/buildings/zombie/asia/10-stilt-house/side.png",
+          "width": 561,
+          "height": 723,
+          "sha256": "dcf54bb5b65550d5012b694eacff58bbcf8b283ff3a9d1274b7ee6f1b0fb6c80",
+          "copy_source": true
+        }
+      ],
+      "preview": "tripo/buildings/zombie/asia/10-stilt-house/three-views-v1.png",
+      "projection": "AI concept elevations; inferred unseen geometry; not measured CAD or shared-mesh renders"
+    },
+    {
+      "id": "zombie-lairs/middleeast/11-middleeast-cistern",
+      "category": "zombie-lair",
+      "culture": "middleeast",
+      "views": [
+        {
+          "name": "reference",
+          "source": "tripo/buildings/zombie/middleeast/11-middleeast-cistern/reference.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "64f0e41e05585ea4a7527345cba9f59016ff6e7189ac331c9bf08d2d14e850cd"
+        },
+        {
+          "name": "front",
+          "source": "tripo/buildings/zombie/middleeast/11-middleeast-cistern/front.png",
+          "width": 675,
+          "height": 792,
+          "sha256": "4382d039ff593340cb7344b698c91c959f08c2b8638b69cb080658af2cdc982d",
+          "copy_source": true
+        },
+        {
+          "name": "back",
+          "source": "tripo/buildings/zombie/middleeast/11-middleeast-cistern/back.png",
+          "width": 701,
+          "height": 792,
+          "sha256": "587de7924e3a72de1a052411280e5adb18e3896435239b95ae7b92c082324017",
+          "copy_source": true
+        },
+        {
+          "name": "side",
+          "source": "tripo/buildings/zombie/middleeast/11-middleeast-cistern/side.png",
+          "width": 606,
+          "height": 792,
+          "sha256": "df2a95f2b344ef7a67afe5ca53092eea56d466810749a5ddd4f4c0ab91f87ac7",
+          "copy_source": true
+        }
+      ],
+      "preview": "tripo/buildings/zombie/middleeast/11-middleeast-cistern/three-views-v1.png",
+      "projection": "AI concept elevations; inferred unseen geometry; not measured CAD or shared-mesh renders"
+    },
+    {
+      "id": "zombie-lairs/middleeast/12-middleeast-adobe",
+      "category": "zombie-lair",
+      "culture": "middleeast",
+      "views": [
+        {
+          "name": "reference",
+          "source": "tripo/buildings/zombie/middleeast/12-middleeast-adobe/reference.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "b0cb29a75e9a0b0e7f14b7037304fb12f477b54f8393e0fbe60ee2ff7f77bf3c"
+        },
+        {
+          "name": "front",
+          "source": "tripo/buildings/zombie/middleeast/12-middleeast-adobe/front.png",
+          "width": 654,
+          "height": 792,
+          "sha256": "1504104271490ac497638dfb0b115ac23d5b3299acedaa13732ddccc42dc42bc",
+          "copy_source": true
+        },
+        {
+          "name": "back",
+          "source": "tripo/buildings/zombie/middleeast/12-middleeast-adobe/back.png",
+          "width": 669,
+          "height": 792,
+          "sha256": "cf24c58286794b69fc0b5410e21f21254c76cbf7564d41e794109471fce5c550",
+          "copy_source": true
+        },
+        {
+          "name": "side",
+          "source": "tripo/buildings/zombie/middleeast/12-middleeast-adobe/side.png",
+          "width": 659,
+          "height": 792,
+          "sha256": "bdf2f69e6cbb4a262d6124ba924f41615d092cfb0a3021351fe47a2b25ac5505",
+          "copy_source": true
+        }
+      ],
+      "preview": "tripo/buildings/zombie/middleeast/12-middleeast-adobe/three-views-v1.png",
+      "projection": "AI concept elevations; inferred unseen geometry; not measured CAD or shared-mesh renders"
+    },
+    {
+      "id": "zombie-lairs/middleeast/13-middleeast-caravanserai",
+      "category": "zombie-lair",
+      "culture": "middleeast",
+      "views": [
+        {
+          "name": "reference",
+          "source": "tripo/buildings/zombie/middleeast/13-middleeast-caravanserai/reference.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "9f53e6777b51288bbc1d415c518eb2d77399b4fb09983c1d83988cff83689c59"
+        },
+        {
+          "name": "front",
+          "source": "tripo/buildings/zombie/middleeast/13-middleeast-caravanserai/front.png",
+          "width": 687,
+          "height": 792,
+          "sha256": "c2d58ff1e774b776c046914bc71e2e0ab58ad231f540c15b781937ffadd52198",
+          "copy_source": true
+        },
+        {
+          "name": "back",
+          "source": "tripo/buildings/zombie/middleeast/13-middleeast-caravanserai/back.png",
+          "width": 647,
+          "height": 792,
+          "sha256": "0ef6fbe2eeb6a89f1ad16a164cbac74d64c2372544b7e82893b951de7eca9ab1",
+          "copy_source": true
+        },
+        {
+          "name": "side",
+          "source": "tripo/buildings/zombie/middleeast/13-middleeast-caravanserai/side.png",
+          "width": 646,
+          "height": 792,
+          "sha256": "5a486e309691d61c7ac160bafb66aa40559e9a35298548c8f28bd51bae580a4d",
+          "copy_source": true
+        }
+      ],
+      "preview": "tripo/buildings/zombie/middleeast/13-middleeast-caravanserai/three-views-v1.png",
+      "projection": "AI concept elevations; inferred unseen geometry; not measured CAD or shared-mesh renders"
+    },
+    {
+      "id": "zombie-lairs/middleeast/14-middleeast-basalt-house",
+      "category": "zombie-lair",
+      "culture": "middleeast",
+      "views": [
+        {
+          "name": "reference",
+          "source": "tripo/buildings/zombie/middleeast/14-middleeast-basalt-house/reference.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "b2cb1084c8218d0a4d01950190f76aaaf58a7bb556b0884e21711e55e68f63c3"
+        },
+        {
+          "name": "front",
+          "source": "tripo/buildings/zombie/middleeast/14-middleeast-basalt-house/front.png",
+          "width": 717,
+          "height": 792,
+          "sha256": "b6258961684a8c391282b25e82f8340dcd39c5eb73f32387fa4e5fc0edfad670",
+          "copy_source": true
+        },
+        {
+          "name": "back",
+          "source": "tripo/buildings/zombie/middleeast/14-middleeast-basalt-house/back.png",
+          "width": 637,
+          "height": 792,
+          "sha256": "b4f408c381fd132ee769d956b05d45ccc996f11865afaffc06ed28561dbf044b",
+          "copy_source": true
+        },
+        {
+          "name": "side",
+          "source": "tripo/buildings/zombie/middleeast/14-middleeast-basalt-house/side.png",
+          "width": 628,
+          "height": 792,
+          "sha256": "226101c2934ee56e4d612a716f3f14e28886ddbd443f3600bf765ec09e92a2a4",
+          "copy_source": true
+        }
+      ],
+      "preview": "tripo/buildings/zombie/middleeast/14-middleeast-basalt-house/three-views-v1.png",
+      "projection": "AI concept elevations; inferred unseen geometry; not measured CAD or shared-mesh renders"
+    },
+    {
+      "id": "zombie-lairs/middleeast/15-middleeast-bazaar",
+      "category": "zombie-lair",
+      "culture": "middleeast",
+      "views": [
+        {
+          "name": "reference",
+          "source": "tripo/buildings/zombie/middleeast/15-middleeast-bazaar/reference.png",
+          "copy_source": true,
+          "width": 1254,
+          "height": 1254,
+          "sha256": "e04a4533898a677a90e0165b8d35b17c4a6278e93c7dae23aa0823a899eccfc0"
+        },
+        {
+          "name": "front",
+          "source": "tripo/buildings/zombie/middleeast/15-middleeast-bazaar/front.png",
+          "width": 916,
+          "height": 757,
+          "sha256": "9f83abf7ae71eca77841dcc1885eba5c1e55febab5c3bcfa3a6a1750cd1a7134",
+          "copy_source": true
+        },
+        {
+          "name": "back",
+          "source": "tripo/buildings/zombie/middleeast/15-middleeast-bazaar/back.png",
+          "width": 824,
+          "height": 757,
+          "sha256": "71a18fc4590544a8d8d81d3b67cb21a8a069a03f3b743b1c8b6b18d4c4ca73fd",
+          "copy_source": true
+        },
+        {
+          "name": "side",
+          "source": "tripo/buildings/zombie/middleeast/15-middleeast-bazaar/side.png",
+          "width": 332,
+          "height": 757,
+          "sha256": "10bd4b23f18c2229371689a25c848074af860fb4cc4da4282b903d42b57135b7",
+          "copy_source": true
+        }
+      ],
+      "preview": "tripo/buildings/zombie/middleeast/15-middleeast-bazaar/three-views-v1.png",
+      "projection": "AI concept elevations; inferred unseen geometry; not measured CAD or shared-mesh renders"
+    },
+    {
+      "id": "zombie-lairs/asia/16-asia-infected-imperial-palace",
+      "category": "zombie-lair",
+      "culture": "asia",
+      "views": [
+        {
+          "name": "front",
+          "source": "tripo/buildings/zombie/asia/16-asia-infected-imperial-palace/front.png",
+          "width": 1941,
+          "height": 270,
+          "sha256": "359f90330fca96e616dc0d97c86818af3d9b40d66bd29a3dc359ce0c82c2eb3b",
+          "copy_source": true
+        },
+        {
+          "name": "back",
+          "source": "tripo/buildings/zombie/asia/16-asia-infected-imperial-palace/back.png",
+          "width": 1941,
+          "height": 267,
+          "sha256": "260339ac7429059fe2eacb47abb9cfa52019e65307226b1c6427f4b9073287bd",
+          "copy_source": true
+        },
+        {
+          "name": "side",
+          "source": "tripo/buildings/zombie/asia/16-asia-infected-imperial-palace/side.png",
+          "width": 1941,
+          "height": 272,
+          "sha256": "875ff642dd7496b6454998e3714bd6d96659eac5bbee92ac2e5291f277268f82",
+          "copy_source": true
+        }
+      ],
+      "preview": "tripo/buildings/zombie/asia/16-asia-infected-imperial-palace/three-views-v1.png",
+      "projection": "AI concept elevations; inferred unseen geometry; not measured CAD or shared-mesh renders"
+    },
+    {
+      "id": "zombie-lairs/europe/17-europe-infected-imperial-palace",
+      "category": "zombie-lair",
+      "culture": "europe",
+      "views": [
+        {
+          "name": "front",
+          "source": "tripo/buildings/zombie/europe/17-europe-infected-imperial-palace/front.png",
+          "width": 2171,
+          "height": 241,
+          "sha256": "d53eeae4cd7339d1511add8f5a89a4c917ae2847d662738c56e28b03c0f98e7b",
+          "copy_source": true
+        },
+        {
+          "name": "back",
+          "source": "tripo/buildings/zombie/europe/17-europe-infected-imperial-palace/back.png",
+          "width": 2171,
+          "height": 232,
+          "sha256": "aa76fd9ae17fa311d16c0ada2304439d33268962af969f7555f710deea70ad7a",
+          "copy_source": true
+        },
+        {
+          "name": "side",
+          "source": "tripo/buildings/zombie/europe/17-europe-infected-imperial-palace/side.png",
+          "width": 2171,
+          "height": 250,
+          "sha256": "85878dc88c617297491f79653711b630a37e92316511aab4d41e36c4369caf1d",
+          "copy_source": true
+        }
+      ],
+      "preview": "tripo/buildings/zombie/europe/17-europe-infected-imperial-palace/three-views-v2.png",
+      "projection": "AI concept elevations; inferred unseen geometry; not measured CAD or shared-mesh renders"
+    },
+    {
+      "id": "zombie-lairs/middleeast/18-middleeast-infected-imperial-palace",
+      "category": "zombie-lair",
+      "culture": "middleeast",
+      "views": [
+        {
+          "name": "front",
+          "source": "tripo/buildings/zombie/middleeast/18-middleeast-infected-imperial-palace/front.png",
+          "width": 1941,
+          "height": 277,
+          "sha256": "151c51f5e9370df74bdcafa64cd250e7d41b0bf297b9404ad3cc29fe780a0397",
+          "copy_source": true
+        },
+        {
+          "name": "back",
+          "source": "tripo/buildings/zombie/middleeast/18-middleeast-infected-imperial-palace/back.png",
+          "width": 1941,
+          "height": 252,
+          "sha256": "37d0ef1e00c4b772185cba1ea6400bddba2aa6d87316c46a625b4aca7b0b74d4",
+          "copy_source": true
+        },
+        {
+          "name": "side",
+          "source": "tripo/buildings/zombie/middleeast/18-middleeast-infected-imperial-palace/side.png",
+          "width": 2171,
+          "height": 301,
+          "sha256": "ec0f3e08b195226b33633625c63a7dcaf2aad39aefd64a45495044d81576b919",
+          "copy_source": true
+        }
+      ],
+      "preview": "tripo/buildings/zombie/middleeast/18-middleeast-infected-imperial-palace/three-views-v1.png",
+      "projection": "AI concept elevations; inferred unseen geometry; not measured CAD or shared-mesh renders",
+      "side_cleanup_record": "middleeast/side-cleanup-v1.json"
+    }
+  ],
+  "generation_mode": "built-in image_gen; user-requested mechanical panel extraction",
+  "asset_count": 18,
+  "individual_view_count": 54
+}
