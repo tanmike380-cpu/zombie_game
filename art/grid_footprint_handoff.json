@@ -1,0 +1,1371 @@
+{
+  "schema_version": 1,
+  "status": "Source frozen; Unity import and actual player visuals pending",
+  "source_blend": "art/Blender主文件/ZombieGame.blend",
+  "source_before_sha256": "b82b452cd7c8fa994a176b9209c2aa4dc3f470e2e6e6e9b7912d035e4e37c3ca",
+  "master_sha256": "468a608185ce139913f1b79e04f5e20d0a7b5662e248d32b6ab28900c096e866",
+  "recovery_snapshot": "Builds/ArtReview/GridFootprints/master-before-grid-20261016-012154.blend",
+  "protected_counts": {
+    "objects": 442,
+    "meshes": 282,
+    "materials": 85,
+    "images": 46,
+    "actions": 0,
+    "collections": 24,
+    "lights": 1,
+    "cameras": 1,
+    "worlds": 1,
+    "armatures": 14,
+    "scenes": 1
+  },
+  "objects_after": 464,
+  "collection": "建筑整格地块 · 牧场14＋基地12＋工坊8",
+  "gallery": {
+    "collection": "清爽连片麦田 · 2×2评审",
+    "root": "清爽麦田2×2 · 展示锚点",
+    "grid_count": [
+      2,
+      2
+    ],
+    "overall_m": [
+      28,
+      28
+    ]
+  },
+  "ground_material": {
+    "name": "GridFootprint_Dirt",
+    "license": "CC0-1.0",
+    "author": "Charlotte Baglioni",
+    "source": "https://polyhaven.com/a/dirt",
+    "license_url": "https://polyhaven.com/license",
+    "channels": {
+      "diff": {
+        "file": "art/models/grid-footprints/textures/dirt_diff_1k.jpg",
+        "sha256": "6ce6ca7e28ed046f7f93fa60dcb29f8cf42cd5a539adc5676675acccfa34efd3",
+        "colorspace": "sRGB",
+        "resolution": [
+          1024,
+          1024
+        ]
+      },
+      "nor_gl": {
+        "file": "art/models/grid-footprints/textures/dirt_nor_gl_1k.jpg",
+        "sha256": "5a5f97d920fdcdf352b350b95558bf48bb306be1fe61a47418aadc60b7deb0ce",
+        "colorspace": "Non-Color",
+        "resolution": [
+          1024,
+          1024
+        ]
+      },
+      "rough": {
+        "file": "art/models/grid-footprints/textures/dirt_rough_1k.jpg",
+        "sha256": "eff62d5ae7bf0c46b84173bc46f07528dd164aa39f5d550c93a805b36f54b704",
+        "colorspace": "Non-Color",
+        "resolution": [
+          1024,
+          1024
+        ]
+      }
+    },
+    "metallic": 0,
+    "normal_strength": 0.35,
+    "uv_period_m": 2,
+    "note": "Existing verified seamless PBR soil. No generated height/AO or invented texture."
+  },
+  "tile_size_m": 1,
+  "placement_scale": 1,
+  "ground_surface_local_y_m": 0,
+  "placement_note": "Place by ground-surface anchor at terrain+0.025m, NOT by negative mesh underside or bounds minimum. Export already includes accepted whole uniform architectural scale. No per-axis resizing.",
+  "preserved_wall_export": "art/fortified_city_handoff.json remains frozen; source revision advances only",
+  "tower_status": "Deferred: no prior solid-tower collection in actual source; no old collection restored or invented in this three-asset source pass",
+  "natural_resources_policy": "Trees/ore retain natural shapes; integer occupancy does not authorize blocky replacements",
+  "source_revision_chain": [
+    "6772efb7ce13ecc5fb5700d3eb846af5f36c96cde0f02c53701f7a14fb004ea5",
+    "385bbd298b8063fef8643119364fbed11d20321ab5f7767b2336ed5945fb4c2f",
+    "6b804e5dbfb12265a35f0cbfa865ae9eb9c2960ec4c5a0fb513d3f097637b821",
+    "f83c1ebc14407f62c635a332c2c20c0a36300822ee161599517bc39d626ae4b1",
+    "b82b452cd7c8fa994a176b9209c2aa4dc3f470e2e6e6e9b7912d035e4e37c3ca",
+    "468a608185ce139913f1b79e04f5e20d0a7b5662e248d32b6ab28900c096e866"
+  ],
+  "assets": [
+    {
+      "id": "Pasture14",
+      "source": "farmhouse",
+      "grid": [
+        14,
+        14
+      ],
+      "model_depth_m": 13,
+      "ground_cover_native_z": 0.015,
+      "root": "Pasture14Clean · 展示锚点",
+      "architecture": "Pasture14Clean_architecture",
+      "ground": "Pasture14Clean_ground",
+      "source_mesh": "tripo_mesh_87142fc2",
+      "source_mesh_sha256": "25e5cbffb844fe55cc35cc78ff1ce15a5f80e38d2aea33ba5fb8d94583dd6a3a",
+      "uniform_source_scale": 13.006350757205666,
+      "architecture_grounding_translation_m": -0.195095261358085,
+      "display_root_matrix": [
+        [
+          0.07688551396131516,
+          0.0,
+          0.0,
+          39.082618713378906
+        ],
+        [
+          0.0,
+          0.07688551396131516,
+          0.0,
+          -8.50583267211914
+        ],
+        [
+          0.0,
+          0.0,
+          0.07688551396131516,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "grid_ground_surface_m": 0,
+      "below_ground_geometry_m": -0.195095261358085,
+      "source_collection": "农田整格 · 仅小屋与连续麦田",
+      "edges": {
+        "grid": [
+          14,
+          14
+        ],
+        "ground_height": 0,
+        "maximum_geometry_gap_m": 0,
+        "opposite_edge_uv_period_differences": [
+          7.0,
+          7.0
+        ],
+        "uv_phase_mismatch": 0,
+        "passed": true
+      },
+      "export": {
+        "file": "art/models/grid-footprints/Pasture14/Pasture14.fbx",
+        "sha256": "f8de881951e71590506ce42fcbddc5b8dfaed368b3cafd49db174d2753d0d895",
+        "scale_baked": true,
+        "unity_placement_scale": 1,
+        "materials": [
+          {
+            "name": "Pasture14_OriginalMaterial",
+            "source_material": "tripo_mat_87142fc2",
+            "base_color_texture": "art/models/grid-footprints/Pasture14/wall-original-03.jpg",
+            "base_color_sha256": "aa2fd9ac9f922b0ab48c18bd72e3c15a4d1cd440bfeff7867f9eb3d8d336c0a1",
+            "base_color_multiplier": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "normal_map": null,
+            "roughness_map": null,
+            "height_map": null,
+            "note": "Original baked color only. No invented PBR maps or guessed scanning channels.",
+            "metallic": 0.0,
+            "roughness": 0.8999999761581421,
+            "smoothness": 0.10000002384185791,
+            "alpha_mode": "opaque",
+            "double_sided": false
+          },
+          {
+            "name": "GridFootprint_Dirt",
+            "license": "CC0-1.0",
+            "author": "Charlotte Baglioni",
+            "source": "https://polyhaven.com/a/dirt",
+            "license_url": "https://polyhaven.com/license",
+            "channels": {
+              "diff": {
+                "file": "art/models/grid-footprints/textures/dirt_diff_1k.jpg",
+                "sha256": "6ce6ca7e28ed046f7f93fa60dcb29f8cf42cd5a539adc5676675acccfa34efd3",
+                "colorspace": "sRGB",
+                "resolution": [
+                  1024,
+                  1024
+                ]
+              },
+              "nor_gl": {
+                "file": "art/models/grid-footprints/textures/dirt_nor_gl_1k.jpg",
+                "sha256": "5a5f97d920fdcdf352b350b95558bf48bb306be1fe61a47418aadc60b7deb0ce",
+                "colorspace": "Non-Color",
+                "resolution": [
+                  1024,
+                  1024
+                ]
+              },
+              "rough": {
+                "file": "art/models/grid-footprints/textures/dirt_rough_1k.jpg",
+                "sha256": "eff62d5ae7bf0c46b84173bc46f07528dd164aa39f5d550c93a805b36f54b704",
+                "colorspace": "Non-Color",
+                "resolution": [
+                  1024,
+                  1024
+                ]
+              }
+            },
+            "metallic": 0,
+            "normal_strength": 0.35,
+            "uv_period_m": 2,
+            "note": "Existing verified seamless PBR soil. No generated height/AO or invented texture.",
+            "alpha_mode": "opaque",
+            "double_sided": false
+          },
+          {
+            "name": "Crop natural tone 0",
+            "base_color_texture": null,
+            "base_color_multiplier": [
+              0.17000000178813934,
+              0.15000000596046448,
+              0.027000000700354576,
+              1.0
+            ],
+            "metallic": 0.0,
+            "roughness": 0.4000000059604645,
+            "smoothness": 0.5999999940395355,
+            "normal_map": null,
+            "roughness_map": null,
+            "alpha_mode": "opaque",
+            "double_sided": true,
+            "note": "Existing approved crop constant-color material, no recoloring"
+          },
+          {
+            "name": "Crop natural tone 1",
+            "base_color_texture": null,
+            "base_color_multiplier": [
+              0.25999999046325684,
+              0.23000000417232513,
+              0.041999999433755875,
+              1.0
+            ],
+            "metallic": 0.0,
+            "roughness": 0.4000000059604645,
+            "smoothness": 0.5999999940395355,
+            "normal_map": null,
+            "roughness_map": null,
+            "alpha_mode": "opaque",
+            "double_sided": true,
+            "note": "Existing approved crop constant-color material, no recoloring"
+          },
+          {
+            "name": "Crop natural tone 2",
+            "base_color_texture": null,
+            "base_color_multiplier": [
+              0.3400000035762787,
+              0.30000001192092896,
+              0.054999999701976776,
+              1.0
+            ],
+            "metallic": 0.0,
+            "roughness": 0.4000000059604645,
+            "smoothness": 0.5999999940395355,
+            "normal_map": null,
+            "roughness_map": null,
+            "alpha_mode": "opaque",
+            "double_sided": true,
+            "note": "Existing approved crop constant-color material, no recoloring"
+          },
+          {
+            "name": "Crop natural tone 3",
+            "base_color_texture": null,
+            "base_color_multiplier": [
+              0.4300000071525574,
+              0.36000001430511475,
+              0.07400000095367432,
+              1.0
+            ],
+            "metallic": 0.0,
+            "roughness": 0.4000000059604645,
+            "smoothness": 0.5999999940395355,
+            "normal_map": null,
+            "roughness_map": null,
+            "alpha_mode": "opaque",
+            "double_sided": true,
+            "note": "Existing approved crop constant-color material, no recoloring"
+          },
+          {
+            "name": "Crop natural tone 4",
+            "base_color_texture": null,
+            "base_color_multiplier": [
+              0.44999998807907104,
+              0.30000001192092896,
+              0.05000000074505806,
+              1.0
+            ],
+            "metallic": 0.0,
+            "roughness": 0.4000000059604645,
+            "smoothness": 0.5999999940395355,
+            "normal_map": null,
+            "roughness_map": null,
+            "alpha_mode": "opaque",
+            "double_sided": true,
+            "note": "Existing approved crop constant-color material, no recoloring"
+          },
+          {
+            "name": "Crop natural tone 5",
+            "base_color_texture": null,
+            "base_color_multiplier": [
+              0.550000011920929,
+              0.38999998569488525,
+              0.07999999821186066,
+              1.0
+            ],
+            "metallic": 0.0,
+            "roughness": 0.4000000059604645,
+            "smoothness": 0.5999999940395355,
+            "normal_map": null,
+            "roughness_map": null,
+            "alpha_mode": "opaque",
+            "double_sided": true,
+            "note": "Existing approved crop constant-color material, no recoloring"
+          },
+          {
+            "name": "Crop natural tone 6",
+            "base_color_texture": null,
+            "base_color_multiplier": [
+              0.6499999761581421,
+              0.4699999988079071,
+              0.11999999731779099,
+              1.0
+            ],
+            "metallic": 0.0,
+            "roughness": 0.4000000059604645,
+            "smoothness": 0.5999999940395355,
+            "normal_map": null,
+            "roughness_map": null,
+            "alpha_mode": "opaque",
+            "double_sided": true,
+            "note": "Existing approved crop constant-color material, no recoloring"
+          },
+          {
+            "name": "Crop natural tone 7",
+            "base_color_texture": null,
+            "base_color_multiplier": [
+              0.7300000190734863,
+              0.550000011920929,
+              0.17000000178813934,
+              1.0
+            ],
+            "metallic": 0.0,
+            "roughness": 0.4000000059604645,
+            "smoothness": 0.5999999940395355,
+            "normal_map": null,
+            "roughness_map": null,
+            "alpha_mode": "opaque",
+            "double_sided": true,
+            "note": "Existing approved crop constant-color material, no recoloring"
+          }
+        ],
+        "textures": [
+          {
+            "source_image": "tripo_image_87142fc2_0",
+            "file": "art/models/grid-footprints/Pasture14/wall-original-03.jpg",
+            "sha256": "aa2fd9ac9f922b0ab48c18bd72e3c15a4d1cd440bfeff7867f9eb3d8d336c0a1",
+            "size": [
+              2048,
+              2048
+            ],
+            "colorspace": "sRGB"
+          }
+        ],
+        "fbx_global_settings": {
+          "UpAxis": 1,
+          "UpAxisSign": 1,
+          "FrontAxis": 2,
+          "FrontAxisSign": 1,
+          "CoordAxis": 0,
+          "CoordAxisSign": 1,
+          "UnitScaleFactor": 100.0,
+          "OriginalUnitScaleFactor": 100.0
+        },
+        "roundtrip": {
+          "components": 4,
+          "maximum_vertex_error_m": 2.3061684260028414e-06,
+          "maximum_uv_error": 0.0,
+          "uv_loop_samples": 1288,
+          "passed": true
+        }
+      },
+      "crop": "Pasture14Clean_crop",
+      "crop_preservation": {
+        "source_fbx": "Assets/_Game/Art/CoastalImports/Pasture/Pasture.fbx",
+        "sha256": "2c5b73f3b8f628f69521bf7012de26debb262d368cbd4af7daba84e28c468acc",
+        "source_mesh_sha256": "22600688180a31d1e3ae396e7c1a9bd32ac216aa8a11adb2cdd4b3f71f05d7ad",
+        "vertices": 229058,
+        "triangles": 242532,
+        "note": "Exact original stalk shapes, copied by rigid translation onto the outer band's periodic ground grid. No L-shaped original courtyard lanes or raised beds remain. Old source and old variants preserved.",
+        "original_source_mesh_sha256": "f220b04f255e2c166f4a471116f3b4f212de9072835456ea1c369992ac46659e"
+      },
+      "crop_completion": "Pasture14Clean_crop_completion",
+      "crop_completion_evidence": {
+        "approved_stalk_vertices_each": 34,
+        "source_stalks": 7189,
+        "reused_stalk_instances": 9827,
+        "added_triangles": 337804,
+        "crop_field_period_m": 14,
+        "stalk_pitch_m": 0.1,
+        "outer_clip_m": [
+          -7,
+          7,
+          -7,
+          7
+        ],
+        "new_buildings": false,
+        "note": "Translated copies of existing approved stalk batches only. Original inner crop, house and fence unchanged; only newly copied ground cover is clipped to rectangle."
+      },
+      "source_id": "Pasture",
+      "export_root_name": "Pasture14",
+      "footprint_m": [
+        14,
+        14
+      ],
+      "placement_scale": 1,
+      "grid_unit_m": 1,
+      "ground_anchor_y_m": 0,
+      "unity_ground_offset_m": 0.025,
+      "architectural_scale_already_in_export": true,
+      "components": [
+        {
+          "name": "Pasture14Clean_architecture",
+          "expected_unity_bounds_center_m": [
+            3.6897897720336914,
+            1.2242989540100098,
+            2.3497800827026367
+          ],
+          "expected_unity_bounds_size_m": [
+            4.235955238342285,
+            2.5847582817077637,
+            7.017586708068848
+          ],
+          "material_names": [
+            "Pasture14_OriginalMaterial"
+          ]
+        },
+        {
+          "name": "Pasture14Clean_ground",
+          "expected_unity_bounds_center_m": [
+            0.0,
+            -0.02500000037252903,
+            0.0
+          ],
+          "expected_unity_bounds_size_m": [
+            14.0,
+            0.05000000074505806,
+            14.0
+          ],
+          "material_names": [
+            "GridFootprint_Dirt"
+          ]
+        },
+        {
+          "name": "Pasture14Clean_crop",
+          "expected_unity_bounds_center_m": [
+            -1.3000032901763916,
+            0.2668098509311676,
+            -1.0000208616256714
+          ],
+          "expected_unity_bounds_size_m": [
+            7.786080837249756,
+            0.48361971974372864,
+            9.38609790802002
+          ],
+          "material_names": [
+            "Crop natural tone 0",
+            "Crop natural tone 1",
+            "Crop natural tone 2",
+            "Crop natural tone 3",
+            "Crop natural tone 4",
+            "Crop natural tone 5",
+            "Crop natural tone 6",
+            "Crop natural tone 7"
+          ]
+        },
+        {
+          "name": "Pasture14Clean_crop_completion",
+          "expected_unity_bounds_center_m": [
+            0.0,
+            0.2668098509311676,
+            0.0
+          ],
+          "expected_unity_bounds_size_m": [
+            14.0,
+            0.48361971974372864,
+            14.0
+          ],
+          "material_names": [
+            "Crop natural tone 0",
+            "Crop natural tone 1",
+            "Crop natural tone 2",
+            "Crop natural tone 3",
+            "Crop natural tone 4",
+            "Crop natural tone 5",
+            "Crop natural tone 6",
+            "Crop natural tone 7"
+          ]
+        }
+      ],
+      "expected_unity_bounds_center_m": [
+        0.0,
+        1.2242989540100098,
+        0.0
+      ],
+      "expected_unity_bounds_size_m": [
+        14.0,
+        2.5847582817077637,
+        14.0
+      ],
+      "expected_unity_min_y_m": -0.0680801123380661,
+      "clean_source_mesh_sha256": "33e09ee5c8bd531b3e7e3e1930d49f7ed01eb9cbfd2d7301b75133e6fa1025ad",
+      "clean_farm_evidence": {
+        "source_vertices": 5448,
+        "kept_vertices": 377,
+        "source_faces": 6093,
+        "kept_faces": 337,
+        "protected_upper_house_vertices": 315,
+        "whole_connected_house_components": 13,
+        "excluded_upright_cloth_components": 1,
+        "source_face_indices": [
+          1218,
+          1219,
+          1220,
+          1221,
+          1222,
+          1223,
+          1224,
+          1225,
+          1226,
+          1227,
+          1228,
+          1229,
+          1230,
+          1231,
+          1232,
+          1233,
+          1891,
+          1892,
+          1893,
+          1894,
+          1895,
+          1896,
+          1897,
+          1898,
+          1899,
+          1900,
+          1901,
+          1902,
+          1903,
+          1904,
+          1908,
+          1909,
+          1910,
+          1911,
+          2068,
+          2069,
+          2137,
+          2138,
+          2139,
+          2140,
+          2142,
+          2145,
+          2146,
+          2150,
+          2172,
+          2173,
+          2182,
+          2183,
+          2184,
+          2185,
+          2186,
+          2187,
+          2188,
+          2189,
+          2190,
+          2191,
+          2192,
+          2193,
+          2194,
+          2195,
+          2196,
+          2197,
+          2198,
+          2199,
+          2200,
+          2201,
+          2202,
+          2203,
+          2204,
+          2205,
+          2206,
+          2242,
+          2243,
+          2244,
+          2594,
+          2595,
+          2596,
+          2761,
+          2762,
+          2763,
+          2764,
+          2765,
+          2766,
+          2767,
+          4079,
+          4080,
+          4081,
+          4082,
+          4083,
+          4084,
+          4095,
+          4096,
+          4097,
+          4098,
+          4099,
+          4100,
+          4101,
+          4102,
+          4103,
+          4104,
+          4105,
+          4106,
+          4107,
+          4108,
+          4109,
+          4110,
+          4111,
+          4112,
+          4113,
+          4114,
+          4115,
+          4116,
+          4117,
+          4118,
+          4119,
+          4120,
+          4121,
+          4832,
+          4833,
+          4834,
+          4835,
+          4836,
+          4837,
+          4838,
+          4839,
+          4840,
+          4841,
+          4842,
+          4843,
+          4844,
+          4845,
+          4846,
+          4847,
+          4848,
+          4849,
+          4850,
+          4851,
+          4852,
+          4853,
+          4854,
+          4855,
+          4856,
+          4857,
+          4858,
+          4862,
+          4863,
+          4864,
+          4865,
+          4866,
+          4867,
+          4868,
+          4869,
+          4870,
+          4871,
+          4872,
+          5074,
+          5075,
+          5076,
+          5077,
+          5150,
+          5151,
+          5152,
+          5153,
+          5303,
+          5304,
+          5305,
+          5306,
+          5307,
+          5308,
+          5309,
+          5310,
+          5311,
+          5312,
+          5313,
+          5314,
+          5315,
+          5316,
+          5317,
+          5318,
+          5319,
+          5320,
+          5321,
+          5322,
+          5323,
+          5324,
+          5325,
+          5326,
+          5327,
+          5328,
+          5329,
+          5330,
+          5331,
+          5332,
+          5333,
+          5334,
+          5335,
+          5336,
+          5337,
+          5338,
+          5339,
+          5340,
+          5341,
+          5342,
+          5343,
+          5344,
+          5345,
+          5346,
+          5347,
+          5348,
+          5349,
+          5350,
+          5351,
+          5352,
+          5353,
+          5354,
+          5355,
+          5356,
+          5357,
+          5358,
+          5359,
+          5360,
+          5787,
+          5788,
+          5790,
+          5825,
+          5826,
+          5827,
+          5828,
+          5829,
+          5830,
+          5831,
+          5832,
+          5833,
+          5834,
+          5838,
+          5839,
+          5840,
+          5841,
+          5887,
+          5907,
+          5908,
+          5909,
+          5910,
+          5911,
+          5912,
+          5913,
+          5914,
+          5915,
+          5916,
+          5917,
+          5918,
+          5919,
+          5920,
+          5921,
+          5922,
+          5923,
+          5924,
+          5925,
+          5926,
+          5927,
+          5928,
+          5929,
+          5930,
+          5931,
+          5934,
+          5935,
+          5936,
+          5937,
+          5939,
+          5940,
+          5941,
+          5942,
+          5943,
+          5944,
+          5945,
+          5946,
+          5947,
+          5948,
+          5949,
+          5950,
+          5951,
+          5952,
+          5953,
+          5954,
+          5975,
+          5976,
+          5977,
+          5978,
+          5979,
+          5989,
+          5990,
+          5991,
+          5992,
+          5993,
+          5994,
+          5995,
+          5996,
+          5997,
+          5998,
+          5999,
+          6010,
+          6011,
+          6012,
+          6016,
+          6017,
+          6018,
+          6019,
+          6023,
+          6024,
+          6037,
+          6038,
+          6039,
+          6040,
+          6041,
+          6042,
+          6043,
+          6044,
+          6045,
+          6046,
+          6047,
+          6048,
+          6049,
+          6050,
+          6051,
+          6052,
+          6053,
+          6054,
+          6055,
+          6056,
+          6057,
+          6058,
+          6059,
+          6060,
+          6061,
+          6062,
+          6063,
+          6084
+        ],
+        "note": "Original retained house/roof face coordinates and UVs copied exactly. Courtyard fences, poles, upright cloth, detached trees, props and raised field-bed skin excluded. Existing approved stalk shapes are rigidly copied onto one continuous periodic ground grid; original crop source and previous variants remain unchanged."
+      },
+      "crop_grounding": {
+        "stalk_count": 6737,
+        "vertices_per_stalk": 34,
+        "root_surface_m": 0.025,
+        "stalk_pitch_m": 0.1,
+        "source_mesh_sha256": "f220b04f255e2c166f4a471116f3b4f212de9072835456ea1c369992ac46659e",
+        "new_mesh_sha256": "22600688180a31d1e3ae396e7c1a9bd32ac216aa8a11adb2cdd4b3f71f05d7ad",
+        "note": "Exact original stalk shapes, copied by rigid translation onto the outer band's periodic ground grid. No L-shaped original courtyard lanes or raised beds remain. Old source and old variants preserved."
+      }
+    },
+    {
+      "id": "Headquarters12",
+      "source": "BZT Main base1",
+      "grid": [
+        12,
+        12
+      ],
+      "model_depth_m": 12,
+      "ground_cover_native_z": 0.008,
+      "root": "整格地块 · Headquarters12（展示比例）",
+      "architecture": "Headquarters12_OriginalArchitecture",
+      "ground": "Headquarters12_IntegerGround",
+      "source_mesh": "tripo_mesh_b9b5ab31",
+      "source_mesh_sha256": "ff7d9668dc63c61313d5ba8879b835e7b1789e61c89e7c00318f132c263f7a05",
+      "uniform_source_scale": 12.005862237420615,
+      "architecture_grounding_translation_m": -0.09604689789936492,
+      "display_root_matrix": [
+        [
+          0.0832926407456398,
+          0.0,
+          0.0,
+          41.1826171875
+        ],
+        [
+          0.0,
+          0.0832926407456398,
+          0.0,
+          -8.50583267211914
+        ],
+        [
+          0.0,
+          0.0,
+          0.0832926407456398,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "grid_ground_surface_m": 0,
+      "below_ground_geometry_m": -0.09604689789936492,
+      "source_collection": "建筑整格地块 · 牧场14＋基地12＋工坊8",
+      "edges": {
+        "grid": [
+          12,
+          12
+        ],
+        "ground_height": 0,
+        "maximum_geometry_gap_m": 0,
+        "opposite_edge_uv_period_differences": [
+          6.0,
+          6.0
+        ],
+        "uv_phase_mismatch": 0,
+        "passed": true
+      },
+      "export": {
+        "file": "art/models/grid-footprints/Headquarters12/Headquarters12.fbx",
+        "sha256": "d3f7fa2d163adfc5aa176b5aba9ecd0a338630dfccf29f2609fdd4fe58988032",
+        "scale_baked": true,
+        "unity_placement_scale": 1,
+        "materials": [
+          {
+            "name": "Headquarters12_OriginalMaterial",
+            "source_material": "tripo_mat_b9b5ab31",
+            "base_color_texture": "art/models/grid-footprints/Headquarters12/wall-original-03.jpg",
+            "base_color_sha256": "4279480a0268f5aa2a6d087df0e6fdc55e6df978969759f7638647b9ef218bfb",
+            "base_color_multiplier": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "normal_map": null,
+            "roughness_map": null,
+            "height_map": null,
+            "note": "Original baked color only. No invented PBR maps or guessed scanning channels.",
+            "metallic": 0.0,
+            "roughness": 0.8999999761581421,
+            "smoothness": 0.10000002384185791,
+            "alpha_mode": "opaque",
+            "double_sided": false
+          },
+          {
+            "name": "GridFootprint_Dirt",
+            "license": "CC0-1.0",
+            "author": "Charlotte Baglioni",
+            "source": "https://polyhaven.com/a/dirt",
+            "license_url": "https://polyhaven.com/license",
+            "channels": {
+              "diff": {
+                "file": "art/models/grid-footprints/textures/dirt_diff_1k.jpg",
+                "sha256": "6ce6ca7e28ed046f7f93fa60dcb29f8cf42cd5a539adc5676675acccfa34efd3",
+                "colorspace": "sRGB",
+                "resolution": [
+                  1024,
+                  1024
+                ]
+              },
+              "nor_gl": {
+                "file": "art/models/grid-footprints/textures/dirt_nor_gl_1k.jpg",
+                "sha256": "5a5f97d920fdcdf352b350b95558bf48bb306be1fe61a47418aadc60b7deb0ce",
+                "colorspace": "Non-Color",
+                "resolution": [
+                  1024,
+                  1024
+                ]
+              },
+              "rough": {
+                "file": "art/models/grid-footprints/textures/dirt_rough_1k.jpg",
+                "sha256": "eff62d5ae7bf0c46b84173bc46f07528dd164aa39f5d550c93a805b36f54b704",
+                "colorspace": "Non-Color",
+                "resolution": [
+                  1024,
+                  1024
+                ]
+              }
+            },
+            "metallic": 0,
+            "normal_strength": 0.35,
+            "uv_period_m": 2,
+            "note": "Existing verified seamless PBR soil. No generated height/AO or invented texture.",
+            "alpha_mode": "opaque",
+            "double_sided": false
+          }
+        ],
+        "textures": [
+          {
+            "source_image": "tripo_image_b9b5ab31_0",
+            "file": "art/models/grid-footprints/Headquarters12/wall-original-03.jpg",
+            "sha256": "4279480a0268f5aa2a6d087df0e6fdc55e6df978969759f7638647b9ef218bfb",
+            "size": [
+              2048,
+              2048
+            ],
+            "colorspace": "sRGB"
+          }
+        ],
+        "fbx_global_settings": {
+          "UpAxis": 1,
+          "UpAxisSign": 1,
+          "FrontAxis": 2,
+          "FrontAxisSign": 1,
+          "CoordAxis": 0,
+          "CoordAxisSign": 1,
+          "UnitScaleFactor": 100.0,
+          "OriginalUnitScaleFactor": 100.0
+        },
+        "roundtrip": {
+          "components": 2,
+          "maximum_vertex_error_m": 2.001989059863263e-06,
+          "maximum_uv_error": 0.0,
+          "uv_loop_samples": 14931,
+          "passed": true
+        }
+      },
+      "source_id": "Headquarters",
+      "export_root_name": "Headquarters12",
+      "footprint_m": [
+        12,
+        12
+      ],
+      "placement_scale": 1,
+      "grid_unit_m": 1,
+      "ground_anchor_y_m": 0,
+      "unity_ground_offset_m": 0.025,
+      "architectural_scale_already_in_export": true,
+      "components": [
+        {
+          "name": "Headquarters12_OriginalArchitecture",
+          "expected_unity_bounds_center_m": [
+            0.0,
+            3.588369369506836,
+            0.0
+          ],
+          "expected_unity_bounds_size_m": [
+            11.55447006225586,
+            7.368832588195801,
+            12.0
+          ],
+          "material_names": [
+            "Headquarters12_OriginalMaterial"
+          ]
+        },
+        {
+          "name": "Headquarters12_IntegerGround",
+          "expected_unity_bounds_center_m": [
+            0.0,
+            -0.02500000037252903,
+            0.0
+          ],
+          "expected_unity_bounds_size_m": [
+            12.0,
+            0.05000000074505806,
+            12.0
+          ],
+          "material_names": [
+            "GridFootprint_Dirt"
+          ]
+        }
+      ],
+      "expected_unity_bounds_center_m": [
+        0.0,
+        3.588369369506836,
+        0.0
+      ],
+      "expected_unity_bounds_size_m": [
+        12.0,
+        7.368832588195801,
+        12.0
+      ],
+      "expected_unity_min_y_m": -0.09604689478874207
+    },
+    {
+      "id": "Workshop8",
+      "source": "BZT wooden workshop",
+      "grid": [
+        8,
+        8
+      ],
+      "model_depth_m": 8,
+      "ground_cover_native_z": 0.01,
+      "root": "整格地块 · Workshop8（展示比例）",
+      "architecture": "Workshop8_OriginalArchitecture",
+      "ground": "Workshop8_IntegerGround",
+      "source_mesh": "tripo_mesh_24a2e25a",
+      "source_mesh_sha256": "6242d5a16b4373f46e1a591de4677a1f7498685e2619256d730122fd7a78b465",
+      "uniform_source_scale": 8.00390815828041,
+      "architecture_grounding_translation_m": -0.08003908158280411,
+      "display_root_matrix": [
+        [
+          0.12493896484375,
+          0.0,
+          0.0,
+          43.28261947631836
+        ],
+        [
+          0.0,
+          0.12493896484375,
+          0.0,
+          -8.50583267211914
+        ],
+        [
+          0.0,
+          0.0,
+          0.12493896484375,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "grid_ground_surface_m": 0,
+      "below_ground_geometry_m": -0.08003908158280411,
+      "source_collection": "建筑整格地块 · 牧场14＋基地12＋工坊8",
+      "edges": {
+        "grid": [
+          8,
+          8
+        ],
+        "ground_height": 0,
+        "maximum_geometry_gap_m": 0,
+        "opposite_edge_uv_period_differences": [
+          4.0,
+          4.0
+        ],
+        "uv_phase_mismatch": 0,
+        "passed": true
+      },
+      "export": {
+        "file": "art/models/grid-footprints/Workshop8/Workshop8.fbx",
+        "sha256": "b84ca5b04261d434119ed78e66a113cba6dd355f0713f2a7f0e85b524a3ce8f0",
+        "scale_baked": true,
+        "unity_placement_scale": 1,
+        "materials": [
+          {
+            "name": "Workshop8_OriginalMaterial",
+            "source_material": "tripo_mat_24a2e25a",
+            "base_color_texture": "art/models/grid-footprints/Workshop8/wall-original-03.jpg",
+            "base_color_sha256": "8fa3c0e9413da60acf5109bf6b029a3de88f263a1757adc44741ccb4e3e9dcfd",
+            "base_color_multiplier": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "normal_map": null,
+            "roughness_map": null,
+            "height_map": null,
+            "note": "Original baked color only. No invented PBR maps or guessed scanning channels.",
+            "metallic": 0.0,
+            "roughness": 0.8999999761581421,
+            "smoothness": 0.10000002384185791,
+            "alpha_mode": "opaque",
+            "double_sided": false
+          },
+          {
+            "name": "GridFootprint_Dirt",
+            "license": "CC0-1.0",
+            "author": "Charlotte Baglioni",
+            "source": "https://polyhaven.com/a/dirt",
+            "license_url": "https://polyhaven.com/license",
+            "channels": {
+              "diff": {
+                "file": "art/models/grid-footprints/textures/dirt_diff_1k.jpg",
+                "sha256": "6ce6ca7e28ed046f7f93fa60dcb29f8cf42cd5a539adc5676675acccfa34efd3",
+                "colorspace": "sRGB",
+                "resolution": [
+                  1024,
+                  1024
+                ]
+              },
+              "nor_gl": {
+                "file": "art/models/grid-footprints/textures/dirt_nor_gl_1k.jpg",
+                "sha256": "5a5f97d920fdcdf352b350b95558bf48bb306be1fe61a47418aadc60b7deb0ce",
+                "colorspace": "Non-Color",
+                "resolution": [
+                  1024,
+                  1024
+                ]
+              },
+              "rough": {
+                "file": "art/models/grid-footprints/textures/dirt_rough_1k.jpg",
+                "sha256": "eff62d5ae7bf0c46b84173bc46f07528dd164aa39f5d550c93a805b36f54b704",
+                "colorspace": "Non-Color",
+                "resolution": [
+                  1024,
+                  1024
+                ]
+              }
+            },
+            "metallic": 0,
+            "normal_strength": 0.35,
+            "uv_period_m": 2,
+            "note": "Existing verified seamless PBR soil. No generated height/AO or invented texture.",
+            "alpha_mode": "opaque",
+            "double_sided": false
+          }
+        ],
+        "textures": [
+          {
+            "source_image": "tripo_image_24a2e25a_0",
+            "file": "art/models/grid-footprints/Workshop8/wall-original-03.jpg",
+            "sha256": "8fa3c0e9413da60acf5109bf6b029a3de88f263a1757adc44741ccb4e3e9dcfd",
+            "size": [
+              2048,
+              2048
+            ],
+            "colorspace": "sRGB"
+          }
+        ],
+        "fbx_global_settings": {
+          "UpAxis": 1,
+          "UpAxisSign": 1,
+          "FrontAxis": 2,
+          "FrontAxisSign": 1,
+          "CoordAxis": 0,
+          "CoordAxisSign": 1,
+          "UnitScaleFactor": 100.0,
+          "OriginalUnitScaleFactor": 100.0
+        },
+        "roundtrip": {
+          "components": 2,
+          "maximum_vertex_error_m": 1.3431568959276774e-06,
+          "maximum_uv_error": 0.0,
+          "uv_loop_samples": 13774,
+          "passed": true
+        }
+      },
+      "source_id": "Workshop",
+      "export_root_name": "Workshop8",
+      "footprint_m": [
+        8,
+        8
+      ],
+      "placement_scale": 1,
+      "grid_unit_m": 1,
+      "ground_anchor_y_m": 0,
+      "unity_ground_offset_m": 0.025,
+      "architectural_scale_already_in_export": true,
+      "components": [
+        {
+          "name": "Workshop8_OriginalArchitecture",
+          "expected_unity_bounds_center_m": [
+            0.0,
+            1.7509331703186035,
+            0.0
+          ],
+          "expected_unity_bounds_size_m": [
+            8.0,
+            3.6619443893432617,
+            8.0
+          ],
+          "material_names": [
+            "Workshop8_OriginalMaterial"
+          ]
+        },
+        {
+          "name": "Workshop8_IntegerGround",
+          "expected_unity_bounds_center_m": [
+            0.0,
+            -0.02500000037252903,
+            0.0
+          ],
+          "expected_unity_bounds_size_m": [
+            8.0,
+            0.05000000074505806,
+            8.0
+          ],
+          "material_names": [
+            "GridFootprint_Dirt"
+          ]
+        }
+      ],
+      "expected_unity_bounds_center_m": [
+        0.0,
+        1.7509331703186035,
+        0.0
+      ],
+      "expected_unity_bounds_size_m": [
+        8.0,
+        3.6619443893432617,
+        8.0
+      ],
+      "expected_unity_min_y_m": -0.08003908395767212
+    }
+  ],
+  "crop_boundary_phase": {
+    "x": {
+      "vertices_on_edges": [
+        1405,
+        1403
+      ],
+      "maximum_boundary_section_difference_m": 9.059906005859375e-06,
+      "tolerance_m": 0.0001,
+      "passed": true
+    },
+    "z": {
+      "vertices_on_edges": [
+        1448,
+        1447
+      ],
+      "maximum_boundary_section_difference_m": 2.6979250833392143e-05,
+      "tolerance_m": 0.0001,
+      "passed": true
+    }
+  },
+  "clean_farm_collection": "农田整格 · 仅小屋与连续麦田",
+  "protected_prior_442_proof": {
+    "passed": true,
+    "counts": {
+      "objects": 442,
+      "meshes": 282,
+      "materials": 85,
+      "images": 46,
+      "actions": 0,
+      "collections": 24,
+      "lights": 1,
+      "cameras": 1,
+      "worlds": 1,
+      "armatures": 14,
+      "scenes": 1
+    },
+    "report": "Builds/ArtReview/GridFootprints/final-source-verification.json"
+  },
+  "protected_original_414_proof": {
+    "passed": true,
+    "counts": {
+      "objects": 414,
+      "meshes": 277,
+      "materials": 76,
+      "images": 43,
+      "actions": 0,
+      "collections": 22,
+      "lights": 1,
+      "cameras": 1,
+      "worlds": 1,
+      "armatures": 14,
+      "scenes": 1
+    },
+    "report": "Builds/ArtReview/GridFootprints/final-source-verification.json"
+  }
+}

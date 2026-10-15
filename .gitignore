@@ -92,3 +92,5 @@ sysinfo.txt
 /art/environment/inspection/landmarks/v[2-9]/
 # Unapproved high-cost tree research exports stay local; selected sources have separate handoffs.
 /art/environment/vision-tree-candidates/
+# FBX roundtrip extraction cache; the authored texture files live beside each export.
+/art/models/grid-footprints/*/*.fbm/

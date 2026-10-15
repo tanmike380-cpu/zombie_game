@@ -57,6 +57,16 @@ namespace ZombieGame.Tests.EditorTools
             public string source_image,file,sha256,colorspace;
             public int[] size;
         }
+        [Serializable] private sealed class SourceRevision
+        {
+            public string source_blend,master_sha256;
+            public string[] source_revision_chain;
+            public PreservationProof protected_original_414_proof;
+        }
+        [Serializable] private sealed class PreservationProof { public bool passed; public ProtectedCounts counts; }
+        [Serializable] private sealed class ProtectedCounts { public int objects; }
+        [Serializable] private sealed class SourceRegistry { public DiskRevision current_disk_revision; }
+        [Serializable] private sealed class DiskRevision { public string master_sha256,handoff; }
 
         public static void import_frozen_city_walls()
         {
@@ -130,11 +140,35 @@ namespace ZombieGame.Tests.EditorTools
                 handoff.export.roundtrip.maximum_uv_error != 0 || handoff.export.roundtrip.maximum_vertex_error_m > .00002f ||
                 handoff.interior_clear_rectangle_unity_m == null || handoff.interior_clear_rectangle_unity_m.max_x <= handoff.interior_clear_rectangle_unity_m.min_x)
                 throw new InvalidOperationException("Frozen wall source schema/component/material/open-portal declaration is incomplete.");
-            VisionVegetationImport.verify_hash(MASTER_PATH,handoff.master_sha256);
+            verify_master_revision(handoff.master_sha256);
             VisionVegetationImport.verify_hash(handoff.export.file,handoff.export.sha256);
             if(handoff.export.file != "art/models/fortified-city/FortifiedCityWalls.fbx")
                 throw new InvalidOperationException("Wall handoff points outside the designated whole-assembly export.");
             return handoff;
+        }
+
+        /// <summary>Accept additive grid authoring only with a registered, re-open-verified preservation chain.</summary>
+        private static void verify_master_revision(string frozen_sha256)
+        {
+            const string GRID_HANDOFF = "art/grid_footprint_handoff.json";
+            if(!File.Exists(GRID_HANDOFF))
+            {
+                VisionVegetationImport.verify_hash(MASTER_PATH,frozen_sha256);
+                return;
+            }
+            var revision = JsonUtility.FromJson<SourceRevision>(File.ReadAllText(GRID_HANDOFF));
+            if(revision?.source_revision_chain == null || Array.IndexOf(revision.source_revision_chain,frozen_sha256) < 0)
+            {
+                VisionVegetationImport.verify_hash(MASTER_PATH,frozen_sha256);
+                return;
+            }
+            var registry = JsonUtility.FromJson<SourceRegistry>(File.ReadAllText("art/blender_master.json"));
+            if(revision.source_blend != MASTER_PATH || revision.protected_original_414_proof == null ||
+                !revision.protected_original_414_proof.passed || revision.protected_original_414_proof.counts?.objects != 414 ||
+                revision.source_revision_chain[revision.source_revision_chain.Length-1] != revision.master_sha256 ||
+                registry?.current_disk_revision?.master_sha256 != revision.master_sha256 || registry.current_disk_revision.handoff != GRID_HANDOFF)
+                throw new InvalidOperationException("Current Blender revision lacks the registered preservation proof for the frozen city source.");
+            VisionVegetationImport.verify_hash(MASTER_PATH,revision.master_sha256);
         }
 
         private static Bounds verify_geometry(GameObject instance,ComponentRecord[] components)

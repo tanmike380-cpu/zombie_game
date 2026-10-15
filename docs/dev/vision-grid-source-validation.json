@@ -1,0 +1,132 @@
+{
+  "passed": true,
+  "source_sha256": "468a608185ce139913f1b79e04f5e20d0a7b5662e248d32b6ab28900c096e866",
+  "protected_original_counts": {
+    "objects": 414,
+    "meshes": 277,
+    "materials": 76,
+    "images": 43,
+    "actions": 0,
+    "collections": 22,
+    "lights": 1,
+    "cameras": 1,
+    "worlds": 1,
+    "armatures": 14,
+    "scenes": 1
+  },
+  "protected_prior_variant_counts": {
+    "objects": 442,
+    "meshes": 282,
+    "materials": 85,
+    "images": 46,
+    "actions": 0,
+    "collections": 24,
+    "lights": 1,
+    "cameras": 1,
+    "worlds": 1,
+    "armatures": 14,
+    "scenes": 1
+  },
+  "old_442_including_prior_variants_preserved": true,
+  "old_414_including_frozen_wall_preserved": true,
+  "records": [
+    {
+      "id": "Pasture14",
+      "edges": {
+        "grid": [
+          14,
+          14
+        ],
+        "ground_height": 0,
+        "maximum_geometry_gap_m": 0,
+        "opposite_edge_uv_period_differences": [
+          7.0,
+          7.0
+        ],
+        "uv_phase_mismatch": 0,
+        "passed": true
+      },
+      "upper_geometry_uv_unchanged": true,
+      "roundtrip": {
+        "components": 4,
+        "maximum_vertex_error_m": 2.3061684260028414e-06,
+        "maximum_uv_error": 0.0,
+        "uv_loop_samples": 1288,
+        "passed": true
+      }
+    },
+    {
+      "id": "Headquarters12",
+      "edges": {
+        "grid": [
+          12,
+          12
+        ],
+        "ground_height": 0,
+        "maximum_geometry_gap_m": 0,
+        "opposite_edge_uv_period_differences": [
+          6.0,
+          6.0
+        ],
+        "uv_phase_mismatch": 0,
+        "passed": true
+      },
+      "upper_geometry_uv_unchanged": true,
+      "roundtrip": {
+        "components": 2,
+        "maximum_vertex_error_m": 2.001989059863263e-06,
+        "maximum_uv_error": 0.0,
+        "uv_loop_samples": 14931,
+        "passed": true
+      }
+    },
+    {
+      "id": "Workshop8",
+      "edges": {
+        "grid": [
+          8,
+          8
+        ],
+        "ground_height": 0,
+        "maximum_geometry_gap_m": 0,
+        "opposite_edge_uv_period_differences": [
+          4.0,
+          4.0
+        ],
+        "uv_phase_mismatch": 0,
+        "passed": true
+      },
+      "upper_geometry_uv_unchanged": true,
+      "roundtrip": {
+        "components": 2,
+        "maximum_vertex_error_m": 1.3431568959276774e-06,
+        "maximum_uv_error": 0.0,
+        "uv_loop_samples": 13774,
+        "passed": true
+      }
+    }
+  ],
+  "crop_boundary_phase": {
+    "x": {
+      "vertices_on_edges": [
+        1405,
+        1403
+      ],
+      "maximum_boundary_section_difference_m": 9.059906005859375e-06,
+      "tolerance_m": 0.0001,
+      "passed": true
+    },
+    "z": {
+      "vertices_on_edges": [
+        1448,
+        1447
+      ],
+      "maximum_boundary_section_difference_m": 2.6979250833392143e-05,
+      "tolerance_m": 0.0001,
+      "passed": true
+    }
+  },
+  "original_crop_triangles": 242532,
+  "added_ground_crop_triangles": 337804,
+  "note": "Rendering cost increased for visual review, not claimed optimized or battle benchmarked. Towers remain deferred; no absent tower collections restored."
+}

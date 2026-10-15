@@ -8,15 +8,29 @@
   "runtime_animation_collection": "动画参考 · Unity现用资产",
   "master_art_handoff": "art/master_art_handoff.json",
   "current_disk_revision": {
-    "date": "2026-10-15",
-    "master_sha256": "6772efb7ce13ecc5fb5700d3eb846af5f36c96cde0f02c53701f7a14fb004ea5",
-    "before_sha256": "1472ab550fd4837a49caea1856ee58ece99b7702b77ee4f15d9d082df1117d66",
-    "handoff": "art/fortified_city_handoff.json",
-    "collection": "城防实装 · 北入口完整城市围墙",
-    "objects": 414,
-    "protected_preexisting_objects": 394,
-    "note": "Current saved general master, not the older 607f38 master_art_handoff snapshot. Added 19 unchanged source-kit instances and one display root only. Earlier missing solid tower/action reference collections were not restored. The live unsaved Zombie category file was untouched."
+    "date": "2026-10-16",
+    "master_sha256": "468a608185ce139913f1b79e04f5e20d0a7b5662e248d32b6ab28900c096e866",
+    "before_sha256": "b82b452cd7c8fa994a176b9209c2aa4dc3f470e2e6e6e9b7912d035e4e37c3ca",
+    "handoff": "art/grid_footprint_handoff.json",
+    "collection": "农田整格 · 仅小屋与连续麦田",
+    "objects": 464,
+    "protected_preexisting_objects": 442,
+    "protected_original_city_revision_objects": 414,
+    "note": "Added authorized integer-ground variants and a clean 14m square pasture containing only original house/roof and continuous original-stalk wheat. All prior 442 objects, their meshes/UV/materials/rigs and scene lighting/layout remain unchanged; original city revision's 414 objects independently rechecked. Live unsaved Zombie category file untouched. New current hash does not invalidate the unchanged frozen city FBX; use revision lineage in grid handoff."
   },
+  "frozen_source_revisions": [
+    {
+      "date": "2026-10-15",
+      "master_sha256": "6772efb7ce13ecc5fb5700d3eb846af5f36c96cde0f02c53701f7a14fb004ea5",
+      "before_sha256": "1472ab550fd4837a49caea1856ee58ece99b7702b77ee4f15d9d082df1117d66",
+      "handoff": "art/fortified_city_handoff.json",
+      "collection": "城防实装 · 北入口完整城市围墙",
+      "objects": 414,
+      "protected_preexisting_objects": 394,
+      "note": "Historical city source snapshot, not current disk SHA. Its frozen export and geometry are unchanged. The current disk retains all 414 objects and adds ground variants only. Earlier absent tower/action collections were not restored."
+    }
+  ],
+  "grid_footprint_handoff": "art/grid_footprint_handoff.json",
   "defense_tower_policy": "Solid lower piers, no doors/ladders/lower decoration; no friendly tower passage. Original upper geometry retained. Independent authored arrow tower source is missing and was not invented.",
   "rectangular_tower_report": "Builds/ArtReview/ModularStoneWall/rectangular-tower-verification.json",
   "storage_warning": "Preserve art/Blender主文件/ZombieGame_Master.blend/未命名.blend as the first manual save backup; do not confuse its .blend-named directory with the formal file.",
