@@ -196,6 +196,14 @@ namespace ZombieGame.Tests.EnvironmentShowcase
         public void set_view(int requested_view, int requested_zoom)
         {
             view_index = Mathf.Clamp(requested_view, 0, view_names.Length - 1);
+            var city = config.vision_enabled ? config.active_dark_layout.fortified_city : null;
+            if(view_index == 0 && requested_zoom == 1 && city && city.composition_overview_enabled)
+            {
+                zoom_index = 1;
+                apply_composition_overview(review_camera,ground,city);
+                reset_frame_samples();
+                return;
+            }
             if (config.concept_enabled)
             {
                 set_focus(config.active_concept_layout.views[view_index],requested_zoom);
@@ -218,7 +226,19 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             set_focus(view_point,zoom_index);
         }
 
-        public void set_focus(Vector2 view_point, int requested_zoom)
+        /// <summary>Explicit art overview only: same authored pose in Editor and Play, without flat-frustum clamping.</summary>
+        public static void apply_composition_overview(Camera camera,ShowcaseTerrain ground,VisionFortifiedConfig city)
+        {
+            if(!camera || ground == null || !city || !city.composition_overview_enabled)
+                throw new InvalidOperationException("Composition overview needs its explicit dense review configuration.");
+            var point = city.composition_overview_focus_m;
+            var focus = ground.sample_ground(point.x,point.y)+Vector3.up*city.composition_overview_focus_height_m;
+            var rotation = Quaternion.Euler(city.composition_overview_pitch_deg,city.composition_overview_yaw_deg,0);
+            camera.orthographicSize = city.composition_overview_size_m;
+            camera.transform.SetPositionAndRotation(focus-rotation*Vector3.forward*city.composition_overview_size_m*2.3f,rotation);
+        }
+
+        public void set_focus(Vector2 view_point, int requested_zoom,bool clamp_to_map = true)
         {
             zoom_index = Mathf.Clamp(requested_zoom,0,config.camera_sizes.Length - 1);
             Vector3 focus = ground.sample_ground(view_point.x * config.map_size, view_point.y * config.map_size);
@@ -226,7 +246,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
                 config.concept_enabled ? config.active_concept_layout.camera_yaw : config.camera_yaw, 0);
             float camera_size=config.concept_enabled ? config.active_concept_layout.camera_sizes[zoom_index] : config.camera_sizes[zoom_index];
             if(config.concept_enabled && view_index==2) camera_size*=.82f;
-            if(config.vision_enabled) focus = clamp_vision_focus(focus,camera_size);
+            if(config.vision_enabled && clamp_to_map) focus = clamp_vision_focus(focus,camera_size);
             review_camera.transform.SetPositionAndRotation(focus - rotation * Vector3.forward * camera_size * 2.3f, rotation);
             review_camera.orthographicSize = camera_size;
             reset_frame_samples();

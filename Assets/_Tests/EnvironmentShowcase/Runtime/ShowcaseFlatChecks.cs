@@ -311,11 +311,24 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             var delta = new Vector3(delta2.x,0,delta2.y);
             var left_half = sources[first].native_dimensions*placements[first].uniform_scale*.5f;
             var right_half = sources[second].native_dimensions*placements[second].uniform_scale*.5f;
+            bool grid_pair = sources[first].has_authored_ground_anchor && sources[second].has_authored_ground_anchor &&
+                sources[first].preview_grid_unit_m > 0 && sources[second].preview_grid_unit_m > 0 &&
+                sources[first].preview_grid_footprint_m.x > 0 && sources[first].preview_grid_footprint_m.y > 0 &&
+                sources[second].preview_grid_footprint_m.x > 0 && sources[second].preview_grid_footprint_m.y > 0;
+            float contact_tolerance = grid_pair ? .00003f : 0;
+            if(grid_pair)
+            {
+                left_half.x = sources[first].preview_grid_footprint_m.x*placements[first].uniform_scale*.5f;
+                left_half.z = sources[first].preview_grid_footprint_m.y*placements[first].uniform_scale*.5f;
+                right_half.x = sources[second].preview_grid_footprint_m.x*placements[second].uniform_scale*.5f;
+                right_half.z = sources[second].preview_grid_footprint_m.y*placements[second].uniform_scale*.5f;
+            }
             foreach(var axis in new[]{left_x,left_z,right_x,right_z})
             {
                 float left_radius = Mathf.Abs(Vector3.Dot(left_x,axis))*left_half.x+Mathf.Abs(Vector3.Dot(left_z,axis))*left_half.z;
                 float right_radius = Mathf.Abs(Vector3.Dot(right_x,axis))*right_half.x+Mathf.Abs(Vector3.Dot(right_z,axis))*right_half.z;
-                if(Mathf.Abs(Vector3.Dot(delta,axis))>=left_radius+right_radius) return false;
+                // Only declared grid/grid contact accepts 30 micrometres of FBX roundtrip error, never centimetre penetration.
+                if(Mathf.Abs(Vector3.Dot(delta,axis))>=left_radius+right_radius-contact_tolerance) return false;
             }
             return true;
         }

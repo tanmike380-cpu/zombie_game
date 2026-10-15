@@ -20,7 +20,11 @@ namespace ZombieGame.Tests.EnvironmentShowcase
                 var center=placement.center*config.map_size;
                 var half=new Vector2(source.native_dimensions.x,source.native_dimensions.z)*placement.uniform_scale*.5f+Vector2.one*.65f;
                 float extent=half.magnitude+3;
-                if(center.x-extent<0||center.y-extent<0||center.x+extent>config.map_size||center.y+extent>config.map_size)
+                float angle = placement.yaw*Mathf.Deg2Rad;
+                var boundary_half = dark.fortified_city && dark.fortified_city.dense_repetition ?
+                    new Vector2(Mathf.Abs(Mathf.Cos(angle))*half.x+Mathf.Abs(Mathf.Sin(angle))*half.y,
+                        Mathf.Abs(Mathf.Sin(angle))*half.x+Mathf.Abs(Mathf.Cos(angle))*half.y)+Vector2.one*.1f : Vector2.one*extent;
+                if(center.x-boundary_half.x<0||center.y-boundary_half.y<0||center.x+boundary_half.x>config.map_size||center.y+boundary_half.y>config.map_size)
                     throw new InvalidOperationException("Dark source footprint outside map: "+source.id);
                 footprints.Add(new Footprint{center=center,half=half,yaw=placement.yaw*Mathf.Deg2Rad,height=base_height(center.x,center.y)});
                 float yaw = placement.yaw*Mathf.Deg2Rad;

@@ -1,5 +1,29 @@
 # Vision 1 地图制作和打开说明
 
+## 当前预览：Vision 6 密集布景与连片麦田（2026-10-16）
+
+用户追加授权现有模型重复满铺，并要求农田去掉院圈，连成大片。这版使用同一个 EnvironmentShowcase 系统，保留旧版，不改正式地图／单位数值／建造平衡／渲染管线。
+
+- 场景：`Assets/_Tests/EnvironmentShowcase/Scenes/EnvironmentDenseVision.unity`。
+- 菜单：`Zombie Game → Environment Showcase → Vision-6 → Open dense repetition and Play`。
+- 本机预览：`Builds/EnvironmentDenseVision.app`；生成方法 `VisionDenseTools.prepare_and_build_dense_preview()`。
+- 实际布局：30栋建筑（其中12块牧场）、9处矿石、81棵原生Oak；北沿连续Terrain悬崖和两侧收口，林带、L形田带、墙内田块及墙东建筑街区。仍有海和封闭池塘。池／田净空调整前的91树是中间结果，不当作最终实数。
+- 活动地面仍为4.2m；边界悬崖是明确的非活动区域。延续v5明亮中性白光、六层PBR与Road零，不用压暗曝光制造冷感。
+
+牧场源已在正式 `art/Blender主文件/ZombieGame.blend` 的 `农田整格 · 仅小屋与连续麦田` 集合修改：移除外围栅栏、旗杆、竖布、树、院落与田埂；保留原小屋／屋顶和原麦株。麦子铺到方形边缘，逐株刚性落地，没有在Unity变形或补外观。`清爽连片麦田 · 2×2评审` 集合可查看四块28×28m拼接。原414对象及先前442对象均保存，实时未保存的Zombie文件未触碰。
+
+本美术样场采用1m参考格：牧场14×14、基地12×12、工坊8×8m；这不是对正式主基地暂定5×5或正式建造表的改写。后续正式接入须显式确认格距／占地，不逐轴压缩建筑。源FBX已包含整体等比尺寸，Unity根scale为1，以真实地表锚点0加0.025m贴地，不以埋地下的包围盒底抬高地块。相邻牧场中心距恰为14m，没有额外留白。树与矿物保留自然轮廓。
+
+源交接：`art/grid_footprint_handoff.json`，主文件SHA `468a608185ce139913f1b79e04f5e20d0a7b5662e248d32b6ab28900c096e866`，牧场FBX SHA `f8de881951e71590506ce42fcbddc5b8dfaed368b3cafd49db174d2753d0d895`。重开保护／FBX往返／边界检查见 `vision-grid-source-validation.json`；地表几何缝0、UV相位0，麦株对边截面差≤0.000027m。旧城墙FBX不变，导入器只在完整源版本链、原414件保护证明及当前登记SHA全部吻合时接受新增变体后的主文件。
+
+土壤沿用已许可的[Poly Haven Dirt](https://polyhaven.com/a/dirt)（Charlotte Baglioni，CC0，真实1K颜色／GL法线／粗糙度）；不复制参考游戏素材。真人麦田空间参考仅用于“连续作物、小屋局部空地”的构图，未下载其图片作贴图：[连片麦田航拍参考](https://www.domainedelamiraclette.com/presentation/galerie.html)。原树与中立建筑的归属和许可仍见既有环境manifest。
+
+实际Unity截图：[地图布景](../../art/environment/inspection/vision-dense-v6/composition.png) · [四块农田俯视](../../art/environment/inspection/vision-dense-v6/farm-four-tiles-top.png)。这是独立美术预览，不声称已接经济、NavMesh或万人战斗，也不以技术检查代替用户美术认可。
+
+最终1440×900独立播放器检查：39件源的比例／材质／贴地／像素贡献全部通过，建筑重叠0；入口105个采样阻挡0，巡行检查点最小半宽约1m。10,176个活动地面采样最大高度误差0.000219m；81树、2192m²林带核心及2/2自然空地连接通过。六层／Road零、海池、阴影均通过。首轮失败记录保留：原北排房屋压田、田带侵入入口和池岸，已仅移动整体模型与独立v6水池修正，没有放宽通过阈值。精英兵等正式玩法未动。
+
+野外小草整幅贡献0.00003095仍低于原0.0003门槛，因此总检查仍FAIL；不把已通过的麦田原网格可见性替代野草地丰满程度。环境60fps限帧下两组中景p95约16.67／17.30ms，仅作本机环境记录，不推断万人战斗。共享数值57条、概念文档25项及同一新播放器的旧flat预设回归通过（没有声称重跑全部旧模式）。最终Editor帧865→869（126ms）、当前编译／Console错误0。详见 [v6检查摘要](vision-dense-v6-validation.json)，包含原失败报告、源保护、实际截图SHA及未通过项。新预览等待用户美术评审，不覆盖正式战场。
+
 ## 当前对照入口：平地／明亮中性白光 v5（2026-10-15，未美术验收）
 
 用户在查看围城实验后确认原 Blender 墙体已有歪斜，要求活动地面同一水平、冷色不靠压暗灯，改用一张《亿万僵尸》实际截图做固定参照，方向为写实和卡通之间的风格化写实。本轮没有改变源模型、单位数值或正式战场，也没有迁移渲染管线。

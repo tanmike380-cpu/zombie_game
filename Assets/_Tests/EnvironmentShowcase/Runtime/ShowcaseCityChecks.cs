@@ -213,7 +213,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             }
             evidence.cliffs = cliffs.ToArray();
             evidence.cliff_checks_applicable = city.cliffs.Length > 0;
-            evidence.cliff_scope = evidence.cliff_checks_applicable ? "Two local non-walkable Terrain relief experiments, v4 only." : "No inland cliff height masks; all dry activity ground remains on the shared plane. Cliff geometry/material checks are not applicable, not passed art.";
+            evidence.cliff_scope = city.boundary_cliff_enabled ? "V6 connected non-activity north boundary cap and side returns; no slope across buildable/activity ground. Not the two isolated v4 cliff experiments." : evidence.cliff_checks_applicable ? "Two local non-walkable Terrain relief experiments, v4 only." : "No inland cliff height masks; all dry activity ground remains on the shared plane. Cliff geometry/material checks are not applicable, not passed art.";
             evidence.cliff_geometry_pass = evidence.cliffs.Length == 2;
             evidence.cliff_pixel_pass = evidence.cliff_material_pass = evidence.cliff_checks_applicable;
             foreach(var cliff in evidence.cliffs)
@@ -242,7 +242,8 @@ namespace ZombieGame.Tests.EnvironmentShowcase
                 source_seams_pass=city.handoff_source_seams_pass,source_max_seam_gap_m=city.handoff_max_seam_gap_m,
                 source_max_footing_gap_m=city.handoff_max_footing_gap_m,source_seam_note=city.handoff_seam_note};
             evidence.composition_only = city.composition_only;
-            evidence.city_fixture_scope = city.composition_only ? "Three original functional source roots only, not a complete settlement/economy source set. Neutral damaged houses do not count as friendly housing." : "Original v4 experimental city fixture guard: at least five city roots, plus explicit expected manifest count; not proof of full economy/art readiness.";
+            evidence.city_fixture_scope = city.dense_repetition ? "V6 user-authorized repeated source district: seven original-source roots inside the unchanged wall; the remaining repeated town/farm roots are outside. This boolean guards inside-wall clearance, not gameplay allegiance or economy. Damaged house geometry remains original." :
+                city.composition_only ? "Three original functional source roots only, not a complete settlement/economy source set. Neutral damaged houses do not count as friendly housing." : "Original v4 experimental city fixture guard: at least five city roots, plus explicit expected manifest count; not proof of full economy/art readiness.";
             evidence.wall_source_transform_pass = compare_source_transforms(instance,source.prefab) &&
                 Quaternion.Angle(instance.transform.rotation,source.prefab.transform.localRotation) < .0001f;
             evidence.wall_scale_pass = Vector3.Distance(instance.transform.localScale,source.prefab.transform.localScale) < .00001f;

@@ -1,0 +1,169 @@
+{
+  "snapshot": "vision-dense-clean-v6-final",
+  "unity_version": "6000.6.1f1",
+  "device": "Mac14,9",
+  "processor": "Apple M2 Pro",
+  "resolution": "1440x900",
+  "graphics": "Apple M2 Pro",
+  "platform": "OSXPlayer",
+  "overall_technical_passed": false,
+  "terrain_passed": true,
+  "source_complete": false,
+  "grass_pixel_passed": false,
+  "grass_mean_rgb_delta": 0.00003094993007835001,
+  "grass_threshold_unchanged": 0.0003,
+  "counts": {
+    "buildings": 30,
+    "mineral_roots": 9,
+    "pastures": 12,
+    "trees": 81,
+    "grass": 6000,
+    "shrubs": 132,
+    "rocks": 8
+  },
+  "inland_plane": {
+    "target_height_m": 4.199999809265137,
+    "samples": 10176,
+    "maximum_height_error_m": 0.0002193450927734375,
+    "passed": true,
+    "note": "North boundary cap and sea/pond banks are explicitly non-activity domains, not sloping construction ground"
+  },
+  "fixtures": {
+    "count": 39,
+    "all_source_transform_ground_material_pixel_passed": true,
+    "maximum_footprint_ground_span_m": 0,
+    "overlap_passed": true,
+    "overlap_pairs": []
+  },
+  "city": {
+    "technical_pass": true,
+    "wall_source_transform_pass": true,
+    "wall_scale_pass": true,
+    "wall_ground_pass": true,
+    "source_seams_pass": true,
+    "entry_clearance_pass": true,
+    "entry_samples": 105,
+    "blocked_entry_samples": 0,
+    "patrol_points_pass": true,
+    "minimum_patrol_half_width_m": 0.9999995231628418,
+    "portal_clear_width_m": 6.488790035247803,
+    "cliff_scope": "V6 connected non-activity north boundary cap and side returns; no slope across buildable/activity ground. Not the two isolated v4 cliff experiments.",
+    "cliff_checks_applicable": false,
+    "composition_only": true,
+    "complete_city_claimed": false,
+    "missing_art": "Dense v6 uses repeated real HQ/workshop/pasture and existing damaged house/courtyard/ruin sources, not newly invented housing. Whole source wall remains crooked. Open portal has no gate leaf. Terrain boundary cap is not an overhanging cliff model. Native oak is not reference pine. Layout only: no economy/terrain navigation claimed."
+  },
+  "forest": {
+    "technical_pass": true,
+    "actual_trees": 81,
+    "forest_core_area_m2": 2192,
+    "connected_targets": 2
+  },
+  "surface": {
+    "six_layers_passed": true,
+    "shader_passed": true,
+    "layer_mean_weights": [
+      0.4408079981803894,
+      0.010516919195652008,
+      0.33483827114105225,
+      0.10720115900039673,
+      0.10663650184869766,
+      0
+    ],
+    "maximum_road_weight": 0,
+    "no_river": true,
+    "pool_closed": true,
+    "water_pixel_passed": true,
+    "shadows_passed": true,
+    "clumps_passed": true,
+    "oak_passed": true,
+    "shrubs_passed": true
+  },
+  "timings": [
+    {
+      "view": "flat-0-middle",
+      "grass_enabled": true,
+      "frames": 180,
+      "median_ms": 16.666751861572266,
+      "p95_ms": 16.670202255249023
+    },
+    {
+      "view": "connected-forest-middle",
+      "grass_enabled": true,
+      "frames": 180,
+      "median_ms": 16.666963577270508,
+      "p95_ms": 17.295705795288086
+    }
+  ],
+  "full_report": "Builds/ArtReview/EnvironmentShowcase/vision-dense-clean-v6-final/showcase-report.json",
+  "status": "Seamless crop-grid source and v6 placement corrections delivered for user art review; overall grass-contribution gate remains FAIL",
+  "scope": "Independent 128m environment art preview, not economy/NavMesh/battle acceptance",
+  "scene": "Assets/_Tests/EnvironmentShowcase/Scenes/EnvironmentDenseVision.unity",
+  "open_menu": "Zombie Game/Environment Showcase/Vision-6/Open dense repetition and Play",
+  "source_handoff": "art/grid_footprint_handoff.json",
+  "master_sha256": "468a608185ce139913f1b79e04f5e20d0a7b5662e248d32b6ab28900c096e866",
+  "pasture_fbx_sha256": "f8de881951e71590506ce42fcbddc5b8dfaed368b3cafd49db174d2753d0d895",
+  "source_preservation_report": "docs/dev/vision-grid-source-validation.json",
+  "source_preservation": {
+    "original_414_objects_unchanged": true,
+    "prior_442_objects_unchanged": true,
+    "live_unsaved_zombie_file_untouched": true
+  },
+  "farm_grid": {
+    "size_m": [
+      14,
+      14
+    ],
+    "center_pitch_m": 14,
+    "geometry_seam_m": 0,
+    "soil_uv_phase_error": 0,
+    "maximum_wheat_edge_difference_m": 0.000027,
+    "unity_scale": 1,
+    "ground_anchor_m": 0,
+    "offset_m": 0.025,
+    "formal_building_balance_changed": false
+  },
+  "fixed_after_first_player_report": [
+    "North exterior house row z62 to z59 removes four farm/house overlaps",
+    "HQ z50 to z48 and exterior field strip +3m north clears all 105 portal samples",
+    "V6 pond uses v5 center plus absolute 3m, avoiding farm-bank slope and repeated refresh drift",
+    "Four patrol points moved to independently measured open corners, keeping threshold",
+    "Only v6 single-fixture diagnostics bypass map-clamped framing, allowing bottom-edge ore pixel tests; player camera default unchanged"
+  ],
+  "first_failed_report": "Builds/ArtReview/EnvironmentShowcase/vision-dense-clean-v6/showcase-report.json",
+  "regressions": {
+    "balance_assertions": 57,
+    "concept_document_tests": 25,
+    "original_flat_reference_in_new_player": true,
+    "original_flat_report": "Builds/ArtReview/EnvironmentShowcase/vision-dense-v6-old-flat-regression/showcase-report.json",
+    "all_old_modes_all_regions_rerun": false
+  },
+  "protected": {
+    "unit_balance_sha256": "4ac06d0483015a916a3440a19ee82fc5979ccae72831ceede74e83a5e0c9c38c",
+    "environment_source_sha256": "cf8310ae2f8d643653fd8cf9e96ef7dea0570f586a76e2d0f62911c7d3803301",
+    "wall_fbx_sha256": "47b89d7734871bbe0dd000cdb0eebd894e13d43e69698e52bd6cd8ce0ee05e2d",
+    "game_balance_packages_projectsettings_unchanged": true
+  },
+  "live_editor": {
+    "playing": true,
+    "frame_proof_initial": 865,
+    "frame_proof_changed": 869,
+    "elapsed_ms": 126,
+    "current_compile_errors": 0,
+    "current_console_errors": 0,
+    "current_console_warnings": 0
+  },
+  "images": {
+    "root": "art/environment/inspection/vision-dense-v6/",
+    "composition_sha256": "5c58bf2b3db546902386708b37abecd89e24f8e23fd85ce26cafdb4262a17b48",
+    "farm_four_tiles_top_sha256": "464425a01c86d96a5c7e7dda80e8b2a43c728201680202367385e5c48502d769",
+    "note": "Unedited live Unity Camera.Render captures at1600x1000 and1200x1200, MSAA4; Blender source views are separately named, not represented as Unity results"
+  },
+  "performance_note": "60fps-limited environment-only 180-frame samples on M2 Pro/Metal, includes waiting; no 10000-unit battle inference",
+  "art_visual_accepted": false,
+  "remaining": [
+    "Wild grass is still below the original unchanged contribution gate; crop mesh visibility is a separate source check",
+    "Whole native wall remains irregular; intact civilian housing, closable gate, dense pine species, thick groundcover, reeds and authored long-cliff source remain missing",
+    "No playable economy or navigation connected in this isolated art scene"
+  ]
+}

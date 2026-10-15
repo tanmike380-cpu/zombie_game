@@ -1,0 +1,260 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b17f0c5531d484a9da68335b8751af5e, type: 3}
+  m_Name: VisionFortifiedCityV6
+  m_EditorClassIdentifier: Assembly-CSharp::ZombieGame.Tests.EnvironmentShowcase.VisionFortifiedConfig
+  version: vision-dense-repetition-v6
+  source_record: art/fortified_city_handoff.json; masterSHA=6772efb7ce13ecc5fb5700d3eb846af5f36c96cde0f02c53701f7a14fb004ea5; FBXSHA=47b89d7734871bbe0dd000cdb0eebd894e13d43e69698e52bd6cd8ce0ee05e2d; whole scale 1, original 18x scale already in Blender assembly; no Unity refits.; whole frozen ring unchanged; dense repeated source district extends east/north outside the ring by user instruction.
+  wall_source:
+    id: FortifiedCityWalls
+    source_record: art/fortified_city_handoff.json; masterSHA=6772efb7ce13ecc5fb5700d3eb846af5f36c96cde0f02c53701f7a14fb004ea5; FBXSHA=47b89d7734871bbe0dd000cdb0eebd894e13d43e69698e52bd6cd8ce0ee05e2d; whole scale 1, original 18x scale already in Blender assembly; no Unity refits.
+    prefab: {fileID: 6275034529881143354, guid: 20df73cfe16984538bb3e744563e0d03, type: 3}
+    native_dimensions: {x: 43.664948, y: 6.996111, z: 55.612732}
+    native_bounds_center: {x: -0.2109356, y: 3.498046, z: -0.0000019073486}
+    native_min_y: -0.000009536743
+    has_authored_ground_anchor: 0
+    authored_ground_anchor_y: 0
+    authored_ground_offset_y: 0
+    preview_grid_unit_m: 0
+    preview_grid_footprint_m: {x: 0, y: 0}
+    material_bindings:
+    - material: {fileID: 2100000, guid: 2a831f108c26d4e929ca2d101506fcb7, type: 2}
+      base_color: {fileID: 2800000, guid: cf13117700a854f66b2c4721e3a74c9c, type: 3}
+      normal: {fileID: 0}
+      roughness: {fileID: 0}
+      metallic: {fileID: 0}
+      occlusion: {fileID: 0}
+      import_channels_pass: 1
+      metallic_max_red: 0
+      metallic_multiplier: 0
+      normal_note: Original packed base colour and source constants only; real normal/roughness/height maps unavailable.
+  city_center_m: {x: 68, y: 35}
+  outer_center_offset_m: {x: -0.2109356, y: -0.0000019073486}
+  inner_center_offset_m: {x: -0.2109375, y: 0.2109375}
+  outer_size_m: {x: 43.664948, y: 55.612732}
+  inner_size_m: {x: 35.52627, y: 47.017033}
+  portal_center_m: {x: 68, y: 60.543182}
+  portal_clear_width_m: 6.48879
+  portal_has_gate_leaf: 0
+  expected_city_fixture_count: 7
+  composition_only: 1
+  dense_repetition: 1
+  composition_overview_enabled: 1
+  composition_overview_focus_m: {x: 70, y: 81}
+  composition_overview_focus_height_m: 8
+  composition_overview_size_m: 36
+  composition_overview_pitch_deg: 48
+  composition_overview_yaw_deg: 0
+  boundary_cliff_enabled: 1
+  boundary_north_start_m: 122
+  boundary_side_start_m: 96
+  boundary_west_x_m: 38
+  boundary_east_x_m: 125.5
+  boundary_rise_width_m: 2
+  boundary_top_m: 13.2
+  handoff_source_seams_pass: 1
+  handoff_max_seam_gap_m: -1
+  handoff_max_footing_gap_m: 0
+  handoff_seam_note: 1440 radial directions at five body heights, except declared 12.24m portal recess; No sampled open seam; finite ray probes are not an exact analytical maximum-gap measurement
+  patrol_clearance_m: 1.5
+  entrance_note: Open north portal only. No approved gate leaf; no closing or friendly-only passage is implemented in this art preview.
+  wall_footprints:
+  - id: CityWall_South_WestPier
+    center_m: {x: 48.202194, y: 9.456816}
+    half_size_m: {x: 1.4378023, y: 2.2631836}
+    yaw: 0
+  - id: CityWall_South_EastPier
+    center_m: {x: 87.797806, y: 9.456816}
+    half_size_m: {x: 1.4378023, y: 2.2631836}
+    yaw: 0
+  - id: CityWall_South_Body_00
+    center_m: {x: 55.76, y: 9.667753}
+    half_size_m: {x: 6.1200004, y: 2.034668}
+    yaw: 0
+  - id: CityWall_South_Body_01
+    center_m: {x: 68, y: 9.667753}
+    half_size_m: {x: 6.1200004, y: 2.034668}
+    yaw: 0
+  - id: CityWall_South_Body_02
+    center_m: {x: 80.24, y: 9.667753}
+    half_size_m: {x: 6.1200004, y: 2.034668}
+    yaw: 0
+  - id: CityWall_North_WestPier
+    center_m: {x: 48.202194, y: 60.543182}
+    half_size_m: {x: 1.4378023, y: 2.2631836}
+    yaw: 0
+  - id: CityWall_North_EastPier
+    center_m: {x: 87.797806, y: 60.543182}
+    half_size_m: {x: 1.4378023, y: 2.2631836}
+    yaw: 0
+  - id: CityWall_North_Body_00
+    center_m: {x: 55.76, y: 60.75412}
+    half_size_m: {x: 6.1200004, y: 2.034668}
+    yaw: 0
+  - id: CityWall_North_Body_02
+    center_m: {x: 80.24, y: 60.75412}
+    half_size_m: {x: 6.1200004, y: 2.034668}
+    yaw: 0
+  - id: CityWall_West_Body_00
+    center_m: {x: 47.991257, y: 16.639997}
+    half_size_m: {x: 2.034668, y: 6.1200004}
+    yaw: 0
+  - id: CityWall_West_Body_01
+    center_m: {x: 47.991257, y: 28.88}
+    half_size_m: {x: 2.034668, y: 6.1200004}
+    yaw: 0
+  - id: CityWall_West_Body_02
+    center_m: {x: 47.991257, y: 41.12}
+    half_size_m: {x: 2.034668, y: 6.1200004}
+    yaw: 0
+  - id: CityWall_West_Body_03
+    center_m: {x: 47.991257, y: 53.36}
+    half_size_m: {x: 2.034668, y: 6.120001}
+    yaw: 0
+  - id: CityWall_East_Body_00
+    center_m: {x: 87.58687, y: 16.639997}
+    half_size_m: {x: 2.034668, y: 6.1200004}
+    yaw: 0
+  - id: CityWall_East_Body_01
+    center_m: {x: 87.58687, y: 28.88}
+    half_size_m: {x: 2.034668, y: 6.1200004}
+    yaw: 0
+  - id: CityWall_East_Body_02
+    center_m: {x: 87.58687, y: 41.12}
+    half_size_m: {x: 2.034668, y: 6.1200004}
+    yaw: 0
+  - id: CityWall_East_Body_03
+    center_m: {x: 87.58687, y: 53.36}
+    half_size_m: {x: 2.034668, y: 6.120001}
+    yaw: 0
+  - id: CityWall_North_PortalWestPier
+    center_m: {x: 63.317802, y: 60.543182}
+    half_size_m: {x: 1.4378028, y: 2.2631836}
+    yaw: 0
+  - id: CityWall_North_PortalEastPier
+    center_m: {x: 72.6822, y: 60.543182}
+    half_size_m: {x: 1.4378029, y: 2.2631836}
+    yaw: 0
+  fixture_ids:
+  - inner-headquarters
+  - inner-workshop-west
+  - inner-workshop-east
+  - inner-field-61-21
+  - inner-field-75-21
+  - inner-field-61-35
+  - inner-field-75-35
+  - farm-belt-61
+  - farm-belt-75
+  - farm-belt-89
+  - farm-belt-103
+  - farm-belt-117
+  - farm-west-74
+  - farm-west-88
+  - farm-west-102
+  - east-house-97-17
+  - east-house-107-17
+  - east-house-117-17
+  - east-house-97-59
+  - east-house-107-59
+  - east-house-117-59
+  - east-workshop-97
+  - east-courtyard-97
+  - east-ruin-97
+  - east-workshop-108
+  - east-courtyard-108
+  - east-ruin-108
+  - east-workshop-119
+  - east-courtyard-119
+  - east-ruin-119
+  - iron-0
+  - gold-0
+  - stone-0
+  - iron-1
+  - gold-1
+  - stone-1
+  - iron-2
+  - gold-2
+  - stone-2
+  fixture_source_ids:
+  - Headquarters
+  - Workshop
+  - Workshop
+  - Pasture
+  - Pasture
+  - Pasture
+  - Pasture
+  - Pasture
+  - Pasture
+  - Pasture
+  - Pasture
+  - Pasture
+  - Pasture
+  - Pasture
+  - Pasture
+  - EuropeanStoneHouse
+  - EuropeanStoneHouse
+  - EuropeanStoneHouse
+  - EuropeanStoneHouse
+  - EuropeanStoneHouse
+  - EuropeanStoneHouse
+  - Workshop
+  - MiddleEasternCourtyard
+  - NorthAfricanRuins
+  - Workshop
+  - MiddleEasternCourtyard
+  - NorthAfricanRuins
+  - Workshop
+  - MiddleEasternCourtyard
+  - NorthAfricanRuins
+  - IronOreRock
+  - GoldOreRock
+  - BoulderNative
+  - IronOreRock
+  - GoldOreRock
+  - BoulderNative
+  - IronOreRock
+  - GoldOreRock
+  - BoulderNative
+  human_city_fixtures: 010101010101010000000000000000000000000000000000000000000000000000000000000000y
+  interior_clearance_points_m:
+  - {x: 53, y: 14}
+  - {x: 83, y: 14}
+  - {x: 53, y: 55}
+  - {x: 83, y: 55}
+  - {x: 68, y: 58.543182}
+  - {x: 68, y: 60.543182}
+  - {x: 68, y: 63.543182}
+  - {x: 68, y: 59}
+  protected_flat_points_m:
+  - {x: 68, y: 48}
+  - {x: 61, y: 21}
+  - {x: 75, y: 35}
+  - {x: 47, y: 88}
+  - {x: 68, y: 63}
+  - {x: 92, y: 61}
+  - {x: 92, y: 12}
+  - {x: 80, y: 117}
+  - {x: 120, y: 110}
+  detail_focus:
+  - {x: 0.625, y: 0.6328125}
+  - {x: 0.53125, y: 0.4729936}
+  - {x: 0.625, y: 0.8828125}
+  - {x: 0.7109375, y: 0.5546875}
+  cliffs: []
+  courtyard_soil:
+  - center: {x: 0.53125, y: 0.375}
+    radius: {x: 16, y: 10}
+    strength: 0.68
+  - center: {x: 0.84375, y: 0.3046875}
+    radius: {x: 17, y: 30}
+    strength: 0.7
+  missing_art: 'Dense v6 uses repeated real HQ/workshop/pasture and existing damaged house/courtyard/ruin sources, not newly invented housing. Whole source wall remains crooked. Open portal has no gate leaf. Terrain boundary cap is not an overhanging cliff model. Native oak is not reference pine. Layout only: no economy/terrain navigation claimed.'

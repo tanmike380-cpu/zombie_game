@@ -27,6 +27,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
         public float canopy_clearance = 5.3f;
         public float edge_feather = 2;
         public bool use_native_source_clearance;
+        public bool dense_repetition;
         public Clearing[] forest_masses = Array.Empty<Clearing>();
         public Clearing[] clearings = Array.Empty<Clearing>();
         public Corridor[] corridors = Array.Empty<Corridor>();
@@ -34,7 +35,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
 
         public void validate()
         {
-            if(tree_budget < 1 || tree_budget > 220 || tree_spacing < 5.5f || chunk_size < 24 ||
+            if(tree_budget < 1 || tree_budget > 220 || tree_spacing < (dense_repetition ? 4.5f : 5.5f) || chunk_size < 24 ||
                 canopy_clearance < 0 || edge_feather <= 0 || far_cull_screen_height <= 0 ||
                 near_lod_screen_height <= far_cull_screen_height || near_lod_screen_height >= 1)
                 throw new InvalidOperationException("Vision forest instance/crown/chunk budget is invalid.");
@@ -44,7 +45,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
                 throw new InvalidOperationException("Vision forest requires connected natural clearings and review views.");
             foreach(var corridor in corridors)
             {
-                if(corridor == null || corridor.points == null || corridor.points.Length < 2 || corridor.half_width < 3)
+                if(corridor == null || corridor.points == null || corridor.points.Length < 2 || corridor.half_width < (dense_repetition ? .8f : 3))
                     throw new InvalidOperationException("Vision natural clearing corridor is invalid.");
                 foreach(var point in corridor.points) validate_point(point);
             }

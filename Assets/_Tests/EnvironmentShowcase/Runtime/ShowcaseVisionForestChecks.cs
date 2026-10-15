@@ -174,8 +174,17 @@ namespace ZombieGame.Tests.EnvironmentShowcase
         {
             var ground = showcase.ground;
             return Mathf.Abs(ground.sample_authored_height(point.x,point.y)-showcase.config.active_dark_layout.flat_height) < .003f &&
-                !(ground.concept.footprints?.contains(point.x,point.y) ?? false) &&
+                !is_vision_source_footprint(point) &&
                 (!showcase.config.active_dark_layout.fortified_city || showcase.config.active_dark_layout.fortified_city.measure_wall_edge(point.x,point.y) > 0);
+        }
+
+        private bool is_vision_source_footprint(Vector2 point)
+        {
+            var footprints = showcase.ground.concept.footprints;
+            if(footprints == null) return false;
+            // A v6 tight source gap may have soil feather on it; soil is not a model or a navigation obstacle.
+            return showcase.config.active_dark_layout.vision_forest.dense_repetition ?
+                footprints.measure_native_source_edge(point.x,point.y) <= 0 : footprints.contains(point.x,point.y);
         }
 
         private static int measure_largest_component(bool[] cells,int resolution)
@@ -246,7 +255,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
         private void record_corridor_sample(VisionCorridorConnection check,Vector2 point,bool band)
         {
             bool nonflat = Mathf.Abs(showcase.ground.sample_authored_height(point.x,point.y)-showcase.config.active_dark_layout.flat_height) >= .003f;
-            bool footprint = showcase.ground.concept.footprints?.contains(point.x,point.y) ?? false;
+            bool footprint = is_vision_source_footprint(point);
             var city = showcase.config.active_dark_layout.fortified_city;
             if(city) footprint |= city.measure_wall_edge(point.x,point.y) <= 0;
             if(band)

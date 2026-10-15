@@ -1,5 +1,13 @@
 # 独立环境渲染实验场
 
+## 当前预览：Vision 6 密集布景＋连片农田
+
+场景 `Scenes/EnvironmentDenseVision.unity`；菜单 `Zombie Game → Environment Showcase → Vision-6 → Open dense repetition and Play`；本机 `Builds/EnvironmentDenseVision.app`。30栋建筑含12块牧场、9矿、最终81棵原生树，北沿连续Terrain崖和林带。活动平面4.2m、六层PBR／Road零、v5白光及旧版本保留。
+
+农田已先在正式Blender源去围栏／外围旗杆／田埂，保留小屋与连续原麦株；四块以14m精确节距贴合，Unity不切网格、不拉伸。导入操作 `VisionGridImport.import_frozen_grid_buildings()`，读取 `art/grid_footprint_handoff.json`；当前样场参考格14／12／8m不是正式建造平衡修改。旧源和未保存Zombie保留。
+
+[截图、源集合、打开入口与验证记录](../../../docs/dev/VISION_1_MAP_REVIEW.md)。39源／贴地／重叠／城门净空检查通过；野外草总贡献原门槛仍FAIL，未降低阈值。美术预览不是正式经济／导航／战斗验收。
+
 ## 当前对照入口：Vision 5 全平干陆＋中性白日光（未美术验收）
 
 场景 `Scenes/EnvironmentNeutralVision.unity`，菜单 `Zombie Game → Environment Showcase → Vision-5 → Open saved flat neutral comparison and Play`。构建方法 `VisionNeutralTools.prepare_and_build_neutral_preview()`，本机 `Builds/EnvironmentNeutralVision.app`。仍使用同一EnvironmentShowcase controller、六层PBR／Road零和原模型；不改正式地图／玩法／管线。冷感不靠压暗灯，活动陆地同4.2m，海池底／岸带非活动收口单列。

@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Concept isolated pond
+  m_Shader: {fileID: 4800000, guid: 610f88645e8cb473b84641ec67125744, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _HeightField:
+        m_Texture: {fileID: 2800000, guid: 99ad07c30249f4345947a5b2ac82eaf0, type: 2}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _VisionBed:
+        m_Texture: {fileID: 2800000, guid: d1c0f98c11e8c480e914676df55f7a23, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _CoastX: 32
+    - _HeightRange: 18
+    - _IsPond: 1
+    - _NaturalPreview: 1
+    - _TerrainSize: 128
+    - _VisionBedDepth: 0.75
+    - _VisionBedVisibility: 0.48
+    - _VisionDepthRange: 1.8
+    - _VisionResponse: 1
+    - _VisionSkyResponse: 0.18
+    - _VisionSmoothness: 0.78
+    - _VisionVariation: 0.1
+    - _VisionWater: 1
+    - _VisionWaveStrength: 0.16
+    - _WaterLevel: 3.6
+    m_Colors:
+    - _Deep: {r: 0.07, g: 0.16, b: 0.17, a: 1}
+    - _PoolCenter: {r: 29.440002, g: 0, b: 31.160004, a: 0}
+    - _PoolRadius: {r: 13, g: 9, b: 0, a: 0}
+    - _Shallow: {r: 0.22, g: 0.3, b: 0.25, a: 1}
+    - _TerrainOrigin: {r: -64, g: 0, b: -64, a: 0}
+    - _VisionBedTile: {r: 4, g: 4, b: 3.9299998, a: 2.19}
+    - _VisionSkyColor: {r: 0.45, g: 0.48, b: 0.5, a: 1}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1

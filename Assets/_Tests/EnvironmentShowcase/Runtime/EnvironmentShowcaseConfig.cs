@@ -38,6 +38,10 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             public Vector3 native_dimensions;
             public Vector3 native_bounds_center;
             public float native_min_y;
+            public bool has_authored_ground_anchor;
+            public float authored_ground_anchor_y, authored_ground_offset_y;
+            public float preview_grid_unit_m;
+            public Vector2 preview_grid_footprint_m;
             public SourceMaterialBinding[] material_bindings;
         }
 

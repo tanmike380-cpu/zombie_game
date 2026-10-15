@@ -48,7 +48,14 @@ namespace ZombieGame.Tests.EnvironmentShowcase
                 float basin = layout.pond_level-layout.pond_depth+layout.pond_depth*Mathf.SmoothStep(0,1,Mathf.InverseLerp(-10,0,pond_distance));
                 height = Mathf.Lerp(basin,dark.flat_height,Mathf.SmoothStep(0,1,Mathf.InverseLerp(0,layout.pond_bank_width,pond_distance)));
             }
-            return dark.fortified_city ? dark.fortified_city.sample_height(x,z,height) : height;
+            if(dark.fortified_city)
+            {
+                float raised = dark.fortified_city.sample_height(x,z,height);
+                // The connected boundary cap must not turn the sea into a raised continent.
+                float coast_mask = Mathf.SmoothStep(0,1,Mathf.InverseLerp(2,3.5f,coast_distance));
+                return Mathf.Lerp(height,raised,coast_mask);
+            }
+            return height;
         }
 
         private float sample_base_height(float x,float z)

@@ -42,6 +42,15 @@ namespace ZombieGame.Tests.EnvironmentShowcase
         public bool portal_has_gate_leaf;
         public int expected_city_fixture_count = 7;
         public bool composition_only;
+        public bool dense_repetition;
+        public bool composition_overview_enabled;
+        public Vector2 composition_overview_focus_m;
+        public float composition_overview_focus_height_m, composition_overview_size_m;
+        public float composition_overview_pitch_deg = 48, composition_overview_yaw_deg;
+        public bool boundary_cliff_enabled;
+        public float boundary_north_start_m = 122, boundary_side_start_m = 96;
+        public float boundary_west_x_m = 38, boundary_east_x_m = 125.5f;
+        public float boundary_rise_width_m = 2, boundary_top_m = 13.2f;
         public bool handoff_source_seams_pass;
         public float handoff_max_seam_gap_m = -1, handoff_max_footing_gap_m;
         public string handoff_seam_note = "Finite source ray probes only; a negative maximum gap means no exact analytical maximum-gap metric was authored.";
@@ -61,13 +70,23 @@ namespace ZombieGame.Tests.EnvironmentShowcase
         public void validate(bool require_wall)
         {
             if(outer_size_m.x <= inner_size_m.x || outer_size_m.y <= inner_size_m.y || inner_size_m.x <= 0 || inner_size_m.y <= 0 ||
-                portal_clear_width_m < 3 || patrol_clearance_m < 3 || portal_has_gate_leaf)
+                portal_clear_width_m < 3 || patrol_clearance_m < (dense_repetition ? 1.2f : 3) || portal_has_gate_leaf)
                 throw new InvalidOperationException("Fortified preview bounds/clearance/open-portal policy invalid.");
             if(fixture_ids == null || fixture_source_ids == null || human_city_fixtures == null ||
                 fixture_ids.Length != fixture_source_ids.Length || fixture_ids.Length != human_city_fixtures.Length || fixture_ids.Length < 16)
                 throw new InvalidOperationException("Fortified preview requires an explicit source fixture manifest retaining the original sixteen roots.");
             if(require_wall && (wall_source == null || !wall_source.prefab || string.IsNullOrWhiteSpace(wall_source.source_record) || wall_footprints.Length == 0))
                 throw new InvalidOperationException("Fortified city is waiting for a frozen Blender assembly handoff; no Unity replacement walls permitted.");
+            if(composition_overview_enabled && (!dense_repetition || composition_overview_focus_m.x < 0 || composition_overview_focus_m.x > 128 ||
+                composition_overview_focus_m.y < 0 || composition_overview_focus_m.y > 128 || composition_overview_focus_height_m < 0 ||
+                composition_overview_focus_height_m > 12 || composition_overview_size_m < 20 || composition_overview_size_m > 60 ||
+                composition_overview_pitch_deg < 15 || composition_overview_pitch_deg > 85 || Mathf.Abs(composition_overview_yaw_deg) > 180))
+                throw new InvalidOperationException("Dense composition overview exceeds the isolated art-review camera scope.");
+            if(boundary_cliff_enabled && (!dense_repetition || boundary_north_start_m < 112 || boundary_north_start_m > 124 ||
+                boundary_side_start_m < 80 || boundary_side_start_m >= boundary_north_start_m || boundary_west_x_m < 30 ||
+                boundary_east_x_m > 127 || boundary_east_x_m-boundary_west_x_m < 70 || boundary_rise_width_m < 1 ||
+                boundary_rise_width_m > 3 || boundary_top_m <= 4.2f || boundary_top_m >= 17))
+                throw new InvalidOperationException("Dense v6 connected boundary cliff exceeds the isolated 128m non-activity edge scope.");
             foreach(var cliff in cliffs)
                 if(cliff == null || cliff.radius_m.x < 4 || cliff.radius_m.y < 4 || cliff.top_height_m <= 4.2f || cliff.top_height_m >= 17 || cliff.edge_width_m < 1 || cliff.talus_width_m < 1)
                     throw new InvalidOperationException("Fortified Terrain cliff region is invalid.");
@@ -87,11 +106,24 @@ namespace ZombieGame.Tests.EnvironmentShowcase
                 float weight = 1-Mathf.SmoothStep(0,1,Mathf.InverseLerp(-cliff.edge_width_m*.5f,cliff.edge_width_m*.5f,cliff.measure_edge(point)));
                 original = Mathf.Lerp(original,cliff.top_height_m,weight);
             }
+            if(boundary_cliff_enabled)
+            {
+                float weight = 1-Mathf.SmoothStep(0,1,Mathf.InverseLerp(-boundary_rise_width_m,0,measure_boundary_edge(x,z)));
+                original = Mathf.Lerp(original,boundary_top_m,weight);
+            }
             return original;
+        }
+
+        /// <summary>One connected north cap with short east/west returns, not slopes across activity land.</summary>
+        public float measure_boundary_edge(float x,float z)
+        {
+            return Mathf.Min(boundary_north_start_m-z,Mathf.Max(boundary_east_x_m-x,boundary_side_start_m-z),
+                Mathf.Max(x-boundary_west_x_m,boundary_side_start_m-z));
         }
 
         public bool is_cliff_domain(float x,float z)
         {
+            if(boundary_cliff_enabled && measure_boundary_edge(x,z) < .6f) return true;
             foreach(var cliff in cliffs)
                 if(cliff.measure_edge(new Vector2(x,z)) < cliff.edge_width_m*.5f+cliff.talus_width_m) return true;
             return false;
@@ -120,6 +152,12 @@ namespace ZombieGame.Tests.EnvironmentShowcase
         public float sample_talus(float x,float z)
         {
             float weight = 0;
+            if(boundary_cliff_enabled)
+            {
+                float edge = measure_boundary_edge(x,z);
+                weight = Mathf.SmoothStep(0,1,Mathf.InverseLerp(-.3f,0,edge))*
+                    (1-Mathf.SmoothStep(0,1,Mathf.InverseLerp(0,3,edge)));
+            }
             foreach(var cliff in cliffs)
             {
                 float edge = cliff.measure_edge(new Vector2(x,z));

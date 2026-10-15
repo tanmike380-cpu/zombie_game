@@ -490,6 +490,8 @@ namespace ZombieGame.Tests.EditorTools
             var point = config.active_concept_layout.views[0]*config.map_size;
             var focus = ground.sample_ground(point.x,point.y);
             camera.transform.SetPositionAndRotation(focus-rotation*Vector3.forward*camera.orthographicSize*2.3f,rotation);
+            var city = config.active_dark_layout.fortified_city;
+            if(city && city.composition_overview_enabled) ShowcaseRuntime.apply_composition_overview(camera,ground,city);
             return camera;
         }
 

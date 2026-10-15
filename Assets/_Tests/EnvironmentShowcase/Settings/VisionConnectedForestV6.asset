@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07ae7707e2ead4d8095adec2ce4c406c, type: 3}
+  m_Name: VisionConnectedForestV6
+  m_EditorClassIdentifier: Assembly-CSharp::ZombieGame.Tests.EnvironmentShowcase.VisionForestConfig
+  version: vision-dense-forest-v6
+  tree_budget: 220
+  tree_spacing: 4.8
+  chunk_size: 48
+  near_lod_screen_height: 0.22
+  far_cull_screen_height: 0.025
+  canopy_clearance: 5.3
+  edge_feather: 0.8
+  use_native_source_clearance: 1
+  dense_repetition: 1
+  forest_masses:
+  - center: {x: 0.6328125, y: 0.8515625}
+    radius: {x: 51, y: 22}
+  - center: {x: 0.4921875, y: 0.734375}
+    radius: {x: 25, y: 31}
+  - center: {x: 0.9296875, y: 0.8046875}
+    radius: {x: 16, y: 27}
+  clearings: []
+  corridors:
+  - name: Open portal forecourt
+    points:
+    - {x: 0.53125, y: 0.45736718}
+    - {x: 0.53125, y: 0.4921875}
+    half_width: 0.8
+  - name: East district seam
+    points:
+    - {x: 0.71875, y: 0.4765625}
+    - {x: 0.71875, y: 0.046875}
+    half_width: 0.8
+  review_focus:
+  - {x: 0.625, y: 0.84375}
+  - {x: 0.625, y: 0.65625}
+  - {x: 0.7109375, y: 0.5546875}
+  - {x: 0.84375, y: 0.3125}

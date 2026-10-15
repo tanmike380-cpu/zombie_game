@@ -50,8 +50,10 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             var instance = UnityEngine.Object.Instantiate(source.prefab, parent);
             instance.name = source.id + " — neutral art fixture, whole scale " + uniform_scale;
             var rotation = Quaternion.Euler(0,yaw,0);
-            var source_offset = rotation * new Vector3(source.native_bounds_center.x,source.native_min_y,source.native_bounds_center.z) * uniform_scale;
+            float ground_anchor = source.has_authored_ground_anchor ? source.authored_ground_anchor_y-source.authored_ground_offset_y : source.native_min_y;
+            var source_offset = rotation * new Vector3(source.native_bounds_center.x,ground_anchor,source.native_bounds_center.z) * uniform_scale;
             // One whole-root translation centers its authored footprint on the pad; children are never refitted.
+            // Integer-ground variants retain negative buried architecture and use their declared surface anchor, not bounds.minY.
             instance.transform.position = ground.sample_ground(center.x * config.map_size, center.y * config.map_size) - source_offset;
             instance.transform.rotation = rotation * source.prefab.transform.localRotation;
             instance.transform.localScale = source.prefab.transform.localScale * uniform_scale;

@@ -50,6 +50,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             var lod_states=new List<string>();
             evidence.passed=fixtures.Count==16;
             var city = showcase.config.active_dark_layout.fortified_city;
+            bool unclamped_inspection = city && city.dense_repetition;
             if(city)
             {
                 evidence.passed = fixtures.Count == city.fixture_ids.Length;
@@ -61,10 +62,12 @@ namespace ZombieGame.Tests.EnvironmentShowcase
                 var source=showcase.landmarks.placed_sources[index];
                 var placement=showcase.landmarks.placements[index];
                 var instance=fixtures[index];
-                showcase.set_focus(placement.center,0);
+                // Only dense v6 single-source diagnostics may frame a map-edge ore without the overview's ground-frustum clamp.
+                showcase.set_focus(placement.center,0,!unclamped_inspection);
                 for(int frame=0;frame<8;frame++) yield return null;
                 yield return new WaitForEndOfFrame();
                 var fixture=sample_dark_fixture(instance,source,placement,index);
+                fixture.inspection_clamped_to_map = !unclamped_inspection;
                 results.Add(fixture);
                 evidence.passed &= fixture.source_transform_pass&&fixture.ground_pass&&fixture.material_channels_pass&&fixture.pixel_pass;
                 if(source.id=="IronOreRock") evidence.iron++;
@@ -92,9 +95,15 @@ namespace ZombieGame.Tests.EnvironmentShowcase
         {
             float size=showcase.config.map_size;
             float ground=showcase.ground.sample_ground(placement.center.x*size,placement.center.y*size).y;
-            float bottom=instance.transform.position.y+source.native_min_y*placement.uniform_scale;
+            float source_ground = source.has_authored_ground_anchor ? source.authored_ground_anchor_y-source.authored_ground_offset_y : source.native_min_y;
+            float bottom=instance.transform.position.y+source_ground*placement.uniform_scale;
             var fixture=new FixtureReport{id=instance.name,source=source.source_record,authored_native_dimensions_m=source.native_dimensions,
                 world_position=instance.transform.position,whole_uniform_scale=placement.uniform_scale,ground_height_error_m=Mathf.Abs(bottom-ground),whole_root_translation=instance.transform.position-source.prefab.transform.position};
+            fixture.uses_authored_ground_anchor = source.has_authored_ground_anchor;
+            fixture.authored_ground_anchor_y = source.authored_ground_anchor_y;
+            fixture.authored_ground_offset_y = source.authored_ground_offset_y;
+            fixture.preview_grid_unit_m = source.preview_grid_unit_m;
+            fixture.preview_grid_footprint_m = source.preview_grid_footprint_m;
             fixture.source_transform_pass=compare_source_transforms(instance,source.prefab)&&Vector3.Distance(instance.transform.localScale,source.prefab.transform.localScale*placement.uniform_scale)<.00001f;
             fixture.footprint_ground_span_m=measure_footprint_ground(instance,source,placement.uniform_scale);
             fixture.ground_pass=fixture.ground_height_error_m<.003f&&fixture.footprint_ground_span_m<(placement.ore?.5f:.08f)&&instance.GetComponentsInChildren<Collider>(true).Length==0;

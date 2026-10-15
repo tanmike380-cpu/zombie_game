@@ -192,6 +192,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
                 {
                     var offset = source.native_bounds_center + new Vector3(x * source.native_dimensions.x * .5f,
                         -source.native_dimensions.y * .5f,z * source.native_dimensions.z * .5f);
+                    if(source.has_authored_ground_anchor) offset.y = source.authored_ground_anchor_y-source.authored_ground_offset_y;
                     var point = instance.transform.position + yaw * offset * scale;
                     float height = showcase.ground.sample_ground(point.x - showcase.ground.origin.x,point.z - showcase.ground.origin.z).y;
                     error = Mathf.Max(error,Mathf.Abs(point.y - height));

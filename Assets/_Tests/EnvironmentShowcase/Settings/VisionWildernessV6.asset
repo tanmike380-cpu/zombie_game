@@ -1,0 +1,608 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 028f1a831937b49108fec0e9fdf63e93, type: 3}
+  m_Name: VisionWildernessV6
+  m_EditorClassIdentifier: Assembly-CSharp::ZombieGame.Tests.EnvironmentShowcase.DarkWildernessConfig
+  version: vision-dense-repetition-v6
+  source_record: 'Vision-1: flat-v3 frozen source refs; 05/07/09 wilderness-dark-v3 directional references, not art approval; v3 parent-authorized whole-root translations; original dimensions, yaw, scale, material and authored assembly unchanged. Previous preset retained.; v4 organized walled-city preview, original source roots only; two local non-walkable Terrain cliffs; v3 retained.; v5 full inland activity plane and bright neutral-white light comparison; oak, not pine; no new world geometry.; v6 user-authorized repetition of existing whole roots: 30 buildings/12 pastures, dense native oak curtain, connected Terrain edge cap. Not a new model or functioning economy. V5 white daylight and water retained.; integer-grid variants: art/grid_footprint_handoff.json; authored metre exports at whole-root scale 1; original v3-v5 sources retained.'
+  layout: {fileID: 11400000, guid: 39850fba2207c49269e9d11e98b25935, type: 2}
+  props_enabled: 1
+  placements:
+  - source_id: Headquarters
+    center: {x: 0.53125, y: 0.375}
+    yaw: 180
+    uniform_scale: 1
+    ore: 0
+  - source_id: Workshop
+    center: {x: 0.4375, y: 0.3828125}
+    yaw: 90
+    uniform_scale: 1
+    ore: 0
+  - source_id: Workshop
+    center: {x: 0.625, y: 0.3828125}
+    yaw: -90
+    uniform_scale: 1
+    ore: 0
+  - source_id: Pasture
+    center: {x: 0.4765625, y: 0.1640625}
+    yaw: 0
+    uniform_scale: 1
+    ore: 0
+  - source_id: Pasture
+    center: {x: 0.5859375, y: 0.1640625}
+    yaw: 0
+    uniform_scale: 1
+    ore: 0
+  - source_id: Pasture
+    center: {x: 0.4765625, y: 0.2734375}
+    yaw: 0
+    uniform_scale: 1
+    ore: 0
+  - source_id: Pasture
+    center: {x: 0.5859375, y: 0.2734375}
+    yaw: 0
+    uniform_scale: 1
+    ore: 0
+  - source_id: Pasture
+    center: {x: 0.4765625, y: 0.578125}
+    yaw: 0
+    uniform_scale: 1
+    ore: 0
+  - source_id: Pasture
+    center: {x: 0.5859375, y: 0.578125}
+    yaw: 0
+    uniform_scale: 1
+    ore: 0
+  - source_id: Pasture
+    center: {x: 0.6953125, y: 0.578125}
+    yaw: 0
+    uniform_scale: 1
+    ore: 0
+  - source_id: Pasture
+    center: {x: 0.8046875, y: 0.578125}
+    yaw: 0
+    uniform_scale: 1
+    ore: 0
+  - source_id: Pasture
+    center: {x: 0.9140625, y: 0.578125}
+    yaw: 0
+    uniform_scale: 1
+    ore: 0
+  - source_id: Pasture
+    center: {x: 0.3671875, y: 0.578125}
+    yaw: 0
+    uniform_scale: 1
+    ore: 0
+  - source_id: Pasture
+    center: {x: 0.3671875, y: 0.6875}
+    yaw: 0
+    uniform_scale: 1
+    ore: 0
+  - source_id: Pasture
+    center: {x: 0.3671875, y: 0.796875}
+    yaw: 0
+    uniform_scale: 1
+    ore: 0
+  - source_id: EuropeanStoneHouse
+    center: {x: 0.7578125, y: 0.1328125}
+    yaw: 0
+    uniform_scale: 1
+    ore: 0
+  - source_id: EuropeanStoneHouse
+    center: {x: 0.8359375, y: 0.1328125}
+    yaw: 0
+    uniform_scale: 1
+    ore: 0
+  - source_id: EuropeanStoneHouse
+    center: {x: 0.9140625, y: 0.1328125}
+    yaw: 0
+    uniform_scale: 1
+    ore: 0
+  - source_id: EuropeanStoneHouse
+    center: {x: 0.7578125, y: 0.4609375}
+    yaw: 180
+    uniform_scale: 1
+    ore: 0
+  - source_id: EuropeanStoneHouse
+    center: {x: 0.8359375, y: 0.4609375}
+    yaw: 180
+    uniform_scale: 1
+    ore: 0
+  - source_id: EuropeanStoneHouse
+    center: {x: 0.9140625, y: 0.4609375}
+    yaw: 180
+    uniform_scale: 1
+    ore: 0
+  - source_id: Workshop
+    center: {x: 0.7578125, y: 0.21875}
+    yaw: 90
+    uniform_scale: 1
+    ore: 0
+  - source_id: MiddleEasternCourtyard
+    center: {x: 0.7578125, y: 0.3125}
+    yaw: 180
+    uniform_scale: 1
+    ore: 0
+  - source_id: NorthAfricanRuins
+    center: {x: 0.7578125, y: 0.3984375}
+    yaw: 0
+    uniform_scale: 1
+    ore: 0
+  - source_id: Workshop
+    center: {x: 0.84375, y: 0.21875}
+    yaw: 90
+    uniform_scale: 1
+    ore: 0
+  - source_id: MiddleEasternCourtyard
+    center: {x: 0.84375, y: 0.3125}
+    yaw: 180
+    uniform_scale: 1
+    ore: 0
+  - source_id: NorthAfricanRuins
+    center: {x: 0.84375, y: 0.3984375}
+    yaw: 0
+    uniform_scale: 1
+    ore: 0
+  - source_id: Workshop
+    center: {x: 0.9296875, y: 0.21875}
+    yaw: 90
+    uniform_scale: 1
+    ore: 0
+  - source_id: MiddleEasternCourtyard
+    center: {x: 0.9296875, y: 0.3125}
+    yaw: 180
+    uniform_scale: 1
+    ore: 0
+  - source_id: NorthAfricanRuins
+    center: {x: 0.9296875, y: 0.3984375}
+    yaw: 0
+    uniform_scale: 1
+    ore: 0
+  - source_id: IronOreRock
+    center: {x: 0.7578125, y: 0.046875}
+    yaw: 0
+    uniform_scale: 2.5
+    ore: 1
+  - source_id: GoldOreRock
+    center: {x: 0.875, y: 0.046875}
+    yaw: 0
+    uniform_scale: 2.5
+    ore: 1
+  - source_id: BoulderNative
+    center: {x: 0.328125, y: 0.125}
+    yaw: 0
+    uniform_scale: 1.8
+    ore: 1
+  - source_id: IronOreRock
+    center: {x: 0.796875, y: 0.046875}
+    yaw: 0
+    uniform_scale: 2.5
+    ore: 1
+  - source_id: GoldOreRock
+    center: {x: 0.9140625, y: 0.046875}
+    yaw: 0
+    uniform_scale: 2.5
+    ore: 1
+  - source_id: BoulderNative
+    center: {x: 0.328125, y: 0.2265625}
+    yaw: 0
+    uniform_scale: 1.8
+    ore: 1
+  - source_id: IronOreRock
+    center: {x: 0.8359375, y: 0.046875}
+    yaw: 0
+    uniform_scale: 2.5
+    ore: 1
+  - source_id: GoldOreRock
+    center: {x: 0.953125, y: 0.046875}
+    yaw: 0
+    uniform_scale: 2.5
+    ore: 1
+  - source_id: BoulderNative
+    center: {x: 0.328125, y: 0.328125}
+    yaw: 0
+    uniform_scale: 1.8
+    ore: 1
+  frozen_sources:
+  - id: Headquarters
+    source_record: art/grid_footprint_handoff.json#Headquarters12; masterSHA=468a608185ce139913f1b79e04f5e20d0a7b5662e248d32b6ab28900c096e866; FBXSHA=d3f7fa2d163adfc5aa176b5aba9ecd0a338630dfccf29f2609fdd4fe58988032; native metre export scale 1; surface anchor=0; ground lift=0.025; preview grid only, formal balance unchanged; all source child transforms/material slots retained.
+    prefab: {fileID: 6921238009478359861, guid: 33b60075df68d4ccdaaf2d09839cbc35, type: 3}
+    native_dimensions: {x: 12.000001, y: 7.3688335, z: 12}
+    native_bounds_center: {x: 0, y: 3.5883684, z: 0}
+    native_min_y: -0.096048355
+    has_authored_ground_anchor: 1
+    authored_ground_anchor_y: 0
+    authored_ground_offset_y: 0.025
+    preview_grid_unit_m: 1
+    preview_grid_footprint_m: {x: 12, y: 12}
+    material_bindings:
+    - material: {fileID: 2100000, guid: a425d218527e7481ea018d0a11e928b6, type: 2}
+      base_color: {fileID: 2800000, guid: eed982cc8ef5f4933a259a20f5adba35, type: 3}
+      normal: {fileID: 0}
+      roughness: {fileID: 0}
+      metallic: {fileID: 0}
+      occlusion: {fileID: 0}
+      import_channels_pass: 1
+      metallic_max_red: 0
+      metallic_multiplier: 0
+      normal_note: Original baked colour and source constants only; no fabricated normal/roughness/height maps.
+    - material: {fileID: 2100000, guid: c545412a213424d82ac9372a976bb654, type: 2}
+      base_color: {fileID: 2800000, guid: d584f142cca034b149e0d31551950b9d, type: 3}
+      normal: {fileID: 2800000, guid: 1abd602ccdf1a46ffae8acde5d788508, type: 3}
+      roughness: {fileID: 2800000, guid: a0e2450c2d8094a8f96dab2bbfed4749, type: 3}
+      metallic: {fileID: 0}
+      occlusion: {fileID: 0}
+      import_channels_pass: 1
+      metallic_max_red: 0
+      metallic_multiplier: 0
+      normal_note: Declared nor_gl imported as normal; roughness stays linear and existing shader inverts once.
+  - id: Workshop
+    source_record: art/grid_footprint_handoff.json#Workshop8; masterSHA=468a608185ce139913f1b79e04f5e20d0a7b5662e248d32b6ab28900c096e866; FBXSHA=b84ca5b04261d434119ed78e66a113cba6dd355f0713f2a7f0e85b524a3ce8f0; native metre export scale 1; surface anchor=0; ground lift=0.025; preview grid only, formal balance unchanged; all source child transforms/material slots retained.
+    prefab: {fileID: 7640371708984550096, guid: e144a8d03088d404da87a7238566b0ec, type: 3}
+    native_dimensions: {x: 8.000001, y: 3.6619442, z: 8}
+    native_bounds_center: {x: 0, y: 1.7509338, z: 0}
+    native_min_y: -0.08003831
+    has_authored_ground_anchor: 1
+    authored_ground_anchor_y: 0
+    authored_ground_offset_y: 0.025
+    preview_grid_unit_m: 1
+    preview_grid_footprint_m: {x: 8, y: 8}
+    material_bindings:
+    - material: {fileID: 2100000, guid: 6285721e0df3a4446bce77377d3f43cb, type: 2}
+      base_color: {fileID: 2800000, guid: a81baf4fc81394e19bd01a0834e676fa, type: 3}
+      normal: {fileID: 0}
+      roughness: {fileID: 0}
+      metallic: {fileID: 0}
+      occlusion: {fileID: 0}
+      import_channels_pass: 1
+      metallic_max_red: 0
+      metallic_multiplier: 0
+      normal_note: Original baked colour and source constants only; no fabricated normal/roughness/height maps.
+    - material: {fileID: 2100000, guid: c30ec705bc89544f7876482f261a566e, type: 2}
+      base_color: {fileID: 2800000, guid: 1415aefa5c07d4b53b781b53f169fcb6, type: 3}
+      normal: {fileID: 2800000, guid: 7dc8ef3c5b80643e3bac2dd73b57f973, type: 3}
+      roughness: {fileID: 2800000, guid: 685bd8a17332c43a0bf84b09dd3b8cc6, type: 3}
+      metallic: {fileID: 0}
+      occlusion: {fileID: 0}
+      import_channels_pass: 1
+      metallic_max_red: 0
+      metallic_multiplier: 0
+      normal_note: Declared nor_gl imported as normal; roughness stays linear and existing shader inverts once.
+  - id: Pasture
+    source_record: art/grid_footprint_handoff.json#Pasture14; masterSHA=468a608185ce139913f1b79e04f5e20d0a7b5662e248d32b6ab28900c096e866; FBXSHA=f8de881951e71590506ce42fcbddc5b8dfaed368b3cafd49db174d2753d0d895; native metre export scale 1; surface anchor=0; ground lift=0.025; preview grid only, formal balance unchanged; all source child transforms/material slots retained.
+    prefab: {fileID: 824869426357576976, guid: 7120cfa58095e4fddb90f4ff4cac8375, type: 3}
+    native_dimensions: {x: 14.000001, y: 2.5847583, z: 14.000001}
+    native_bounds_center: {x: 0, y: 1.2242992, z: 0}
+    native_min_y: -0.06807995
+    has_authored_ground_anchor: 1
+    authored_ground_anchor_y: 0
+    authored_ground_offset_y: 0.025
+    preview_grid_unit_m: 1
+    preview_grid_footprint_m: {x: 14, y: 14}
+    material_bindings:
+    - material: {fileID: 2100000, guid: 2606f7abfd7e049beb8d9c277fe2ee12, type: 2}
+      base_color: {fileID: 2800000, guid: e62f7c88cf5f54f65b30493f98dc36f6, type: 3}
+      normal: {fileID: 0}
+      roughness: {fileID: 0}
+      metallic: {fileID: 0}
+      occlusion: {fileID: 0}
+      import_channels_pass: 1
+      metallic_max_red: 0
+      metallic_multiplier: 0
+      normal_note: Original baked colour and source constants only; no fabricated normal/roughness/height maps.
+    - material: {fileID: 2100000, guid: 3ed59b90375c74618a8d6da1b01858cb, type: 2}
+      base_color: {fileID: 2800000, guid: e28eaa264bd46481aa05279ab2e4578a, type: 3}
+      normal: {fileID: 2800000, guid: f89e71967a9314125954f359fc703379, type: 3}
+      roughness: {fileID: 2800000, guid: ab37ff1c5dedc4d25b2e483490d04529, type: 3}
+      metallic: {fileID: 0}
+      occlusion: {fileID: 0}
+      import_channels_pass: 1
+      metallic_max_red: 0
+      metallic_multiplier: 0
+      normal_note: Declared nor_gl imported as normal; roughness stays linear and existing shader inverts once.
+    - material: {fileID: 2100000, guid: 26c3b3a6119994760944bb628248e7ea, type: 2}
+      base_color: {fileID: 0}
+      normal: {fileID: 0}
+      roughness: {fileID: 0}
+      metallic: {fileID: 0}
+      occlusion: {fileID: 0}
+      import_channels_pass: 1
+      metallic_max_red: 0
+      metallic_multiplier: 0
+      normal_note: Original constant-colour source material; no base texture exists or is fabricated. Authored linear colour is retained via the adapter gamma upload.
+    - material: {fileID: 2100000, guid: 33a7a5790a3974e528c5abff24545376, type: 2}
+      base_color: {fileID: 0}
+      normal: {fileID: 0}
+      roughness: {fileID: 0}
+      metallic: {fileID: 0}
+      occlusion: {fileID: 0}
+      import_channels_pass: 1
+      metallic_max_red: 0
+      metallic_multiplier: 0
+      normal_note: Original constant-colour source material; no base texture exists or is fabricated. Authored linear colour is retained via the adapter gamma upload.
+    - material: {fileID: 2100000, guid: 2daccecca5f234698ac4757c8c547a81, type: 2}
+      base_color: {fileID: 0}
+      normal: {fileID: 0}
+      roughness: {fileID: 0}
+      metallic: {fileID: 0}
+      occlusion: {fileID: 0}
+      import_channels_pass: 1
+      metallic_max_red: 0
+      metallic_multiplier: 0
+      normal_note: Original constant-colour source material; no base texture exists or is fabricated. Authored linear colour is retained via the adapter gamma upload.
+    - material: {fileID: 2100000, guid: 00802e9d8d1dd49d38392d2e0b8206ff, type: 2}
+      base_color: {fileID: 0}
+      normal: {fileID: 0}
+      roughness: {fileID: 0}
+      metallic: {fileID: 0}
+      occlusion: {fileID: 0}
+      import_channels_pass: 1
+      metallic_max_red: 0
+      metallic_multiplier: 0
+      normal_note: Original constant-colour source material; no base texture exists or is fabricated. Authored linear colour is retained via the adapter gamma upload.
+    - material: {fileID: 2100000, guid: 40a8dbd685d5e4b3c9bc2d88dd821e8d, type: 2}
+      base_color: {fileID: 0}
+      normal: {fileID: 0}
+      roughness: {fileID: 0}
+      metallic: {fileID: 0}
+      occlusion: {fileID: 0}
+      import_channels_pass: 1
+      metallic_max_red: 0
+      metallic_multiplier: 0
+      normal_note: Original constant-colour source material; no base texture exists or is fabricated. Authored linear colour is retained via the adapter gamma upload.
+    - material: {fileID: 2100000, guid: d3ba7b5190b554ddb93f33e65abecf25, type: 2}
+      base_color: {fileID: 0}
+      normal: {fileID: 0}
+      roughness: {fileID: 0}
+      metallic: {fileID: 0}
+      occlusion: {fileID: 0}
+      import_channels_pass: 1
+      metallic_max_red: 0
+      metallic_multiplier: 0
+      normal_note: Original constant-colour source material; no base texture exists or is fabricated. Authored linear colour is retained via the adapter gamma upload.
+    - material: {fileID: 2100000, guid: 3f3e58dfe48d8427bb7c904cc9979cdd, type: 2}
+      base_color: {fileID: 0}
+      normal: {fileID: 0}
+      roughness: {fileID: 0}
+      metallic: {fileID: 0}
+      occlusion: {fileID: 0}
+      import_channels_pass: 1
+      metallic_max_red: 0
+      metallic_multiplier: 0
+      normal_note: Original constant-colour source material; no base texture exists or is fabricated. Authored linear colour is retained via the adapter gamma upload.
+    - material: {fileID: 2100000, guid: 106cb4f9e12b146eb9a3588ab7fcddf7, type: 2}
+      base_color: {fileID: 0}
+      normal: {fileID: 0}
+      roughness: {fileID: 0}
+      metallic: {fileID: 0}
+      occlusion: {fileID: 0}
+      import_channels_pass: 1
+      metallic_max_red: 0
+      metallic_multiplier: 0
+      normal_note: Original constant-colour source material; no base texture exists or is fabricated. Authored linear colour is retained via the adapter gamma upload.
+  tree_prefabs:
+  - {fileID: 4169734615762323713, guid: e2d4ef1debd5546f4b4790e5d9ec4198, type: 3}
+  stone_candidate:
+    id: BoulderNative
+    source_record: art/environment/2026-10-14-free-source-review.json#boulder_01; https://polyhaven.com/a/boulder_01; CC0-1.0 Rico Cilliers; native FBX SHA256=b1125cd1e08a425fa89bc62b96279b40e9a921618e12bfbbe0d575cb78f53c95; original LOD2/LOD3 16530/8264, no re-export/decimation. Natural stone candidate, NOT user-authored stone mine.
+    prefab: {fileID: 7417536568487989842, guid: 9f10ce08a9649474eaedc3646c5d70c7, type: 3}
+    native_dimensions: {x: 1.2726831, y: 1.0035174, z: 1.8289587}
+    native_bounds_center: {x: 0.112071455, y: 0.4284904, z: -0.032550395}
+    native_min_y: -0.073268294
+    has_authored_ground_anchor: 0
+    authored_ground_anchor_y: 0
+    authored_ground_offset_y: 0
+    preview_grid_unit_m: 0
+    preview_grid_footprint_m: {x: 0, y: 0}
+    material_bindings:
+    - material: {fileID: 2100000, guid: a1640a268084e4a339e88fc4f99ceb4c, type: 2}
+      base_color: {fileID: 2800000, guid: 90e3782e41dd0472387264364d0a4420, type: 3}
+      normal: {fileID: 2800000, guid: af12e9560fb124e518dfa2f1526d2c20, type: 3}
+      roughness: {fileID: 2800000, guid: f0ab816712794432c9223165b7565597, type: 3}
+      metallic: {fileID: 0}
+      occlusion: {fileID: 2800000, guid: 1fa4e2d9d3b40426f9134a4d12c84d4e, type: 3}
+      import_channels_pass: 1
+      metallic_max_red: 0
+      metallic_multiplier: 0
+      normal_note: Official nor_gl source; no green flip. AO actual source, metallic zero.
+  stone_visual_accepted: 0
+  bermuda_scale_range: {x: 3, y: 3.8}
+  medium_scale_range: {x: 1, y: 1.3}
+  tree_source: art/environment/vision-oak-handoff.json; Lauris Kaplinski, CC BY-SA 3.0; sparse original oak crown, not dense-canopy art acceptance.
+  ambient: {r: 0.36, g: 0.38, b: 0.39, a: 1}
+  sun: {r: 0.98, g: 0.99, b: 1, a: 1}
+  fog: {r: 0.56, g: 0.59, b: 0.6, a: 1}
+  sun_intensity: 1.08
+  grass_tint: {r: 0.78, g: 0.88, b: 0.75, a: 1}
+  dry_tint: {r: 0.93, g: 0.89, b: 0.77, a: 1}
+  soil_tint: {r: 0.92, g: 0.88, b: 0.79, a: 1}
+  exposed_centers:
+  - {x: 0.61, y: 0.49}
+  - {x: 0.48, y: 0.71}
+  - {x: 0.84, y: 0.42}
+  exposed_radii:
+  - {x: 19, y: 17}
+  - {x: 8, y: 7}
+  - {x: 8, y: 6}
+  flat_ground: 1
+  flat_height: 4.2
+  ambient_mode: 1
+  ambient_sky: {r: 0.45, g: 0.48, b: 0.5, a: 1}
+  ambient_equator: {r: 0.36, g: 0.38, b: 0.37, a: 1}
+  ambient_ground: {r: 0.28, g: 0.29, b: 0.27, a: 1}
+  vegetation_centers:
+  - {x: 0.42, y: 0.49}
+  - {x: 0.59, y: 0.68}
+  - {x: 0.85, y: 0.53}
+  - {x: 0.49, y: 0.28}
+  vegetation_radii:
+  - {x: 12, y: 10}
+  - {x: 15, y: 9}
+  - {x: 10, y: 13}
+  - {x: 14, y: 10}
+  vision_soil_regions:
+  - center: {x: 0.53125, y: 0.390625}
+    radius: {x: 15, y: 11}
+    strength: 0.7
+  - center: {x: 0.84375, y: 0.3046875}
+    radius: {x: 17, y: 31}
+    strength: 0.7
+  vision_dry_regions:
+  - center: {x: 0.875, y: 0.078125}
+    radius: {x: 14, y: 5}
+    strength: 0.58
+  - center: {x: 0.625, y: 0.9140625}
+    radius: {x: 35, y: 5}
+    strength: 0.38
+  vision_meadow_regions:
+  - center: {x: 0.6953125, y: 0.5625}
+    radius: {x: 38, y: 9}
+    strength: 0.65
+  - center: {x: 0.37109375, y: 0.6796875}
+    radius: {x: 8, y: 25}
+    strength: 0.64
+  vision_surface_revision: 2
+  vision_layer_overrides:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 8574412962073106934, guid: ffbf60a888d514b2885e0dbaea572a8a, type: 2}
+  - {fileID: 0}
+  - {fileID: 8574412962073106934, guid: 229693c83d3404e46affc939219cda48, type: 2}
+  - {fileID: 0}
+  vision_surface_regions: 1
+  vision_grass_budget: 6000
+  vision_shrub_budget: 140
+  vision_rock_budget: 80
+  vision_base_soil: 0.1
+  vision_macro_scale: 30
+  vision_water_variation: 0.1
+  vision_water_depth_range: 1.8
+  vision_water_response_revision: 1
+  vision_water_bed_visibility: 0.48
+  vision_water_bed_depth_m: 0.75
+  vision_water_wave_strength: 0.16
+  vision_water_smoothness: 0.78
+  vision_water_sky_response: 0.18
+  vision_shadow_distance: 150
+  vision_shadow_cascades: 2
+  vision_shadow_resolution: 2
+  vision_plant_patches:
+  - source_id: GrassBermuda
+    category: grass
+    count: 2400
+    centers:
+    - {x: 0.42, y: 0.49}
+    - {x: 0.6, y: 0.68}
+    - {x: 0.84, y: 0.63}
+    radii:
+    - {x: 5.6, y: 3.8}
+    - {x: 5, y: 3.5}
+    - {x: 4.2, y: 3.2}
+    scale_range: {x: 3, y: 3.8}
+    core_bed: 1
+  - source_id: GrassMedium
+    category: grass
+    count: 2800
+    centers:
+    - {x: 0.42, y: 0.49}
+    - {x: 0.6, y: 0.68}
+    - {x: 0.84, y: 0.63}
+    radii:
+    - {x: 5.6, y: 3.8}
+    - {x: 5, y: 3.5}
+    - {x: 4.2, y: 3.2}
+    scale_range: {x: 1, y: 1.3}
+    core_bed: 1
+  - source_id: GrassMedium02E
+    category: grass
+    count: 800
+    centers:
+    - {x: 0.42, y: 0.49}
+    - {x: 0.59, y: 0.68}
+    - {x: 0.85, y: 0.53}
+    - {x: 0.49, y: 0.28}
+    radii:
+    - {x: 12, y: 10}
+    - {x: 15, y: 9}
+    - {x: 10, y: 13}
+    - {x: 14, y: 10}
+    scale_range: {x: 1, y: 1.3}
+    core_bed: 0
+  - source_id: ShrubA
+    category: shrub
+    count: 10
+    centers:
+    - {x: 0.42, y: 0.49}
+    - {x: 0.59, y: 0.68}
+    - {x: 0.85, y: 0.53}
+    - {x: 0.49, y: 0.28}
+    radii:
+    - {x: 12, y: 10}
+    - {x: 15, y: 9}
+    - {x: 10, y: 13}
+    - {x: 14, y: 10}
+    scale_range: {x: 0.85, y: 1.1}
+    core_bed: 0
+  - source_id: ShrubB
+    category: shrub
+    count: 10
+    centers:
+    - {x: 0.42, y: 0.49}
+    - {x: 0.59, y: 0.68}
+    - {x: 0.85, y: 0.53}
+    - {x: 0.49, y: 0.28}
+    radii:
+    - {x: 12, y: 10}
+    - {x: 15, y: 9}
+    - {x: 10, y: 13}
+    - {x: 14, y: 10}
+    scale_range: {x: 0.85, y: 1.1}
+    core_bed: 0
+  - source_id: Fern02A
+    category: shrub
+    count: 40
+    centers:
+    - {x: 0.405, y: 0.515}
+    - {x: 0.615, y: 0.675}
+    - {x: 0.855, y: 0.64}
+    radii:
+    - {x: 3, y: 2}
+    - {x: 3, y: 2.2}
+    - {x: 2.4, y: 1.8}
+    scale_range: {x: 0.85, y: 1.1}
+    core_bed: 1
+  - source_id: Fern02B
+    category: shrub
+    count: 80
+    centers:
+    - {x: 0.41, y: 0.47}
+    - {x: 0.59, y: 0.71}
+    - {x: 0.835, y: 0.635}
+    radii:
+    - {x: 3.4, y: 2.2}
+    - {x: 3.6, y: 2.4}
+    - {x: 2.8, y: 2.3}
+    scale_range: {x: 0.85, y: 1.1}
+    core_bed: 1
+  vision_tree_centers:
+  - {x: 0.43, y: 0.78}
+  - {x: 0.83, y: 0.36}
+  - {x: 0.89, y: 0.73}
+  vision_tree_radii:
+  - {x: 15, y: 15}
+  - {x: 16, y: 15}
+  - {x: 12, y: 16}
+  vision_tree_spacing: 5.8
+  vision_tree_chunk_size: 64
+  vision_forest: {fileID: 11400000, guid: 7276e8014454f4a739e050d1243d0f0c, type: 2}
+  fortified_city: {fileID: 11400000, guid: 74ee49b03bb4b4880ab5d9d825a7fa1a, type: 2}
+  neutral_light_baseline: {fileID: 0}

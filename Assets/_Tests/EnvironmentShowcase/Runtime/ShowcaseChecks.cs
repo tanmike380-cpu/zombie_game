@@ -89,6 +89,10 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             public string id, source;
             public Vector3 authored_native_dimensions_m, world_position;
             public float whole_uniform_scale, ground_height_error_m, footprint_ground_span_m, pixel_delta;
+            public bool uses_authored_ground_anchor;
+            public float authored_ground_anchor_y, authored_ground_offset_y, preview_grid_unit_m;
+            public bool inspection_clamped_to_map = true;
+            public Vector2 preview_grid_footprint_m;
             public Vector3 whole_root_translation;
             public bool source_transform_pass, ground_pass, clearance_pass, pixel_pass, material_channels_pass;
             public string normal_note;
