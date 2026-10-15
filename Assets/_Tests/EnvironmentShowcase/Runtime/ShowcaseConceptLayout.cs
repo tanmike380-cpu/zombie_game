@@ -111,6 +111,8 @@ namespace ZombieGame.Tests.EnvironmentShowcase
         public float forest_weight(float x, float z)
         {
             if (!can_place(x,z)) return 0;
+            if(dark && dark.vision_surface_regions && dark.vision_forest)
+                return dark.vision_forest.sample_weight(x,z,size);
             if(dark && dark.vision_surface_regions && dark.vision_tree_centers.Length > 0)
             {
                 float vision_weight = 0;

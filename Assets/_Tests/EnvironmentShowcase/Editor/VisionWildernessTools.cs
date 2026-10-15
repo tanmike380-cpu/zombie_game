@@ -19,6 +19,59 @@ namespace ZombieGame.Tests.EditorTools
         public const string CONFIG_PATH = ROOT+"Settings/VisionShowcaseConfig.asset";
         private const string PREVIEW_ROOT = ROOT+"Settings/VisionEditorPreview/";
 
+        [MenuItem("Zombie Game/Environment Showcase/Vision-1/Apply compact settlement and connected forest v3")]
+        public static void apply_compact_forest_v3()
+        {
+            guard_saved_scenes();
+            var config = prepare_vision_config();
+            var previous = AssetDatabase.LoadAssetAtPath<DarkWildernessConfig>(ROOT+"Settings/VisionWildernessConfig.asset");
+            if(!previous) throw new InvalidOperationException("Original Vision preset required for reversible v3 composition.");
+            config.vision_layout = VisionCompactForestAuthoring.prepare_preset(previous);
+            EditorUtility.SetDirty(config);
+            AssetDatabase.SaveAssets();
+            prepare_vision_scene();
+        }
+
+        [MenuItem("Zombie Game/Environment Showcase/Vision-1/Restore pre-compact Vision preset")]
+        public static void restore_pre_compact_vision_preset()
+        {
+            guard_saved_scenes();
+            var config = prepare_vision_config();
+            var previous = AssetDatabase.LoadAssetAtPath<DarkWildernessConfig>(ROOT+"Settings/VisionWildernessConfig.asset");
+            if(!previous) throw new InvalidOperationException("Original Vision preset unavailable for rollback.");
+            config.vision_layout = previous;
+            EditorUtility.SetDirty(config);
+            AssetDatabase.SaveAssets();
+            prepare_vision_scene();
+        }
+
+        [MenuItem("Zombie Game/Environment Showcase/Vision-1/Apply connected forest composition")]
+        public static void apply_connected_forest_layout()
+        {
+            guard_saved_scenes();
+            var config = prepare_vision_config();
+            VisionForestAuthoring.require_approved_oak(config.vision_layout);
+            config.vision_layout.vision_forest = VisionForestAuthoring.prepare_config();
+            EditorUtility.SetDirty(config.vision_layout);
+            AssetDatabase.SaveAssets();
+            prepare_vision_scene();
+            Debug.Log("[VisionForest] Independent forest composition applied. Natural clearings are visual only; no NavMesh/economy changes, Road remains zero.");
+        }
+
+        [MenuItem("Zombie Game/Environment Showcase/Vision-1/Restore previous sparse forest composition")]
+        public static void restore_sparse_forest_layout()
+        {
+            guard_saved_scenes();
+            var config = prepare_vision_config();
+            var original = AssetDatabase.LoadAssetAtPath<DarkWildernessConfig>(ROOT+"Settings/VisionWildernessConfig.asset");
+            if(!original) throw new InvalidOperationException("Original Vision placement preset unavailable for sparse rollback.");
+            // The original asset currently retains its v2 forest reference. Preserve it rather than editing v3 or erasing v2.
+            config.vision_layout = VisionCompactForestAuthoring.prepare_sparse_review(original);
+            EditorUtility.SetDirty(config);
+            AssetDatabase.SaveAssets();
+            prepare_vision_scene();
+        }
+
         [MenuItem("Zombie Game/Environment Showcase/Vision-1/Prepare and open Editor scene")]
         public static void prepare_vision_scene()
         {

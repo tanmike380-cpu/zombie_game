@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07ae7707e2ead4d8095adec2ce4c406c, type: 3}
+  m_Name: VisionConnectedForest
+  m_EditorClassIdentifier: Assembly-CSharp::ZombieGame.Tests.EnvironmentShowcase.VisionForestConfig
+  version: vision-connected-forest-v1
+  tree_budget: 180
+  tree_spacing: 6.2
+  chunk_size: 48
+  near_lod_screen_height: 0.22
+  far_cull_screen_height: 0.025
+  canopy_clearance: 5.3
+  edge_feather: 2
+  forest_masses:
+  - center: {x: 0.48, y: 0.2}
+    radius: {x: 24, y: 32}
+  - center: {x: 0.75, y: 0.18}
+    radius: {x: 34, y: 26}
+  - center: {x: 0.91, y: 0.5}
+    radius: {x: 22, y: 42}
+  - center: {x: 0.75, y: 0.9}
+    radius: {x: 40, y: 25}
+  - center: {x: 0.43, y: 0.8}
+    radius: {x: 22, y: 29}
+  - center: {x: 0.42, y: 0.51}
+    radius: {x: 16, y: 24}
+  clearings:
+  - center: {x: 0.61, y: 0.51}
+    radius: {x: 24, y: 18}
+  - center: {x: 0.475, y: 0.705}
+    radius: {x: 7, y: 5}
+  - center: {x: 0.845, y: 0.42}
+    radius: {x: 7, y: 6}
+  - center: {x: 0.415, y: 0.415}
+    radius: {x: 5, y: 6}
+  corridors:
+  - name: North clearing
+    points:
+    - {x: 0.63, y: 0.64}
+    - {x: 0.6, y: 0.75}
+    - {x: 0.56, y: 0.85}
+    half_width: 4
+  - name: Coastal clearing
+    points:
+    - {x: 0.63, y: 0.64}
+    - {x: 0.51, y: 0.62}
+    - {x: 0.39, y: 0.62}
+    half_width: 4.5
+  - name: East pool-side clearing
+    points:
+    - {x: 0.63, y: 0.64}
+    - {x: 0.82, y: 0.62}
+    - {x: 0.91, y: 0.55}
+    half_width: 4
+  - name: South settlement opening
+    points:
+    - {x: 0.63, y: 0.64}
+    - {x: 0.64, y: 0.55}
+    - {x: 0.64, y: 0.4}
+    - {x: 0.62, y: 0.24}
+    half_width: 4.5
+  review_focus:
+  - {x: 0.48, y: 0.82}
+  - {x: 0.8, y: 0.22}
+  - {x: 0.91, y: 0.48}

@@ -40,6 +40,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             public bool vision_oak_pass;
             public FixedPlantFrame[] matched_plants_frames;
             public VisionWaterResponseCheck[] vision_water_response;
+            public VisionForestCheck vision_forest;
         }
 
         private IEnumerator run_flat_checks()
@@ -127,6 +128,8 @@ namespace ZombieGame.Tests.EnvironmentShowcase
                     var oak_checks = run_vision_oak_checks();
                     while(oak_checks.MoveNext()) yield return oak_checks.Current;
                 }
+                var forest_checks = run_vision_forest_checks();
+                while(forest_checks.MoveNext()) yield return forest_checks.Current;
             }
             report.timings = timings.ToArray();
             report.terrain_passed = report.terrain_pixel_pass && report.layer_pass && report.shader_pass && report.flat.level_ground_pass && report.flat.maximum_road_weight==0 && report.flat.no_river && report.flat.pool_closed_pass && report.flat.water_pixel_pass;
@@ -134,6 +137,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             if(showcase.config.vision_enabled) report.flat.technical_pass &= report.flat.vision_shadow_pixel_pass && report.flat.vision_clumps_pass;
             if(showcase.config.vision_enabled && showcase.config.active_dark_layout.tree_prefabs.Length > 0)
                 report.flat.technical_pass &= report.flat.vision_oak_pass;
+            if(report.flat.vision_forest != null) report.flat.technical_pass &= report.flat.vision_forest.technical_pass;
             report.passed = report.flat.technical_pass;
             report.source_complete = false;
             report.error = report.passed ? "Technical checks passed; art_visual_accepted=false. Dense tree crowns, broader RTS-readable grass clumps, reeds and long authored cliff modules unavailable. No gameplay acceptance." : "Flat technical check failed; inspect individual flags. Art not accepted.";

@@ -27,6 +27,14 @@ namespace ZombieGame.Tests.EnvironmentShowcase
         public int rock_instances { get; private set; }
         public int visible_batches { get; private set; }
         public readonly List<Vector2> tree_positions = new List<Vector2>();
+        [Serializable] public sealed class TreePlacementProbe
+        {
+            public int grid_candidates,forest_core_candidates,greenery_candidates,flat_candidates,source_clearance_candidates;
+            public int center_north_eligible_candidates,center_north_placed,actual_placed;
+            public List<Vector2> source_safe_candidates = new List<Vector2>();
+            public string note = "Actual jittered candidate counts through each placement predicate, not mask area or alpha canopy coverage. Centre/north region is x .45-.85, z .60-.98; fixed budget and source scale unchanged.";
+        }
+        public readonly TreePlacementProbe tree_placement_probe = new TreePlacementProbe();
         [Serializable] public sealed class GrassProbe
         {
             public string source;
@@ -64,6 +72,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
         {
             public SourcePart part;
             public Matrix4x4[] matrices;
+            public Vector3[] source_origins;
             public Bounds bounds;
             public float draw_distance;
             public bool is_grass;
@@ -82,6 +91,8 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             int grass_count = Mathf.RoundToInt(config.grass_count * (biome == null ? 1 : biome.grass_density));
             int tree_count = Mathf.RoundToInt(config.tree_count * (biome == null ? 1 : biome.tree_density));
             if (terrain.concept != null) tree_count = terrain.concept.layout.tree_budget;
+            if(config.vision_enabled && config.active_dark_layout.vision_forest)
+                tree_count = config.active_dark_layout.vision_forest.tree_budget;
             if(config.dark_enabled && config.active_dark_layout.tree_prefabs.Length==0) tree_count=0;
             if (terrain.routes.enabled && (biome == null || biome.tree_density > 0)) tree_count = terrain.routes.layout.tree_budget;
             int shrub_count = Mathf.RoundToInt(config.shrub_count * (biome == null ? 1 : biome.shrub_density));
@@ -96,6 +107,10 @@ namespace ZombieGame.Tests.EnvironmentShowcase
                 grass_instances = add_variants(config.grass_variants, grass_count, config.grass_scale_range, "grass");
             else if (config.grass_prefab) grass_instances = add_prefab(config.grass_prefab, grass_count, config.grass_scale_range, "grass");
             tree_instances = add_variants(config.dark_enabled ? config.active_dark_layout.tree_prefabs : config.tree_prefabs, tree_count, config.tree_scale_range, "tree");
+            tree_placement_probe.actual_placed = tree_instances;
+            if(config.vision_enabled && config.active_dark_layout.vision_forest)
+                foreach(var point in tree_positions)
+                    if(is_center_north(point)) tree_placement_probe.center_north_placed++;
             shrub_instances = add_variants(config.shrub_prefabs, shrub_count, config.shrub_scale_range, "shrub");
             rock_instances = add_variants(config.rock_prefabs, rock_count, config.rock_scale_range, "rock");
         }
@@ -183,6 +198,8 @@ namespace ZombieGame.Tests.EnvironmentShowcase
                 if(config.vision_enabled)
                     matrix = Matrix4x4.TRS(point,yaw,Vector3.one*scale)*prefab.transform.localToWorldMatrix;
                 float chunk_size = config.vision_enabled && category == "tree" ? config.active_dark_layout.vision_tree_chunk_size : config.grass_chunk_size;
+                if(config.vision_enabled && category == "tree" && config.active_dark_layout.vision_forest)
+                    chunk_size = config.active_dark_layout.vision_forest.chunk_size;
                 var cell = new Vector2Int(Mathf.FloorToInt(x/chunk_size),Mathf.FloorToInt(z/chunk_size));
                 if(config.dark_enabled && category=="grass") measure_grass_probe(prefab.name,point.y,matrix,parts);
                 if(config.flat_enabled && category=="shrub") measure_grass_probe(prefab.name,point.y,matrix,parts,true);
@@ -217,6 +234,8 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             {
                 if (!ground.concept.can_place(x,z)) return false;
                 if(config.vision_enabled && category == "tree" && Mathf.Abs(ground.sample_authored_height(x,z)-config.active_dark_layout.flat_height) > .003f) return false;
+                if(config.vision_enabled && category == "tree" && config.active_dark_layout.vision_forest &&
+                    !config.active_dark_layout.vision_forest.has_source_clearance(ground.concept,x,z)) return false;
                 float slope = ground.terrain_data.GetSteepness(x/config.map_size,z/config.map_size);
                 if (category == "rock") return slope < 35 && ground.concept.is_local_rock_patch(x,z);
                 if (!ground.can_place_greenery(x,z)) return false;
@@ -245,11 +264,14 @@ namespace ZombieGame.Tests.EnvironmentShowcase
         {
             var candidates = new List<Vector2>();
             float spacing = config.vision_enabled ? config.active_dark_layout.vision_tree_spacing : ground.concept!=null ? 2.55f : ground.routes.layout.tree_spacing;
+            if(config.vision_enabled && config.active_dark_layout.vision_forest)
+                spacing = config.active_dark_layout.vision_forest.tree_spacing;
             for (float z = spacing; z < config.map_size - spacing; z += spacing)
                 for (float x = spacing; x < config.map_size - spacing; x += spacing)
                 {
                     var point = new Vector2(x + ((float)random.NextDouble() - .5f) * spacing * .2f,
                         z + ((float)random.NextDouble() - .5f) * spacing * .2f);
+                    if(config.vision_enabled && config.active_dark_layout.vision_forest) measure_tree_candidate(point);
                     if (ground.forest_weight(point.x,point.y) > .75f && ground.can_place_greenery(point.x,point.y)) candidates.Add(point);
                 }
             for (int index = candidates.Count - 1; index > 0; index--)
@@ -258,6 +280,27 @@ namespace ZombieGame.Tests.EnvironmentShowcase
                 var point = candidates[index]; candidates[index] = candidates[other]; candidates[other] = point;
             }
             return candidates;
+        }
+
+        private void measure_tree_candidate(Vector2 point)
+        {
+            tree_placement_probe.grid_candidates++;
+            if(ground.forest_weight(point.x,point.y) <= .75f) return;
+            tree_placement_probe.forest_core_candidates++;
+            if(!ground.can_place_greenery(point.x,point.y)) return;
+            tree_placement_probe.greenery_candidates++;
+            if(Mathf.Abs(ground.sample_authored_height(point.x,point.y)-config.active_dark_layout.flat_height) > .003f) return;
+            tree_placement_probe.flat_candidates++;
+            if(!config.active_dark_layout.vision_forest.has_source_clearance(ground.concept,point.x,point.y)) return;
+            tree_placement_probe.source_clearance_candidates++;
+            tree_placement_probe.source_safe_candidates.Add(point);
+            if(is_center_north(point)) tree_placement_probe.center_north_eligible_candidates++;
+        }
+
+        private bool is_center_north(Vector2 point)
+        {
+            var normalized = point/config.map_size;
+            return normalized.x >= .45f && normalized.x <= .85f && normalized.y >= .60f && normalized.y <= .98f;
         }
 
         private List<SourcePart> read_source_parts(GameObject prefab, string category)
@@ -286,7 +329,14 @@ namespace ZombieGame.Tests.EnvironmentShowcase
                     var part = new SourcePart { source_id = prefab.name, mesh = filter.sharedMesh, material = material, submesh_index = submesh_index,
                         relative_transform = prefab.transform.worldToLocalMatrix * filter.transform.localToWorldMatrix };
                     if(config.vision_enabled && filter.sharedMesh.isReadable) part.diagnostic_vertices = filter.sharedMesh.vertices;
-                    read_source_lod(prefab, renderer, part);
+                    if(config.vision_enabled && category == "tree") read_vision_tree_lod(prefab,renderer,part);
+                    else read_source_lod(prefab,renderer,part);
+                    if(config.vision_enabled && category == "tree" && config.active_dark_layout.vision_forest)
+                    {
+                        var forest = config.active_dark_layout.vision_forest;
+                        part.lod_min_height = part.lod_index == 0 ? forest.near_lod_screen_height : forest.far_cull_screen_height;
+                        part.lod_max_height = part.lod_index == 0 ? float.PositiveInfinity : forest.near_lod_screen_height;
+                    }
                     if(ground.concept != null && category=="tree" && part.source_lod_height>0 && !config.vision_enabled)
                     {
                         // Select the two already-approved source meshes; no re-meshing or extra trees.
@@ -370,6 +420,31 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             throw new InvalidOperationException("Source renderer belongs to LODGroup but no source LOD: " + prefab.name + "/" + renderer.name);
         }
 
+        private static void read_vision_tree_lod(GameObject prefab,Renderer renderer,SourcePart part)
+        {
+            // Prefab assets are not active in the scene hierarchy. Do not use the active-only parent lookup.
+            var groups = prefab.GetComponentsInChildren<LODGroup>(true);
+            if(groups.Length != 1)
+                throw new InvalidOperationException("Vision tree requires exactly one authored LODGroup: "+prefab.name);
+            var group = groups[0];
+            var lods = group.GetLODs();
+            if(lods.Length != 2) throw new InvalidOperationException("Vision tree requires exactly two native LOD assemblies: "+prefab.name);
+            int matches = 0;
+            for(int index=0;index<lods.Length;index++)
+            {
+                if(Array.IndexOf(lods[index].renderers,renderer) < 0) continue;
+                matches++;
+                part.lod_index = index;
+                part.lod_min_height = lods[index].screenRelativeTransitionHeight;
+                part.lod_max_height = index == 0 ? float.PositiveInfinity : lods[index-1].screenRelativeTransitionHeight;
+            }
+            if(matches != 1)
+                throw new InvalidOperationException("Vision source renderer must resolve to one LOD0/1, matches="+matches+": "+prefab.name+"/"+renderer.name);
+            part.source_lod_height = group.size*(prefab.transform.worldToLocalMatrix*group.transform.localToWorldMatrix).MultiplyVector(Vector3.up).magnitude;
+            if(part.source_lod_height <= 0)
+                throw new InvalidOperationException("Vision source LOD height is invalid: "+prefab.name);
+        }
+
         private void build_batches(List<Matrix4x4> instances, List<SourcePart> parts, string category)
         {
             foreach (var part in parts)
@@ -377,16 +452,18 @@ namespace ZombieGame.Tests.EnvironmentShowcase
                 {
                     int count = Mathf.Min(MAX_BATCH_SIZE, instances.Count - offset);
                     var matrices = new Matrix4x4[count];
+                    var source_origins = config.vision_enabled && category == "tree" && config.active_dark_layout.vision_forest ? new Vector3[count] : null;
                     var bounds = new Bounds();
                     float lod_height = 0;
                     for (int index = 0; index < count; index++)
                     {
                         matrices[index] = instances[offset + index] * part.relative_transform;
+                        if(source_origins != null) source_origins[index] = instances[offset+index].GetColumn(3);
                         lod_height = Mathf.Max(lod_height, part.source_lod_height * instances[offset + index].lossyScale.y);
                         var mesh_bounds = transform_bounds(part.mesh.bounds, matrices[index]);
                         if (index == 0) bounds = mesh_bounds; else bounds.Encapsulate(mesh_bounds);
                     }
-                    batches.Add(new DrawBatch { part = part, matrices = matrices, bounds = bounds, lod_height = lod_height, is_grass = category == "grass", is_rock = category == "rock", is_tree = category == "tree", is_shrub = category == "shrub",
+                    batches.Add(new DrawBatch { part = part, matrices = matrices, source_origins = source_origins, bounds = bounds, lod_height = lod_height, is_grass = category == "grass", is_rock = category == "rock", is_tree = category == "tree", is_shrub = category == "shrub",
                         draw_distance = category == "grass" ? config.grass_draw_distance : category == "tree" ? config.tree_draw_distance :
                             category == "shrub" ? config.shrub_draw_distance : config.rock_draw_distance });
                 }
@@ -472,6 +549,9 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             public Vector3 camera_position;
             public float camera_orthographic_size;
             public int submitted_lod0_matrix_submeshes,submitted_lod1_matrix_submeshes;
+            public int submitted_unique_lod0_trees,submitted_unique_lod1_trees,duplicate_lod_tree_origins;
+            public int source_lod0_parts,source_lod1_parts,source_unresolved_lod_parts;
+            public int source_lod0_triangles,source_lod1_triangles;
             public string bounds_note = "Conservative world mesh AABB of actual batch submissions, not alpha-visible coverage; matrix count is per mesh/submesh, triangles exclude shadows/additional passes.";
         }
 
@@ -492,6 +572,8 @@ namespace ZombieGame.Tests.EnvironmentShowcase
         {
             var evidence = new SourceVisibilityProbe{source=source_id,camera_position=camera.transform.position,camera_orthographic_size=camera.orthographicSize};
             var unique_parts = new HashSet<SourcePart>();
+            var lod0_origins = new HashSet<Vector3>();
+            var lod1_origins = new HashSet<Vector3>();
             GeometryUtility.CalculateFrustumPlanes(camera,frustum_planes);
             var anchor = measure_distance_anchor(camera);
             var bounds = new Bounds();
@@ -499,7 +581,21 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             {
                 if(batch.part.source_id != source_id) continue;
                 int triangles = (int)batch.part.mesh.GetIndexCount(batch.part.submesh_index)/3;
-                if(unique_parts.Add(batch.part)) evidence.source_triangles += triangles;
+                if(unique_parts.Add(batch.part))
+                {
+                    evidence.source_triangles += triangles;
+                    if(batch.part.lod_index == 0)
+                    {
+                        evidence.source_lod0_parts++;
+                        evidence.source_lod0_triangles += triangles;
+                    }
+                    else if(batch.part.lod_index == 1)
+                    {
+                        evidence.source_lod1_parts++;
+                        evidence.source_lod1_triangles += triangles;
+                    }
+                    else evidence.source_unresolved_lod_parts++;
+                }
                 if(!show_decorations || !SystemInfo.supportsInstancing || source_id == hidden_source ||
                     (batch.is_grass && !show_grass) || (batch.is_shrub && !show_shrubs)) continue;
                 if(batch.lod_height > 0)
@@ -515,6 +611,13 @@ namespace ZombieGame.Tests.EnvironmentShowcase
                 if(batch.part.lod_index == 0) evidence.submitted_lod0_matrix_submeshes += batch.matrices.Length;
                 if(batch.part.lod_index == 1) evidence.submitted_lod1_matrix_submeshes += batch.matrices.Length;
                 evidence.submitted_triangles += triangles*batch.matrices.Length;
+                if(batch.source_origins != null)
+                {
+                    if(batch.part.lod_index == 0)
+                        foreach(var origin in batch.source_origins) lod0_origins.Add(origin);
+                    else if(batch.part.lod_index == 1)
+                        foreach(var origin in batch.source_origins) lod1_origins.Add(origin);
+                }
                 if(!evidence.has_submitted_bounds) bounds = batch.bounds;
                 else bounds.Encapsulate(batch.bounds);
                 evidence.has_submitted_bounds = true;
@@ -524,6 +627,10 @@ namespace ZombieGame.Tests.EnvironmentShowcase
                 evidence.submitted_bounds_min = bounds.min;
                 evidence.submitted_bounds_max = bounds.max;
             }
+            evidence.submitted_unique_lod0_trees = lod0_origins.Count;
+            evidence.submitted_unique_lod1_trees = lod1_origins.Count;
+            foreach(var origin in lod0_origins)
+                if(lod1_origins.Contains(origin)) evidence.duplicate_lod_tree_origins++;
             return evidence;
         }
 

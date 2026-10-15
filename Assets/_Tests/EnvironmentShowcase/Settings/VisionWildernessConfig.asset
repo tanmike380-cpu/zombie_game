@@ -447,3 +447,4 @@ MonoBehaviour:
   - {x: 12, y: 16}
   vision_tree_spacing: 5.8
   vision_tree_chunk_size: 64
+  vision_forest: {fileID: 11400000, guid: 5bd0e709421c7453486fde53e46ce92c, type: 2}

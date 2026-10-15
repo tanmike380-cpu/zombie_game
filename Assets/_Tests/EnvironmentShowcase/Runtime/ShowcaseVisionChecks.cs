@@ -211,8 +211,12 @@ namespace ZombieGame.Tests.EnvironmentShowcase
                 float delta = compare_same_frame_vision_source(SOURCE,label);
                 views.Add(submitted);
                 deltas.Add(delta);
-                valid &= submitted.source_triangles == 6145 && submitted.submitted_matrix_submesh_count > 0 && delta > .000001f &&
-                    !(submitted.submitted_lod0_matrix_submeshes > 0 && submitted.submitted_lod1_matrix_submeshes > 0);
+                bool exclusive_lod = !(submitted.submitted_lod0_matrix_submeshes > 0 && submitted.submitted_lod1_matrix_submeshes > 0);
+                if(showcase.config.active_dark_layout.vision_forest)
+                    exclusive_lod = submitted.duplicate_lod_tree_origins == 0;
+                valid &= submitted.source_triangles == 6145 && submitted.source_lod0_triangles == 5303 && submitted.source_lod1_triangles == 842 &&
+                    submitted.source_lod0_parts == 36 && submitted.source_lod1_parts == 36 && submitted.source_unresolved_lod_parts == 0 &&
+                    submitted.submitted_matrix_submesh_count > 0 && delta > .000001f && exclusive_lod;
             }
             report.flat.vision_oak_views = views.ToArray();
             report.flat.vision_oak_pixel_deltas = deltas.ToArray();

@@ -9,6 +9,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
     {
         private sealed class Footprint { public Vector2 center,half; public float yaw,height; }
         private readonly List<Footprint> footprints=new List<Footprint>();
+        private readonly List<Footprint> native_source_bounds = new List<Footprint>();
         public ShowcaseDarkFootprints(DarkWildernessConfig dark,EnvironmentShowcaseConfig config,Func<float,float,float> base_height)
         {
             if(!dark.props_enabled) return;
@@ -22,6 +23,10 @@ namespace ZombieGame.Tests.EnvironmentShowcase
                 if(center.x-extent<0||center.y-extent<0||center.x+extent>config.map_size||center.y+extent>config.map_size)
                     throw new InvalidOperationException("Dark source footprint outside map: "+source.id);
                 footprints.Add(new Footprint{center=center,half=half,yaw=placement.yaw*Mathf.Deg2Rad,height=base_height(center.x,center.y)});
+                float yaw = placement.yaw*Mathf.Deg2Rad;
+                // ShowcaseLandmarks already cancels the native bounds offset by whole-root translation.
+                native_source_bounds.Add(new Footprint{center=center,
+                    half=new Vector2(source.native_dimensions.x,source.native_dimensions.z)*placement.uniform_scale*.5f,yaw=yaw});
             }
         }
         private static float measure_box(Vector2 point,Footprint pad)
@@ -55,6 +60,14 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             return weight;
         }
         public bool contains(float x,float z) => soil_weight(x,z)>.35f;
+        /// <summary>Distance to actual source-oriented bounds, excluding visual soil and footing feather.</summary>
+        public float measure_native_source_edge(float x,float z)
+        {
+            float nearest = float.PositiveInfinity;
+            foreach(var source in native_source_bounds)
+                nearest = Mathf.Min(nearest,measure_box(new Vector2(x,z),source));
+            return nearest;
+        }
         public float softened_footing(float x,float z)
         {
             float weight=0;

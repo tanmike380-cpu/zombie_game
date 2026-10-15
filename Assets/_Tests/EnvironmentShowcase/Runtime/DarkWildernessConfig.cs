@@ -77,9 +77,11 @@ namespace ZombieGame.Tests.EnvironmentShowcase
         public Vector2[] vision_tree_radii = Array.Empty<Vector2>();
         public float vision_tree_spacing = 5.8f;
         public float vision_tree_chunk_size = 64;
+        public VisionForestConfig vision_forest;
 
         public void validate_vision_regions()
         {
+            if(vision_forest) vision_forest.validate();
             if(vision_layer_overrides == null || vision_layer_overrides.Length != 6)
                 throw new InvalidOperationException("Vision requires exactly six layer override slots.");
             if(vision_base_soil < 0 || vision_base_soil > 1 || vision_macro_scale <= 0 || vision_water_depth_range <= 0)
