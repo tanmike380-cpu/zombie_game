@@ -174,7 +174,8 @@ namespace ZombieGame.Tests.EnvironmentShowcase
         {
             var ground = showcase.ground;
             return Mathf.Abs(ground.sample_authored_height(point.x,point.y)-showcase.config.active_dark_layout.flat_height) < .003f &&
-                !(ground.concept.footprints?.contains(point.x,point.y) ?? false);
+                !(ground.concept.footprints?.contains(point.x,point.y) ?? false) &&
+                (!showcase.config.active_dark_layout.fortified_city || showcase.config.active_dark_layout.fortified_city.measure_wall_edge(point.x,point.y) > 0);
         }
 
         private static int measure_largest_component(bool[] cells,int resolution)
@@ -246,6 +247,8 @@ namespace ZombieGame.Tests.EnvironmentShowcase
         {
             bool nonflat = Mathf.Abs(showcase.ground.sample_authored_height(point.x,point.y)-showcase.config.active_dark_layout.flat_height) >= .003f;
             bool footprint = showcase.ground.concept.footprints?.contains(point.x,point.y) ?? false;
+            var city = showcase.config.active_dark_layout.fortified_city;
+            if(city) footprint |= city.measure_wall_edge(point.x,point.y) <= 0;
             if(band)
             {
                 check.band_samples++;

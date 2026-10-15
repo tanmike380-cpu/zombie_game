@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07ae7707e2ead4d8095adec2ce4c406c, type: 3}
+  m_Name: VisionConnectedForestV5
+  m_EditorClassIdentifier: Assembly-CSharp::ZombieGame.Tests.EnvironmentShowcase.VisionForestConfig
+  version: vision-flat-forest-v5
+  tree_budget: 180
+  tree_spacing: 6
+  chunk_size: 48
+  near_lod_screen_height: 0.22
+  far_cull_screen_height: 0.025
+  canopy_clearance: 5.3
+  edge_feather: 0.8
+  use_native_source_clearance: 1
+  forest_masses:
+  - center: {x: 0.6875, y: 0.859375}
+    radius: {x: 44, y: 30}
+  - center: {x: 0.6875, y: 0.546875}
+    radius: {x: 47, y: 43}
+  - center: {x: 0.6875, y: 0.1875}
+    radius: {x: 47, y: 32}
+  - center: {x: 0.4296875, y: 0.6484375}
+    radius: {x: 20, y: 44}
+  - center: {x: 0.921875, y: 0.546875}
+    radius: {x: 18, y: 55}
+  clearings: []
+  corridors:
+  - name: North forest opening
+    points:
+    - {x: 0.671875, y: 0.546875}
+    - {x: 0.5703125, y: 0.578125}
+    - {x: 0.546875, y: 0.6875}
+    - {x: 0.546875, y: 0.8828125}
+    half_width: 4
+  - name: Coastal forest opening
+    points:
+    - {x: 0.671875, y: 0.546875}
+    - {x: 0.546875, y: 0.5625}
+    - {x: 0.3671875, y: 0.578125}
+    half_width: 4.5
+  - name: Pool-side forest opening
+    points:
+    - {x: 0.671875, y: 0.546875}
+    - {x: 0.78125, y: 0.53125}
+    - {x: 0.921875, y: 0.59375}
+    half_width: 4
+  - name: South exterior opening
+    points:
+    - {x: 0.671875, y: 0.546875}
+    - {x: 0.765625, y: 0.53125}
+    - {x: 0.765625, y: 0.3203125}
+    - {x: 0.7578125, y: 0.1640625}
+    half_width: 4.5
+  - name: Open north city approach
+    points:
+    - {x: 0.671875, y: 0.546875}
+    - {x: 0.53125, y: 0.53125}
+    - {x: 0.53125, y: 0.4573686}
+    half_width: 3
+  review_focus:
+  - {x: 0.4375, y: 0.8125}
+  - {x: 0.5625, y: 0.546875}
+  - {x: 0.828125, y: 0.6953125}
+  - {x: 0.765625, y: 0.328125}

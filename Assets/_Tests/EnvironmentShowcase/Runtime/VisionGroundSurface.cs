@@ -25,6 +25,15 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             float dry = measure_regions(preset.vision_dry_regions,x,z,config.map_size)*(1-vegetation*.55f)*(1-green_region*.7f);
             float wet = (1-Mathf.SmoothStep(0,1,Mathf.InverseLerp(.15f,2.3f,concept.measure_wet_edge(x,z))))*.75f;
             float stone = Mathf.SmoothStep(0,1,Mathf.InverseLerp(18,42,terrain.GetSteepness(u,v)))*.9f;
+            if(preset.fortified_city)
+            {
+                var city = preset.fortified_city;
+                soil = Mathf.Max(soil,city.sample_wall_soil(x,z));
+                soil = Mathf.Max(soil,measure_regions(city.courtyard_soil,x,z,config.map_size));
+                float talus = city.sample_talus(x,z);
+                soil = Mathf.Max(soil,talus*.35f);
+                stone = Mathf.Max(stone,talus*.55f);
+            }
             float coast_distance = x-concept.coast_edge(z);
             if(coast_distance<0)
             {

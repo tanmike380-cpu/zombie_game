@@ -41,6 +41,8 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             public FixedPlantFrame[] matched_plants_frames;
             public VisionWaterResponseCheck[] vision_water_response;
             public VisionForestCheck vision_forest;
+            public FortifiedCityReport fortified_city;
+            public NeutralComparisonReport neutral_comparison;
         }
 
         private IEnumerator run_flat_checks()
@@ -48,10 +50,23 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             showcase.show_hud = false;
             report.biome = showcase.config.vision_enabled ? "vision-1" : "flat-v1";
             report.biome_label = showcase.config.vision_enabled ? "Vision-1 level wilderness technical preview; art acceptance false" : "Flat wilderness technical preview; art visual acceptance false";
+            if(showcase.config.vision_enabled && showcase.config.active_dark_layout.neutral_light_baseline)
+            {
+                report.biome = showcase.config.active_dark_layout.version;
+                report.biome_label = "V5 flat neutral-white light and forest comparison; art acceptance false";
+            }
             report.unavailable_art = showcase.missing_art;
             report.implemented = new[]{"One inland height; no separate building pads", "Compact source settlement and mineral clusters", "Local approved grass/shrub patches, unchanged instance budgets", "Sea and closed pond; six PBR slots with Road zero"};
             if(showcase.config.vision_enabled)
                 report.implemented = new[]{"One inland height; no separate building pads", "Compact frozen-source settlement and mineral clusters", "6000 grass and 140 mid-layer plants redistributed into source-specific beds; not a forest", "Sea and closed pond; six PBR slots with Road zero"};
+            if(showcase.config.vision_enabled && showcase.config.active_dark_layout.fortified_city)
+                report.implemented = new[]{"Flat city/corridor ground with two explicitly excluded non-walkable Terrain cliff regions",
+                    "One authored Blender wall assembly, open north portal, planned court/production/farm/housing zones",
+                    "Original whole-root buildings and ores plus explicitly listed repeated house fixtures", "Native oak LOD forest and six PBR slots with Road zero; no gameplay integration"};
+            if(showcase.config.vision_enabled && showcase.config.active_dark_layout.neutral_light_baseline)
+                report.implemented = new[]{"One shared inland activity plane; no inland cliff/plateau masks", "Bright neutral-white daylight and hemisphere fill, same-camera old-light comparison",
+                    "Existing headquarters/workshop/pasture inside the unchanged source wall assembly; existing damaged houses outside as ruins, not new housing",
+                    "Native oak forest curtain, six PBR slots with Road zero, sea and closed pond. Not the reference pine species or a full playable city."};
             inspect_ground();
             report.flat = measure_flat_geometry();
             report.run_in_background = Application.runInBackground;
@@ -130,6 +145,10 @@ namespace ZombieGame.Tests.EnvironmentShowcase
                 }
                 var forest_checks = run_vision_forest_checks();
                 while(forest_checks.MoveNext()) yield return forest_checks.Current;
+                var city_checks = run_fortified_city_checks();
+                while(city_checks.MoveNext()) yield return city_checks.Current;
+                var neutral_checks = run_neutral_comparison_checks();
+                while(neutral_checks.MoveNext()) yield return neutral_checks.Current;
             }
             report.timings = timings.ToArray();
             report.terrain_passed = report.terrain_pixel_pass && report.layer_pass && report.shader_pass && report.flat.level_ground_pass && report.flat.maximum_road_weight==0 && report.flat.no_river && report.flat.pool_closed_pass && report.flat.water_pixel_pass;
@@ -138,9 +157,13 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             if(showcase.config.vision_enabled && showcase.config.active_dark_layout.tree_prefabs.Length > 0)
                 report.flat.technical_pass &= report.flat.vision_oak_pass;
             if(report.flat.vision_forest != null) report.flat.technical_pass &= report.flat.vision_forest.technical_pass;
+            if(report.flat.fortified_city != null) report.flat.technical_pass &= report.flat.fortified_city.technical_pass;
+            if(report.flat.neutral_comparison != null) report.flat.technical_pass &= report.flat.neutral_comparison.technical_pass;
             report.passed = report.flat.technical_pass;
             report.source_complete = false;
             report.error = report.passed ? "Technical checks passed; art_visual_accepted=false. Dense tree crowns, broader RTS-readable grass clumps, reeds and long authored cliff modules unavailable. No gameplay acceptance." : "Flat technical check failed; inspect individual flags. Art not accepted.";
+            if(report.flat.fortified_city != null)
+                report.error += " Fortified preview is not a full playable city: approved operable gate, intact housing, barracks/warehouse and economy sources remain missing.";
         }
 
         private FlatReport measure_flat_geometry()
@@ -161,6 +184,9 @@ namespace ZombieGame.Tests.EnvironmentShowcase
                     float world_x = u*showcase.config.map_size;
                     float world_z = v*showcase.config.map_size;
                     if(world_x-ground.concept.coast_edge(world_z)<7 || ground.concept.pond_edge_distance(world_x,world_z)<ground.concept.layout.pond_bank_width+1) continue;
+                    // Only the new explicit non-walkable cliff domains are excluded; legacy flat presets retain every original sample.
+                    var city = showcase.config.active_dark_layout.fortified_city;
+                    if(city && city.is_cliff_domain(world_x,world_z)) continue;
                     evidence.walkable_samples++;
                     if(ground.concept.can_place(world_x,world_z) && ground.concept.vegetation_weight(world_x,world_z)>.45f && ground.concept.exposed_soil(world_x,world_z)<.35f)
                         evidence.eligible_grass_area_m2 += showcase.config.map_size*showcase.config.map_size/(128*128);

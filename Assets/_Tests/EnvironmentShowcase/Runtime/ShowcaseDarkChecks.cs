@@ -44,11 +44,18 @@ namespace ZombieGame.Tests.EnvironmentShowcase
         {
             var evidence=new DarkSourceReport{buildings=showcase.landmarks.buildings.Count,no_river=!showcase.ground.routes.enabled,
                 forest_source_available=showcase.config.active_dark_layout.tree_prefabs.Length>0,visual_accepted=false,grass_probes=showcase.foliage.grass_probes.ToArray()};
-            var fixtures=new List<GameObject>(showcase.landmarks.buildings);
-            fixtures.AddRange(showcase.landmarks.ores);
+            // Source manifests may append a housing root after the original ore fixtures.
+            var fixtures = showcase.landmarks.instances;
             var results=new List<FixtureReport>();
             var lod_states=new List<string>();
             evidence.passed=fixtures.Count==16;
+            var city = showcase.config.active_dark_layout.fortified_city;
+            if(city)
+            {
+                evidence.passed = fixtures.Count == city.fixture_ids.Length;
+                for(int index=0;index<fixtures.Count && evidence.passed;index++)
+                    evidence.passed &= showcase.landmarks.placements[index].source_id == city.fixture_source_ids[index];
+            }
             for(int index=0;index<fixtures.Count;index++)
             {
                 var source=showcase.landmarks.placed_sources[index];

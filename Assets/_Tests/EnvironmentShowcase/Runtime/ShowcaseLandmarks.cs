@@ -13,6 +13,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
         public readonly List<Vector3> expected_dimensions = new List<Vector3>();
         public readonly List<EnvironmentShowcaseConfig.SourceAsset> placed_sources=new List<EnvironmentShowcaseConfig.SourceAsset>();
         public readonly List<DarkWildernessConfig.Placement> placements=new List<DarkWildernessConfig.Placement>();
+        public readonly List<GameObject> instances = new List<GameObject>();
         public bool show_buildings = true, show_ores = true;
 
         public ShowcaseLandmarks(EnvironmentShowcaseConfig config, ShowcaseTerrain ground, Transform parent)
@@ -25,6 +26,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
                     var source=config.active_dark_layout.find_source(config,placement.source_id);
                     var instance=place_source(source,placement.center,placement.yaw,placement.uniform_scale,config,ground,parent);
                     if(placement.ore) ores.Add(instance); else buildings.Add(instance);
+                    instances.Add(instance);
                     placed_sources.Add(source);placements.Add(placement);
                 }
                 return;

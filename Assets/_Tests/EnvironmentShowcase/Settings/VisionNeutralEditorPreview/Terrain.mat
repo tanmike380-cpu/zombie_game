@@ -1,0 +1,114 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Terrain
+  m_Shader: {fileID: 4800000, guid: 6d7a0c90b2c3f43258a4411537242b85, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords:
+  - _NORMALMAP
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 1
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _CliffNormal:
+        m_Texture: {fileID: 2800000, guid: ec5dbf79946c54192983bb7bdd6c09db, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CliffPbr:
+        m_Texture: {fileID: 2800000, guid: 1b01f142b8ca34bfd8b42fd03851c7e7, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Control:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Normal0:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Normal1:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Normal2:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Normal3:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Splat0:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Splat1:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Splat2:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Splat3:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TalusNormal:
+        m_Texture: {fileID: 2800000, guid: baa90eb34c2274c10b240d7df56accc3, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TalusPbr:
+        m_Texture: {fileID: 2800000, guid: a902c24af45a64041aa88152e084f70f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TerrainHolesTexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _BreakupStrength: 0.25
+    - _CliffNormalStrength: 0.3
+    - _CliffTileSize: 4
+    - _DetailFadeEnd: 100
+    - _DetailFadeStart: 28
+    - _ErosionStrength: 0.03
+    - _HasCliffPbr: 1
+    - _HasTalusPbr: 1
+    - _MacroScale: 30
+    - _MacroStrength: 0.2
+    - _PlateauEnabled: 0
+    - _PlateauLedge: 0
+    - _PreviewSmoothnessCap: 0.08
+    - _ShowcaseTerrainSize: 128
+    - _Smoothness0: 1
+    - _Smoothness1: 1
+    - _Smoothness2: 1
+    - _Smoothness3: 1
+    - _TalusTileSize: 2.5
+    m_Colors:
+    - _DryTint: {r: 0.93, g: 0.89, b: 0.77, a: 1}
+    - _GrassTint: {r: 0.78, g: 0.88, b: 0.75, a: 1}
+    - _MudTint: {r: 0.76, g: 0.83, b: 0.74, a: 1}
+    - _PlateauCenter: {r: 34.559998, g: 39.68, b: 0, a: 0}
+    - _PlateauRadius: {r: 17, g: 11, b: 2.2, a: 6}
+    - _RoadTint: {r: 1.18, g: 1.06, b: 0.85, a: 1}
+    - _ShowcaseTerrainOrigin: {r: -64, g: 0, b: -64, a: 0}
+    - _SoilTint: {r: 0.92, g: 0.88, b: 0.79, a: 1}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1

@@ -1,6 +1,12 @@
 # 独立环境渲染实验场
 
-## 当前入口：Vision 1 平地地图美术预览
+## 当前对照入口：Vision 5 全平干陆＋中性白日光（未美术验收）
+
+场景 `Scenes/EnvironmentNeutralVision.unity`，菜单 `Zombie Game → Environment Showcase → Vision-5 → Open saved flat neutral comparison and Play`。构建方法 `VisionNeutralTools.prepare_and_build_neutral_preview()`，本机 `Builds/EnvironmentNeutralVision.app`。仍使用同一EnvironmentShowcase controller、六层PBR／Road零和原模型；不改正式地图／玩法／管线。冷感不靠压暗灯，活动陆地同4.2m，海池底／岸带非活动收口单列。
+
+固定参考为[《亿万僵尸》实际林边防线截图](https://cld.accentuate.io/7222747955253/1692129097750/They-Are-Billions-Screenshot-4.jpg?options=w_1920&v=1692129097750)。原图针叶密林与本版Oak不同，参考不是许可复制素材。实际46树、森林连通和同镜头白光对照通过；城内仅3功能模型小样，不声称完整城市。草总贡献仍FAIL、美术未验收。原生墙体的歪斜、缺密冠树／厚草／完整民居已达源质量停止条件，不再无限调色或用残屋硬填。证据、旧v4失败记录、全图与局部取景的区别见[完整地图记录](../../../docs/dev/VISION_1_MAP_REVIEW.md)。
+
+## 保留入口：Vision 1 连片森林 v3
 
 新场景 `Scenes/EnvironmentVision.unity`，菜单 `Zombie Game → Environment Showcase → Vision-1 → Open saved Vision review and Play`。本机 `Builds/EnvironmentVision.app` 默认就是新版；旧 `EnvironmentShowcase.app` 入口及旧预设继续保留。Tab 切聚落／海岸／水池／全景，1／2／3及滚轮缩放，H 隐藏说明。
 

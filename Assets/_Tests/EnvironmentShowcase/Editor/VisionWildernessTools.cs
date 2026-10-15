@@ -308,17 +308,26 @@ namespace ZombieGame.Tests.EditorTools
 
         private static GameObject create_editor_reference(EnvironmentShowcaseConfig settings)
         {
+            return create_independent_reference(settings,PREVIEW_ROOT);
+        }
+
+        /// <summary>Serialize the shared preview implementation under a caller-owned independent asset root.</summary>
+        public static GameObject create_independent_reference(EnvironmentShowcaseConfig settings,string preview_root)
+        {
             if(!settings || !EditorUtility.IsPersistent(settings))
-                throw new InvalidOperationException("Editor reference requires the saved Vision config, not an unloaded wrapper: "+CONFIG_PATH);
-            Directory.CreateDirectory(PREVIEW_ROOT);
+                throw new InvalidOperationException("Editor reference requires a saved independent Vision config.");
+            if(!preview_root.StartsWith(ROOT+"Settings/",StringComparison.Ordinal) || !preview_root.EndsWith("/",StringComparison.Ordinal))
+                throw new InvalidOperationException("Independent Editor reference path outside showcase settings: "+preview_root);
+            Directory.CreateDirectory(preview_root);
             var config = UnityEngine.Object.Instantiate(settings);
             config.hideFlags = HideFlags.HideAndDontSave;
             select_vision(config);
             var root = new GameObject("Vision-1 Editor reference — hidden by the runtime controller");
             var ground = new ShowcaseTerrain(config,root.transform,config.biomes[0]);
             _ = new ShowcaseLandmarks(config,ground,root.transform);
+            _ = new ShowcaseFortifications(config,ground,root.transform);
             var water = new ShowcaseConceptWater(ground,root.transform,true);
-            save_reference_assets(ground,water);
+            save_reference_assets(ground,water,preview_root);
             var saved_ground = new ShowcaseTerrain(config,ground.terrain,config.biomes[0]);
             configure_reference_lighting(config,root.transform);
             var camera = create_reference_camera(config,saved_ground,root.transform);
@@ -330,7 +339,7 @@ namespace ZombieGame.Tests.EditorTools
             return root;
         }
 
-        private static void save_reference_assets(ShowcaseTerrain ground,ShowcaseConceptWater water)
+        private static void save_reference_assets(ShowcaseTerrain ground,ShowcaseConceptWater water,string preview_root)
         {
             // Capture every transient reference before any CreateAsset can trigger native reimport.
             var data = ground.terrain_data;
@@ -345,15 +354,15 @@ namespace ZombieGame.Tests.EditorTools
             AssetDatabase.StartAssetEditing();
             try
             {
-                var saved_layers = save_layer_assets(layers);
+                var saved_layers = save_layer_assets(layers,preview_root);
                 data.terrainLayers = saved_layers;
-                save_generated_asset(data,PREVIEW_ROOT+"Terrain.asset");
-                save_generated_asset(terrain_material,PREVIEW_ROOT+"Terrain.mat");
-                var saved_height = save_generated_asset(height_field,PREVIEW_ROOT+"HeightField.asset");
+                save_generated_asset(data,preview_root+"Terrain.asset",preview_root);
+                save_generated_asset(terrain_material,preview_root+"Terrain.mat",preview_root);
+                var saved_height = save_generated_asset(height_field,preview_root+"HeightField.asset",preview_root);
                 sea_material.SetTexture("_HeightField",saved_height);
                 pond_material.SetTexture("_HeightField",saved_height);
-                save_generated_asset(sea_material,PREVIEW_ROOT+"Sea.mat");
-                save_generated_asset(pond_material,PREVIEW_ROOT+"Pond.mat");
+                save_generated_asset(sea_material,preview_root+"Sea.mat",preview_root);
+                save_generated_asset(pond_material,preview_root+"Pond.mat",preview_root);
             }
             finally
             {
@@ -361,7 +370,7 @@ namespace ZombieGame.Tests.EditorTools
                 AssetDatabase.StopAssetEditing();
             }
             AssetDatabase.SaveAssets();
-            bind_saved_reference_assets(ground.terrain,water);
+            bind_saved_reference_assets(ground.terrain,water,preview_root);
         }
 
         private static HideFlags[] protect_reference_objects(List<UnityEngine.Object> objects)
@@ -383,19 +392,19 @@ namespace ZombieGame.Tests.EditorTools
                 if(objects[index]) objects[index].hideFlags = flags[index];
         }
 
-        private static TerrainLayer[] save_layer_assets(TerrainLayer[] layers)
+        private static TerrainLayer[] save_layer_assets(TerrainLayer[] layers,string preview_root)
         {
             if(layers.Length != 6) throw new InvalidOperationException("Vision Editor reference requires six prepared Terrain layers.");
             var saved_layers = new TerrainLayer[6];
             for(int index=0;index<layers.Length;index++)
-                saved_layers[index] = save_generated_asset(layers[index],PREVIEW_ROOT+"Layer-"+index+".terrainlayer");
+                saved_layers[index] = save_generated_asset(layers[index],preview_root+"Layer-"+index+".terrainlayer",preview_root);
             return saved_layers;
         }
 
         /// <summary>Upsert only this tool's generated preview assets; never delete or mutate authored source assets.</summary>
-        private static T save_generated_asset<T>(T source,string path) where T : UnityEngine.Object
+        private static T save_generated_asset<T>(T source,string path,string preview_root) where T : UnityEngine.Object
         {
-            if(!source || !path.StartsWith(PREVIEW_ROOT,StringComparison.Ordinal))
+            if(!source || !path.StartsWith(preview_root,StringComparison.Ordinal))
                 throw new InvalidOperationException("Vision generated asset save outside owned scope or null source: "+path);
             var existing = AssetDatabase.LoadAssetAtPath<T>(path);
             if(existing)
@@ -412,28 +421,28 @@ namespace ZombieGame.Tests.EditorTools
             return source;
         }
 
-        private static T load_saved_reference<T>(string filename) where T : UnityEngine.Object
+        private static T load_saved_reference<T>(string filename,string preview_root) where T : UnityEngine.Object
         {
-            string path = PREVIEW_ROOT+filename;
+            string path = preview_root+filename;
             var asset = AssetDatabase.LoadAssetAtPath<T>(path);
             if(!asset || !EditorUtility.IsPersistent(asset))
                 throw new InvalidOperationException("Vision reference did not survive serialization: "+path);
             return asset;
         }
 
-        private static void bind_saved_reference_assets(Terrain terrain,ShowcaseConceptWater water)
+        private static void bind_saved_reference_assets(Terrain terrain,ShowcaseConceptWater water,string preview_root)
         {
-            var data = load_saved_reference<TerrainData>("Terrain.asset");
+            var data = load_saved_reference<TerrainData>("Terrain.asset",preview_root);
             var layers = new TerrainLayer[6];
             for(int index=0;index<layers.Length;index++)
-                layers[index] = load_saved_reference<TerrainLayer>("Layer-"+index+".terrainlayer");
+                layers[index] = load_saved_reference<TerrainLayer>("Layer-"+index+".terrainlayer",preview_root);
             data.terrainLayers = layers;
             terrain.terrainData = data;
             terrain.GetComponent<TerrainCollider>().terrainData = data;
-            terrain.materialTemplate = load_saved_reference<Material>("Terrain.mat");
-            water.sea.sharedMaterial = load_saved_reference<Material>("Sea.mat");
-            water.pond.sharedMaterial = load_saved_reference<Material>("Pond.mat");
-            var height_field = load_saved_reference<Texture2D>("HeightField.asset");
+            terrain.materialTemplate = load_saved_reference<Material>("Terrain.mat",preview_root);
+            water.sea.sharedMaterial = load_saved_reference<Material>("Sea.mat",preview_root);
+            water.pond.sharedMaterial = load_saved_reference<Material>("Pond.mat",preview_root);
+            var height_field = load_saved_reference<Texture2D>("HeightField.asset",preview_root);
             water.sea.sharedMaterial.SetTexture("_HeightField",height_field);
             water.pond.sharedMaterial.SetTexture("_HeightField",height_field);
             EditorUtility.SetDirty(data);

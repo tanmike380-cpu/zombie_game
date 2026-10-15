@@ -48,7 +48,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
                 float basin = layout.pond_level-layout.pond_depth+layout.pond_depth*Mathf.SmoothStep(0,1,Mathf.InverseLerp(-10,0,pond_distance));
                 height = Mathf.Lerp(basin,dark.flat_height,Mathf.SmoothStep(0,1,Mathf.InverseLerp(0,layout.pond_bank_width,pond_distance)));
             }
-            return height;
+            return dark.fortified_city ? dark.fortified_city.sample_height(x,z,height) : height;
         }
 
         private float sample_base_height(float x,float z)
@@ -76,7 +76,8 @@ namespace ZombieGame.Tests.EnvironmentShowcase
         }
 
         public float measure_wet_edge(float x, float z) => Mathf.Min(Mathf.Abs(x-coast_edge(z)),Mathf.Abs(pond_edge_distance(x,z)));
-        public bool can_place(float x, float z) => x > coast_edge(z)+7 && pond_edge_distance(x,z) > 1 && !(footprints?.contains(x,z)??false);
+        public bool can_place(float x, float z) => x > coast_edge(z)+7 && pond_edge_distance(x,z) > 1 && !(footprints?.contains(x,z)??false) &&
+            (!dark || !dark.fortified_city || (!dark.fortified_city.is_cliff_domain(x,z) && dark.fortified_city.measure_wall_edge(x,z) > .5f));
 
         public float exposed_soil(float x,float z)
         {
@@ -111,6 +112,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
         public float forest_weight(float x, float z)
         {
             if (!can_place(x,z)) return 0;
+            if(dark && dark.fortified_city && dark.fortified_city.contains_city(x,z,dark.vision_forest ? dark.vision_forest.canopy_clearance : 0)) return 0;
             if(dark && dark.vision_surface_regions && dark.vision_forest)
                 return dark.vision_forest.sample_weight(x,z,size);
             if(dark && dark.vision_surface_regions && dark.vision_tree_centers.Length > 0)

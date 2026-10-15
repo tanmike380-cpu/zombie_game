@@ -13,8 +13,11 @@ namespace ZombieGame.Tests.EnvironmentShowcase
         public ShowcaseTerrain ground { get; private set; }
         public ShowcaseFoliage foliage { get; private set; }
         public ShowcaseLandmarks landmarks { get; private set; }
+        public ShowcaseFortifications fortifications { get; private set; }
         public ShowcaseConceptWater concept_water { get; private set; }
-        public string[] view_names => config.vision_enabled ? new[]{"Vision level meadow and settlement","Vision natural coast","Vision closed pond","Vision composite overview"} : config.concept_enabled ? new[] {"Concept 05 - Rounded grass slopes","Concept 07 - Limestone seacoast","Concept 09 - Closed natural pond","Concept composite overview"} : VIEW_NAMES;
+        public string[] view_names => config.vision_enabled && config.active_dark_layout.fortified_city ?
+            new[]{"Fortified city and inner court","Natural coast","Closed pond","City approach and forest overview"} :
+            config.vision_enabled ? new[]{"Vision level meadow and settlement","Vision natural coast","Vision closed pond","Vision composite overview"} : config.concept_enabled ? new[] {"Concept 05 - Rounded grass slopes","Concept 07 - Limestone seacoast","Concept 09 - Closed natural pond","Concept composite overview"} : VIEW_NAMES;
         public Camera review_camera { get; private set; }
         public Renderer water_renderer => water_transform ? water_transform.GetComponent<Renderer>() : null;
         public bool show_hud = true;
@@ -79,6 +82,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
                 ground = new ShowcaseTerrain(config, transform, current_biome);
                 foliage = new ShowcaseFoliage(config, ground);
                 landmarks = new ShowcaseLandmarks(config,ground,transform);
+                fortifications = new ShowcaseFortifications(config,ground,transform);
                 create_water();
                 if (config.concept_enabled) concept_water = new ShowcaseConceptWater(ground,transform);
                 create_camera();
@@ -272,11 +276,13 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             bool grass_enabled = foliage == null || foliage.show_grass;
             foliage?.Dispose();
             landmarks?.Dispose();
+            fortifications?.Dispose();
             ground?.Dispose();
             concept_water?.Dispose();
             ground = new ShowcaseTerrain(config, transform, current_biome);
             foliage = new ShowcaseFoliage(config, ground) { show_grass = grass_enabled };
             landmarks = new ShowcaseLandmarks(config,ground,transform);
+            fortifications = new ShowcaseFortifications(config,ground,transform);
             if(config.concept_enabled) concept_water = new ShowcaseConceptWater(ground,transform);
             update_water_extent();
             configure_lighting();
@@ -379,6 +385,7 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             Camera.onPreCull -= submit_foliage;
             foliage?.Dispose();
             landmarks?.Dispose();
+            fortifications?.Dispose();
             ground?.Dispose();
             if (water_material) Destroy(water_material);
             QualitySettings.vSyncCount = previous_vsync;
