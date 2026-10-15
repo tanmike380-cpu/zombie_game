@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "display_version": "V0.10",
-  "status": "integration_in_progress",
+  "status": "frozen_preview_with_known_issues",
   "branch": "codex/v0.10",
   "baseline_tag": "v0.10.0-baseline",
   "baseline_commit": "63946b11b54fe85f9f92d1ecfca542531bb159aa",
@@ -19,10 +19,50 @@
     "environment_master_sha256": "cf8310ae2f8d643653fd8cf9e96ef7dea0570f586a76e2d0f62911c7d3803301",
     "balance_sha256": "4ac06d0483015a916a3440a19ee82fc5979ccae72831ceede74e83a5e0c9c38c"
   },
-  "handoffs": ["art/blender_master.json", "art/master_art_handoff.json", "art/fortified_city_handoff.json", "art/grid_footprint_handoff.json"],
+  "handoffs": [
+    "art/blender_master.json",
+    "art/master_art_handoff.json",
+    "art/fortified_city_handoff.json",
+    "art/grid_footprint_handoff.json"
+  ],
   "art_review_scene": "Assets/_Tests/EnvironmentShowcase/Scenes/EnvironmentDenseVision.unity",
-  "playable_scene": null,
-  "release_tag": null,
-  "known_failed_baseline_checks": ["Wild-grass aggregate pixel contribution remains below0.0003"],
-  "unrelated_working_changes_preserved": ["art/concepts/tripo/buildings/zombie/", "Assets/_Recovery/"]
+  "playable_scene": "Assets/_Tests/V010Defense/Scenes/V010Defense.unity",
+  "release_tag": "v0.10.0-preview.1",
+  "known_failed_baseline_checks": [
+    "Wild-grass aggregate pixel contribution remains below0.0003"
+  ],
+  "unrelated_working_changes_preserved": [
+    "art/concepts/tripo/buildings/zombie/",
+    "Assets/_Recovery/"
+  ],
+  "content_commit": "4161762152c0520550d06ec13924867dcc76432f",
+  "verified_local": "2026-10-16T06:53:00+08:00",
+  "local_player": {
+    "path": "Builds/Versions/V0.10/ZombieGame-V0.10-preview1.app",
+    "platform": "macOS",
+    "binary_sha256": "276f3685ccdfd82d84e3fc09508918f96bfe1e70da60ef735f2d3fb9f357a36e",
+    "tracked": false
+  },
+  "scene_data": {
+    "scenario_sha256": "722daf02808f4aa5532cfbf1c75db76644a4aa8509df45033d0c5c170d7992e2",
+    "prefab_sha256": "0a0e15ebcac037675dbdf80bdf2a52e4b1f4e8c2529615019f0179a959d43a47",
+    "source_model_geometry_changed": false
+  },
+  "test_evidence": {
+    "full_player_orders": "evidence/final-full-player-orders.json",
+    "smoke": "evidence/final-smoke.json",
+    "retained_autohold_failure": "evidence/rounded-full-autohold.json",
+    "legacy": "evidence/legacy-regressions.json",
+    "shadow_comparison": "evidence/crop-shadows-on.json",
+    "images": "evidence/images/"
+  },
+  "known_issues": [
+    "Autonomous siege stalls for some zombies at farm-hut corners; player-order win is not an autonomous fix",
+    "Render-heavy; no representative unlocked foreground performance pass",
+    "Physical mouse/focus/resize tests unavailable while Mac locked",
+    "Missing dedicated death/knife clips; crossbow/firearm animation not accepted",
+    "Original wall irregularity and missing gate leaf retained",
+    "Farms/ores/neutral ruins are scenery, not a complete new harvesting economy",
+    "Cold clone/cache regeneration not tested; see REBUILD.md"
+  ]
 }

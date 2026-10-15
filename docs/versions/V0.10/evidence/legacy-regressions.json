@@ -1,0 +1,39 @@
+{
+  "date_local": "2026-10-16T06:20:00+08:00",
+  "player": "Builds/V010LegacyRegression.app",
+  "source_scene": "Assets/_Tests/V010Defense/Scenes/LegacyRegressionV010.unity",
+  "newly_compiled": true,
+  "default_exit_code": 0,
+  "ui_exit_code": 0,
+  "default_log": "Builds/ArtReview/V010Defense/legacy-regression.log",
+  "ui_log": "Builds/ArtReview/V010Defense/unit-ui-regression.log",
+  "passed": [
+    "Existing edge-pan pure maths, including 300 sustained top/right samples",
+    "Coastal source assembly and unchanged transforms, maximum join error 0.000017",
+    "Grounded hound, source stride 1.484; wall 7.68m and headbutter 6m",
+    "Wall/tower destruction without infection and ordinary-building infection",
+    "GreekFire cone and ammunition",
+    "Friendly gate two-way passage and enemy filter; destroyed gate opens route",
+    "Solid towers block both factions; destruction opens route",
+    "Partial attack-move, breach recovery, four corner formations",
+    "Hard contacts scoped to zombies; human-human native avoidance retained",
+    "Swept crossing, fixed giant clearance, dead-body release and revived body",
+    "Chase recovery without gunshot, rear progress 11.53m",
+    "128-unit regroup/detour; 128 accepted and crossed obstacle, ratio 0.999",
+    "Large-unit building contact and slime lifetime",
+    "Conditional HP/ammunition pixels at zoom 10/50/140",
+    "Empty ammunition, heal/resupply, selection rings, death and fog",
+    "Shared sight from friendly buildings",
+    "Eight cursor directions, 60-second siege and expansion pressure"
+  ],
+  "ui_pixels": {
+    "zoom_10": {"green": 344, "blue": 168},
+    "zoom_50": {"green": 244, "blue": 88},
+    "zoom_140": {"green": 244, "blue": 88}
+  },
+  "limits": [
+    "Mac locked: no physical mouse, focus-loss or resize certification",
+    "Legacy fixtures are not new V0.10 art or full autonomous-siege acceptance",
+    "No 10,000-unit performance claim"
+  ]
+}
