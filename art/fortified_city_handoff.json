@@ -1,0 +1,2935 @@
+{
+  "schema_version": 1,
+  "status": "Source frozen; Unity import/visual review pending",
+  "saved_source_verification": {
+    "report": "Builds/ArtReview/FortifiedCity/saved-source-verification.json",
+    "passed": true,
+    "maximum_new_component_matrix_error_native": 1.1920928244535389e-7,
+    "new_component_matrix_tolerance_native": 1e-6,
+    "note": "Blender's saved Euler/TRS representation differs by float rounding only. Protected preexisting objects remain exact; final new-component ray and feet checks passed after reopening."
+  },
+  "master_blend": "art/Blender主文件/ZombieGame.blend",
+  "source_before_sha256": "1472ab550fd4837a49caea1856ee58ece99b7702b77ee4f15d9d082df1117d66",
+  "collection": "城防实装 · 北入口完整城市围墙",
+  "root": "城市围墙 · 总布局展示锚点（导出整体18倍）",
+  "display_translation": [
+    34.88142395019531,
+    -7.505832672119141,
+    0.0
+  ],
+  "scene": "Scene",
+  "objects": [
+    "CityWall_South_WestPier",
+    "CityWall_South_EastPier",
+    "CityWall_South_Body_00",
+    "CityWall_South_Body_01",
+    "CityWall_South_Body_02",
+    "CityWall_North_WestPier",
+    "CityWall_North_EastPier",
+    "CityWall_North_Body_00",
+    "CityWall_North_Body_02",
+    "CityWall_West_Body_00",
+    "CityWall_West_Body_01",
+    "CityWall_West_Body_02",
+    "CityWall_West_Body_03",
+    "CityWall_East_Body_00",
+    "CityWall_East_Body_01",
+    "CityWall_East_Body_02",
+    "CityWall_East_Body_03",
+    "CityWall_North_PortalWestPier",
+    "CityWall_North_PortalEastPier"
+  ],
+  "protected_counts": {
+    "objects": 394,
+    "meshes": 277,
+    "materials": 76,
+    "images": 43,
+    "actions": 0,
+    "collections": 21,
+    "lights": 1,
+    "cameras": 1,
+    "worlds": 1,
+    "armatures": 14,
+    "scenes": 1
+  },
+  "recovery_snapshot": "Builds/ArtReview/FortifiedCity/master-before-city-20261015-202222.blend",
+  "candidate": "Builds/ArtReview/FortifiedCity/master-city-verified-candidate-20261015-202222.blend",
+  "retention": [
+    {
+      "image": "tripo_image_2a6beea7_0.png",
+      "change": "Fake User retention only; bytes/path unchanged"
+    },
+    {
+      "image": "tripo_image_6a319d87_0.png",
+      "change": "Fake User retention only; bytes/path unchanged"
+    }
+  ],
+  "master_sha256": "6772efb7ce13ecc5fb5700d3eb846af5f36c96cde0f02c53701f7a14fb004ea5",
+  "objects_after": 414,
+  "sources": {
+    "StartPier": {
+      "object": "00_ModularWall_Kit · StartPier",
+      "mesh": "StonePier_Left",
+      "geometry_uv_sha256": "671da2e2055707150bf9671843bc00f2be8e5acd78a2824cda1aa947d964df5f"
+    },
+    "MiddleWall": {
+      "object": "00_ModularWall_Kit · MiddleWall",
+      "mesh": "StoneWall_Middle",
+      "geometry_uv_sha256": "1bb1aebf2d5f95f9bf119b81ee3e19857343d6a38da0c51a2ac696a82db04bab"
+    },
+    "EndPier": {
+      "object": "00_ModularWall_Kit · EndPier",
+      "mesh": "StonePier_Right",
+      "geometry_uv_sha256": "6ff4c9e230a9eb01f4d99f27463dd4e798e0bc69ade3b6390037afc4c4772937"
+    }
+  },
+  "components": [
+    {
+      "name": "CityWall_South_WestPier",
+      "source_object": "00_ModularWall_Kit · StartPier",
+      "source_mesh": "StonePier_Left",
+      "source_geometry_uv_sha256": "671da2e2055707150bf9671843bc00f2be8e5acd78a2824cda1aa947d964df5f",
+      "role": "corner_pier",
+      "local_matrix_native": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -1.1797559261322021
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -1.4190658330917358
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.03759765625
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "local_matrix_meters": [
+        [
+          18.0,
+          0.0,
+          0.0,
+          -21.235607147216797
+        ],
+        [
+          0.0,
+          18.0,
+          0.0,
+          -25.543184280395508
+        ],
+        [
+          0.0,
+          0.0,
+          18.0,
+          -0.6767578125
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "expected_unity_bounds_center_m": [
+        -19.797805786132812,
+        3.3662109375,
+        -25.543184280395508
+      ],
+      "expected_unity_bounds_size_m": [
+        2.8756046295166016,
+        6.732421875,
+        4.5263671875
+      ],
+      "local_yaw_unity_degrees": -0.0
+    },
+    {
+      "name": "CityWall_South_EastPier",
+      "source_object": "00_ModularWall_Kit · EndPier",
+      "source_mesh": "StonePier_Right",
+      "source_geometry_uv_sha256": "6ff4c9e230a9eb01f4d99f27463dd4e798e0bc69ade3b6390037afc4c4772937",
+      "role": "corner_pier",
+      "local_matrix_native": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          1.0200001001358032
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -1.4190658330917358
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.03759765625
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "local_matrix_meters": [
+        [
+          18.0,
+          0.0,
+          0.0,
+          18.360002517700195
+        ],
+        [
+          0.0,
+          18.0,
+          0.0,
+          -25.543184280395508
+        ],
+        [
+          0.0,
+          0.0,
+          18.0,
+          -0.6767578125
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "expected_unity_bounds_center_m": [
+        19.797805786132812,
+        3.498046875,
+        -25.543184280395508
+      ],
+      "expected_unity_bounds_size_m": [
+        2.8756046295166016,
+        6.99609375,
+        4.5263671875
+      ],
+      "local_yaw_unity_degrees": -0.0
+    },
+    {
+      "name": "CityWall_South_Body_00",
+      "source_object": "00_ModularWall_Kit · MiddleWall",
+      "source_mesh": "StoneWall_Middle",
+      "source_geometry_uv_sha256": "1bb1aebf2d5f95f9bf119b81ee3e19857343d6a38da0c51a2ac696a82db04bab",
+      "role": "wall",
+      "local_matrix_native": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -1.0200001001358032
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -1.4190658330917358
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "local_matrix_meters": [
+        [
+          18.0,
+          0.0,
+          0.0,
+          -18.360002517700195
+        ],
+        [
+          0.0,
+          18.0,
+          0.0,
+          -25.543184280395508
+        ],
+        [
+          0.0,
+          0.0,
+          18.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "expected_unity_bounds_center_m": [
+        -12.240001678466797,
+        3.24755859375,
+        -25.332246780395508
+      ],
+      "expected_unity_bounds_size_m": [
+        12.24000072479248,
+        6.4951171875,
+        4.0693359375
+      ],
+      "local_yaw_unity_degrees": -0.0
+    },
+    {
+      "name": "CityWall_South_Body_01",
+      "source_object": "00_ModularWall_Kit · MiddleWall",
+      "source_mesh": "StoneWall_Middle",
+      "source_geometry_uv_sha256": "1bb1aebf2d5f95f9bf119b81ee3e19857343d6a38da0c51a2ac696a82db04bab",
+      "role": "wall",
+      "local_matrix_native": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.3400000333786011
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -1.4190658330917358
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "local_matrix_meters": [
+        [
+          18.0,
+          0.0,
+          0.0,
+          -6.120000839233398
+        ],
+        [
+          0.0,
+          18.0,
+          0.0,
+          -25.543184280395508
+        ],
+        [
+          0.0,
+          0.0,
+          18.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "expected_unity_bounds_center_m": [
+        -9.5367431640625e-07,
+        3.24755859375,
+        -25.332246780395508
+      ],
+      "expected_unity_bounds_size_m": [
+        12.24000072479248,
+        6.4951171875,
+        4.0693359375
+      ],
+      "local_yaw_unity_degrees": -0.0
+    },
+    {
+      "name": "CityWall_South_Body_02",
+      "source_object": "00_ModularWall_Kit · MiddleWall",
+      "source_mesh": "StoneWall_Middle",
+      "source_geometry_uv_sha256": "1bb1aebf2d5f95f9bf119b81ee3e19857343d6a38da0c51a2ac696a82db04bab",
+      "role": "wall",
+      "local_matrix_native": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.3400000333786011
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -1.4190658330917358
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "local_matrix_meters": [
+        [
+          18.0,
+          0.0,
+          0.0,
+          6.120000839233398
+        ],
+        [
+          0.0,
+          18.0,
+          0.0,
+          -25.543184280395508
+        ],
+        [
+          0.0,
+          0.0,
+          18.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "expected_unity_bounds_center_m": [
+        12.239999771118164,
+        3.24755859375,
+        -25.332246780395508
+      ],
+      "expected_unity_bounds_size_m": [
+        12.24000072479248,
+        6.4951171875,
+        4.0693359375
+      ],
+      "local_yaw_unity_degrees": -0.0
+    },
+    {
+      "name": "CityWall_North_WestPier",
+      "source_object": "00_ModularWall_Kit · StartPier",
+      "source_mesh": "StonePier_Left",
+      "source_geometry_uv_sha256": "671da2e2055707150bf9671843bc00f2be8e5acd78a2824cda1aa947d964df5f",
+      "role": "corner_pier",
+      "local_matrix_native": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -1.1797559261322021
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          1.4190658330917358
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.03759765625
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "local_matrix_meters": [
+        [
+          18.0,
+          0.0,
+          0.0,
+          -21.235607147216797
+        ],
+        [
+          0.0,
+          18.0,
+          0.0,
+          25.543184280395508
+        ],
+        [
+          0.0,
+          0.0,
+          18.0,
+          -0.6767578125
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "expected_unity_bounds_center_m": [
+        -19.797805786132812,
+        3.3662109375,
+        25.543184280395508
+      ],
+      "expected_unity_bounds_size_m": [
+        2.8756046295166016,
+        6.732421875,
+        4.5263671875
+      ],
+      "local_yaw_unity_degrees": -0.0
+    },
+    {
+      "name": "CityWall_North_EastPier",
+      "source_object": "00_ModularWall_Kit · EndPier",
+      "source_mesh": "StonePier_Right",
+      "source_geometry_uv_sha256": "6ff4c9e230a9eb01f4d99f27463dd4e798e0bc69ade3b6390037afc4c4772937",
+      "role": "corner_pier",
+      "local_matrix_native": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          1.0200001001358032
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          1.4190658330917358
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.03759765625
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "local_matrix_meters": [
+        [
+          18.0,
+          0.0,
+          0.0,
+          18.360002517700195
+        ],
+        [
+          0.0,
+          18.0,
+          0.0,
+          25.543184280395508
+        ],
+        [
+          0.0,
+          0.0,
+          18.0,
+          -0.6767578125
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "expected_unity_bounds_center_m": [
+        19.797805786132812,
+        3.498046875,
+        25.543184280395508
+      ],
+      "expected_unity_bounds_size_m": [
+        2.8756046295166016,
+        6.99609375,
+        4.5263671875
+      ],
+      "local_yaw_unity_degrees": -0.0
+    },
+    {
+      "name": "CityWall_North_Body_00",
+      "source_object": "00_ModularWall_Kit · MiddleWall",
+      "source_mesh": "StoneWall_Middle",
+      "source_geometry_uv_sha256": "1bb1aebf2d5f95f9bf119b81ee3e19857343d6a38da0c51a2ac696a82db04bab",
+      "role": "wall",
+      "local_matrix_native": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -1.0200001001358032
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          1.4190658330917358
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "local_matrix_meters": [
+        [
+          18.0,
+          0.0,
+          0.0,
+          -18.360002517700195
+        ],
+        [
+          0.0,
+          18.0,
+          0.0,
+          25.543184280395508
+        ],
+        [
+          0.0,
+          0.0,
+          18.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "expected_unity_bounds_center_m": [
+        -12.240001678466797,
+        3.24755859375,
+        25.754121780395508
+      ],
+      "expected_unity_bounds_size_m": [
+        12.24000072479248,
+        6.4951171875,
+        4.0693359375
+      ],
+      "local_yaw_unity_degrees": -0.0
+    },
+    {
+      "name": "CityWall_North_Body_02",
+      "source_object": "00_ModularWall_Kit · MiddleWall",
+      "source_mesh": "StoneWall_Middle",
+      "source_geometry_uv_sha256": "1bb1aebf2d5f95f9bf119b81ee3e19857343d6a38da0c51a2ac696a82db04bab",
+      "role": "wall",
+      "local_matrix_native": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.3400000333786011
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          1.4190658330917358
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "local_matrix_meters": [
+        [
+          18.0,
+          0.0,
+          0.0,
+          6.120000839233398
+        ],
+        [
+          0.0,
+          18.0,
+          0.0,
+          25.543184280395508
+        ],
+        [
+          0.0,
+          0.0,
+          18.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "expected_unity_bounds_center_m": [
+        12.239999771118164,
+        3.24755859375,
+        25.754121780395508
+      ],
+      "expected_unity_bounds_size_m": [
+        12.24000072479248,
+        6.4951171875,
+        4.0693359375
+      ],
+      "local_yaw_unity_degrees": -0.0
+    },
+    {
+      "name": "CityWall_West_Body_00",
+      "source_object": "00_ModularWall_Kit · MiddleWall",
+      "source_mesh": "StoneWall_Middle",
+      "source_geometry_uv_sha256": "1bb1aebf2d5f95f9bf119b81ee3e19857343d6a38da0c51a2ac696a82db04bab",
+      "role": "wall",
+      "local_matrix_native": [
+        [
+          7.549790126404332e-08,
+          -1.0,
+          0.0,
+          -1.099877953529358
+        ],
+        [
+          1.0,
+          7.549790126404332e-08,
+          0.0,
+          -1.3600001335144043
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "local_matrix_meters": [
+        [
+          1.358962208541925e-06,
+          -18.0,
+          0.0,
+          -19.79780387878418
+        ],
+        [
+          18.0,
+          1.358962208541925e-06,
+          0.0,
+          -24.480003356933594
+        ],
+        [
+          0.0,
+          0.0,
+          18.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "expected_unity_bounds_center_m": [
+        -20.00874137878418,
+        3.24755859375,
+        -18.360002517700195
+      ],
+      "expected_unity_bounds_size_m": [
+        4.0693359375,
+        6.4951171875,
+        12.24000072479248
+      ],
+      "local_yaw_unity_degrees": -89.999995674289
+    },
+    {
+      "name": "CityWall_West_Body_01",
+      "source_object": "00_ModularWall_Kit · MiddleWall",
+      "source_mesh": "StoneWall_Middle",
+      "source_geometry_uv_sha256": "1bb1aebf2d5f95f9bf119b81ee3e19857343d6a38da0c51a2ac696a82db04bab",
+      "role": "wall",
+      "local_matrix_native": [
+        [
+          7.549790126404332e-08,
+          -1.0,
+          0.0,
+          -1.099877953529358
+        ],
+        [
+          1.0,
+          7.549790126404332e-08,
+          0.0,
+          -0.6800000667572021
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "local_matrix_meters": [
+        [
+          1.358962208541925e-06,
+          -18.0,
+          0.0,
+          -19.79780387878418
+        ],
+        [
+          18.0,
+          1.358962208541925e-06,
+          0.0,
+          -12.240001678466797
+        ],
+        [
+          0.0,
+          0.0,
+          18.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "expected_unity_bounds_center_m": [
+        -20.00874137878418,
+        3.24755859375,
+        -6.120001316070557
+      ],
+      "expected_unity_bounds_size_m": [
+        4.0693359375,
+        6.4951171875,
+        12.24000072479248
+      ],
+      "local_yaw_unity_degrees": -89.999995674289
+    },
+    {
+      "name": "CityWall_West_Body_02",
+      "source_object": "00_ModularWall_Kit · MiddleWall",
+      "source_mesh": "StoneWall_Middle",
+      "source_geometry_uv_sha256": "1bb1aebf2d5f95f9bf119b81ee3e19857343d6a38da0c51a2ac696a82db04bab",
+      "role": "wall",
+      "local_matrix_native": [
+        [
+          7.549790126404332e-08,
+          -1.0,
+          0.0,
+          -1.099877953529358
+        ],
+        [
+          1.0,
+          7.549790126404332e-08,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "local_matrix_meters": [
+        [
+          1.358962208541925e-06,
+          -18.0,
+          0.0,
+          -19.79780387878418
+        ],
+        [
+          18.0,
+          1.358962208541925e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          18.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "expected_unity_bounds_center_m": [
+        -20.00874137878418,
+        3.24755859375,
+        6.119999408721924
+      ],
+      "expected_unity_bounds_size_m": [
+        4.0693359375,
+        6.4951171875,
+        12.24000072479248
+      ],
+      "local_yaw_unity_degrees": -89.999995674289
+    },
+    {
+      "name": "CityWall_West_Body_03",
+      "source_object": "00_ModularWall_Kit · MiddleWall",
+      "source_mesh": "StoneWall_Middle",
+      "source_geometry_uv_sha256": "1bb1aebf2d5f95f9bf119b81ee3e19857343d6a38da0c51a2ac696a82db04bab",
+      "role": "wall",
+      "local_matrix_native": [
+        [
+          7.549790126404332e-08,
+          -1.0,
+          0.0,
+          -1.099877953529358
+        ],
+        [
+          1.0,
+          7.549790126404332e-08,
+          0.0,
+          0.6800000667572021
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "local_matrix_meters": [
+        [
+          1.358962208541925e-06,
+          -18.0,
+          0.0,
+          -19.79780387878418
+        ],
+        [
+          18.0,
+          1.358962208541925e-06,
+          0.0,
+          12.240001678466797
+        ],
+        [
+          0.0,
+          0.0,
+          18.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "expected_unity_bounds_center_m": [
+        -20.00874137878418,
+        3.24755859375,
+        18.360002517700195
+      ],
+      "expected_unity_bounds_size_m": [
+        4.0693359375,
+        6.4951171875,
+        12.240001678466797
+      ],
+      "local_yaw_unity_degrees": -89.999995674289
+    },
+    {
+      "name": "CityWall_East_Body_00",
+      "source_object": "00_ModularWall_Kit · MiddleWall",
+      "source_mesh": "StoneWall_Middle",
+      "source_geometry_uv_sha256": "1bb1aebf2d5f95f9bf119b81ee3e19857343d6a38da0c51a2ac696a82db04bab",
+      "role": "wall",
+      "local_matrix_native": [
+        [
+          7.549790126404332e-08,
+          -1.0,
+          0.0,
+          1.099877953529358
+        ],
+        [
+          1.0,
+          7.549790126404332e-08,
+          0.0,
+          -1.3600001335144043
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "local_matrix_meters": [
+        [
+          1.358962208541925e-06,
+          -18.0,
+          0.0,
+          19.79780387878418
+        ],
+        [
+          18.0,
+          1.358962208541925e-06,
+          0.0,
+          -24.480003356933594
+        ],
+        [
+          0.0,
+          0.0,
+          18.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "expected_unity_bounds_center_m": [
+        19.58686637878418,
+        3.24755859375,
+        -18.360002517700195
+      ],
+      "expected_unity_bounds_size_m": [
+        4.0693359375,
+        6.4951171875,
+        12.24000072479248
+      ],
+      "local_yaw_unity_degrees": -89.999995674289
+    },
+    {
+      "name": "CityWall_East_Body_01",
+      "source_object": "00_ModularWall_Kit · MiddleWall",
+      "source_mesh": "StoneWall_Middle",
+      "source_geometry_uv_sha256": "1bb1aebf2d5f95f9bf119b81ee3e19857343d6a38da0c51a2ac696a82db04bab",
+      "role": "wall",
+      "local_matrix_native": [
+        [
+          7.549790126404332e-08,
+          -1.0,
+          0.0,
+          1.099877953529358
+        ],
+        [
+          1.0,
+          7.549790126404332e-08,
+          0.0,
+          -0.6800000667572021
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "local_matrix_meters": [
+        [
+          1.358962208541925e-06,
+          -18.0,
+          0.0,
+          19.79780387878418
+        ],
+        [
+          18.0,
+          1.358962208541925e-06,
+          0.0,
+          -12.240001678466797
+        ],
+        [
+          0.0,
+          0.0,
+          18.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "expected_unity_bounds_center_m": [
+        19.58686637878418,
+        3.24755859375,
+        -6.120001316070557
+      ],
+      "expected_unity_bounds_size_m": [
+        4.0693359375,
+        6.4951171875,
+        12.24000072479248
+      ],
+      "local_yaw_unity_degrees": -89.999995674289
+    },
+    {
+      "name": "CityWall_East_Body_02",
+      "source_object": "00_ModularWall_Kit · MiddleWall",
+      "source_mesh": "StoneWall_Middle",
+      "source_geometry_uv_sha256": "1bb1aebf2d5f95f9bf119b81ee3e19857343d6a38da0c51a2ac696a82db04bab",
+      "role": "wall",
+      "local_matrix_native": [
+        [
+          7.549790126404332e-08,
+          -1.0,
+          0.0,
+          1.099877953529358
+        ],
+        [
+          1.0,
+          7.549790126404332e-08,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "local_matrix_meters": [
+        [
+          1.358962208541925e-06,
+          -18.0,
+          0.0,
+          19.79780387878418
+        ],
+        [
+          18.0,
+          1.358962208541925e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          18.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "expected_unity_bounds_center_m": [
+        19.58686637878418,
+        3.24755859375,
+        6.119999408721924
+      ],
+      "expected_unity_bounds_size_m": [
+        4.0693359375,
+        6.4951171875,
+        12.24000072479248
+      ],
+      "local_yaw_unity_degrees": -89.999995674289
+    },
+    {
+      "name": "CityWall_East_Body_03",
+      "source_object": "00_ModularWall_Kit · MiddleWall",
+      "source_mesh": "StoneWall_Middle",
+      "source_geometry_uv_sha256": "1bb1aebf2d5f95f9bf119b81ee3e19857343d6a38da0c51a2ac696a82db04bab",
+      "role": "wall",
+      "local_matrix_native": [
+        [
+          7.549790126404332e-08,
+          -1.0,
+          0.0,
+          1.099877953529358
+        ],
+        [
+          1.0,
+          7.549790126404332e-08,
+          0.0,
+          0.6800000667572021
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "local_matrix_meters": [
+        [
+          1.358962208541925e-06,
+          -18.0,
+          0.0,
+          19.79780387878418
+        ],
+        [
+          18.0,
+          1.358962208541925e-06,
+          0.0,
+          12.240001678466797
+        ],
+        [
+          0.0,
+          0.0,
+          18.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "expected_unity_bounds_center_m": [
+        19.58686637878418,
+        3.24755859375,
+        18.360002517700195
+      ],
+      "expected_unity_bounds_size_m": [
+        4.0693359375,
+        6.4951171875,
+        12.240001678466797
+      ],
+      "local_yaw_unity_degrees": -89.999995674289
+    },
+    {
+      "name": "CityWall_North_PortalWestPier",
+      "source_object": "00_ModularWall_Kit · EndPier",
+      "source_mesh": "StonePier_Right",
+      "source_geometry_uv_sha256": "6ff4c9e230a9eb01f4d99f27463dd4e798e0bc69ade3b6390037afc4c4772937",
+      "role": "portal_pier",
+      "local_matrix_native": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.3400000333786011
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          1.4190658330917358
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.03759765625
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "local_matrix_meters": [
+        [
+          18.0,
+          0.0,
+          0.0,
+          -6.120000839233398
+        ],
+        [
+          0.0,
+          18.0,
+          0.0,
+          25.543184280395508
+        ],
+        [
+          0.0,
+          0.0,
+          18.0,
+          -0.6767578125
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "expected_unity_bounds_center_m": [
+        -4.6821980476379395,
+        3.498046875,
+        25.543184280395508
+      ],
+      "expected_unity_bounds_size_m": [
+        2.875605583190918,
+        6.99609375,
+        4.5263671875
+      ],
+      "local_yaw_unity_degrees": -0.0
+    },
+    {
+      "name": "CityWall_North_PortalEastPier",
+      "source_object": "00_ModularWall_Kit · StartPier",
+      "source_mesh": "StonePier_Left",
+      "source_geometry_uv_sha256": "671da2e2055707150bf9671843bc00f2be8e5acd78a2824cda1aa947d964df5f",
+      "role": "portal_pier",
+      "local_matrix_native": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.18024416267871857
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          1.4190658330917358
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.03759765625
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "local_matrix_meters": [
+        [
+          18.0,
+          0.0,
+          0.0,
+          3.2443950176239014
+        ],
+        [
+          0.0,
+          18.0,
+          0.0,
+          25.543184280395508
+        ],
+        [
+          0.0,
+          0.0,
+          18.0,
+          -0.6767578125
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "expected_unity_bounds_center_m": [
+        4.6821980476379395,
+        3.3662109375,
+        25.543184280395508
+      ],
+      "expected_unity_bounds_size_m": [
+        2.875605821609497,
+        6.732421875,
+        4.5263671875
+      ],
+      "local_yaw_unity_degrees": -0.0
+    }
+  ],
+  "uniform_source_scale": 18.0,
+  "export": {
+    "file": "art/models/fortified-city/FortifiedCityWalls.fbx",
+    "sha256": "47b89d7734871bbe0dd000cdb0eebd894e13d43e69698e52bd6cd8ce0ee05e2d",
+    "textures": [
+      {
+        "source_image": "tripo_image_2a6beea7_0.001",
+        "file": "art/models/fortified-city/wall-original-03.jpg",
+        "sha256": "764ee47dc190b42492e4b5cb0201dcf6d81458a87bfe628d18e73598a5d4f641",
+        "size": [
+          2048,
+          2048
+        ],
+        "colorspace": "sRGB"
+      }
+    ],
+    "materials": [
+      {
+        "name": "FortifiedCity_WallOriginalTexture",
+        "source_material": "tripo_mat_2a6beea7.001",
+        "base_color_texture": "art/models/fortified-city/wall-original-03.jpg",
+        "base_color_sha256": "764ee47dc190b42492e4b5cb0201dcf6d81458a87bfe628d18e73598a5d4f641",
+        "base_color_multiplier": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "normal_map": null,
+        "roughness_map": null,
+        "height_map": null,
+        "note": "Original baked color only. No invented PBR maps or guessed scanning channels.",
+        "metallic": 0.0,
+        "roughness": 0.8999999761581421,
+        "smoothness": 0.10000002384185791
+      }
+    ],
+    "roundtrip": {
+      "components": 19,
+      "maximum_vertex_error_m": 8.740569683141075e-06,
+      "maximum_uv_error": 0.0,
+      "uv_loop_samples": 89177,
+      "passed": true
+    }
+  },
+  "axis_units": {
+    "blender_source": "Z up; native authored dimensions; display translation excluded",
+    "fbx": "Meters; UnitScaleFactor 100 (centimeters per meter); axis -Z forward/Y up",
+    "export_root_rotation_blender_z_degrees": 180,
+    "expected_unity_mapping": "Source native (x,y,z) -> Unity (18*x,18*z,18*y)",
+    "unity": "useFileScale=true, globalScale=1; verify PortalNorth is +Z, EastReference +X; no extra 0.01 scale"
+  },
+  "root_pivot": "Nominal perimeter centerline XY0, ground Z0; Unity place the whole root only. Original asymmetric body relief offsets the actual exterior AABB center X by -0.2109375m.",
+  "whole_bounds_unity_m": {
+    "min": [-22.04340934753418, 0.0, -27.806367874145508],
+    "max": [21.62153434753418, 6.99609375, 27.806367874145508],
+    "center": [-0.2109375, 3.498046875, 0.0],
+    "size": [43.66494369506836, 6.99609375, 55.612735748291016]
+  },
+  "interior_clear_rectangle_unity_m": {
+    "min_x": -17.97407341003418,
+    "max_x": 17.55219841003418,
+    "min_z": -23.297578811645508,
+    "max_z": 23.719453811645508,
+    "note": "Conservative flat interior rectangle bounded by unchanged wall-body AABBs; corner posts and open portal remain actual geometry. Leave additional operational/visual setback for city buildings."
+  },
+  "fbx_global_settings_verified": {
+    "UnitScaleFactor": 100.0,
+    "OriginalUnitScaleFactor": 100.0,
+    "UpAxis": 1,
+    "UpAxisSign": 1,
+    "FrontAxis": 2,
+    "FrontAxisSign": 1,
+    "CoordAxis": 0,
+    "CoordAxisSign": 1,
+    "method": "Read actual exported binary FBX GlobalSettings, not inferred from exporter arguments"
+  },
+  "portal": {
+    "status": "Open entrance; no authored gate leaf or closable gate",
+    "center_unity_m": [
+      0,
+      0,
+      25.54318505287171
+    ],
+    "outward_direction_unity": [
+      0,
+      0,
+      1
+    ],
+    "minimum_foot_clearance_m": 6.488789920806887,
+    "full_recess_width_m": 12.240000729560855,
+    "upper_profile": "Original pier tapers; opening widens above the feet; not a rectangular closable doorway"
+  },
+  "dimensions_native": {
+    "body_pitch": 0.6800000405311586,
+    "pier_width": 0.1597558557987213,
+    "pier_depth": 0.25146484375,
+    "corner_embed_m": 1.2,
+    "nominal_width": 2.3595118331909184,
+    "nominal_depth": 3.089596516291301,
+    "portal": {
+      "center": [
+        0,
+        1.4190658362706505
+      ],
+      "clear_width": 0.36048832893371596,
+      "clear_min_x": -0.18024416446685798,
+      "clear_max_x": 0.18024416446685798,
+      "recess_min_x": -0.3400000202655793,
+      "recess_max_x": 0.3400000202655793
+    }
+  },
+  "validation": {
+    "bounds_min": [
+      -22.04340934753418,
+      -27.806367874145508,
+      0.0
+    ],
+    "bounds_max": [
+      21.62153434753418,
+      27.806367874145508,
+      6.99609375
+    ],
+    "bounds_size": [
+      43.66494369506836,
+      55.612735748291016,
+      6.99609375
+    ],
+    "component_bounds_native": [
+      {
+        "name": "CityWall_South_WestPier",
+        "min": [
+          -1.1797559261322021,
+          -1.5447982549667358,
+          0.0
+        ],
+        "max": [
+          -1.0200001001358032,
+          -1.2933334112167358,
+          0.3740234375
+        ]
+      },
+      {
+        "name": "CityWall_South_EastPier",
+        "min": [
+          1.0200001001358032,
+          -1.5447982549667358,
+          0.0
+        ],
+        "max": [
+          1.1797559261322021,
+          -1.2933334112167358,
+          0.388671875
+        ]
+      },
+      {
+        "name": "CityWall_South_Body_00",
+        "min": [
+          -1.0200001001358032,
+          -1.5203841924667358,
+          0.0
+        ],
+        "max": [
+          -0.34000009298324585,
+          -1.2943099737167358,
+          0.36083984375
+        ]
+      },
+      {
+        "name": "CityWall_South_Body_01",
+        "min": [
+          -0.34000006318092346,
+          -1.5203841924667358,
+          0.0
+        ],
+        "max": [
+          0.3399999737739563,
+          -1.2943099737167358,
+          0.36083984375
+        ]
+      },
+      {
+        "name": "CityWall_South_Body_02",
+        "min": [
+          0.3400000035762787,
+          -1.5203841924667358,
+          0.0
+        ],
+        "max": [
+          1.0199999809265137,
+          -1.2943099737167358,
+          0.36083984375
+        ]
+      },
+      {
+        "name": "CityWall_North_WestPier",
+        "min": [
+          -1.1797559261322021,
+          1.2933334112167358,
+          0.0
+        ],
+        "max": [
+          -1.0200001001358032,
+          1.5447982549667358,
+          0.3740234375
+        ]
+      },
+      {
+        "name": "CityWall_North_EastPier",
+        "min": [
+          1.0200001001358032,
+          1.2933334112167358,
+          0.0
+        ],
+        "max": [
+          1.1797559261322021,
+          1.5447982549667358,
+          0.388671875
+        ]
+      },
+      {
+        "name": "CityWall_North_Body_00",
+        "min": [
+          -1.0200001001358032,
+          1.3177474737167358,
+          0.0
+        ],
+        "max": [
+          -0.34000009298324585,
+          1.5438216924667358,
+          0.36083984375
+        ]
+      },
+      {
+        "name": "CityWall_North_Body_02",
+        "min": [
+          0.3400000035762787,
+          1.3177474737167358,
+          0.0
+        ],
+        "max": [
+          1.0199999809265137,
+          1.5438216924667358,
+          0.36083984375
+        ]
+      },
+      {
+        "name": "CityWall_West_Body_00",
+        "min": [
+          -1.224633812904358,
+          -1.3600001335144043,
+          0.0
+        ],
+        "max": [
+          -0.9985595941543579,
+          -0.6800001263618469,
+          0.36083984375
+        ]
+      },
+      {
+        "name": "CityWall_West_Body_01",
+        "min": [
+          -1.224633812904358,
+          -0.6800000667572021,
+          0.0
+        ],
+        "max": [
+          -0.9985595941543579,
+          -5.162993232943336e-08,
+          0.36083984375
+        ]
+      },
+      {
+        "name": "CityWall_West_Body_02",
+        "min": [
+          -1.224633812904358,
+          -2.963688672252829e-08,
+          0.0
+        ],
+        "max": [
+          -0.9985595941543579,
+          0.6800000071525574,
+          0.36083984375
+        ]
+      },
+      {
+        "name": "CityWall_West_Body_03",
+        "min": [
+          -1.224633812904358,
+          0.6800000667572021,
+          0.0
+        ],
+        "max": [
+          -0.9985595941543579,
+          1.3600001335144043,
+          0.36083984375
+        ]
+      },
+      {
+        "name": "CityWall_East_Body_00",
+        "min": [
+          0.9751220941543579,
+          -1.3600001335144043,
+          0.0
+        ],
+        "max": [
+          1.201196312904358,
+          -0.6800001263618469,
+          0.36083984375
+        ]
+      },
+      {
+        "name": "CityWall_East_Body_01",
+        "min": [
+          0.9751220941543579,
+          -0.6800000667572021,
+          0.0
+        ],
+        "max": [
+          1.201196312904358,
+          -5.162993232943336e-08,
+          0.36083984375
+        ]
+      },
+      {
+        "name": "CityWall_East_Body_02",
+        "min": [
+          0.9751220941543579,
+          -2.963688672252829e-08,
+          0.0
+        ],
+        "max": [
+          1.201196312904358,
+          0.6800000071525574,
+          0.36083984375
+        ]
+      },
+      {
+        "name": "CityWall_East_Body_03",
+        "min": [
+          0.9751220941543579,
+          0.6800000667572021,
+          0.0
+        ],
+        "max": [
+          1.201196312904358,
+          1.3600001335144043,
+          0.36083984375
+        ]
+      },
+      {
+        "name": "CityWall_North_PortalWestPier",
+        "min": [
+          -0.3400000333786011,
+          1.2933334112167358,
+          0.0
+        ],
+        "max": [
+          -0.18024417757987976,
+          1.5447982549667358,
+          0.388671875
+        ]
+      },
+      {
+        "name": "CityWall_North_PortalEastPier",
+        "min": [
+          0.18024416267871857,
+          1.2933334112167358,
+          0.0
+        ],
+        "max": [
+          0.3400000333786011,
+          1.5447982549667358,
+          0.3740234375
+        ]
+      }
+    ],
+    "boundary_ray_samples": 7690,
+    "boundary_ray_misses": [
+      {
+        "along_axis": 0,
+        "along": -21.129693249348097,
+        "side": -1,
+        "height_m": 0.8
+      },
+      {
+        "along_axis": 0,
+        "along": -21.129693249348097,
+        "side": -1,
+        "height_m": 1.6
+      },
+      {
+        "along_axis": 0,
+        "along": -21.129693249348097,
+        "side": 1,
+        "height_m": 0.8
+      },
+      {
+        "along_axis": 0,
+        "along": -21.129693249348097,
+        "side": 1,
+        "height_m": 1.6
+      },
+      {
+        "along_axis": 0,
+        "along": -21.129693249348097,
+        "side": 1,
+        "height_m": 3.2
+      },
+      {
+        "along_axis": 0,
+        "along": -21.023779999977936,
+        "side": -1,
+        "height_m": 0.8
+      },
+      {
+        "along_axis": 0,
+        "along": -21.023779999977936,
+        "side": -1,
+        "height_m": 1.6
+      },
+      {
+        "along_axis": 0,
+        "along": -21.023779999977936,
+        "side": 1,
+        "height_m": 0.8
+      },
+      {
+        "along_axis": 0,
+        "along": -21.023779999977936,
+        "side": 1,
+        "height_m": 1.6
+      },
+      {
+        "along_axis": 0,
+        "along": -21.023779999977936,
+        "side": 1,
+        "height_m": 3.2
+      },
+      {
+        "along_axis": 0,
+        "along": -21.023779999977936,
+        "side": 1,
+        "height_m": 5.8
+      },
+      {
+        "along_axis": 0,
+        "along": -20.917866750607768,
+        "side": -1,
+        "height_m": 1.6
+      },
+      {
+        "along_axis": 0,
+        "along": -20.917866750607768,
+        "side": -1,
+        "height_m": 3.2
+      },
+      {
+        "along_axis": 0,
+        "along": -20.917866750607768,
+        "side": -1,
+        "height_m": 5.8
+      },
+      {
+        "along_axis": 0,
+        "along": -20.917866750607768,
+        "side": 1,
+        "height_m": 1.6
+      },
+      {
+        "along_axis": 0,
+        "along": -20.917866750607768,
+        "side": 1,
+        "height_m": 3.2
+      },
+      {
+        "along_axis": 0,
+        "along": -20.917866750607768,
+        "side": 1,
+        "height_m": 5.8
+      },
+      {
+        "along_axis": 0,
+        "along": -20.8119535012376,
+        "side": -1,
+        "height_m": 1.6
+      },
+      {
+        "along_axis": 0,
+        "along": -20.8119535012376,
+        "side": -1,
+        "height_m": 3.2
+      },
+      {
+        "along_axis": 0,
+        "along": -20.8119535012376,
+        "side": -1,
+        "height_m": 5.8
+      },
+      {
+        "along_axis": 0,
+        "along": -20.8119535012376,
+        "side": 1,
+        "height_m": 1.6
+      },
+      {
+        "along_axis": 0,
+        "along": -20.8119535012376,
+        "side": 1,
+        "height_m": 3.2
+      },
+      {
+        "along_axis": 0,
+        "along": -20.8119535012376,
+        "side": 1,
+        "height_m": 5.8
+      },
+      {
+        "along_axis": 0,
+        "along": -20.706040251867435,
+        "side": -1,
+        "height_m": 5.8
+      },
+      {
+        "along_axis": 0,
+        "along": -20.706040251867435,
+        "side": 1,
+        "height_m": 5.8
+      },
+      {
+        "along_axis": 0,
+        "along": -20.60012700249727,
+        "side": -1,
+        "height_m": 5.8
+      },
+      {
+        "along_axis": 0,
+        "along": -20.60012700249727,
+        "side": 1,
+        "height_m": 5.8
+      },
+      {
+        "along_axis": 0,
+        "along": -20.494213753127102,
+        "side": -1,
+        "height_m": 5.8
+      },
+      {
+        "along_axis": 0,
+        "along": -20.494213753127102,
+        "side": 1,
+        "height_m": 5.8
+      },
+      {
+        "along_axis": 0,
+        "along": -20.388300503756938,
+        "side": -1,
+        "height_m": 5.8
+      },
+      {
+        "along_axis": 0,
+        "along": -20.388300503756938,
+        "side": 1,
+        "height_m": 5.8
+      },
+      {
+        "along_axis": 0,
+        "along": -18.905515012574618,
+        "side": -1,
+        "height_m": 5.8
+      },
+      {
+        "along_axis": 0,
+        "along": -18.905515012574618,
+        "side": 1,
+        "height_m": 5.8
+      },
+      {
+        "along_axis": 0,
+        "along": -18.79960176320445,
+        "side": -1,
+        "height_m": 5.8
+      },
+      {
+        "along_axis": 0,
+        "along": -18.79960176320445,
+        "side": 1,
+        "height_m": 5.8
+      },
+      {
+        "along_axis": 0,
+        "along": -6.090011838784541,
+        "side": 1,
+        "height_m": 5.8
+      },
+      {
+        "along_axis": 0,
+        "along": -4.077660100751388,
+        "side": 1,
+        "height_m": 4.8
+      },
+      {
+        "along_axis": 0,
+        "along": -4.077660100751388,
+        "side": 1,
+        "height_m": 5.8
+      },
+      {
+        "along_axis": 0,
+        "along": -3.971746851381223,
+        "side": 1,
+        "height_m": 4.8
+      },
+      {
+        "along_axis": 0,
+        "along": -3.971746851381223,
+        "side": 1,
+        "height_m": 5.8
+      },
+      {
+        "along_axis": 0,
+        "along": -3.8658336020110555,
+        "side": 1,
+        "height_m": 3.2
+      },
+      {
+        "along_axis": 0,
+        "along": -3.8658336020110555,
+        "side": 1,
+        "height_m": 4.8
+      },
+      {
+        "along_axis": 0,
+        "along": -3.8658336020110555,
+        "side": 1,
+        "height_m": 5.8
+      },
+      {
+        "along_axis": 0,
+        "along": -3.75992035264089,
+        "side": 1,
+        "height_m": 1.6
+      },
+      {
+        "along_axis": 0,
+        "along": -3.75992035264089,
+        "side": 1,
+        "height_m": 3.2
+      },
+      {
+        "along_axis": 0,
+        "along": -3.75992035264089,
+        "side": 1,
+        "height_m": 4.8
+      },
+      {
+        "along_axis": 0,
+        "along": -3.75992035264089,
+        "side": 1,
+        "height_m": 5.8
+      },
+      {
+        "along_axis": 0,
+        "along": -3.654007103270725,
+        "side": 1,
+        "height_m": 1.6
+      },
+      {
+        "along_axis": 0,
+        "along": -3.654007103270725,
+        "side": 1,
+        "height_m": 3.2
+      },
+      {
+        "along_axis": 0,
+        "along": -3.654007103270725,
+        "side": 1,
+        "height_m": 4.8
+      },
+      {
+        "along_axis": 0,
+        "along": -3.654007103270725,
+        "side": 1,
+        "height_m": 5.8
+      },
+      {
+        "along_axis": 0,
+        "along": -3.5480938539005575,
+        "side": 1,
+        "height_m": 0.8
+      },
+      {
+        "along_axis": 0,
+        "along": -3.5480938539005575,
+        "side": 1,
+        "height_m": 1.6
+      },
+      {
+        "along_axis": 0,
+        "along": -3.5480938539005575,
+        "side": 1,
+        "height_m": 3.2
+      },
+      {
+        "along_axis": 0,
+        "along": -3.5480938539005575,
+        "side": 1,
+        "height_m": 4.8
+      },
+      {
+        "along_axis": 0,
+        "along": -3.5480938539005575,
+        "side": 1,
+        "height_m": 5.8
+      },
+      {
+        "along_axis": 0,
+        "along": -3.44218060453039,
+        "side": 1,
+        "height_m": 0.8
+      },
+      {
+        "along_axis": 0,
+        "along": -3.44218060453039,
+        "side": 1,
+        "height_m": 1.6
+      },
+      {
+        "along_axis": 0,
+        "along": -3.44218060453039,
+        "side": 1,
+        "height_m": 3.2
+      },
+      {
+        "along_axis": 0,
+        "along": -3.44218060453039,
+        "side": 1,
+        "height_m": 4.8
+      },
+      {
+        "along_axis": 0,
+        "along": -3.44218060453039,
+        "side": 1,
+        "height_m": 5.8
+      },
+      {
+        "along_axis": 0,
+        "along": -3.336267355160227,
+        "side": 1,
+        "height_m": 0.8
+      },
+      {
+        "along_axis": 0,
+        "along": -3.336267355160227,
+        "side": 1,
+        "height_m": 1.6
+      },
+      {
+        "along_axis": 0,
+        "along": -3.336267355160227,
+        "side": 1,
+        "height_m": 3.2
+      },
+      {
+        "along_axis": 0,
+        "along": -3.336267355160227,
+        "side": 1,
+        "height_m": 4.8
+      },
+      {
+        "along_axis": 0,
+        "along": -3.336267355160227,
+        "side": 1,
+        "height_m": 5.8
+      },
+      {
+        "along_axis": 0,
+        "along": 3.336267355160227,
+        "side": 1,
+        "height_m": 0.8
+      },
+      {
+        "along_axis": 0,
+        "along": 3.336267355160227,
+        "side": 1,
+        "height_m": 1.6
+      },
+      {
+        "along_axis": 0,
+        "along": 3.336267355160227,
+        "side": 1,
+        "height_m": 3.2
+      },
+      {
+        "along_axis": 0,
+        "along": 3.336267355160227,
+        "side": 1,
+        "height_m": 4.8
+      },
+      {
+        "along_axis": 0,
+        "along": 3.336267355160227,
+        "side": 1,
+        "height_m": 5.8
+      },
+      {
+        "along_axis": 0,
+        "along": 3.442180604530394,
+        "side": 1,
+        "height_m": 0.8
+      },
+      {
+        "along_axis": 0,
+        "along": 3.442180604530394,
+        "side": 1,
+        "height_m": 1.6
+      },
+      {
+        "along_axis": 0,
+        "along": 3.442180604530394,
+        "side": 1,
+        "height_m": 3.2
+      },
+      {
+        "along_axis": 0,
+        "along": 3.442180604530394,
+        "side": 1,
+        "height_m": 4.8
+      },
+      {
+        "along_axis": 0,
+        "along": 3.442180604530394,
+        "side": 1,
+        "height_m": 5.8
+      },
+      {
+        "along_axis": 0,
+        "along": 3.5480938539005575,
+        "side": 1,
+        "height_m": 0.8
+      },
+      {
+        "along_axis": 0,
+        "along": 3.5480938539005575,
+        "side": 1,
+        "height_m": 1.6
+      },
+      {
+        "along_axis": 0,
+        "along": 3.5480938539005575,
+        "side": 1,
+        "height_m": 3.2
+      },
+      {
+        "along_axis": 0,
+        "along": 3.5480938539005575,
+        "side": 1,
+        "height_m": 4.8
+      },
+      {
+        "along_axis": 0,
+        "along": 3.5480938539005575,
+        "side": 1,
+        "height_m": 5.8
+      },
+      {
+        "along_axis": 0,
+        "along": 3.654007103270721,
+        "side": 1,
+        "height_m": 1.6
+      },
+      {
+        "along_axis": 0,
+        "along": 3.654007103270721,
+        "side": 1,
+        "height_m": 3.2
+      },
+      {
+        "along_axis": 0,
+        "along": 3.654007103270721,
+        "side": 1,
+        "height_m": 4.8
+      },
+      {
+        "along_axis": 0,
+        "along": 3.654007103270721,
+        "side": 1,
+        "height_m": 5.8
+      },
+      {
+        "along_axis": 0,
+        "along": 3.759920352640888,
+        "side": 1,
+        "height_m": 1.6
+      },
+      {
+        "along_axis": 0,
+        "along": 3.759920352640888,
+        "side": 1,
+        "height_m": 3.2
+      },
+      {
+        "along_axis": 0,
+        "along": 3.759920352640888,
+        "side": 1,
+        "height_m": 4.8
+      },
+      {
+        "along_axis": 0,
+        "along": 3.759920352640888,
+        "side": 1,
+        "height_m": 5.8
+      },
+      {
+        "along_axis": 0,
+        "along": 3.8658336020110555,
+        "side": 1,
+        "height_m": 3.2
+      },
+      {
+        "along_axis": 0,
+        "along": 3.8658336020110555,
+        "side": 1,
+        "height_m": 4.8
+      },
+      {
+        "along_axis": 0,
+        "along": 3.8658336020110555,
+        "side": 1,
+        "height_m": 5.8
+      },
+      {
+        "along_axis": 0,
+        "along": 3.971746851381223,
+        "side": 1,
+        "height_m": 4.8
+      },
+      {
+        "along_axis": 0,
+        "along": 3.971746851381223,
+        "side": 1,
+        "height_m": 5.8
+      },
+      {
+        "along_axis": 0,
+        "along": 4.07766010075139,
+        "side": 1,
+        "height_m": 4.8
+      },
+      {
+        "along_axis": 0,
+        "along": 4.07766010075139,
+        "side": 1,
+        "height_m": 5.8
+      },
+      {
+        "along_axis": 0,
+        "along": 5.560445591933709,
+        "side": 1,
+        "height_m": 5.8
+      },
+      {
+        "along_axis": 0,
+        "along": 5.666358841303876,
+        "side": 1,
+        "height_m": 5.8
+      },
+      {
+        "along_axis": 0,
+        "along": 5.7722720906740435,
+        "side": 1,
+        "height_m": 5.8
+      },
+      {
+        "along_axis": 0,
+        "along": 5.878185340044206,
+        "side": 1,
+        "height_m": 5.8
+      },
+      {
+        "along_axis": 0,
+        "along": 5.984098589414375,
+        "side": 1,
+        "height_m": 5.8
+      },
+      {
+        "along_axis": 0,
+        "along": 6.090011838784541,
+        "side": 1,
+        "height_m": 5.8
+      },
+      {
+        "along_axis": 0,
+        "along": 20.388300503756945,
+        "side": -1,
+        "height_m": 4.8
+      },
+      {
+        "along_axis": 0,
+        "along": 20.388300503756945,
+        "side": -1,
+        "height_m": 5.8
+      },
+      {
+        "along_axis": 0,
+        "along": 20.388300503756945,
+        "side": 1,
+        "height_m": 4.8
+      },
+      {
+        "along_axis": 0,
+        "along": 20.388300503756945,
+        "side": 1,
+        "height_m": 5.8
+      },
+      {
+        "along_axis": 0,
+        "along": 20.494213753127102,
+        "side": -1,
+        "height_m": 4.8
+      },
+      {
+        "along_axis": 0,
+        "along": 20.494213753127102,
+        "side": -1,
+        "height_m": 5.8
+      },
+      {
+        "along_axis": 0,
+        "along": 20.494213753127102,
+        "side": 1,
+        "height_m": 4.8
+      },
+      {
+        "along_axis": 0,
+        "along": 20.494213753127102,
+        "side": 1,
+        "height_m": 5.8
+      },
+      {
+        "along_axis": 0,
+        "along": 20.60012700249727,
+        "side": -1,
+        "height_m": 4.8
+      },
+      {
+        "along_axis": 0,
+        "along": 20.60012700249727,
+        "side": -1,
+        "height_m": 5.8
+      },
+      {
+        "along_axis": 0,
+        "along": 20.60012700249727,
+        "side": 1,
+        "height_m": 4.8
+      },
+      {
+        "along_axis": 0,
+        "along": 20.60012700249727,
+        "side": 1,
+        "height_m": 5.8
+      },
+      {
+        "along_axis": 0,
+        "along": 20.706040251867435,
+        "side": -1,
+        "height_m": 3.2
+      },
+      {
+        "along_axis": 0,
+        "along": 20.706040251867435,
+        "side": -1,
+        "height_m": 4.8
+      },
+      {
+        "along_axis": 0,
+        "along": 20.706040251867435,
+        "side": -1,
+        "height_m": 5.8
+      },
+      {
+        "along_axis": 0,
+        "along": 20.706040251867435,
+        "side": 1,
+        "height_m": 3.2
+      },
+      {
+        "along_axis": 0,
+        "along": 20.706040251867435,
+        "side": 1,
+        "height_m": 4.8
+      },
+      {
+        "along_axis": 0,
+        "along": 20.706040251867435,
+        "side": 1,
+        "height_m": 5.8
+      },
+      {
+        "along_axis": 0,
+        "along": 20.811953501237603,
+        "side": -1,
+        "height_m": 3.2
+      },
+      {
+        "along_axis": 0,
+        "along": 20.811953501237603,
+        "side": -1,
+        "height_m": 4.8
+      },
+      {
+        "along_axis": 0,
+        "along": 20.811953501237603,
+        "side": 1,
+        "height_m": 3.2
+      },
+      {
+        "along_axis": 0,
+        "along": 20.811953501237603,
+        "side": 1,
+        "height_m": 4.8
+      },
+      {
+        "along_axis": 0,
+        "along": 20.91786675060777,
+        "side": -1,
+        "height_m": 4.8
+      },
+      {
+        "along_axis": 0,
+        "along": 20.91786675060777,
+        "side": 1,
+        "height_m": 4.8
+      },
+      {
+        "along_axis": 0,
+        "along": 21.02377999997794,
+        "side": -1,
+        "height_m": 4.8
+      },
+      {
+        "along_axis": 0,
+        "along": 21.02377999997794,
+        "side": 1,
+        "height_m": 4.8
+      },
+      {
+        "along_axis": 0,
+        "along": 21.129693249348097,
+        "side": -1,
+        "height_m": 4.8
+      },
+      {
+        "along_axis": 0,
+        "along": 21.129693249348097,
+        "side": 1,
+        "height_m": 4.8
+      },
+      {
+        "along_axis": 1,
+        "along": -27.667683516214616,
+        "side": -1,
+        "height_m": 0.8
+      },
+      {
+        "along_axis": 1,
+        "along": -27.667683516214616,
+        "side": -1,
+        "height_m": 1.6
+      },
+      {
+        "along_axis": 1,
+        "along": -27.667683516214616,
+        "side": -1,
+        "height_m": 3.2
+      },
+      {
+        "along_axis": 1,
+        "along": -27.667683516214616,
+        "side": -1,
+        "height_m": 4.8
+      },
+      {
+        "along_axis": 1,
+        "along": -27.667683516214616,
+        "side": -1,
+        "height_m": 5.8
+      },
+      {
+        "along_axis": 1,
+        "along": -27.667683516214616,
+        "side": 1,
+        "height_m": 0.8
+      },
+      {
+        "along_axis": 1,
+        "along": -27.667683516214616,
+        "side": 1,
+        "height_m": 1.6
+      },
+      {
+        "along_axis": 1,
+        "along": -27.667683516214616,
+        "side": 1,
+        "height_m": 3.2
+      },
+      {
+        "along_axis": 1,
+        "along": -27.667683516214616,
+        "side": 1,
+        "height_m": 4.8
+      },
+      {
+        "along_axis": 1,
+        "along": -27.667683516214616,
+        "side": 1,
+        "height_m": 5.8
+      },
+      {
+        "along_axis": 1,
+        "along": -27.52899838580753,
+        "side": -1,
+        "height_m": 1.6
+      },
+      {
+        "along_axis": 1,
+        "along": -27.52899838580753,
+        "side": -1,
+        "height_m": 3.2
+      },
+      {
+        "along_axis": 1,
+        "along": -27.52899838580753,
+        "side": -1,
+        "height_m": 4.8
+      },
+      {
+        "along_axis": 1,
+        "along": -27.52899838580753,
+        "side": -1,
+        "height_m": 5.8
+      },
+      {
+        "along_axis": 1,
+        "along": -27.52899838580753,
+        "side": 1,
+        "height_m": 1.6
+      },
+      {
+        "along_axis": 1,
+        "along": -27.52899838580753,
+        "side": 1,
+        "height_m": 3.2
+      },
+      {
+        "along_axis": 1,
+        "along": -27.52899838580753,
+        "side": 1,
+        "height_m": 4.8
+      },
+      {
+        "along_axis": 1,
+        "along": -27.52899838580753,
+        "side": 1,
+        "height_m": 5.8
+      },
+      {
+        "along_axis": 1,
+        "along": -27.390313255400436,
+        "side": -1,
+        "height_m": 4.8
+      },
+      {
+        "along_axis": 1,
+        "along": -27.390313255400436,
+        "side": -1,
+        "height_m": 5.8
+      },
+      {
+        "along_axis": 1,
+        "along": -27.390313255400436,
+        "side": 1,
+        "height_m": 3.2
+      },
+      {
+        "along_axis": 1,
+        "along": -27.390313255400436,
+        "side": 1,
+        "height_m": 4.8
+      },
+      {
+        "along_axis": 1,
+        "along": -27.390313255400436,
+        "side": 1,
+        "height_m": 5.8
+      },
+      {
+        "along_axis": 1,
+        "along": 27.11294299458626,
+        "side": 1,
+        "height_m": 3.2
+      },
+      {
+        "along_axis": 1,
+        "along": 27.25162812499335,
+        "side": -1,
+        "height_m": 5.8
+      },
+      {
+        "along_axis": 1,
+        "along": 27.25162812499335,
+        "side": 1,
+        "height_m": 1.6
+      },
+      {
+        "along_axis": 1,
+        "along": 27.25162812499335,
+        "side": 1,
+        "height_m": 3.2
+      },
+      {
+        "along_axis": 1,
+        "along": 27.390313255400443,
+        "side": -1,
+        "height_m": 3.2
+      },
+      {
+        "along_axis": 1,
+        "along": 27.390313255400443,
+        "side": -1,
+        "height_m": 5.8
+      },
+      {
+        "along_axis": 1,
+        "along": 27.390313255400443,
+        "side": 1,
+        "height_m": 0.8
+      },
+      {
+        "along_axis": 1,
+        "along": 27.390313255400443,
+        "side": 1,
+        "height_m": 1.6
+      },
+      {
+        "along_axis": 1,
+        "along": 27.390313255400443,
+        "side": 1,
+        "height_m": 3.2
+      },
+      {
+        "along_axis": 1,
+        "along": 27.390313255400443,
+        "side": 1,
+        "height_m": 4.8
+      },
+      {
+        "along_axis": 1,
+        "along": 27.390313255400443,
+        "side": 1,
+        "height_m": 5.8
+      },
+      {
+        "along_axis": 1,
+        "along": 27.528998385807533,
+        "side": -1,
+        "height_m": 1.6
+      },
+      {
+        "along_axis": 1,
+        "along": 27.528998385807533,
+        "side": -1,
+        "height_m": 3.2
+      },
+      {
+        "along_axis": 1,
+        "along": 27.528998385807533,
+        "side": -1,
+        "height_m": 4.8
+      },
+      {
+        "along_axis": 1,
+        "along": 27.528998385807533,
+        "side": -1,
+        "height_m": 5.8
+      },
+      {
+        "along_axis": 1,
+        "along": 27.528998385807533,
+        "side": 1,
+        "height_m": 0.8
+      },
+      {
+        "along_axis": 1,
+        "along": 27.528998385807533,
+        "side": 1,
+        "height_m": 1.6
+      },
+      {
+        "along_axis": 1,
+        "along": 27.528998385807533,
+        "side": 1,
+        "height_m": 3.2
+      },
+      {
+        "along_axis": 1,
+        "along": 27.528998385807533,
+        "side": 1,
+        "height_m": 4.8
+      },
+      {
+        "along_axis": 1,
+        "along": 27.528998385807533,
+        "side": 1,
+        "height_m": 5.8
+      },
+      {
+        "along_axis": 1,
+        "along": 27.66768351621462,
+        "side": -1,
+        "height_m": 0.8
+      },
+      {
+        "along_axis": 1,
+        "along": 27.66768351621462,
+        "side": -1,
+        "height_m": 1.6
+      },
+      {
+        "along_axis": 1,
+        "along": 27.66768351621462,
+        "side": -1,
+        "height_m": 3.2
+      },
+      {
+        "along_axis": 1,
+        "along": 27.66768351621462,
+        "side": -1,
+        "height_m": 4.8
+      },
+      {
+        "along_axis": 1,
+        "along": 27.66768351621462,
+        "side": -1,
+        "height_m": 5.8
+      },
+      {
+        "along_axis": 1,
+        "along": 27.66768351621462,
+        "side": 1,
+        "height_m": 0.8
+      },
+      {
+        "along_axis": 1,
+        "along": 27.66768351621462,
+        "side": 1,
+        "height_m": 1.6
+      },
+      {
+        "along_axis": 1,
+        "along": 27.66768351621462,
+        "side": 1,
+        "height_m": 3.2
+      },
+      {
+        "along_axis": 1,
+        "along": 27.66768351621462,
+        "side": 1,
+        "height_m": 4.8
+      },
+      {
+        "along_axis": 1,
+        "along": 27.66768351621462,
+        "side": 1,
+        "height_m": 5.8
+      }
+    ],
+    "portal_unexpected_hits": [],
+    "radial_ray_samples": 6665,
+    "radial_ray_misses": [],
+    "ground_minima_m": {
+      "CityWall_South_WestPier": 0.0,
+      "CityWall_South_EastPier": 0.0,
+      "CityWall_South_Body_00": 0.0,
+      "CityWall_South_Body_01": 0.0,
+      "CityWall_South_Body_02": 0.0,
+      "CityWall_North_WestPier": 0.0,
+      "CityWall_North_EastPier": 0.0,
+      "CityWall_North_Body_00": 0.0,
+      "CityWall_North_Body_02": 0.0,
+      "CityWall_West_Body_00": 0.0,
+      "CityWall_West_Body_01": 0.0,
+      "CityWall_West_Body_02": 0.0,
+      "CityWall_West_Body_03": 0.0,
+      "CityWall_East_Body_00": 0.0,
+      "CityWall_East_Body_01": 0.0,
+      "CityWall_East_Body_02": 0.0,
+      "CityWall_East_Body_03": 0.0,
+      "CityWall_North_PortalWestPier": 0.0,
+      "CityWall_North_PortalEastPier": 0.0
+    }
+  },
+  "seam_check": {
+    "method": "1440 radial directions at five body heights, except declared 12.24m portal recess",
+    "passed": true,
+    "unsealed_sample_rays": 0,
+    "max_seam_gap_m": null,
+    "gap_metric_note": "No sampled open seam; finite ray probes are not an exact analytical maximum-gap measurement",
+    "aabb_diagnostic_note": "AABB boundary rays include empty curved-corner outline and tapered portal recess; retained as diagnostics, not hidden or called failed contact rays"
+  },
+  "missing_sources": [
+    "Authored closable stone/wood gate",
+    "No solid tower invented or restored from old missing collection",
+    "No long cliff module available; use Unity Terrain and existing real rock PBR"
+  ],
+  "preservation_note": "All 394 actual preexisting objects and existing mesh/UV/material/image/action/light/camera/layout records preserved. Live unsaved Zombie category GUI never accessed."
+}

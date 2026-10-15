@@ -1,6 +1,17 @@
 {
   "master_blend": "art/Blender主文件/ZombieGame.blend",
   "master_sha256": "607f38b2ff9124082cc18b418d873f880b9cb6d74abc886c1b66866c85dc0c70",
+  "snapshot_status": "Historical 2026-10-05 snapshot below; master_sha256 and older counts are not the current saved general master.",
+  "current_revision": {
+    "date": "2026-10-15",
+    "source_before_sha256": "1472ab550fd4837a49caea1856ee58ece99b7702b77ee4f15d9d082df1117d66",
+    "master_sha256": "6772efb7ce13ecc5fb5700d3eb846af5f36c96cde0f02c53701f7a14fb004ea5",
+    "handoff": "art/fortified_city_handoff.json",
+    "collection": "城防实装 · 北入口完整城市围墙",
+    "objects": 414,
+    "protected_preexisting_objects": 394,
+    "note": "Preserved the actual current disk revision, not reconstructed from historical counts or absent collections. Live unsaved Zombie category work was never saved or replaced."
+  },
   "protected_objects_verified": 389,
   "original_user_objects": 33,
   "scene_objects": 439,

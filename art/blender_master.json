@@ -7,6 +7,16 @@
   "solid_tower_collection": "防御塔 · 实心方正石墩",
   "runtime_animation_collection": "动画参考 · Unity现用资产",
   "master_art_handoff": "art/master_art_handoff.json",
+  "current_disk_revision": {
+    "date": "2026-10-15",
+    "master_sha256": "6772efb7ce13ecc5fb5700d3eb846af5f36c96cde0f02c53701f7a14fb004ea5",
+    "before_sha256": "1472ab550fd4837a49caea1856ee58ece99b7702b77ee4f15d9d082df1117d66",
+    "handoff": "art/fortified_city_handoff.json",
+    "collection": "城防实装 · 北入口完整城市围墙",
+    "objects": 414,
+    "protected_preexisting_objects": 394,
+    "note": "Current saved general master, not the older 607f38 master_art_handoff snapshot. Added 19 unchanged source-kit instances and one display root only. Earlier missing solid tower/action reference collections were not restored. The live unsaved Zombie category file was untouched."
+  },
   "defense_tower_policy": "Solid lower piers, no doors/ladders/lower decoration; no friendly tower passage. Original upper geometry retained. Independent authored arrow tower source is missing and was not invented.",
   "rectangular_tower_report": "Builds/ArtReview/ModularStoneWall/rectangular-tower-verification.json",
   "storage_warning": "Preserve art/Blender主文件/ZombieGame_Master.blend/未命名.blend as the first manual save backup; do not confuse its .blend-named directory with the formal file.",
