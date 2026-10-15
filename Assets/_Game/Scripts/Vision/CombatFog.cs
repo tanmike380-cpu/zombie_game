@@ -77,6 +77,13 @@ namespace ZombieGame.Vision
             return explored[index] ? new Color32(17,26,13,255) : new Color32(0,0,0,255);
         }
 
+        public Color32 minimap_color(Vector3 point,bool reveal)
+        {
+            int x = Mathf.FloorToInt(point.x+128),z = Mathf.FloorToInt(point.z+128);
+            if(x < 0 || x >= SIZE || z < 0 || z >= SIZE) return new Color32(0,0,0,255);
+            return minimap_color(x+z*SIZE,reveal);
+        }
+
         public bool is_explored(Vector3 point)
         {
             int x = Mathf.FloorToInt(point.x + 128), z = Mathf.FloorToInt(point.z + 128);

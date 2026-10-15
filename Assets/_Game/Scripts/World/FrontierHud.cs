@@ -56,7 +56,7 @@ namespace ZombieGame.World
             }
             float s=scale,y=Screen.height-190*s;
             panel(new Rect(0,Screen.height-242*s,224*s,242*s));
-            GUI.Label(new Rect(14*s,Screen.height-238*s,200*s,25*s),"战术地图   256 × 256",small);
+            GUI.Label(new Rect(14*s,Screen.height-238*s,200*s,25*s),$"战术地图   {game.playable_bounds.width:0} × {game.playable_bounds.height:0}",small);
             float centre_x=234*s,resources_x=Screen.width-190*s,commands_x=resources_x-264*s;
             var selection_area=new Rect(centre_x,y,commands_x-centre_x-10*s,190*s);
             var command_area=new Rect(commands_x,y,254*s,190*s);

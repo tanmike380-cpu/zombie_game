@@ -38,6 +38,17 @@ namespace ZombieGame.Controls
         private float scale => custom_command_panel ? Mathf.Clamp(Screen.height/900f,.8f,2.5f) : Mathf.Max(1, Screen.height / 800f);
         private Rect map_rect => custom_command_panel ? new Rect(14*scale,Screen.height-214*scale,196*scale,196*scale)
             : new Rect(Screen.width - 226 * scale, Screen.height - 246 * scale, 210 * scale, 210 * scale);
+        public Rect world_bounds => game is IRtsMapBounds bounded ? bounded.playable_bounds : new Rect(-128,-128,256,256);
+        private Vector3 map_pixel_world(int x,int z)
+        {
+            var bounds=world_bounds;
+            return new Vector3(bounds.xMin+(x+.5f)/256*bounds.width,0,bounds.yMin+(z+.5f)/256*bounds.height);
+        }
+        private Vector2Int world_map_pixel(Vector3 point)
+        {
+            var bounds=world_bounds;
+            return new Vector2Int(Mathf.FloorToInt((point.x-bounds.xMin)/bounds.width*256),Mathf.FloorToInt((point.z-bounds.yMin)/bounds.height*256));
+        }
         public int group_count(int group)
         {
             if(group<0||group>9)return 0;
@@ -252,8 +263,9 @@ namespace ZombieGame.Controls
         private Vector3 minimap_world(Vector2 mouse)
         {
             var area=map_rect;
-            return new Vector3(Mathf.Clamp01((mouse.x-area.x)/area.width)*256-128,0,
-                (1-Mathf.Clamp01((mouse.y-area.y)/area.height))*256-128);
+            var bounds=world_bounds;
+            return new Vector3(Mathf.Clamp01((mouse.x-area.x)/area.width)*bounds.width+bounds.xMin,0,
+                (1-Mathf.Clamp01((mouse.y-area.y)/area.height))*bounds.height+bounds.yMin);
         }
         /// <summary>Capture camera drags before UI/build placement; never turn a camera drag into a unit order.</summary>
         private bool handle_minimap(Event input)
@@ -282,20 +294,23 @@ namespace ZombieGame.Controls
         {
             if (game.current_fog == null) return;
             if (minimap == null) minimap = new Texture2D(256,256,TextureFormat.RGBA32,false) { filterMode = FilterMode.Point };
-            for (int i = 0; i < map_pixels.Length; i++) map_pixels[i] = game.current_fog.minimap_color(i,game.reveal_map);
+            for (int z=0;z<256;z++)for(int x=0;x<256;x++) map_pixels[x+z*256] = game.current_fog.minimap_color(map_pixel_world(x,z),game.reveal_map);
             for(int region=0;region<game.current.crowd.walls.Length;region++)
             {
                 var wall=game.current.crowd.walls[region];
-                for (int z = Mathf.Max(0,Mathf.FloorToInt(wall.min.z+128)); z < Mathf.Min(256,Mathf.CeilToInt(wall.max.z+128)); z++)
-                    for (int x = Mathf.Max(0,Mathf.FloorToInt(wall.min.x+128)); x < Mathf.Min(256,Mathf.CeilToInt(wall.max.x+128)); x++)
-                        if (game.reveal_map || game.current_fog.is_explored(new Vector3(x-127.5f,0,z-127.5f)))
+                var minimum=world_map_pixel(wall.min);var bounds=world_bounds;
+                int maximum_x=Mathf.CeilToInt((wall.max.x-bounds.xMin)/bounds.width*256);
+                int maximum_z=Mathf.CeilToInt((wall.max.z-bounds.yMin)/bounds.height*256);
+                for (int z = Mathf.Max(0,minimum.y); z < Mathf.Min(256,maximum_z); z++)
+                    for (int x = Mathf.Max(0,minimum.x); x < Mathf.Min(256,maximum_x); x++)
+                        if (game.reveal_map || game.current_fog.is_explored(map_pixel_world(x,z)))
                             map_pixels[x+z*256] = game.obstacle_color(region);
             }
             for (int i = 0; i < game.current.total_count; i++)
             {
                 Vector3 p = game.current.positions[i];
                 if (game.current.health[i] <= 0 || (i >= game.current.soldier_count && !game.reveal_map && !game.current_fog.is_visible(p))) continue;
-                int x = Mathf.Clamp(Mathf.FloorToInt(p.x+128),0,255), z = Mathf.Clamp(Mathf.FloorToInt(p.z+128),0,255);
+                var pixel=world_map_pixel(p);int x = Mathf.Clamp(pixel.x,0,255), z = Mathf.Clamp(pixel.y,0,255);
                 map_pixels[x+z*256] = i < game.current.soldier_count ? new Color32(40,170,255,255) : game.current.exploder[i] ? new Color32(240,30,220,255) : new Color32(230,40,20,255);
             }
             // Boss intelligence is a marker only: never modifies fog or reveals nearby units.
@@ -303,11 +318,12 @@ namespace ZombieGame.Controls
                 foreach(var site in frontier.map.resource_sites)
                 {
                     if(!game.reveal_map&&!game.current_fog.is_explored(site.position))continue;
-                    int sx=Mathf.RoundToInt(site.position.x+128),sz=Mathf.RoundToInt(site.position.z+128);
+                    var bounds=world_bounds;
+                    int sx=Mathf.RoundToInt((site.position.x-bounds.xMin)/bounds.width*256),sz=Mathf.RoundToInt((site.position.z-bounds.yMin)/bounds.height*256);
                     Color32 color=site.tier==3?new Color32(90,245,225,255):site.tier==2?new Color32(240,185,65,255):new Color32(225,230,150,255);
                     for(int dz=-1;dz<=1;dz++)for(int dx=-1;dx<=1;dx++)if(sx+dx>=0&&sx+dx<256&&sz+dz>=0&&sz+dz<256)map_pixels[sx+dx+(sz+dz)*256]=color;
                 }
-            BossMapMarkers.draw(game.current,map_pixels);
+            BossMapMarkers.draw(game.current,map_pixels,world_bounds);
             minimap.SetPixels32(map_pixels); minimap.Apply(false,false);
         }
 
@@ -333,21 +349,22 @@ namespace ZombieGame.Controls
             outline(map_rect,new Color(.65f,.52f,.3f));
             if(!custom_command_panel)
             {
-                GUI.Label(new Rect(map_rect.x,map_rect.y-24*scale,map_rect.width,24*scale),"FULL MAP: 256 x 256 tiles");
+                GUI.Label(new Rect(map_rect.x,map_rect.y-24*scale,map_rect.width,24*scale),$"FULL MAP: {world_bounds.width:0} x {world_bounds.height:0} tiles");
                 GUI.Label(new Rect(map_rect.x,map_rect.yMax+3,map_rect.width,25*scale),"Left: camera | Right: move units");
             }
             Camera camera = Camera.main;
             Vector3 focus = game.camera_focus;
+            var bounds=world_bounds;
             float half_z = camera.orthographicSize, half_x = half_z*camera.aspect;
             Rect camera_box = Rect.MinMaxRect(
-                map_rect.x+(focus.x-half_x+128)/256*map_rect.width,
-                map_rect.y+(128-focus.z-half_z)/256*map_rect.height,
-                map_rect.x+(focus.x+half_x+128)/256*map_rect.width,
-                map_rect.y+(128-focus.z+half_z)/256*map_rect.height);
+                map_rect.x+(focus.x-half_x-bounds.xMin)/bounds.width*map_rect.width,
+                map_rect.y+(bounds.yMax-focus.z-half_z)/bounds.height*map_rect.height,
+                map_rect.x+(focus.x+half_x-bounds.xMin)/bounds.width*map_rect.width,
+                map_rect.y+(bounds.yMax-focus.z+half_z)/bounds.height*map_rect.height);
             camera_box = Rect.MinMaxRect(Mathf.Max(map_rect.x,camera_box.x),Mathf.Max(map_rect.y,camera_box.y),Mathf.Min(map_rect.xMax,camera_box.xMax),Mathf.Min(map_rect.yMax,camera_box.yMax));
             outline(camera_box,Color.yellow,1);
             draw_attack_alerts();
-            Vector3 left_top = camera.WorldToScreenPoint(new Vector3(-128,0,128)), right_bottom = camera.WorldToScreenPoint(new Vector3(128,0,-128));
+            Vector3 left_top = camera.WorldToScreenPoint(new Vector3(bounds.xMin,0,bounds.yMax)), right_bottom = camera.WorldToScreenPoint(new Vector3(bounds.xMax,0,bounds.yMin));
             if(!custom_command_panel)outline(Rect.MinMaxRect(left_top.x,Screen.height-left_top.y,right_bottom.x,Screen.height-right_bottom.y),Color.white);
             if (dragging)
             {
@@ -359,11 +376,12 @@ namespace ZombieGame.Controls
         private void draw_attack_alerts()
         {
             var area=map_rect;
+            var bounds=world_bounds;
             float radius=Mathf.Lerp(13,4,Mathf.Repeat(Time.unscaledTime,1))*scale;
             foreach(var alert in game.current.attack_alerts)
             {
                 if(alert.expires<=Time.time)continue;
-                Vector2 center=new Vector2(area.x+(alert.position.x+128)/256*area.width,area.y+(128-alert.position.z)/256*area.height);
+                Vector2 center=new Vector2(area.x+(alert.position.x-bounds.xMin)/bounds.width*area.width,area.y+(bounds.yMax-alert.position.z)/bounds.height*area.height);
                 var frame=Rect.MinMaxRect(Mathf.Max(area.x,center.x-radius),Mathf.Max(area.y,center.y-radius),Mathf.Min(area.xMax,center.x+radius),Mathf.Min(area.yMax,center.y+radius));
                 outline(frame,new Color(1,.08f,.04f,.95f),2*scale);
             }

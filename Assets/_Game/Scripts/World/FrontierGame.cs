@@ -65,24 +65,34 @@ namespace ZombieGame.World
             var arguments=System.Environment.GetCommandLineArgs();
             int style_argument=System.Array.IndexOf(arguments,"-artStyle");
             if(style_argument>=0&&style_argument+1<arguments.Length&&int.TryParse(arguments[style_argument+1],out int requested_style))VisualStyles.select(requested_style);
-            if(coastal_skirmish){session_config=CoastalSessionConfig.load();session=new CoastalSession();coastal_defense=true;}
-            map=new FrontierMap(coastal_defense,session_config);
+            if(defense_scenario)initialize_scenario_session();
+            else if(coastal_skirmish){session_config=CoastalSessionConfig.load();session=new CoastalSession();coastal_defense=true;}
+            map=new FrontierMap(coastal_defense,session_config,defense_scenario);
             landscape=new FrontierLandscape(map,transform,landscape_shader);
-            var navigation_regions=coastal_defense?map.regions.FindAll(region=>region.kind!=LandscapeKind.Building).ConvertAll(region=>region.bounds).ToArray():map.blockers;
+            if(defense_scenario)
+            {
+                var environment=GetComponentInChildren<FrozenEnvironmentView>();
+                environment.set_crop_shadows(defense_scenario.crop_cast_shadows);
+                environment.apply_shadow_settings(defense_scenario.shadow_distance,defense_scenario.shadow_cascades,defense_scenario.shadow_resolution);
+            }
+            var navigation_regions=defense_scenario?System.Array.Empty<Bounds>():coastal_defense?map.regions.FindAll(region=>region.kind!=LandscapeKind.Building).ConvertAll(region=>region.bounds).ToArray():map.blockers;
             var gate_bounds=coastal_defense?map.regions.FindAll(region=>BattleSimulation.is_friendly_gate(region.label)).ConvertAll(region=>region.bounds).ToArray():null;
-            current=new BattleSimulation(map.spawns,FrontierMap.HUMAN_CAPACITY,map.explosive,navigation_regions,initial_humans:map.initial_humans,unit_ids:map.unit_ids,infection_reserve:1024,friendly_gates:gate_bounds);
+            current=new BattleSimulation(map.spawns,FrontierMap.HUMAN_CAPACITY,map.explosive,navigation_regions,initial_humans:map.initial_humans,unit_ids:map.unit_ids,infection_reserve:defense_scenario?defense_scenario.infection_reserve:1024,friendly_gates:gate_bounds);
+            if(defense_scenario)initialize_scenario_navigation();
             economy=new FrontierEconomy(JsonUtility.FromJson<FrontierEconomyConfig>(Resources.Load<TextAsset>("FrontierEconomy").text));
+            if(defense_scenario)initialize_scenario_economy();
             current.try_supply_defense_shot=stats=>
             {
                 if(economy.gunpowder<stats.ammunition_cost)return false;
                 economy.gunpowder-=stats.ammunition_cost;return true;
             };
             var production_config=JsonUtility.FromJson<HeadquartersConfig>(Resources.Load<TextAsset>("HeadquartersProduction").text);
-            if(coastal_skirmish)filter_imported_recipes(production_config);
+            if(defense_scenario)filter_scenario_recipes(production_config);
+            else if(coastal_skirmish)filter_imported_recipes(production_config);
             production=new HeadquartersProduction(economy,production_config);
             supply=new AmmunitionSupply(economy);supply.depots.Add(map.initial_depot);
             current_fog=new CombatFog(fog_template,.08f,true);
-            current_fog.explore_area(new Rect(-124,-124,76,76));
+            current_fog.explore_area(defense_scenario?new Rect(map.base_center.x-22,map.base_center.z-27,44,49):new Rect(-124,-124,76,76));
             current_fog.update_visibility(current);current.player_visibility=current_fog.is_visible;
             battle_view=new FrontierBattleView(current.total_count,transform,landscape_shader,imported_roster,coastal_skirmish);
             current.projectile_muzzle=index=>battle_view.projectile_origin(current,index);
@@ -102,18 +112,20 @@ namespace ZombieGame.World
             UnityEngine.AI.NavMesh.pathfindingIterationsPerFrame=siege.config.navigation_iterations_per_frame;
             input.intercept_world_input=construction.handle_input;
             hud=new FrontierHud(this);
-            configure_lighting();
-            if(coastal_defense)CoastalLighting.configure(transform);
-            Camera.main.orthographicSize=coastal_defense&&!coastal_skirmish?34:24;focus_camera(coastal_defense?new Vector3(-91,0,-93):new Vector3(-99,0,-92));
+            if(!defense_scenario){configure_lighting();if(coastal_defense)CoastalLighting.configure(transform);}
+            Camera.main.orthographicSize=defense_scenario?defense_scenario.initial_camera_size:coastal_defense&&!coastal_skirmish?34:24;
+            focus_camera(defense_scenario?defense_scenario.initial_camera_focus:coastal_defense?new Vector3(-91,0,-93):new Vector3(-99,0,-92));
             if(coastal_defense&&System.Array.IndexOf(arguments,"-coastalPaused")>=0){paused=true;Time.timeScale=0;}
             if(coastal_skirmish){paused=true;Time.timeScale=0;validate_imported_units();}
-            Debug.Log($"[Frontier] READY map=256x256 soldiers={current.living_soldiers} reserve={current.reserve_soldiers} zombies={current.zombie_count} blockers={map.blockers.Length} framebuffer={Screen.width}x{Screen.height}; eight zombie roles; new role balance provisional");
+            Debug.Log($"[Frontier] READY map={playable_bounds.width}x{playable_bounds.height} soldiers={current.living_soldiers} reserve={current.reserve_soldiers} zombies={current.zombie_count} blockers={map.blockers.Length} framebuffer={Screen.width}x{Screen.height}; shared authored balance");
         }
         public void focus_camera(Vector3 point)
         {
-            camera_focus=new Vector3(Mathf.Clamp(point.x,-128,128),0,Mathf.Clamp(point.z,-128,128));
-            Camera.main.transform.rotation=Quaternion.Euler(VisualStyles.current.camera_pitch,VisualStyles.current.camera_yaw,0);
-            Camera.main.transform.position=camera_focus-Camera.main.transform.forward*180;
+            var bounds=playable_bounds;
+            camera_focus=new Vector3(Mathf.Clamp(point.x,bounds.xMin,bounds.xMax),0,Mathf.Clamp(point.z,bounds.yMin,bounds.yMax));
+            Camera.main.transform.rotation=Quaternion.Euler(defense_scenario?defense_scenario.camera_pitch:VisualStyles.current.camera_pitch,defense_scenario?defense_scenario.camera_yaw:VisualStyles.current.camera_yaw,0);
+            float distance=defense_scenario?Mathf.Max(50,Camera.main.orthographicSize*2.3f):180;
+            Camera.main.transform.position=camera_focus-Camera.main.transform.forward*distance;
         }
         private void Update()
         {
@@ -136,8 +148,10 @@ namespace ZombieGame.World
             if(Input.GetKeyDown(KeyCode.V))reveal_map=!reveal_map;
             if(Input.GetKeyDown(KeyCode.C)){Camera.main.orthographicSize=22;focus_camera(input.selection_center());}
             if(Input.GetKeyDown(KeyCode.Home)){Camera.main.orthographicSize=27;focus_camera(map.base_center);}
-            if(Input.GetKeyDown(KeyCode.F)){Camera.main.orthographicSize=140;focus_camera(Vector3.zero);}
-            Camera.main.orthographicSize=Mathf.Clamp(Camera.main.orthographicSize-Input.mouseScrollDelta.y*2,8,coastal_skirmish?42:145);
+            if(Input.GetKeyDown(KeyCode.F)){Camera.main.orthographicSize=defense_scenario?42:140;focus_camera(Vector3.zero);}
+            float previous_zoom=Camera.main.orthographicSize;
+            Camera.main.orthographicSize=Mathf.Clamp(previous_zoom-Input.mouseScrollDelta.y*2,8,coastal_skirmish?42:145);
+            if(defense_scenario&&!Mathf.Approximately(previous_zoom,Camera.main.orthographicSize))focus_camera(camera_focus);
             Vector2 pan=new Vector2((Input.GetKey(KeyCode.RightArrow)?1:0)-(Input.GetKey(KeyCode.LeftArrow)?1:0),
                 (Input.GetKey(KeyCode.UpArrow)?1:0)-(Input.GetKey(KeyCode.DownArrow)?1:0));
             Vector2 pointer=has_gui_pointer?gui_pointer:(Vector2)Input.mousePosition;
@@ -167,12 +181,17 @@ namespace ZombieGame.World
         {
             construction?.cancel_preview();
             headquarters_selected=true;System.Array.Clear(current.selected,0,current.selected.Length);
-            input.cancel_command();if(focus){focus_camera(map.headquarters_position);Camera.main.orthographicSize=20;}
+            input.cancel_command();if(focus)
+            {
+                if(defense_scenario)Camera.main.orthographicSize=20;
+                focus_camera(map.headquarters_position);Camera.main.orthographicSize=20;
+            }
         }
         private bool try_select_headquarters(Vector2 mouse)
         {
             var ray=Camera.main.ScreenPointToRay(new Vector3(mouse.x,Screen.height-mouse.y,0));
-            if(!new Bounds(map.headquarters_position+Vector3.up*2.5f,new Vector3(10,5,8)).IntersectRay(ray))return false;
+            var bounds=defense_scenario?structures.headquarters.bounds:new Bounds(map.headquarters_position+Vector3.up*2.5f,new Vector3(10,5,8));
+            if(!bounds.IntersectRay(ray))return false;
             select_headquarters();return true;
         }
         public bool finish_production(HeadquartersRecipe recipe)

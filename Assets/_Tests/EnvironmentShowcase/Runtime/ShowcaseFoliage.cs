@@ -540,6 +540,22 @@ namespace ZombieGame.Tests.EnvironmentShowcase
             }
         }
 
+        /// <summary>Read-only export of the exact deterministic placements and native LOD bands for a production snapshot.</summary>
+        public ZombieGame.Presentation.FrozenEnvironmentView.Batch[] snapshot_batches()
+        {
+            var snapshot = new ZombieGame.Presentation.FrozenEnvironmentView.Batch[batches.Count];
+            for(int index = 0; index < batches.Count; index++)
+            {
+                var batch = batches[index];
+                snapshot[index] = new ZombieGame.Presentation.FrozenEnvironmentView.Batch {
+                    source_id = batch.part.source_id,mesh = batch.part.mesh,material = batch.part.material,
+                    submesh = batch.part.submesh_index,matrices = (Matrix4x4[])batch.matrices.Clone(),bounds = batch.bounds,
+                    draw_distance = batch.draw_distance,lod_height = batch.lod_height,lod_min_height = batch.part.lod_min_height,
+                    lod_max_height = batch.part.lod_max_height,grass = batch.is_grass,tree = batch.is_tree};
+            }
+            return snapshot;
+        }
+
         [Serializable] public sealed class SourceVisibilityProbe
         {
             public string source;

@@ -55,10 +55,19 @@ namespace ZombieGame.World
         public readonly bool imported_only;
         public readonly int initial_humans;
 
-        public FrontierMap(bool coastal=false,CoastalSessionConfig session=null)
+        public FrontierMap(bool coastal=false,CoastalSessionConfig session=null,DefenseScenario scenario=null)
         {
+            this.scenario=scenario;
             this.coastal=coastal;
             imported_only=session!=null;initial_humans=session?.initial_humans??SOLDIERS;
+            if(scenario)
+            {
+                scenario.validate();
+                base_center=scenario.base_center;headquarters_position=scenario.headquarters_position;initial_depot=scenario.initial_depot;
+                spawns=new Vector3[HUMAN_CAPACITY+session.zombies];explosive=new bool[spawns.Length];unit_ids=new string[spawns.Length];
+                populate_scenario_regions(scenario);populate_scenario_spawns(scenario);
+                resource_sites=Array.Empty<ResourceSite>();blockers=regions.ConvertAll(region=>region.bounds).ToArray();return;
+            }
             if(coastal)
             {
                 spawns=new Vector3[HUMAN_CAPACITY+(session?.zombies??2000)];explosive=new bool[spawns.Length];unit_ids=new string[spawns.Length];
@@ -106,6 +115,8 @@ namespace ZombieGame.World
 
         public bool blocked(Vector3 point,float clearance = .7f)
         {
+            if(scenario && (point.x<scenario.world_bounds.xMin+clearance || point.x>scenario.world_bounds.xMax-clearance ||
+                point.z<scenario.world_bounds.yMin+clearance || point.z>scenario.world_bounds.yMax-clearance)) return true;
             if(Mathf.Abs(point.x)>127-clearance || Mathf.Abs(point.z)>127-clearance) return true;
             foreach(var region in regions)
                 if(point.x>region.bounds.min.x-clearance && point.x<region.bounds.max.x+clearance &&

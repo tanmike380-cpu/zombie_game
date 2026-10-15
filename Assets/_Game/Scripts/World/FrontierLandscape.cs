@@ -27,6 +27,20 @@ namespace ZombieGame.World
         public FrontierLandscape(FrontierMap map, Transform parent, Shader shader)
         {
             imported_architecture=map.coastal;
+            if(map.scenario)
+            {
+                root=Object.Instantiate(map.scenario.environment_prefab,parent);
+                root.name="Frozen "+map.scenario.version+" environment — whole translation only";
+                root.transform.localPosition=map.scenario.environment_translation;
+                foreach(var entry in map.scenario.regions)
+                {
+                    if(entry.kind!=LandscapeKind.Building)continue;
+                    var model=root.transform.Find(entry.model_path);
+                    if(!model)throw new System.InvalidOperationException("Frozen combat model missing: "+entry.model_path);
+                    building_models.Add(entry.bounds,model.gameObject);
+                }
+                return;
+            }
             environment_art=new FreeEnvironmentArt(shader);
             root=new GameObject("Frontier landscape - Eastern settlement");root.transform.SetParent(parent,false);
             var primitive=GameObject.CreatePrimitive(PrimitiveType.Cube);cube=primitive.GetComponent<MeshFilter>().sharedMesh;
@@ -67,6 +81,7 @@ namespace ZombieGame.World
         public readonly Dictionary<Bounds,GameObject> building_models=new Dictionary<Bounds,GameObject>();
         public GameObject create_facility(string id,Vector2 size,Shader shader)
         {
+            if(root.GetComponent<FrozenEnvironmentView>())throw new System.InvalidOperationException("Frozen defense scenario has no approved new-building catalog.");
             if(imported_architecture)return ImportedArchitecture.place(new LandscapeRegion(0,0,size.x,size.y,3,LandscapeKind.Building,id=="food"?"PASTURE":id=="wood"?"LUMBER CAMP":"WORKSHOP"),root.transform);
             var model=new GameObject("Placed "+id);model.transform.SetParent(root.transform,false);
             build_facility_geometry(new Bounds(new Vector3(0,1.5f,0),new Vector3(size.x,3,size.y)),id);
@@ -333,6 +348,6 @@ namespace ZombieGame.World
             var mesh=new Mesh{name="Shared irregular foliage and stone"};mesh.SetVertices(vertices);mesh.SetTriangles(triangles,0);mesh.RecalculateNormals();return mesh;
         }
         public void Dispose()
-        { root.SetActive(false);layered_terrain.Dispose();Object.Destroy(root);environment_art.Dispose();foreach(var mesh in owned_meshes) Object.Destroy(mesh);foreach(var material in owned_materials) Object.Destroy(material); }
+        { root.SetActive(false);layered_terrain?.Dispose();Object.Destroy(root);environment_art?.Dispose();foreach(var mesh in owned_meshes) Object.Destroy(mesh);foreach(var material in owned_materials) Object.Destroy(material); }
     }
 }

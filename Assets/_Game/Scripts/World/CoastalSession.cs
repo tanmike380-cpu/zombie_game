@@ -13,12 +13,15 @@ namespace ZombieGame.World
             var asset=Resources.Load<TextAsset>("CoastalSkirmish");
             if(asset==null)throw new InvalidOperationException("Missing CoastalSkirmish scenario");
             var config=JsonUtility.FromJson<CoastalSessionConfig>(asset.text);
-            int total=0;if(config.wave_counts!=null)foreach(int count in config.wave_counts)
+            config.validate();return config;
+        }
+        public void validate()
+        {
+            int total=0;if(wave_counts!=null)foreach(int count in wave_counts)
             {if(count<=0)throw new InvalidOperationException("Coastal waves must have positive populations");total+=count;}
-            if(config.initial_humans<4||config.initial_humans>FrontierMap.HUMAN_CAPACITY||config.zombies<=0||total!=config.zombies||
-                config.preparation_seconds<0||config.wave_interval_seconds<=0)
+            if(initial_humans<4||initial_humans>FrontierMap.HUMAN_CAPACITY||zombies<=0||total!=zombies||
+                preparation_seconds<0||wave_interval_seconds<=0)
                 throw new InvalidOperationException("Invalid CoastalSkirmish population/pacing");
-            return config;
         }
     }
     public enum CoastalOutcome { Preparing, Playing, Won, Lost }
