@@ -1,5 +1,26 @@
 # Vision 1 地图制作和打开说明
 
+## 当前日间修订：连片森林 v3（2026-10-15）
+
+用户查看晨间实拍后要求继续优化：扩大连续森林，用林间自然空地把地图分为数段通道，多用 Unity 的现有能力。本轮延用 Terrain 六层绘制、GPU 网格实例化、分块剔除及原生 LOD，不更换管线、不新造树或建筑。Road 仍全图为零。
+
+- 当前入口仍是下文的 `EnvironmentVision.unity` 和 Open saved Vision review and Play；`VisionShowcaseConfig` 现在引用独立 `VisionWildernessV3.asset`、`VisionConceptV3.asset`、`VisionConnectedForestV3.asset`。
+- 实际树数由晨间21棵变为92棵，42棵位于中北区域。森林核心掩码5368m²，实际树位的保守冠包络覆盖4628m²；后者不是叶片实际覆盖率。没有用180棵预算冒充实际树数。
+- 7栋建筑集中至西南聚落，3组矿簇置于不同小空地；16件模型仅整根平移，源比例、旋转、材质和子件相对变换未改。草、蕨、灌木源和总预算保持。
+- 四条共享干段的林间通道核心宽8/9m。真实播放器2m栅格4/4端点连通；0.5m中心线及五点横向带采样均无不平点、无建筑足迹相交。树冠离通道额外余量最小0.923m，离实际建筑OBB的额外余量最小0.121m。仅为环境布置检查，不是NavMesh验收；树林还没接正式战斗阻挡或伐木经济。
+- 修复原生Oak在Prefab资产上未解析LOD的问题，明确匹配36＋36子件及5303＋842三角，未解析数0，不同时提交同一树的两级。近／中／远树提交三角约275756／428437／77464（分块AABB保守提交，未含阴影等额外pass），不是近中远都画两级。
+- M2 Pro、1440×900、60fps限帧，三组森林取景各180帧，median约16.67–16.74ms、p95约17.57–17.58ms。含限帧／等待，纯环境不代表万人战斗性能。
+- 平地、无河、Road零、闭合水池、阴影、16件源与占地、原生LOD、森林通道检查通过。整体草贡献0.00022518仍低于原0.0003门槛，故总报告仍FAIL、美术未验收；不降低阈值。不把树变多说成草丛／水岸素材已经齐全。
+- 使用本轮代码重建原Config播放器后，旧flat全检查、旧routes欧洲区域回归均PASS；57条共享数值断言、27项概念文档测试PASS。未声称本轮重跑了旧五模式全部区域。正式环境Blender源SHA仍为cf83…，`Assets/_Game`、`balance`与模型源无改动。GUI Editor 已重新打开当前预览，帧推进证明及零Console错误另见摘要。
+
+真实播放器证据：`Builds/ArtReview/EnvironmentShowcase/vision-connected-forest-v3/`。同视角旧版仍在 `vision-water-v3/`；失败v1（2/4连通和未解析LOD）保留于 `Builds/Builds/ArtReview/EnvironmentShowcase/vision-connected-forest-v1/`，v2（技术连通但画面过空）保留于 `Builds/ArtReview/EnvironmentShowcase/vision-connected-forest-v2/`。v1相对参数被播放器从Builds工作目录解释，故有重复Builds目录；不删除或冒称v1通过。
+
+菜单 Apply compact settlement and connected forest v3 可重建当前配置；Restore pre-compact Vision preset 恢复原聚落＋v2林；Restore previous sparse forest composition 使用独立SparseReview克隆恢复原21树分布，不清掉保存的v2配置。旧routes／cliffs／concept／dark／flat资产均不被覆盖。
+
+![北部森林与池塘](../../art/environment/inspection/vision-connected-forest-v3/forest-middle.png)
+
+![聚落与林间空地](../../art/environment/inspection/vision-connected-forest-v3/settlement-middle.png)
+
 ## 开发入口
 
 本轮以 `/Users/tankaixi/Documents/ChatGPT/zombie game` 为唯一日常开发目录，分支为 `vision-1`。用户要求的显示名称是“Vision 1”；Git 不支持空格，因此分支使用连字符。旧目录 `/Users/tankaixi/zombie_game` 和 GitHub `main` 不删除、不覆盖、不合并。

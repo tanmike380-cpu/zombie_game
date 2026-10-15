@@ -4,6 +4,8 @@
 
 新场景 `Scenes/EnvironmentVision.unity`，菜单 `Zombie Game → Environment Showcase → Vision-1 → Open saved Vision review and Play`。本机 `Builds/EnvironmentVision.app` 默认就是新版；旧 `EnvironmentShowcase.app` 入口及旧预设继续保留。Tab 切聚落／海岸／水池／全景，1／2／3及滚轮缩放，H 隐藏说明。
 
+2026-10-15日间新修订为独立紧凑聚落＋连片森林v3：实际92棵原生Oak，4条共享干段的8/9m自然空地通道，Terrain六层／Road零、实例化、分块剔除与真实原生LOD。旧稀疏布局及v2有菜单回退，不覆盖旧版。树林目前只做布置和冠幅净空，不接战斗阻挡／经济；草像素原阈值仍未通过，不宣称美术验收。实拍与完整检查见下方Vision地图记录顶部。
+
 本轮补充正式环境源的草蕨和原作者完整橡树 LOD、投地阴影、草土自然分区、原建筑及金／铁／石陈列。原五组布局与共享数值检查通过，但新草整体可见贡献不足，**新地图不是全部技术通过／美术验收完成**。细节、来源、失败证据与打开说明见 [Vision 1 地图记录](../../../docs/dev/VISION_1_MAP_REVIEW.md)。它是独立128m美术实验，不修改正式地图、导航、经济或单位表现。
 
 ## 冷暗荒野＋原建筑与矿脉（dark-v1，待玩家美术评审）
