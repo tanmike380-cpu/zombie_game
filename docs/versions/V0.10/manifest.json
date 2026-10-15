@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "display_version": "V0.10",
+  "status": "integration_in_progress",
+  "branch": "codex/v0.10",
+  "baseline_tag": "v0.10.0-baseline",
+  "baseline_commit": "63946b11b54fe85f9f92d1ecfca542531bb159aa",
+  "deadline_local": "2026-10-16T09:00:00+08:00",
+  "frozen_git_trees": {
+    "Assets/_Game": "e31e88d79c01482658615ca26c969b38a474080a",
+    "Assets/_Tests/EnvironmentShowcase": "01b25eb3cab8153171054074f447ae4f4eb09ccb",
+    "balance": "abea8332b8a5ee3ef613cf20d11931b9f417ee2d",
+    "art": "cc35b0293e1feddf6bc0523280a368239f7ba0c7"
+  },
+  "frozen_sources": {
+    "general_master_sha256": "69704fa392d17bcc253d669699b0001031c91884cf8fdc544d582e00d3e55d2d",
+    "farm_fbx_sha256": "3ee3c15e36456b3a199321ec22bd597dd85d2f0940dac15981354e1548996a8e",
+    "wall_fbx_sha256": "47b89d7734871bbe0dd000cdb0eebd894e13d43e69698e52bd6cd8ce0ee05e2d",
+    "environment_master_sha256": "cf8310ae2f8d643653fd8cf9e96ef7dea0570f586a76e2d0f62911c7d3803301",
+    "balance_sha256": "4ac06d0483015a916a3440a19ee82fc5979ccae72831ceede74e83a5e0c9c38c"
+  },
+  "handoffs": ["art/blender_master.json", "art/master_art_handoff.json", "art/fortified_city_handoff.json", "art/grid_footprint_handoff.json"],
+  "art_review_scene": "Assets/_Tests/EnvironmentShowcase/Scenes/EnvironmentDenseVision.unity",
+  "playable_scene": null,
+  "release_tag": null,
+  "known_failed_baseline_checks": ["Wild-grass aggregate pixel contribution remains below0.0003"],
+  "unrelated_working_changes_preserved": ["art/concepts/tripo/buildings/zombie/", "Assets/_Recovery/"]
+}

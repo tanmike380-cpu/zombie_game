@@ -1,5 +1,19 @@
 # Project rules
 
+## Versioned delivery and frozen baselines
+
+- User adopted version-based iteration on 2026-10-16. Current integration work is
+  V0.10 on `codex/v0.10`; records and the launch entry live in `docs/versions/V0.10/`.
+- `v0.10.0-baseline` freezes commit `63946b1` before combat integration. Never move or
+  overwrite a frozen tag. Preserve accepted older scenes, source exports and handoffs.
+- Keep one project checkout and normal source folders; do not duplicate the entire
+  codebase into each version folder. A version contains its Git snapshot, manifest,
+  source/animation inventory, changes, test evidence, known issues and launch instructions.
+- Implement new scenarios as opt-in data/integration around existing production systems;
+  do not recreate the battle controller or modify the frozen art review to add gameplay.
+- Freeze a tested iteration with a new immutable version tag. A preview with known
+  limitations must say so; a version number alone never means art/gameplay acceptance.
+
 ## Required project skills and specialists
 
 - Before every project development task, read `.agents/skills/zombie-game-dev/SKILL.md`.
