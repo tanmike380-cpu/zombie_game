@@ -2,27 +2,27 @@
   "schema_version": 1,
   "status": "Source frozen; Unity import and actual player visuals pending",
   "source_blend": "art/Blender主文件/ZombieGame.blend",
-  "source_before_sha256": "b82b452cd7c8fa994a176b9209c2aa4dc3f470e2e6e6e9b7912d035e4e37c3ca",
-  "master_sha256": "468a608185ce139913f1b79e04f5e20d0a7b5662e248d32b6ab28900c096e866",
-  "recovery_snapshot": "Builds/ArtReview/GridFootprints/master-before-grid-20261016-012154.blend",
+  "source_before_sha256": "5ea9a85892ff9449d72833c5297c8b228cd692a476c8196c4c6bff53090031d6",
+  "master_sha256": "69704fa392d17bcc253d669699b0001031c91884cf8fdc544d582e00d3e55d2d",
+  "recovery_snapshot": "Builds/ArtReview/GridFootprints/GoldenCornerFarm-v1/master-before-grid-20261016-025446.blend",
   "protected_counts": {
-    "objects": 442,
-    "meshes": 282,
+    "objects": 464,
+    "meshes": 284,
     "materials": 85,
     "images": 46,
     "actions": 0,
-    "collections": 24,
+    "collections": 26,
     "lights": 1,
     "cameras": 1,
     "worlds": 1,
     "armatures": 14,
     "scenes": 1
   },
-  "objects_after": 464,
+  "objects_after": 486,
   "collection": "建筑整格地块 · 牧场14＋基地12＋工坊8",
   "gallery": {
-    "collection": "清爽连片麦田 · 2×2评审",
-    "root": "清爽麦田2×2 · 展示锚点",
+    "collection": "青黄麦田右上屋 · 2×2评审",
+    "root": "青黄满铺麦田2×2 · 展示锚点",
     "grid_count": [
       2,
       2
@@ -85,11 +85,13 @@
     "6b804e5dbfb12265a35f0cbfa865ae9eb9c2960ec4c5a0fb513d3f097637b821",
     "f83c1ebc14407f62c635a332c2c20c0a36300822ee161599517bc39d626ae4b1",
     "b82b452cd7c8fa994a176b9209c2aa4dc3f470e2e6e6e9b7912d035e4e37c3ca",
-    "468a608185ce139913f1b79e04f5e20d0a7b5662e248d32b6ab28900c096e866"
+    "468a608185ce139913f1b79e04f5e20d0a7b5662e248d32b6ab28900c096e866",
+    "5ea9a85892ff9449d72833c5297c8b228cd692a476c8196c4c6bff53090031d6",
+    "69704fa392d17bcc253d669699b0001031c91884cf8fdc544d582e00d3e55d2d"
   ],
   "assets": [
     {
-      "id": "Pasture14",
+      "id": "Pasture14_GoldenCorner",
       "source": "farmhouse",
       "grid": [
         14,
@@ -97,9 +99,9 @@
       ],
       "model_depth_m": 13,
       "ground_cover_native_z": 0.015,
-      "root": "Pasture14Clean · 展示锚点",
-      "architecture": "Pasture14Clean_architecture",
-      "ground": "Pasture14Clean_ground",
+      "root": "Pasture14GoldenCorner · 展示锚点",
+      "architecture": "Pasture14GoldenCorner_architecture",
+      "ground": "Pasture14GoldenCorner_ground",
       "source_mesh": "tripo_mesh_87142fc2",
       "source_mesh_sha256": "25e5cbffb844fe55cc35cc78ff1ce15a5f80e38d2aea33ba5fb8d94583dd6a3a",
       "uniform_source_scale": 13.006350757205666,
@@ -132,7 +134,7 @@
       ],
       "grid_ground_surface_m": 0,
       "below_ground_geometry_m": -0.195095261358085,
-      "source_collection": "农田整格 · 仅小屋与连续麦田",
+      "source_collection": "农田整格 · 青黄满铺麦田＋右上小屋",
       "edges": {
         "grid": [
           14,
@@ -148,15 +150,15 @@
         "passed": true
       },
       "export": {
-        "file": "art/models/grid-footprints/Pasture14/Pasture14.fbx",
-        "sha256": "f8de881951e71590506ce42fcbddc5b8dfaed368b3cafd49db174d2753d0d895",
+        "file": "art/models/grid-footprints/Pasture14_GoldenCorner/Pasture14_GoldenCorner.fbx",
+        "sha256": "3ee3c15e36456b3a199321ec22bd597dd85d2f0940dac15981354e1548996a8e",
         "scale_baked": true,
         "unity_placement_scale": 1,
         "materials": [
           {
-            "name": "Pasture14_OriginalMaterial",
+            "name": "Pasture14_GoldenCorner_OriginalMaterial",
             "source_material": "tripo_mat_87142fc2",
-            "base_color_texture": "art/models/grid-footprints/Pasture14/wall-original-03.jpg",
+            "base_color_texture": "art/models/grid-footprints/Pasture14_GoldenCorner/wall-original-03.jpg",
             "base_color_sha256": "aa2fd9ac9f922b0ab48c18bd72e3c15a4d1cd440bfeff7867f9eb3d8d336c0a1",
             "base_color_multiplier": [
               1,
@@ -212,22 +214,20 @@
             "metallic": 0,
             "normal_strength": 0.35,
             "uv_period_m": 2,
-            "note": "Existing verified seamless PBR soil. No generated height/AO or invented texture.",
-            "alpha_mode": "opaque",
-            "double_sided": false
+            "note": "Existing verified seamless PBR soil. No generated height/AO or invented texture."
           },
           {
-            "name": "Crop natural tone 0",
+            "name": "WheatGoldenHead_0",
             "base_color_texture": null,
             "base_color_multiplier": [
-              0.17000000178813934,
-              0.15000000596046448,
-              0.027000000700354576,
+              0.7799999713897705,
+              0.5099999904632568,
+              0.08500000089406967,
               1.0
             ],
             "metallic": 0.0,
-            "roughness": 0.4000000059604645,
-            "smoothness": 0.5999999940395355,
+            "roughness": 0.949999988079071,
+            "smoothness": 0.050000011920928955,
             "normal_map": null,
             "roughness_map": null,
             "alpha_mode": "opaque",
@@ -235,107 +235,17 @@
             "note": "Existing approved crop constant-color material, no recoloring"
           },
           {
-            "name": "Crop natural tone 1",
+            "name": "WheatGoldenHead_1",
             "base_color_texture": null,
             "base_color_multiplier": [
-              0.25999999046325684,
-              0.23000000417232513,
-              0.041999999433755875,
-              1.0
-            ],
-            "metallic": 0.0,
-            "roughness": 0.4000000059604645,
-            "smoothness": 0.5999999940395355,
-            "normal_map": null,
-            "roughness_map": null,
-            "alpha_mode": "opaque",
-            "double_sided": true,
-            "note": "Existing approved crop constant-color material, no recoloring"
-          },
-          {
-            "name": "Crop natural tone 2",
-            "base_color_texture": null,
-            "base_color_multiplier": [
-              0.3400000035762787,
-              0.30000001192092896,
-              0.054999999701976776,
-              1.0
-            ],
-            "metallic": 0.0,
-            "roughness": 0.4000000059604645,
-            "smoothness": 0.5999999940395355,
-            "normal_map": null,
-            "roughness_map": null,
-            "alpha_mode": "opaque",
-            "double_sided": true,
-            "note": "Existing approved crop constant-color material, no recoloring"
-          },
-          {
-            "name": "Crop natural tone 3",
-            "base_color_texture": null,
-            "base_color_multiplier": [
-              0.4300000071525574,
-              0.36000001430511475,
-              0.07400000095367432,
-              1.0
-            ],
-            "metallic": 0.0,
-            "roughness": 0.4000000059604645,
-            "smoothness": 0.5999999940395355,
-            "normal_map": null,
-            "roughness_map": null,
-            "alpha_mode": "opaque",
-            "double_sided": true,
-            "note": "Existing approved crop constant-color material, no recoloring"
-          },
-          {
-            "name": "Crop natural tone 4",
-            "base_color_texture": null,
-            "base_color_multiplier": [
-              0.44999998807907104,
-              0.30000001192092896,
-              0.05000000074505806,
-              1.0
-            ],
-            "metallic": 0.0,
-            "roughness": 0.4000000059604645,
-            "smoothness": 0.5999999940395355,
-            "normal_map": null,
-            "roughness_map": null,
-            "alpha_mode": "opaque",
-            "double_sided": true,
-            "note": "Existing approved crop constant-color material, no recoloring"
-          },
-          {
-            "name": "Crop natural tone 5",
-            "base_color_texture": null,
-            "base_color_multiplier": [
-              0.550000011920929,
-              0.38999998569488525,
-              0.07999999821186066,
-              1.0
-            ],
-            "metallic": 0.0,
-            "roughness": 0.4000000059604645,
-            "smoothness": 0.5999999940395355,
-            "normal_map": null,
-            "roughness_map": null,
-            "alpha_mode": "opaque",
-            "double_sided": true,
-            "note": "Existing approved crop constant-color material, no recoloring"
-          },
-          {
-            "name": "Crop natural tone 6",
-            "base_color_texture": null,
-            "base_color_multiplier": [
-              0.6499999761581421,
-              0.4699999988079071,
+              0.8600000143051147,
+              0.6000000238418579,
               0.11999999731779099,
               1.0
             ],
             "metallic": 0.0,
-            "roughness": 0.4000000059604645,
-            "smoothness": 0.5999999940395355,
+            "roughness": 0.949999988079071,
+            "smoothness": 0.050000011920928955,
             "normal_map": null,
             "roughness_map": null,
             "alpha_mode": "opaque",
@@ -343,17 +253,107 @@
             "note": "Existing approved crop constant-color material, no recoloring"
           },
           {
-            "name": "Crop natural tone 7",
+            "name": "WheatGoldenHead_2",
             "base_color_texture": null,
             "base_color_multiplier": [
-              0.7300000190734863,
-              0.550000011920929,
-              0.17000000178813934,
+              0.9200000166893005,
+              0.6899999976158142,
+              0.18000000715255737,
               1.0
             ],
             "metallic": 0.0,
-            "roughness": 0.4000000059604645,
-            "smoothness": 0.5999999940395355,
+            "roughness": 0.949999988079071,
+            "smoothness": 0.050000011920928955,
+            "normal_map": null,
+            "roughness_map": null,
+            "alpha_mode": "opaque",
+            "double_sided": true,
+            "note": "Existing approved crop constant-color material, no recoloring"
+          },
+          {
+            "name": "WheatGoldenHead_3",
+            "base_color_texture": null,
+            "base_color_multiplier": [
+              0.7200000286102295,
+              0.46000000834465027,
+              0.06499999761581421,
+              1.0
+            ],
+            "metallic": 0.0,
+            "roughness": 0.949999988079071,
+            "smoothness": 0.050000011920928955,
+            "normal_map": null,
+            "roughness_map": null,
+            "alpha_mode": "opaque",
+            "double_sided": true,
+            "note": "Existing approved crop constant-color material, no recoloring"
+          },
+          {
+            "name": "WheatGoldenHead_4",
+            "base_color_texture": null,
+            "base_color_multiplier": [
+              0.8199999928474426,
+              0.5600000023841858,
+              0.10000000149011612,
+              1.0
+            ],
+            "metallic": 0.0,
+            "roughness": 0.949999988079071,
+            "smoothness": 0.050000011920928955,
+            "normal_map": null,
+            "roughness_map": null,
+            "alpha_mode": "opaque",
+            "double_sided": true,
+            "note": "Existing approved crop constant-color material, no recoloring"
+          },
+          {
+            "name": "WheatGoldenHead_5",
+            "base_color_texture": null,
+            "base_color_multiplier": [
+              0.949999988079071,
+              0.7400000095367432,
+              0.2199999988079071,
+              1.0
+            ],
+            "metallic": 0.0,
+            "roughness": 0.949999988079071,
+            "smoothness": 0.050000011920928955,
+            "normal_map": null,
+            "roughness_map": null,
+            "alpha_mode": "opaque",
+            "double_sided": true,
+            "note": "Existing approved crop constant-color material, no recoloring"
+          },
+          {
+            "name": "WheatGreenStem_0",
+            "base_color_texture": null,
+            "base_color_multiplier": [
+              0.3199999928474426,
+              0.3799999952316284,
+              0.09000000357627869,
+              1.0
+            ],
+            "metallic": 0.0,
+            "roughness": 0.949999988079071,
+            "smoothness": 0.050000011920928955,
+            "normal_map": null,
+            "roughness_map": null,
+            "alpha_mode": "opaque",
+            "double_sided": true,
+            "note": "Existing approved crop constant-color material, no recoloring"
+          },
+          {
+            "name": "WheatGreenStem_1",
+            "base_color_texture": null,
+            "base_color_multiplier": [
+              0.4300000071525574,
+              0.4699999988079071,
+              0.14000000059604645,
+              1.0
+            ],
+            "metallic": 0.0,
+            "roughness": 0.949999988079071,
+            "smoothness": 0.050000011920928955,
             "normal_map": null,
             "roughness_map": null,
             "alpha_mode": "opaque",
@@ -364,7 +364,7 @@
         "textures": [
           {
             "source_image": "tripo_image_87142fc2_0",
-            "file": "art/models/grid-footprints/Pasture14/wall-original-03.jpg",
+            "file": "art/models/grid-footprints/Pasture14_GoldenCorner/wall-original-03.jpg",
             "sha256": "aa2fd9ac9f922b0ab48c18bd72e3c15a4d1cd440bfeff7867f9eb3d8d336c0a1",
             "size": [
               2048,
@@ -391,35 +391,29 @@
           "passed": true
         }
       },
-      "crop": "Pasture14Clean_crop",
+      "crop": "Pasture14GoldenCorner_crop",
       "crop_preservation": {
         "source_fbx": "Assets/_Game/Art/CoastalImports/Pasture/Pasture.fbx",
         "sha256": "2c5b73f3b8f628f69521bf7012de26debb262d368cbd4af7daba84e28c468acc",
-        "source_mesh_sha256": "22600688180a31d1e3ae396e7c1a9bd32ac216aa8a11adb2cdd4b3f71f05d7ad",
-        "vertices": 229058,
-        "triangles": 242532,
-        "note": "Exact original stalk shapes, copied by rigid translation onto the outer band's periodic ground grid. No L-shaped original courtyard lanes or raised beds remain. Old source and old variants preserved.",
-        "original_source_mesh_sha256": "f220b04f255e2c166f4a471116f3b4f212de9072835456ea1c369992ac46659e"
+        "source_mesh_sha256": "9b7e7231acc2ed6ed0c67606a34db9e237c4f919567c5d7f8a2f15e0a1dac4b8",
+        "vertices": 237728,
+        "triangles": 251712,
+        "original_source_mesh_sha256": "f220b04f255e2c166f4a471116f3b4f212de9072835456ea1c369992ac46659e",
+        "note": "Original approved stalk shape copied rigidly. User-authorized separate golden-head / green-stem material assignment. Original crop material and old variants unchanged."
       },
-      "crop_completion": "Pasture14Clean_crop_completion",
+      "crop_completion": "Pasture14GoldenCorner_crop_completion",
       "crop_completion_evidence": {
-        "approved_stalk_vertices_each": 34,
-        "source_stalks": 7189,
-        "reused_stalk_instances": 9827,
-        "added_triangles": 337804,
-        "crop_field_period_m": 14,
+        "stalk_count_before_boundary_clip": 13172,
         "stalk_pitch_m": 0.1,
-        "outer_clip_m": [
-          -7,
-          7,
-          -7,
-          7
-        ],
-        "new_buildings": false,
-        "note": "Translated copies of existing approved stalk batches only. Original inner crop, house and fence unchanged; only newly copied ground cover is clipped to rectangle."
+        "triangles": 458224,
+        "house_or_courtyard_mask": false,
+        "source_vertices_each": 34,
+        "source_mesh_sha256": "f220b04f255e2c166f4a471116f3b4f212de9072835456ea1c369992ac46659e",
+        "added_triangles": 458224,
+        "note": "Periodic full square with no house, courtyard, lane, or soil-frame cutout. Crop continues beneath the solid house and reaches its wall footing."
       },
       "source_id": "Pasture",
-      "export_root_name": "Pasture14",
+      "export_root_name": "Pasture14_GoldenCorner",
       "footprint_m": [
         14,
         14
@@ -431,11 +425,11 @@
       "architectural_scale_already_in_export": true,
       "components": [
         {
-          "name": "Pasture14Clean_architecture",
+          "name": "Pasture14GoldenCorner_architecture",
           "expected_unity_bounds_center_m": [
-            3.6897897720336914,
+            4.532022476196289,
             1.2242989540100098,
-            2.3497800827026367
+            3.141206741333008
           ],
           "expected_unity_bounds_size_m": [
             4.235955238342285,
@@ -443,11 +437,11 @@
             7.017586708068848
           ],
           "material_names": [
-            "Pasture14_OriginalMaterial"
+            "Pasture14_GoldenCorner_OriginalMaterial"
           ]
         },
         {
-          "name": "Pasture14Clean_ground",
+          "name": "Pasture14GoldenCorner_ground",
           "expected_unity_bounds_center_m": [
             0.0,
             -0.02500000037252903,
@@ -463,30 +457,30 @@
           ]
         },
         {
-          "name": "Pasture14Clean_crop",
+          "name": "Pasture14GoldenCorner_crop",
           "expected_unity_bounds_center_m": [
-            -1.3000032901763916,
+            -1.2999876737594604,
             0.2668098509311676,
             -1.0000208616256714
           ],
           "expected_unity_bounds_size_m": [
-            7.786080837249756,
+            7.786111831665039,
             0.48361971974372864,
             9.38609790802002
           ],
           "material_names": [
-            "Crop natural tone 0",
-            "Crop natural tone 1",
-            "Crop natural tone 2",
-            "Crop natural tone 3",
-            "Crop natural tone 4",
-            "Crop natural tone 5",
-            "Crop natural tone 6",
-            "Crop natural tone 7"
+            "WheatGoldenHead_0",
+            "WheatGoldenHead_1",
+            "WheatGoldenHead_2",
+            "WheatGoldenHead_3",
+            "WheatGoldenHead_4",
+            "WheatGoldenHead_5",
+            "WheatGreenStem_0",
+            "WheatGreenStem_1"
           ]
         },
         {
-          "name": "Pasture14Clean_crop_completion",
+          "name": "Pasture14GoldenCorner_crop_completion",
           "expected_unity_bounds_center_m": [
             0.0,
             0.2668098509311676,
@@ -498,14 +492,14 @@
             14.0
           ],
           "material_names": [
-            "Crop natural tone 0",
-            "Crop natural tone 1",
-            "Crop natural tone 2",
-            "Crop natural tone 3",
-            "Crop natural tone 4",
-            "Crop natural tone 5",
-            "Crop natural tone 6",
-            "Crop natural tone 7"
+            "WheatGoldenHead_0",
+            "WheatGoldenHead_1",
+            "WheatGoldenHead_2",
+            "WheatGoldenHead_3",
+            "WheatGoldenHead_4",
+            "WheatGoldenHead_5",
+            "WheatGreenStem_0",
+            "WheatGreenStem_1"
           ]
         }
       ],
@@ -870,15 +864,20 @@
         ],
         "note": "Original retained house/roof face coordinates and UVs copied exactly. Courtyard fences, poles, upright cloth, detached trees, props and raised field-bed skin excluded. Existing approved stalk shapes are rigidly copied onto one continuous periodic ground grid; original crop source and previous variants remain unchanged."
       },
-      "crop_grounding": {
-        "stalk_count": 6737,
-        "vertices_per_stalk": 34,
-        "root_surface_m": 0.025,
-        "stalk_pitch_m": 0.1,
-        "source_mesh_sha256": "f220b04f255e2c166f4a471116f3b4f212de9072835456ea1c369992ac46659e",
-        "new_mesh_sha256": "22600688180a31d1e3ae396e7c1a9bd32ac216aa8a11adb2cdd4b3f71f05d7ad",
-        "note": "Exact original stalk shapes, copied by rigid translation onto the outer band's periodic ground grid. No L-shaped original courtyard lanes or raised beds remain. Old source and old variants preserved."
-      }
+      "export_folder": "Pasture14_GoldenCorner",
+      "house_corner_translation_m": [
+        0.8422325849533081,
+        0.7914265394210815,
+        0.0
+      ],
+      "house_geometry_unchanged_sha256": "33e09ee5c8bd531b3e7e3e1930d49f7ed01eb9cbfd2d7301b75133e6fa1025ad",
+      "full_field_coverage": {
+        "expected_centers": 20164,
+        "actual_centers": 20164,
+        "no_removed_house_mask": true,
+        "passed": true
+      },
+      "review_directory": "Builds/ArtReview/GridFootprints/GoldenCornerFarm-v1"
     },
     {
       "id": "Headquarters12",
@@ -1349,7 +1348,7 @@
       "armatures": 14,
       "scenes": 1
     },
-    "report": "Builds/ArtReview/GridFootprints/final-source-verification.json"
+    "report": "Builds/ArtReview/GridFootprints/GoldenCornerFarm-v1/final-source-verification.json"
   },
   "protected_original_414_proof": {
     "passed": true,
@@ -1366,6 +1365,29 @@
       "armatures": 14,
       "scenes": 1
     },
-    "report": "Builds/ArtReview/GridFootprints/final-source-verification.json"
+    "report": "Builds/ArtReview/GridFootprints/GoldenCornerFarm-v1/final-source-verification.json"
+  },
+  "golden_farm_collection": "农田整格 · 青黄满铺麦田＋右上小屋",
+  "review_directory": "Builds/ArtReview/GridFootprints/GoldenCornerFarm-v1",
+  "protected_prior_464_proof": {
+    "passed": true,
+    "counts": {
+      "objects": 464,
+      "meshes": 284,
+      "materials": 85,
+      "images": 46,
+      "actions": 0,
+      "collections": 26,
+      "lights": 1,
+      "cameras": 1,
+      "worlds": 1,
+      "armatures": 14,
+      "scenes": 1
+    },
+    "report": "Builds/ArtReview/GridFootprints/GoldenCornerFarm-v1/final-source-verification.json"
+  },
+  "golden_corner_validation": {
+    "passed": true,
+    "report": "Builds/ArtReview/GridFootprints/GoldenCornerFarm-v1/final-source-verification.json"
   }
 }

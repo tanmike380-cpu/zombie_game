@@ -1,0 +1,179 @@
+{
+  "passed": true,
+  "source_sha256": "69704fa392d17bcc253d669699b0001031c91884cf8fdc544d582e00d3e55d2d",
+  "protected_original_414_counts": {
+    "objects": 414,
+    "meshes": 277,
+    "materials": 76,
+    "images": 43,
+    "actions": 0,
+    "collections": 22,
+    "lights": 1,
+    "cameras": 1,
+    "worlds": 1,
+    "armatures": 14,
+    "scenes": 1
+  },
+  "protected_prior_442_counts": {
+    "objects": 442,
+    "meshes": 282,
+    "materials": 85,
+    "images": 46,
+    "actions": 0,
+    "collections": 24,
+    "lights": 1,
+    "cameras": 1,
+    "worlds": 1,
+    "armatures": 14,
+    "scenes": 1
+  },
+  "protected_previous_464_counts": {
+    "objects": 464,
+    "meshes": 284,
+    "materials": 85,
+    "images": 46,
+    "actions": 0,
+    "collections": 26,
+    "lights": 1,
+    "cameras": 1,
+    "worlds": 1,
+    "armatures": 14,
+    "scenes": 1
+  },
+  "house_mesh_uv_materials_unchanged": true,
+  "house_rotation_scale_error": 0,
+  "house_local_blender_bounds_min_m": [
+    2.4140448570251465,
+    -0.36758649349212646,
+    -0.0680801123380661
+  ],
+  "house_local_blender_bounds_max_m": [
+    6.650000095367432,
+    6.650000095367432,
+    2.5166780948638916
+  ],
+  "house_positive_edge_insets_m": [
+    0.34999990463256836,
+    0.34999990463256836
+  ],
+  "coverage_samples": 19600,
+  "maximum_nearest_root_distance_m": 0.00650366023182869,
+  "no_house_or_courtyard_cutout": true,
+  "gold_surface_area_fraction": 0.8811381220373908,
+  "materials": [
+    {
+      "name": "WheatGoldenHead_0",
+      "base_color_linear": [
+        0.7799999713897705,
+        0.5099999904632568,
+        0.08500000089406967,
+        1
+      ]
+    },
+    {
+      "name": "WheatGoldenHead_1",
+      "base_color_linear": [
+        0.8600000143051147,
+        0.6000000238418579,
+        0.11999999731779099,
+        1
+      ]
+    },
+    {
+      "name": "WheatGoldenHead_2",
+      "base_color_linear": [
+        0.9200000166893005,
+        0.6899999976158142,
+        0.18000000715255737,
+        1
+      ]
+    },
+    {
+      "name": "WheatGoldenHead_3",
+      "base_color_linear": [
+        0.7200000286102295,
+        0.46000000834465027,
+        0.06499999761581421,
+        1
+      ]
+    },
+    {
+      "name": "WheatGoldenHead_4",
+      "base_color_linear": [
+        0.8199999928474426,
+        0.5600000023841858,
+        0.10000000149011612,
+        1
+      ]
+    },
+    {
+      "name": "WheatGoldenHead_5",
+      "base_color_linear": [
+        0.949999988079071,
+        0.7400000095367432,
+        0.2199999988079071,
+        1
+      ]
+    },
+    {
+      "name": "WheatGreenStem_0",
+      "base_color_linear": [
+        0.3199999928474426,
+        0.3799999952316284,
+        0.09000000357627869,
+        1
+      ]
+    },
+    {
+      "name": "WheatGreenStem_1",
+      "base_color_linear": [
+        0.4300000071525574,
+        0.4699999988079071,
+        0.14000000059604645,
+        1
+      ]
+    }
+  ],
+  "crop_boundary_phase": {
+    "x": {
+      "vertices_on_edges": [
+        1405,
+        1403
+      ],
+      "maximum_boundary_section_difference_m": 0.000009059906005859375,
+      "tolerance_m": 0.0001,
+      "passed": true
+    },
+    "z": {
+      "vertices_on_edges": [
+        1448,
+        1447
+      ],
+      "maximum_boundary_section_difference_m": 0.000026979250833392143,
+      "tolerance_m": 0.0001,
+      "passed": true
+    }
+  },
+  "ground_edges": {
+    "grid": [
+      14,
+      14
+    ],
+    "ground_height": 0,
+    "maximum_geometry_gap_m": 0,
+    "opposite_edge_uv_period_differences": [
+      7,
+      7
+    ],
+    "uv_phase_mismatch": 0,
+    "passed": true
+  },
+  "export_roundtrip": {
+    "components": 4,
+    "maximum_vertex_error_m": 0.0000023061684260028414,
+    "maximum_uv_error": 0,
+    "uv_loop_samples": 1288,
+    "passed": true
+  },
+  "note": "Background source-only revision; live unsaved zombie document and original scene lights/cameras untouched. No performance or Unity visual claim."
+}

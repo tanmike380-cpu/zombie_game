@@ -25,6 +25,7 @@ from fortified_city_assembly import (capture_protected_state, verify_protected_s
 ROOT = Path(__file__).resolve().parents[2]
 MASTER = ROOT / "art/Blender主文件/ZombieGame.blend"
 REVIEW = ROOT / "Builds/ArtReview/GridFootprints"
+BASE_REVIEW = REVIEW
 OUTPUT = ROOT / "art/models/grid-footprints"
 HANDOFF = ROOT / "art/grid_footprint_handoff.json"
 GROUP = "建筑整格地块 · 牧场14＋基地12＋工坊8"
@@ -247,7 +248,7 @@ def save_source(protected):
 
 
 def export_variant(record, ground_material):
-    folder = OUTPUT / record["id"]
+    folder = OUTPUT / record.get("export_folder",record["id"])
     folder.mkdir(parents=True,exist_ok=True)
     scene = bpy.data.scenes.new("Temporary integer grid export")
     bpy.context.window.scene = scene
@@ -306,7 +307,8 @@ def export_variant(record, ground_material):
     low = Vector([min(point[axis] for point in all_points) for axis in range(3)])
     high = Vector([max(point[axis] for point in all_points) for axis in range(3)])
     center,size = (low+high)*.5,high-low
-    record.update({"source_id":{"Pasture14":"Pasture","Headquarters12":"Headquarters","Workshop8":"Workshop"}[record["id"]],
+    source_id = record["source_id"] if record.get("source_id") else {"Pasture14":"Pasture","Headquarters12":"Headquarters","Workshop8":"Workshop"}[record["id"]]
+    record.update({"source_id":source_id,
         "export_root_name":record["id"],"footprint_m":record["grid"],"placement_scale":1,
         "grid_unit_m":1,"ground_anchor_y_m":0,"unity_ground_offset_m":.025,
         "architectural_scale_already_in_export":True,"components":components,
@@ -510,9 +512,9 @@ def verify_frozen_source():
     handoff = json.loads(HANDOFF.read_text())
     if not bpy.app.background or Path(bpy.data.filepath).resolve()!=MASTER or hash_file(MASTER)!=handoff["master_sha256"]:
         raise AssertionError("Final source no longer matches grid handoff")
-    original = json.loads((REVIEW/"protected-state.json").read_text())
+    original = json.loads((BASE_REVIEW/"protected-state.json").read_text())
     counts = verify_protected_state(original)
-    prior_variants = json.loads((REVIEW/"protected-before-clean.json").read_text())
+    prior_variants = json.loads((BASE_REVIEW/"protected-before-clean.json").read_text())
     prior_counts = verify_protected_state(prior_variants)
     results = []
     for record in handoff["assets"]:
@@ -545,6 +547,316 @@ def verify_frozen_source():
     HANDOFF.write_text(json.dumps(handoff,ensure_ascii=False,indent=2))
     render_pasture_grid(pasture)
     print("FINAL GRID SOURCE PASS",json.dumps(proof))
+
+
+def create_golden_wheat_materials():
+    """Author warm golden heads and a small green-stem component, without relighting."""
+    colors = [(0.78,.51,.085),(0.86,.60,.12),(.92,.69,.18),
+              (.72,.46,.065),(.82,.56,.10),(.95,.74,.22),
+              (.32,.38,.09),(.43,.47,.14)]
+    materials = []
+    for index,color in enumerate(colors):
+        name = ("WheatGoldenHead_"+str(index)) if index<6 else ("WheatGreenStem_"+str(index-6))
+        material = bpy.data.materials.new(name)
+        material.use_nodes = True
+        shader = next(node for node in material.node_tree.nodes if node.type=="BSDF_PRINCIPLED")
+        shader.inputs["Base Color"].default_value = (*color,1)
+        shader.inputs["Metallic"].default_value = 0
+        shader.inputs["Roughness"].default_value = .95
+        material.diffuse_color = (*color,1)
+        materials.append(material)
+    return materials
+
+
+def build_full_wheat_section(source,scale,materials,is_inner):
+    """Fill one complementary part of the full square with exact source stalk shapes."""
+    original = source.data
+    count = len(original.vertices)//34
+    face_groups = [[] for _ in range(count)]
+    for face in original.polygons:
+        groups = {index//34 for index in face.vertices}
+        if len(groups)!=1:
+            raise AssertionError("Original stalk faces cannot be safely reused")
+        seed = groups.pop()
+        face_groups[seed].append([index%34 for index in face.vertices])
+    vertices,faces,slots = [],[],[]
+    plant_count = 0
+    centers = []
+    for row in range(-1,141):
+        for column in range(-1,141):
+            x,y = -7+(column+.5)*.1,-7+(row+.5)*.1
+            belongs_to_inner = -5.07<x<2.47 and -5.60<y<3.63
+            if belongs_to_inner != is_inner:
+                continue
+            seed = ((row%140)*3343+(column%140)*7547+59)%count
+            start = seed*34
+            base = (original.vertices[start].co+original.vertices[start+1].co)*.5
+            offset = len(vertices)
+            vertices.extend((original.vertices[start+i].co-base)*scale+Vector((x,y,.025)) for i in range(34))
+            for face in face_groups[seed]:
+                faces.append([offset+index for index in face])
+                # Original 0..5 are the narrow stem; 6..17 are broad leaves and
+                # 18..33 the grain head. Ripe leaves stay golden, only stem green.
+                slots.append(seed%6 if min(face)>=6 else 6+seed%2)
+            centers.append((x,y))
+            plant_count += 1
+    mesh = bpy.data.meshes.new("PastureGoldenCorner_"+("InnerWheat" if is_inner else "OuterWheat"))
+    mesh.from_pydata(vertices,[],faces)
+    for material in materials:
+        mesh.materials.append(material)
+    for face,slot in zip(mesh.polygons,slots):
+        face.material_index = slot
+    editable = bmesh.new()
+    editable.from_mesh(mesh)
+    for co,normal in (((-7,0,0),(-1,0,0)),((7,0,0),(1,0,0)),
+                      ((0,-7,0),(0,-1,0)),((0,7,0),(0,1,0))):
+        bmesh.ops.bisect_plane(editable,geom=list(editable.verts)+list(editable.edges)+list(editable.faces),
+            plane_co=co,plane_no=normal,clear_outer=True,dist=1e-7)
+    editable.to_mesh(mesh)
+    editable.free()
+    mesh.update()
+    return mesh,{"stalk_count_before_boundary_clip":plant_count,"stalk_pitch_m":.1,
+        "triangles":sum(len(face.vertices)-2 for face in mesh.polygons),
+        "house_or_courtyard_mask":False,"source_vertices_each":34,
+        "source_mesh_sha256":read_mesh_record(original)},centers
+
+
+def append_golden_corner_variant(old):
+    """Add a separate full-wheat variant and corner house without changing old objects."""
+    collection = bpy.data.collections.new("农田整格 · 青黄满铺麦田＋右上小屋")
+    bpy.context.scene.collection.children.link(collection)
+    points = [obj.matrix_world@Vector(corner) for obj in bpy.context.scene.objects
+              if obj.type=="MESH" for corner in obj.bound_box]
+    origin = Vector((max(point.x for point in points)+3,min(point.y for point in points)+2,0))
+    root = bpy.data.objects.new("Pasture14GoldenCorner · 展示锚点",None)
+    collection.objects.link(root)
+    root.location = origin
+    root.scale = (1/old["uniform_source_scale"],)*3
+    record = copy.deepcopy(old)
+    record.update({"root":root.name,"source_collection":collection.name,
+                   "export_folder":"Pasture14_GoldenCorner"})
+    for key in ("architecture","ground"):
+        source = bpy.data.objects[old[key]]
+        obj = source.copy()
+        obj.name = "Pasture14GoldenCorner_"+key
+        collection.objects.link(obj)
+        obj.parent = root
+        obj.matrix_parent_inverse = Matrix.Identity(4)
+        obj.matrix_basis = source.matrix_basis.copy()
+        record[key] = obj.name
+    house = bpy.data.objects[record["architecture"]]
+    house_points = [house.matrix_basis@vertex.co for vertex in house.data.vertices]
+    offset = Vector((6.65-max(point.x for point in house_points),6.65-max(point.y for point in house_points),0))
+    house.location += offset
+    record["house_corner_translation_m"] = list(offset)
+    record["house_geometry_unchanged_sha256"] = read_mesh_record(house.data)
+    materials = create_golden_wheat_materials()
+    approved = bpy.data.objects["Pasture14_ApprovedGoldenCrop"]
+    coverage = []
+    for key,is_inner in (("crop",True),("crop_completion",False)):
+        mesh,evidence,centers = build_full_wheat_section(approved,record["uniform_source_scale"],materials,is_inner)
+        obj = bpy.data.objects.new("Pasture14GoldenCorner_"+key,mesh)
+        collection.objects.link(obj)
+        obj.parent = root
+        record[key] = obj.name
+        coverage.extend(centers)
+        if key=="crop":
+            record["crop_preservation"] = {"source_fbx":old["crop_preservation"]["source_fbx"],
+                "sha256":old["crop_preservation"]["sha256"],"source_mesh_sha256":read_mesh_record(mesh),
+                "vertices":len(mesh.vertices),"triangles":evidence["triangles"],
+                "original_source_mesh_sha256":evidence["source_mesh_sha256"],
+                "note":"Original approved stalk shape copied rigidly. User-authorized separate golden-head / green-stem material assignment. Original crop material and old variants unchanged."}
+        else:
+            record["crop_completion_evidence"] = {**evidence,"added_triangles":evidence["triangles"],
+                "note":"Periodic full square with no house, courtyard, lane, or soil-frame cutout. Crop continues beneath the solid house and reaches its wall footing."}
+    record["full_field_coverage"] = {"expected_centers":142*142,"actual_centers":len(coverage),
+        "no_removed_house_mask":True,"passed":len(coverage)==142*142}
+    if not record["full_field_coverage"]["passed"]:
+        raise AssertionError("Full field coverage omitted a grid sample")
+    record.pop("crop_grounding",None)
+    gallery_collection = bpy.data.collections.new("青黄麦田右上屋 · 2×2评审")
+    bpy.context.scene.collection.children.link(gallery_collection)
+    gallery_root = bpy.data.objects.new("青黄满铺麦田2×2 · 展示锚点",None)
+    gallery_collection.objects.link(gallery_root)
+    gallery_root.location = origin+Vector((1,-3,0))
+    gallery_root.scale = root.scale
+    for row in range(2):
+        for column in range(2):
+            for key in ("architecture","ground","crop","crop_completion"):
+                source = bpy.data.objects[record[key]]
+                obj = source.copy()
+                obj.name = f"青黄拼接{row}{column} · "+source.name
+                gallery_collection.objects.link(obj)
+                obj.parent = gallery_root
+                obj.matrix_parent_inverse = Matrix.Identity(4)
+                obj.matrix_basis = Matrix.Translation((column*14-7,row*14-7,0))@source.matrix_basis
+    bpy.context.view_layer.update()
+    return record,{"collection":str(gallery_collection.name),"root":str(gallery_root.name),
+        "grid_count":[2,2],"overall_m":[28,28]}
+
+
+def make_golden_corner_farm():
+    """Save, export and hand off a new golden corner-house farm, protecting all 464 old objects."""
+    global EXPECTED_SHA,REVIEW
+    EXPECTED_SHA = "468a608185ce139913f1b79e04f5e20d0a7b5662e248d32b6ab28900c096e866"
+    if not bpy.app.background or Path(bpy.data.filepath).resolve()!=MASTER or hash_file(MASTER)!=EXPECTED_SHA:
+        raise AssertionError("Require the frozen 464-object clean-farm source")
+    REVIEW = BASE_REVIEW/"GoldenCornerFarm-v1"
+    REVIEW.mkdir(parents=True,exist_ok=True)
+    shutil.copy2(HANDOFF,REVIEW/"previous-grid-footprint-handoff.json")
+    handoff = json.loads(HANDOFF.read_text())
+    protected = capture_protected_state()
+    (REVIEW/"protected-before-golden-corner.json").write_text(json.dumps(protected,ensure_ascii=False,indent=2))
+    record,gallery = append_golden_corner_variant(handoff["assets"][0])
+    record["review_directory"] = str(REVIEW.relative_to(ROOT))
+    render_pasture_grid(record)
+    for camera in list(bpy.data.cameras):
+        if camera.users==0:
+            bpy.data.cameras.remove(camera)
+    saved = save_source(protected)
+    record["export"] = export_variant(record,handoff["ground_material"])
+    handoff["assets"][0] = record
+    handoff.update(saved)
+    handoff["source_before_sha256"] = EXPECTED_SHA
+    handoff["source_revision_chain"].append(saved["master_sha256"])
+    handoff["gallery"] = gallery
+    handoff["golden_farm_collection"] = record["source_collection"]
+    handoff["review_directory"] = record["review_directory"]
+    handoff["protected_prior_464_proof"] = {"passed":True,"counts":saved["protected_counts"],
+        "report":str((REVIEW/"final-source-verification.json").relative_to(ROOT))}
+    HANDOFF.write_text(json.dumps(handoff,ensure_ascii=False,indent=2))
+    print("GOLDEN CORNER FARM FROZEN",json.dumps({"source_sha256":saved["master_sha256"],
+        "export_sha256":record["export"]["sha256"],"collection":record["source_collection"]}))
+
+
+def finish_golden_leaf_color():
+    """Keep a small green stem, not large green leaves, in the current new farm."""
+    global EXPECTED_SHA,REVIEW
+    EXPECTED_SHA = "5ea9a85892ff9449d72833c5297c8b228cd692a476c8196c4c6bff53090031d6"
+    if not bpy.app.background or Path(bpy.data.filepath).resolve()!=MASTER or hash_file(MASTER)!=EXPECTED_SHA:
+        raise AssertionError("Require the exact new golden-corner candidate")
+    handoff = json.loads(HANDOFF.read_text())
+    REVIEW = ROOT/handoff["review_directory"]
+    protected = json.loads((REVIEW/"protected-before-golden-corner.json").read_text())
+    verify_protected_state(protected)
+    record = handoff["assets"][0]
+    approved = bpy.data.objects["Pasture14_ApprovedGoldenCrop"]
+    materials = list(bpy.data.objects[record["crop"]].data.materials)
+    for key,is_inner in (("crop",True),("crop_completion",False)):
+        old_mesh = bpy.data.objects[record[key]].data
+        mesh,evidence,_ = build_full_wheat_section(approved,record["uniform_source_scale"],materials,is_inner)
+        for name in (record["source_collection"],handoff["gallery"]["collection"]):
+            for obj in bpy.data.collections[name].objects:
+                if obj.type=="MESH" and obj.data==old_mesh:
+                    obj.data = mesh
+        if old_mesh.users==0:
+            bpy.data.meshes.remove(old_mesh)
+        if key=="crop":
+            record["crop_preservation"]["source_mesh_sha256"] = read_mesh_record(mesh)
+            record["crop_preservation"]["triangles"] = evidence["triangles"]
+            record["crop_preservation"]["vertices"] = len(mesh.vertices)
+        else:
+            record["crop_completion_evidence"].update({"triangles":evidence["triangles"],
+                "added_triangles":evidence["triangles"]})
+    render_pasture_grid(record)
+    for camera in list(bpy.data.cameras):
+        if camera.users==0:
+            bpy.data.cameras.remove(camera)
+    saved = save_source(protected)
+    record["export"] = export_variant(record,handoff["ground_material"])
+    handoff.update(saved)
+    handoff["source_before_sha256"] = EXPECTED_SHA
+    handoff["source_revision_chain"].append(saved["master_sha256"])
+    HANDOFF.write_text(json.dumps(handoff,ensure_ascii=False,indent=2))
+    print("GOLDEN LEAF FINISH FROZEN",json.dumps({"source_sha256":saved["master_sha256"],
+        "export_sha256":record["export"]["sha256"]}))
+
+
+def verify_golden_corner_farm():
+    """Independently prove corner placement, unchanged house, full crop coverage and colors."""
+    handoff = json.loads(HANDOFF.read_text())
+    review = ROOT/handoff["review_directory"]
+    if not bpy.app.background or Path(bpy.data.filepath).resolve()!=MASTER or hash_file(MASTER)!=handoff["master_sha256"]:
+        raise AssertionError("Golden-corner source hash changed")
+    counts = verify_protected_state(json.loads((review/"protected-before-golden-corner.json").read_text()))
+    original = verify_protected_state(json.loads((BASE_REVIEW/"protected-state.json").read_text()))
+    previous = verify_protected_state(json.loads((BASE_REVIEW/"protected-before-clean.json").read_text()))
+    record = handoff["assets"][0]
+    house = bpy.data.objects[record["architecture"]]
+    old_record = json.loads((review/"previous-grid-footprint-handoff.json").read_text())["assets"][0]
+    old_house = bpy.data.objects[old_record["architecture"]]
+    if read_mesh_record(house.data)!=read_mesh_record(old_house.data):
+        raise AssertionError("Corner move changed the house mesh, roof, UV or material slots")
+    error = max(abs(house.matrix_basis[row][column]-old_house.matrix_basis[row][column])
+                for row in range(3) for column in range(3))
+    if error>1e-8:
+        raise AssertionError("Corner house was rotated or resized")
+    points = [house.matrix_basis@vertex.co for vertex in house.data.vertices]
+    low = [min(point[axis] for point in points) for axis in range(3)]
+    high = [max(point[axis] for point in points) for axis in range(3)]
+    if any(low[axis]<-7 or high[axis]>7 for axis in (0,1)):
+        raise AssertionError("House eaves leave the 14m square")
+    if abs(high[0]-6.65)>.00001 or abs(high[1]-6.65)>.00001:
+        raise AssertionError("House is not at the positive-X/positive-Z corner")
+    crop_objects = [bpy.data.objects[record[key]] for key in ("crop","crop_completion")]
+    roots = [obj.matrix_basis@vertex.co for obj in crop_objects for vertex in obj.data.vertices
+             if abs((obj.matrix_basis@vertex.co).z-.025)<.00001]
+    tree = KDTree(len(roots))
+    for index,point in enumerate(roots):
+        tree.insert(Vector((point.x,point.y,0)),index)
+    tree.balance()
+    maximum_root_error = max(tree.find(Vector((-6.95+column*.1,-6.95+row*.1,0)))[2]
+                             for row in range(140) for column in range(140))
+    if maximum_root_error>.025:
+        raise AssertionError(f"Bare crop lane/frame or courtyard detected: nearest root {maximum_root_error}m")
+    area = {"gold":0,"green":0}
+    for obj in crop_objects:
+        for face in obj.data.polygons:
+            area["gold" if face.material_index<6 else "green"] += face.area
+    gold_area_fraction = area["gold"]/(area["gold"]+area["green"])
+    if gold_area_fraction<.75:
+        raise AssertionError("Green foliage dominates the authored golden field")
+    materials = []
+    for material in crop_objects[0].data.materials:
+        shader = next(node for node in material.node_tree.nodes if node.type=="BSDF_PRINCIPLED")
+        color = list(shader.inputs["Base Color"].default_value)
+        if material.name.startswith("WheatGoldenHead") and not color[0]>color[1]>color[2]:
+            raise AssertionError("Golden wheat material is not warm yellow")
+        materials.append({"name":material.name,"base_color_linear":color})
+    for asset in handoff["assets"]:
+        if hash_file(ROOT/asset["export"]["file"])!=asset["export"]["sha256"]:
+            raise AssertionError("Grid FBX changed after roundtrip validation")
+    phases = verify_crop_edge_phase(crop_objects[1].data)
+    proof = {"passed":True,"source_sha256":handoff["master_sha256"],
+        "protected_original_414_counts":original,"protected_prior_442_counts":previous,
+        "protected_previous_464_counts":counts,"house_mesh_uv_materials_unchanged":True,
+        "house_rotation_scale_error":error,"house_local_blender_bounds_min_m":low,
+        "house_local_blender_bounds_max_m":high,"house_positive_edge_insets_m":[7-high[0],7-high[1]],
+        "coverage_samples":140*140,"maximum_nearest_root_distance_m":maximum_root_error,
+        "no_house_or_courtyard_cutout":True,"gold_surface_area_fraction":gold_area_fraction,
+        "materials":materials,"crop_boundary_phase":phases,"ground_edges":verify_ground_edges(record),
+        "export_roundtrip":record["export"]["roundtrip"],
+        "note":"Background source-only revision; live unsaved zombie document and original scene lights/cameras untouched. No performance or Unity visual claim."}
+    report_path = str((review/"final-source-verification.json").relative_to(ROOT))
+    (review/"final-source-verification.json").write_text(json.dumps(proof,ensure_ascii=False,indent=2))
+    for key,value in (("protected_original_414_proof",original),("protected_prior_442_proof",previous),("protected_prior_464_proof",counts)):
+        handoff[key] = {"passed":True,"counts":value,"report":report_path}
+    handoff["golden_corner_validation"] = {"passed":True,"report":report_path}
+    HANDOFF.write_text(json.dumps(handoff,ensure_ascii=False,indent=2))
+    print("GOLDEN CORNER VALIDATION PASS",json.dumps(proof))
+
+
+def finalize_golden_handoff():
+    """Export the new variant with one consistent new asset ID, preserving old FBX files."""
+    handoff = json.loads(HANDOFF.read_text())
+    if not bpy.app.background or Path(bpy.data.filepath).resolve()!=MASTER or hash_file(MASTER)!=handoff["master_sha256"]:
+        raise AssertionError("Cannot finalize a changed golden-corner source")
+    record = handoff["assets"][0]
+    record.update({"id":"Pasture14_GoldenCorner","source_id":"Pasture",
+                   "export_folder":"Pasture14_GoldenCorner"})
+    record["export"] = export_variant(record,handoff["ground_material"])
+    HANDOFF.write_text(json.dumps(handoff,ensure_ascii=False,indent=2))
+    print("GOLDEN ASSET ID FROZEN",record["export"]["file"],record["export"]["sha256"])
 
 
 def derive_clean_house(source):
@@ -893,7 +1205,15 @@ def main():
 
 
 if __name__ == "__main__":
-    if "--continuous-clean-field" in sys.argv:
+    if "--finalize-golden-handoff" in sys.argv:
+        finalize_golden_handoff()
+    elif "--verify-golden-corner" in sys.argv:
+        verify_golden_corner_farm()
+    elif "--golden-leaf-finish" in sys.argv:
+        finish_golden_leaf_color()
+    elif "--golden-corner-farm" in sys.argv:
+        make_golden_corner_farm()
+    elif "--continuous-clean-field" in sys.argv:
         repair_continuous_clean_field()
     elif "--finish-clean-farm" in sys.argv:
         finish_clean_pasture()

@@ -9,14 +9,14 @@
   "master_art_handoff": "art/master_art_handoff.json",
   "current_disk_revision": {
     "date": "2026-10-16",
-    "master_sha256": "468a608185ce139913f1b79e04f5e20d0a7b5662e248d32b6ab28900c096e866",
-    "before_sha256": "b82b452cd7c8fa994a176b9209c2aa4dc3f470e2e6e6e9b7912d035e4e37c3ca",
+    "master_sha256": "69704fa392d17bcc253d669699b0001031c91884cf8fdc544d582e00d3e55d2d",
+    "before_sha256": "5ea9a85892ff9449d72833c5297c8b228cd692a476c8196c4c6bff53090031d6",
     "handoff": "art/grid_footprint_handoff.json",
-    "collection": "农田整格 · 仅小屋与连续麦田",
-    "objects": 464,
-    "protected_preexisting_objects": 442,
+    "collection": "农田整格 · 青黄满铺麦田＋右上小屋",
+    "objects": 486,
+    "protected_preexisting_objects": 464,
     "protected_original_city_revision_objects": 414,
-    "note": "Added authorized integer-ground variants and a clean 14m square pasture containing only original house/roof and continuous original-stalk wheat. All prior 442 objects, their meshes/UV/materials/rigs and scene lighting/layout remain unchanged; original city revision's 414 objects independently rechecked. Live unsaved Zombie category file untouched. New current hash does not invalidate the unchanged frozen city FBX; use revision lineage in grid handoff."
+    "note": "New independent 14m square pasture: full golden wheat with minor green stems, unchanged house translated rigidly to positive X/Z corner, no courtyard/soil-frame cutout. All prior 464 objects, meshes/UV/materials/rigs and lighting/layout retained. Original city revision's 414 objects remain preserved. Live unsaved Zombie category file untouched. Frozen city FBX unchanged; full source lineage remains in grid handoff."
   },
   "frozen_source_revisions": [
     {
@@ -28,6 +28,16 @@
       "objects": 414,
       "protected_preexisting_objects": 394,
       "note": "Historical city source snapshot, not current disk SHA. Its frozen export and geometry are unchanged. The current disk retains all 414 objects and adds ground variants only. Earlier absent tower/action collections were not restored."
+    },
+    {
+      "date": "2026-10-16",
+      "master_sha256": "468a608185ce139913f1b79e04f5e20d0a7b5662e248d32b6ab28900c096e866",
+      "before_sha256": "b82b452cd7c8fa994a176b9209c2aa4dc3f470e2e6e6e9b7912d035e4e37c3ca",
+      "handoff": "Builds/ArtReview/GridFootprints/GoldenCornerFarm-v1/previous-grid-footprint-handoff.json",
+      "collection": "农田整格 · 仅小屋与连续麦田",
+      "objects": 464,
+      "protected_preexisting_objects": 442,
+      "note": "Previous continuous-wheat variant retained intact, including its original ground, house, crops, materials, gallery and export. Superseded only in latest preview by the separate golden-corner variant."
     }
   ],
   "grid_footprint_handoff": "art/grid_footprint_handoff.json",
