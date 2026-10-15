@@ -12,7 +12,9 @@ save the verified state and expose remaining failures, without forcing a release
 3. **First playable slice.** Use a bounded population of existing supported units,
    shared balance and original clips; gate the new scenario behind explicit data.
    Preserve old scene behavior. First target is controllable defense and visible
-   movement/attack/death, not all future unit types or a ten-thousand-unit benchmark.
+   authored movement/attacks, not all future unit types or a ten-thousand-unit benchmark.
+   Existing actors have no dedicated death/knife clips; disclose those gaps and do not
+   claim generic whole-body motion is a finished authored animation.
 4. **Test and iterate.** Compile; verify actual frames advancing; inspect normal RTS
    view and combat close-up; verify source proportions/materials/ground, navigation
    around the frozen wall, resumed siege intent, selection/HP/ammo feedback and input.
