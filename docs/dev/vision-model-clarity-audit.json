@@ -1,0 +1,25 @@
+{
+  "date": "2026-10-15",
+  "scope": "Read-only live Unity audit of the saved environment sources; no model regeneration or import-setting changes",
+  "counting": "Unity rendered mesh triangles, not Tripo quad faces; no equivalence with screen resolution is assumed",
+  "models": [
+    {"id": "Headquarters", "triangles": 6889, "color_texture_px": [2048, 2048], "format": "RGB24", "filter": "Trilinear", "anisotropy": 8},
+    {"id": "Workshop", "triangles": 6438, "color_texture_px": [2048, 2048], "format": "RGB24", "filter": "Trilinear", "anisotropy": 8},
+    {"id": "Pasture", "triangles": 268203, "color_texture_px": [2048, 2048], "format": "RGB24", "filter": "Trilinear", "anisotropy": 8},
+    {"id": "EuropeanStoneHouse", "triangles": 835, "main_texture_px": [2048, 2048], "note": "The current source is a ruined farmhouse, not an intact occupied dwelling"},
+    {"id": "NorthAfricanRuins", "triangles": 1916, "main_texture_px": [512, 512], "note": "Different source scale/detail density; retained as ruins only"},
+    {"id": "MiddleEasternCourtyard", "triangles": 10026, "main_texture_px": [1024, 1024]}
+  ],
+  "global_texture_mipmap_limit": 0,
+  "msaa_samples": 4,
+  "dynamic_resolution_width_factor": 1,
+  "live_editor_observation": {"screen": [2048, 1378], "camera_pixel_rect": [2560, 1440], "orthographic_size": 23, "note": "Game view fitting can rescale the displayed image. This is not a controlled resolution comparison."},
+  "source_material_limit": "The three Tripo building prefabs currently bind one authored color atlas each, without independent real normal/roughness maps. Color atlases contain baked-looking shading and some soft details. Additional triangles alone cannot recover missing texture detail.",
+  "wall_observation": "Original source-wall.png already shows uneven crenellations/edges. Verified source-preserving assembly does not imply a straight or visually approved kit; repeated modules amplify the original irregularity.",
+  "hardware": "Apple M2 Pro / Metal",
+  "nvidia_dlss_available": false,
+  "dlss_official_reference": "https://docs.unity3d.com/Packages/com.unity.render-pipelines.high-definition@17.0/manual/deep-learning-super-sampling-in-hdrp.html",
+  "render_pipeline": "Built-in, unchanged",
+  "performance_guarantee": false,
+  "recommended_next_step": "Compare one source building and a small fixed-view environment slice before increasing all model/texture budgets; measure visible units, skinning, draw submission, shadows, overdraw and AI separately."
+}

@@ -1,6 +1,40 @@
 # Vision 1 地图制作和打开说明
 
-## 当前日间修订：连片森林 v3（2026-10-15）
+## 当前对照入口：平地／明亮中性白光 v5（2026-10-15，未美术验收）
+
+用户在查看围城实验后确认原 Blender 墙体已有歪斜，要求活动地面同一水平、冷色不靠压暗灯，改用一张《亿万僵尸》实际截图做固定参照，方向为写实和卡通之间的风格化写实。本轮没有改变源模型、单位数值或正式战场，也没有迁移渲染管线。
+
+当前入口：`Assets/_Tests/EnvironmentShowcase/Scenes/EnvironmentNeutralVision.unity`；菜单 `Zombie Game → Environment Showcase → Vision-5 → Open saved flat neutral comparison and Play`。本机独立播放器为 `Builds/EnvironmentNeutralVision.app`；重新取仓库后用 `VisionNeutralTools.prepare_and_build_neutral_preview()` 重建。旧 v3 入口、92 树布局与 v4 围城实验均保留，不覆盖。
+
+固定参考来自 [They Are Billions 实际防线截图／发行商展示页](https://limitedrungames.com/products/limited-run-534-they-are-billions-ps4)，[原展示图](https://cld.accentuate.io/7222747955253/1692129097750/They-Are-Billions-Screenshot-4.jpg?options=w_1920&v=1692129097750)。已实际查看其连续针叶林边界、平坦聚落、清楚轮廓和林下草土过渡；只参考构图和视觉关系，不复制其模型、纹理或游戏素材到仓库。参考本身带暖日光，本样改为用户指定的偏白中性日光，不能称像素级还原。
+
+- v5 移除了 v4 的两个内陆陡崖高度域，活动陆地目标 4.2m；11,375 个干陆采样最大高度误差 0.000219m，cliff mask 数量 0。另有 5,266 个水体／岸带采样，海池底及不活动的水岸收口不冒称同一行走平面；岸边 Terrain 法线邻域最大斜率仍记录为 0.534°。
+- 真正同镜头、同模型的灯光对照：太阳强度 0.95→1.08、颜色 `(0.95,0.97,1)`→`(0.98,0.99,1)`；三色环境补光的 sky 从 `(0.30,0.34,0.38)` 提到 `(0.45,0.48,0.50)`，equator／ground 也明确提高，阴影类型和太阳方向不变。全图平均编码亮度 0.348→0.408，约增加17.2%；近白像素由0.00147%→0.04336%，不是全部变白或蓝色滤镜。对照后灯光状态恢复通过。
+- 实际46树、5/5自然开口连通、原生LOD／源装配／材质／贴地检查通过；不是恢复了v3的92树，也不代表达到参考图的密冠针叶林。
+- 城内仅主基地／工坊／牧场三个已存在的功能源作为构图小样。原残屋全部列为城外中立废墟，不作为民居凑数；不再重复新增两栋残屋。`composition_only=true`、`complete_city_claimed=false`。缺完整民居、独立兵营／仓库与门扇，不能称已完成可运营城市。
+- 1440×900真实播放器中，平地、白光对照、森林、源比例和构图净空检查通过。草总贡献0.00001026仍未达原0.0003门槛，总报告继续FAIL、美术未验收；不降低旧草／森林阈值。单植物源可见检查通过也不替代整幅地表丰满程度。
+- 用同一新播放器回归原flat配置和原cliffs欧洲配置均PASS；未声称此次重跑全部五模式四区域。共享数值57条、概念文档27项PASS；`Assets/_Game`、`balance`、`Packages`、`ProjectSettings`无修改。
+- 最终Editor已打开v5并实际播放，帧号2892→2898（115ms），活动摄像机正常。Console无编译或运行错误，存在23条旧API／序列化警告，未扩大到无关模块清理。之前安全模式为新增检查脚本未被纳入编译清单，已通过AssetDatabase重新识别和成功编译解决；不需用户删除模型或新建摄像机。不要在Play中继续写C#导致热重载丢失非序列化的环境实例。
+
+证据：`Builds/ArtReview/EnvironmentShowcase/vision-neutral-flat-v5/`；摘要 `docs/dev/vision-neutral-v5-validation.json`。`light-before.png`／`light-after.png`为同镜头真实播放器原PNG；`full-map.png`为实际全图，不隐藏空地。`forest-city-slice.png`为额外Editor相机小样（焦点62,73m，pitch38/yaw−18，ortho20），不能用局部取景声称整个地图已经丰满。
+
+**本轮停止条件：**实看中景和全图后仍明显空，且与参考形态不符。现有疏阔叶Oak不能替代连续密冠针叶林；缺俯视有体积的草丛、完整同风格民居、后沿岩体，墙原网格和贴图也不够规整。继续改亮度、提高面数或重复残屋无法解决这些源缺项。本版保留作诊断对照，下一步应先补合适源，在小片场景验收后再铺全图；不继续无限重排或把技术PASS叫美术完成。
+
+模型清晰度只读核查见 `docs/dev/vision-model-clarity-audit.json`：主基地6889、工坊6438三角，牧场反而268203三角；均绑定2K原始颜色图、Trilinear／8倍各向异性，全局mipmap limit为0。三者缺独立真实法线／粗糙度；不是都被Unity压成低清。四千四边面通常约八千三角，屏幕2K不存在固定面数对应值。M2 Pro／Metal不支持NVIDIA DLSS，不能虚设DLSS开关，也不为此擅自迁移管线。
+
+![同镜头：旧灯光](../../art/environment/inspection/vision-neutral-flat-v5/light-before.png)
+
+![同镜头：明亮中性白光](../../art/environment/inspection/vision-neutral-flat-v5/light-after.png)
+
+[真实全图及缺项](../../art/environment/inspection/vision-neutral-flat-v5/full-map.png) · [额外林缘局部取景](../../art/environment/inspection/vision-neutral-flat-v5/forest-city-slice.png)
+
+## 保留的围城／陡崖实验 v4（未验收，不是当前方向）
+
+源已按Blender→Unity交接：正式 general 分类文件 `art/Blender主文件/ZombieGame.blend`，集合 `城防实装 · 北入口完整城市围墙`，源SHA6772…、FBX47b8…。保留旧394对象，只追加19原网格墙墩实例和展示锚点；新装配总外廓43.665×55.613m、北开放口脚边最小6.489m，原子件矩阵／UV不在Unity重拟合。6,665条采样射线无非入口穿漏，不是解析测得最大缝隙为零，也不是美术规整验收。无可关闭门扇。
+
+`EnvironmentFortifiedVision.unity`／`VisionFortifiedTools`／`Builds/EnvironmentFortifiedVision.app`保留。原v4有7城内源，其中4个实际上是残屋，已明确不适合作正常民居；两处Terrain陡崖10.5／11.5m仅为当时实验，不进入v5。城墙／陡崖局部技术检查PASS，但树仅32未达原>40阈值、整体草和植物检查FAIL，总FAIL；详见 `docs/dev/vision-fortified-v4-validation.json`。用户已拒绝粗糙视觉，本版不得自动替换正式地图。
+
+## 保留日间修订：连片森林 v3（2026-10-15）
 
 用户查看晨间实拍后要求继续优化：扩大连续森林，用林间自然空地把地图分为数段通道，多用 Unity 的现有能力。本轮延用 Terrain 六层绘制、GPU 网格实例化、分块剔除及原生 LOD，不更换管线、不新造树或建筑。Road 仍全图为零。
 
