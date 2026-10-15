@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: VisionWildernessV6
   m_EditorClassIdentifier: Assembly-CSharp::ZombieGame.Tests.EnvironmentShowcase.DarkWildernessConfig
   version: vision-dense-repetition-v6
-  source_record: 'Vision-1: flat-v3 frozen source refs; 05/07/09 wilderness-dark-v3 directional references, not art approval; v3 parent-authorized whole-root translations; original dimensions, yaw, scale, material and authored assembly unchanged. Previous preset retained.; v4 organized walled-city preview, original source roots only; two local non-walkable Terrain cliffs; v3 retained.; v5 full inland activity plane and bright neutral-white light comparison; oak, not pine; no new world geometry.; v6 user-authorized repetition of existing whole roots: 30 buildings/12 pastures, dense native oak curtain, connected Terrain edge cap. Not a new model or functioning economy. V5 white daylight and water retained.; integer-grid variants: art/grid_footprint_handoff.json; authored metre exports at whole-root scale 1; original v3-v5 sources retained.'
+  source_record: 'Vision-1: flat-v3 frozen source refs; 05/07/09 wilderness-dark-v3 directional references, not art approval; v3 parent-authorized whole-root translations; original dimensions, yaw, scale, material and authored assembly unchanged. Previous preset retained.; v4 organized walled-city preview, original source roots only; two local non-walkable Terrain cliffs; v3 retained.; v5 full inland activity plane and bright neutral-white light comparison; oak, not pine; no new world geometry.; v6 user-authorized repetition of existing whole roots: 30 buildings/12 pastures, dense native oak curtain, connected Terrain edge cap. Not a new model or functioning economy. V5 white daylight and water retained.; integer-grid variants: art/grid_footprint_handoff.json; authored metre exports at whole-root scale 1; original v3-v5 sources retained.; integer-grid variants: art/grid_footprint_handoff.json; authored metre exports at whole-root scale 1; original v3-v5 sources retained.'
   layout: {fileID: 11400000, guid: 39850fba2207c49269e9d11e98b25935, type: 2}
   props_enabled: 1
   placements:
@@ -214,7 +214,7 @@ MonoBehaviour:
     ore: 1
   frozen_sources:
   - id: Headquarters
-    source_record: art/grid_footprint_handoff.json#Headquarters12; masterSHA=468a608185ce139913f1b79e04f5e20d0a7b5662e248d32b6ab28900c096e866; FBXSHA=d3f7fa2d163adfc5aa176b5aba9ecd0a338630dfccf29f2609fdd4fe58988032; native metre export scale 1; surface anchor=0; ground lift=0.025; preview grid only, formal balance unchanged; all source child transforms/material slots retained.
+    source_record: art/grid_footprint_handoff.json#Headquarters12; masterSHA=69704fa392d17bcc253d669699b0001031c91884cf8fdc544d582e00d3e55d2d; FBXSHA=d3f7fa2d163adfc5aa176b5aba9ecd0a338630dfccf29f2609fdd4fe58988032; native metre export scale 1; surface anchor=0; ground lift=0.025; preview grid only, formal balance unchanged; all source child transforms/material slots retained.
     prefab: {fileID: 6921238009478359861, guid: 33b60075df68d4ccdaaf2d09839cbc35, type: 3}
     native_dimensions: {x: 12.000001, y: 7.3688335, z: 12}
     native_bounds_center: {x: 0, y: 3.5883684, z: 0}
@@ -246,7 +246,7 @@ MonoBehaviour:
       metallic_multiplier: 0
       normal_note: Declared nor_gl imported as normal; roughness stays linear and existing shader inverts once.
   - id: Workshop
-    source_record: art/grid_footprint_handoff.json#Workshop8; masterSHA=468a608185ce139913f1b79e04f5e20d0a7b5662e248d32b6ab28900c096e866; FBXSHA=b84ca5b04261d434119ed78e66a113cba6dd355f0713f2a7f0e85b524a3ce8f0; native metre export scale 1; surface anchor=0; ground lift=0.025; preview grid only, formal balance unchanged; all source child transforms/material slots retained.
+    source_record: art/grid_footprint_handoff.json#Workshop8; masterSHA=69704fa392d17bcc253d669699b0001031c91884cf8fdc544d582e00d3e55d2d; FBXSHA=b84ca5b04261d434119ed78e66a113cba6dd355f0713f2a7f0e85b524a3ce8f0; native metre export scale 1; surface anchor=0; ground lift=0.025; preview grid only, formal balance unchanged; all source child transforms/material slots retained.
     prefab: {fileID: 7640371708984550096, guid: e144a8d03088d404da87a7238566b0ec, type: 3}
     native_dimensions: {x: 8.000001, y: 3.6619442, z: 8}
     native_bounds_center: {x: 0, y: 1.7509338, z: 0}
@@ -278,19 +278,19 @@ MonoBehaviour:
       metallic_multiplier: 0
       normal_note: Declared nor_gl imported as normal; roughness stays linear and existing shader inverts once.
   - id: Pasture
-    source_record: art/grid_footprint_handoff.json#Pasture14; masterSHA=468a608185ce139913f1b79e04f5e20d0a7b5662e248d32b6ab28900c096e866; FBXSHA=f8de881951e71590506ce42fcbddc5b8dfaed368b3cafd49db174d2753d0d895; native metre export scale 1; surface anchor=0; ground lift=0.025; preview grid only, formal balance unchanged; all source child transforms/material slots retained.
-    prefab: {fileID: 824869426357576976, guid: 7120cfa58095e4fddb90f4ff4cac8375, type: 3}
-    native_dimensions: {x: 14.000001, y: 2.5847583, z: 14.000001}
-    native_bounds_center: {x: 0, y: 1.2242992, z: 0}
-    native_min_y: -0.06807995
+    source_record: art/grid_footprint_handoff.json#Pasture14_GoldenCorner; masterSHA=69704fa392d17bcc253d669699b0001031c91884cf8fdc544d582e00d3e55d2d; FBXSHA=3ee3c15e36456b3a199321ec22bd597dd85d2f0940dac15981354e1548996a8e; native metre export scale 1; surface anchor=0; ground lift=0.025; preview grid only, formal balance unchanged; all source child transforms/material slots retained.
+    prefab: {fileID: 8129949535478294908, guid: 8e0fd766828324da7826794b8587dad8, type: 3}
+    native_dimensions: {x: 14.000001, y: 2.5847578, z: 14.000001}
+    native_bounds_center: {x: 0, y: 1.2242993, z: 0}
+    native_min_y: -0.06807959
     has_authored_ground_anchor: 1
     authored_ground_anchor_y: 0
     authored_ground_offset_y: 0.025
     preview_grid_unit_m: 1
     preview_grid_footprint_m: {x: 14, y: 14}
     material_bindings:
-    - material: {fileID: 2100000, guid: 2606f7abfd7e049beb8d9c277fe2ee12, type: 2}
-      base_color: {fileID: 2800000, guid: e62f7c88cf5f54f65b30493f98dc36f6, type: 3}
+    - material: {fileID: 2100000, guid: 72613b1e463a04414828fc5936397ca9, type: 2}
+      base_color: {fileID: 2800000, guid: ae0464e7de10349d3aab5e108232594b, type: 3}
       normal: {fileID: 0}
       roughness: {fileID: 0}
       metallic: {fileID: 0}
@@ -299,17 +299,17 @@ MonoBehaviour:
       metallic_max_red: 0
       metallic_multiplier: 0
       normal_note: Original baked colour and source constants only; no fabricated normal/roughness/height maps.
-    - material: {fileID: 2100000, guid: 3ed59b90375c74618a8d6da1b01858cb, type: 2}
-      base_color: {fileID: 2800000, guid: e28eaa264bd46481aa05279ab2e4578a, type: 3}
-      normal: {fileID: 2800000, guid: f89e71967a9314125954f359fc703379, type: 3}
-      roughness: {fileID: 2800000, guid: ab37ff1c5dedc4d25b2e483490d04529, type: 3}
+    - material: {fileID: 2100000, guid: 86e991398c81f4bc998a9d41f5b7c48a, type: 2}
+      base_color: {fileID: 2800000, guid: f40152867f2f14d90b03c58a35ec6d07, type: 3}
+      normal: {fileID: 2800000, guid: f01e51b9a74684ceba336984dc14dad8, type: 3}
+      roughness: {fileID: 2800000, guid: 29c63d8e08bb44ea58ce65d16cc2c33f, type: 3}
       metallic: {fileID: 0}
       occlusion: {fileID: 0}
       import_channels_pass: 1
       metallic_max_red: 0
       metallic_multiplier: 0
       normal_note: Declared nor_gl imported as normal; roughness stays linear and existing shader inverts once.
-    - material: {fileID: 2100000, guid: 26c3b3a6119994760944bb628248e7ea, type: 2}
+    - material: {fileID: 2100000, guid: cc091564acfa444be9a3a8e0ac8da7ee, type: 2}
       base_color: {fileID: 0}
       normal: {fileID: 0}
       roughness: {fileID: 0}
@@ -319,7 +319,7 @@ MonoBehaviour:
       metallic_max_red: 0
       metallic_multiplier: 0
       normal_note: Original constant-colour source material; no base texture exists or is fabricated. Authored linear colour is retained via the adapter gamma upload.
-    - material: {fileID: 2100000, guid: 33a7a5790a3974e528c5abff24545376, type: 2}
+    - material: {fileID: 2100000, guid: ba02910740d4946c0b7d9532f43dafe4, type: 2}
       base_color: {fileID: 0}
       normal: {fileID: 0}
       roughness: {fileID: 0}
@@ -329,7 +329,7 @@ MonoBehaviour:
       metallic_max_red: 0
       metallic_multiplier: 0
       normal_note: Original constant-colour source material; no base texture exists or is fabricated. Authored linear colour is retained via the adapter gamma upload.
-    - material: {fileID: 2100000, guid: 2daccecca5f234698ac4757c8c547a81, type: 2}
+    - material: {fileID: 2100000, guid: c8a25f55a9eed45d6b7d8715004cfd6a, type: 2}
       base_color: {fileID: 0}
       normal: {fileID: 0}
       roughness: {fileID: 0}
@@ -339,7 +339,7 @@ MonoBehaviour:
       metallic_max_red: 0
       metallic_multiplier: 0
       normal_note: Original constant-colour source material; no base texture exists or is fabricated. Authored linear colour is retained via the adapter gamma upload.
-    - material: {fileID: 2100000, guid: 00802e9d8d1dd49d38392d2e0b8206ff, type: 2}
+    - material: {fileID: 2100000, guid: cda2150980eed43c9b71006f84756bce, type: 2}
       base_color: {fileID: 0}
       normal: {fileID: 0}
       roughness: {fileID: 0}
@@ -349,7 +349,7 @@ MonoBehaviour:
       metallic_max_red: 0
       metallic_multiplier: 0
       normal_note: Original constant-colour source material; no base texture exists or is fabricated. Authored linear colour is retained via the adapter gamma upload.
-    - material: {fileID: 2100000, guid: 40a8dbd685d5e4b3c9bc2d88dd821e8d, type: 2}
+    - material: {fileID: 2100000, guid: 9ff2e06b6ca6b42ccb28c658fa0a89de, type: 2}
       base_color: {fileID: 0}
       normal: {fileID: 0}
       roughness: {fileID: 0}
@@ -359,7 +359,7 @@ MonoBehaviour:
       metallic_max_red: 0
       metallic_multiplier: 0
       normal_note: Original constant-colour source material; no base texture exists or is fabricated. Authored linear colour is retained via the adapter gamma upload.
-    - material: {fileID: 2100000, guid: d3ba7b5190b554ddb93f33e65abecf25, type: 2}
+    - material: {fileID: 2100000, guid: a94caf974fa5346f3b696d9175b46d92, type: 2}
       base_color: {fileID: 0}
       normal: {fileID: 0}
       roughness: {fileID: 0}
@@ -369,7 +369,7 @@ MonoBehaviour:
       metallic_max_red: 0
       metallic_multiplier: 0
       normal_note: Original constant-colour source material; no base texture exists or is fabricated. Authored linear colour is retained via the adapter gamma upload.
-    - material: {fileID: 2100000, guid: 3f3e58dfe48d8427bb7c904cc9979cdd, type: 2}
+    - material: {fileID: 2100000, guid: 04d12c30960284c1893cf0f73b331915, type: 2}
       base_color: {fileID: 0}
       normal: {fileID: 0}
       roughness: {fileID: 0}
@@ -379,7 +379,7 @@ MonoBehaviour:
       metallic_max_red: 0
       metallic_multiplier: 0
       normal_note: Original constant-colour source material; no base texture exists or is fabricated. Authored linear colour is retained via the adapter gamma upload.
-    - material: {fileID: 2100000, guid: 106cb4f9e12b146eb9a3588ab7fcddf7, type: 2}
+    - material: {fileID: 2100000, guid: 307ba62667feb4d3089d6d3b0aefa893, type: 2}
       base_color: {fileID: 0}
       normal: {fileID: 0}
       roughness: {fileID: 0}

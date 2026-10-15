@@ -2,6 +2,8 @@
 
 ## 当前预览：Vision 6 密集布景＋连片农田
 
+最新农田为「青黄满铺麦田＋右上小屋」：麦黄穗／成熟叶、少量绿茎，小屋移至右上角，取消所有屋周矩形裸土区，麦株铺至墙脚。旧版保留，14m节距／现有布局／白光不变。源集合、实际截图和本轮验证见[最新农田记录](../../../docs/dev/VISION_1_MAP_REVIEW.md)；源导出为 `Pasture14_GoldenCorner`，不是旧 `Pasture14`。
+
 场景 `Scenes/EnvironmentDenseVision.unity`；菜单 `Zombie Game → Environment Showcase → Vision-6 → Open dense repetition and Play`；本机 `Builds/EnvironmentDenseVision.app`。30栋建筑含12块牧场、9矿、最终81棵原生树，北沿连续Terrain崖和林带。活动平面4.2m、六层PBR／Road零、v5白光及旧版本保留。
 
 农田已先在正式Blender源去围栏／外围旗杆／田埂，保留小屋与连续原麦株；四块以14m精确节距贴合，Unity不切网格、不拉伸。导入操作 `VisionGridImport.import_frozen_grid_buildings()`，读取 `art/grid_footprint_handoff.json`；当前样场参考格14／12／8m不是正式建造平衡修改。旧源和未保存Zombie保留。

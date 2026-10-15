@@ -1,6 +1,14 @@
 # Vision 1 地图制作和打开说明
 
-## 当前预览：Vision 6 密集布景与连片麦田（2026-10-16）
+## 当前农田修订：青黄满铺麦田＋右上角小屋（2026-10-16）
+
+沿用同一 `EnvironmentDenseVision.unity`、Vision-6 打开菜单和预览程序，没有新建控制器或改地图布局。小麦改为明显麦黄的穗／成熟叶和少量青绿细茎；小屋仅刚性平移至地块右上角（世界+x/+z），屋檐离两边0.35m。取消屋周矩形裸土区，麦株完整铺到墙脚，屋前深色是保留的屋檐阴影而非地块空框。14×14m参考格／14m中心距不变，12块田及81树／30建筑／9矿的布局和中性白日光不变。
+
+正式源仍在 `art/Blender主文件/ZombieGame.blend`，新集合 `农田整格 · 青黄满铺麦田＋右上小屋`、评审集合 `青黄麦田右上屋 · 2×2评审`。本次主文件SHA `69704fa392d17bcc253d669699b0001031c91884cf8fdc544d582e00d3e55d2d`；独立导出 `art/models/grid-footprints/Pasture14_GoldenCorner/Pasture14_GoldenCorner.fbx`，SHA `3ee3c15e36456b3a199321ec22bd597dd85d2f0940dac15981354e1548996a8e`。旧464对象、旧农田导出／Unity Prefab／截图都保留，实时未保存Zombie文件未碰。19,600点麦根覆盖、无院落裁空、房屋网格／UV／材质／旋转比例保护、地块边界和FBX回读检查通过；[源检查](vision-golden-corner-source-validation.json)。
+
+实际Unity同白光截图：[四块俯视](../../art/environment/inspection/vision-dense-v6/golden-corner-v1/farm-four-tiles-top.png) · [斜上方近景](../../art/environment/inspection/vision-dense-v6/golden-corner-v1/farm-isometric.png) · [整体地图](../../art/environment/inspection/vision-dense-v6/golden-corner-v1/composition.png)。8个麦色材质与源RGBA上传误差0，独立播放器39件源／地块贴地／建筑重叠／入口净空／森林检查通过。原野草整体贡献0.00003093仍低于原0.0003门槛，总报告仍FAIL，不当作整个环境通过或游戏战斗验收；[本轮检查摘要](vision-golden-corner-validation.json)。
+
+## 保留：Vision 6 首次密集布景与连片麦田（2026-10-16）
 
 用户追加授权现有模型重复满铺，并要求农田去掉院圈，连成大片。这版使用同一个 EnvironmentShowcase 系统，保留旧版，不改正式地图／单位数值／建造平衡／渲染管线。
 

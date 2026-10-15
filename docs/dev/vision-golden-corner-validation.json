@@ -1,0 +1,75 @@
+{
+  "overall_passed": false,
+  "terrain_passed": true,
+  "grass_passed": false,
+  "grass_mean_rgb_delta": 0.000030932784284232184,
+  "counts": {
+    "buildings": 30,
+    "fixtures": 39,
+    "trees": 81,
+    "grass": 6000,
+    "shrubs": 132,
+    "rocks": 8
+  },
+  "sources_passed": true,
+  "overlap_passed": true,
+  "overlaps": [],
+  "activity_plane_passed": true,
+  "max_height_error_m": 0.0002193450927734375,
+  "all_source_footprints_flat": 0,
+  "city_passed": true,
+  "entry_samples": 105,
+  "blocked_entry_samples": 0,
+  "forest_passed": true,
+  "snapshot": "vision-golden-corner-v1",
+  "status": "Farm-specific appearance/source integration verified; art review pending; old wild-grass aggregate gate still FAIL",
+  "scope": "Source-only farm revision in existing isolated dense v6 art preview; not economy, navigation or battle acceptance",
+  "scene": "Assets/_Tests/EnvironmentShowcase/Scenes/EnvironmentDenseVision.unity",
+  "collection": "农田整格 · 青黄满铺麦田＋右上小屋",
+  "master_sha256": "69704fa392d17bcc253d669699b0001031c91884cf8fdc544d582e00d3e55d2d",
+  "export_path": "art/models/grid-footprints/Pasture14_GoldenCorner/Pasture14_GoldenCorner.fbx",
+  "export_sha256": "3ee3c15e36456b3a199321ec22bd597dd85d2f0940dac15981354e1548996a8e",
+  "source_proof": "docs/dev/vision-golden-corner-source-validation.json",
+  "visual_changes": [
+    "Golden yellow heads and mature leaves; minor green stems",
+    "Rigid original house translation to the +x/+z corner, roof kept0.35m inside boundary",
+    "Wheat reaches all house walls with no courtyard/rectangular soil cutout",
+    "Same14m×14m seamless tile and unchanged placement pitch"
+  ],
+  "material_upload": {
+    "wheat_slots": 8,
+    "maximum_rgba_error": 0,
+    "comparison": "Declared Blender linear colour converted by the existing importer gamma upload, unchanged adapter; actual Unity material slot comparison"
+  },
+  "preserved": {
+    "original_464_objects": true,
+    "original_house_mesh_uv_scale_materials": true,
+    "old_export": true,
+    "old_screenshots": true,
+    "live_unsaved_zombie_file": true,
+    "layout_placements": true,
+    "neutral_white_lighting": true,
+    "unit_balance_sha256": "4ac06d0483015a916a3440a19ee82fc5979ccae72831ceede74e83a5e0c9c38c",
+    "game_balance_packages_projectsettings_unchanged": true
+  },
+  "grass_threshold_unchanged": 0.0003,
+  "live_frame_proof": {
+    "initial": 760,
+    "changed": 763,
+    "elapsed_ms": 137
+  },
+  "art_visual_accepted": false,
+  "balance_assertions_passed": 57,
+  "current_console_errors": 0,
+  "current_compilation_failed": false,
+  "full_report": "Builds/ArtReview/EnvironmentShowcase/vision-golden-corner-v1/showcase-report.json",
+  "images": {
+    "root": "art/environment/inspection/vision-dense-v6/golden-corner-v1/",
+    "composition_sha256": "5841fe4bdbd1c038b28d9b5042d38f893ccf7e61e2c5b6d191217fb09c8220fb",
+    "top_sha256": "d32fbfabb18f9729976b4135d2f76b282c661dc4ce19051825214d0c0e9e3c54",
+    "isometric_sha256": "7d8d877007403b86ace58a34aad97a023a214b4dd641f1256eeb3a45e2c47306",
+    "note": "Unedited actual Unity Camera.Render, original v6 neutral lighting. The dark patch near the house is its shadow, with wheat still visible, not a bare courtyard."
+  },
+  "performance_claim": false,
+  "remaining": "Existing wild grass overall contribution insufficient. No claim that the entire map has passed visual acceptance."
+}
