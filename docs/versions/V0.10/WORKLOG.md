@@ -151,3 +151,38 @@ then implement and test the first playable slice. Do not repeat finished art wor
   walls and originalv6 scene/settings have no diff. CPU balance again passed57assertions.
 - Code/test/art commits246fa50/47a46e3/4161762 isolate this integration. Final docs/tag/push
   complete the preview; unrelated concept drafts andRecovery are intentionally excluded.
+
+## 2026-10-16 — camera comparison and building grounding review
+
+- User requested five same-scene Unity camera screenshots and a repair of the dark,
+  hard rectangular building bases. The final gameplay camera remains undecided.
+- Preserve `v0.10.0-baseline`, `v0.10.0-preview.1`, the original V010 scene/scenario/
+  FrozenEnvironment, accepted farm and wall exports, and UnitBalance. Work stays on
+  `codex/v0.10` in an opt-in presentation review, not an overwrite of the frozen preview.
+- Compare A pitch48/yaw0 (control), B45/30, C40/45, D35/45 and E40/60 with one focus,
+  orthographic size25, 1920x1080, identical lighting and paused unit positions.
+- Blender specialist owns the new traceable HQ/workshop grounding variants and handoff;
+  Unity specialist owns the derived review scene, import, capture and regression evidence.
+  No concurrent GUI ownership or partially written source imports are allowed.
+- Live Blender is the user's unsaved Zombie category file; do not save, switch or
+  replace it. Building-source processing is isolated from that live document.
+- Initial source check: HQ/workshop contain both original Tripo architecture/ground
+  and an added 12x12m/8x8m rectangular dirt plate, 5cm thick. The latter's top sits
+  2.5cm above Terrain, with a normal brown PBR material, not a pure-black material.
+  Preserve logical integer footprints while improving the visible ground transition.
+- Completed source handoff `art/grounding_review_handoff.json`: master34ce14d5,
+  492 objects, all prior486 protected after independent reopen. New HQ stone/Workshop
+  soil surfaces have no sidewalls and carry authored vertex-alpha fade. Both FBX
+  geometry/UV/alpha roundtrips passed; original architecture, old exports and live
+  unsaved Zombie document remain untouched. Original Workshop soil base stays visible.
+- Unity imports are isolated in `Assets/_Game/Art/BuildingGroundingReview`; all six
+  HQ/Workshop instances align within0.2mm, with no active old IntegerGround in After.
+  Frozen V010scene/scenario/prefab, wall/farm exports and Balance SHA all match.
+- First framing at(4,0,-20) exposed the map corner at low angles. Retained local draft
+  evidence; final five all use focus(0,0,0), size25 and unchanged map/layout/light.
+- Seven final1920x1080 Unity images share time0/state71fdb686 and one lighting
+  signature; Terrain contribution.380485, magenta0. Root inspected all five angles
+  and same-angle ground before/after. These are camera/art selection evidence,
+  not final art acceptance or a performance/physical-input/full-gameplay certification.
+- CPU UnitBalance checks again pass57assertions, zero warnings/errors. Details and
+  reproducible Unity entry: `CameraGroundingReview.md`; camera remains unselected.

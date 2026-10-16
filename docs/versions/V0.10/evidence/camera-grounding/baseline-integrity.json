@@ -1,0 +1,36 @@
+{
+    "status": "PASS",
+    "source": "v0.10.0-preview.1 reference-only frozen assets",
+    "files": [
+        {
+            "path": "Assets/_Tests/V010Defense/Scenes/V010Defense.unity",
+            "sha256_before": "d9ae942b4d840e1a4cbb05a5b7a6d3f89c7aaa8612d1a98a67277250205a58e2",
+            "sha256_after": "d9ae942b4d840e1a4cbb05a5b7a6d3f89c7aaa8612d1a98a67277250205a58e2"
+        },
+        {
+            "path": "Assets/_Game/Art/V010Defense/DefenseScenario.asset",
+            "sha256_before": "722daf02808f4aa5532cfbf1c75db76644a4aa8509df45033d0c5c170d7992e2",
+            "sha256_after": "722daf02808f4aa5532cfbf1c75db76644a4aa8509df45033d0c5c170d7992e2"
+        },
+        {
+            "path": "Assets/_Game/Art/V010Defense/FrozenEnvironment.prefab",
+            "sha256_before": "0a0e15ebcac037675dbdf80bdf2a52e4b1f4e8c2529615019f0179a959d43a47",
+            "sha256_after": "0a0e15ebcac037675dbdf80bdf2a52e4b1f4e8c2529615019f0179a959d43a47"
+        },
+        {
+            "path": "balance/unit_balance.json",
+            "sha256_before": "4ac06d0483015a916a3440a19ee82fc5979ccae72831ceede74e83a5e0c9c38c",
+            "sha256_after": "4ac06d0483015a916a3440a19ee82fc5979ccae72831ceede74e83a5e0c9c38c"
+        },
+        {
+            "path": "art/models/fortified-city/FortifiedCityWalls.fbx",
+            "sha256_before": "47b89d7734871bbe0dd000cdb0eebd894e13d43e69698e52bd6cd8ce0ee05e2d",
+            "sha256_after": "47b89d7734871bbe0dd000cdb0eebd894e13d43e69698e52bd6cd8ce0ee05e2d"
+        },
+        {
+            "path": "art/models/grid-footprints/Pasture14_GoldenCorner/Pasture14_GoldenCorner.fbx",
+            "sha256_before": "3ee3c15e36456b3a199321ec22bd597dd85d2f0940dac15981354e1548996a8e",
+            "sha256_after": "3ee3c15e36456b3a199321ec22bd597dd85d2f0940dac15981354e1548996a8e"
+        }
+    ]
+}

@@ -1,0 +1,22 @@
+{
+    "status": "SOURCE_IMPORT_PASS_VISUAL_REVIEW_PENDING",
+    "source_blend": "art/Blender主文件/ZombieGame.blend",
+    "master_sha256": "34ce14d5150a0ae7a9e232775f6f7863180052feea29be4fabc8faf1ad097ef9",
+    "handoff_sha256": "7ea53345348ec90b4de7d658eee69208bbc4e7e49117283faadd11874793531f",
+    "pairs": 6,
+    "active_old_integer_ground": 0,
+    "models": [
+        "HeadquartersGroundedReview; FBX=55fba96656cf178f90eba6ed1685ddd0d4418008f3462cc1256ee70c1bd02396; bounds=Center: (0.00, 3.59, 0.00), Extents: (6.00, 3.68, 6.00); whole native-scale1; source root/mesh normals/UV/vertex alpha retained",
+        "WorkshopGroundedReview; FBX=7defede4b1a364e37c5eeafa5aad84e14c3e6b479dc751a3739af9d042fba733; bounds=Center: (0.00, 1.75, 0.00), Extents: (4.00, 1.83, 4.00); whole native-scale1; source root/mesh normals/UV/vertex alpha retained"
+    ],
+    "checks": [
+        "FrozenFixture-00-Headquarters: architecture vertex count=11125; world bounds and source-scale alignment unchanged within0.2mm; original source preservation proof retained in handoff.",
+        "FrozenFixture-01-Workshop: architecture vertex count=10945; world bounds and source-scale alignment unchanged within0.2mm; original source preservation proof retained in handoff.",
+        "FrozenFixture-02-Workshop: architecture vertex count=10945; world bounds and source-scale alignment unchanged within0.2mm; original source preservation proof retained in handoff.",
+        "FrozenFixture-21-Workshop: architecture vertex count=10945; world bounds and source-scale alignment unchanged within0.2mm; original source preservation proof retained in handoff.",
+        "FrozenFixture-24-Workshop: architecture vertex count=10945; world bounds and source-scale alignment unchanged within0.2mm; original source preservation proof retained in handoff.",
+        "FrozenFixture-27-Workshop: architecture vertex count=10945; world bounds and source-scale alignment unchanged within0.2mm; original source preservation proof retained in handoff.",
+        "All HQ/Workshop fixture placements retained, including repeated external workshops; old thick ground roots inactive.",
+        "Wall/farm/tree/mineral source roots and all materials outside the two authorised replacements remain references to the frozen environment."
+    ]
+}

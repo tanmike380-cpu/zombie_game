@@ -58,3 +58,10 @@ irregularity and lack of an approved gate leaf remain known source limitations.
 
 后续版本在此快照上迭代；冻结标签不移动。每个版本目录保留入口、源清单、变更、
 实测与已知问题，不复制整套代码到另一份找不到的项目。
+
+### 后续独立视角／接地评审（2026-10-16）
+
+[五组Unity截图与接地对比](CameraGroundingReview.md)保存在独立评审场景；
+本页上述冻结试玩版不被覆盖。俯角／水平朝向尚待用户选择，基地和工坊的新接地
+也作为可回退源变体保留。快照标签 `v0.10.0-camera-review.1`，详细技术证据见
+[评审清单](camera-grounding-manifest.json)。这不是新的性能或完整玩法验收。

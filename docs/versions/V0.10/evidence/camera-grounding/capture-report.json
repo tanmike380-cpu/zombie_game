@@ -1,0 +1,203 @@
+{
+    "status": "TECHNICAL_PASS_NOT_ART_ACCEPTANCE",
+    "failure": "",
+    "grounding_version": "art/grounding_review_handoff.json; SHA=7ea53345348ec90b4de7d658eee69208bbc4e7e49117283faadd11874793531f; masterSHA=34ce14d5150a0ae7a9e232775f6f7863180052feea29be4fabc8faf1ad097ef9",
+    "fixture": "Initial paused production state; global reveal is an art-review fixture only. Unity frames advance for culling, but simulation time/positions/health stay identical.",
+    "balance_sha256": "4ac06d0483015a916a3440a19ee82fc5979ccae72831ceede74e83a5e0c9c38c",
+    "baseline_evidence_path": "docs/versions/V0.10/evidence/camera-grounding/baseline-integrity.json",
+    "lighting_signature": "sun=RGBA(0.980, 0.990, 1.000, 1.000)/1.08/(0.26673, -0.44038, 0.13885, 0.84596);ambient=RGBA(0.450, 0.480, 0.500, 1.000)/RGBA(0.360, 0.380, 0.370, 1.000)/RGBA(0.280, 0.290, 0.270, 1.000);fog=True/RGBA(0.560, 0.590, 0.600, 1.000)/100/260;AA=4;shadows=150/2/High",
+    "animation_freeze": "Time.time and attack_started_at/facing/observed_velocity are frozen; production sampled animation uses these scaled-time inputs, not Unity frameCount.",
+    "frozen_trees": 81,
+    "grounding_pairs": 6,
+    "terrain_pixel_contribution": 0.3804851472377777,
+    "views": [
+        {
+            "id": "ground-before",
+            "file": "docs/versions/V0.10/evidence/camera-grounding/ground-before.png",
+            "projection": "Orthographic",
+            "simulation_state_sha256": "71fdb6862c906df2405bca3305389b905c5342871d77400699d3dc153f05bc3f",
+            "pitch": 48.0,
+            "yaw": 0.0,
+            "orthographic_size": 12.0,
+            "simulation_time": 0.0,
+            "focus": {
+                "x": -3.0,
+                "y": 0.0,
+                "z": -16.0
+            },
+            "position": {
+                "x": -3.0,
+                "y": 37.15724182128906,
+                "z": -49.45652770996094
+            },
+            "width": 1920,
+            "height": 1080,
+            "unity_frame": 4,
+            "projected_friendly_count": 64,
+            "magenta_pixels": 0,
+            "grounding_after": false
+        },
+        {
+            "id": "ground-after",
+            "file": "docs/versions/V0.10/evidence/camera-grounding/ground-after.png",
+            "projection": "Orthographic",
+            "simulation_state_sha256": "71fdb6862c906df2405bca3305389b905c5342871d77400699d3dc153f05bc3f",
+            "pitch": 48.0,
+            "yaw": 0.0,
+            "orthographic_size": 12.0,
+            "simulation_time": 0.0,
+            "focus": {
+                "x": -3.0,
+                "y": 0.0,
+                "z": -16.0
+            },
+            "position": {
+                "x": -3.0,
+                "y": 37.15724182128906,
+                "z": -49.45652770996094
+            },
+            "width": 1920,
+            "height": 1080,
+            "unity_frame": 6,
+            "projected_friendly_count": 64,
+            "magenta_pixels": 0,
+            "grounding_after": true
+        },
+        {
+            "id": "A-48-0",
+            "file": "docs/versions/V0.10/evidence/camera-grounding/A-48-0.png",
+            "projection": "Orthographic",
+            "simulation_state_sha256": "71fdb6862c906df2405bca3305389b905c5342871d77400699d3dc153f05bc3f",
+            "pitch": 48.0,
+            "yaw": 0.0,
+            "orthographic_size": 25.0,
+            "simulation_time": 0.0,
+            "focus": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "position": {
+                "x": 0.0,
+                "y": 42.73082733154297,
+                "z": -38.475006103515625
+            },
+            "width": 1920,
+            "height": 1080,
+            "unity_frame": 8,
+            "projected_friendly_count": 64,
+            "magenta_pixels": 0,
+            "grounding_after": true
+        },
+        {
+            "id": "B-45-30",
+            "file": "docs/versions/V0.10/evidence/camera-grounding/B-45-30.png",
+            "projection": "Orthographic",
+            "simulation_state_sha256": "71fdb6862c906df2405bca3305389b905c5342871d77400699d3dc153f05bc3f",
+            "pitch": 45.0,
+            "yaw": 30.0,
+            "orthographic_size": 25.0,
+            "simulation_time": 0.0,
+            "focus": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "position": {
+                "x": -20.329317092895508,
+                "y": 40.65863800048828,
+                "z": -35.2114143371582
+            },
+            "width": 1920,
+            "height": 1080,
+            "unity_frame": 10,
+            "projected_friendly_count": 64,
+            "magenta_pixels": 0,
+            "grounding_after": true
+        },
+        {
+            "id": "C-40-45",
+            "file": "docs/versions/V0.10/evidence/camera-grounding/C-40-45.png",
+            "projection": "Orthographic",
+            "simulation_state_sha256": "71fdb6862c906df2405bca3305389b905c5342871d77400699d3dc153f05bc3f",
+            "pitch": 40.0,
+            "yaw": 45.0,
+            "orthographic_size": 25.0,
+            "simulation_time": 0.0,
+            "focus": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "position": {
+                "x": -31.14632797241211,
+                "y": 36.96028518676758,
+                "z": -31.14632797241211
+            },
+            "width": 1920,
+            "height": 1080,
+            "unity_frame": 12,
+            "projected_friendly_count": 64,
+            "magenta_pixels": 0,
+            "grounding_after": true
+        },
+        {
+            "id": "D-35-45",
+            "file": "docs/versions/V0.10/evidence/camera-grounding/D-35-45.png",
+            "projection": "Orthographic",
+            "simulation_state_sha256": "71fdb6862c906df2405bca3305389b905c5342871d77400699d3dc153f05bc3f",
+            "pitch": 35.0,
+            "yaw": 45.0,
+            "orthographic_size": 25.0,
+            "simulation_time": 0.0,
+            "focus": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "position": {
+                "x": -33.30561065673828,
+                "y": 32.98064422607422,
+                "z": -33.305606842041016
+            },
+            "width": 1920,
+            "height": 1080,
+            "unity_frame": 14,
+            "projected_friendly_count": 64,
+            "magenta_pixels": 0,
+            "grounding_after": true
+        },
+        {
+            "id": "E-40-60",
+            "file": "docs/versions/V0.10/evidence/camera-grounding/E-40-60.png",
+            "projection": "Orthographic",
+            "simulation_state_sha256": "71fdb6862c906df2405bca3305389b905c5342871d77400699d3dc153f05bc3f",
+            "pitch": 40.0,
+            "yaw": 60.0,
+            "orthographic_size": 25.0,
+            "simulation_time": 0.0,
+            "focus": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "position": {
+                "x": -38.14630126953125,
+                "y": 36.96028137207031,
+                "z": -22.023780822753906
+            },
+            "width": 1920,
+            "height": 1080,
+            "unity_frame": 16,
+            "projected_friendly_count": 64,
+            "magenta_pixels": 0,
+            "grounding_after": true
+        }
+    ],
+    "checks": [
+        "Six-layer Terrain contributes real image pixels; no hidden fallback floor mistaken for terrain.",
+        "Seven images share the exact simulation state hash/time; no orders, warps or health overrides.",
+        "Five angles share focus, orthographic size25, lighting/materials, 1920x1080 and the same grounding version.",
+        "Each view waited two complete Unity frames for actor/forest camera culling before capture."
+    ]
+}

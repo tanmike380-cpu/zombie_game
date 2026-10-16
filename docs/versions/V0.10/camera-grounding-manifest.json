@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "status": "technical_review_pending_user_selection",
+  "snapshot_tag": "v0.10.0-camera-review.1",
+  "branch": "codex/v0.10",
+  "frozen_parent_tag": "v0.10.0-preview.1",
+  "frozen_parent_commit": "df705668d3ff1b82eb0d6edc2489230bb4ca3136",
+  "camera_selected": false,
+  "scene": "Assets/_Tests/V010PresentationReview/Scenes/CameraGroundingReview.unity",
+  "review_document": "docs/versions/V0.10/CameraGroundingReview.md",
+  "source_handoff": "art/grounding_review_handoff.json",
+  "source_master_sha256": "34ce14d5150a0ae7a9e232775f6f7863180052feea29be4fabc8faf1ad097ef9",
+  "affected_instances": 6,
+  "original_objects_preserved": 486,
+  "objects_after": 492,
+  "image_hashes": {
+    "docs/versions/V0.10/evidence/camera-grounding/A-48-0.png": "479dc83a902e9332ac01771f01528e99189d591965132d041ed017d3b8bd639b",
+    "docs/versions/V0.10/evidence/camera-grounding/B-45-30.png": "b3f87599bdda0e2cc83f22b16ff314d7e5cd5e4a78db5904ed01d96b4c70c543",
+    "docs/versions/V0.10/evidence/camera-grounding/C-40-45.png": "712c86528eec331ae1d51ef0b0395be1dfed68cdf875fdfda11847abde84c56f",
+    "docs/versions/V0.10/evidence/camera-grounding/D-35-45.png": "d76248b786830fbd9a2fdc3740f1b3d2b78cea16f093f168105b3e05b7f97de3",
+    "docs/versions/V0.10/evidence/camera-grounding/E-40-60.png": "4469e5eaea93776bb02215b3c7a0ae9b1d58b2b7eef808aca0cac65a3a5a9439",
+    "docs/versions/V0.10/evidence/camera-grounding/ground-after.png": "e180d1db9789afba483f0c2e60f2fcdccef74c04fafeccece76e069326b936f9",
+    "docs/versions/V0.10/evidence/camera-grounding/ground-before.png": "1e1c9ac0ca5d8ca1116385e393a4740b27f5774f5a0c7df29cfc0a1cd5c7af4e"
+  },
+  "capture_status": "TECHNICAL_PASS_NOT_ART_ACCEPTANCE",
+  "simulation_state_sha256": "71fdb6862c906df2405bca3305389b905c5342871d77400699d3dc153f05bc3f",
+  "terrain_pixel_contribution": 0.3804851472377777,
+  "balance_assertions_passed": 57,
+  "delivery_limits": [
+    "No camera/art choice made for the user",
+    "Workshop original Tripo soil base remains",
+    "No new performance or physical-input certification",
+    "Frozen V0.10 gameplay issues remain",
+    "No new standalone player was required or built for this screenshot review"
+  ]
+}

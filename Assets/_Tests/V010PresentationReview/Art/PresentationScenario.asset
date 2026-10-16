@@ -1,0 +1,3438 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 818a9bf4af60c444bbf48f114189dbd1, type: 3}
+  m_Name: DefenseScenario
+  m_EditorClassIdentifier: Assembly-CSharp::ZombieGame.World.DefenseScenario
+  version: V0.10 optional camera/grounding review, not selected gameplay camera
+  source_record: 'Frozen baseline v0.10.0-baseline / 63946b1; Assets/_Tests/EnvironmentShowcase/Settings/VisionDenseShowcaseV6.asset; art/grid_footprint_handoff.json; art/fortified_city_handoff.json; exact v6 placement snapshot, whole environment Y=-4.2m. Crops are walkable; original hut source AABB blocks. Rounded navigation experiment OFF after full-wave failure. Scenario-only crop renderers CAST shadows OFF, RECEIVE shadows ON; houses/walls/actors and source assets unchanged. No art acceptance implied.
+
+    Assets/_Game/Art/V010Defense/RenderData/0000-Headquarters12_IntegerGround.asset <= Assets/_Tests/EnvironmentShowcase/Art/GridFootprints/Headquarters12-d3f7fa2d163a/Headquarters12.fbx
+
+    Assets/_Game/Art/V010Defense/RenderData/0001-Headquarters12_OriginalArchitecture.asset <= Assets/_Tests/EnvironmentShowcase/Art/GridFootprints/Headquarters12-d3f7fa2d163a/Headquarters12.fbx
+
+    Assets/_Game/Art/V010Defense/RenderData/0002-Workshop8_IntegerGround.asset <= Assets/_Tests/EnvironmentShowcase/Art/GridFootprints/Workshop8-b84ca5b04261/Workshop8.fbx
+
+    Assets/_Game/Art/V010Defense/RenderData/0003-Workshop8_OriginalArchitecture.asset <= Assets/_Tests/EnvironmentShowcase/Art/GridFootprints/Workshop8-b84ca5b04261/Workshop8.fbx
+
+    Assets/_Game/Art/V010Defense/RenderData/0004-Pasture14GoldenCorner_architecture.asset <= Assets/_Tests/EnvironmentShowcase/Art/GridFootprints/Pasture14_GoldenCorner-3ee3c15e3645/Pasture14_GoldenCorner.fbx
+
+    Assets/_Game/Art/V010Defense/RenderData/0005-Pasture14GoldenCorner_crop.asset <= Assets/_Tests/EnvironmentShowcase/Art/GridFootprints/Pasture14_GoldenCorner-3ee3c15e3645/Pasture14_GoldenCorner.fbx
+
+    Assets/_Game/Art/V010Defense/RenderData/0006-Pasture14GoldenCorner_crop_completion.asset <= Assets/_Tests/EnvironmentShowcase/Art/GridFootprints/Pasture14_GoldenCorner-3ee3c15e3645/Pasture14_GoldenCorner.fbx
+
+    Assets/_Game/Art/V010Defense/RenderData/0007-Pasture14GoldenCorner_ground.asset <= Assets/_Tests/EnvironmentShowcase/Art/GridFootprints/Pasture14_GoldenCorner-3ee3c15e3645/Pasture14_GoldenCorner.fbx
+
+    Assets/_Game/Art/V010Defense/RenderData/0008-EuropeanStoneHouse.asset <= Assets/_Tests/EnvironmentShowcase/Art/Landmarks/EuropeanStoneHouse/EuropeanStoneHouse.fbx
+
+    Assets/_Game/Art/V010Defense/RenderData/0009-MiddleEasternCourtyard.asset <= Assets/_Tests/EnvironmentShowcase/Art/Landmarks/MiddleEasternCourtyard/MiddleEasternCourtyard.fbx
+
+    Assets/_Game/Art/V010Defense/RenderData/0010-NorthAfricanRuins_Arch.asset <= Assets/_Tests/EnvironmentShowcase/Art/Landmarks/NorthAfricanRuins/NorthAfricanRuins.fbx
+
+    Assets/_Game/Art/V010Defense/RenderData/0011-NorthAfricanRuins_Corner.asset <= Assets/_Tests/EnvironmentShowcase/Art/Landmarks/NorthAfricanRuins/NorthAfricanRuins.fbx
+
+    Assets/_Game/Art/V010Defense/RenderData/0012-NorthAfricanRuins_FallenPillar.asset <= Assets/_Tests/EnvironmentShowcase/Art/Landmarks/NorthAfricanRuins/NorthAfricanRuins.fbx
+
+    Assets/_Game/Art/V010Defense/RenderData/0013-IronOreRock.asset <= Assets/_Tests/EnvironmentShowcase/Art/Resources/IronOreRock/IronOreRock.fbx
+
+    Assets/_Game/Art/V010Defense/RenderData/0014-GoldOreRock.asset <= Assets/_Tests/EnvironmentShowcase/Art/Resources/GoldOreRock/GoldOreRock.fbx
+
+    Assets/_Game/Art/V010Defense/RenderData/0015-boulder_01_LOD0.asset <= Assets/_Tests/EnvironmentShowcase/Art/FreeCandidates/Boulder/boulder_01_2k.fbx
+
+    Assets/_Game/Art/V010Defense/RenderData/0016-boulder_01_LOD1.asset <= Assets/_Tests/EnvironmentShowcase/Art/FreeCandidates/Boulder/boulder_01_2k.fbx
+
+    Assets/_Game/Art/V010Defense/RenderData/0017-boulder_01_LOD2.asset <= Assets/_Tests/EnvironmentShowcase/Art/FreeCandidates/Boulder/boulder_01_2k.fbx
+
+    Assets/_Game/Art/V010Defense/RenderData/0018-boulder_01_LOD3.asset <= Assets/_Tests/EnvironmentShowcase/Art/FreeCandidates/Boulder/boulder_01_2k.fbx
+
+    Assets/_Game/Art/V010Defense/RenderData/0019-CityWall_East_Body_00.asset <= Assets/_Tests/EnvironmentShowcase/Art/FortifiedCity/FortifiedCityWalls.fbx
+
+    Assets/_Game/Art/V010Defense/RenderData/0020-CityWall_East_Body_01.asset <= Assets/_Tests/EnvironmentShowcase/Art/FortifiedCity/FortifiedCityWalls.fbx
+
+    Assets/_Game/Art/V010Defense/RenderData/0021-CityWall_East_Body_02.asset <= Assets/_Tests/EnvironmentShowcase/Art/FortifiedCity/FortifiedCityWalls.fbx
+
+    Assets/_Game/Art/V010Defense/RenderData/0022-CityWall_East_Body_03.asset <= Assets/_Tests/EnvironmentShowcase/Art/FortifiedCity/FortifiedCityWalls.fbx
+
+    Assets/_Game/Art/V010Defense/RenderData/0023-CityWall_North_Body_00.asset <= Assets/_Tests/EnvironmentShowcase/Art/FortifiedCity/FortifiedCityWalls.fbx
+
+    Assets/_Game/Art/V010Defense/RenderData/0024-CityWall_North_Body_02.asset <= Assets/_Tests/EnvironmentShowcase/Art/FortifiedCity/FortifiedCityWalls.fbx
+
+    Assets/_Game/Art/V010Defense/RenderData/0025-CityWall_North_EastPier.asset <= Assets/_Tests/EnvironmentShowcase/Art/FortifiedCity/FortifiedCityWalls.fbx
+
+    Assets/_Game/Art/V010Defense/RenderData/0026-CityWall_North_PortalEastPier.asset <= Assets/_Tests/EnvironmentShowcase/Art/FortifiedCity/FortifiedCityWalls.fbx
+
+    Assets/_Game/Art/V010Defense/RenderData/0027-CityWall_North_PortalWestPier.asset <= Assets/_Tests/EnvironmentShowcase/Art/FortifiedCity/FortifiedCityWalls.fbx
+
+    Assets/_Game/Art/V010Defense/RenderData/0028-CityWall_North_WestPier.asset <= Assets/_Tests/EnvironmentShowcase/Art/FortifiedCity/FortifiedCityWalls.fbx
+
+    Assets/_Game/Art/V010Defense/RenderData/0029-CityWall_South_Body_00.asset <= Assets/_Tests/EnvironmentShowcase/Art/FortifiedCity/FortifiedCityWalls.fbx
+
+    Assets/_Game/Art/V010Defense/RenderData/0030-CityWall_South_Body_01.asset <= Assets/_Tests/EnvironmentShowcase/Art/FortifiedCity/FortifiedCityWalls.fbx
+
+    Assets/_Game/Art/V010Defense/RenderData/0031-CityWall_South_Body_02.asset <= Assets/_Tests/EnvironmentShowcase/Art/FortifiedCity/FortifiedCityWalls.fbx
+
+    Assets/_Game/Art/V010Defense/RenderData/0032-CityWall_South_EastPier.asset <= Assets/_Tests/EnvironmentShowcase/Art/FortifiedCity/FortifiedCityWalls.fbx
+
+    Assets/_Game/Art/V010Defense/RenderData/0033-CityWall_South_WestPier.asset <= Assets/_Tests/EnvironmentShowcase/Art/FortifiedCity/FortifiedCityWalls.fbx
+
+    Assets/_Game/Art/V010Defense/RenderData/0034-CityWall_West_Body_00.asset <= Assets/_Tests/EnvironmentShowcase/Art/FortifiedCity/FortifiedCityWalls.fbx
+
+    Assets/_Game/Art/V010Defense/RenderData/0035-CityWall_West_Body_01.asset <= Assets/_Tests/EnvironmentShowcase/Art/FortifiedCity/FortifiedCityWalls.fbx
+
+    Assets/_Game/Art/V010Defense/RenderData/0036-CityWall_West_Body_02.asset <= Assets/_Tests/EnvironmentShowcase/Art/FortifiedCity/FortifiedCityWalls.fbx
+
+    Assets/_Game/Art/V010Defense/RenderData/0037-CityWall_West_Body_03.asset <= Assets/_Tests/EnvironmentShowcase/Art/FortifiedCity/FortifiedCityWalls.fbx
+
+    Assets/_Game/Art/V010Defense/RenderData/0038-GridFootprint_Dirt.mat <= Assets/_Tests/EnvironmentShowcase/Art/GridFootprints/Headquarters12-d3f7fa2d163a/GridFootprint_Dirt.mat
+
+    Assets/_Game/Art/V010Defense/RenderData/0039-6ce6ca7e28ed-dirt_diff_1k.jpg <= Assets/_Tests/EnvironmentShowcase/Art/GridFootprints/Headquarters12-d3f7fa2d163a/Textures/6ce6ca7e28ed-dirt_diff_1k.jpg
+
+    Assets/_Game/Art/V010Defense/RenderData/0040-5a5f97d920fd-dirt_nor_gl_1k.jpg <= Assets/_Tests/EnvironmentShowcase/Art/GridFootprints/Headquarters12-d3f7fa2d163a/Textures/5a5f97d920fd-dirt_nor_gl_1k.jpg
+
+    Assets/_Game/Art/V010Defense/RenderData/0041-eff62d5ae7bf-dirt_rough_1k.jpg <= Assets/_Tests/EnvironmentShowcase/Art/GridFootprints/Headquarters12-d3f7fa2d163a/Textures/eff62d5ae7bf-dirt_rough_1k.jpg
+
+    Assets/_Game/Art/V010Defense/RenderData/0042-Headquarters12_OriginalMaterial.mat <= Assets/_Tests/EnvironmentShowcase/Art/GridFootprints/Headquarters12-d3f7fa2d163a/Headquarters12_OriginalMaterial.mat
+
+    Assets/_Game/Art/V010Defense/RenderData/0043-4279480a0268-wall-original-03.jpg <= Assets/_Tests/EnvironmentShowcase/Art/GridFootprints/Headquarters12-d3f7fa2d163a/Textures/4279480a0268-wall-original-03.jpg
+
+    Assets/_Game/Art/V010Defense/RenderData/0044-GridFootprint_Dirt.mat <= Assets/_Tests/EnvironmentShowcase/Art/GridFootprints/Workshop8-b84ca5b04261/GridFootprint_Dirt.mat
+
+    Assets/_Game/Art/V010Defense/RenderData/0045-6ce6ca7e28ed-dirt_diff_1k.jpg <= Assets/_Tests/EnvironmentShowcase/Art/GridFootprints/Workshop8-b84ca5b04261/Textures/6ce6ca7e28ed-dirt_diff_1k.jpg
+
+    Assets/_Game/Art/V010Defense/RenderData/0046-5a5f97d920fd-dirt_nor_gl_1k.jpg <= Assets/_Tests/EnvironmentShowcase/Art/GridFootprints/Workshop8-b84ca5b04261/Textures/5a5f97d920fd-dirt_nor_gl_1k.jpg
+
+    Assets/_Game/Art/V010Defense/RenderData/0047-eff62d5ae7bf-dirt_rough_1k.jpg <= Assets/_Tests/EnvironmentShowcase/Art/GridFootprints/Workshop8-b84ca5b04261/Textures/eff62d5ae7bf-dirt_rough_1k.jpg
+
+    Assets/_Game/Art/V010Defense/RenderData/0048-Workshop8_OriginalMaterial.mat <= Assets/_Tests/EnvironmentShowcase/Art/GridFootprints/Workshop8-b84ca5b04261/Workshop8_OriginalMaterial.mat
+
+    Assets/_Game/Art/V010Defense/RenderData/0049-8fa3c0e9413d-wall-original-03.jpg <= Assets/_Tests/EnvironmentShowcase/Art/GridFootprints/Workshop8-b84ca5b04261/Textures/8fa3c0e9413d-wall-original-03.jpg
+
+    Assets/_Game/Art/V010Defense/RenderData/0050-Pasture14_GoldenCorner_OriginalMaterial.mat <= Assets/_Tests/EnvironmentShowcase/Art/GridFootprints/Pasture14_GoldenCorner-3ee3c15e3645/Pasture14_GoldenCorner_OriginalMaterial.mat
+
+    Assets/_Game/Art/V010Defense/RenderData/0051-aa2fd9ac9f92-wall-original-03.jpg <= Assets/_Tests/EnvironmentShowcase/Art/GridFootprints/Pasture14_GoldenCorner-3ee3c15e3645/Textures/aa2fd9ac9f92-wall-original-03.jpg
+
+    Assets/_Game/Art/V010Defense/RenderData/0052-WheatGoldenHead_0.mat <= Assets/_Tests/EnvironmentShowcase/Art/GridFootprints/Pasture14_GoldenCorner-3ee3c15e3645/WheatGoldenHead_0.mat
+
+    Assets/_Game/Art/V010Defense/RenderData/0053-WheatGoldenHead_1.mat <= Assets/_Tests/EnvironmentShowcase/Art/GridFootprints/Pasture14_GoldenCorner-3ee3c15e3645/WheatGoldenHead_1.mat
+
+    Assets/_Game/Art/V010Defense/RenderData/0054-WheatGoldenHead_2.mat <= Assets/_Tests/EnvironmentShowcase/Art/GridFootprints/Pasture14_GoldenCorner-3ee3c15e3645/WheatGoldenHead_2.mat
+
+    Assets/_Game/Art/V010Defense/RenderData/0055-WheatGoldenHead_3.mat <= Assets/_Tests/EnvironmentShowcase/Art/GridFootprints/Pasture14_GoldenCorner-3ee3c15e3645/WheatGoldenHead_3.mat
+
+    Assets/_Game/Art/V010Defense/RenderData/0056-WheatGoldenHead_4.mat <= Assets/_Tests/EnvironmentShowcase/Art/GridFootprints/Pasture14_GoldenCorner-3ee3c15e3645/WheatGoldenHead_4.mat
+
+    Assets/_Game/Art/V010Defense/RenderData/0057-WheatGoldenHead_5.mat <= Assets/_Tests/EnvironmentShowcase/Art/GridFootprints/Pasture14_GoldenCorner-3ee3c15e3645/WheatGoldenHead_5.mat
+
+    Assets/_Game/Art/V010Defense/RenderData/0058-WheatGreenStem_0.mat <= Assets/_Tests/EnvironmentShowcase/Art/GridFootprints/Pasture14_GoldenCorner-3ee3c15e3645/WheatGreenStem_0.mat
+
+    Assets/_Game/Art/V010Defense/RenderData/0059-WheatGreenStem_1.mat <= Assets/_Tests/EnvironmentShowcase/Art/GridFootprints/Pasture14_GoldenCorner-3ee3c15e3645/WheatGreenStem_1.mat
+
+    Assets/_Game/Art/V010Defense/RenderData/0060-GridFootprint_Dirt.mat <= Assets/_Tests/EnvironmentShowcase/Art/GridFootprints/Pasture14_GoldenCorner-3ee3c15e3645/GridFootprint_Dirt.mat
+
+    Assets/_Game/Art/V010Defense/RenderData/0061-6ce6ca7e28ed-dirt_diff_1k.jpg <= Assets/_Tests/EnvironmentShowcase/Art/GridFootprints/Pasture14_GoldenCorner-3ee3c15e3645/Textures/6ce6ca7e28ed-dirt_diff_1k.jpg
+
+    Assets/_Game/Art/V010Defense/RenderData/0062-5a5f97d920fd-dirt_nor_gl_1k.jpg <= Assets/_Tests/EnvironmentShowcase/Art/GridFootprints/Pasture14_GoldenCorner-3ee3c15e3645/Textures/5a5f97d920fd-dirt_nor_gl_1k.jpg
+
+    Assets/_Game/Art/V010Defense/RenderData/0063-eff62d5ae7bf-dirt_rough_1k.jpg <= Assets/_Tests/EnvironmentShowcase/Art/GridFootprints/Pasture14_GoldenCorner-3ee3c15e3645/Textures/eff62d5ae7bf-dirt_rough_1k.jpg
+
+    Assets/_Game/Art/V010Defense/RenderData/0064-EuropeanStoneHouse_EuropeanStoneHouse_AuthoredAtlas.mat <= Assets/_Tests/EnvironmentShowcase/Art/SetDressingGenerated/EuropeanStoneHouse_EuropeanStoneHouse_AuthoredAtlas.mat
+
+    Assets/_Game/Art/V010Defense/RenderData/0065-ruined_farmhouse.png <= Assets/_Tests/EnvironmentShowcase/Art/Landmarks/EuropeanStoneHouse/Textures/ruined_farmhouse.png
+
+    Assets/_Game/Art/V010Defense/RenderData/0066-ruined_farmhouseNormal.png <= Assets/_Tests/EnvironmentShowcase/Art/Landmarks/EuropeanStoneHouse/Textures/ruined_farmhouseNormal.png
+
+    Assets/_Game/Art/V010Defense/RenderData/0067-MiddleEasternCourtyard_MiddleEasternCourtyard_ClayPlaster.mat <= Assets/_Tests/EnvironmentShowcase/Art/SetDressingGenerated/MiddleEasternCourtyard_MiddleEasternCourtyard_ClayPlaster.mat
+
+    Assets/_Game/Art/V010Defense/RenderData/0068-clay_plaster_diff_1k.png <= Assets/_Tests/EnvironmentShowcase/Art/Landmarks/MiddleEasternCourtyard/Textures/clay_plaster_diff_1k.png
+
+    Assets/_Game/Art/V010Defense/RenderData/0069-clay_plaster_nor_gl_1k.png <= Assets/_Tests/EnvironmentShowcase/Art/Landmarks/MiddleEasternCourtyard/Textures/clay_plaster_nor_gl_1k.png
+
+    Assets/_Game/Art/V010Defense/RenderData/0070-clay_plaster_rough_1k.png <= Assets/_Tests/EnvironmentShowcase/Art/Landmarks/MiddleEasternCourtyard/Textures/clay_plaster_rough_1k.png
+
+    Assets/_Game/Art/V010Defense/RenderData/0071-MiddleEasternCourtyard_MiddleEasternCourtyard_WeatheredClay.mat <= Assets/_Tests/EnvironmentShowcase/Art/SetDressingGenerated/MiddleEasternCourtyard_MiddleEasternCourtyard_WeatheredClay.mat
+
+    Assets/_Game/Art/V010Defense/RenderData/0072-MiddleEasternCourtyard_WoodDebris17.mat <= Assets/_Tests/EnvironmentShowcase/Art/SetDressingGenerated/MiddleEasternCourtyard_WoodDebris17.mat
+
+    Assets/_Game/Art/V010Defense/RenderData/0073-3td_WoodDebris_17.jpg <= Assets/_Tests/EnvironmentShowcase/Art/Landmarks/MiddleEasternCourtyard/Textures/3td_WoodDebris_17.jpg
+
+    Assets/_Game/Art/V010Defense/RenderData/0074-3td_WoodDebris_17_NRM.png <= Assets/_Tests/EnvironmentShowcase/Art/Landmarks/MiddleEasternCourtyard/Textures/3td_WoodDebris_17_NRM.png
+
+    Assets/_Game/Art/V010Defense/RenderData/0075-NorthAfricanRuins_ConcreteMossy1.mat <= Assets/_Tests/EnvironmentShowcase/Art/SetDressingGenerated/NorthAfricanRuins_ConcreteMossy1.mat
+
+    Assets/_Game/Art/V010Defense/RenderData/0076-3td_Concrete_mossy_01.jpg <= Assets/_Tests/EnvironmentShowcase/Art/Landmarks/NorthAfricanRuins/Textures/3td_Concrete_mossy_01.jpg
+
+    Assets/_Game/Art/V010Defense/RenderData/0077-3td_Concrete_mossy_01_NRM.png <= Assets/_Tests/EnvironmentShowcase/Art/Landmarks/NorthAfricanRuins/Textures/3td_Concrete_mossy_01_NRM.png
+
+    Assets/_Game/Art/V010Defense/RenderData/0078-NorthAfricanRuins_Concrete1.mat <= Assets/_Tests/EnvironmentShowcase/Art/SetDressingGenerated/NorthAfricanRuins_Concrete1.mat
+
+    Assets/_Game/Art/V010Defense/RenderData/0079-3td_Concrete_01.jpg <= Assets/_Tests/EnvironmentShowcase/Art/Landmarks/NorthAfricanRuins/Textures/3td_Concrete_01.jpg
+
+    Assets/_Game/Art/V010Defense/RenderData/0080-3td_BrickOldSharp_02_NRM.png <= Assets/_Tests/EnvironmentShowcase/Art/Landmarks/NorthAfricanRuins/Textures/3td_BrickOldSharp_02_NRM.png
+
+    Assets/_Game/Art/V010Defense/RenderData/0081-NorthAfricanRuins_BrickOldSharp03.mat <= Assets/_Tests/EnvironmentShowcase/Art/SetDressingGenerated/NorthAfricanRuins_BrickOldSharp03.mat
+
+    Assets/_Game/Art/V010Defense/RenderData/0082-3td_BrickOldSharp_03.jpg <= Assets/_Tests/EnvironmentShowcase/Art/Landmarks/NorthAfricanRuins/Textures/3td_BrickOldSharp_03.jpg
+
+    Assets/_Game/Art/V010Defense/RenderData/0083-3td_BrickOldSharp_03_NRM.png <= Assets/_Tests/EnvironmentShowcase/Art/Landmarks/NorthAfricanRuins/Textures/3td_BrickOldSharp_03_NRM.png
+
+    Assets/_Game/Art/V010Defense/RenderData/0084-NorthAfricanRuins_BrickOldRound1.mat <= Assets/_Tests/EnvironmentShowcase/Art/SetDressingGenerated/NorthAfricanRuins_BrickOldRound1.mat
+
+    Assets/_Game/Art/V010Defense/RenderData/0085-3td_BrickOldRound_01.jpg <= Assets/_Tests/EnvironmentShowcase/Art/Landmarks/NorthAfricanRuins/Textures/3td_BrickOldRound_01.jpg
+
+    Assets/_Game/Art/V010Defense/RenderData/0086-3td_BrickOldRound_01_NRM.png <= Assets/_Tests/EnvironmentShowcase/Art/Landmarks/NorthAfricanRuins/Textures/3td_BrickOldRound_01_NRM.png
+
+    Assets/_Game/Art/V010Defense/RenderData/0087-NorthAfricanRuins_LoneBrick1.mat <= Assets/_Tests/EnvironmentShowcase/Art/SetDressingGenerated/NorthAfricanRuins_LoneBrick1.mat
+
+    Assets/_Game/Art/V010Defense/RenderData/0088-3td_LoneBrick_01.jpg <= Assets/_Tests/EnvironmentShowcase/Art/Landmarks/NorthAfricanRuins/Textures/3td_LoneBrick_01.jpg
+
+    Assets/_Game/Art/V010Defense/RenderData/0089-3td_LoneBrick_01_NRM.png <= Assets/_Tests/EnvironmentShowcase/Art/Landmarks/NorthAfricanRuins/Textures/3td_LoneBrick_01_NRM.png
+
+    Assets/_Game/Art/V010Defense/RenderData/0090-NorthAfricanRuins_ConcreteRuff01.mat <= Assets/_Tests/EnvironmentShowcase/Art/SetDressingGenerated/NorthAfricanRuins_ConcreteRuff01.mat
+
+    Assets/_Game/Art/V010Defense/RenderData/0091-3td_ConcreteRough_01.jpg <= Assets/_Tests/EnvironmentShowcase/Art/Landmarks/NorthAfricanRuins/Textures/3td_ConcreteRough_01.jpg
+
+    Assets/_Game/Art/V010Defense/RenderData/0092-3td_ConcreteRough_01_NRM.png <= Assets/_Tests/EnvironmentShowcase/Art/Landmarks/NorthAfricanRuins/Textures/3td_ConcreteRough_01_NRM.png
+
+    Assets/_Game/Art/V010Defense/RenderData/0093-IronOreRock_IronOreRock_UserPBR.mat <= Assets/_Tests/EnvironmentShowcase/Art/SetDressingGenerated/IronOreRock_IronOreRock_UserPBR.mat
+
+    Assets/_Game/Art/V010Defense/RenderData/0094-tripo_rgb_98c3e0a5-5eca-4dc2-a25b-e7f5cf82cd2b.jpg <= Assets/_Tests/EnvironmentShowcase/Art/Resources/IronOreRock/Textures/tripo_rgb_98c3e0a5-5eca-4dc2-a25b-e7f5cf82cd2b.jpg
+
+    Assets/_Game/Art/V010Defense/RenderData/0095-tripo_normal_9a147e8f-1d4f-4150-acf2-ee0f87bc54bc.jpg <= Assets/_Tests/EnvironmentShowcase/Art/Resources/IronOreRock/Textures/tripo_normal_9a147e8f-1d4f-4150-acf2-ee0f87bc54bc.jpg
+
+    Assets/_Game/Art/V010Defense/RenderData/0096-iron_rock_3d_model_roughness.JPEG <= Assets/_Tests/EnvironmentShowcase/Art/Resources/IronOreRock/Textures/iron_rock_3d_model_roughness.JPEG
+
+    Assets/_Game/Art/V010Defense/RenderData/0097-iron_rock_3d_model_metallic.JPEG <= Assets/_Tests/EnvironmentShowcase/Art/Resources/IronOreRock/Textures/iron_rock_3d_model_metallic.JPEG
+
+    Assets/_Game/Art/V010Defense/RenderData/0098-GoldOreRock_GoldOreRock_UserPBR.mat <= Assets/_Tests/EnvironmentShowcase/Art/SetDressingGenerated/GoldOreRock_GoldOreRock_UserPBR.mat
+
+    Assets/_Game/Art/V010Defense/RenderData/0099-tripo_rgb_398671df-111f-42a0-a3be-6dd3337fb028.jpg <= Assets/_Tests/EnvironmentShowcase/Art/Resources/GoldOreRock/Textures/tripo_rgb_398671df-111f-42a0-a3be-6dd3337fb028.jpg
+
+    Assets/_Game/Art/V010Defense/RenderData/0100-tripo_normal_953a4708-b36f-4fec-a076-84a394c53d00.jpg <= Assets/_Tests/EnvironmentShowcase/Art/Resources/GoldOreRock/Textures/tripo_normal_953a4708-b36f-4fec-a076-84a394c53d00.jpg
+
+    Assets/_Game/Art/V010Defense/RenderData/0101-gold_rock_3d_model_roughness.JPEG <= Assets/_Tests/EnvironmentShowcase/Art/Resources/GoldOreRock/Textures/gold_rock_3d_model_roughness.JPEG
+
+    Assets/_Game/Art/V010Defense/RenderData/0102-gold_rock_3d_model_metallic.JPEG <= Assets/_Tests/EnvironmentShowcase/Art/Resources/GoldOreRock/Textures/gold_rock_3d_model_metallic.JPEG
+
+    Assets/_Game/Art/V010Defense/RenderData/0103-BoulderNative.mat <= Assets/_Tests/EnvironmentShowcase/Art/FreeCandidates/Boulder/BoulderNative.mat
+
+    Assets/_Game/Art/V010Defense/RenderData/0104-boulder_01_diff_2k.png <= Assets/_Tests/EnvironmentShowcase/Art/FreeCandidates/Boulder/boulder_01_diff_2k.png
+
+    Assets/_Game/Art/V010Defense/RenderData/0105-boulder_01_nor_gl_2k.png <= Assets/_Tests/EnvironmentShowcase/Art/FreeCandidates/Boulder/boulder_01_nor_gl_2k.png
+
+    Assets/_Game/Art/V010Defense/RenderData/0106-boulder_01_ao_2k.png <= Assets/_Tests/EnvironmentShowcase/Art/FreeCandidates/Boulder/boulder_01_ao_2k.png
+
+    Assets/_Game/Art/V010Defense/RenderData/0107-boulder_01_rough_2k.png <= Assets/_Tests/EnvironmentShowcase/Art/FreeCandidates/Boulder/boulder_01_rough_2k.png
+
+    Assets/_Game/Art/V010Defense/RenderData/0108-OriginalWall.mat <= Assets/_Tests/EnvironmentShowcase/Art/FortifiedCity/OriginalWall.mat
+
+    Assets/_Game/Art/V010Defense/RenderData/0109-wall-original-03.jpg <= Assets/_Tests/EnvironmentShowcase/Art/FortifiedCity/FortifiedCityWalls.fbm/wall-original-03.jpg
+
+    Assets/_Game/Art/V010Defense/RenderData/0110-Concept sea.mat <= frozen generated six-layer/water/instance asset: Concept sea
+
+    Assets/_Game/Art/V010Defense/RenderData/0111-Actual concept Terrain heights.asset <= frozen generated six-layer/water/instance asset: Actual concept Terrain heights
+
+    Assets/_Game/Art/V010Defense/RenderData/0112-Mud_albedo_smoothness.png <= Assets/_Game/Resources/FreeEnvironment/TerrainGenerated/Mud_albedo_smoothness.png
+
+    Assets/_Game/Art/V010Defense/RenderData/0113-Concept isolated pond.mat <= frozen generated six-layer/water/instance asset: Concept isolated pond
+
+    Assets/_Game/Art/V010Defense/RenderData/0114-Showcase real relief.asset <= frozen generated six-layer/water/instance asset: Showcase real relief
+
+    Assets/_Game/Art/V010Defense/RenderData/0115-Grass_A_Showcase_CC0_grass_ground(Clone).asset <= frozen generated six-layer/water/instance asset: Grass_A_Showcase_CC0_grass_ground(Clone)
+
+    Assets/_Game/Art/V010Defense/RenderData/0116-grass_ground_albedo_smoothness.png <= Assets/_Tests/EnvironmentShowcase/Art/GroundGenerated/grass_ground_albedo_smoothness.png
+
+    Assets/_Game/Art/V010Defense/RenderData/0117-grass_ground_nor_gl_2k.jpg <= Assets/_Tests/EnvironmentShowcase/Art/GroundGenerated/grass_ground_nor_gl_2k.jpg
+
+    Assets/_Game/Art/V010Defense/RenderData/0118-Grass_Dry(Clone).asset <= frozen generated six-layer/water/instance asset: Grass_Dry(Clone)
+
+    Assets/_Game/Art/V010Defense/RenderData/0119-Grass_Dry_albedo_smoothness.png <= Assets/_Game/Resources/FreeEnvironment/TerrainGenerated/Grass_Dry_albedo_smoothness.png
+
+    Assets/_Game/Art/V010Defense/RenderData/0120-withered_grass_nor_gl_1k.jpg <= Assets/_Game/Resources/FreeEnvironment/withered_grass/withered_grass_nor_gl_1k.jpg
+
+    Assets/_Game/Art/V010Defense/RenderData/0121-forest_ground_04_CC0_Showcase(Clone).asset <= frozen generated six-layer/water/instance asset: forest_ground_04_CC0_Showcase(Clone)
+
+    Assets/_Game/Art/V010Defense/RenderData/0122-forest_ground_04_albedo_smoothness.png <= Assets/_Tests/EnvironmentShowcase/Art/GroundGenerated/forest_ground_04_albedo_smoothness.png
+
+    Assets/_Game/Art/V010Defense/RenderData/0123-forest_ground_04_nor_gl_2k.jpg <= Assets/_Tests/EnvironmentShowcase/Art/GroundGenerated/forest_ground_04_nor_gl_2k.jpg
+
+    Assets/_Game/Art/V010Defense/RenderData/0124-Mud(Clone).asset <= frozen generated six-layer/water/instance asset: Mud(Clone)
+
+    Assets/_Game/Art/V010Defense/RenderData/0125-brown_mud_nor_gl_1k.jpg <= Assets/_Game/Resources/FreeEnvironment/brown_mud/brown_mud_nor_gl_1k.jpg
+
+    Assets/_Game/Art/V010Defense/RenderData/0126-rock_boulder_dry_CC0_Showcase(Clone).asset <= frozen generated six-layer/water/instance asset: rock_boulder_dry_CC0_Showcase(Clone)
+
+    Assets/_Game/Art/V010Defense/RenderData/0127-rock_boulder_dry_albedo_smoothness.png <= Assets/_Tests/EnvironmentShowcase/Art/GroundGenerated/rock_boulder_dry_albedo_smoothness.png
+
+    Assets/_Game/Art/V010Defense/RenderData/0128-rock_boulder_dry_nor_gl_2k.jpg <= Assets/_Tests/EnvironmentShowcase/Art/GroundGenerated/rock_boulder_dry_nor_gl_2k.jpg
+
+    Assets/_Game/Art/V010Defense/RenderData/0129-Road(Clone).asset <= frozen generated six-layer/water/instance asset: Road(Clone)
+
+    Assets/_Game/Art/V010Defense/RenderData/0130-Road_albedo_smoothness.png <= Assets/_Game/Resources/FreeEnvironment/TerrainGenerated/Road_albedo_smoothness.png
+
+    Assets/_Game/Art/V010Defense/RenderData/0131-cobblestone_floor_02_nor_gl_1k.jpg <= Assets/_Game/Resources/FreeEnvironment/cobblestone_floor_02/cobblestone_floor_02_nor_gl_1k.jpg
+
+    Assets/_Game/Art/V010Defense/RenderData/0132-ShowcaseTerrain(Clone).mat <= frozen generated six-layer/water/instance asset: ShowcaseTerrain(Clone)
+
+    Assets/_Game/Art/V010Defense/RenderData/0133-rock_face_03_albedo_smoothness.png <= Assets/_Tests/EnvironmentShowcase/Art/GroundGenerated/rock_face_03_albedo_smoothness.png
+
+    Assets/_Game/Art/V010Defense/RenderData/0134-rock_face_03_nor_gl_2k.jpg <= Assets/_Tests/EnvironmentShowcase/Art/GroundGenerated/rock_face_03_nor_gl_2k.jpg
+
+    Assets/_Game/Art/V010Defense/RenderData/0135-gravelly_sand_albedo_smoothness.png <= Assets/_Tests/EnvironmentShowcase/Art/GroundGenerated/gravelly_sand_albedo_smoothness.png
+
+    Assets/_Game/Art/V010Defense/RenderData/0136-gravelly_sand_nor_gl_2k.jpg <= Assets/_Tests/EnvironmentShowcase/Art/GroundGenerated/gravelly_sand_nor_gl_2k.jpg
+
+    Assets/_Game/Art/V010Defense/RenderData/0137-GrassBermuda.asset <= Assets/_Tests/EnvironmentShowcase/Art/Vegetation/grass_bermuda_01/GrassBermuda.fbx
+
+    Assets/_Game/Art/V010Defense/RenderData/0138-GrassBermuda_grass_bermuda_01.mat <= frozen generated six-layer/water/instance asset: GrassBermuda_grass_bermuda_01
+
+    Assets/_Game/Art/V010Defense/RenderData/0139-GrassBermuda_grass_bermuda_01_albedo_alpha.png <= Assets/_Tests/EnvironmentShowcase/Art/VegetationGenerated/GrassBermuda_grass_bermuda_01_albedo_alpha.png
+
+    Assets/_Game/Art/V010Defense/RenderData/0140-grass_bermuda_01_nor_gl_1k.png <= Assets/_Tests/EnvironmentShowcase/Art/Vegetation/grass_bermuda_01/Textures/grass_bermuda_01_nor_gl_1k.png
+
+    Assets/_Game/Art/V010Defense/RenderData/0141-GrassBermuda_grass_bermuda_01_metallic_smoothness.png <= Assets/_Tests/EnvironmentShowcase/Art/VegetationGenerated/GrassBermuda_grass_bermuda_01_metallic_smoothness.png
+
+    Assets/_Game/Art/V010Defense/RenderData/0142-GrassMedium.asset <= Assets/_Tests/EnvironmentShowcase/Art/Vegetation/grass_medium_01/GrassMedium.fbx
+
+    Assets/_Game/Art/V010Defense/RenderData/0143-GrassMedium_grass_medium_01.mat <= frozen generated six-layer/water/instance asset: GrassMedium_grass_medium_01
+
+    Assets/_Game/Art/V010Defense/RenderData/0144-GrassMedium_grass_medium_01_albedo_alpha.png <= Assets/_Tests/EnvironmentShowcase/Art/VegetationGenerated/GrassMedium_grass_medium_01_albedo_alpha.png
+
+    Assets/_Game/Art/V010Defense/RenderData/0145-grass_medium_01_nor_gl_1k.png <= Assets/_Tests/EnvironmentShowcase/Art/Vegetation/grass_medium_01/Textures/grass_medium_01_nor_gl_1k.png
+
+    Assets/_Game/Art/V010Defense/RenderData/0146-GrassMedium_grass_medium_01_metallic_smoothness.png <= Assets/_Tests/EnvironmentShowcase/Art/VegetationGenerated/GrassMedium_grass_medium_01_metallic_smoothness.png
+
+    Assets/_Game/Art/V010Defense/RenderData/0147-GrassMedium02E.asset <= Assets/_Tests/EnvironmentShowcase/Art/VisionVegetation/GrassMedium02E/GrassMedium02E.fbx
+
+    Assets/_Game/Art/V010Defense/RenderData/0148-GrassMedium02E_GrassMedium02E_OriginalPBR.mat <= frozen generated six-layer/water/instance asset: GrassMedium02E_GrassMedium02E_OriginalPBR
+
+    Assets/_Game/Art/V010Defense/RenderData/0149-GrassMedium02E_GrassMedium02E_OriginalPBR_albedo_alpha.png <= Assets/_Tests/EnvironmentShowcase/Art/VisionVegetation/Generated/GrassMedium02E_GrassMedium02E_OriginalPBR_albedo_alpha.png
+
+    Assets/_Game/Art/V010Defense/RenderData/0150-grass_medium_02_nor_gl_1k.png <= Assets/_Tests/EnvironmentShowcase/Art/VisionVegetation/GrassMedium02E/Textures/grass_medium_02_nor_gl_1k.png
+
+    Assets/_Game/Art/V010Defense/RenderData/0151-GrassMedium02E_GrassMedium02E_OriginalPBR_metallic_smoothness.png <= Assets/_Tests/EnvironmentShowcase/Art/VisionVegetation/Generated/GrassMedium02E_GrassMedium02E_OriginalPBR_metallic_smoothness.png
+
+    Assets/_Game/Art/V010Defense/RenderData/0152-OakLauris71_LOD0__Branch_1.001.asset <= Assets/_Tests/EnvironmentShowcase/Art/VisionVegetation/OakLauris71/OakLauris71_LOD0.fbx
+
+    Assets/_Game/Art/V010Defense/RenderData/0153-OakLauris71_Atlas_LOD0.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD0
+
+    Assets/_Game/Art/V010Defense/RenderData/0154-Quercus_A_1024.png <= Assets/_Tests/EnvironmentShowcase/Art/VisionVegetation/OakLauris71/Textures/Quercus_A_1024.png
+
+    Assets/_Game/Art/V010Defense/RenderData/0155-OakLauris71_Atlas_LOD0.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD0
+
+    Assets/_Game/Art/V010Defense/RenderData/0156-OakLauris71_LOD0__Branch_1B.001.asset <= Assets/_Tests/EnvironmentShowcase/Art/VisionVegetation/OakLauris71/OakLauris71_LOD0.fbx
+
+    Assets/_Game/Art/V010Defense/RenderData/0157-OakLauris71_Atlas_LOD0.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD0
+
+    Assets/_Game/Art/V010Defense/RenderData/0158-OakLauris71_Atlas_LOD0.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD0
+
+    Assets/_Game/Art/V010Defense/RenderData/0159-OakLauris71_Atlas_LOD0.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD0
+
+    Assets/_Game/Art/V010Defense/RenderData/0160-OakLauris71_Atlas_LOD0.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD0
+
+    Assets/_Game/Art/V010Defense/RenderData/0161-OakLauris71_LOD0__Branch_2.001.asset <= Assets/_Tests/EnvironmentShowcase/Art/VisionVegetation/OakLauris71/OakLauris71_LOD0.fbx
+
+    Assets/_Game/Art/V010Defense/RenderData/0162-OakLauris71_Atlas_LOD0.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD0
+
+    Assets/_Game/Art/V010Defense/RenderData/0163-OakLauris71_Atlas_LOD0.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD0
+
+    Assets/_Game/Art/V010Defense/RenderData/0164-OakLauris71_Atlas_LOD0.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD0
+
+    Assets/_Game/Art/V010Defense/RenderData/0165-OakLauris71_Atlas_LOD0.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD0
+
+    Assets/_Game/Art/V010Defense/RenderData/0166-OakLauris71_Atlas_LOD0.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD0
+
+    Assets/_Game/Art/V010Defense/RenderData/0167-OakLauris71_LOD0__Branch_2B.001.asset <= Assets/_Tests/EnvironmentShowcase/Art/VisionVegetation/OakLauris71/OakLauris71_LOD0.fbx
+
+    Assets/_Game/Art/V010Defense/RenderData/0168-OakLauris71_Atlas_LOD0.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD0
+
+    Assets/_Game/Art/V010Defense/RenderData/0169-OakLauris71_Atlas_LOD0.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD0
+
+    Assets/_Game/Art/V010Defense/RenderData/0170-OakLauris71_Atlas_LOD0.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD0
+
+    Assets/_Game/Art/V010Defense/RenderData/0171-OakLauris71_Atlas_LOD0.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD0
+
+    Assets/_Game/Art/V010Defense/RenderData/0172-OakLauris71_Atlas_LOD0.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD0
+
+    Assets/_Game/Art/V010Defense/RenderData/0173-OakLauris71_Atlas_LOD0.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD0
+
+    Assets/_Game/Art/V010Defense/RenderData/0174-OakLauris71_Atlas_LOD0.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD0
+
+    Assets/_Game/Art/V010Defense/RenderData/0175-OakLauris71_Atlas_LOD0.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD0
+
+    Assets/_Game/Art/V010Defense/RenderData/0176-OakLauris71_Atlas_LOD0.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD0
+
+    Assets/_Game/Art/V010Defense/RenderData/0177-OakLauris71_LOD0__Branch_3.001.asset <= Assets/_Tests/EnvironmentShowcase/Art/VisionVegetation/OakLauris71/OakLauris71_LOD0.fbx
+
+    Assets/_Game/Art/V010Defense/RenderData/0178-OakLauris71_Atlas_LOD0.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD0
+
+    Assets/_Game/Art/V010Defense/RenderData/0179-OakLauris71_Atlas_LOD0.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD0
+
+    Assets/_Game/Art/V010Defense/RenderData/0180-OakLauris71_Atlas_LOD0.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD0
+
+    Assets/_Game/Art/V010Defense/RenderData/0181-OakLauris71_Atlas_LOD0.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD0
+
+    Assets/_Game/Art/V010Defense/RenderData/0182-OakLauris71_Atlas_LOD0.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD0
+
+    Assets/_Game/Art/V010Defense/RenderData/0183-OakLauris71_Atlas_LOD0.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD0
+
+    Assets/_Game/Art/V010Defense/RenderData/0184-OakLauris71_LOD0__Branch_3B.001.asset <= Assets/_Tests/EnvironmentShowcase/Art/VisionVegetation/OakLauris71/OakLauris71_LOD0.fbx
+
+    Assets/_Game/Art/V010Defense/RenderData/0185-OakLauris71_Atlas_LOD0.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD0
+
+    Assets/_Game/Art/V010Defense/RenderData/0186-OakLauris71_Atlas_LOD0.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD0
+
+    Assets/_Game/Art/V010Defense/RenderData/0187-OakLauris71_Atlas_LOD0.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD0
+
+    Assets/_Game/Art/V010Defense/RenderData/0188-OakLauris71_Atlas_LOD0.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD0
+
+    Assets/_Game/Art/V010Defense/RenderData/0189-OakLauris71_Atlas_LOD0.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD0
+
+    Assets/_Game/Art/V010Defense/RenderData/0190-OakLauris71_Atlas_LOD0.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD0
+
+    Assets/_Game/Art/V010Defense/RenderData/0191-OakLauris71_Atlas_LOD0.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD0
+
+    Assets/_Game/Art/V010Defense/RenderData/0192-OakLauris71_Atlas_LOD0.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD0
+
+    Assets/_Game/Art/V010Defense/RenderData/0193-OakLauris71_Atlas_LOD0.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD0
+
+    Assets/_Game/Art/V010Defense/RenderData/0194-OakLauris71_LOD0__Quercus_A.asset <= Assets/_Tests/EnvironmentShowcase/Art/VisionVegetation/OakLauris71/OakLauris71_LOD0.fbx
+
+    Assets/_Game/Art/V010Defense/RenderData/0195-OakLauris71_Atlas_LOD0.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD0
+
+    Assets/_Game/Art/V010Defense/RenderData/0196-OakLauris71_LOD1__Branch_1.002.asset <= Assets/_Tests/EnvironmentShowcase/Art/VisionVegetation/OakLauris71/OakLauris71_LOD1.fbx
+
+    Assets/_Game/Art/V010Defense/RenderData/0197-OakLauris71_Atlas_LOD1.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD1
+
+    Assets/_Game/Art/V010Defense/RenderData/0198-Quercus_A_LOD1_LOD2_512.png <= Assets/_Tests/EnvironmentShowcase/Art/VisionVegetation/OakLauris71/Textures/Quercus_A_LOD1_LOD2_512.png
+
+    Assets/_Game/Art/V010Defense/RenderData/0199-OakLauris71_Atlas_LOD1.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD1
+
+    Assets/_Game/Art/V010Defense/RenderData/0200-OakLauris71_LOD1__Branch_2.006.asset <= Assets/_Tests/EnvironmentShowcase/Art/VisionVegetation/OakLauris71/OakLauris71_LOD1.fbx
+
+    Assets/_Game/Art/V010Defense/RenderData/0201-OakLauris71_Atlas_LOD1.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD1
+
+    Assets/_Game/Art/V010Defense/RenderData/0202-OakLauris71_Atlas_LOD1.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD1
+
+    Assets/_Game/Art/V010Defense/RenderData/0203-OakLauris71_Atlas_LOD1.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD1
+
+    Assets/_Game/Art/V010Defense/RenderData/0204-OakLauris71_Atlas_LOD1.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD1
+
+    Assets/_Game/Art/V010Defense/RenderData/0205-OakLauris71_LOD1__Branch_3.007.asset <= Assets/_Tests/EnvironmentShowcase/Art/VisionVegetation/OakLauris71/OakLauris71_LOD1.fbx
+
+    Assets/_Game/Art/V010Defense/RenderData/0206-OakLauris71_Atlas_LOD1.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD1
+
+    Assets/_Game/Art/V010Defense/RenderData/0207-OakLauris71_Atlas_LOD1.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD1
+
+    Assets/_Game/Art/V010Defense/RenderData/0208-OakLauris71_Atlas_LOD1.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD1
+
+    Assets/_Game/Art/V010Defense/RenderData/0209-OakLauris71_Atlas_LOD1.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD1
+
+    Assets/_Game/Art/V010Defense/RenderData/0210-OakLauris71_Atlas_LOD1.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD1
+
+    Assets/_Game/Art/V010Defense/RenderData/0211-OakLauris71_LOD1__Branch_4.001.asset <= Assets/_Tests/EnvironmentShowcase/Art/VisionVegetation/OakLauris71/OakLauris71_LOD1.fbx
+
+    Assets/_Game/Art/V010Defense/RenderData/0212-OakLauris71_Atlas_LOD1.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD1
+
+    Assets/_Game/Art/V010Defense/RenderData/0213-OakLauris71_Atlas_LOD1.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD1
+
+    Assets/_Game/Art/V010Defense/RenderData/0214-OakLauris71_Atlas_LOD1.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD1
+
+    Assets/_Game/Art/V010Defense/RenderData/0215-OakLauris71_Atlas_LOD1.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD1
+
+    Assets/_Game/Art/V010Defense/RenderData/0216-OakLauris71_Atlas_LOD1.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD1
+
+    Assets/_Game/Art/V010Defense/RenderData/0217-OakLauris71_Atlas_LOD1.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD1
+
+    Assets/_Game/Art/V010Defense/RenderData/0218-OakLauris71_Atlas_LOD1.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD1
+
+    Assets/_Game/Art/V010Defense/RenderData/0219-OakLauris71_Atlas_LOD1.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD1
+
+    Assets/_Game/Art/V010Defense/RenderData/0220-OakLauris71_Atlas_LOD1.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD1
+
+    Assets/_Game/Art/V010Defense/RenderData/0221-OakLauris71_LOD1__Plane.006.asset <= Assets/_Tests/EnvironmentShowcase/Art/VisionVegetation/OakLauris71/OakLauris71_LOD1.fbx
+
+    Assets/_Game/Art/V010Defense/RenderData/0222-OakLauris71_Atlas_LOD1.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD1
+
+    Assets/_Game/Art/V010Defense/RenderData/0223-OakLauris71_Atlas_LOD1.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD1
+
+    Assets/_Game/Art/V010Defense/RenderData/0224-OakLauris71_LOD1__Plane.013.asset <= Assets/_Tests/EnvironmentShowcase/Art/VisionVegetation/OakLauris71/OakLauris71_LOD1.fbx
+
+    Assets/_Game/Art/V010Defense/RenderData/0225-OakLauris71_Atlas_LOD1.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD1
+
+    Assets/_Game/Art/V010Defense/RenderData/0226-OakLauris71_Atlas_LOD1.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD1
+
+    Assets/_Game/Art/V010Defense/RenderData/0227-OakLauris71_Atlas_LOD1.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD1
+
+    Assets/_Game/Art/V010Defense/RenderData/0228-OakLauris71_Atlas_LOD1.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD1
+
+    Assets/_Game/Art/V010Defense/RenderData/0229-OakLauris71_Atlas_LOD1.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD1
+
+    Assets/_Game/Art/V010Defense/RenderData/0230-OakLauris71_Atlas_LOD1.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD1
+
+    Assets/_Game/Art/V010Defense/RenderData/0231-OakLauris71_Atlas_LOD1.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD1
+
+    Assets/_Game/Art/V010Defense/RenderData/0232-OakLauris71_Atlas_LOD1.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD1
+
+    Assets/_Game/Art/V010Defense/RenderData/0233-OakLauris71_Atlas_LOD1.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD1
+
+    Assets/_Game/Art/V010Defense/RenderData/0234-OakLauris71_Atlas_LOD1.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD1
+
+    Assets/_Game/Art/V010Defense/RenderData/0235-OakLauris71_Atlas_LOD1.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD1
+
+    Assets/_Game/Art/V010Defense/RenderData/0236-OakLauris71_Atlas_LOD1.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD1
+
+    Assets/_Game/Art/V010Defense/RenderData/0237-OakLauris71_Atlas_LOD1.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD1
+
+    Assets/_Game/Art/V010Defense/RenderData/0238-OakLauris71_LOD1__Quercus_A_LOD1.asset <= Assets/_Tests/EnvironmentShowcase/Art/VisionVegetation/OakLauris71/OakLauris71_LOD1.fbx
+
+    Assets/_Game/Art/V010Defense/RenderData/0239-OakLauris71_Atlas_LOD1.mat <= frozen generated six-layer/water/instance asset: OakLauris71_Atlas_LOD1
+
+    Assets/_Game/Art/V010Defense/RenderData/0240-ShrubA.asset <= Assets/_Tests/EnvironmentShowcase/Art/Vegetation/shrub_02/ShrubA.fbx
+
+    Assets/_Game/Art/V010Defense/RenderData/0241-ShrubA_shrub_02.mat <= frozen generated six-layer/water/instance asset: ShrubA_shrub_02
+
+    Assets/_Game/Art/V010Defense/RenderData/0242-ShrubA_shrub_02_albedo_alpha.png <= Assets/_Tests/EnvironmentShowcase/Art/VegetationGenerated/ShrubA_shrub_02_albedo_alpha.png
+
+    Assets/_Game/Art/V010Defense/RenderData/0243-shrub_02_nor_gl_1k.png <= Assets/_Tests/EnvironmentShowcase/Art/Vegetation/shrub_02/Textures/shrub_02_nor_gl_1k.png
+
+    Assets/_Game/Art/V010Defense/RenderData/0244-ShrubA_shrub_02_metallic_smoothness.png <= Assets/_Tests/EnvironmentShowcase/Art/VegetationGenerated/ShrubA_shrub_02_metallic_smoothness.png
+
+    Assets/_Game/Art/V010Defense/RenderData/0245-ShrubB.asset <= Assets/_Tests/EnvironmentShowcase/Art/Vegetation/shrub_02/ShrubB.fbx
+
+    Assets/_Game/Art/V010Defense/RenderData/0246-ShrubA_shrub_02.mat <= frozen generated six-layer/water/instance asset: ShrubA_shrub_02
+
+    Assets/_Game/Art/V010Defense/RenderData/0247-Fern02A.asset <= Assets/_Tests/EnvironmentShowcase/Art/VisionVegetation/Fern02A/Fern02A.fbx
+
+    Assets/_Game/Art/V010Defense/RenderData/0248-Fern02A_Fern02A_OriginalPBR.mat <= frozen generated six-layer/water/instance asset: Fern02A_Fern02A_OriginalPBR
+
+    Assets/_Game/Art/V010Defense/RenderData/0249-Fern02A_Fern02A_OriginalPBR_albedo_alpha.png <= Assets/_Tests/EnvironmentShowcase/Art/VisionVegetation/Generated/Fern02A_Fern02A_OriginalPBR_albedo_alpha.png
+
+    Assets/_Game/Art/V010Defense/RenderData/0250-fern_02_nor_gl_1k.png <= Assets/_Tests/EnvironmentShowcase/Art/VisionVegetation/Fern02A/Textures/fern_02_nor_gl_1k.png
+
+    Assets/_Game/Art/V010Defense/RenderData/0251-Fern02A_Fern02A_OriginalPBR_metallic_smoothness.png <= Assets/_Tests/EnvironmentShowcase/Art/VisionVegetation/Generated/Fern02A_Fern02A_OriginalPBR_metallic_smoothness.png
+
+    Assets/_Game/Art/V010Defense/RenderData/0252-Fern02B.asset <= Assets/_Tests/EnvironmentShowcase/Art/VisionVegetation/Fern02B/Fern02B.fbx
+
+    Assets/_Game/Art/V010Defense/RenderData/0253-Fern02A_Fern02A_OriginalPBR.mat <= frozen generated six-layer/water/instance asset: Fern02A_Fern02A_OriginalPBR
+
+    Assets/_Game/Art/V010Defense/RenderData/0254-RockNatural.asset <= Assets/_Tests/EnvironmentShowcase/Art/Vegetation/rock_07/RockNatural.fbx
+
+    Assets/_Game/Art/V010Defense/RenderData/0255-RockNatural_rock_07.mat <= frozen generated six-layer/water/instance asset: RockNatural_rock_07
+
+    Assets/_Game/Art/V010Defense/RenderData/0256-RockNatural_rock_07_albedo_alpha.png <= Assets/_Tests/EnvironmentShowcase/Art/VegetationGenerated/RockNatural_rock_07_albedo_alpha.png
+
+    Assets/_Game/Art/V010Defense/RenderData/0257-rock_07_nor_gl_1k.png <= Assets/_Tests/EnvironmentShowcase/Art/Vegetation/rock_07/Textures/rock_07_nor_gl_1k.png
+
+    Assets/_Game/Art/V010Defense/RenderData/0258-RockNatural_rock_07_metallic_smoothness.png <= Assets/_Tests/EnvironmentShowcase/Art/VegetationGenerated/RockNatural_rock_07_metallic_smoothness.png
+
+    Art-only independent presentation review: art/grounding_review_handoff.json; SHA=7ea53345348ec90b4de7d658eee69208bbc4e7e49117283faadd11874793531f; masterSHA=34ce14d5150a0ae7a9e232775f6f7863180052feea29be4fabc8faf1ad097ef9'
+  environment_prefab: {fileID: 3870397851084864566, guid: 5954299f07637459eb00499d95382eb4, type: 3}
+  environment_translation: {x: 0, y: -4.2, z: 0}
+  world_bounds:
+    serializedVersion: 2
+    x: -64
+    y: -64
+    width: 128
+    height: 128
+  base_center: {x: 4, y: -0.0002193451, z: -29}
+  headquarters_position: {x: 4, y: -0.0002193451, z: -16}
+  initial_depot: {x: 4, y: -0.0002193451, z: -8}
+  initial_camera_focus: {x: 4, y: -0.0002193451, z: -13}
+  camera_pitch: 48
+  camera_yaw: 0
+  initial_camera_size: 25
+  infection_reserve: 256
+  session:
+    initial_humans: 64
+    zombies: 240
+    preparation_seconds: 60
+    wave_interval_seconds: 75
+    wave_counts: 500000005000000050000000i
+  regions:
+  - bounds:
+      m_Center: {x: -96, y: 1, z: 0}
+      m_Extent: {x: 32, y: 2, z: 128}
+    kind: 2
+    label: SCENARIO OUTSIDE WEST
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 96, y: 1, z: 0}
+      m_Extent: {x: 32, y: 2, z: 128}
+    kind: 2
+    label: SCENARIO OUTSIDE EAST
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 0, y: 1, z: -96}
+      m_Extent: {x: 64, y: 2, z: 32}
+    kind: 2
+    label: SCENARIO OUTSIDE SOUTH
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 0, y: 1, z: 96}
+      m_Extent: {x: 64, y: 2, z: 32}
+    kind: 2
+    label: SCENARIO OUTSIDE NORTH
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -46.5, y: 1, z: -63.5}
+      m_Extent: {x: 17.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -46.5, y: 1, z: -62.5}
+      m_Extent: {x: 17.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -46.5, y: 1, z: -61.5}
+      m_Extent: {x: 17.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -46.5, y: 1, z: -60.5}
+      m_Extent: {x: 17.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -47, y: 1, z: -59.5}
+      m_Extent: {x: 17, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -47, y: 1, z: -58.5}
+      m_Extent: {x: 17, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -47, y: 1, z: -57.5}
+      m_Extent: {x: 17, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -47, y: 1, z: -56.5}
+      m_Extent: {x: 17, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -47, y: 1, z: -55.5}
+      m_Extent: {x: 17, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -47, y: 1, z: -54.5}
+      m_Extent: {x: 17, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -47, y: 1, z: -53.5}
+      m_Extent: {x: 17, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -47, y: 1, z: -52.5}
+      m_Extent: {x: 17, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -47, y: 1, z: -51.5}
+      m_Extent: {x: 17, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -47, y: 1, z: -50.5}
+      m_Extent: {x: 17, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -47, y: 1, z: -49.5}
+      m_Extent: {x: 17, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -47, y: 1, z: -48.5}
+      m_Extent: {x: 17, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -47, y: 1, z: -47.5}
+      m_Extent: {x: 17, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -47, y: 1, z: -46.5}
+      m_Extent: {x: 17, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -47, y: 1, z: -45.5}
+      m_Extent: {x: 17, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -47, y: 1, z: -44.5}
+      m_Extent: {x: 17, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -47.5, y: 1, z: -43.5}
+      m_Extent: {x: 16.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -47.5, y: 1, z: -42.5}
+      m_Extent: {x: 16.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -47, y: 1, z: -41.5}
+      m_Extent: {x: 17, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -47, y: 1, z: -40.5}
+      m_Extent: {x: 17, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -46.5, y: 1, z: -39.5}
+      m_Extent: {x: 17.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -46.5, y: 1, z: -38.5}
+      m_Extent: {x: 17.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -46, y: 1, z: -37.5}
+      m_Extent: {x: 18, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -45.5, y: 1, z: -36.5}
+      m_Extent: {x: 18.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -45.5, y: 1, z: -35.5}
+      m_Extent: {x: 18.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -45, y: 1, z: -34.5}
+      m_Extent: {x: 19, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -45, y: 1, z: -33.5}
+      m_Extent: {x: 19, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -44.5, y: 1, z: -32.5}
+      m_Extent: {x: 19.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -44.5, y: 1, z: -31.5}
+      m_Extent: {x: 19.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -44.5, y: 1, z: -30.5}
+      m_Extent: {x: 19.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -44.5, y: 1, z: -29.5}
+      m_Extent: {x: 19.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -44.5, y: 1, z: -28.5}
+      m_Extent: {x: 19.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -45, y: 1, z: -27.5}
+      m_Extent: {x: 19, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -45, y: 1, z: -26.5}
+      m_Extent: {x: 19, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -45, y: 1, z: -25.5}
+      m_Extent: {x: 19, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -45.5, y: 1, z: -24.5}
+      m_Extent: {x: 18.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -45.5, y: 1, z: -23.5}
+      m_Extent: {x: 18.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -46, y: 1, z: -22.5}
+      m_Extent: {x: 18, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -46, y: 1, z: -21.5}
+      m_Extent: {x: 18, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -46.5, y: 1, z: -20.5}
+      m_Extent: {x: 17.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -47, y: 1, z: -19.5}
+      m_Extent: {x: 17, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -47, y: 1, z: -18.5}
+      m_Extent: {x: 17, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -47.5, y: 1, z: -17.5}
+      m_Extent: {x: 16.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -47.5, y: 1, z: -16.5}
+      m_Extent: {x: 16.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -47.5, y: 1, z: -15.5}
+      m_Extent: {x: 16.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -47.5, y: 1, z: -14.5}
+      m_Extent: {x: 16.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -47.5, y: 1, z: -13.5}
+      m_Extent: {x: 16.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -47.5, y: 1, z: -12.5}
+      m_Extent: {x: 16.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -47.5, y: 1, z: -11.5}
+      m_Extent: {x: 16.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -47.5, y: 1, z: -10.5}
+      m_Extent: {x: 16.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -47.5, y: 1, z: -9.5}
+      m_Extent: {x: 16.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -47.5, y: 1, z: -8.5}
+      m_Extent: {x: 16.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -47.5, y: 1, z: -7.5}
+      m_Extent: {x: 16.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -47.5, y: 1, z: -6.5}
+      m_Extent: {x: 16.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -47.5, y: 1, z: -5.5}
+      m_Extent: {x: 16.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -47.5, y: 1, z: -4.5}
+      m_Extent: {x: 16.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -47, y: 1, z: -3.5}
+      m_Extent: {x: 17, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -47, y: 1, z: -2.5}
+      m_Extent: {x: 17, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -47, y: 1, z: -1.5}
+      m_Extent: {x: 17, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -47, y: 1, z: -0.5}
+      m_Extent: {x: 17, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -47, y: 1, z: 0.5}
+      m_Extent: {x: 17, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -47, y: 1, z: 1.5}
+      m_Extent: {x: 17, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -47, y: 1, z: 2.5}
+      m_Extent: {x: 17, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -47, y: 1, z: 3.5}
+      m_Extent: {x: 17, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -46.5, y: 1, z: 4.5}
+      m_Extent: {x: 17.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -46.5, y: 1, z: 5.5}
+      m_Extent: {x: 17.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -46.5, y: 1, z: 6.5}
+      m_Extent: {x: 17.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -46, y: 1, z: 7.5}
+      m_Extent: {x: 18, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -46, y: 1, z: 8.5}
+      m_Extent: {x: 18, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -45.5, y: 1, z: 9.5}
+      m_Extent: {x: 18.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -45.5, y: 1, z: 10.5}
+      m_Extent: {x: 18.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -45.5, y: 1, z: 11.5}
+      m_Extent: {x: 18.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -45.5, y: 1, z: 12.5}
+      m_Extent: {x: 18.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -45, y: 1, z: 13.5}
+      m_Extent: {x: 19, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -45, y: 1, z: 14.5}
+      m_Extent: {x: 19, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -45, y: 1, z: 15.5}
+      m_Extent: {x: 19, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -45, y: 1, z: 16.5}
+      m_Extent: {x: 19, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -45, y: 1, z: 17.5}
+      m_Extent: {x: 19, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 29, y: 1, z: 17.5}
+      m_Extent: {x: 2, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -45, y: 1, z: 18.5}
+      m_Extent: {x: 19, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 29, y: 1, z: 18.5}
+      m_Extent: {x: 5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -45.5, y: 1, z: 19.5}
+      m_Extent: {x: 18.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 29, y: 1, z: 19.5}
+      m_Extent: {x: 7, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -45.5, y: 1, z: 20.5}
+      m_Extent: {x: 18.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 29, y: 1, z: 20.5}
+      m_Extent: {x: 9, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -45.5, y: 1, z: 21.5}
+      m_Extent: {x: 18.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 29.5, y: 1, z: 21.5}
+      m_Extent: {x: 10.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -46, y: 1, z: 22.5}
+      m_Extent: {x: 18, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 29, y: 1, z: 22.5}
+      m_Extent: {x: 12, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -46, y: 1, z: 23.5}
+      m_Extent: {x: 18, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 29, y: 1, z: 23.5}
+      m_Extent: {x: 13, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -46.5, y: 1, z: 24.5}
+      m_Extent: {x: 17.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 29.5, y: 1, z: 24.5}
+      m_Extent: {x: 13.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -46.5, y: 1, z: 25.5}
+      m_Extent: {x: 17.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 29.5, y: 1, z: 25.5}
+      m_Extent: {x: 14.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -47, y: 1, z: 26.5}
+      m_Extent: {x: 17, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 29.5, y: 1, z: 26.5}
+      m_Extent: {x: 14.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -47, y: 1, z: 27.5}
+      m_Extent: {x: 17, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 29.5, y: 1, z: 27.5}
+      m_Extent: {x: 15.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -47, y: 1, z: 28.5}
+      m_Extent: {x: 17, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 29.5, y: 1, z: 28.5}
+      m_Extent: {x: 15.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -47, y: 1, z: 29.5}
+      m_Extent: {x: 17, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 29.5, y: 1, z: 29.5}
+      m_Extent: {x: 16.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -46.5, y: 1, z: 30.5}
+      m_Extent: {x: 17.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 29.5, y: 1, z: 30.5}
+      m_Extent: {x: 16.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -46.5, y: 1, z: 31.5}
+      m_Extent: {x: 17.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 30, y: 1, z: 31.5}
+      m_Extent: {x: 17, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -45, y: 1, z: 32.5}
+      m_Extent: {x: 19, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 29.5, y: 1, z: 32.5}
+      m_Extent: {x: 17.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 62.5, y: 1, z: 32.5}
+      m_Extent: {x: 1.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -45, y: 1, z: 33.5}
+      m_Extent: {x: 19, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 29.5, y: 1, z: 33.5}
+      m_Extent: {x: 17.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 62.5, y: 1, z: 33.5}
+      m_Extent: {x: 1.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -45, y: 1, z: 34.5}
+      m_Extent: {x: 19, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 29.5, y: 1, z: 34.5}
+      m_Extent: {x: 17.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 62.5, y: 1, z: 34.5}
+      m_Extent: {x: 1.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -45, y: 1, z: 35.5}
+      m_Extent: {x: 19, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 29.5, y: 1, z: 35.5}
+      m_Extent: {x: 16.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 62.5, y: 1, z: 35.5}
+      m_Extent: {x: 1.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -45, y: 1, z: 36.5}
+      m_Extent: {x: 19, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 29.5, y: 1, z: 36.5}
+      m_Extent: {x: 16.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 62.5, y: 1, z: 36.5}
+      m_Extent: {x: 1.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -45, y: 1, z: 37.5}
+      m_Extent: {x: 19, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 29.5, y: 1, z: 37.5}
+      m_Extent: {x: 15.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 62.5, y: 1, z: 37.5}
+      m_Extent: {x: 1.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -45, y: 1, z: 38.5}
+      m_Extent: {x: 19, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 29.5, y: 1, z: 38.5}
+      m_Extent: {x: 14.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 62.5, y: 1, z: 38.5}
+      m_Extent: {x: 1.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -45, y: 1, z: 39.5}
+      m_Extent: {x: 19, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 29.5, y: 1, z: 39.5}
+      m_Extent: {x: 13.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 62.5, y: 1, z: 39.5}
+      m_Extent: {x: 1.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -45, y: 1, z: 40.5}
+      m_Extent: {x: 19, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 29, y: 1, z: 40.5}
+      m_Extent: {x: 12, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 62.5, y: 1, z: 40.5}
+      m_Extent: {x: 1.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -45, y: 1, z: 41.5}
+      m_Extent: {x: 19, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 29, y: 1, z: 41.5}
+      m_Extent: {x: 11, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 62.5, y: 1, z: 41.5}
+      m_Extent: {x: 1.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -45, y: 1, z: 42.5}
+      m_Extent: {x: 19, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 28.5, y: 1, z: 42.5}
+      m_Extent: {x: 8.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 62.5, y: 1, z: 42.5}
+      m_Extent: {x: 1.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -45, y: 1, z: 43.5}
+      m_Extent: {x: 19, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 62.5, y: 1, z: 43.5}
+      m_Extent: {x: 1.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -45, y: 1, z: 44.5}
+      m_Extent: {x: 19, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 62.5, y: 1, z: 44.5}
+      m_Extent: {x: 1.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -45, y: 1, z: 45.5}
+      m_Extent: {x: 19, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 62.5, y: 1, z: 45.5}
+      m_Extent: {x: 1.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -45, y: 1, z: 46.5}
+      m_Extent: {x: 19, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 62.5, y: 1, z: 46.5}
+      m_Extent: {x: 1.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -45, y: 1, z: 47.5}
+      m_Extent: {x: 19, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 62.5, y: 1, z: 47.5}
+      m_Extent: {x: 1.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -45, y: 1, z: 48.5}
+      m_Extent: {x: 19, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 62.5, y: 1, z: 48.5}
+      m_Extent: {x: 1.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -45, y: 1, z: 49.5}
+      m_Extent: {x: 19, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 62.5, y: 1, z: 49.5}
+      m_Extent: {x: 1.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -45, y: 1, z: 50.5}
+      m_Extent: {x: 19, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 62.5, y: 1, z: 50.5}
+      m_Extent: {x: 1.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -45, y: 1, z: 51.5}
+      m_Extent: {x: 19, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 62.5, y: 1, z: 51.5}
+      m_Extent: {x: 1.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -45, y: 1, z: 52.5}
+      m_Extent: {x: 19, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 62.5, y: 1, z: 52.5}
+      m_Extent: {x: 1.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -45, y: 1, z: 53.5}
+      m_Extent: {x: 19, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 62.5, y: 1, z: 53.5}
+      m_Extent: {x: 1.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -45, y: 1, z: 54.5}
+      m_Extent: {x: 19, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 62.5, y: 1, z: 54.5}
+      m_Extent: {x: 1.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -45, y: 1, z: 55.5}
+      m_Extent: {x: 19, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 62.5, y: 1, z: 55.5}
+      m_Extent: {x: 1.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -45, y: 1, z: 56.5}
+      m_Extent: {x: 19, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 62.5, y: 1, z: 56.5}
+      m_Extent: {x: 1.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -45, y: 1, z: 57.5}
+      m_Extent: {x: 19, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 62.5, y: 1, z: 57.5}
+      m_Extent: {x: 1.5, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 0, y: 1, z: 58.5}
+      m_Extent: {x: 64, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 0, y: 1, z: 59.5}
+      m_Extent: {x: 64, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 0, y: 1, z: 60.5}
+      m_Extent: {x: 64, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 0, y: 1, z: 61.5}
+      m_Extent: {x: 64, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 0, y: 1, z: 62.5}
+      m_Extent: {x: 64, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 0, y: 1, z: 63.5}
+      m_Extent: {x: 64, y: 2, z: 0.5}
+    kind: 0
+    label: NON-ACTIVITY HEIGHTFIELD
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 51.35639, y: 1, z: 36.594917}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 0
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 56.32, y: 1, z: 36.894455}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 1
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 13.207222, y: 1, z: 26.811684}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 2
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 2.8263855, y: 1, z: 56.37809}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 3
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 51.378197, y: 1, z: 51.470375}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 4
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 7.978821, y: 1, z: 50.731476}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 5
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 32.394188, y: 1, z: 56.18302}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 6
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 3.2726288, y: 1, z: 41.121628}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 7
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -5.956688, y: 1, z: 51.61444}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 8
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 17.33599, y: 1, z: 51.066895}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 9
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 31.670425, y: 1, z: 51.255302}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 10
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 56.329773, y: 1, z: 27.31652}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 11
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 36.332436, y: 1, z: 55.74392}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 12
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 50.987526, y: 1, z: 41.80577}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 13
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -1.4473381, y: 1, z: 41.43348}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 14
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 12.895798, y: 1, z: 37.235283}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 15
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -11.640213, y: 1, z: 51.40399}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 16
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 13.087067, y: 1, z: 55.695244}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 17
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 41.481308, y: 1, z: 42.06423}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 18
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 41.697594, y: 1, z: 50.78528}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 19
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 55.97135, y: 1, z: 22.508003}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 20
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 8.004097, y: 1, z: 36.40026}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 21
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -2.0543213, y: 1, z: 46.243446}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 22
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 12.372826, y: 1, z: 22.42884}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 23
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -2.0530586, y: 1, z: 26.964813}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 24
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 27.27819, y: 1, z: 51.56369}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 25
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 3.2611923, y: 1, z: 27.327003}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 26
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 55.941147, y: 1, z: 46.39251}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 27
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 51.02691, y: 1, z: 31.812332}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 28
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 56.085693, y: 1, z: 32.29032}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 29
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 27.417114, y: 1, z: 46.3275}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 30
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 46.169403, y: 1, z: 41.74552}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 31
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -6.0914116, y: 1, z: 55.867653}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 32
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 17.596176, y: 1, z: 56.457176}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 33
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 2.967575, y: 1, z: 32.14251}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 34
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 55.734787, y: 1, z: 51.201706}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 35
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 8.220802, y: 1, z: 22.85273}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 36
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 36.860962, y: 1, z: 46.08142}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 37
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -1.8788261, y: 1, z: 36.76657}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 38
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -15.597099, y: 1, z: 51.469284}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 39
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 51.190376, y: 1, z: 56.279144}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 40
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -1.2048264, y: 1, z: 51.185265}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 41
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 12.683296, y: 1, z: 32.225853}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 42
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 12.365967, y: 1, z: 46.74691}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 43
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 32.305763, y: 1, z: 46.40265}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 44
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 27.40075, y: 1, z: 56.064156}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 45
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 56.287064, y: 1, z: 41.43238}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 46
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -20.570114, y: 1, z: 51.659027}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 47
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -15.799938, y: 1, z: 56.083694}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 48
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 3.2074585, y: 1, z: 46.55712}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 49
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -1.1451263, y: 1, z: 56.165504}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 50
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 46.159065, y: 1, z: 27.304321}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 51
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -1.9091606, y: 1, z: 32.402695}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 52
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 13.090195, y: 1, z: 41.806046}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 53
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 8.344055, y: 1, z: 31.922653}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 54
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 8.253838, y: 1, z: 26.766792}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 55
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 55.796265, y: 1, z: 56.451355}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 56
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 42.06353, y: 1, z: 46.265984}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 57
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 2.7209244, y: 1, z: 36.42305}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 58
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -20.50631, y: 1, z: 55.63639}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 59
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 46.55568, y: 1, z: 51.231293}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 60
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 37.09439, y: 1, z: 51.07434}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 61
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 51.56153, y: 1, z: 27.515373}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 62
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 17.420074, y: 1, z: 22.39878}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 63
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 22.393105, y: 1, z: 51.24756}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 64
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 7.778763, y: 1, z: 55.88394}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 65
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -11.612541, y: 1, z: 56.346252}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 66
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 46.38298, y: 1, z: 36.920273}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 67
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 22.627113, y: 1, z: 56.07856}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 68
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 22.01358, y: 1, z: 46.653862}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 69
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 41.567955, y: 1, z: 56.449944}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 70
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 3.6455536, y: 1, z: 51.410957}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 71
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 51.071976, y: 1, z: 46.26484}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 72
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 46.86257, y: 1, z: 56.065872}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 73
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 8.339348, y: 1, z: 45.927185}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 74
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 7.668503, y: 1, z: 41.680946}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 75
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 17.383072, y: 1, z: 41.989685}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 76
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 46.067345, y: 1, z: 45.934258}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 77
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 46.221138, y: 1, z: 22.856972}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 78
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 17.314583, y: 1, z: 46.716164}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 79
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 13.25148, y: 1, z: 50.86267}
+      m_Extent: {x: 0.9, y: 1, z: 0.9}
+    kind: 1
+    label: FROZEN TREE 80
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 4, y: 3.6131496, z: -16}
+      m_Extent: {x: 6, y: 3.6844177, z: 6}
+    kind: 3
+    label: COMMAND HALL
+    model_path: FrozenFixture-00-Headquarters
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -8, y: 1.7757139, z: -15}
+      m_Extent: {x: 4, y: 1.8309734, z: 4.0000005}
+    kind: 3
+    label: ARROW WORKS
+    model_path: FrozenFixture-01-Workshop
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 16, y: 1.7757139, z: -15}
+      m_Extent: {x: 4, y: 1.8309734, z: 4.000002}
+    kind: 3
+    label: ARROW WORKS
+    model_path: FrozenFixture-02-Workshop
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 1.5320219, y: 1.2490807, z: -39.85879}
+      m_Extent: {x: 2.1179779, y: 1.29238, z: 3.5087934}
+    kind: 2
+    label: FARM HUT ONLY 3
+    model_path: FrozenFixture-03-Pasture/Pasture14_GoldenCorner/Pasture14GoldenCorner_architecture
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 15.532022, y: 1.2490807, z: -39.85879}
+      m_Extent: {x: 2.1179779, y: 1.29238, z: 3.5087934}
+    kind: 2
+    label: FARM HUT ONLY 4
+    model_path: FrozenFixture-04-Pasture/Pasture14_GoldenCorner/Pasture14GoldenCorner_architecture
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 1.5320219, y: 1.2490807, z: -25.858793}
+      m_Extent: {x: 2.1179779, y: 1.29238, z: 3.5087934}
+    kind: 2
+    label: FARM HUT ONLY 5
+    model_path: FrozenFixture-05-Pasture/Pasture14_GoldenCorner/Pasture14GoldenCorner_architecture
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 15.532022, y: 1.2490807, z: -25.858793}
+      m_Extent: {x: 2.1179779, y: 1.29238, z: 3.5087934}
+    kind: 2
+    label: FARM HUT ONLY 6
+    model_path: FrozenFixture-06-Pasture/Pasture14_GoldenCorner/Pasture14GoldenCorner_architecture
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 1.5320219, y: 1.2490807, z: 13.141207}
+      m_Extent: {x: 2.1179779, y: 1.29238, z: 3.5087934}
+    kind: 2
+    label: FARM HUT ONLY 7
+    model_path: FrozenFixture-07-Pasture/Pasture14_GoldenCorner/Pasture14GoldenCorner_architecture
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 15.532022, y: 1.2490807, z: 13.141207}
+      m_Extent: {x: 2.1179779, y: 1.29238, z: 3.5087934}
+    kind: 2
+    label: FARM HUT ONLY 8
+    model_path: FrozenFixture-08-Pasture/Pasture14_GoldenCorner/Pasture14GoldenCorner_architecture
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 29.53202, y: 1.2490807, z: 13.141207}
+      m_Extent: {x: 2.1179779, y: 1.29238, z: 3.5087934}
+    kind: 2
+    label: FARM HUT ONLY 9
+    model_path: FrozenFixture-09-Pasture/Pasture14_GoldenCorner/Pasture14GoldenCorner_architecture
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 43.53202, y: 1.2490807, z: 13.141207}
+      m_Extent: {x: 2.1179779, y: 1.29238, z: 3.5087934}
+    kind: 2
+    label: FARM HUT ONLY 10
+    model_path: FrozenFixture-10-Pasture/Pasture14_GoldenCorner/Pasture14GoldenCorner_architecture
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 57.53202, y: 1.2490807, z: 13.141207}
+      m_Extent: {x: 2.1179779, y: 1.29238, z: 3.5087934}
+    kind: 2
+    label: FARM HUT ONLY 11
+    model_path: FrozenFixture-11-Pasture/Pasture14_GoldenCorner/Pasture14GoldenCorner_architecture
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -12.4679785, y: 1.2490807, z: 13.141207}
+      m_Extent: {x: 2.1179779, y: 1.29238, z: 3.5087934}
+    kind: 2
+    label: FARM HUT ONLY 12
+    model_path: FrozenFixture-12-Pasture/Pasture14_GoldenCorner/Pasture14GoldenCorner_architecture
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -12.4679785, y: 1.2490807, z: 27.141207}
+      m_Extent: {x: 2.1179779, y: 1.29238, z: 3.5087934}
+    kind: 2
+    label: FARM HUT ONLY 13
+    model_path: FrozenFixture-13-Pasture/Pasture14_GoldenCorner/Pasture14GoldenCorner_architecture
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -12.4679785, y: 1.2490807, z: 41.14121}
+      m_Extent: {x: 2.1179779, y: 1.29238, z: 3.5087934}
+    kind: 2
+    label: FARM HUT ONLY 14
+    model_path: FrozenFixture-14-Pasture/Pasture14_GoldenCorner/Pasture14GoldenCorner_architecture
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 33, y: 1.9622383, z: -47}
+      m_Extent: {x: 2.3894916, y: 1.9624574, z: 3.4947557}
+    kind: 2
+    label: NEUTRAL SOURCE EuropeanStoneHouse
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 43, y: 1.9622383, z: -47}
+      m_Extent: {x: 2.3894916, y: 1.9624574, z: 3.4947557}
+    kind: 2
+    label: NEUTRAL SOURCE EuropeanStoneHouse
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 53, y: 1.9622383, z: -47}
+      m_Extent: {x: 2.3894916, y: 1.9624574, z: 3.4947557}
+    kind: 2
+    label: NEUTRAL SOURCE EuropeanStoneHouse
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 33, y: 1.9622383, z: -5}
+      m_Extent: {x: 2.3894918, y: 1.9624574, z: 3.494756}
+    kind: 2
+    label: NEUTRAL SOURCE EuropeanStoneHouse
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 43, y: 1.9622383, z: -5}
+      m_Extent: {x: 2.3894918, y: 1.9624574, z: 3.494756}
+    kind: 2
+    label: NEUTRAL SOURCE EuropeanStoneHouse
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 53, y: 1.9622383, z: -5}
+      m_Extent: {x: 2.3894918, y: 1.9624574, z: 3.494756}
+    kind: 2
+    label: NEUTRAL SOURCE EuropeanStoneHouse
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 33, y: 1.7757139, z: -36}
+      m_Extent: {x: 4, y: 1.8309734, z: 4}
+    kind: 3
+    label: ARROW WORKS
+    model_path: FrozenFixture-21-Workshop
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 33, y: 1.4817467, z: -24}
+      m_Extent: {x: 3.8872552, y: 1.4819663, z: 3.820749}
+    kind: 2
+    label: NEUTRAL SOURCE MiddleEasternCourtyard
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 33, y: 2.464879, z: -13}
+      m_Extent: {x: 3.6427612, y: 2.4650984, z: 3.6608486}
+    kind: 2
+    label: NEUTRAL SOURCE NorthAfricanRuins
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 44, y: 1.7757139, z: -36}
+      m_Extent: {x: 4, y: 1.8309734, z: 4}
+    kind: 3
+    label: ARROW WORKS
+    model_path: FrozenFixture-24-Workshop
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 44, y: 1.4817467, z: -24}
+      m_Extent: {x: 3.8872552, y: 1.4819663, z: 3.820749}
+    kind: 2
+    label: NEUTRAL SOURCE MiddleEasternCourtyard
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 44, y: 2.464879, z: -13}
+      m_Extent: {x: 3.6427612, y: 2.4650984, z: 3.6608486}
+    kind: 2
+    label: NEUTRAL SOURCE NorthAfricanRuins
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 55, y: 1.7757139, z: -36}
+      m_Extent: {x: 4, y: 1.8309734, z: 4}
+    kind: 3
+    label: ARROW WORKS
+    model_path: FrozenFixture-27-Workshop
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 55, y: 1.4817467, z: -24}
+      m_Extent: {x: 3.8872552, y: 1.4819663, z: 3.820749}
+    kind: 2
+    label: NEUTRAL SOURCE MiddleEasternCourtyard
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 55, y: 2.464879, z: -13}
+      m_Extent: {x: 3.6427612, y: 2.4650984, z: 3.6608486}
+    kind: 2
+    label: NEUTRAL SOURCE NorthAfricanRuins
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 33, y: 0.892725, z: -58}
+      m_Extent: {x: 1.2493896, y: 0.8929444, z: 1.0552979}
+    kind: 2
+    label: NEUTRAL SOURCE IronOreRock
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 48, y: 0.5948734, z: -58}
+      m_Extent: {x: 1.2493896, y: 0.59509283, z: 1.2493896}
+    kind: 2
+    label: NEUTRAL SOURCE GoldOreRock
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -22, y: 0.90260935, z: -48.00094}
+      m_Extent: {x: 1.1454163, y: 0.90350294, z: 1.6476593}
+    kind: 2
+    label: NEUTRAL SOURCE BoulderNative
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 38, y: 0.892725, z: -58}
+      m_Extent: {x: 1.2493896, y: 0.8929444, z: 1.0552979}
+    kind: 2
+    label: NEUTRAL SOURCE IronOreRock
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 53, y: 0.5948734, z: -58}
+      m_Extent: {x: 1.2493896, y: 0.59509283, z: 1.2493896}
+    kind: 2
+    label: NEUTRAL SOURCE GoldOreRock
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -22, y: 0.90260935, z: -35.00094}
+      m_Extent: {x: 1.1454163, y: 0.90350294, z: 1.6476593}
+    kind: 2
+    label: NEUTRAL SOURCE BoulderNative
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 43, y: 0.892725, z: -58}
+      m_Extent: {x: 1.2493896, y: 0.8929444, z: 1.0552979}
+    kind: 2
+    label: NEUTRAL SOURCE IronOreRock
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 58, y: 0.5948734, z: -58}
+      m_Extent: {x: 1.2493896, y: 0.59509283, z: 1.2493896}
+    kind: 2
+    label: NEUTRAL SOURCE GoldOreRock
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -22, y: 0.90260935, z: -22.000942}
+      m_Extent: {x: 1.1454163, y: 0.90350294, z: 1.6476612}
+    kind: 2
+    label: NEUTRAL SOURCE BoulderNative
+    model_path: 
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 23.58687, y: 3.2473483, z: -47.36}
+      m_Extent: {x: 2.0346699, y: 3.2475598, z: 6.1200004}
+    kind: 3
+    label: STONE WALL CityWall_East_Body_00
+    model_path: FrozenFortifiedCity/FortifiedCityWalls/CityWall_East_Body_00
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 23.58687, y: 3.2473507, z: -35.12}
+      m_Extent: {x: 2.0346699, y: 3.2475598, z: 6.1200004}
+    kind: 3
+    label: STONE WALL CityWall_East_Body_01
+    model_path: FrozenFortifiedCity/FortifiedCityWalls/CityWall_East_Body_01
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 23.586868, y: 3.2473526, z: -22.880001}
+      m_Extent: {x: 2.0346699, y: 3.2475598, z: 6.1200004}
+    kind: 3
+    label: STONE WALL CityWall_East_Body_02
+    model_path: FrozenFortifiedCity/FortifiedCityWalls/CityWall_East_Body_02
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 23.586866, y: 3.247355, z: -10.64}
+      m_Extent: {x: 2.0346699, y: 3.2475598, z: 6.1200004}
+    kind: 3
+    label: STONE WALL CityWall_East_Body_03
+    model_path: FrozenFortifiedCity/FortifiedCityWalls/CityWall_East_Body_03
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -8.2400055, y: 3.2473512, z: -3.2458823}
+      m_Extent: {x: 6.1200013, y: 3.2475595, z: 2.0346687}
+    kind: 3
+    label: STONE WALL CityWall_North_Body_00
+    model_path: FrozenFortifiedCity/FortifiedCityWalls/CityWall_North_Body_00
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 16.239998, y: 3.247355, z: -3.2458804}
+      m_Extent: {x: 6.1200013, y: 3.2475595, z: 2.0346687}
+    kind: 3
+    label: STONE WALL CityWall_North_Body_02
+    model_path: FrozenFortifiedCity/FortifiedCityWalls/CityWall_North_Body_02
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 23.797802, y: 3.4978442, z: -3.4568155}
+      m_Extent: {x: 1.4378034, y: 3.498047, z: 2.2631838}
+    kind: 3
+    label: STONE WALL CityWall_North_EastPier
+    model_path: FrozenFortifiedCity/FortifiedCityWalls/CityWall_North_EastPier
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 8.682195, y: 3.3660064, z: -3.4568186}
+      m_Extent: {x: 1.4378034, y: 3.3662114, z: 2.2631838}
+    kind: 3
+    label: STONE WALL CityWall_North_PortalEastPier
+    model_path: FrozenFortifiedCity/FortifiedCityWalls/CityWall_North_PortalEastPier
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -0.6822007, y: 3.497841, z: -3.4568174}
+      m_Extent: {x: 1.4378034, y: 3.498047, z: 2.2631838}
+    kind: 3
+    label: STONE WALL CityWall_North_PortalWestPier
+    model_path: FrozenFortifiedCity/FortifiedCityWalls/CityWall_North_PortalWestPier
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -15.797807, y: 3.3660026, z: -3.4568205}
+      m_Extent: {x: 1.4378034, y: 3.3662114, z: 2.2631838}
+    kind: 3
+    label: STONE WALL CityWall_North_WestPier
+    model_path: FrozenFortifiedCity/FortifiedCityWalls/CityWall_North_WestPier
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -8.240002, y: 3.247342, z: -54.332245}
+      m_Extent: {x: 6.1200013, y: 3.2475595, z: 2.0346687}
+    kind: 3
+    label: STONE WALL CityWall_South_Body_00
+    model_path: FrozenFortifiedCity/FortifiedCityWalls/CityWall_South_Body_00
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 4.0000005, y: 3.2473435, z: -54.332245}
+      m_Extent: {x: 6.1200013, y: 3.2475595, z: 2.0346687}
+    kind: 3
+    label: STONE WALL CityWall_South_Body_01
+    model_path: FrozenFortifiedCity/FortifiedCityWalls/CityWall_South_Body_01
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 16.240002, y: 3.2473454, z: -54.332245}
+      m_Extent: {x: 6.1200013, y: 3.2475595, z: 2.0346687}
+    kind: 3
+    label: STONE WALL CityWall_South_Body_02
+    model_path: FrozenFortifiedCity/FortifiedCityWalls/CityWall_South_Body_02
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: 23.797806, y: 3.4978352, z: -54.543182}
+      m_Extent: {x: 1.4378034, y: 3.498047, z: 2.2631838}
+    kind: 3
+    label: STONE WALL CityWall_South_EastPier
+    model_path: FrozenFortifiedCity/FortifiedCityWalls/CityWall_South_EastPier
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -15.797803, y: 3.3659935, z: -54.543182}
+      m_Extent: {x: 1.4378034, y: 3.3662114, z: 2.2631838}
+    kind: 3
+    label: STONE WALL CityWall_South_WestPier
+    model_path: FrozenFortifiedCity/FortifiedCityWalls/CityWall_South_WestPier
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -16.008738, y: 3.2473426, z: -47.360004}
+      m_Extent: {x: 2.0346699, y: 3.2475598, z: 6.1200004}
+    kind: 3
+    label: STONE WALL CityWall_West_Body_00
+    model_path: FrozenFortifiedCity/FortifiedCityWalls/CityWall_West_Body_00
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -16.008738, y: 3.2473445, z: -35.120003}
+      m_Extent: {x: 2.0346699, y: 3.2475598, z: 6.1200004}
+    kind: 3
+    label: STONE WALL CityWall_West_Body_01
+    model_path: FrozenFortifiedCity/FortifiedCityWalls/CityWall_West_Body_01
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -16.00874, y: 3.2473469, z: -22.880005}
+      m_Extent: {x: 2.0346699, y: 3.2475598, z: 6.1200004}
+    kind: 3
+    label: STONE WALL CityWall_West_Body_02
+    model_path: FrozenFortifiedCity/FortifiedCityWalls/CityWall_West_Body_02
+    nav_rounding_radius: 0
+  - bounds:
+      m_Center: {x: -16.008741, y: 3.2473488, z: -10.640004}
+      m_Extent: {x: 2.0346699, y: 3.2475598, z: 6.1200004}
+    kind: 3
+    label: STONE WALL CityWall_West_Body_03
+    model_path: FrozenFortifiedCity/FortifiedCityWalls/CityWall_West_Body_03
+    nav_rounding_radius: 0
+  humans:
+  - position: {x: -1, y: 0, z: -7.5}
+    unit_id: greek_fire
+  - position: {x: 9, y: 0, z: -7.5}
+    unit_id: greek_fire
+  - position: {x: 2, y: 0, z: -6}
+    unit_id: archer
+  - position: {x: 3.5, y: 0, z: -6}
+    unit_id: archer
+  - position: {x: 5, y: 0, z: -6}
+    unit_id: archer
+  - position: {x: -10, y: 0, z: -7.5}
+    unit_id: archer
+  - position: {x: -8.5, y: 0, z: -7.5}
+    unit_id: archer
+  - position: {x: -7, y: 0, z: -7.5}
+    unit_id: archer
+  - position: {x: -5.5, y: 0, z: -7.5}
+    unit_id: archer
+  - position: {x: -4, y: 0, z: -7.5}
+    unit_id: archer
+  - position: {x: -2.5, y: 0, z: -7.5}
+    unit_id: archer
+  - position: {x: 0.5, y: 0, z: -7.5}
+    unit_id: archer
+  - position: {x: 2, y: 0, z: -7.5}
+    unit_id: archer
+  - position: {x: 3.5, y: 0, z: -7.5}
+    unit_id: archer
+  - position: {x: 5, y: 0, z: -7.5}
+    unit_id: archer
+  - position: {x: 6.5, y: 0, z: -7.5}
+    unit_id: archer
+  - position: {x: 11, y: 0, z: -7.5}
+    unit_id: archer
+  - position: {x: 12.5, y: 0, z: -7.5}
+    unit_id: archer
+  - position: {x: 14, y: 0, z: -7.5}
+    unit_id: archer
+  - position: {x: 15.5, y: 0, z: -7.5}
+    unit_id: archer
+  - position: {x: 17, y: 0, z: -7.5}
+    unit_id: archer
+  - position: {x: -10, y: 0, z: -9}
+    unit_id: archer
+  - position: {x: -8.5, y: 0, z: -9}
+    unit_id: archer
+  - position: {x: -7, y: 0, z: -9}
+    unit_id: archer
+  - position: {x: -5.5, y: 0, z: -9}
+    unit_id: archer
+  - position: {x: -4, y: 0, z: -9}
+    unit_id: archer
+  - position: {x: -2.5, y: 0, z: -9}
+    unit_id: archer
+  - position: {x: -1, y: 0, z: -9}
+    unit_id: archer
+  - position: {x: 0.5, y: 0, z: -9}
+    unit_id: archer
+  - position: {x: 2, y: 0, z: -9}
+    unit_id: archer
+  - position: {x: 3.5, y: 0, z: -9}
+    unit_id: archer
+  - position: {x: 5, y: 0, z: -9}
+    unit_id: archer
+  - position: {x: 6.5, y: 0, z: -9}
+    unit_id: archer
+  - position: {x: 8, y: 0, z: -9}
+    unit_id: archer
+  - position: {x: 9.5, y: 0, z: -9}
+    unit_id: archer
+  - position: {x: 11, y: 0, z: -9}
+    unit_id: archer
+  - position: {x: 12.5, y: 0, z: -9}
+    unit_id: archer
+  - position: {x: 14, y: 0, z: -9}
+    unit_id: archer
+  - position: {x: 15.5, y: 0, z: -9}
+    unit_id: archer
+  - position: {x: 17, y: 0, z: -9}
+    unit_id: archer
+  - position: {x: 11, y: 0, z: -10.5}
+    unit_id: archer
+  - position: {x: 11, y: 0, z: -12}
+    unit_id: archer
+  - position: {x: 11, y: 0, z: -13.5}
+    unit_id: archer
+  - position: {x: 11, y: 0, z: -15}
+    unit_id: archer
+  - position: {x: 11, y: 0, z: -16.5}
+    unit_id: archer
+  - position: {x: 11, y: 0, z: -18}
+    unit_id: archer
+  - position: {x: 11, y: 0, z: -19.5}
+    unit_id: archer
+  - position: {x: -10, y: 0, z: -21}
+    unit_id: archer
+  - position: {x: -8.5, y: 0, z: -21}
+    unit_id: archer
+  - position: {x: -7, y: 0, z: -21}
+    unit_id: archer
+  - position: {x: -5.5, y: 0, z: -21}
+    unit_id: archer
+  - position: {x: -4, y: 0, z: -21}
+    unit_id: archer
+  - position: {x: 11, y: 0, z: -21}
+    unit_id: archer
+  - position: {x: 12.5, y: 0, z: -21}
+    unit_id: archer
+  - position: {x: 14, y: 0, z: -21}
+    unit_id: archer
+  - position: {x: 15.5, y: 0, z: -21}
+    unit_id: archer
+  - position: {x: 17, y: 0, z: -21}
+    unit_id: archer
+  - position: {x: -10, y: 0, z: -22.5}
+    unit_id: archer
+  - position: {x: -8.5, y: 0, z: -22.5}
+    unit_id: archer
+  - position: {x: -7, y: 0, z: -22.5}
+    unit_id: archer
+  - position: {x: -5.5, y: 0, z: -22.5}
+    unit_id: archer
+  - position: {x: -4, y: 0, z: -22.5}
+    unit_id: archer
+  - position: {x: 11, y: 0, z: -22.5}
+    unit_id: archer
+  - position: {x: 12.5, y: 0, z: -22.5}
+    unit_id: archer
+  zombies:
+  - position: {x: -23, y: 0, z: 21}
+    unit_id: zombie_hound
+  - position: {x: -21.65, y: 0, z: 21}
+    unit_id: walker
+  - position: {x: -20.3, y: 0, z: 21}
+    unit_id: walker
+  - position: {x: -18.949999, y: 0, z: 21}
+    unit_id: walker
+  - position: {x: -17.599998, y: 0, z: 21}
+    unit_id: walker
+  - position: {x: -16.249998, y: 0, z: 21}
+    unit_id: exploder
+  - position: {x: -14.899998, y: 0, z: 21}
+    unit_id: walker
+  - position: {x: -13.549997, y: 0, z: 21}
+    unit_id: walker
+  - position: {x: -12.199997, y: 0, z: 21}
+    unit_id: walker
+  - position: {x: -10.849997, y: 0, z: 21}
+    unit_id: walker
+  - position: {x: -9.499996, y: 0, z: 21}
+    unit_id: exploder
+  - position: {x: -8.149996, y: 0, z: 21}
+    unit_id: walker
+  - position: {x: -6.799996, y: 0, z: 21}
+    unit_id: walker
+  - position: {x: -5.449996, y: 0, z: 21}
+    unit_id: walker
+  - position: {x: -4.099996, y: 0, z: 21}
+    unit_id: walker
+  - position: {x: -2.7499962, y: 0, z: 21}
+    unit_id: exploder
+  - position: {x: -1.3999962, y: 0, z: 21}
+    unit_id: walker
+  - position: {x: -0.049996138, y: 0, z: 21}
+    unit_id: walker
+  - position: {x: 1.3000039, y: 0, z: 21}
+    unit_id: walker
+  - position: {x: 2.650004, y: 0, z: 21}
+    unit_id: walker
+  - position: {x: 4.000004, y: 0, z: 21}
+    unit_id: zombie_hound
+  - position: {x: 5.3500037, y: 0, z: 21}
+    unit_id: walker
+  - position: {x: 6.7000036, y: 0, z: 21}
+    unit_id: walker
+  - position: {x: 8.050004, y: 0, z: 21}
+    unit_id: walker
+  - position: {x: 9.400004, y: 0, z: 21}
+    unit_id: walker
+  - position: {x: 14.800006, y: 0, z: 21}
+    unit_id: exploder
+  - position: {x: 41.8, y: 0, z: 21}
+    unit_id: walker
+  - position: {x: 43.149998, y: 0, z: 21}
+    unit_id: walker
+  - position: {x: 44.499996, y: 0, z: 21}
+    unit_id: walker
+  - position: {x: 45.849995, y: 0, z: 21}
+    unit_id: walker
+  - position: {x: 47.199993, y: 0, z: 21}
+    unit_id: exploder
+  - position: {x: 48.54999, y: 0, z: 21}
+    unit_id: walker
+  - position: {x: 49.89999, y: 0, z: 21}
+    unit_id: walker
+  - position: {x: 51.24999, y: 0, z: 21}
+    unit_id: walker
+  - position: {x: 52.599987, y: 0, z: 21}
+    unit_id: walker
+  - position: {x: 53.949986, y: 0, z: 21}
+    unit_id: exploder
+  - position: {x: 57.99998, y: 0, z: 21}
+    unit_id: walker
+  - position: {x: -23, y: 0, z: 22.35}
+    unit_id: walker
+  - position: {x: -21.65, y: 0, z: 22.35}
+    unit_id: walker
+  - position: {x: -20.3, y: 0, z: 22.35}
+    unit_id: walker
+  - position: {x: -18.949999, y: 0, z: 22.35}
+    unit_id: zombie_hound
+  - position: {x: -17.599998, y: 0, z: 22.35}
+    unit_id: walker
+  - position: {x: -16.249998, y: 0, z: 22.35}
+    unit_id: walker
+  - position: {x: -14.899998, y: 0, z: 22.35}
+    unit_id: walker
+  - position: {x: -13.549997, y: 0, z: 22.35}
+    unit_id: walker
+  - position: {x: -12.199997, y: 0, z: 22.35}
+    unit_id: exploder
+  - position: {x: -10.849997, y: 0, z: 22.35}
+    unit_id: walker
+  - position: {x: -9.499996, y: 0, z: 22.35}
+    unit_id: walker
+  - position: {x: -8.149996, y: 0, z: 22.35}
+    unit_id: walker
+  - position: {x: -6.799996, y: 0, z: 22.35}
+    unit_id: walker
+  - position: {x: -5.449996, y: 0, z: 22.35}
+    unit_id: exploder
+  - position: {x: -4.099996, y: 0, z: 22.35}
+    unit_id: walker
+  - position: {x: -2.7499962, y: 0, z: 22.35}
+    unit_id: walker
+  - position: {x: -1.3999962, y: 0, z: 22.35}
+    unit_id: walker
+  - position: {x: -0.049996138, y: 0, z: 22.35}
+    unit_id: walker
+  - position: {x: 1.3000039, y: 0, z: 22.35}
+    unit_id: exploder
+  - position: {x: 2.650004, y: 0, z: 22.35}
+    unit_id: walker
+  - position: {x: 4.000004, y: 0, z: 22.35}
+    unit_id: walker
+  - position: {x: 5.3500037, y: 0, z: 22.35}
+    unit_id: walker
+  - position: {x: 14.800006, y: 0, z: 22.35}
+    unit_id: walker
+  - position: {x: 43.149998, y: 0, z: 22.35}
+    unit_id: zombie_hound
+  - position: {x: 44.499996, y: 0, z: 22.35}
+    unit_id: walker
+  - position: {x: 48.54999, y: 0, z: 22.35}
+    unit_id: walker
+  - position: {x: 49.89999, y: 0, z: 22.35}
+    unit_id: walker
+  - position: {x: 51.24999, y: 0, z: 22.35}
+    unit_id: walker
+  - position: {x: 52.599987, y: 0, z: 22.35}
+    unit_id: exploder
+  - position: {x: 53.949986, y: 0, z: 22.35}
+    unit_id: walker
+  - position: {x: 57.99998, y: 0, z: 22.35}
+    unit_id: walker
+  - position: {x: -23, y: 0, z: 23.7}
+    unit_id: walker
+  - position: {x: -21.65, y: 0, z: 23.7}
+    unit_id: walker
+  - position: {x: -20.3, y: 0, z: 23.7}
+    unit_id: exploder
+  - position: {x: -18.949999, y: 0, z: 23.7}
+    unit_id: walker
+  - position: {x: -17.599998, y: 0, z: 23.7}
+    unit_id: walker
+  - position: {x: -16.249998, y: 0, z: 23.7}
+    unit_id: walker
+  - position: {x: -9.499996, y: 0, z: 23.7}
+    unit_id: walker
+  - position: {x: -8.149996, y: 0, z: 23.7}
+    unit_id: exploder
+  - position: {x: -6.799996, y: 0, z: 23.7}
+    unit_id: walker
+  - position: {x: -5.449996, y: 0, z: 23.7}
+    unit_id: walker
+  - position: {x: -4.099996, y: 0, z: 23.7}
+    unit_id: walker
+  - position: {x: -2.7499962, y: 0, z: 23.7}
+    unit_id: walker
+  - position: {x: -1.3999962, y: 0, z: 23.7}
+    unit_id: zombie_hound
+  - position: {x: -0.049996138, y: 0, z: 23.7}
+    unit_id: walker
+  - position: {x: 1.3000039, y: 0, z: 23.7}
+    unit_id: walker
+  - position: {x: 2.650004, y: 0, z: 23.7}
+    unit_id: walker
+  - position: {x: 4.000004, y: 0, z: 23.7}
+    unit_id: walker
+  - position: {x: 5.3500037, y: 0, z: 23.7}
+    unit_id: exploder
+  - position: {x: 14.800006, y: 0, z: 23.7}
+    unit_id: walker
+  - position: {x: 44.499996, y: 0, z: 23.7}
+    unit_id: walker
+  - position: {x: 48.54999, y: 0, z: 23.7}
+    unit_id: walker
+  - position: {x: 49.89999, y: 0, z: 23.7}
+    unit_id: walker
+  - position: {x: 51.24999, y: 0, z: 23.7}
+    unit_id: exploder
+  - position: {x: 52.599987, y: 0, z: 23.7}
+    unit_id: walker
+  - position: {x: 53.949986, y: 0, z: 23.7}
+    unit_id: walker
+  - position: {x: 57.99998, y: 0, z: 23.7}
+    unit_id: walker
+  - position: {x: -23, y: 0, z: 25.050001}
+    unit_id: walker
+  - position: {x: -21.65, y: 0, z: 25.050001}
+    unit_id: exploder
+  - position: {x: -20.3, y: 0, z: 25.050001}
+    unit_id: walker
+  - position: {x: -18.949999, y: 0, z: 25.050001}
+    unit_id: walker
+  - position: {x: -17.599998, y: 0, z: 25.050001}
+    unit_id: walker
+  - position: {x: -16.249998, y: 0, z: 25.050001}
+    unit_id: walker
+  - position: {x: -9.499996, y: 0, z: 25.050001}
+    unit_id: zombie_hound
+  - position: {x: -8.149996, y: 0, z: 25.050001}
+    unit_id: walker
+  - position: {x: -6.799996, y: 0, z: 25.050001}
+    unit_id: walker
+  - position: {x: -5.449996, y: 0, z: 25.050001}
+    unit_id: walker
+  - position: {x: -4.099996, y: 0, z: 25.050001}
+    unit_id: walker
+  - position: {x: -2.7499962, y: 0, z: 25.050001}
+    unit_id: exploder
+  - position: {x: -1.3999962, y: 0, z: 25.050001}
+    unit_id: walker
+  - position: {x: -0.049996138, y: 0, z: 25.050001}
+    unit_id: walker
+  - position: {x: 1.3000039, y: 0, z: 25.050001}
+    unit_id: walker
+  - position: {x: 2.650004, y: 0, z: 25.050001}
+    unit_id: walker
+  - position: {x: 4.000004, y: 0, z: 25.050001}
+    unit_id: exploder
+  - position: {x: 5.3500037, y: 0, z: 25.050001}
+    unit_id: walker
+  - position: {x: 6.7000036, y: 0, z: 25.050001}
+    unit_id: walker
+  - position: {x: 8.050004, y: 0, z: 25.050001}
+    unit_id: walker
+  - position: {x: 9.400004, y: 0, z: 25.050001}
+    unit_id: walker
+  - position: {x: 10.750005, y: 0, z: 25.050001}
+    unit_id: exploder
+  - position: {x: 12.100005, y: 0, z: 25.050001}
+    unit_id: walker
+  - position: {x: 13.450006, y: 0, z: 25.050001}
+    unit_id: walker
+  - position: {x: 45.849995, y: 0, z: 25.050001}
+    unit_id: walker
+  - position: {x: 47.199993, y: 0, z: 25.050001}
+    unit_id: walker
+  - position: {x: 48.54999, y: 0, z: 25.050001}
+    unit_id: zombie_hound
+  - position: {x: 49.89999, y: 0, z: 25.050001}
+    unit_id: walker
+  - position: {x: 51.24999, y: 0, z: 25.050001}
+    unit_id: walker
+  - position: {x: 52.599987, y: 0, z: 25.050001}
+    unit_id: walker
+  - position: {x: 53.949986, y: 0, z: 25.050001}
+    unit_id: walker
+  - position: {x: 55.299984, y: 0, z: 25.050001}
+    unit_id: exploder
+  - position: {x: 56.649982, y: 0, z: 25.050001}
+    unit_id: walker
+  - position: {x: 57.99998, y: 0, z: 25.050001}
+    unit_id: walker
+  - position: {x: -23, y: 0, z: 26.400002}
+    unit_id: walker
+  - position: {x: -21.65, y: 0, z: 26.400002}
+    unit_id: walker
+  - position: {x: -20.3, y: 0, z: 26.400002}
+    unit_id: exploder
+  - position: {x: -18.949999, y: 0, z: 26.400002}
+    unit_id: walker
+  - position: {x: -17.599998, y: 0, z: 26.400002}
+    unit_id: walker
+  - position: {x: -16.249998, y: 0, z: 26.400002}
+    unit_id: walker
+  - position: {x: -9.499996, y: 0, z: 26.400002}
+    unit_id: walker
+  - position: {x: -8.149996, y: 0, z: 26.400002}
+    unit_id: exploder
+  - position: {x: -6.799996, y: 0, z: 26.400002}
+    unit_id: walker
+  - position: {x: -5.449996, y: 0, z: 26.400002}
+    unit_id: walker
+  - position: {x: -4.099996, y: 0, z: 26.400002}
+    unit_id: walker
+  - position: {x: -0.049996138, y: 0, z: 26.400002}
+    unit_id: walker
+  - position: {x: 1.3000039, y: 0, z: 26.400002}
+    unit_id: zombie_hound
+  - position: {x: 5.3500037, y: 0, z: 26.400002}
+    unit_id: walker
+  - position: {x: 10.750005, y: 0, z: 26.400002}
+    unit_id: walker
+  - position: {x: 48.54999, y: 0, z: 26.400002}
+    unit_id: walker
+  - position: {x: 53.949986, y: 0, z: 26.400002}
+    unit_id: walker
+  - position: {x: -23, y: 0, z: 27.750002}
+    unit_id: exploder
+  - position: {x: -21.65, y: 0, z: 27.750002}
+    unit_id: walker
+  - position: {x: -20.3, y: 0, z: 27.750002}
+    unit_id: walker
+  - position: {x: -18.949999, y: 0, z: 27.750002}
+    unit_id: walker
+  - position: {x: -17.599998, y: 0, z: 27.750002}
+    unit_id: walker
+  - position: {x: -16.249998, y: 0, z: 27.750002}
+    unit_id: exploder
+  - position: {x: -9.499996, y: 0, z: 27.750002}
+    unit_id: walker
+  - position: {x: -8.149996, y: 0, z: 27.750002}
+    unit_id: walker
+  - position: {x: -6.799996, y: 0, z: 27.750002}
+    unit_id: walker
+  - position: {x: -5.449996, y: 0, z: 27.750002}
+    unit_id: walker
+  - position: {x: -4.099996, y: 0, z: 27.750002}
+    unit_id: exploder
+  - position: {x: -0.049996138, y: 0, z: 27.750002}
+    unit_id: walker
+  - position: {x: 1.3000039, y: 0, z: 27.750002}
+    unit_id: walker
+  - position: {x: 5.3500037, y: 0, z: 27.750002}
+    unit_id: walker
+  - position: {x: 10.750005, y: 0, z: 27.750002}
+    unit_id: walker
+  - position: {x: 48.54999, y: 0, z: 27.750002}
+    unit_id: zombie_hound
+  - position: {x: 53.949986, y: 0, z: 27.750002}
+    unit_id: walker
+  - position: {x: -23, y: 0, z: 29.100002}
+    unit_id: walker
+  - position: {x: -21.65, y: 0, z: 29.100002}
+    unit_id: walker
+  - position: {x: -20.3, y: 0, z: 29.100002}
+    unit_id: walker
+  - position: {x: -18.949999, y: 0, z: 29.100002}
+    unit_id: exploder
+  - position: {x: -17.599998, y: 0, z: 29.100002}
+    unit_id: walker
+  - position: {x: -16.249998, y: 0, z: 29.100002}
+    unit_id: walker
+  - position: {x: -9.499996, y: 0, z: 29.100002}
+    unit_id: walker
+  - position: {x: -8.149996, y: 0, z: 29.100002}
+    unit_id: walker
+  - position: {x: -6.799996, y: 0, z: 29.100002}
+    unit_id: exploder
+  - position: {x: -5.449996, y: 0, z: 29.100002}
+    unit_id: walker
+  - position: {x: -4.099996, y: 0, z: 29.100002}
+    unit_id: walker
+  - position: {x: -2.7499962, y: 0, z: 29.100002}
+    unit_id: walker
+  - position: {x: -1.3999962, y: 0, z: 29.100002}
+    unit_id: walker
+  - position: {x: -0.049996138, y: 0, z: 29.100002}
+    unit_id: exploder
+  - position: {x: 1.3000039, y: 0, z: 29.100002}
+    unit_id: walker
+  - position: {x: 2.650004, y: 0, z: 29.100002}
+    unit_id: walker
+  - position: {x: 4.000004, y: 0, z: 29.100002}
+    unit_id: walker
+  - position: {x: 5.3500037, y: 0, z: 29.100002}
+    unit_id: walker
+  - position: {x: 6.7000036, y: 0, z: 29.100002}
+    unit_id: zombie_hound
+  - position: {x: 8.050004, y: 0, z: 29.100002}
+    unit_id: walker
+  - position: {x: 9.400004, y: 0, z: 29.100002}
+    unit_id: walker
+  - position: {x: 10.750005, y: 0, z: 29.100002}
+    unit_id: walker
+  - position: {x: 12.100005, y: 0, z: 29.100002}
+    unit_id: walker
+  - position: {x: 47.199993, y: 0, z: 29.100002}
+    unit_id: exploder
+  - position: {x: 48.54999, y: 0, z: 29.100002}
+    unit_id: walker
+  - position: {x: 53.949986, y: 0, z: 29.100002}
+    unit_id: walker
+  - position: {x: 55.299984, y: 0, z: 29.100002}
+    unit_id: walker
+  - position: {x: 56.649982, y: 0, z: 29.100002}
+    unit_id: walker
+  - position: {x: 57.99998, y: 0, z: 29.100002}
+    unit_id: exploder
+  - position: {x: -23, y: 0, z: 30.450003}
+    unit_id: walker
+  - position: {x: -21.65, y: 0, z: 30.450003}
+    unit_id: walker
+  - position: {x: -20.3, y: 0, z: 30.450003}
+    unit_id: walker
+  - position: {x: -18.949999, y: 0, z: 30.450003}
+    unit_id: walker
+  - position: {x: -17.599998, y: 0, z: 30.450003}
+    unit_id: exploder
+  - position: {x: -16.249998, y: 0, z: 30.450003}
+    unit_id: walker
+  - position: {x: -9.499996, y: 0, z: 30.450003}
+    unit_id: walker
+  - position: {x: -8.149996, y: 0, z: 30.450003}
+    unit_id: walker
+  - position: {x: -6.799996, y: 0, z: 30.450003}
+    unit_id: walker
+  - position: {x: -5.449996, y: 0, z: 30.450003}
+    unit_id: zombie_hound
+  - position: {x: -4.099996, y: 0, z: 30.450003}
+    unit_id: walker
+  - position: {x: -2.7499962, y: 0, z: 30.450003}
+    unit_id: walker
+  - position: {x: -1.3999962, y: 0, z: 30.450003}
+    unit_id: walker
+  - position: {x: -0.049996138, y: 0, z: 30.450003}
+    unit_id: walker
+  - position: {x: 5.3500037, y: 0, z: 30.450003}
+    unit_id: exploder
+  - position: {x: 10.750005, y: 0, z: 30.450003}
+    unit_id: walker
+  - position: {x: 12.100005, y: 0, z: 30.450003}
+    unit_id: walker
+  - position: {x: 48.54999, y: 0, z: 30.450003}
+    unit_id: walker
+  - position: {x: 53.949986, y: 0, z: 30.450003}
+    unit_id: walker
+  - position: {x: 55.299984, y: 0, z: 30.450003}
+    unit_id: exploder
+  - position: {x: 56.649982, y: 0, z: 30.450003}
+    unit_id: walker
+  - position: {x: 57.99998, y: 0, z: 30.450003}
+    unit_id: walker
+  - position: {x: -23, y: 0, z: 31.800003}
+    unit_id: walker
+  - position: {x: -21.65, y: 0, z: 31.800003}
+    unit_id: walker
+  - position: {x: -20.3, y: 0, z: 31.800003}
+    unit_id: exploder
+  - position: {x: -18.949999, y: 0, z: 31.800003}
+    unit_id: walker
+  - position: {x: -17.599998, y: 0, z: 31.800003}
+    unit_id: walker
+  - position: {x: -16.249998, y: 0, z: 31.800003}
+    unit_id: walker
+  - position: {x: -14.899998, y: 0, z: 31.800003}
+    unit_id: walker
+  - position: {x: -13.549997, y: 0, z: 31.800003}
+    unit_id: zombie_hound
+  - position: {x: -12.199997, y: 0, z: 31.800003}
+    unit_id: walker
+  - position: {x: -10.849997, y: 0, z: 31.800003}
+    unit_id: walker
+  - position: {x: -9.499996, y: 0, z: 31.800003}
+    unit_id: walker
+  - position: {x: -8.149996, y: 0, z: 31.800003}
+    unit_id: walker
+  - position: {x: -6.799996, y: 0, z: 31.800003}
+    unit_id: exploder
+  - position: {x: -5.449996, y: 0, z: 31.800003}
+    unit_id: walker
+  - position: {x: -4.099996, y: 0, z: 31.800003}
+    unit_id: walker
+  - position: {x: -0.049996138, y: 0, z: 31.800003}
+    unit_id: walker
+  - position: {x: 5.3500037, y: 0, z: 31.800003}
+    unit_id: walker
+  - position: {x: 10.750005, y: 0, z: 31.800003}
+    unit_id: exploder
+  - position: {x: 48.54999, y: 0, z: 31.800003}
+    unit_id: walker
+  - position: {x: 53.949986, y: 0, z: 31.800003}
+    unit_id: walker
+  - position: {x: 57.99998, y: 0, z: 31.800003}
+    unit_id: walker
+  - position: {x: -23, y: 0, z: 33.15}
+    unit_id: walker
+  - position: {x: -21.65, y: 0, z: 33.15}
+    unit_id: exploder
+  - position: {x: -20.3, y: 0, z: 33.15}
+    unit_id: walker
+  - position: {x: -18.949999, y: 0, z: 33.15}
+    unit_id: walker
+  - position: {x: -17.599998, y: 0, z: 33.15}
+    unit_id: walker
+  - position: {x: -16.249998, y: 0, z: 33.15}
+    unit_id: walker
+  available_unit_recipes:
+  - archer
+  - greek_fire
+  allow_new_buildings: 0
+  crop_cast_shadows: 0
+  shadow_distance: 150
+  shadow_cascades: 2
+  shadow_resolution: 2

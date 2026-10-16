@@ -1,0 +1,60 @@
+{
+  "scope": "Optional V0.10 camera and grounding presentation review, not gameplay or art acceptance",
+  "unity_version": "6000.6.1f1",
+  "render_pipeline": "Built-in",
+  "graphics_api": "Metal",
+  "compile_result": {
+    "failed": false,
+    "errors": 0,
+    "warnings": 0
+  },
+  "shader_result": {
+    "name": "ZombieGame/PresentationReview/GroundingSurface",
+    "supported": true,
+    "compiler_messages": []
+  },
+  "editor_loop_proof": {
+    "member": "UnityEngine.Time.frameCount",
+    "initial_value": 2633,
+    "final_value": 2636,
+    "frames_observed": 2,
+    "elapsed_ms": 219,
+    "met": true,
+    "simulation_paused_intentionally": true
+  },
+  "final_console_ground_truth": {
+    "sampled_utc": "2026-10-16T14:28:20.127401Z",
+    "compilation_failed": false,
+    "compiling": false,
+    "console_errors": 0,
+    "console_warnings": 0,
+    "historical_telemetry_note": "Pipeline history retains an earlier corrected V010SceneReference.placeholder compile error; current compilation and native Console counts are clean. History was not erased."
+  },
+  "teardown": {
+    "scene": "Assets/_Tests/V010PresentationReview/Scenes/CameraGroundingReview.unity",
+    "scene_dirty": false,
+    "playing": false,
+    "time_scale": 1,
+    "capture_on_start": false,
+    "formal_camera_pitch": 48,
+    "formal_camera_yaw": 0
+  },
+  "visual_inspection": {
+    "all_seven_pngs_reviewed": true,
+    "final_five_output_size": "1920x1080",
+    "same_overview_focus": [0, 0, 0],
+    "same_overview_orthographic_size": 25,
+    "outside_map_gray_corners": false,
+    "actors_visible": true,
+    "old_hard_integer_ground_active_after": 0,
+    "grounding_pairs": 6,
+    "remaining_limitations": [
+      "Original workshop baked ground fragments and legitimate building shadows remain; not every dark area was removed.",
+      "Southern wall portions naturally leave the picture frame under the common focus; the map and orthographic size were not expanded to hide this.",
+      "New grounding is limited to one headquarters and all five workshop instances; other authored models, wall shapes and farms remain unchanged.",
+      "Global reveal and a paused initial state are explicit art-review fixtures, not normal gameplay visibility.",
+      "No performance improvement or combat-regression verdict is inferred from these paused image comparisons.",
+      "No final camera has been selected; original formal camera configuration remains unchanged."
+    ]
+  }
+}

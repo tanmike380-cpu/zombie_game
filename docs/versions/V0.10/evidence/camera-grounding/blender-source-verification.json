@@ -1,0 +1,105 @@
+{
+  "passed": true,
+  "source_sha256": "34ce14d5150a0ae7a9e232775f6f7863180052feea29be4fabc8faf1ad097ef9",
+  "protected_prior_486_counts": {
+    "objects": 486,
+    "meshes": 286,
+    "materials": 93,
+    "images": 46,
+    "actions": 0,
+    "collections": 28,
+    "lights": 1,
+    "cameras": 1,
+    "worlds": 1,
+    "armatures": 14,
+    "scenes": 1
+  },
+  "variants": [
+    {
+      "id": "HeadquartersGroundedReview",
+      "architecture_geometry_uv_materials_unchanged": true,
+      "architecture_local_matrix_unchanged": true,
+      "original_architecture_faces_removed": 0,
+      "logical_footprint_m": [
+        12,
+        12
+      ],
+      "ground_vertices": 3721,
+      "ground_triangles": 7200,
+      "ground_thickness_m": 0,
+      "ground_surface_source_z_m": -0.005,
+      "alpha_min": 0.0,
+      "alpha_max": 1.0,
+      "alpha_transition_vertices": 1145,
+      "closed_plate_sidewalls": false,
+      "passed": true,
+      "roundtrip": {
+        "components": 2,
+        "maximum_vertex_error_m": 2.000673930524499e-06,
+        "maximum_uv_error": 0.0,
+        "uv_loop_samples": 29307,
+        "passed": true
+      },
+      "alpha_roundtrip": {
+        "passed": true,
+        "channel": "COLOR0.a",
+        "maximum_alpha_error": 0.0019605159759521484,
+        "sample_count": 3721
+      }
+    },
+    {
+      "id": "WorkshopGroundedReview",
+      "architecture_geometry_uv_materials_unchanged": true,
+      "architecture_local_matrix_unchanged": true,
+      "original_architecture_faces_removed": 0,
+      "logical_footprint_m": [
+        8,
+        8
+      ],
+      "ground_vertices": 1681,
+      "ground_triangles": 3200,
+      "ground_thickness_m": 0,
+      "ground_surface_source_z_m": -0.005,
+      "alpha_min": 0.0,
+      "alpha_max": 1.0,
+      "alpha_transition_vertices": 602,
+      "closed_plate_sidewalls": false,
+      "passed": true,
+      "roundtrip": {
+        "components": 2,
+        "maximum_vertex_error_m": 1.3433650565275457e-06,
+        "maximum_uv_error": 0.0,
+        "uv_loop_samples": 20150,
+        "passed": true
+      },
+      "alpha_roundtrip": {
+        "passed": true,
+        "channel": "COLOR0.a",
+        "maximum_alpha_error": 0.00195467472076416,
+        "sample_count": 1681
+      }
+    }
+  ],
+  "frozen_exports_unchanged": [
+    {
+      "file": "art/models/grid-footprints/Pasture14_GoldenCorner/Pasture14_GoldenCorner.fbx",
+      "sha256": "3ee3c15e36456b3a199321ec22bd597dd85d2f0940dac15981354e1548996a8e"
+    },
+    {
+      "file": "art/models/grid-footprints/Headquarters12/Headquarters12.fbx",
+      "sha256": "d3f7fa2d163adfc5aa176b5aba9ecd0a338630dfccf29f2609fdd4fe58988032"
+    },
+    {
+      "file": "art/models/grid-footprints/Workshop8/Workshop8.fbx",
+      "sha256": "b84ca5b04261d434119ed78e66a113cba6dd355f0713f2a7f0e85b524a3ce8f0"
+    },
+    {
+      "file": "art/models/fortified-city/FortifiedCityWalls.fbx",
+      "sha256": "47b89d7734871bbe0dd000cdb0eebd894e13d43e69698e52bd6cd8ce0ee05e2d"
+    }
+  ],
+  "lighting_cameras_worlds_old_layout_preserved": true,
+  "live_unsaved_zombie_untouched": true,
+  "no_original_architecture_geometry_was_cut": true,
+  "unity_visual_review_pending": true
+}
