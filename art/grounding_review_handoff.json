@@ -1,0 +1,682 @@
+{
+  "schema_version": 1,
+  "status": "Blender source frozen; Unity visual review pending",
+  "source_blend": "art/Blender主文件/ZombieGame.blend",
+  "master_file": "art/Blender主文件/ZombieGame.blend",
+  "source_before_sha256": "69704fa392d17bcc253d669699b0001031c91884cf8fdc544d582e00d3e55d2d",
+  "master_sha256": "34ce14d5150a0ae7a9e232775f6f7863180052feea29be4fabc8faf1ad097ef9",
+  "recovery_snapshot": "Builds/ArtReview/BuildingGrounding-v1/master-before-grid-20261016-221543.blend",
+  "protected_counts": {
+    "objects": 486,
+    "meshes": 286,
+    "materials": 93,
+    "images": 46,
+    "actions": 0,
+    "collections": 28,
+    "lights": 1,
+    "cameras": 1,
+    "worlds": 1,
+    "armatures": 14,
+    "scenes": 1
+  },
+  "objects_after": 492,
+  "collection": "建筑接地评审 · 基地石庭＋工坊夯土软边",
+  "assets": [
+    {
+      "id": "HeadquartersGroundedReview",
+      "source": "BZT Main base1",
+      "grid": [
+        12,
+        12
+      ],
+      "model_depth_m": 12,
+      "ground_cover_native_z": 0.008,
+      "root": "HeadquartersGroundedReview · 展示锚点",
+      "architecture": "HeadquartersGroundedReview_OriginalArchitecture",
+      "ground": "HeadquartersGroundedReview_FeatherGround",
+      "source_mesh": "tripo_mesh_b9b5ab31",
+      "source_mesh_sha256": "ff7d9668dc63c61313d5ba8879b835e7b1789e61c89e7c00318f132c263f7a05",
+      "uniform_source_scale": 12.005862237420615,
+      "architecture_grounding_translation_m": -0.09604689789936492,
+      "display_root_matrix": [
+        [
+          0.0832926407456398,
+          0.0,
+          0.0,
+          41.1826171875
+        ],
+        [
+          0.0,
+          0.0832926407456398,
+          0.0,
+          -8.50583267211914
+        ],
+        [
+          0.0,
+          0.0,
+          0.0832926407456398,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "grid_ground_surface_m": -0.005,
+      "below_ground_geometry_m": -0.09604689789936492,
+      "source_collection": "建筑接地评审 · 基地石庭＋工坊夯土软边",
+      "export": {
+        "file": "art/models/grounding-review/HeadquartersGroundedReview/HeadquartersGroundedReview.fbx",
+        "sha256": "55fba96656cf178f90eba6ed1685ddd0d4418008f3462cc1256ee70c1bd02396",
+        "scale_baked": true,
+        "unity_placement_scale": 1,
+        "materials": [
+          {
+            "name": "HeadquartersGroundedReview_OriginalMaterial",
+            "source_material": "tripo_mat_b9b5ab31",
+            "base_color_texture": "art/models/grounding-review/HeadquartersGroundedReview/wall-original-03.jpg",
+            "base_color_sha256": "4279480a0268f5aa2a6d087df0e6fdc55e6df978969759f7638647b9ef218bfb",
+            "base_color_multiplier": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "normal_map": null,
+            "roughness_map": null,
+            "height_map": null,
+            "note": "Original baked color only. No invented PBR maps or guessed scanning channels.",
+            "metallic": 0.0,
+            "roughness": 0.8999999761581421,
+            "smoothness": 0.10000002384185791,
+            "alpha_mode": "opaque",
+            "double_sided": false
+          },
+          {
+            "name": "GroundReview_cobblestone_floor_02",
+            "license": "CC0-1.0",
+            "author": "Rob Tuytel",
+            "source": "https://polyhaven.com/a/cobblestone_floor_02",
+            "license_url": "https://polyhaven.com/license",
+            "channels": {
+              "diff": {
+                "file": "art/models/grounding-review/textures/cobblestone_floor_02_diff_1k.jpg",
+                "sha256": "b1be7866d908135276ae6bdb566cf81789caf3092d12ad1c1915131fc747fd53",
+                "colorspace": "sRGB",
+                "resolution": [
+                  1024,
+                  1024
+                ]
+              },
+              "nor_gl": {
+                "file": "art/models/grounding-review/textures/cobblestone_floor_02_nor_gl_1k.jpg",
+                "sha256": "838f9f169956fceac4996967ff14dfcbc47b658bbedf1e60c0cd4536977aa064",
+                "colorspace": "Non-Color",
+                "resolution": [
+                  1024,
+                  1024
+                ]
+              },
+              "rough": {
+                "file": "art/models/grounding-review/textures/cobblestone_floor_02_rough_1k.jpg",
+                "sha256": "39d802084263449216d7467c7d8a2134939a165eb8581f033048bfb1344ba2a1",
+                "colorspace": "Non-Color",
+                "resolution": [
+                  1024,
+                  1024
+                ]
+              }
+            },
+            "metallic": 0,
+            "normal_strength": 0.35,
+            "uv_period_m": 2,
+            "base_color_multiplier": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "alpha_mode": "blend",
+            "vertex_alpha_channel": "COLOR0.a",
+            "blender_color_attribute": "GroundEdgeOpacity",
+            "shadow_casting": false,
+            "receive_shadows": true,
+            "double_sided": false,
+            "z_write": false,
+            "note": "Dedicated opt-in ground material: real existing PBR maps plus authored vertex alpha; not the old opaque grid slab material."
+          }
+        ],
+        "textures": [
+          {
+            "source_image": "tripo_image_b9b5ab31_0",
+            "file": "art/models/grounding-review/HeadquartersGroundedReview/wall-original-03.jpg",
+            "sha256": "4279480a0268f5aa2a6d087df0e6fdc55e6df978969759f7638647b9ef218bfb",
+            "size": [
+              2048,
+              2048
+            ],
+            "colorspace": "sRGB"
+          }
+        ],
+        "fbx_global_settings": {
+          "UpAxis": 1,
+          "UpAxisSign": 1,
+          "FrontAxis": 2,
+          "FrontAxisSign": 1,
+          "CoordAxis": 0,
+          "CoordAxisSign": 1,
+          "UnitScaleFactor": 100.0,
+          "OriginalUnitScaleFactor": 100.0
+        },
+        "roundtrip": {
+          "components": 2,
+          "maximum_vertex_error_m": 2.000673930524499e-06,
+          "maximum_uv_error": 0.0,
+          "uv_loop_samples": 29307,
+          "passed": true
+        },
+        "vertex_alpha_roundtrip": {
+          "passed": true,
+          "channel": "COLOR0.a",
+          "maximum_alpha_error": 0.0019605159759521484,
+          "sample_count": 3721
+        }
+      },
+      "source_id": "Headquarters",
+      "export_root_name": "HeadquartersGroundedReview",
+      "footprint_m": [
+        12,
+        12
+      ],
+      "placement_scale": 1,
+      "grid_unit_m": 1,
+      "ground_anchor_y_m": 0,
+      "unity_ground_offset_m": 0.025,
+      "architectural_scale_already_in_export": true,
+      "components": [
+        {
+          "name": "HeadquartersGroundedReview_OriginalArchitecture",
+          "expected_unity_bounds_center_m": [
+            0.0,
+            3.588369369506836,
+            0.0
+          ],
+          "expected_unity_bounds_size_m": [
+            11.55447006225586,
+            7.368832588195801,
+            12.0
+          ],
+          "material_names": [
+            "HeadquartersGroundedReview_OriginalMaterial"
+          ]
+        },
+        {
+          "name": "HeadquartersGroundedReview_FeatherGround",
+          "expected_unity_bounds_center_m": [
+            0.0,
+            -0.004999999888241291,
+            0.0
+          ],
+          "expected_unity_bounds_size_m": [
+            12.0,
+            0.0,
+            12.0
+          ],
+          "material_names": [
+            "GroundReview_cobblestone_floor_02"
+          ]
+        }
+      ],
+      "expected_unity_bounds_center_m": [
+        0.0,
+        3.588369369506836,
+        0.0
+      ],
+      "expected_unity_bounds_size_m": [
+        12.0,
+        7.368832588195801,
+        12.0
+      ],
+      "expected_unity_min_y_m": -0.09604689478874207,
+      "previous_preview_asset_id": "Headquarters12",
+      "previous_export": "art/models/grid-footprints/Headquarters12/Headquarters12.fbx",
+      "previous_export_sha256": "d3f7fa2d163adfc5aa176b5aba9ecd0a338630dfccf29f2609fdd4fe58988032",
+      "old_architecture_object": "Headquarters12_OriginalArchitecture",
+      "architecture_matrix_unchanged": true,
+      "root_registration_to_previous": "identity; same local origin and same +0.025m terrain offset",
+      "logical_footprint_m": [
+        12,
+        12
+      ],
+      "ground_surface_source_z_m": -0.005,
+      "ground_height_above_flat_terrain_m": 0.02,
+      "removed_original_architecture_faces": 0,
+      "removed_original_architecture_vertices": 0,
+      "removed_from_new_variant_only": "Headquarters12_IntegerGround",
+      "visual_ground_thickness_m": 0,
+      "ground_material": {
+        "name": "GroundReview_cobblestone_floor_02",
+        "license": "CC0-1.0",
+        "author": "Rob Tuytel",
+        "source": "https://polyhaven.com/a/cobblestone_floor_02",
+        "license_url": "https://polyhaven.com/license",
+        "channels": {
+          "diff": {
+            "file": "art/models/grounding-review/textures/cobblestone_floor_02_diff_1k.jpg",
+            "sha256": "b1be7866d908135276ae6bdb566cf81789caf3092d12ad1c1915131fc747fd53",
+            "colorspace": "sRGB",
+            "resolution": [
+              1024,
+              1024
+            ]
+          },
+          "nor_gl": {
+            "file": "art/models/grounding-review/textures/cobblestone_floor_02_nor_gl_1k.jpg",
+            "sha256": "838f9f169956fceac4996967ff14dfcbc47b658bbedf1e60c0cd4536977aa064",
+            "colorspace": "Non-Color",
+            "resolution": [
+              1024,
+              1024
+            ]
+          },
+          "rough": {
+            "file": "art/models/grounding-review/textures/cobblestone_floor_02_rough_1k.jpg",
+            "sha256": "39d802084263449216d7467c7d8a2134939a165eb8581f033048bfb1344ba2a1",
+            "colorspace": "Non-Color",
+            "resolution": [
+              1024,
+              1024
+            ]
+          }
+        },
+        "metallic": 0,
+        "normal_strength": 0.35,
+        "uv_period_m": 2,
+        "base_color_multiplier": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "alpha_mode": "blend",
+        "vertex_alpha_channel": "COLOR0.a",
+        "blender_color_attribute": "GroundEdgeOpacity",
+        "shadow_casting": false,
+        "receive_shadows": true,
+        "double_sided": false,
+        "z_write": false,
+        "note": "Dedicated opt-in ground material: real existing PBR maps plus authored vertex alpha; not the old opaque grid slab material."
+      },
+      "edge_fade_m": 1.1,
+      "ground_shadow_casting": false,
+      "ground_receive_shadows": true,
+      "source_validation": {
+        "architecture_geometry_uv_materials_unchanged": true,
+        "architecture_local_matrix_unchanged": true,
+        "original_architecture_faces_removed": 0,
+        "logical_footprint_m": [
+          12,
+          12
+        ],
+        "ground_vertices": 3721,
+        "ground_triangles": 7200,
+        "ground_thickness_m": 0,
+        "ground_surface_source_z_m": -0.005,
+        "alpha_min": 0.0,
+        "alpha_max": 1.0,
+        "alpha_transition_vertices": 1145,
+        "closed_plate_sidewalls": false,
+        "passed": true
+      }
+    },
+    {
+      "id": "WorkshopGroundedReview",
+      "source": "BZT wooden workshop",
+      "grid": [
+        8,
+        8
+      ],
+      "model_depth_m": 8,
+      "ground_cover_native_z": 0.01,
+      "root": "WorkshopGroundedReview · 展示锚点",
+      "architecture": "WorkshopGroundedReview_OriginalArchitecture",
+      "ground": "WorkshopGroundedReview_FeatherGround",
+      "source_mesh": "tripo_mesh_24a2e25a",
+      "source_mesh_sha256": "6242d5a16b4373f46e1a591de4677a1f7498685e2619256d730122fd7a78b465",
+      "uniform_source_scale": 8.00390815828041,
+      "architecture_grounding_translation_m": -0.08003908158280411,
+      "display_root_matrix": [
+        [
+          0.12493896484375,
+          0.0,
+          0.0,
+          43.28261947631836
+        ],
+        [
+          0.0,
+          0.12493896484375,
+          0.0,
+          -8.50583267211914
+        ],
+        [
+          0.0,
+          0.0,
+          0.12493896484375,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "grid_ground_surface_m": -0.005,
+      "below_ground_geometry_m": -0.08003908158280411,
+      "source_collection": "建筑接地评审 · 基地石庭＋工坊夯土软边",
+      "export": {
+        "file": "art/models/grounding-review/WorkshopGroundedReview/WorkshopGroundedReview.fbx",
+        "sha256": "7defede4b1a364e37c5eeafa5aad84e14c3e6b479dc751a3739af9d042fba733",
+        "scale_baked": true,
+        "unity_placement_scale": 1,
+        "materials": [
+          {
+            "name": "WorkshopGroundedReview_OriginalMaterial",
+            "source_material": "tripo_mat_24a2e25a",
+            "base_color_texture": "art/models/grounding-review/WorkshopGroundedReview/wall-original-03.jpg",
+            "base_color_sha256": "8fa3c0e9413da60acf5109bf6b029a3de88f263a1757adc44741ccb4e3e9dcfd",
+            "base_color_multiplier": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "normal_map": null,
+            "roughness_map": null,
+            "height_map": null,
+            "note": "Original baked color only. No invented PBR maps or guessed scanning channels.",
+            "metallic": 0.0,
+            "roughness": 0.8999999761581421,
+            "smoothness": 0.10000002384185791,
+            "alpha_mode": "opaque",
+            "double_sided": false
+          },
+          {
+            "name": "GroundReview_dirt",
+            "license": "CC0-1.0",
+            "author": "Charlotte Baglioni",
+            "source": "https://polyhaven.com/a/dirt",
+            "license_url": "https://polyhaven.com/license",
+            "channels": {
+              "diff": {
+                "file": "art/models/grounding-review/textures/dirt_diff_1k.jpg",
+                "sha256": "6ce6ca7e28ed046f7f93fa60dcb29f8cf42cd5a539adc5676675acccfa34efd3",
+                "colorspace": "sRGB",
+                "resolution": [
+                  1024,
+                  1024
+                ]
+              },
+              "nor_gl": {
+                "file": "art/models/grounding-review/textures/dirt_nor_gl_1k.jpg",
+                "sha256": "5a5f97d920fdcdf352b350b95558bf48bb306be1fe61a47418aadc60b7deb0ce",
+                "colorspace": "Non-Color",
+                "resolution": [
+                  1024,
+                  1024
+                ]
+              },
+              "rough": {
+                "file": "art/models/grounding-review/textures/dirt_rough_1k.jpg",
+                "sha256": "eff62d5ae7bf0c46b84173bc46f07528dd164aa39f5d550c93a805b36f54b704",
+                "colorspace": "Non-Color",
+                "resolution": [
+                  1024,
+                  1024
+                ]
+              }
+            },
+            "metallic": 0,
+            "normal_strength": 0.35,
+            "uv_period_m": 2,
+            "base_color_multiplier": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "alpha_mode": "blend",
+            "vertex_alpha_channel": "COLOR0.a",
+            "blender_color_attribute": "GroundEdgeOpacity",
+            "shadow_casting": false,
+            "receive_shadows": true,
+            "double_sided": false,
+            "z_write": false,
+            "note": "Dedicated opt-in ground material: real existing PBR maps plus authored vertex alpha; not the old opaque grid slab material."
+          }
+        ],
+        "textures": [
+          {
+            "source_image": "tripo_image_24a2e25a_0",
+            "file": "art/models/grounding-review/WorkshopGroundedReview/wall-original-03.jpg",
+            "sha256": "8fa3c0e9413da60acf5109bf6b029a3de88f263a1757adc44741ccb4e3e9dcfd",
+            "size": [
+              2048,
+              2048
+            ],
+            "colorspace": "sRGB"
+          }
+        ],
+        "fbx_global_settings": {
+          "UpAxis": 1,
+          "UpAxisSign": 1,
+          "FrontAxis": 2,
+          "FrontAxisSign": 1,
+          "CoordAxis": 0,
+          "CoordAxisSign": 1,
+          "UnitScaleFactor": 100.0,
+          "OriginalUnitScaleFactor": 100.0
+        },
+        "roundtrip": {
+          "components": 2,
+          "maximum_vertex_error_m": 1.3433650565275457e-06,
+          "maximum_uv_error": 0.0,
+          "uv_loop_samples": 20150,
+          "passed": true
+        },
+        "vertex_alpha_roundtrip": {
+          "passed": true,
+          "channel": "COLOR0.a",
+          "maximum_alpha_error": 0.00195467472076416,
+          "sample_count": 1681
+        }
+      },
+      "source_id": "Workshop",
+      "export_root_name": "WorkshopGroundedReview",
+      "footprint_m": [
+        8,
+        8
+      ],
+      "placement_scale": 1,
+      "grid_unit_m": 1,
+      "ground_anchor_y_m": 0,
+      "unity_ground_offset_m": 0.025,
+      "architectural_scale_already_in_export": true,
+      "components": [
+        {
+          "name": "WorkshopGroundedReview_OriginalArchitecture",
+          "expected_unity_bounds_center_m": [
+            0.0,
+            1.7509331703186035,
+            0.0
+          ],
+          "expected_unity_bounds_size_m": [
+            8.0,
+            3.6619443893432617,
+            8.0
+          ],
+          "material_names": [
+            "WorkshopGroundedReview_OriginalMaterial"
+          ]
+        },
+        {
+          "name": "WorkshopGroundedReview_FeatherGround",
+          "expected_unity_bounds_center_m": [
+            0.0,
+            -0.004999999888241291,
+            0.0
+          ],
+          "expected_unity_bounds_size_m": [
+            8.0,
+            0.0,
+            8.0
+          ],
+          "material_names": [
+            "GroundReview_dirt"
+          ]
+        }
+      ],
+      "expected_unity_bounds_center_m": [
+        0.0,
+        1.7509331703186035,
+        0.0
+      ],
+      "expected_unity_bounds_size_m": [
+        8.0,
+        3.6619443893432617,
+        8.0
+      ],
+      "expected_unity_min_y_m": -0.08003908395767212,
+      "previous_preview_asset_id": "Workshop8",
+      "previous_export": "art/models/grid-footprints/Workshop8/Workshop8.fbx",
+      "previous_export_sha256": "b84ca5b04261d434119ed78e66a113cba6dd355f0713f2a7f0e85b524a3ce8f0",
+      "old_architecture_object": "Workshop8_OriginalArchitecture",
+      "architecture_matrix_unchanged": true,
+      "root_registration_to_previous": "identity; same local origin and same +0.025m terrain offset",
+      "logical_footprint_m": [
+        8,
+        8
+      ],
+      "ground_surface_source_z_m": -0.005,
+      "ground_height_above_flat_terrain_m": 0.02,
+      "removed_original_architecture_faces": 0,
+      "removed_original_architecture_vertices": 0,
+      "removed_from_new_variant_only": "Workshop8_IntegerGround",
+      "visual_ground_thickness_m": 0,
+      "ground_material": {
+        "name": "GroundReview_dirt",
+        "license": "CC0-1.0",
+        "author": "Charlotte Baglioni",
+        "source": "https://polyhaven.com/a/dirt",
+        "license_url": "https://polyhaven.com/license",
+        "channels": {
+          "diff": {
+            "file": "art/models/grounding-review/textures/dirt_diff_1k.jpg",
+            "sha256": "6ce6ca7e28ed046f7f93fa60dcb29f8cf42cd5a539adc5676675acccfa34efd3",
+            "colorspace": "sRGB",
+            "resolution": [
+              1024,
+              1024
+            ]
+          },
+          "nor_gl": {
+            "file": "art/models/grounding-review/textures/dirt_nor_gl_1k.jpg",
+            "sha256": "5a5f97d920fdcdf352b350b95558bf48bb306be1fe61a47418aadc60b7deb0ce",
+            "colorspace": "Non-Color",
+            "resolution": [
+              1024,
+              1024
+            ]
+          },
+          "rough": {
+            "file": "art/models/grounding-review/textures/dirt_rough_1k.jpg",
+            "sha256": "eff62d5ae7bf0c46b84173bc46f07528dd164aa39f5d550c93a805b36f54b704",
+            "colorspace": "Non-Color",
+            "resolution": [
+              1024,
+              1024
+            ]
+          }
+        },
+        "metallic": 0,
+        "normal_strength": 0.35,
+        "uv_period_m": 2,
+        "base_color_multiplier": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "alpha_mode": "blend",
+        "vertex_alpha_channel": "COLOR0.a",
+        "blender_color_attribute": "GroundEdgeOpacity",
+        "shadow_casting": false,
+        "receive_shadows": true,
+        "double_sided": false,
+        "z_write": false,
+        "note": "Dedicated opt-in ground material: real existing PBR maps plus authored vertex alpha; not the old opaque grid slab material."
+      },
+      "edge_fade_m": 0.9,
+      "ground_shadow_casting": false,
+      "ground_receive_shadows": true,
+      "source_validation": {
+        "architecture_geometry_uv_materials_unchanged": true,
+        "architecture_local_matrix_unchanged": true,
+        "original_architecture_faces_removed": 0,
+        "logical_footprint_m": [
+          8,
+          8
+        ],
+        "ground_vertices": 1681,
+        "ground_triangles": 3200,
+        "ground_thickness_m": 0,
+        "ground_surface_source_z_m": -0.005,
+        "alpha_min": 0.0,
+        "alpha_max": 1.0,
+        "alpha_transition_vertices": 602,
+        "closed_plate_sidewalls": false,
+        "passed": true
+      }
+    }
+  ],
+  "source_revision_chain": [
+    "6772efb7ce13ecc5fb5700d3eb846af5f36c96cde0f02c53701f7a14fb004ea5",
+    "385bbd298b8063fef8643119364fbed11d20321ab5f7767b2336ed5945fb4c2f",
+    "6b804e5dbfb12265a35f0cbfa865ae9eb9c2960ec4c5a0fb513d3f097637b821",
+    "f83c1ebc14407f62c635a332c2c20c0a36300822ee161599517bc39d626ae4b1",
+    "b82b452cd7c8fa994a176b9209c2aa4dc3f470e2e6e6e9b7912d035e4e37c3ca",
+    "468a608185ce139913f1b79e04f5e20d0a7b5662e248d32b6ab28900c096e866",
+    "5ea9a85892ff9449d72833c5297c8b228cd692a476c8196c4c6bff53090031d6",
+    "69704fa392d17bcc253d669699b0001031c91884cf8fdc544d582e00d3e55d2d",
+    "34ce14d5150a0ae7a9e232775f6f7863180052feea29be4fabc8faf1ad097ef9"
+  ],
+  "protected_prior_486_proof": {
+    "passed": true,
+    "counts": {
+      "objects": 486,
+      "meshes": 286,
+      "materials": 93,
+      "images": 46,
+      "actions": 0,
+      "collections": 28,
+      "lights": 1,
+      "cameras": 1,
+      "worlds": 1,
+      "armatures": 14,
+      "scenes": 1
+    },
+    "snapshot": "Builds/ArtReview/BuildingGrounding-v1/protected-486.json",
+    "report": "Builds/ArtReview/BuildingGrounding-v1/final-source-verification.json"
+  },
+  "old_grid_handoff_untouched": "art/grid_footprint_handoff.json",
+  "ground_shader_contract": "Only new ground uses source vertex COLOR0.a as smooth alpha, real PBR channels, ZWrite Off, Cast Off, Receive On. Architecture remains opaque. No old material or render pipeline migration.",
+  "placement_note": "Same root origin and whole placement as prior HQ/Workshop, terrain+0.025m. Original architecture local matrix is identical. New ground local Y=-0.005m after axis conversion; top at terrain+0.020m. Logical occupancy does not require a visible slab.",
+  "source_previews": "Builds/ArtReview/BuildingGrounding-v1",
+  "live_unsaved_zombie_untouched": true,
+  "frozen_export_proof": {
+    "passed": true,
+    "report": "Builds/ArtReview/BuildingGrounding-v1/final-source-verification.json"
+  }
+}

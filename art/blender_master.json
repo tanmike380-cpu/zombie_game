@@ -9,16 +9,27 @@
   "master_art_handoff": "art/master_art_handoff.json",
   "current_disk_revision": {
     "date": "2026-10-16",
-    "master_sha256": "69704fa392d17bcc253d669699b0001031c91884cf8fdc544d582e00d3e55d2d",
-    "before_sha256": "5ea9a85892ff9449d72833c5297c8b228cd692a476c8196c4c6bff53090031d6",
-    "handoff": "art/grid_footprint_handoff.json",
-    "collection": "农田整格 · 青黄满铺麦田＋右上小屋",
-    "objects": 486,
-    "protected_preexisting_objects": 464,
+    "master_sha256": "34ce14d5150a0ae7a9e232775f6f7863180052feea29be4fabc8faf1ad097ef9",
+    "before_sha256": "69704fa392d17bcc253d669699b0001031c91884cf8fdc544d582e00d3e55d2d",
+    "handoff": "art/grounding_review_handoff.json",
+    "collection": "建筑接地评审 · 基地石庭＋工坊夯土软边",
+    "objects": 492,
+    "protected_preexisting_objects": 486,
     "protected_original_city_revision_objects": 414,
-    "note": "New independent 14m square pasture: full golden wheat with minor green stems, unchanged house translated rigidly to positive X/Z corner, no courtyard/soil-frame cutout. All prior 464 objects, meshes/UV/materials/rigs and lighting/layout retained. Original city revision's 414 objects remain preserved. Live unsaved Zombie category file untouched. Frozen city FBX unchanged; full source lineage remains in grid handoff."
+    "note": "Independent HQ/Workshop grounding review variants: original architecture data and exact local matrices unchanged, old IntegerGround slab excluded only from new variants. New zero-thickness CC0 PBR surfaces have authored vertex-alpha soft borders. All prior 486 objects, meshes/UV/materials/rigs/lights/cameras/layout retained; frozen wall/farm/grid exports unchanged. Workshop original Tripo soil base remains intentionally intact. Live unsaved Zombie category file untouched. Unity visual review remains pending."
   },
   "frozen_source_revisions": [
+    {
+      "date": "2026-10-16",
+      "master_sha256": "69704fa392d17bcc253d669699b0001031c91884cf8fdc544d582e00d3e55d2d",
+      "before_sha256": "5ea9a85892ff9449d72833c5297c8b228cd692a476c8196c4c6bff53090031d6",
+      "handoff": "art/grid_footprint_handoff.json",
+      "collection": "农田整格 · 青黄满铺麦田＋右上小屋",
+      "objects": 486,
+      "protected_preexisting_objects": 464,
+      "protected_original_city_revision_objects": 414,
+      "note": "Historical golden-corner farm source snapshot, retained intact. Its accepted 14m farm and all previous grid/wall exports are unchanged by the independent grounding variants; the current disk revision is recorded above."
+    },
     {
       "date": "2026-10-15",
       "master_sha256": "6772efb7ce13ecc5fb5700d3eb846af5f36c96cde0f02c53701f7a14fb004ea5",
@@ -41,6 +52,7 @@
     }
   ],
   "grid_footprint_handoff": "art/grid_footprint_handoff.json",
+  "grounding_review_handoff": "art/grounding_review_handoff.json",
   "defense_tower_policy": "Solid lower piers, no doors/ladders/lower decoration; no friendly tower passage. Original upper geometry retained. Independent authored arrow tower source is missing and was not invented.",
   "rectangular_tower_report": "Builds/ArtReview/ModularStoneWall/rectangular-tower-verification.json",
   "storage_warning": "Preserve art/Blender主文件/ZombieGame_Master.blend/未命名.blend as the first manual save backup; do not confuse its .blend-named directory with the formal file.",

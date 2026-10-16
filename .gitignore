@@ -94,3 +94,4 @@ sysinfo.txt
 /art/environment/vision-tree-candidates/
 # FBX roundtrip extraction cache; the authored texture files live beside each export.
 /art/models/grid-footprints/*/*.fbm/
+/art/models/grounding-review/*/*.fbm/
