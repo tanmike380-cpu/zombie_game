@@ -186,3 +186,39 @@ then implement and test the first playable slice. Do not repeat finished art wor
   not final art acceptance or a performance/physical-input/full-gameplay certification.
 - CPU UnitBalance checks again pass57assertions, zero warnings/errors. Details and
   reproducible Unity entry: `CameraGroundingReview.md`; camera remains unselected.
+
+## 2026-10-17 — same-source render and building-quality review
+
+- Continued after usage reset, without restarting approved work. Unity and Blender
+  specialists retained exclusive app ownership; root reviewed outputs and concepts.
+- Read-only background source probe retained formal master34ce14d5 and all492 objects,
+  source normals/UV/materials/layout. No live unsaved Zombie document operation.
+  HQ6889tris/wall2731tris have irregular silhouette regions, all-smooth faces and
+  continuous custom normals across large angles. Only2K color is real on architecture;
+  empty normal nodes are not PBR maps. Temporary clay/angle-split images are diagnostics,
+  not exported repairs. Do not globally split or subdivide assets as a substitute.
+- Unique source UV stair vertex verified in Unity at(3.991206,.344952,-10.381046),
+  compared with HQ(4,0,-16): real entrance is+Z. PreviousC direction is mainly rear.
+  Added a separately labelled front view, not passed off as a same-angle render gain.
+- Independent V010RenderQualityReview produced16 true Unity images: overview, HQ rear,
+  wall detail, HQ front; baseline, high sampling, lighting, combined. All hold Time0/
+  state71fdb686 and same per-view camera/layout. Actual source2K remains effective2K,
+  uncompressed/mip limit0; no missing source maps claimed as imported.
+- Root inspected front/wall pairs. Sampling reduces wheat aliasing and edge shimmer,
+  not source shape problems; lighting combination is slightly darker and not selected
+  for production. No sharpen/AI render enhancement, fake PBR, DLSS/FSR, render-pipeline
+  or Linear switch. Offscreen render+blocking readback timings are not live battleFPS.
+- Static16GPU-core M2 Pro/16GB test does not establish a hardware quality ceiling.
+  RTX5070Ti desktop was not contacted or benchmarked. More hardware cannot restore
+  absent geometry/channels; no promise of a specific10,000-unit frame rate.
+- Followed imagegen skill to create two source-production direction proposals, HQ
+  and wall, in a fresh2026-10-17 concept folder. Original warm/purple style retained;
+  straight planes, controlled bevels and structural readability emphasized. Saved
+  prompts/hashes/dimensions and explicitly marked single-view proposals, not complete
+  three-view sets, new game models or guaranteed Tripo-ready output. No old asset removed.
+- Technical teardown:62 protected files PASS;1200 original animation mesh references
+  retained; texture/material settings restored. Play=false,TimeScale1,scene clean,
+  auto capture off,SessionState empty. Console0errors,55 pre-existing warnings retained.
+- Record and freeze as local `v0.10.0-render-review.1`; original baseline/preview/camera
+  tags immutable. User concept drafts/Recovery/raw first-pair drafts excluded. No new
+  standalone or remote push. See RenderQualityReview.md and render-review-manifest.json.

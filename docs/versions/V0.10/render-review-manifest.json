@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "status": "technical_comparison_completed_pending_user_art_acceptance",
+  "snapshot_tag": "v0.10.0-render-review.1",
+  "branch": "codex/v0.10",
+  "frozen_parent_tag": "v0.10.0-camera-review.1",
+  "frozen_parent_commit": "d8b907b5dabd65b32769ecfa026acc7c5ce8889c",
+  "review_document": "docs/versions/V0.10/RenderQualityReview.md",
+  "scene": "Assets/_Tests/V010RenderQualityReview/Scenes/RenderQualityReview.unity",
+  "source_diagnosis": "docs/versions/V0.10/evidence/render-source/DIAGNOSIS.md",
+  "source_master_sha256": "34ce14d5150a0ae7a9e232775f6f7863180052feea29be4fabc8faf1ad097ef9",
+  "source_asset_changes": false,
+  "project_settings_changes": false,
+  "production_render_preset_changed": false,
+  "concept_proposals": "art/concepts/2026-10-17-production-buildings/manifest.json",
+  "capture": {
+    "images": 16,
+    "final_width": 1920,
+    "final_height": 1080,
+    "simulation_time": 0,
+    "simulation_sha256": "71fdb6862c906df2405bca3305389b905c5342871d77400699d3dc153f05bc3f",
+    "views": [
+      "overview",
+      "hq-side",
+      "wall-detail",
+      "hq-front"
+    ],
+    "variants": [
+      "baseline",
+      "sampling",
+      "lighting",
+      "combined"
+    ],
+    "protected_files_passed": 62,
+    "original_animation_mesh_references": 1200
+  },
+  "image_hashes": {
+    "docs/versions/V0.10/evidence/render-quality/hq-front-baseline.png": "90c4781e8d9acc89983f28c3f63140a95ea1e5e2530d8e13a11a5557b67c4691",
+    "docs/versions/V0.10/evidence/render-quality/hq-front-combined.png": "d591dff622be0b25ba463759f60cbef3c54a4eeeffb1df577f0a6ac92daa746a",
+    "docs/versions/V0.10/evidence/render-quality/hq-front-lighting.png": "853febc48987e3df4bfa464385d37f15ae7959d48ab93f289ad8b81aaccae7c6",
+    "docs/versions/V0.10/evidence/render-quality/hq-front-sampling.png": "54e7c9239691f49ae40700912745f5731816dc7fe28c89986281ae9297c4b069",
+    "docs/versions/V0.10/evidence/render-quality/hq-side-baseline.png": "9bf7c660b13b7c3acf508bcde90a042b0e0513ffe088076a4c1f24ed2a583f0f",
+    "docs/versions/V0.10/evidence/render-quality/hq-side-combined.png": "1488d1956e83baf71fec45e556cf325ca41e20ccd6089ec06095e62a8eb3f192",
+    "docs/versions/V0.10/evidence/render-quality/hq-side-lighting.png": "a549b7b76b2268ef1c03a1fea1914fa741f55cb397c1f5814d6b494436cf9781",
+    "docs/versions/V0.10/evidence/render-quality/hq-side-sampling.png": "f3d7b179a12b126b430293c1aa186a99de3f57c0a8fb03cf43dd07b87dfd566d",
+    "docs/versions/V0.10/evidence/render-quality/overview-baseline.png": "bb7a7790b2904539eb12d79744609ae3aa5f767c7622dd33a95516cc67698e02",
+    "docs/versions/V0.10/evidence/render-quality/overview-combined.png": "6be22cff7699601d9843c6aa13e07f74ef9d4f7b2add3a1ba8481d6f73db590e",
+    "docs/versions/V0.10/evidence/render-quality/overview-lighting.png": "0210a08467bd5f2d34f00ce82de93b2839c6dd4595bc5283f3ff364708a8189d",
+    "docs/versions/V0.10/evidence/render-quality/overview-sampling.png": "d1d47582dfcf19c2c52cc5945048b402f07c957b5edcc11e289738fb3b7bd4f0",
+    "docs/versions/V0.10/evidence/render-quality/wall-detail-baseline.png": "9713f2a5480f24923f6366eda81bc96a288cd1bbd976d27f28b7f10bc41bce4e",
+    "docs/versions/V0.10/evidence/render-quality/wall-detail-combined.png": "da3e92c3a5f80b9fe67e93737cfff718280472836ab63dc92c5b41679035e9be",
+    "docs/versions/V0.10/evidence/render-quality/wall-detail-lighting.png": "db195a9bc97402c71c32dcf136e58850a76497224d6ff22e70312237fba925d2",
+    "docs/versions/V0.10/evidence/render-quality/wall-detail-sampling.png": "325ea4bb66bb39d1405edf5222fcdab66cde5b5e24b294e2d393f2d66569cd53"
+  },
+  "delivery_limits": [
+    "Image comparison, not a new standalone player or live battle benchmark",
+    "Source geometry and missing building PBR maps remain; no production replacement selected",
+    "Concepts are two single-view direction proposals, not a full three-view batch or models",
+    "No render pipeline or Linear migration",
+    "RTX 5070 Ti desktop not accessed or benchmarked",
+    "No previous frozen tags moved; no remote push in this delivery"
+  ]
+}

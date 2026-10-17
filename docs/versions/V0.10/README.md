@@ -65,3 +65,11 @@ irregularity and lack of an approved gate leaf remain known source limitations.
 本页上述冻结试玩版不被覆盖。俯角／水平朝向尚待用户选择，基地和工坊的新接地
 也作为可回退源变体保留。快照标签 `v0.10.0-camera-review.1`，详细技术证据见
 [评审清单](camera-grounding-manifest.json)。这不是新的性能或完整玩法验收。
+
+### 后续独立渲染／源质量诊断（2026-10-17）
+
+[同源渲染对照与结论](RenderQualityReview.md)：四个机位各四档真实Unity截图。
+高采样仅有限改善，原建筑的圆软轮廓和缺失材质通道仍在；实验设置不替换正式预设。
+两个新的建筑概念仅作方向提案，不是已导入模型。独立场景、源诊断、机器与成本、
+冻结文件校验及边界见该页。本轮不宣称Mac画质到顶，也不宣称万人性能通过。
+本地冻结标签 `v0.10.0-render-review.1`，见[评审清单](render-review-manifest.json)。
