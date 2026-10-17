@@ -1,0 +1,1297 @@
+{
+  "status": "CAPTURED_TECHNICAL_REVIEW_NOT_ART_ACCEPTANCE",
+  "failure": "",
+  "device": "Mac14,9; RAMMB=16384",
+  "gpu": "Apple M2 Pro",
+  "pipeline": "Built-in",
+  "color_space": "Gamma",
+  "source_audit": "render-source-audit.json",
+  "interpretation": "Synchronous offscreen Camera.Render and GPU readback timings in the Editor; not battle FPS or a pure GPU benchmark. No sharpening, invented normal/roughness/AO, geometry edits, or source texture upscaling.",
+  "reflection_note": "Actual frozen scene realtime cubemap128 at(4,6,-16); one-time probe capture; not generated environment art. Texture=Disposable actual-source reflection capture, not world art",
+  "images": [
+    {
+      "view": "overview",
+      "variant": "baseline",
+      "file": "docs/versions/V0.10/evidence/render-quality/overview-baseline.png",
+      "simulation_sha256": "71fdb6862c906df2405bca3305389b905c5342871d77400699d3dc153f05bc3f",
+      "sampling": "1920x1080 with4xMSAA, original source sampling",
+      "lighting": "Original frozen daylight/material constants",
+      "render_width": 1920,
+      "render_height": 1080,
+      "output_width": 1920,
+      "output_height": 1080,
+      "msaa": 4,
+      "unity_frame": 5,
+      "projected_friendlies": 64,
+      "focus": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "camera_position": {
+        "x": -31.146327972412109,
+        "y": 36.960285186767578,
+        "z": -31.146327972412109
+      },
+      "pitch": 40.0,
+      "yaw": 45.0,
+      "orthographic_size": 25.0,
+      "simulation_time": 0.0,
+      "ambient_sky": {
+        "r": 0.44999998807907104,
+        "g": 0.47999998927116394,
+        "b": 0.5,
+        "a": 1.0
+      },
+      "ambient_equator": {
+        "r": 0.36000001430511475,
+        "g": 0.37999999523162842,
+        "b": 0.37000000476837158,
+        "a": 1.0
+      },
+      "ambient_ground": {
+        "r": 0.2800000011920929,
+        "g": 0.28999999165534973,
+        "b": 0.27000001072883606,
+        "a": 1.0
+      },
+      "sun_color": {
+        "r": 0.98000001907348633,
+        "g": 0.99000000953674316,
+        "b": 1.0,
+        "a": 1.0
+      },
+      "sun_euler": {
+        "x": 35.000007629394531,
+        "y": 305.0,
+        "z": -1.0422651257613325E-06
+      },
+      "sun_intensity": 1.0800000429153442,
+      "shadow_bias": 0.02500000037252903,
+      "shadow_normal_bias": 0.34999999403953552,
+      "shadow_distance": 150.0,
+      "reflection_intensity": 1.0,
+      "shadow_resolution": "High",
+      "reflection_mode": "Skybox",
+      "anisotropic_filtering": "ForceEnable",
+      "render_texture_srgb": false,
+      "dynamic_resolution": false,
+      "median_camera_submit_ms": 3.8892,
+      "median_gpu_readback_ms": 35.1572,
+      "median_total_render_sync_ms": 39.046400000000006,
+      "latest_frame_submitted_triangles": 24548054,
+      "hq_projected_pixels": {
+        "x": 359.75946044921875,
+        "y": 353.177734375
+      },
+      "wall_projected_pixels": {
+        "x": 249.10079956054688,
+        "y": 267.59085083007813
+      }
+    },
+    {
+      "view": "overview",
+      "variant": "sampling",
+      "file": "docs/versions/V0.10/evidence/render-quality/overview-sampling.png",
+      "simulation_sha256": "71fdb6862c906df2405bca3305389b905c5342871d77400699d3dc153f05bc3f",
+      "sampling": "3840x2160 with4xMSAA, source textures unchanged, AF16, bilinear reduction to1920x1080; no sharpening",
+      "lighting": "Original frozen daylight/material constants",
+      "render_width": 3840,
+      "render_height": 2160,
+      "output_width": 1920,
+      "output_height": 1080,
+      "msaa": 4,
+      "unity_frame": 7,
+      "projected_friendlies": 64,
+      "focus": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "camera_position": {
+        "x": -31.146327972412109,
+        "y": 36.960285186767578,
+        "z": -31.146327972412109
+      },
+      "pitch": 40.0,
+      "yaw": 45.0,
+      "orthographic_size": 25.0,
+      "simulation_time": 0.0,
+      "ambient_sky": {
+        "r": 0.44999998807907104,
+        "g": 0.47999998927116394,
+        "b": 0.5,
+        "a": 1.0
+      },
+      "ambient_equator": {
+        "r": 0.36000001430511475,
+        "g": 0.37999999523162842,
+        "b": 0.37000000476837158,
+        "a": 1.0
+      },
+      "ambient_ground": {
+        "r": 0.2800000011920929,
+        "g": 0.28999999165534973,
+        "b": 0.27000001072883606,
+        "a": 1.0
+      },
+      "sun_color": {
+        "r": 0.98000001907348633,
+        "g": 0.99000000953674316,
+        "b": 1.0,
+        "a": 1.0
+      },
+      "sun_euler": {
+        "x": 35.000007629394531,
+        "y": 305.0,
+        "z": -1.0422651257613325E-06
+      },
+      "sun_intensity": 1.0800000429153442,
+      "shadow_bias": 0.02500000037252903,
+      "shadow_normal_bias": 0.34999999403953552,
+      "shadow_distance": 150.0,
+      "reflection_intensity": 1.0,
+      "shadow_resolution": "High",
+      "reflection_mode": "Skybox",
+      "anisotropic_filtering": "ForceEnable",
+      "render_texture_srgb": false,
+      "dynamic_resolution": false,
+      "median_camera_submit_ms": 3.7724,
+      "median_gpu_readback_ms": 54.0223,
+      "median_total_render_sync_ms": 58.176800000000007,
+      "latest_frame_submitted_triangles": 219804812,
+      "hq_projected_pixels": {
+        "x": 359.75946044921875,
+        "y": 353.177734375
+      },
+      "wall_projected_pixels": {
+        "x": 249.10079956054688,
+        "y": 267.59085083007813
+      }
+    },
+    {
+      "view": "overview",
+      "variant": "lighting",
+      "file": "docs/versions/V0.10/evidence/render-quality/overview-lighting.png",
+      "simulation_sha256": "71fdb6862c906df2405bca3305389b905c5342871d77400699d3dc153f05bc3f",
+      "sampling": "1920x1080 with4xMSAA, original source sampling",
+      "lighting": "Review-only neutral direct/fill balance, smaller shadow normal bias,4096-class shadow setting, real scene reflection; owned actor material baked emission <=0.2",
+      "render_width": 1920,
+      "render_height": 1080,
+      "output_width": 1920,
+      "output_height": 1080,
+      "msaa": 4,
+      "unity_frame": 9,
+      "projected_friendlies": 64,
+      "focus": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "camera_position": {
+        "x": -31.146327972412109,
+        "y": 36.960285186767578,
+        "z": -31.146327972412109
+      },
+      "pitch": 40.0,
+      "yaw": 45.0,
+      "orthographic_size": 25.0,
+      "simulation_time": 0.0,
+      "ambient_sky": {
+        "r": 0.37999999523162842,
+        "g": 0.4050000011920929,
+        "b": 0.42500001192092896,
+        "a": 1.0
+      },
+      "ambient_equator": {
+        "r": 0.25,
+        "g": 0.27000001072883606,
+        "b": 0.25999999046325684,
+        "a": 1.0
+      },
+      "ambient_ground": {
+        "r": 0.17000000178813934,
+        "g": 0.18000000715255737,
+        "b": 0.15999999642372131,
+        "a": 1.0
+      },
+      "sun_color": {
+        "r": 0.98000001907348633,
+        "g": 0.99000000953674316,
+        "b": 1.0,
+        "a": 1.0
+      },
+      "sun_euler": {
+        "x": 35.000007629394531,
+        "y": 305.0,
+        "z": -1.0422651257613325E-06
+      },
+      "sun_intensity": 1.1799999475479126,
+      "shadow_bias": 0.019999999552965164,
+      "shadow_normal_bias": 0.15000000596046448,
+      "shadow_distance": 150.0,
+      "reflection_intensity": 1.0,
+      "shadow_resolution": "VeryHigh",
+      "reflection_mode": "Skybox",
+      "anisotropic_filtering": "ForceEnable",
+      "render_texture_srgb": false,
+      "dynamic_resolution": false,
+      "median_camera_submit_ms": 3.0147,
+      "median_gpu_readback_ms": 35.6841,
+      "median_total_render_sync_ms": 38.6988,
+      "latest_frame_submitted_triangles": 219804812,
+      "hq_projected_pixels": {
+        "x": 359.75946044921875,
+        "y": 353.177734375
+      },
+      "wall_projected_pixels": {
+        "x": 249.10079956054688,
+        "y": 267.59085083007813
+      }
+    },
+    {
+      "view": "overview",
+      "variant": "combined",
+      "file": "docs/versions/V0.10/evidence/render-quality/overview-combined.png",
+      "simulation_sha256": "71fdb6862c906df2405bca3305389b905c5342871d77400699d3dc153f05bc3f",
+      "sampling": "3840x2160 with4xMSAA, source textures unchanged, AF16, bilinear reduction to1920x1080; no sharpening",
+      "lighting": "Review-only neutral direct/fill balance, smaller shadow normal bias,4096-class shadow setting, real scene reflection; owned actor material baked emission <=0.2",
+      "render_width": 3840,
+      "render_height": 2160,
+      "output_width": 1920,
+      "output_height": 1080,
+      "msaa": 4,
+      "unity_frame": 11,
+      "projected_friendlies": 64,
+      "focus": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "camera_position": {
+        "x": -31.146327972412109,
+        "y": 36.960285186767578,
+        "z": -31.146327972412109
+      },
+      "pitch": 40.0,
+      "yaw": 45.0,
+      "orthographic_size": 25.0,
+      "simulation_time": 0.0,
+      "ambient_sky": {
+        "r": 0.37999999523162842,
+        "g": 0.4050000011920929,
+        "b": 0.42500001192092896,
+        "a": 1.0
+      },
+      "ambient_equator": {
+        "r": 0.25,
+        "g": 0.27000001072883606,
+        "b": 0.25999999046325684,
+        "a": 1.0
+      },
+      "ambient_ground": {
+        "r": 0.17000000178813934,
+        "g": 0.18000000715255737,
+        "b": 0.15999999642372131,
+        "a": 1.0
+      },
+      "sun_color": {
+        "r": 0.98000001907348633,
+        "g": 0.99000000953674316,
+        "b": 1.0,
+        "a": 1.0
+      },
+      "sun_euler": {
+        "x": 35.000007629394531,
+        "y": 305.0,
+        "z": -1.0422651257613325E-06
+      },
+      "sun_intensity": 1.1799999475479126,
+      "shadow_bias": 0.019999999552965164,
+      "shadow_normal_bias": 0.15000000596046448,
+      "shadow_distance": 150.0,
+      "reflection_intensity": 1.0,
+      "shadow_resolution": "VeryHigh",
+      "reflection_mode": "Skybox",
+      "anisotropic_filtering": "ForceEnable",
+      "render_texture_srgb": false,
+      "dynamic_resolution": false,
+      "median_camera_submit_ms": 2.7305,
+      "median_gpu_readback_ms": 52.050900000000006,
+      "median_total_render_sync_ms": 54.5658,
+      "latest_frame_submitted_triangles": 219804812,
+      "hq_projected_pixels": {
+        "x": 359.75946044921875,
+        "y": 353.177734375
+      },
+      "wall_projected_pixels": {
+        "x": 249.10079956054688,
+        "y": 267.59085083007813
+      }
+    },
+    {
+      "view": "hq-side",
+      "variant": "baseline",
+      "file": "docs/versions/V0.10/evidence/render-quality/hq-side-baseline.png",
+      "simulation_sha256": "71fdb6862c906df2405bca3305389b905c5342871d77400699d3dc153f05bc3f",
+      "sampling": "1920x1080 with4xMSAA, original source sampling",
+      "lighting": "Original frozen daylight/material constants",
+      "render_width": 1920,
+      "render_height": 1080,
+      "output_width": 1920,
+      "output_height": 1080,
+      "msaa": 4,
+      "unity_frame": 13,
+      "projected_friendlies": 61,
+      "focus": {
+        "x": 4.0,
+        "y": 3.5,
+        "z": -16.0
+      },
+      "camera_position": {
+        "x": -23.083763122558594,
+        "y": 35.639377593994141,
+        "z": -43.083763122558594
+      },
+      "pitch": 40.0,
+      "yaw": 45.0,
+      "orthographic_size": 10.0,
+      "simulation_time": 0.0,
+      "ambient_sky": {
+        "r": 0.44999998807907104,
+        "g": 0.47999998927116394,
+        "b": 0.5,
+        "a": 1.0
+      },
+      "ambient_equator": {
+        "r": 0.36000001430511475,
+        "g": 0.37999999523162842,
+        "b": 0.37000000476837158,
+        "a": 1.0
+      },
+      "ambient_ground": {
+        "r": 0.2800000011920929,
+        "g": 0.28999999165534973,
+        "b": 0.27000001072883606,
+        "a": 1.0
+      },
+      "sun_color": {
+        "r": 0.98000001907348633,
+        "g": 0.99000000953674316,
+        "b": 1.0,
+        "a": 1.0
+      },
+      "sun_euler": {
+        "x": 35.000007629394531,
+        "y": 305.0,
+        "z": -1.0422651257613325E-06
+      },
+      "sun_intensity": 1.0800000429153442,
+      "shadow_bias": 0.02500000037252903,
+      "shadow_normal_bias": 0.34999999403953552,
+      "shadow_distance": 150.0,
+      "reflection_intensity": 1.0,
+      "shadow_resolution": "High",
+      "reflection_mode": "Skybox",
+      "anisotropic_filtering": "ForceEnable",
+      "render_texture_srgb": false,
+      "dynamic_resolution": false,
+      "median_camera_submit_ms": 0.7606,
+      "median_gpu_readback_ms": 21.537200000000002,
+      "median_total_render_sync_ms": 22.2539,
+      "latest_frame_submitted_triangles": 219804812,
+      "hq_projected_pixels": {
+        "x": 899.39837646484375,
+        "y": 882.94439697265625
+      },
+      "wall_projected_pixels": {
+        "x": 622.75201416015625,
+        "y": 668.97705078125
+      }
+    },
+    {
+      "view": "hq-side",
+      "variant": "sampling",
+      "file": "docs/versions/V0.10/evidence/render-quality/hq-side-sampling.png",
+      "simulation_sha256": "71fdb6862c906df2405bca3305389b905c5342871d77400699d3dc153f05bc3f",
+      "sampling": "3840x2160 with4xMSAA, source textures unchanged, AF16, bilinear reduction to1920x1080; no sharpening",
+      "lighting": "Original frozen daylight/material constants",
+      "render_width": 3840,
+      "render_height": 2160,
+      "output_width": 1920,
+      "output_height": 1080,
+      "msaa": 4,
+      "unity_frame": 15,
+      "projected_friendlies": 61,
+      "focus": {
+        "x": 4.0,
+        "y": 3.5,
+        "z": -16.0
+      },
+      "camera_position": {
+        "x": -23.083763122558594,
+        "y": 35.639377593994141,
+        "z": -43.083763122558594
+      },
+      "pitch": 40.0,
+      "yaw": 45.0,
+      "orthographic_size": 10.0,
+      "simulation_time": 0.0,
+      "ambient_sky": {
+        "r": 0.44999998807907104,
+        "g": 0.47999998927116394,
+        "b": 0.5,
+        "a": 1.0
+      },
+      "ambient_equator": {
+        "r": 0.36000001430511475,
+        "g": 0.37999999523162842,
+        "b": 0.37000000476837158,
+        "a": 1.0
+      },
+      "ambient_ground": {
+        "r": 0.2800000011920929,
+        "g": 0.28999999165534973,
+        "b": 0.27000001072883606,
+        "a": 1.0
+      },
+      "sun_color": {
+        "r": 0.98000001907348633,
+        "g": 0.99000000953674316,
+        "b": 1.0,
+        "a": 1.0
+      },
+      "sun_euler": {
+        "x": 35.000007629394531,
+        "y": 305.0,
+        "z": -1.0422651257613325E-06
+      },
+      "sun_intensity": 1.0800000429153442,
+      "shadow_bias": 0.02500000037252903,
+      "shadow_normal_bias": 0.34999999403953552,
+      "shadow_distance": 150.0,
+      "reflection_intensity": 1.0,
+      "shadow_resolution": "High",
+      "reflection_mode": "Skybox",
+      "anisotropic_filtering": "ForceEnable",
+      "render_texture_srgb": false,
+      "dynamic_resolution": false,
+      "median_camera_submit_ms": 0.883,
+      "median_gpu_readback_ms": 32.882600000000004,
+      "median_total_render_sync_ms": 33.7,
+      "latest_frame_submitted_triangles": 80944788,
+      "hq_projected_pixels": {
+        "x": 899.39837646484375,
+        "y": 882.94439697265625
+      },
+      "wall_projected_pixels": {
+        "x": 622.75201416015625,
+        "y": 668.97705078125
+      }
+    },
+    {
+      "view": "hq-side",
+      "variant": "lighting",
+      "file": "docs/versions/V0.10/evidence/render-quality/hq-side-lighting.png",
+      "simulation_sha256": "71fdb6862c906df2405bca3305389b905c5342871d77400699d3dc153f05bc3f",
+      "sampling": "1920x1080 with4xMSAA, original source sampling",
+      "lighting": "Review-only neutral direct/fill balance, smaller shadow normal bias,4096-class shadow setting, real scene reflection; owned actor material baked emission <=0.2",
+      "render_width": 1920,
+      "render_height": 1080,
+      "output_width": 1920,
+      "output_height": 1080,
+      "msaa": 4,
+      "unity_frame": 17,
+      "projected_friendlies": 61,
+      "focus": {
+        "x": 4.0,
+        "y": 3.5,
+        "z": -16.0
+      },
+      "camera_position": {
+        "x": -23.083763122558594,
+        "y": 35.639377593994141,
+        "z": -43.083763122558594
+      },
+      "pitch": 40.0,
+      "yaw": 45.0,
+      "orthographic_size": 10.0,
+      "simulation_time": 0.0,
+      "ambient_sky": {
+        "r": 0.37999999523162842,
+        "g": 0.4050000011920929,
+        "b": 0.42500001192092896,
+        "a": 1.0
+      },
+      "ambient_equator": {
+        "r": 0.25,
+        "g": 0.27000001072883606,
+        "b": 0.25999999046325684,
+        "a": 1.0
+      },
+      "ambient_ground": {
+        "r": 0.17000000178813934,
+        "g": 0.18000000715255737,
+        "b": 0.15999999642372131,
+        "a": 1.0
+      },
+      "sun_color": {
+        "r": 0.98000001907348633,
+        "g": 0.99000000953674316,
+        "b": 1.0,
+        "a": 1.0
+      },
+      "sun_euler": {
+        "x": 35.000007629394531,
+        "y": 305.0,
+        "z": -1.0422651257613325E-06
+      },
+      "sun_intensity": 1.1799999475479126,
+      "shadow_bias": 0.019999999552965164,
+      "shadow_normal_bias": 0.15000000596046448,
+      "shadow_distance": 150.0,
+      "reflection_intensity": 1.0,
+      "shadow_resolution": "VeryHigh",
+      "reflection_mode": "Skybox",
+      "anisotropic_filtering": "ForceEnable",
+      "render_texture_srgb": false,
+      "dynamic_resolution": false,
+      "median_camera_submit_ms": 0.81680000000000008,
+      "median_gpu_readback_ms": 30.449,
+      "median_total_render_sync_ms": 31.2175,
+      "latest_frame_submitted_triangles": 80944788,
+      "hq_projected_pixels": {
+        "x": 899.39837646484375,
+        "y": 882.94439697265625
+      },
+      "wall_projected_pixels": {
+        "x": 622.75201416015625,
+        "y": 668.97705078125
+      }
+    },
+    {
+      "view": "hq-side",
+      "variant": "combined",
+      "file": "docs/versions/V0.10/evidence/render-quality/hq-side-combined.png",
+      "simulation_sha256": "71fdb6862c906df2405bca3305389b905c5342871d77400699d3dc153f05bc3f",
+      "sampling": "3840x2160 with4xMSAA, source textures unchanged, AF16, bilinear reduction to1920x1080; no sharpening",
+      "lighting": "Review-only neutral direct/fill balance, smaller shadow normal bias,4096-class shadow setting, real scene reflection; owned actor material baked emission <=0.2",
+      "render_width": 3840,
+      "render_height": 2160,
+      "output_width": 1920,
+      "output_height": 1080,
+      "msaa": 4,
+      "unity_frame": 19,
+      "projected_friendlies": 61,
+      "focus": {
+        "x": 4.0,
+        "y": 3.5,
+        "z": -16.0
+      },
+      "camera_position": {
+        "x": -23.083763122558594,
+        "y": 35.639377593994141,
+        "z": -43.083763122558594
+      },
+      "pitch": 40.0,
+      "yaw": 45.0,
+      "orthographic_size": 10.0,
+      "simulation_time": 0.0,
+      "ambient_sky": {
+        "r": 0.37999999523162842,
+        "g": 0.4050000011920929,
+        "b": 0.42500001192092896,
+        "a": 1.0
+      },
+      "ambient_equator": {
+        "r": 0.25,
+        "g": 0.27000001072883606,
+        "b": 0.25999999046325684,
+        "a": 1.0
+      },
+      "ambient_ground": {
+        "r": 0.17000000178813934,
+        "g": 0.18000000715255737,
+        "b": 0.15999999642372131,
+        "a": 1.0
+      },
+      "sun_color": {
+        "r": 0.98000001907348633,
+        "g": 0.99000000953674316,
+        "b": 1.0,
+        "a": 1.0
+      },
+      "sun_euler": {
+        "x": 35.000007629394531,
+        "y": 305.0,
+        "z": -1.0422651257613325E-06
+      },
+      "sun_intensity": 1.1799999475479126,
+      "shadow_bias": 0.019999999552965164,
+      "shadow_normal_bias": 0.15000000596046448,
+      "shadow_distance": 150.0,
+      "reflection_intensity": 1.0,
+      "shadow_resolution": "VeryHigh",
+      "reflection_mode": "Skybox",
+      "anisotropic_filtering": "ForceEnable",
+      "render_texture_srgb": false,
+      "dynamic_resolution": false,
+      "median_camera_submit_ms": 0.86120000000000008,
+      "median_gpu_readback_ms": 28.503700000000002,
+      "median_total_render_sync_ms": 29.364900000000002,
+      "latest_frame_submitted_triangles": 80944788,
+      "hq_projected_pixels": {
+        "x": 899.39837646484375,
+        "y": 882.94439697265625
+      },
+      "wall_projected_pixels": {
+        "x": 622.75201416015625,
+        "y": 668.97705078125
+      }
+    },
+    {
+      "view": "wall-detail",
+      "variant": "baseline",
+      "file": "docs/versions/V0.10/evidence/render-quality/wall-detail-baseline.png",
+      "simulation_sha256": "71fdb6862c906df2405bca3305389b905c5342871d77400699d3dc153f05bc3f",
+      "sampling": "1920x1080 with4xMSAA, original source sampling",
+      "lighting": "Original frozen daylight/material constants",
+      "render_width": 1920,
+      "render_height": 1080,
+      "output_width": 1920,
+      "output_height": 1080,
+      "msaa": 4,
+      "unity_frame": 21,
+      "projected_friendlies": 26,
+      "focus": {
+        "x": -8.0,
+        "y": 3.0,
+        "z": -2.0
+      },
+      "camera_position": {
+        "x": -35.083763122558594,
+        "y": 35.139377593994141,
+        "z": -29.083763122558594
+      },
+      "pitch": 40.0,
+      "yaw": 45.0,
+      "orthographic_size": 8.0,
+      "simulation_time": 0.0,
+      "ambient_sky": {
+        "r": 0.44999998807907104,
+        "g": 0.47999998927116394,
+        "b": 0.5,
+        "a": 1.0
+      },
+      "ambient_equator": {
+        "r": 0.36000001430511475,
+        "g": 0.37999999523162842,
+        "b": 0.37000000476837158,
+        "a": 1.0
+      },
+      "ambient_ground": {
+        "r": 0.2800000011920929,
+        "g": 0.28999999165534973,
+        "b": 0.27000001072883606,
+        "a": 1.0
+      },
+      "sun_color": {
+        "r": 0.98000001907348633,
+        "g": 0.99000000953674316,
+        "b": 1.0,
+        "a": 1.0
+      },
+      "sun_euler": {
+        "x": 35.000007629394531,
+        "y": 305.0,
+        "z": -1.0422651257613325E-06
+      },
+      "sun_intensity": 1.0800000429153442,
+      "shadow_bias": 0.02500000037252903,
+      "shadow_normal_bias": 0.34999999403953552,
+      "shadow_distance": 150.0,
+      "reflection_intensity": 1.0,
+      "shadow_resolution": "High",
+      "reflection_mode": "Skybox",
+      "anisotropic_filtering": "ForceEnable",
+      "render_texture_srgb": false,
+      "dynamic_resolution": false,
+      "median_camera_submit_ms": 0.809,
+      "median_gpu_readback_ms": 22.079,
+      "median_total_render_sync_ms": 22.848100000000002,
+      "latest_frame_submitted_triangles": 80944788,
+      "hq_projected_pixels": {
+        "x": 1124.2479248046875,
+        "y": 1103.6805419921875
+      },
+      "wall_projected_pixels": {
+        "x": 778.4400634765625,
+        "y": 836.22119140625
+      }
+    },
+    {
+      "view": "wall-detail",
+      "variant": "sampling",
+      "file": "docs/versions/V0.10/evidence/render-quality/wall-detail-sampling.png",
+      "simulation_sha256": "71fdb6862c906df2405bca3305389b905c5342871d77400699d3dc153f05bc3f",
+      "sampling": "3840x2160 with4xMSAA, source textures unchanged, AF16, bilinear reduction to1920x1080; no sharpening",
+      "lighting": "Original frozen daylight/material constants",
+      "render_width": 3840,
+      "render_height": 2160,
+      "output_width": 1920,
+      "output_height": 1080,
+      "msaa": 4,
+      "unity_frame": 23,
+      "projected_friendlies": 26,
+      "focus": {
+        "x": -8.0,
+        "y": 3.0,
+        "z": -2.0
+      },
+      "camera_position": {
+        "x": -35.083763122558594,
+        "y": 35.139377593994141,
+        "z": -29.083763122558594
+      },
+      "pitch": 40.0,
+      "yaw": 45.0,
+      "orthographic_size": 8.0,
+      "simulation_time": 0.0,
+      "ambient_sky": {
+        "r": 0.44999998807907104,
+        "g": 0.47999998927116394,
+        "b": 0.5,
+        "a": 1.0
+      },
+      "ambient_equator": {
+        "r": 0.36000001430511475,
+        "g": 0.37999999523162842,
+        "b": 0.37000000476837158,
+        "a": 1.0
+      },
+      "ambient_ground": {
+        "r": 0.2800000011920929,
+        "g": 0.28999999165534973,
+        "b": 0.27000001072883606,
+        "a": 1.0
+      },
+      "sun_color": {
+        "r": 0.98000001907348633,
+        "g": 0.99000000953674316,
+        "b": 1.0,
+        "a": 1.0
+      },
+      "sun_euler": {
+        "x": 35.000007629394531,
+        "y": 305.0,
+        "z": -1.0422651257613325E-06
+      },
+      "sun_intensity": 1.0800000429153442,
+      "shadow_bias": 0.02500000037252903,
+      "shadow_normal_bias": 0.34999999403953552,
+      "shadow_distance": 150.0,
+      "reflection_intensity": 1.0,
+      "shadow_resolution": "High",
+      "reflection_mode": "Skybox",
+      "anisotropic_filtering": "ForceEnable",
+      "render_texture_srgb": false,
+      "dynamic_resolution": false,
+      "median_camera_submit_ms": 0.84310000000000007,
+      "median_gpu_readback_ms": 28.015900000000002,
+      "median_total_render_sync_ms": 28.905800000000003,
+      "latest_frame_submitted_triangles": 57436388,
+      "hq_projected_pixels": {
+        "x": 1124.2479248046875,
+        "y": 1103.6805419921875
+      },
+      "wall_projected_pixels": {
+        "x": 778.4400634765625,
+        "y": 836.22119140625
+      }
+    },
+    {
+      "view": "wall-detail",
+      "variant": "lighting",
+      "file": "docs/versions/V0.10/evidence/render-quality/wall-detail-lighting.png",
+      "simulation_sha256": "71fdb6862c906df2405bca3305389b905c5342871d77400699d3dc153f05bc3f",
+      "sampling": "1920x1080 with4xMSAA, original source sampling",
+      "lighting": "Review-only neutral direct/fill balance, smaller shadow normal bias,4096-class shadow setting, real scene reflection; owned actor material baked emission <=0.2",
+      "render_width": 1920,
+      "render_height": 1080,
+      "output_width": 1920,
+      "output_height": 1080,
+      "msaa": 4,
+      "unity_frame": 25,
+      "projected_friendlies": 26,
+      "focus": {
+        "x": -8.0,
+        "y": 3.0,
+        "z": -2.0
+      },
+      "camera_position": {
+        "x": -35.083763122558594,
+        "y": 35.139377593994141,
+        "z": -29.083763122558594
+      },
+      "pitch": 40.0,
+      "yaw": 45.0,
+      "orthographic_size": 8.0,
+      "simulation_time": 0.0,
+      "ambient_sky": {
+        "r": 0.37999999523162842,
+        "g": 0.4050000011920929,
+        "b": 0.42500001192092896,
+        "a": 1.0
+      },
+      "ambient_equator": {
+        "r": 0.25,
+        "g": 0.27000001072883606,
+        "b": 0.25999999046325684,
+        "a": 1.0
+      },
+      "ambient_ground": {
+        "r": 0.17000000178813934,
+        "g": 0.18000000715255737,
+        "b": 0.15999999642372131,
+        "a": 1.0
+      },
+      "sun_color": {
+        "r": 0.98000001907348633,
+        "g": 0.99000000953674316,
+        "b": 1.0,
+        "a": 1.0
+      },
+      "sun_euler": {
+        "x": 35.000007629394531,
+        "y": 305.0,
+        "z": -1.0422651257613325E-06
+      },
+      "sun_intensity": 1.1799999475479126,
+      "shadow_bias": 0.019999999552965164,
+      "shadow_normal_bias": 0.15000000596046448,
+      "shadow_distance": 150.0,
+      "reflection_intensity": 1.0,
+      "shadow_resolution": "VeryHigh",
+      "reflection_mode": "Skybox",
+      "anisotropic_filtering": "ForceEnable",
+      "render_texture_srgb": false,
+      "dynamic_resolution": false,
+      "median_camera_submit_ms": 0.8363,
+      "median_gpu_readback_ms": 25.509700000000002,
+      "median_total_render_sync_ms": 26.346000000000004,
+      "latest_frame_submitted_triangles": 57436388,
+      "hq_projected_pixels": {
+        "x": 1124.2479248046875,
+        "y": 1103.6805419921875
+      },
+      "wall_projected_pixels": {
+        "x": 778.4400634765625,
+        "y": 836.22119140625
+      }
+    },
+    {
+      "view": "wall-detail",
+      "variant": "combined",
+      "file": "docs/versions/V0.10/evidence/render-quality/wall-detail-combined.png",
+      "simulation_sha256": "71fdb6862c906df2405bca3305389b905c5342871d77400699d3dc153f05bc3f",
+      "sampling": "3840x2160 with4xMSAA, source textures unchanged, AF16, bilinear reduction to1920x1080; no sharpening",
+      "lighting": "Review-only neutral direct/fill balance, smaller shadow normal bias,4096-class shadow setting, real scene reflection; owned actor material baked emission <=0.2",
+      "render_width": 3840,
+      "render_height": 2160,
+      "output_width": 1920,
+      "output_height": 1080,
+      "msaa": 4,
+      "unity_frame": 27,
+      "projected_friendlies": 26,
+      "focus": {
+        "x": -8.0,
+        "y": 3.0,
+        "z": -2.0
+      },
+      "camera_position": {
+        "x": -35.083763122558594,
+        "y": 35.139377593994141,
+        "z": -29.083763122558594
+      },
+      "pitch": 40.0,
+      "yaw": 45.0,
+      "orthographic_size": 8.0,
+      "simulation_time": 0.0,
+      "ambient_sky": {
+        "r": 0.37999999523162842,
+        "g": 0.4050000011920929,
+        "b": 0.42500001192092896,
+        "a": 1.0
+      },
+      "ambient_equator": {
+        "r": 0.25,
+        "g": 0.27000001072883606,
+        "b": 0.25999999046325684,
+        "a": 1.0
+      },
+      "ambient_ground": {
+        "r": 0.17000000178813934,
+        "g": 0.18000000715255737,
+        "b": 0.15999999642372131,
+        "a": 1.0
+      },
+      "sun_color": {
+        "r": 0.98000001907348633,
+        "g": 0.99000000953674316,
+        "b": 1.0,
+        "a": 1.0
+      },
+      "sun_euler": {
+        "x": 35.000007629394531,
+        "y": 305.0,
+        "z": -1.0422651257613325E-06
+      },
+      "sun_intensity": 1.1799999475479126,
+      "shadow_bias": 0.019999999552965164,
+      "shadow_normal_bias": 0.15000000596046448,
+      "shadow_distance": 150.0,
+      "reflection_intensity": 1.0,
+      "shadow_resolution": "VeryHigh",
+      "reflection_mode": "Skybox",
+      "anisotropic_filtering": "ForceEnable",
+      "render_texture_srgb": false,
+      "dynamic_resolution": false,
+      "median_camera_submit_ms": 0.8346,
+      "median_gpu_readback_ms": 33.1597,
+      "median_total_render_sync_ms": 33.9943,
+      "latest_frame_submitted_triangles": 57436388,
+      "hq_projected_pixels": {
+        "x": 1124.2479248046875,
+        "y": 1103.6805419921875
+      },
+      "wall_projected_pixels": {
+        "x": 778.4400634765625,
+        "y": 836.22119140625
+      }
+    },
+    {
+      "view": "hq-front",
+      "variant": "baseline",
+      "file": "docs/versions/V0.10/evidence/render-quality/hq-front-baseline.png",
+      "simulation_sha256": "71fdb6862c906df2405bca3305389b905c5342871d77400699d3dc153f05bc3f",
+      "sampling": "1920x1080 with4xMSAA, original source sampling",
+      "lighting": "Original frozen daylight/material constants",
+      "render_width": 1920,
+      "render_height": 1080,
+      "output_width": 1920,
+      "output_height": 1080,
+      "msaa": 4,
+      "unity_frame": 29,
+      "projected_friendlies": 62,
+      "focus": {
+        "x": 4.0,
+        "y": 3.5,
+        "z": -16.0
+      },
+      "camera_position": {
+        "x": 23.09916877746582,
+        "y": 35.639377593994141,
+        "z": 17.200634002685547
+      },
+      "pitch": 40.0,
+      "yaw": 209.91032409667969,
+      "orthographic_size": 10.0,
+      "simulation_time": 0.0,
+      "ambient_sky": {
+        "r": 0.44999998807907104,
+        "g": 0.47999998927116394,
+        "b": 0.5,
+        "a": 1.0
+      },
+      "ambient_equator": {
+        "r": 0.36000001430511475,
+        "g": 0.37999999523162842,
+        "b": 0.37000000476837158,
+        "a": 1.0
+      },
+      "ambient_ground": {
+        "r": 0.2800000011920929,
+        "g": 0.28999999165534973,
+        "b": 0.27000001072883606,
+        "a": 1.0
+      },
+      "sun_color": {
+        "r": 0.98000001907348633,
+        "g": 0.99000000953674316,
+        "b": 1.0,
+        "a": 1.0
+      },
+      "sun_euler": {
+        "x": 35.000007629394531,
+        "y": 305.0,
+        "z": -1.0422651257613325E-06
+      },
+      "sun_intensity": 1.0800000429153442,
+      "shadow_bias": 0.02500000037252903,
+      "shadow_normal_bias": 0.34999999403953552,
+      "shadow_distance": 150.0,
+      "reflection_intensity": 1.0,
+      "shadow_resolution": "High",
+      "reflection_mode": "Skybox",
+      "anisotropic_filtering": "ForceEnable",
+      "render_texture_srgb": false,
+      "dynamic_resolution": false,
+      "median_camera_submit_ms": 0.804,
+      "median_gpu_readback_ms": 24.224700000000002,
+      "median_total_render_sync_ms": 25.3976,
+      "latest_frame_submitted_triangles": 57436388,
+      "hq_projected_pixels": {
+        "x": 863.95794677734375,
+        "y": 865.857177734375
+      },
+      "wall_projected_pixels": {
+        "x": 682.49908447265625,
+        "y": 602.96746826171875
+      }
+    },
+    {
+      "view": "hq-front",
+      "variant": "sampling",
+      "file": "docs/versions/V0.10/evidence/render-quality/hq-front-sampling.png",
+      "simulation_sha256": "71fdb6862c906df2405bca3305389b905c5342871d77400699d3dc153f05bc3f",
+      "sampling": "3840x2160 with4xMSAA, source textures unchanged, AF16, bilinear reduction to1920x1080; no sharpening",
+      "lighting": "Original frozen daylight/material constants",
+      "render_width": 3840,
+      "render_height": 2160,
+      "output_width": 1920,
+      "output_height": 1080,
+      "msaa": 4,
+      "unity_frame": 31,
+      "projected_friendlies": 62,
+      "focus": {
+        "x": 4.0,
+        "y": 3.5,
+        "z": -16.0
+      },
+      "camera_position": {
+        "x": 23.09916877746582,
+        "y": 35.639377593994141,
+        "z": 17.200634002685547
+      },
+      "pitch": 40.0,
+      "yaw": 209.91032409667969,
+      "orthographic_size": 10.0,
+      "simulation_time": 0.0,
+      "ambient_sky": {
+        "r": 0.44999998807907104,
+        "g": 0.47999998927116394,
+        "b": 0.5,
+        "a": 1.0
+      },
+      "ambient_equator": {
+        "r": 0.36000001430511475,
+        "g": 0.37999999523162842,
+        "b": 0.37000000476837158,
+        "a": 1.0
+      },
+      "ambient_ground": {
+        "r": 0.2800000011920929,
+        "g": 0.28999999165534973,
+        "b": 0.27000001072883606,
+        "a": 1.0
+      },
+      "sun_color": {
+        "r": 0.98000001907348633,
+        "g": 0.99000000953674316,
+        "b": 1.0,
+        "a": 1.0
+      },
+      "sun_euler": {
+        "x": 35.000007629394531,
+        "y": 305.0,
+        "z": -1.0422651257613325E-06
+      },
+      "sun_intensity": 1.0800000429153442,
+      "shadow_bias": 0.02500000037252903,
+      "shadow_normal_bias": 0.34999999403953552,
+      "shadow_distance": 150.0,
+      "reflection_intensity": 1.0,
+      "shadow_resolution": "High",
+      "reflection_mode": "Skybox",
+      "anisotropic_filtering": "ForceEnable",
+      "render_texture_srgb": false,
+      "dynamic_resolution": false,
+      "median_camera_submit_ms": 0.7529,
+      "median_gpu_readback_ms": 32.473,
+      "median_total_render_sync_ms": 33.2631,
+      "latest_frame_submitted_triangles": 76934484,
+      "hq_projected_pixels": {
+        "x": 863.95794677734375,
+        "y": 865.857177734375
+      },
+      "wall_projected_pixels": {
+        "x": 682.49908447265625,
+        "y": 602.96746826171875
+      }
+    },
+    {
+      "view": "hq-front",
+      "variant": "lighting",
+      "file": "docs/versions/V0.10/evidence/render-quality/hq-front-lighting.png",
+      "simulation_sha256": "71fdb6862c906df2405bca3305389b905c5342871d77400699d3dc153f05bc3f",
+      "sampling": "1920x1080 with4xMSAA, original source sampling",
+      "lighting": "Review-only neutral direct/fill balance, smaller shadow normal bias,4096-class shadow setting, real scene reflection; owned actor material baked emission <=0.2",
+      "render_width": 1920,
+      "render_height": 1080,
+      "output_width": 1920,
+      "output_height": 1080,
+      "msaa": 4,
+      "unity_frame": 33,
+      "projected_friendlies": 62,
+      "focus": {
+        "x": 4.0,
+        "y": 3.5,
+        "z": -16.0
+      },
+      "camera_position": {
+        "x": 23.09916877746582,
+        "y": 35.639377593994141,
+        "z": 17.200634002685547
+      },
+      "pitch": 40.0,
+      "yaw": 209.91032409667969,
+      "orthographic_size": 10.0,
+      "simulation_time": 0.0,
+      "ambient_sky": {
+        "r": 0.37999999523162842,
+        "g": 0.4050000011920929,
+        "b": 0.42500001192092896,
+        "a": 1.0
+      },
+      "ambient_equator": {
+        "r": 0.25,
+        "g": 0.27000001072883606,
+        "b": 0.25999999046325684,
+        "a": 1.0
+      },
+      "ambient_ground": {
+        "r": 0.17000000178813934,
+        "g": 0.18000000715255737,
+        "b": 0.15999999642372131,
+        "a": 1.0
+      },
+      "sun_color": {
+        "r": 0.98000001907348633,
+        "g": 0.99000000953674316,
+        "b": 1.0,
+        "a": 1.0
+      },
+      "sun_euler": {
+        "x": 35.000007629394531,
+        "y": 305.0,
+        "z": -1.0422651257613325E-06
+      },
+      "sun_intensity": 1.1799999475479126,
+      "shadow_bias": 0.019999999552965164,
+      "shadow_normal_bias": 0.15000000596046448,
+      "shadow_distance": 150.0,
+      "reflection_intensity": 1.0,
+      "shadow_resolution": "VeryHigh",
+      "reflection_mode": "Skybox",
+      "anisotropic_filtering": "ForceEnable",
+      "render_texture_srgb": false,
+      "dynamic_resolution": false,
+      "median_camera_submit_ms": 0.8186,
+      "median_gpu_readback_ms": 32.3754,
+      "median_total_render_sync_ms": 33.134499999999996,
+      "latest_frame_submitted_triangles": 76934484,
+      "hq_projected_pixels": {
+        "x": 863.95794677734375,
+        "y": 865.857177734375
+      },
+      "wall_projected_pixels": {
+        "x": 682.49908447265625,
+        "y": 602.96746826171875
+      }
+    },
+    {
+      "view": "hq-front",
+      "variant": "combined",
+      "file": "docs/versions/V0.10/evidence/render-quality/hq-front-combined.png",
+      "simulation_sha256": "71fdb6862c906df2405bca3305389b905c5342871d77400699d3dc153f05bc3f",
+      "sampling": "3840x2160 with4xMSAA, source textures unchanged, AF16, bilinear reduction to1920x1080; no sharpening",
+      "lighting": "Review-only neutral direct/fill balance, smaller shadow normal bias,4096-class shadow setting, real scene reflection; owned actor material baked emission <=0.2",
+      "render_width": 3840,
+      "render_height": 2160,
+      "output_width": 1920,
+      "output_height": 1080,
+      "msaa": 4,
+      "unity_frame": 35,
+      "projected_friendlies": 62,
+      "focus": {
+        "x": 4.0,
+        "y": 3.5,
+        "z": -16.0
+      },
+      "camera_position": {
+        "x": 23.09916877746582,
+        "y": 35.639377593994141,
+        "z": 17.200634002685547
+      },
+      "pitch": 40.0,
+      "yaw": 209.91032409667969,
+      "orthographic_size": 10.0,
+      "simulation_time": 0.0,
+      "ambient_sky": {
+        "r": 0.37999999523162842,
+        "g": 0.4050000011920929,
+        "b": 0.42500001192092896,
+        "a": 1.0
+      },
+      "ambient_equator": {
+        "r": 0.25,
+        "g": 0.27000001072883606,
+        "b": 0.25999999046325684,
+        "a": 1.0
+      },
+      "ambient_ground": {
+        "r": 0.17000000178813934,
+        "g": 0.18000000715255737,
+        "b": 0.15999999642372131,
+        "a": 1.0
+      },
+      "sun_color": {
+        "r": 0.98000001907348633,
+        "g": 0.99000000953674316,
+        "b": 1.0,
+        "a": 1.0
+      },
+      "sun_euler": {
+        "x": 35.000007629394531,
+        "y": 305.0,
+        "z": -1.0422651257613325E-06
+      },
+      "sun_intensity": 1.1799999475479126,
+      "shadow_bias": 0.019999999552965164,
+      "shadow_normal_bias": 0.15000000596046448,
+      "shadow_distance": 150.0,
+      "reflection_intensity": 1.0,
+      "shadow_resolution": "VeryHigh",
+      "reflection_mode": "Skybox",
+      "anisotropic_filtering": "ForceEnable",
+      "render_texture_srgb": false,
+      "dynamic_resolution": false,
+      "median_camera_submit_ms": 0.79060000000000008,
+      "median_gpu_readback_ms": 33.7594,
+      "median_total_render_sync_ms": 34.5407,
+      "latest_frame_submitted_triangles": 76934484,
+      "hq_projected_pixels": {
+        "x": 863.95794677734375,
+        "y": 865.857177734375
+      },
+      "wall_projected_pixels": {
+        "x": 682.49908447265625,
+        "y": 602.96746826171875
+      }
+    }
+  ],
+  "settings_restored": true,
+  "source_sampling_restored": true,
+  "material_constants_restored": true,
+  "triangle_counter_limit": "latest_frame_submitted_triangles is the Editor whole-frame Profiler counter, including this fixture's repeated Camera.Render warmups/timing renders and other Editor cameras in that frame. It is NOT a single PNG's draw count or a normal gameplay frame. Source geometry totals in render-source-audit.json are separate; instanced totals include all LODs, not simultaneous visibility."
+}

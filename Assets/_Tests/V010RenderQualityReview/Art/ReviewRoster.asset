@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87829a8273ccd43969945e5e6fdc0b62, type: 3}
+  m_Name: ReviewRoster
+  m_EditorClassIdentifier: Assembly-CSharp::ZombieGame.Presentation.ImportedRoster
+  units:
+  - unit_id: archer
+    frames: {fileID: 11400000, guid: 0d46509bde5df4613962d08d6bfd4d59, type: 2}
+  - unit_id: giant
+    frames: {fileID: 11400000, guid: fedee9b1dd2124e8ca55d15c9d3220f7, type: 2}
+  - unit_id: zombie_hound
+    frames: {fileID: 11400000, guid: f525b8fc5f5574b80a913fd00bd33763, type: 2}
+  - unit_id: boss
+    frames: {fileID: 11400000, guid: 447da9ee393ff40d4b2604b644f02918, type: 2}
+  - unit_id: walker
+    frames: {fileID: 11400000, guid: 545b43e8bc6fd40b0a7b928368819767, type: 2}
+  - unit_id: exploder
+    frames: {fileID: 11400000, guid: 870a6937b3257483d91543ad6c5c4c4e, type: 2}
+  - unit_id: heavy_crossbowman
+    frames: {fileID: 11400000, guid: 47c0a0e4d686f4c98b8a8ec3436460cb, type: 2}

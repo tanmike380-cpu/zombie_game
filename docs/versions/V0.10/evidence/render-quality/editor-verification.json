@@ -1,0 +1,17 @@
+{
+  "status": "TECHNICAL_PASS_NOT_ART_ACCEPTANCE",
+  "images": 16,
+  "simulation_sha256": "71fdb6862c906df2405bca3305389b905c5342871d77400699d3dc153f05bc3f",
+  "reused_original_animation_mesh_references": 1200,
+  "restored_textures_checked": 6,
+  "current_console_errors": 0,
+  "current_console_warnings": 55,
+  "scene": "Assets/_Tests/V010RenderQualityReview/Scenes/RenderQualityReview.unity",
+  "scene_dirty": false,
+  "play": false,
+  "time_scale": 1.0,
+  "capture_on_start": false,
+  "color_space": "Gamma",
+  "timing_limit": "Warm-up2 and median5 synchronous Camera.Render plus blocking GPU readback per PNG, Editor only; not representative foreground game FPS. Profiler triangle field includes other Editor/frame submissions, not a pure offscreen draw count.",
+  "visual_limit": "Sampling reduces high-frequency aliasing but does not straighten source geometry or create missing PBR detail; lighting experiment is not selected as a production replacement."
+}

@@ -1,0 +1,315 @@
+{
+    "status": "PASS",
+    "files": [
+        {
+            "path": "Assets/_Tests/V010Defense/Scenes/V010Defense.unity",
+            "before": "d9ae942b4d840e1a4cbb05a5b7a6d3f89c7aaa8612d1a98a67277250205a58e2",
+            "after": "d9ae942b4d840e1a4cbb05a5b7a6d3f89c7aaa8612d1a98a67277250205a58e2"
+        },
+        {
+            "path": "Assets/_Game/Art/V010Defense/DefenseScenario.asset",
+            "before": "722daf02808f4aa5532cfbf1c75db76644a4aa8509df45033d0c5c170d7992e2",
+            "after": "722daf02808f4aa5532cfbf1c75db76644a4aa8509df45033d0c5c170d7992e2"
+        },
+        {
+            "path": "Assets/_Game/Art/V010Defense/FrozenEnvironment.prefab",
+            "before": "0a0e15ebcac037675dbdf80bdf2a52e4b1f4e8c2529615019f0179a959d43a47",
+            "after": "0a0e15ebcac037675dbdf80bdf2a52e4b1f4e8c2529615019f0179a959d43a47"
+        },
+        {
+            "path": "Assets/_Tests/V010PresentationReview/Scenes/CameraGroundingReview.unity",
+            "before": "03ec6961939288857cc29971316b69abddf72ee1261e5aef6f77a2fd959912d7",
+            "after": "03ec6961939288857cc29971316b69abddf72ee1261e5aef6f77a2fd959912d7"
+        },
+        {
+            "path": "Assets/_Tests/V010PresentationReview/Art/PresentationScenario.asset",
+            "before": "788e47848e0d525725fcd096fc60c156f52ea321b66c2f4f5a70f21673d3bafc",
+            "after": "788e47848e0d525725fcd096fc60c156f52ea321b66c2f4f5a70f21673d3bafc"
+        },
+        {
+            "path": "Assets/_Tests/V010PresentationReview/Art/PresentationEnvironment.prefab",
+            "before": "f040e186ea9c532f008368bcc4db40dd74a0047eb9d86d0419281aa75967943a",
+            "after": "f040e186ea9c532f008368bcc4db40dd74a0047eb9d86d0419281aa75967943a"
+        },
+        {
+            "path": "balance/unit_balance.json",
+            "before": "4ac06d0483015a916a3440a19ee82fc5979ccae72831ceede74e83a5e0c9c38c",
+            "after": "4ac06d0483015a916a3440a19ee82fc5979ccae72831ceede74e83a5e0c9c38c"
+        },
+        {
+            "path": "art/models/fortified-city/FortifiedCityWalls.fbx",
+            "before": "47b89d7734871bbe0dd000cdb0eebd894e13d43e69698e52bd6cd8ce0ee05e2d",
+            "after": "47b89d7734871bbe0dd000cdb0eebd894e13d43e69698e52bd6cd8ce0ee05e2d"
+        },
+        {
+            "path": "art/models/grid-footprints/Pasture14_GoldenCorner/Pasture14_GoldenCorner.fbx",
+            "before": "3ee3c15e36456b3a199321ec22bd597dd85d2f0940dac15981354e1548996a8e",
+            "after": "3ee3c15e36456b3a199321ec22bd597dd85d2f0940dac15981354e1548996a8e"
+        },
+        {
+            "path": "ProjectSettings/AudioManager.asset",
+            "before": "9543c41dbfc7d3951217c4dd9481ed026eb8e529b85ecf4463969a0fea747729",
+            "after": "9543c41dbfc7d3951217c4dd9481ed026eb8e529b85ecf4463969a0fea747729"
+        },
+        {
+            "path": "ProjectSettings/ClusterInputManager.asset",
+            "before": "40e65dd214bf254955d2c8829ca8ce2130fd3510485560ce012e9a1ddd93e623",
+            "after": "40e65dd214bf254955d2c8829ca8ce2130fd3510485560ce012e9a1ddd93e623"
+        },
+        {
+            "path": "ProjectSettings/DynamicsManager.asset",
+            "before": "785919ec02924b9125bd572087d9e3ceb1844b1cceb3ff6144c1c1f56cd79047",
+            "after": "785919ec02924b9125bd572087d9e3ceb1844b1cceb3ff6144c1c1f56cd79047"
+        },
+        {
+            "path": "ProjectSettings/EditorBuildSettings.asset",
+            "before": "1942c088ddfeeef348fdf12390e2a2d6da51056e197458d67969d44e7b2cbbd3",
+            "after": "1942c088ddfeeef348fdf12390e2a2d6da51056e197458d67969d44e7b2cbbd3"
+        },
+        {
+            "path": "ProjectSettings/EditorSettings.asset",
+            "before": "9ec69aa9706b50c1104067e9347ce1ec23d8f9ad0ea996ea1eeb64c5d01d41f8",
+            "after": "9ec69aa9706b50c1104067e9347ce1ec23d8f9ad0ea996ea1eeb64c5d01d41f8"
+        },
+        {
+            "path": "ProjectSettings/GraphicsSettings.asset",
+            "before": "87bac5a6c9c3246744f81dd6b6df6db039b519976a9b0e552760754ee8ac3816",
+            "after": "87bac5a6c9c3246744f81dd6b6df6db039b519976a9b0e552760754ee8ac3816"
+        },
+        {
+            "path": "ProjectSettings/InputManager.asset",
+            "before": "d0f454ddb880912abcae92e3e12957a7446786ba89e24937e019ff3bbc0d4300",
+            "after": "d0f454ddb880912abcae92e3e12957a7446786ba89e24937e019ff3bbc0d4300"
+        },
+        {
+            "path": "ProjectSettings/MemorySettings.asset",
+            "before": "25fb3fdd1ce94347ccdcf23d5d5e446055ca81d8b3756a7df85d614645a71ac4",
+            "after": "25fb3fdd1ce94347ccdcf23d5d5e446055ca81d8b3756a7df85d614645a71ac4"
+        },
+        {
+            "path": "ProjectSettings/MultiplayerManager.asset",
+            "before": "aba89fd1a1ddad182727ad82727e536d27372e90328a8196da2a4560398983dd",
+            "after": "aba89fd1a1ddad182727ad82727e536d27372e90328a8196da2a4560398983dd"
+        },
+        {
+            "path": "ProjectSettings/NavMeshAreas.asset",
+            "before": "7ebbf8f53b8033104e1878b95ca07a28d0954092d81c220f14196a42f651e658",
+            "after": "7ebbf8f53b8033104e1878b95ca07a28d0954092d81c220f14196a42f651e658"
+        },
+        {
+            "path": "ProjectSettings/PackageManagerSettings.asset",
+            "before": "cd9fd5c2a1127735839ff32b0070e63783d4439bfc0a549173514bf0b8d62834",
+            "after": "cd9fd5c2a1127735839ff32b0070e63783d4439bfc0a549173514bf0b8d62834"
+        },
+        {
+            "path": "ProjectSettings/Physics2DSettings.asset",
+            "before": "7280037ac908e26d4519825446c92c80a8520308016b171522760b535aadcbc0",
+            "after": "7280037ac908e26d4519825446c92c80a8520308016b171522760b535aadcbc0"
+        },
+        {
+            "path": "ProjectSettings/PhysicsCoreProjectSettings2D.asset",
+            "before": "bedc5339a832c60dc3f11b84abc4f4384dbfa20b0cd9ad6c444b907e751fc35e",
+            "after": "bedc5339a832c60dc3f11b84abc4f4384dbfa20b0cd9ad6c444b907e751fc35e"
+        },
+        {
+            "path": "ProjectSettings/PresetManager.asset",
+            "before": "29c125923fe6e29f90190d4fce1c82d660e7051546e2c9d02908d18c9cf2436c",
+            "after": "29c125923fe6e29f90190d4fce1c82d660e7051546e2c9d02908d18c9cf2436c"
+        },
+        {
+            "path": "ProjectSettings/ProjectAuditorSettings.asset",
+            "before": "9e68444b9bda981e2927a98df9edf69ea88362f0c6b7f3c81b39b9d515d2a416",
+            "after": "9e68444b9bda981e2927a98df9edf69ea88362f0c6b7f3c81b39b9d515d2a416"
+        },
+        {
+            "path": "ProjectSettings/ProjectSettings.asset",
+            "before": "c520f29de15f4da01ed8c15b745d0455d5c44fdad22de8af0267edf408f35b46",
+            "after": "c520f29de15f4da01ed8c15b745d0455d5c44fdad22de8af0267edf408f35b46"
+        },
+        {
+            "path": "ProjectSettings/ProjectVersion.txt",
+            "before": "c42304ccf9a727e75d565625e67a9d17e07ca408948b5385b940ad38ba04da98",
+            "after": "c42304ccf9a727e75d565625e67a9d17e07ca408948b5385b940ad38ba04da98"
+        },
+        {
+            "path": "ProjectSettings/QualitySettings.asset",
+            "before": "f1f893b1be47ad2442f58338dd7c860dc1986bb317e2f5bb31084454ffabbf4c",
+            "after": "f1f893b1be47ad2442f58338dd7c860dc1986bb317e2f5bb31084454ffabbf4c"
+        },
+        {
+            "path": "ProjectSettings/SceneTemplateSettings.json",
+            "before": "bb9098b3bfcde78d93e264b96f7b77b5430e64e8c57a7aad7f5a5d9c3945e16a",
+            "after": "bb9098b3bfcde78d93e264b96f7b77b5430e64e8c57a7aad7f5a5d9c3945e16a"
+        },
+        {
+            "path": "ProjectSettings/TagManager.asset",
+            "before": "996628fdc904025b83606bbfbda4fe08c0bbe916475146110e77cdc2f22c2013",
+            "after": "996628fdc904025b83606bbfbda4fe08c0bbe916475146110e77cdc2f22c2013"
+        },
+        {
+            "path": "ProjectSettings/TimeManager.asset",
+            "before": "3396f52fdc16d445024e01d7a2d99db6f0a37569d1d73c0302e9ffb857d90287",
+            "after": "3396f52fdc16d445024e01d7a2d99db6f0a37569d1d73c0302e9ffb857d90287"
+        },
+        {
+            "path": "ProjectSettings/UnityConnectSettings.asset",
+            "before": "bfd9b4ad7ba0f6044f0957cd427df1d8e49dcf9453fdfc35dac74c64bbffa8f3",
+            "after": "bfd9b4ad7ba0f6044f0957cd427df1d8e49dcf9453fdfc35dac74c64bbffa8f3"
+        },
+        {
+            "path": "ProjectSettings/VFXManager.asset",
+            "before": "d2937fe93ff49c2ce60f888056b70ebc0a1df7dd5e22dab3fa41678c2a3f3858",
+            "after": "d2937fe93ff49c2ce60f888056b70ebc0a1df7dd5e22dab3fa41678c2a3f3858"
+        },
+        {
+            "path": "ProjectSettings/VersionControlSettings.asset",
+            "before": "e199cdfa6a8f2bf33cfd47e549198f13e3eb2a5099e908fdb4e0f14d939ccc6b",
+            "after": "e199cdfa6a8f2bf33cfd47e549198f13e3eb2a5099e908fdb4e0f14d939ccc6b"
+        },
+        {
+            "path": "Assets/_Tests/V010PresentationReview/Art.meta",
+            "before": "be9826314909c0550d5ee753ab9e616ab134d560edbf7c5b13ecb936ea9d2b14",
+            "after": "be9826314909c0550d5ee753ab9e616ab134d560edbf7c5b13ecb936ea9d2b14"
+        },
+        {
+            "path": "Assets/_Tests/V010PresentationReview/Editor.meta",
+            "before": "20b4e4719848bdf9fdb24d8169fcf68367ae700ba5fa2169869f9f3f22e1ea13",
+            "after": "20b4e4719848bdf9fdb24d8169fcf68367ae700ba5fa2169869f9f3f22e1ea13"
+        },
+        {
+            "path": "Assets/_Tests/V010PresentationReview/Runtime.meta",
+            "before": "ebefa678f1919a70b6445f9d9be91e63a3cee5f6f350ec7c4f4a6029a87d2b9d",
+            "after": "ebefa678f1919a70b6445f9d9be91e63a3cee5f6f350ec7c4f4a6029a87d2b9d"
+        },
+        {
+            "path": "Assets/_Tests/V010PresentationReview/Scenes.meta",
+            "before": "d4e817c951f6ad47b5212f6e5aaa7d296b31aa186aeb2ff7f7cc54767d662c82",
+            "after": "d4e817c951f6ad47b5212f6e5aaa7d296b31aa186aeb2ff7f7cc54767d662c82"
+        },
+        {
+            "path": "Assets/_Tests/V010PresentationReview/Art/PresentationEnvironment.prefab.meta",
+            "before": "501436398709816c6cc928cff09e45bcf5ca409dfdaa0cfab908b4dd105322ac",
+            "after": "501436398709816c6cc928cff09e45bcf5ca409dfdaa0cfab908b4dd105322ac"
+        },
+        {
+            "path": "Assets/_Tests/V010PresentationReview/Art/PresentationScenario.asset.meta",
+            "before": "799ea05b345232b8c24a15e34b7ac68f5c52a6a578020c001b5d0d359618083d",
+            "after": "799ea05b345232b8c24a15e34b7ac68f5c52a6a578020c001b5d0d359618083d"
+        },
+        {
+            "path": "Assets/_Tests/V010PresentationReview/Editor/GroundingReviewImport.cs",
+            "before": "ccdb5c9188ec9adff2e50f6b73ed49b545915c12099e72bd7eee9c386e1bd553",
+            "after": "ccdb5c9188ec9adff2e50f6b73ed49b545915c12099e72bd7eee9c386e1bd553"
+        },
+        {
+            "path": "Assets/_Tests/V010PresentationReview/Editor/GroundingReviewImport.cs.meta",
+            "before": "2f6251669f4c3bac3d7e42c989584ecebcd636c7c58c0dd6d1af8cea3a6927b9",
+            "after": "2f6251669f4c3bac3d7e42c989584ecebcd636c7c58c0dd6d1af8cea3a6927b9"
+        },
+        {
+            "path": "Assets/_Tests/V010PresentationReview/Editor/PresentationReviewTools.cs",
+            "before": "0e84ce71a10858c027052c827d016659bed1468d6d14506b19b994f24bace571",
+            "after": "0e84ce71a10858c027052c827d016659bed1468d6d14506b19b994f24bace571"
+        },
+        {
+            "path": "Assets/_Tests/V010PresentationReview/Editor/PresentationReviewTools.cs.meta",
+            "before": "2b113d150248aa624bde09033b81da54af03bed3dbea2639780c2250a66ebdc7",
+            "after": "2b113d150248aa624bde09033b81da54af03bed3dbea2639780c2250a66ebdc7"
+        },
+        {
+            "path": "Assets/_Tests/V010PresentationReview/Runtime/GroundingReviewBindings.cs",
+            "before": "4ae2d971a29fd3d7321603eb7f3aae3dcb91816af73a7e17423d23a68e345145",
+            "after": "4ae2d971a29fd3d7321603eb7f3aae3dcb91816af73a7e17423d23a68e345145"
+        },
+        {
+            "path": "Assets/_Tests/V010PresentationReview/Runtime/GroundingReviewBindings.cs.meta",
+            "before": "34945b48e56d98c74bd0aeae63fa84971515ce678c085bdfa6bb1ff5ea0ac8f2",
+            "after": "34945b48e56d98c74bd0aeae63fa84971515ce678c085bdfa6bb1ff5ea0ac8f2"
+        },
+        {
+            "path": "Assets/_Tests/V010PresentationReview/Runtime/GroundingSurface.shader",
+            "before": "0c2343391effaa1d3a3520423820a65575047983bd4cba40b837977b55116ed9",
+            "after": "0c2343391effaa1d3a3520423820a65575047983bd4cba40b837977b55116ed9"
+        },
+        {
+            "path": "Assets/_Tests/V010PresentationReview/Runtime/GroundingSurface.shader.meta",
+            "before": "0a5e7e61db38c4c49028bc6d2b9b4282e84bd9da87a24ea81599789a4e948668",
+            "after": "0a5e7e61db38c4c49028bc6d2b9b4282e84bd9da87a24ea81599789a4e948668"
+        },
+        {
+            "path": "Assets/_Tests/V010PresentationReview/Runtime/PresentationCapture.cs",
+            "before": "eb02194a3621c1a8028ee9dafa4b5ba92c5316cb0c60bbe349f3a15b04bbd135",
+            "after": "eb02194a3621c1a8028ee9dafa4b5ba92c5316cb0c60bbe349f3a15b04bbd135"
+        },
+        {
+            "path": "Assets/_Tests/V010PresentationReview/Runtime/PresentationCapture.cs.meta",
+            "before": "ee42994f740e2871db2f35c9e2d7cd178dcca3556e33da6c87d87d797dbc9a64",
+            "after": "ee42994f740e2871db2f35c9e2d7cd178dcca3556e33da6c87d87d797dbc9a64"
+        },
+        {
+            "path": "Assets/_Tests/V010PresentationReview/Scenes/CameraGroundingReview.unity.meta",
+            "before": "24481fb4e6f815e49bcbd5cb968ac61ee8170cba8239c81d0a44d4b3203ab4b0",
+            "after": "24481fb4e6f815e49bcbd5cb968ac61ee8170cba8239c81d0a44d4b3203ab4b0"
+        },
+        {
+            "path": "docs/versions/V0.10/evidence/camera-grounding/A-48-0.png",
+            "before": "479dc83a902e9332ac01771f01528e99189d591965132d041ed017d3b8bd639b",
+            "after": "479dc83a902e9332ac01771f01528e99189d591965132d041ed017d3b8bd639b"
+        },
+        {
+            "path": "docs/versions/V0.10/evidence/camera-grounding/B-45-30.png",
+            "before": "b3f87599bdda0e2cc83f22b16ff314d7e5cd5e4a78db5904ed01d96b4c70c543",
+            "after": "b3f87599bdda0e2cc83f22b16ff314d7e5cd5e4a78db5904ed01d96b4c70c543"
+        },
+        {
+            "path": "docs/versions/V0.10/evidence/camera-grounding/C-40-45.png",
+            "before": "712c86528eec331ae1d51ef0b0395be1dfed68cdf875fdfda11847abde84c56f",
+            "after": "712c86528eec331ae1d51ef0b0395be1dfed68cdf875fdfda11847abde84c56f"
+        },
+        {
+            "path": "docs/versions/V0.10/evidence/camera-grounding/D-35-45.png",
+            "before": "d76248b786830fbd9a2fdc3740f1b3d2b78cea16f093f168105b3e05b7f97de3",
+            "after": "d76248b786830fbd9a2fdc3740f1b3d2b78cea16f093f168105b3e05b7f97de3"
+        },
+        {
+            "path": "docs/versions/V0.10/evidence/camera-grounding/E-40-60.png",
+            "before": "4469e5eaea93776bb02215b3c7a0ae9b1d58b2b7eef808aca0cac65a3a5a9439",
+            "after": "4469e5eaea93776bb02215b3c7a0ae9b1d58b2b7eef808aca0cac65a3a5a9439"
+        },
+        {
+            "path": "docs/versions/V0.10/evidence/camera-grounding/baseline-integrity.json",
+            "before": "7bd07a23c4dd5ae25481fb2ae7b48e46a8b2df02b7a14336e9275a5bd82a5a79",
+            "after": "7bd07a23c4dd5ae25481fb2ae7b48e46a8b2df02b7a14336e9275a5bd82a5a79"
+        },
+        {
+            "path": "docs/versions/V0.10/evidence/camera-grounding/blender-source-verification.json",
+            "before": "4bc594432f91d5b36362cc55a9fa28cf5c0b151fc30621b6874f6868a74e13ba",
+            "after": "4bc594432f91d5b36362cc55a9fa28cf5c0b151fc30621b6874f6868a74e13ba"
+        },
+        {
+            "path": "docs/versions/V0.10/evidence/camera-grounding/capture-report.json",
+            "before": "a757884a20bcd9e99bff0195aacb5d15dfe8f98367aea0f9d4c697fe32273570",
+            "after": "a757884a20bcd9e99bff0195aacb5d15dfe8f98367aea0f9d4c697fe32273570"
+        },
+        {
+            "path": "docs/versions/V0.10/evidence/camera-grounding/editor-verification.json",
+            "before": "da0f281ea4ecb303bf9fca9ceae71c0bc12446673d55757fd295193b261f9ee1",
+            "after": "da0f281ea4ecb303bf9fca9ceae71c0bc12446673d55757fd295193b261f9ee1"
+        },
+        {
+            "path": "docs/versions/V0.10/evidence/camera-grounding/ground-after.png",
+            "before": "e180d1db9789afba483f0c2e60f2fcdccef74c04fafeccece76e069326b936f9",
+            "after": "e180d1db9789afba483f0c2e60f2fcdccef74c04fafeccece76e069326b936f9"
+        },
+        {
+            "path": "docs/versions/V0.10/evidence/camera-grounding/ground-before.png",
+            "before": "1e1c9ac0ca5d8ca1116385e393a4740b27f5774f5a0c7df29cfc0a1cd5c7af4e",
+            "after": "1e1c9ac0ca5d8ca1116385e393a4740b27f5774f5a0c7df29cfc0a1cd5c7af4e"
+        },
+        {
+            "path": "docs/versions/V0.10/evidence/camera-grounding/grounding-import.json",
+            "before": "1671237e5c0505d13b3da7efdaee6346e25ba65a3a90318cb24a7cd33bf79d3e",
+            "after": "1671237e5c0505d13b3da7efdaee6346e25ba65a3a90318cb24a7cd33bf79d3e"
+        }
+    ]
+}
