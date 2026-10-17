@@ -1,0 +1,512 @@
+{
+  "source_file": "art/Blender主文件/ZombieGame.blend",
+  "source_sha256": "34ce14d5150a0ae7a9e232775f6f7863180052feea29be4fabc8faf1ad097ef9",
+  "read_only": true,
+  "assets": [
+    {
+      "id": "headquarters",
+      "object": "Headquarters12_OriginalArchitecture",
+      "mesh": "tripo_mesh_b9b5ab31",
+      "bounds_blender_xyz_m": [
+        [
+          -5.77723503112793,
+          5.77723503112793
+        ],
+        [
+          -6.0,
+          6.0
+        ],
+        [
+          -0.09604689478874207,
+          7.272785663604736
+        ]
+      ],
+      "vertices": 4447,
+      "triangles": 6889,
+      "modifiers": [],
+      "normals": {
+        "smooth_faces": 4009,
+        "face_count": 4009,
+        "sharp_marked_edges": 0,
+        "has_custom_normals": true,
+        "adjacent_face_edges": 6472,
+        "dihedral_degrees_p50_p90_p99": [
+          64.62464420949229,
+          90.86953271412607,
+          147.0138932803249
+        ],
+        "geometric_edges_ge60deg": 3474,
+        "geometric_edges_ge85deg": 2282,
+        "ge60_both_smooth_without_sharp_mark": 3474,
+        "ge60_corner_normals_continuous_lt5deg": 3474,
+        "stored_vs_independent_newell_normal_error_deg_p50_p99_max": [
+          0.0,
+          0.0,
+          0.01978234059262607
+        ],
+        "interpretation_limit": "Few sharp dihedrals can mean a rounded dense contour, not proof of no intended architectural corners."
+      },
+      "uv": {
+        "has_uv": true,
+        "atlas_resolution": [
+          2048,
+          2048
+        ],
+        "uv_summed_triangle_area": 0.6159922934796953,
+        "unique_atlas_coverage_fraction_512_estimate": 0.6148033142089844,
+        "geometry_surface_area_m2": 522.6279980688121,
+        "px_per_meter_triangle_p10_p50_p90": [
+          64.93564686373631,
+          70.35437707854197,
+          71.13525310821757
+        ],
+        "px_per_meter_area_weighted_mean": 70.27241687353151,
+        "limit": "Coverage estimate is unique occupancy, summed UV area may overlap. Density is actual 2048 atlas per geometry triangle, not a single flat facade's guaranteed detail."
+      },
+      "materials": [
+        {
+          "name": "tripo_mat_b9b5ab31",
+          "textures": [
+            {
+              "image": "tripo_image_b9b5ab31_0",
+              "resolution": [
+                2048,
+                2048
+              ],
+              "filepath": "//../../../../../../../var/folders/l2/xmcnn2591czg1nzsn47gzl3h0000gn/T/blender_49ui1I/tripo_convert_b9b5ab31-11cd-4759-8b13-9dbb94c70ed8.fbm/tripo_rgb_dc5257bb-cd62-4688-b891-6b982b890aac.jpg",
+              "packed": true,
+              "outputs_to": [
+                "BSDF_PRINCIPLED:Base Color"
+              ]
+            }
+          ],
+          "shader_channels": {
+            "Base Color": {
+              "linked": true,
+              "source_nodes": [
+                "TEX_IMAGE"
+              ]
+            },
+            "Normal": {
+              "linked": true,
+              "source_nodes": [
+                "NORMAL_MAP"
+              ]
+            },
+            "Roughness": {
+              "linked": false,
+              "source_nodes": []
+            },
+            "Metallic": {
+              "linked": false,
+              "source_nodes": []
+            }
+          },
+          "normal_map_nodes": [
+            {
+              "name": "法线贴图",
+              "strength": 0.0,
+              "color_linked": false,
+              "color_default": [
+                0.5,
+                0.5,
+                1.0,
+                1.0
+              ]
+            }
+          ]
+        }
+      ],
+      "front_marker": {
+        "semantic": "Low center of the broad front stair, native negative Y",
+        "mesh_vertex_index": 2215,
+        "native_mesh_coordinate": [
+          0.0007324572070501745,
+          -0.468017578125,
+          0.03466796875
+        ],
+        "architecture_local_blender_xyz_m": [
+          0.008793780580163002,
+          -5.618954658508301,
+          0.32017195224761963
+        ],
+        "exact_uv_locator": [
+          [
+            0.08500086516141891,
+            0.5348053574562073
+          ],
+          [
+            0.08500086516141891,
+            0.5348053574562073
+          ]
+        ],
+        "unity_note": "Locate the matching UV vertex in runtime mesh, then TransformPoint to world; this resolves handedness/FBX root ambiguity without moving the asset."
+      }
+    },
+    {
+      "id": "workshop",
+      "object": "Workshop8_OriginalArchitecture",
+      "mesh": "tripo_mesh_24a2e25a",
+      "bounds_blender_xyz_m": [
+        [
+          -4.0,
+          4.0
+        ],
+        [
+          -4.0,
+          4.0
+        ],
+        [
+          -0.08003908395767212,
+          3.5819053649902344
+        ]
+      ],
+      "vertices": 4480,
+      "triangles": 6438,
+      "modifiers": [],
+      "normals": {
+        "smooth_faces": 3656,
+        "face_count": 3656,
+        "sharp_marked_edges": 0,
+        "has_custom_normals": true,
+        "adjacent_face_edges": 5942,
+        "dihedral_degrees_p50_p90_p99": [
+          84.48249714576642,
+          91.86544669511913,
+          113.54997853698467
+        ],
+        "geometric_edges_ge60deg": 3733,
+        "geometric_edges_ge85deg": 2940,
+        "ge60_both_smooth_without_sharp_mark": 3733,
+        "ge60_corner_normals_continuous_lt5deg": 3733,
+        "stored_vs_independent_newell_normal_error_deg_p50_p99_max": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "interpretation_limit": "Few sharp dihedrals can mean a rounded dense contour, not proof of no intended architectural corners."
+      },
+      "uv": {
+        "has_uv": true,
+        "atlas_resolution": [
+          2048,
+          2048
+        ],
+        "uv_summed_triangle_area": 0.5738874839846698,
+        "unique_atlas_coverage_fraction_512_estimate": 0.5714149475097656,
+        "geometry_surface_area_m2": 257.6917371107218,
+        "px_per_meter_triangle_p10_p50_p90": [
+          91.93017889728002,
+          97.82677303042405,
+          98.51697109206688
+        ],
+        "px_per_meter_area_weighted_mean": 96.59689098142735,
+        "limit": "Coverage estimate is unique occupancy, summed UV area may overlap. Density is actual 2048 atlas per geometry triangle, not a single flat facade's guaranteed detail."
+      },
+      "materials": [
+        {
+          "name": "tripo_mat_24a2e25a",
+          "textures": [
+            {
+              "image": "tripo_image_24a2e25a_0",
+              "resolution": [
+                2048,
+                2048
+              ],
+              "filepath": "//../../../../../../../var/folders/l2/xmcnn2591czg1nzsn47gzl3h0000gn/T/blender_49ui1I/tripo_convert_24a2e25a-02ad-4f84-86ac-263373cefe6c.fbm/tripo_rgb_ff29d197-5312-4cdf-8ebe-38b433c1dc25.jpg",
+              "packed": true,
+              "outputs_to": [
+                "BSDF_PRINCIPLED:Base Color"
+              ]
+            }
+          ],
+          "shader_channels": {
+            "Base Color": {
+              "linked": true,
+              "source_nodes": [
+                "TEX_IMAGE"
+              ]
+            },
+            "Normal": {
+              "linked": true,
+              "source_nodes": [
+                "NORMAL_MAP"
+              ]
+            },
+            "Roughness": {
+              "linked": false,
+              "source_nodes": []
+            },
+            "Metallic": {
+              "linked": false,
+              "source_nodes": []
+            }
+          },
+          "normal_map_nodes": [
+            {
+              "name": "法线贴图",
+              "strength": 0.0,
+              "color_linked": false,
+              "color_default": [
+                0.5,
+                0.5,
+                1.0,
+                1.0
+              ]
+            }
+          ]
+        }
+      ],
+      "front_marker": null
+    },
+    {
+      "id": "wall",
+      "object": "00_ModularWall_Kit · MiddleWall",
+      "mesh": "StoneWall_Middle",
+      "bounds_blender_xyz_m": [
+        [
+          -6.00814814788464e-07,
+          12.239999771118164
+        ],
+        [
+          -1.823730707168579,
+          2.245604991912842
+        ],
+        [
+          0.0,
+          6.4951171875
+        ]
+      ],
+      "vertices": 1931,
+      "triangles": 2731,
+      "modifiers": [],
+      "normals": {
+        "smooth_faces": 1457,
+        "face_count": 1457,
+        "sharp_marked_edges": 0,
+        "has_custom_normals": true,
+        "adjacent_face_edges": 2305,
+        "dihedral_degrees_p50_p90_p99": [
+          64.91431594728712,
+          91.47688064833169,
+          108.00381343130798
+        ],
+        "geometric_edges_ge60deg": 1239,
+        "geometric_edges_ge85deg": 577,
+        "ge60_both_smooth_without_sharp_mark": 1239,
+        "ge60_corner_normals_continuous_lt5deg": 1239,
+        "stored_vs_independent_newell_normal_error_deg_p50_p99_max": [
+          0.0,
+          0.0,
+          0.14265252956010954
+        ],
+        "interpretation_limit": "Few sharp dihedrals can mean a rounded dense contour, not proof of no intended architectural corners."
+      },
+      "uv": {
+        "has_uv": true,
+        "atlas_resolution": [
+          2048,
+          2048
+        ],
+        "uv_summed_triangle_area": 0.5792146705563971,
+        "unique_atlas_coverage_fraction_512_estimate": 0.5156974792480469,
+        "geometry_surface_area_m2": 318.23828407161477,
+        "px_per_meter_triangle_p10_p50_p90": [
+          69.6012123527457,
+          75.20350761076737,
+          75.94572162700358
+        ],
+        "px_per_meter_area_weighted_mean": 75.05296850514382,
+        "limit": "Coverage estimate is unique occupancy, summed UV area may overlap. Density is actual 2048 atlas per geometry triangle, not a single flat facade's guaranteed detail."
+      },
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7.001",
+          "textures": [
+            {
+              "image": "tripo_image_2a6beea7_0.001",
+              "resolution": [
+                2048,
+                2048
+              ],
+              "filepath": "/var/folders/l2/xmcnn2591czg1nzsn47gzl3h0000gn/T/blender_49ui1I/tripo_convert_2a6beea7-5190-4a3c-8265-bf7d123f978d.fbm/tripo_rgb_5d4d93a6-a038-4fd1-b3ad-101963f8925c.jpg",
+              "packed": true,
+              "outputs_to": [
+                "BSDF_PRINCIPLED:Base Color"
+              ]
+            }
+          ],
+          "shader_channels": {
+            "Base Color": {
+              "linked": true,
+              "source_nodes": [
+                "TEX_IMAGE"
+              ]
+            },
+            "Normal": {
+              "linked": true,
+              "source_nodes": [
+                "NORMAL_MAP"
+              ]
+            },
+            "Roughness": {
+              "linked": false,
+              "source_nodes": []
+            },
+            "Metallic": {
+              "linked": false,
+              "source_nodes": []
+            }
+          },
+          "normal_map_nodes": [
+            {
+              "name": "法线贴图",
+              "strength": 0.0,
+              "color_linked": false,
+              "color_default": [
+                0.5,
+                0.5,
+                1.0,
+                1.0
+              ]
+            }
+          ]
+        }
+      ],
+      "front_marker": null
+    },
+    {
+      "id": "pier",
+      "object": "00_ModularWall_Kit · StartPier",
+      "mesh": "StonePier_Left",
+      "bounds_blender_xyz_m": [
+        [
+          0.0,
+          2.875605344772339
+        ],
+        [
+          -2.263184070587158,
+          2.263183116912842
+        ],
+        [
+          0.6767578125,
+          7.4091796875
+        ]
+      ],
+      "vertices": 819,
+      "triangles": 1247,
+      "modifiers": [],
+      "normals": {
+        "smooth_faces": 706,
+        "face_count": 706,
+        "sharp_marked_edges": 0,
+        "has_custom_normals": true,
+        "adjacent_face_edges": 1165,
+        "dihedral_degrees_p50_p90_p99": [
+          55.05757433339333,
+          90.00000250447816,
+          130.36221392234745
+        ],
+        "geometric_edges_ge60deg": 500,
+        "geometric_edges_ge85deg": 228,
+        "ge60_both_smooth_without_sharp_mark": 500,
+        "ge60_corner_normals_continuous_lt5deg": 500,
+        "stored_vs_independent_newell_normal_error_deg_p50_p99_max": [
+          0.0,
+          0.0,
+          0.9026565630894346
+        ],
+        "interpretation_limit": "Few sharp dihedrals can mean a rounded dense contour, not proof of no intended architectural corners."
+      },
+      "uv": {
+        "has_uv": true,
+        "atlas_resolution": [
+          2048,
+          2048
+        ],
+        "uv_summed_triangle_area": 0.15817345285496323,
+        "unique_atlas_coverage_fraction_512_estimate": 0.15036773681640625,
+        "geometry_surface_area_m2": 92.5365928326932,
+        "px_per_meter_triangle_p10_p50_p90": [
+          68.7889341443342,
+          74.60223925105338,
+          75.94536010160432
+        ],
+        "px_per_meter_area_weighted_mean": 75.59035432643695,
+        "limit": "Coverage estimate is unique occupancy, summed UV area may overlap. Density is actual 2048 atlas per geometry triangle, not a single flat facade's guaranteed detail."
+      },
+      "materials": [
+        {
+          "name": "tripo_mat_2a6beea7.001",
+          "textures": [
+            {
+              "image": "tripo_image_2a6beea7_0.001",
+              "resolution": [
+                2048,
+                2048
+              ],
+              "filepath": "/var/folders/l2/xmcnn2591czg1nzsn47gzl3h0000gn/T/blender_49ui1I/tripo_convert_2a6beea7-5190-4a3c-8265-bf7d123f978d.fbm/tripo_rgb_5d4d93a6-a038-4fd1-b3ad-101963f8925c.jpg",
+              "packed": true,
+              "outputs_to": [
+                "BSDF_PRINCIPLED:Base Color"
+              ]
+            }
+          ],
+          "shader_channels": {
+            "Base Color": {
+              "linked": true,
+              "source_nodes": [
+                "TEX_IMAGE"
+              ]
+            },
+            "Normal": {
+              "linked": true,
+              "source_nodes": [
+                "NORMAL_MAP"
+              ]
+            },
+            "Roughness": {
+              "linked": false,
+              "source_nodes": []
+            },
+            "Metallic": {
+              "linked": false,
+              "source_nodes": []
+            }
+          },
+          "normal_map_nodes": [
+            {
+              "name": "法线贴图",
+              "strength": 0.0,
+              "color_linked": false,
+              "color_default": [
+                0.5,
+                0.5,
+                1.0,
+                1.0
+              ]
+            }
+          ]
+        }
+      ],
+      "front_marker": null
+    }
+  ],
+  "hq_front": "Blender -Y: broad stair/arched entrance/columned portico. Unity front sign requires vertex marker check; do not infer from the FBX root's Z180 alone.",
+  "limits": "No source concept-to-Tripo generation link exists in inspected handoffs; concept candidates must not be asserted as exact source. No automatic quality grade from area/face counts.",
+  "original_protected_state": {
+    "objects": 492,
+    "meshes": 288,
+    "materials": 95,
+    "images": 52,
+    "actions": 0,
+    "collections": 29,
+    "lights": 1,
+    "cameras": 1,
+    "worlds": 1,
+    "armatures": 14,
+    "scenes": 1
+  },
+  "source_sha256_after": "34ce14d5150a0ae7a9e232775f6f7863180052feea29be4fabc8faf1ad097ef9",
+  "no_source_or_exports_saved": true
+}
