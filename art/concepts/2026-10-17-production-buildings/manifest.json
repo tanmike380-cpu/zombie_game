@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "created_local_date": "2026-10-17",
+  "status": "single_view_direction_proposals_pending_user_review",
+  "tool": "built-in image_gen",
+  "prompt_record": "prompts.md",
+  "runtime_assets_replaced": false,
+  "old_concepts_preserved": true,
+  "separate_three_views_complete": false,
+  "assets": [
+    {
+      "id": "byzantine-headquarters-production-direction",
+      "image": "byzantine/headquarters/front-perspective.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "93019c130a7cdd96a26d2382958dbd5ea089c124ee1c4806781b89ff47eb2649",
+      "reference": "art/concepts/2026-09-28-buildings/byzantine/01-hq-age1-v2.png",
+      "validation": "Single full building and view; entrance, stairs, main roof, two wings, rear dome, warm stone and purple retained. Straighter planes and controlled edges visually checked. No thick separate diorama base. Not a precise 5x5 CAD drawing; not age3 final."
+    },
+    {
+      "id": "byzantine-stone-wall-production-direction",
+      "image": "byzantine/stone-wall/front-perspective.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "baef389dded91e94d3dfbd223e0f3d993a9084a0c837ffd64c320871ab67e456",
+      "reference": "art/concepts/tripo/buildings/byzantine/24-stone-wall/front-perspective.png",
+      "validation": "Single full wall assembly; straight coping/walkway, square piers, four blind arches, three banners, no gate or open passage. Tileable connections and reverse face require later technical views/model validation."
+    }
+  ]
+}
