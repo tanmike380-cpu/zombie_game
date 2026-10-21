@@ -1,0 +1,1036 @@
+{
+  "schema_version": 1,
+  "audited_at_utc": "2026-10-21T10:25:51.361Z",
+  "scope": "Read-only Unity migration audit; only this report is written. No bake, import, scene save, ProjectSettings or gameplay mutation.",
+  "status": "COMMITTED_STATIC_DEPENDENCY_CLOSURE_PASS_WINDOWS_NOT_RUN",
+  "git_head_at_selection": "adf7dc532ba9ec157a73e5b556348161a677272c",
+  "project": {
+    "editor_version": "6000.6.1f1",
+    "revision": "7efac9f6c10e",
+    "pipeline": "Built-in",
+    "color_space": "Gamma",
+    "current_build_target": "StandaloneOSX",
+    "live_scene": "Assets/_Tests/V010RenderQualityReview/Scenes/RenderQualityReview.unity",
+    "live_scene_dirty": false,
+    "playing": false,
+    "cli_version": "1.0.0-beta.13",
+    "cli_update_check": "current equals latest on audit date"
+  },
+  "tracking": {
+    "tracked_assets_files_and_meta": 2410,
+    "tracked_asset_content_files": 1075,
+    "tracked_asset_meta_files": 1335,
+    "tracked_asset_files_missing_tracked_meta": 0,
+    "orphan_tracked_meta": 0,
+    "packages": [
+      "Packages/manifest.json",
+      "Packages/packages-lock.json"
+    ],
+    "project_settings_files": 24,
+    "tracked_library_temp_builds_logs_usersettings_files": 0,
+    "windows_invalid_tracked_paths": [],
+    "case_colliding_tracked_paths": [],
+    "max_relative_asset_path_characters": 142,
+    "native_plugins_under_assets": [],
+    "blend_files_under_assets": [],
+    "upm_local_absolute_or_file_dependencies": [],
+    "upm_sources": [
+      "https://packages.unity.com",
+      "Unity built-in"
+    ],
+    "upm_primary_packages": {
+      "com.unity.cloud.gltfast": "6.20.0",
+      "com.unity.pipeline": "0.8.0-exp.1",
+      "com.unity.ide.rider": "3.0.38",
+      "com.unity.ide.visualstudio": "2.0.26"
+    },
+    "non_unity_symlink_caution": [
+      "art/concepts/2026-10-10-resource-nodes",
+      "art/concepts/2026-10-11-zombie-lairs"
+    ],
+    "symlink_note": "These two historical concept aliases are not Unity dependencies; Windows may materialize a symlink as a text file without Developer Mode. Use their canonical concept folders.",
+    "recorded_before_runtime_snapshot_packaging": true
+  },
+  "serialized_entry_dependencies": [
+    {
+      "entry": "Assets/_Tests/V010Defense/Scenes/V010Defense.unity",
+      "dependency_count": 297,
+      "tracked_asset_dependencies": 286,
+      "ignored_or_untracked": [
+        "Assets/_Game/Resources/CoastalUnits/Archer.asset",
+        "Assets/_Game/Resources/CoastalUnits/Walker.asset",
+        "Assets/_Game/Resources/CoastalUnits/Hound.asset",
+        "Assets/_Game/Resources/CoastalUnits/CageBoss.asset",
+        "Assets/_Game/Resources/CoastalUnits/Headbutter.asset",
+        "Assets/_Game/Art/TripoCrossbow/UnityMetallicSmoothness.png",
+        "Assets/_Game/Resources/CoastalUnits/heavy_crossbowman.mat",
+        "Assets/_Game/Resources/CoastalUnits/heavy_crossbowman.asset",
+        "Assets/_Game/Resources/CoastalUnits/ExploderLatest.asset",
+        "Assets/_Game/Resources/TripoCrossbow/Frames.asset",
+        "Assets/_Game/Resources/CoastalUnits/Roster.asset"
+      ],
+      "missing_files": [],
+      "external": []
+    },
+    {
+      "entry": "Assets/_Tests/V010PresentationReview/Scenes/CameraGroundingReview.unity",
+      "dependency_count": 315,
+      "tracked_asset_dependencies": 304,
+      "ignored_or_untracked": [
+        "Assets/_Game/Resources/CoastalUnits/Archer.asset",
+        "Assets/_Game/Resources/CoastalUnits/Walker.asset",
+        "Assets/_Game/Resources/CoastalUnits/Hound.asset",
+        "Assets/_Game/Resources/CoastalUnits/CageBoss.asset",
+        "Assets/_Game/Resources/CoastalUnits/Headbutter.asset",
+        "Assets/_Game/Art/TripoCrossbow/UnityMetallicSmoothness.png",
+        "Assets/_Game/Resources/CoastalUnits/heavy_crossbowman.mat",
+        "Assets/_Game/Resources/CoastalUnits/heavy_crossbowman.asset",
+        "Assets/_Game/Resources/CoastalUnits/ExploderLatest.asset",
+        "Assets/_Game/Resources/TripoCrossbow/Frames.asset",
+        "Assets/_Game/Resources/CoastalUnits/Roster.asset"
+      ],
+      "missing_files": [],
+      "external": []
+    },
+    {
+      "entry": "Assets/_Tests/V010RenderQualityReview/Scenes/RenderQualityReview.unity",
+      "dependency_count": 327,
+      "tracked_asset_dependencies": 319,
+      "ignored_or_untracked": [
+        "Assets/_Game/Resources/CoastalUnits/Archer.asset",
+        "Assets/_Game/Resources/CoastalUnits/Walker.asset",
+        "Assets/_Game/Resources/CoastalUnits/Hound.asset",
+        "Assets/_Game/Resources/CoastalUnits/CageBoss.asset",
+        "Assets/_Game/Resources/CoastalUnits/Headbutter.asset",
+        "Assets/_Game/Art/TripoCrossbow/UnityMetallicSmoothness.png",
+        "Assets/_Game/Resources/CoastalUnits/ExploderLatest.asset",
+        "Assets/_Game/Resources/TripoCrossbow/Frames.asset"
+      ],
+      "missing_files": [],
+      "external": []
+    },
+    {
+      "entry": "Assets/_Game/Art/V010Defense/FrozenEnvironment.prefab",
+      "dependency_count": 266,
+      "tracked_asset_dependencies": 266,
+      "ignored_or_untracked": [],
+      "missing_files": [],
+      "external": []
+    }
+  ],
+  "resources_load_not_fully_in_getdependencies": [
+    {
+      "runtime_key": "CharacterGenerated/<style>/{Human,Zombie,Exploder,Archer,Repeater,Crossbow,Ballista,Cannon}",
+      "required_by": "CharacterCrowdRenderer constructor -> set_style; all eight load before strict roster drawing",
+      "default_style": "dynasty",
+      "snapshot_selection": "All32 frame assets across default/dusk/dynasty/fortress, plus MusketSmoke and all original .meta",
+      "reason_all_styles": "CharacterBake InitializeOnLoadMethod -> ensure_models iterates all four folders. Missing any item triggers full bake_models and deletes/recreates the cache. Retaining only the default style would not preserve the original cache on first Editor startup.",
+      "deployment_boundary": "Legacy initialization infrastructure only. Strict imported-unit rendering does not authorize these old/generated appearances as user soldiers. Do not change strict mode or enable fallback.",
+      "license": "Quaternius CC0 1.0; existing project-generated derivatives. Preserve Assets/ThirdParty/Quaternius/License.txt."
+    },
+    {
+      "runtime_key": "CharacterGenerated/MusketSmoke",
+      "required_by": "MusketEffects always constructs a smoke presentation pool, even without firearm units",
+      "path": "Assets/_Game/Resources/CharacterGenerated/MusketSmoke.mat",
+      "shader_fallback": "ZombieGame/MusketSmoke exists, but snapshot retains its exact material and shader dependency."
+    },
+    {
+      "runtime_key": "CoastalBuildings/GreekFire",
+      "required_by": "GreekFireView.create_vehicle and CoastalPlay.can_deploy; two initial GreekFire vehicles",
+      "paths": [
+        "Assets/_Game/Resources/CoastalBuildings/GreekFire.prefab",
+        "Assets/_Game/Resources/CoastalBuildings/GreekFire-0.mat"
+      ],
+      "already_tracked_dependencies": [
+        "Assets/_Game/Art/CoastalImports/GreekFire/GreekFire.fbx",
+        "Assets/_Game/Art/CoastalImports/GreekFire/tripo_image_bdfaf021_0.001.png",
+        "Assets/_Game/Scripts/Presentation/ImportedColour.shader"
+      ]
+    },
+    {
+      "runtime_key": "BalanceGenerated/unit_balance",
+      "required_by": "UnitBalance non-Editor player branch",
+      "authoritative_source": "balance/unit_balance.json",
+      "generated_snapshot": "Assets/_Game/Resources/BalanceGenerated/unit_balance.json",
+      "build_hook": "BalanceBuild.OnPreprocessBuild calls sync_snapshot; retaining a snapshot does not make it editable balance.",
+      "verification": {
+        "same_bytes": true,
+        "source_sha256": "4ac06d0483015a916a3440a19ee82fc5979ccae72831ceede74e83a5e0c9c38c",
+        "snapshot_sha256": "4ac06d0483015a916a3440a19ee82fc5979ccae72831ceede74e83a5e0c9c38c"
+      }
+    },
+    {
+      "runtime_key": "VisualStylePresets,FrontierEconomy,HeadquartersProduction,SiegeConfig,CoastalSkirmish,GateSilhouette,UnitFeedback,Effects/GreekFlame,Audio/*",
+      "required_by": "Existing production styles, economy, UI/VFX, audio and session",
+      "all_current_files_tracked": true,
+      "paths_prefix": "Assets/_Game/Resources/"
+    }
+  ],
+  "selection_policy": {
+    "purpose": "Exact existing read-only runtime snapshots preserve original GUIDs, subasset fileIDs, meshes, texture bytes and frozen scene references. They are derived caches, not alternate art masters.",
+    "selected_files": 102,
+    "total_bytes": 1416353848,
+    "total_gib": 1.3190823122859001,
+    "include_parent_directory_meta": true,
+    "modify_old_scene_or_rebake": false,
+    "recommended_lfs_content": "Binary .asset frame files under CoastalUnits, CharacterGenerated and TripoCrossbow; retain .meta as normal text. Root owns packaging decision and no history rewrite is requested.",
+    "groups": [
+      {
+        "id": "coastal_units",
+        "files": 19,
+        "bytes": 311883599
+      },
+      {
+        "id": "character_generated_all",
+        "files": 70,
+        "bytes": 1030478568
+      },
+      {
+        "id": "crossbow_frames",
+        "files": 3,
+        "bytes": 68231053
+      },
+      {
+        "id": "greek_fire",
+        "files": 5,
+        "bytes": 38624
+      },
+      {
+        "id": "crossbow_packed_map",
+        "files": 2,
+        "bytes": 5712495
+      },
+      {
+        "id": "balance_snapshot",
+        "files": 3,
+        "bytes": 9509
+      }
+    ]
+  },
+  "selected_files": [
+    {
+      "path": "Assets/_Game/Art/TripoCrossbow/UnityMetallicSmoothness.png",
+      "group": "crossbow_packed_map",
+      "bytes": 5709426,
+      "sha256": "7ed6939e88652183f1c7f9a52cc5ca89515a27cf0d7da68b41cf3ff3370fd05c",
+      "guid": null
+    },
+    {
+      "path": "Assets/_Game/Art/TripoCrossbow/UnityMetallicSmoothness.png.meta",
+      "group": "crossbow_packed_map",
+      "bytes": 3069,
+      "sha256": "4cd1dc47e5b202fd3c5bf38cd9093caddb2f40453ca0d1856eadad487b509406",
+      "guid": "689ef71b7d6224048a9a3dd246aba02c"
+    },
+    {
+      "path": "Assets/_Game/Resources/BalanceGenerated.meta",
+      "group": "balance_snapshot",
+      "bytes": 172,
+      "sha256": "61bd22121fbfa1db81d103c32a44a0081c45eb7eb69ca11ddbfc2b311f9494d4",
+      "guid": "b61a8c8aa45b240a3a0cdbb47367fba4"
+    },
+    {
+      "path": "Assets/_Game/Resources/BalanceGenerated/unit_balance.json",
+      "group": "balance_snapshot",
+      "bytes": 9179,
+      "sha256": "4ac06d0483015a916a3440a19ee82fc5979ccae72831ceede74e83a5e0c9c38c",
+      "guid": null
+    },
+    {
+      "path": "Assets/_Game/Resources/BalanceGenerated/unit_balance.json.meta",
+      "group": "balance_snapshot",
+      "bytes": 158,
+      "sha256": "34ce2265eee99a5c3fa22d29470433394ab52096d6988b6e5968d52a96925bea",
+      "guid": "08f75ccc72be6420d977d54edaa62dd7"
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated.meta",
+      "group": "character_generated_all",
+      "bytes": 172,
+      "sha256": "9a8aebe05a855df17f67165500e1a7b44ec317e258567d7266a3f06368b371cd",
+      "guid": "8f9545a3762ae45dc83625bac4ceaeeb"
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/Archer.asset",
+      "group": "character_generated_all",
+      "bytes": 42333752,
+      "sha256": "b981f3ddaee38e868dcb2ccb1278ba96dda0bccc912a8209383de1ee98670e56",
+      "guid": null
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/Archer.asset.meta",
+      "group": "character_generated_all",
+      "bytes": 189,
+      "sha256": "fc88352b4c50b6b96ef432b06086468693f505425b83fdaa0f9c8f8c6fea4b2c",
+      "guid": "2b6194dbe65f941aaa2ac7e5583d6825"
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/Ballista.asset",
+      "group": "character_generated_all",
+      "bytes": 42296888,
+      "sha256": "0e75120b1c7b13210a6f08357be4df7c5a02f1808bc6eed2eefd6e46659b1194",
+      "guid": null
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/Ballista.asset.meta",
+      "group": "character_generated_all",
+      "bytes": 189,
+      "sha256": "ddcb6fb11dc3a1537d00ab8974fd56ce1c1499b0c4f4ea95f57a814aeb801e53",
+      "guid": "49ceff5f287b74f4886665db4876d7ee"
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/Cannon.asset",
+      "group": "character_generated_all",
+      "bytes": 42519448,
+      "sha256": "b940c1c620676df8441e214062b66e28da0da1714f1cddcabbb73481e44a2f67",
+      "guid": null
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/Cannon.asset.meta",
+      "group": "character_generated_all",
+      "bytes": 189,
+      "sha256": "a3aa37029ffa0d68b7a5075fcbca249364429f0d44d2d202c76e184e35ea6910",
+      "guid": "f10d472e3da0f466995752f079f776aa"
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/Crossbow.asset",
+      "group": "character_generated_all",
+      "bytes": 41556536,
+      "sha256": "967898410ef9c06b2f1ca1c15fdf6681fad8cd74def5433ec521aa7aa52d7f88",
+      "guid": null
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/Crossbow.asset.meta",
+      "group": "character_generated_all",
+      "bytes": 189,
+      "sha256": "919eea87b1f2378bbeffe031b8e1ed768e8183a65273ca326c4c896f9ec2ed4d",
+      "guid": "d809bf59b5aad4e5aa84a5b866656771"
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/dusk.meta",
+      "group": "character_generated_all",
+      "bytes": 172,
+      "sha256": "9437a66e35c5232b6e10d265321afb3b667b48674a9555051703d353734461c4",
+      "guid": "11c0f762cee114725a4db66995dfaf83"
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/dusk/Archer.asset",
+      "group": "character_generated_all",
+      "bytes": 31268988,
+      "sha256": "0ddb647632065117496556f1de3e508bbbaaa7ee7125fe9990943e42aa54d17c",
+      "guid": null
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/dusk/Archer.asset.meta",
+      "group": "character_generated_all",
+      "bytes": 189,
+      "sha256": "7869defb3312aeae67b4b7ffc8b6b8230a60dec94adf7f6f4511fd8406809ac5",
+      "guid": "f6162df5e53634d97b1be858f4a91a0e"
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/dusk/Ballista.asset",
+      "group": "character_generated_all",
+      "bytes": 31232120,
+      "sha256": "1afc0ee71e49cbae37bf4cfb4789dd1900dadd2f77f075e41d1a9bffe6b1651e",
+      "guid": null
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/dusk/Ballista.asset.meta",
+      "group": "character_generated_all",
+      "bytes": 189,
+      "sha256": "c2d071f3bf742405b80d04ff0a5ff19e7f11ae16b5e205a7f0af66352a32159b",
+      "guid": "e670932a254924497a14037db4aa9a04"
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/dusk/Cannon.asset",
+      "group": "character_generated_all",
+      "bytes": 31454080,
+      "sha256": "35fdcb33a8ff646c8fc78872a47c81bf8d852360654c46ee57126a76ffdbb003",
+      "guid": null
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/dusk/Cannon.asset.meta",
+      "group": "character_generated_all",
+      "bytes": 189,
+      "sha256": "e9b6e0cb182529153e0fa53006caf34e7b140cf8a277810b43db49579465c45c",
+      "guid": "d14c7195b34ec43be971288564c99fc6"
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/dusk/Crossbow.asset",
+      "group": "character_generated_all",
+      "bytes": 30491232,
+      "sha256": "7d94278fc8d2dd19fcc1ce3f002e262b2bbb60e4bdf7a4d2fc69d03341f48542",
+      "guid": null
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/dusk/Crossbow.asset.meta",
+      "group": "character_generated_all",
+      "bytes": 189,
+      "sha256": "1b54a8a1764ae746de873772f6dbb0f57b4f46ac18356064c1c6023f1778ad8b",
+      "guid": "edcfc8f3210de4befbb36a7672f694fa"
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/dusk/Exploder.asset",
+      "group": "character_generated_all",
+      "bytes": 25311404,
+      "sha256": "502333026afad9075a0787f81ee8e534aff8106c570da43d910ca87b9954c45d",
+      "guid": null
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/dusk/Exploder.asset.meta",
+      "group": "character_generated_all",
+      "bytes": 189,
+      "sha256": "e94a64b23b73e15258ddde3b21e518e0b321c24cb2b08d57ca3318004e086127",
+      "guid": "86bf5bfa0b3c04a26b45469e0a44a2d5"
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/dusk/Human.asset",
+      "group": "character_generated_all",
+      "bytes": 31799676,
+      "sha256": "806a8acafbe4a537957913aea9e4ddf27088c3dcbdbeeddf5980adc2568fb351",
+      "guid": null
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/dusk/Human.asset.meta",
+      "group": "character_generated_all",
+      "bytes": 189,
+      "sha256": "bd292abe26ef2ac7c94b6303753ac4099d19e81d4ecc3c0e6bd77e7ff985fa36",
+      "guid": "ab28ee5afdf044fd182dc0cbfd5228cf"
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/dusk/Repeater.asset",
+      "group": "character_generated_all",
+      "bytes": 30577784,
+      "sha256": "3be9b0e5ffe83500342cae1c859d468c4e80b664c315b0def773d62b38d001a5",
+      "guid": null
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/dusk/Repeater.asset.meta",
+      "group": "character_generated_all",
+      "bytes": 189,
+      "sha256": "9563a643a6c50a366ec614f0019fab1e1f7ea180bdd2299f120c7474b108a1c2",
+      "guid": "26b4f5185958849159932bcf4bb6906d"
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/dusk/Zombie.asset",
+      "group": "character_generated_all",
+      "bytes": 21331820,
+      "sha256": "7c79df61826d3a4160edca14a75761e63b7151de1bfbd8778715a769ce9c11b4",
+      "guid": null
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/dusk/Zombie.asset.meta",
+      "group": "character_generated_all",
+      "bytes": 189,
+      "sha256": "84f8b1efba328e404a0e3d676747bea12ffc826026057ee3c6f501220d843cec",
+      "guid": "f024a2577a7814e0996e327601a73359"
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/dynasty.meta",
+      "group": "character_generated_all",
+      "bytes": 172,
+      "sha256": "d64f192af2f6b693b9e6e4f19a255678f517c9ef01042f3cc8f2c6b82e9172a3",
+      "guid": "79d74d7d59657421eae2a7f0f3a3997e"
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/dynasty/Archer.asset",
+      "group": "character_generated_all",
+      "bytes": 39276724,
+      "sha256": "06f6105280b89551ea623b4a8d42f27434fc0da35f799fbf0d0b5aab2a45f793",
+      "guid": null
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/dynasty/Archer.asset.meta",
+      "group": "character_generated_all",
+      "bytes": 189,
+      "sha256": "c157ba19932f5475b50733812de08cd8581138aec4a72ee62efd3d339d108f4b",
+      "guid": "41cdb521b87f0453f80bbd9771b24b4c"
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/dynasty/Ballista.asset",
+      "group": "character_generated_all",
+      "bytes": 39240096,
+      "sha256": "00ba4ac8b8884ac6c29a06241b9cd08bb05091ff5824aa61ce3390b03e5d9699",
+      "guid": null
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/dynasty/Ballista.asset.meta",
+      "group": "character_generated_all",
+      "bytes": 189,
+      "sha256": "e7f2bd731b0f42ae1724373cc5308419ef84cfcbb6029ab85e50bba246f2304e",
+      "guid": "d3b43549b1d704a70a2ed2499a3f60ca"
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/dynasty/Cannon.asset",
+      "group": "character_generated_all",
+      "bytes": 39462580,
+      "sha256": "f044870dd799b904438ab94109aaa5a118d581709f7015b7e341bb62ba862dd2",
+      "guid": null
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/dynasty/Cannon.asset.meta",
+      "group": "character_generated_all",
+      "bytes": 189,
+      "sha256": "dd2f57a7fa9adda6993b84eb29ee26a0088bae1bce75c6169a722f4cc83cc7ac",
+      "guid": "345080c856252448ea88166b67a6c9cb"
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/dynasty/Crossbow.asset",
+      "group": "character_generated_all",
+      "bytes": 38499512,
+      "sha256": "ee9563240f9f491cffc6b030dcbee8eab6a5adffacf9e870bb93e67683a75b3f",
+      "guid": null
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/dynasty/Crossbow.asset.meta",
+      "group": "character_generated_all",
+      "bytes": 189,
+      "sha256": "099308dfbce0ae9c26f1dc0be0b366f6c440908f8cba461e5b7883b3fc3275fe",
+      "guid": "d19a00346de164f24959bfbbb9a7d560"
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/dynasty/Exploder.asset",
+      "group": "character_generated_all",
+      "bytes": 24174380,
+      "sha256": "8e33d2e3f02e326a3bf3fbb8b8437161e6134459272576c2e46c6ec062447a86",
+      "guid": null
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/dynasty/Exploder.asset.meta",
+      "group": "character_generated_all",
+      "bytes": 189,
+      "sha256": "2c789baf5176adbd818729ce7b908a0ca469357d838f70811d5cc733c5edb2f1",
+      "guid": "c0b048d8a1abe4e729887a0be502c3ca"
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/dynasty/Human.asset",
+      "group": "character_generated_all",
+      "bytes": 39808024,
+      "sha256": "163b607f8b643327be2e6b949b7cf136773eb32c5ed6fb537a01cdbfb9057a3d",
+      "guid": null
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/dynasty/Human.asset.meta",
+      "group": "character_generated_all",
+      "bytes": 189,
+      "sha256": "ec1cd1d0c4c684bdb76c9825d503849bb627bfbd812723e1b681fa6df308810f",
+      "guid": "e03b7e63122584b2e9990428107b9282"
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/dynasty/Repeater.asset",
+      "group": "character_generated_all",
+      "bytes": 38585752,
+      "sha256": "79d0108143796f5f8f669913abf1ac15cd5ee595e7ab275a0436949775ebe14d",
+      "guid": null
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/dynasty/Repeater.asset.meta",
+      "group": "character_generated_all",
+      "bytes": 189,
+      "sha256": "7611ad380b2d85008183a5c7accf809ef707cc39c1443f3742bbad83d5160e85",
+      "guid": "8720fe6f72b174ac092585829695b3cc"
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/dynasty/Zombie.asset",
+      "group": "character_generated_all",
+      "bytes": 21331816,
+      "sha256": "2c356ad24f26a827c4dae05829baf21014ebcac8f82a70749ced23e1aaf45632",
+      "guid": null
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/dynasty/Zombie.asset.meta",
+      "group": "character_generated_all",
+      "bytes": 189,
+      "sha256": "39f3f7d5786e18f414a5bda08b1f8d0042f9a6b7cd1f07ddde035cb7e9866f4f",
+      "guid": "d7fed13c60757491481da16d281f07c9"
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/Exploder.asset",
+      "group": "character_generated_all",
+      "bytes": 19221968,
+      "sha256": "3fbff4c4b8ccd6ab28b1fa48757056981f57664a4136b144d9f98b52f950f16e",
+      "guid": null
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/Exploder.asset.meta",
+      "group": "character_generated_all",
+      "bytes": 189,
+      "sha256": "46177b3ae86d055f1315adf185aa16d7ba51e1feb4984ca41350dc26b9ccac4d",
+      "guid": "66a2db8b4f0f74fe593928e32f1f1613"
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/fortress.meta",
+      "group": "character_generated_all",
+      "bytes": 172,
+      "sha256": "38eb71499a8abde2dc4d252cb42e261fa776d53bf6ecf28ddb364e5cccdede1b",
+      "guid": "cbfc7e11627f14f628bcf52aac2ee88d"
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/fortress/Archer.asset",
+      "group": "character_generated_all",
+      "bytes": 29430580,
+      "sha256": "0afb3a6833672b14dc61098bf4679d37ce07141dafd496ce4d544de107616727",
+      "guid": null
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/fortress/Archer.asset.meta",
+      "group": "character_generated_all",
+      "bytes": 189,
+      "sha256": "a6ce3de982fe48395313dc14deded0d508c205b31be62c2a1f889e4790c321bc",
+      "guid": "a581a8eb07edb4f7482b45b9c513cc94"
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/fortress/Ballista.asset",
+      "group": "character_generated_all",
+      "bytes": 29393952,
+      "sha256": "aa601f856ff778c8944ac460fc94ed0685d3448b8ac28b41283b9d81190a0b7f",
+      "guid": null
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/fortress/Ballista.asset.meta",
+      "group": "character_generated_all",
+      "bytes": 189,
+      "sha256": "4ccdb2be59b479f2a05f319715ee004120122685c4f1b2e7e026fd678406d74c",
+      "guid": "948ab0497dbd84bb4bbbe97995a6817d"
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/fortress/Cannon.asset",
+      "group": "character_generated_all",
+      "bytes": 29616440,
+      "sha256": "5c4853e25fb836166dd728e4559f0ac2e4b60839696f171956c96cfa25d240bc",
+      "guid": null
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/fortress/Cannon.asset.meta",
+      "group": "character_generated_all",
+      "bytes": 189,
+      "sha256": "e2ea22cfc6dc90f226987cefd8c1747ef9487050ff7bb0549eb3472134b1d944",
+      "guid": "de8ce2985da0b4f2ab0390bcdee569bf"
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/fortress/Crossbow.asset",
+      "group": "character_generated_all",
+      "bytes": 28653364,
+      "sha256": "05d8ca8bd16857366c7cca5eba45b910690ab20c3625f4aa92a487a8b0e98ba8",
+      "guid": null
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/fortress/Crossbow.asset.meta",
+      "group": "character_generated_all",
+      "bytes": 189,
+      "sha256": "c2ded18f9f65b57e41c8919bf6e14e04fcdf704d7f7c6412d00aa298c9b78b42",
+      "guid": "9e0faa7e1cf9546b9847f3592ea59ad6"
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/fortress/Exploder.asset",
+      "group": "character_generated_all",
+      "bytes": 23605872,
+      "sha256": "9f1aba603e427069aaad108cb4ac285e5e20db32aff7716e3514912dd0ddc454",
+      "guid": null
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/fortress/Exploder.asset.meta",
+      "group": "character_generated_all",
+      "bytes": 189,
+      "sha256": "38f63f11e3f75b014eff0bcf8bb2332ec5500e327270fa671b38fd871ac260e8",
+      "guid": "004063f8f77ce4166b8d106fb646e671"
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/fortress/Human.asset",
+      "group": "character_generated_all",
+      "bytes": 29961888,
+      "sha256": "5ebb6696bd94e76bcde6ca1e7729a9205e2dd3e7ddd6dcf368b15de273aad26f",
+      "guid": null
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/fortress/Human.asset.meta",
+      "group": "character_generated_all",
+      "bytes": 189,
+      "sha256": "4a9b1e6fa6701869cbb3b8f81d8bf438bb7c61ef0a5f9b087824720b708e93a9",
+      "guid": "fffb9a9024dc24ad9b879a3c9ebcbc3a"
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/fortress/Repeater.asset",
+      "group": "character_generated_all",
+      "bytes": 28739604,
+      "sha256": "2793e920acc7a23c3879ca589ace3290c9396b98bca9a71997b56438046ce830",
+      "guid": null
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/fortress/Repeater.asset.meta",
+      "group": "character_generated_all",
+      "bytes": 189,
+      "sha256": "8c847b9128bc26d997e1505b2342a141ab66869265eb32c8ac2417b411a3d885",
+      "guid": "5c2a2fe2df8fd48c7935d69425c09e38"
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/fortress/Zombie.asset",
+      "group": "character_generated_all",
+      "bytes": 21331820,
+      "sha256": "1e7fc9cc4dcbd6f6ee414b0721cc155014efc4a0665c9d9ba30b24fcdad155fd",
+      "guid": null
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/fortress/Zombie.asset.meta",
+      "group": "character_generated_all",
+      "bytes": 189,
+      "sha256": "bd4919f89b79e7e6054d84d6d4e3c973686e5d38932d6766f5c8e3cc59393796",
+      "guid": "5fda10caf37b8453ea62639ab93e48f8"
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/Human.asset",
+      "group": "character_generated_all",
+      "bytes": 42864856,
+      "sha256": "ffe3c6fd5d6241c1cce6e292efb7302f32b0d7b9160712b3efd9b7c13e4ce320",
+      "guid": null
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/Human.asset.meta",
+      "group": "character_generated_all",
+      "bytes": 189,
+      "sha256": "a98162f9153b6292bf7e526fe4b9782467a71ed32f885877988325a8468dd565",
+      "guid": "d116255eaf9c54abfb5d16661c483b03"
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/MusketSmoke.mat",
+      "group": "character_generated_all",
+      "bytes": 756,
+      "sha256": "1dad85efd8fbcbae44451a4448e17c81ec1d35ba2633cfe1bbfabf44d2809189",
+      "guid": null
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/MusketSmoke.mat.meta",
+      "group": "character_generated_all",
+      "bytes": 188,
+      "sha256": "cfb2bc073f9de5e30826cfabac8a3fe8be6ffef293acd892d9a9a89229ab2420",
+      "guid": "d2a9f2bef1f664514b0ce408923c9d32"
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/Repeater.asset",
+      "group": "character_generated_all",
+      "bytes": 41642556,
+      "sha256": "76420ad70a99f5e0222ff6191c67cfaac1bc3cbe980e36a04bd261778915db2c",
+      "guid": null
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/Repeater.asset.meta",
+      "group": "character_generated_all",
+      "bytes": 189,
+      "sha256": "2cf872170bde15fd9f5ef111010f5497dd256c801f2a862475c43c7a1df2d3b1",
+      "guid": "82159b9b8ff384c8389b483da8c42827"
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/Zombie.asset",
+      "group": "character_generated_all",
+      "bytes": 23455376,
+      "sha256": "3aef1add7d3ebf63b6f292d6024c99408cb70a910b0f12cd0c50611e11f00e6a",
+      "guid": null
+    },
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/Zombie.asset.meta",
+      "group": "character_generated_all",
+      "bytes": 189,
+      "sha256": "4b92b6eada45895d8b26038871ebfe8f1e6b5f9ef4a9dff259bd0972320eac2d",
+      "guid": "ef7536a00101f4d9d9755e288293a7fd"
+    },
+    {
+      "path": "Assets/_Game/Resources/CoastalBuildings.meta",
+      "group": "greek_fire",
+      "bytes": 172,
+      "sha256": "4aa5cf32d0c1ed4a794e503f4fd12dd41b838a74b391e3c0cc720b0c68a3e247",
+      "guid": "bb7d67eccc709444787e308771c12131"
+    },
+    {
+      "path": "Assets/_Game/Resources/CoastalBuildings/GreekFire-0.mat",
+      "group": "greek_fire",
+      "bytes": 1041,
+      "sha256": "cb9ce7821cb6dd15d6420e5e81c61b921fd71d5d10ac4d01be7f3cfff055a98e",
+      "guid": null
+    },
+    {
+      "path": "Assets/_Game/Resources/CoastalBuildings/GreekFire-0.mat.meta",
+      "group": "greek_fire",
+      "bytes": 188,
+      "sha256": "ec45db0d9740fe6488b595e418d47286f31cbf0ac4b5c01149cdf1fd5cad531e",
+      "guid": "499c46201dc8449109184d0508d45f0e"
+    },
+    {
+      "path": "Assets/_Game/Resources/CoastalBuildings/GreekFire.prefab",
+      "group": "greek_fire",
+      "bytes": 37069,
+      "sha256": "c072e0c8d4879188ed8af50da6bba77af6acde5a22bdf701302403cf557fc1e9",
+      "guid": null
+    },
+    {
+      "path": "Assets/_Game/Resources/CoastalBuildings/GreekFire.prefab.meta",
+      "group": "greek_fire",
+      "bytes": 154,
+      "sha256": "9a14dc533ee1c77f57edf4659080b87f096cf3be8d6232f57967a633514a9c6c",
+      "guid": "578c1e52cf74c457d9613286b8ae4197"
+    },
+    {
+      "path": "Assets/_Game/Resources/CoastalUnits.meta",
+      "group": "coastal_units",
+      "bytes": 172,
+      "sha256": "d476bf5eae13cca45eb5871e40bf81c1e9db733c4dd315650183c0245059de64",
+      "guid": "bb20c19dcdb674f3aa851a7abee70fc7"
+    },
+    {
+      "path": "Assets/_Game/Resources/CoastalUnits/Archer.asset",
+      "group": "coastal_units",
+      "bytes": 64355220,
+      "sha256": "5c9a9154e194b6f551f716db2ace1ef6a03170a4bff12f17243d8980846c0ed0",
+      "guid": null
+    },
+    {
+      "path": "Assets/_Game/Resources/CoastalUnits/Archer.asset.meta",
+      "group": "coastal_units",
+      "bytes": 189,
+      "sha256": "67f7b03b65ab9b35388a16ab8693532bd0b0b23ebd3bba71153a948d190614eb",
+      "guid": "51a40fd4f9a7147989fab5964a0e0083"
+    },
+    {
+      "path": "Assets/_Game/Resources/CoastalUnits/CageBoss.asset",
+      "group": "coastal_units",
+      "bytes": 54996608,
+      "sha256": "ac611f5c997bd5046495c3ff40ff7f9623f675013d274272fd7c8c47e612e39a",
+      "guid": null
+    },
+    {
+      "path": "Assets/_Game/Resources/CoastalUnits/CageBoss.asset.meta",
+      "group": "coastal_units",
+      "bytes": 189,
+      "sha256": "5cd9dc4cd2ddfd7d8f2f49882c842694c23be4cf8c7ed487177961c6e3703035",
+      "guid": "d7f6df39b7c4b4db9bacaeab081c55ac"
+    },
+    {
+      "path": "Assets/_Game/Resources/CoastalUnits/ExploderLatest.asset",
+      "group": "coastal_units",
+      "bytes": 59587896,
+      "sha256": "6fbf07e501626981293684f8f80ed5344e1ec5084f921f279984cd861e6fbd1c",
+      "guid": null
+    },
+    {
+      "path": "Assets/_Game/Resources/CoastalUnits/ExploderLatest.asset.meta",
+      "group": "coastal_units",
+      "bytes": 189,
+      "sha256": "eaad47c1c2fb93054bff2e243d0da0f6c3a85f9af2cdc9a0f74be66567e65dd6",
+      "guid": "b8d03e61e1d54450392611cb75a4d3d2"
+    },
+    {
+      "path": "Assets/_Game/Resources/CoastalUnits/Headbutter.asset",
+      "group": "coastal_units",
+      "bytes": 64807040,
+      "sha256": "64a2f1eb2d0f6a26cd4fa967a423cfd8dd729b977619ee77de1a5a45eb5d98fa",
+      "guid": null
+    },
+    {
+      "path": "Assets/_Game/Resources/CoastalUnits/Headbutter.asset.meta",
+      "group": "coastal_units",
+      "bytes": 189,
+      "sha256": "baa0773684795921b247b403aa01021cd55bf59d553f3d337da43f205db29b7b",
+      "guid": "b201e767112884dc5ae29f35d1b77c2a"
+    },
+    {
+      "path": "Assets/_Game/Resources/CoastalUnits/heavy_crossbowman.asset",
+      "group": "coastal_units",
+      "bytes": 6624,
+      "sha256": "7a63f4ee1a106cb54f3c4da1f050132c33577ccd1db7ae92b7dbe70f44eb0a79",
+      "guid": null
+    },
+    {
+      "path": "Assets/_Game/Resources/CoastalUnits/heavy_crossbowman.asset.meta",
+      "group": "coastal_units",
+      "bytes": 189,
+      "sha256": "1502e0a34af52c5dd54a7929c999408ac64b90aedf959a6a5e017518ec728572",
+      "guid": "7e04c31eda2a34071ad1f42e17ed56de"
+    },
+    {
+      "path": "Assets/_Game/Resources/CoastalUnits/heavy_crossbowman.mat",
+      "group": "coastal_units",
+      "bytes": 2464,
+      "sha256": "c8ae39586dcce329df6d18986bc95c149d2f19d215a0eafcc4d8eaf8f89874d2",
+      "guid": null
+    },
+    {
+      "path": "Assets/_Game/Resources/CoastalUnits/heavy_crossbowman.mat.meta",
+      "group": "coastal_units",
+      "bytes": 188,
+      "sha256": "3ae70ef68960e5582352f895d4da1bb594d5c5f0d651d501cfb753337cfea82e",
+      "guid": "4fba92fdff872486a988923e29f5ac7d"
+    },
+    {
+      "path": "Assets/_Game/Resources/CoastalUnits/Hound.asset",
+      "group": "coastal_units",
+      "bytes": 35575424,
+      "sha256": "2449400d6e6941ecd3d8d2985d72e06ff628a56edde4b4171ba81c327e2efaa8",
+      "guid": null
+    },
+    {
+      "path": "Assets/_Game/Resources/CoastalUnits/Hound.asset.meta",
+      "group": "coastal_units",
+      "bytes": 189,
+      "sha256": "6b6c202e945ada1a47d6b1851101eb92e5d7354f2a9ddf5187089a42545baa44",
+      "guid": "0873f9d31034548238543301f8c0faba"
+    },
+    {
+      "path": "Assets/_Game/Resources/CoastalUnits/Roster.asset",
+      "group": "coastal_units",
+      "bytes": 1175,
+      "sha256": "29966be22e1612011866150c2392e04fd0ec5f4571af41467de4f35002f8a147",
+      "guid": null
+    },
+    {
+      "path": "Assets/_Game/Resources/CoastalUnits/Roster.asset.meta",
+      "group": "coastal_units",
+      "bytes": 189,
+      "sha256": "19b26dde07a2f6aba7415c6eab9a474aed67f10b94fdef694acf06d5b2116c56",
+      "guid": "4114882741d08446da2bba1f028ed056"
+    },
+    {
+      "path": "Assets/_Game/Resources/CoastalUnits/Walker.asset",
+      "group": "coastal_units",
+      "bytes": 32549276,
+      "sha256": "2c97d64a68731dc057bc3b8f850fa4095473abb84b09c78e504d293fb2cf36ea",
+      "guid": null
+    },
+    {
+      "path": "Assets/_Game/Resources/CoastalUnits/Walker.asset.meta",
+      "group": "coastal_units",
+      "bytes": 189,
+      "sha256": "7151c8db6af473af0c22f2c26f5fa747a5c1281a89345ce913c5651eb7a89b4b",
+      "guid": "4cb046d70b26a435f94b2949f1c0f483"
+    },
+    {
+      "path": "Assets/_Game/Resources/TripoCrossbow.meta",
+      "group": "crossbow_frames",
+      "bytes": 172,
+      "sha256": "85ea71533a78732379c67bbb36fade607e0f690ae5de20999870a07587f1b298",
+      "guid": "7a6eea3e361644c9ba4cd9e6bcccda69"
+    },
+    {
+      "path": "Assets/_Game/Resources/TripoCrossbow/Frames.asset",
+      "group": "crossbow_frames",
+      "bytes": 68230692,
+      "sha256": "cab95e4a0c12eb80ac9c5ca548e7edbecb764c1afa58edb550def4f8797370a1",
+      "guid": null
+    },
+    {
+      "path": "Assets/_Game/Resources/TripoCrossbow/Frames.asset.meta",
+      "group": "crossbow_frames",
+      "bytes": 189,
+      "sha256": "1b93f408720dcec8cedaae600c742194e7c97daedbcd6a46ce86e2f35b93e903",
+      "guid": "e5641f171b26549f388268f837671d5b"
+    }
+  ],
+  "not_selected_for_current_three_entries": [
+    {
+      "path": "Assets/_Game/Resources/CharacterGenerated/ApprovedHuman.meta",
+      "reason": "Unused empty ApprovedHuman directory (0B contents), only a172B folder.meta; no source/runtime/scene reference. Keep ignored rather than create an artificial placeholder."
+    },
+    {
+      "path": "Assets/_Game/Resources/TripoExploder",
+      "reason": "Old exploder benchmark cache, not current ExploderLatest roster or these three scene dependencies."
+    },
+    {
+      "path": "Assets/_Game/Resources/TripoArcher/OriginalRest.asset",
+      "reason": "Static original-rig audit cache, not current animated archer dependency."
+    },
+    {
+      "path": "Assets/_Game/Resources/FreeEnvironment",
+      "reason": "Current playable/presentation/render scenes use tracked frozen six-layer/environment snapshots. Original EnvironmentDenseVision review still depends on some ignored FreeEnvironment/CoastalBuildings cache and is NOT included in this three-entry closure claim.",
+      "optional_additional_bytes": 28679294
+    },
+    {
+      "path": "Assets/_Game/Resources/CoastalBuildings/* except selected GreekFire files",
+      "reason": "Frozen environment already has its actual model/render dependencies tracked. Historical original EnvironmentShowcase/Coastal scenes may need more prefabs; no claim all historical test scenes are cold-clone ready."
+    },
+    {
+      "path": "Library/,Temp/,Logs/,UserSettings/,Builds/",
+      "reason": "Platform/editor caches or Mac .app outputs; regenerate on Windows. Do not copy or version these folders."
+    }
+  ],
+  "licenses": {
+    "quaternius": "CC0 1.0, Assets/ThirdParty/Quaternius/License.txt",
+    "tripo": "User-imported/authored project data; no assumption of CC0 or new public redistribution rights. Preserve source manifests and existing repository access policy.",
+    "existing_scene_environment": "Existing tracked sources retain their licences, including Oak CC BY-SA3.0 and farmhouse/photo-derived atlas obligations; docs/versions/V0.10/LICENSES.md remains authoritative.",
+    "new_asset_purchase_or_terms": false
+  },
+  "windows_first_open": [
+    "Install Git+Git LFS and fetch the final root-approved branch/commit; run git lfs pull before opening Unity. Use a short local path such as C:/dev/zombie_game.",
+    "Install the exact Windows Unity Editor6000.6.1f1 via Unity Hub and sign in/activate the user's licence. Do not upgrade Unity or migrate Built-in/Gamma for this transfer.",
+    "Add the repository root containing Assets/Packages/ProjectSettings to Unity Hub. Let Windows rebuild Library and resolve registry packages. Blender is not required merely to import the tracked FBX/runtime snapshots because no .blend is inside Assets.",
+    "The102 exact runtime snapshots and their original .meta are now committed. Open Assets/_Tests/V010Defense/Scenes/V010Defense.unity or Zombie Game/V0.10/Open playable V0.10. No asset bake or prepare_scene should be required by the frozen graph. Static closure is verified, but an actual clean Windows run remains untested.",
+    "Camera and render review scenes are opt-in under Assets/_Tests/V010PresentationReview and V010RenderQualityReview. Existing menus open them; capture tools explicitly generate review evidence and are not a gameplay/Windows performance proof.",
+    "For a Windows player use Unity Build Profiles -> Windows x86_64 -> this V010Defense scene -> new .exe output. Existing build_defense_player and old review build helpers hardcode StandaloneOSX/.app and must NOT be used as a Windows build entry.",
+    "Check Console, actual terrain/characters/materials and controls on Windows before declaring the migration validated. This audit did not execute Windows or RTX5070Ti."
+  ],
+  "existing_rebuild_fallback_limitations": [
+    "CharacterBake.ensure_models and CoastalTools.import_assets exist, but are not a validated no-change cold-clone repair: CoastalTools calls TerrainLayerImport.prepare_layers, which first requires ignored FreeEnvironment source textures.",
+    "Rebaking creates new cache GUIDs/subasset IDs when original .meta is absent; frozen scenes/ReviewFrames hold serialized references to old GUIDs. Regeneration alone does not prove those references repaired.",
+    "V010DefenseTools.prepare_defense_scene rewrites version output scene/prefab/config, and build_defense_player invokes prepare first. Do not run it merely to migrate a frozen snapshot.",
+    "BalanceBuild.sync_snapshot is safe as a derived build snapshot operation, but this audit did not call it or any bake/import/save operation."
+  ],
+  "post_packaging_verification": {
+    "checked_at_utc": "2026-10-21T10:34:16.886Z",
+    "status": "PASS",
+    "selected_files": 102,
+    "matched_original_working_bytes_and_sha256": true,
+    "index_lfs_pointers": 41,
+    "index_plain_blobs": 61,
+    "meta_guids_checked": 55,
+    "failures": [],
+    "excluded_approved_human_meta_indexed": false,
+    "excluded_approved_human_meta_ignored": true,
+    "balance_source_sha256": "4ac06d0483015a916a3440a19ee82fc5979ccae72831ceede74e83a5e0c9c38c",
+    "balance_snapshot_sha256": "4ac06d0483015a916a3440a19ee82fc5979ccae72831ceede74e83a5e0c9c38c",
+    "balance_same_bytes": true,
+    "runtime_snapshot_source_still_authoritative": "balance/unit_balance.json",
+    "windows_test_executed": false,
+    "remote_lfs_upload_verified_by_this_audit": false,
+    "committed_head": "39ab02683c1e70406a7244d390ada8d76a714d76",
+    "selected_index_diff_against_head": [],
+    "frozen_playable_review_projectsettings_balance_worktree_diff_against_head": [],
+    "dependency_check_at_utc": "2026-10-21T10:33:13.895942Z",
+    "entry_dependencies": [
+      {
+        "entry": "Assets/_Tests/V010Defense/Scenes/V010Defense.unity",
+        "dependency_count": 297,
+        "untracked": [],
+        "missing": [],
+        "untracked_meta": []
+      },
+      {
+        "entry": "Assets/_Tests/V010PresentationReview/Scenes/CameraGroundingReview.unity",
+        "dependency_count": 315,
+        "untracked": [],
+        "missing": [],
+        "untracked_meta": []
+      },
+      {
+        "entry": "Assets/_Tests/V010RenderQualityReview/Scenes/RenderQualityReview.unity",
+        "dependency_count": 327,
+        "untracked": [],
+        "missing": [],
+        "untracked_meta": []
+      }
+    ],
+    "live_scene_after_audit": "Assets/_Tests/V010RenderQualityReview/Scenes/RenderQualityReview.unity",
+    "live_scene_dirty_after_audit": false,
+    "play_after_audit": false
+  },
+  "limits": [
+    "No clean-clone or actual Windows build/run has been executed.",
+    "Only the three requested entry scenes plus their frozen environment and explicit dynamic resources are in the closure claim; historical tests may require additional optional caches.",
+    "No model, source geometry, rig, unit balance, contact logic, renderer pipeline, scene or ProjectSettings was changed."
+  ],
+  "post_ignore_pre_stage_verification": {
+    "checked_at_utc": "2026-10-21T10:29:48.906Z",
+    "selected_count": 102,
+    "still_ignored": [],
+    "serialized_cache_dependency_gaps_after_selected_package": [],
+    "excluded_meta_ignored": false,
+    "selected_asset_missing_meta_in_future_index": [],
+    "selected_paths_not_yet_staged_count": 102
+  }
+}

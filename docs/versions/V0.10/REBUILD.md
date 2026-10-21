@@ -1,5 +1,16 @@
 # V0.10 reproducibility and source boundaries
 
+## 2026-10-21 desktop transfer supplement
+
+The original October16 rebuild notes below describe the historical delivery.
+The current `codex/v0.10` head now includes the exact required runtime snapshots
+and original `.meta` files for the saved V0.10 and camera/render-review entries,
+plus self-contained Environment source textures. Fetch Git LFS before opening.
+Do not immediately regenerate these snapshots or overwrite frozen scene data.
+See [desktop setup and dependency evidence](../../dev/DESKTOP_DEVELOPMENT.md).
+This closes the identified missing-file/GUID handoff gaps; a real Windows
+Editor/play/build and GPU performance test are still not certified.
+
 ## 现有电脑：直接试玩
 
 Unity6000.6.1f1，正式目录 `/Users/tankaixi/Documents/ChatGPT/zombie game`。

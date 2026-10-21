@@ -4,7 +4,11 @@ A **1–2 player cooperative Survival RTS** set in a fictionalized ancient/medie
 
 ## Documentation
 
-- [Vision 1 map review and workspace / 当前地图与正式目录](docs/dev/VISION_1_MAP_REVIEW.md): the daily workspace is `/Users/tankaixi/Documents/ChatGPT/zombie game`, branch `vision-1`. The older `/Users/tankaixi/zombie_game` clone is preserved, not the current development copy. Map-art previews are independent of the accepted combat scenes.
+- [Desktop development / 台式机开发与完整拉取](docs/dev/DESKTOP_DEVELOPMENT.md): current integration branch **`codex/v0.10`**; clone with Git LFS, not a source ZIP. Includes Unity sources, authored Blender sources and the required runtime snapshots.
+
+- [V0.10 current playable preview](docs/versions/V0.10/README.md) and [render/source comparison](docs/versions/V0.10/RenderQualityReview.md): frozen iterations and known limitations, not final art acceptance.
+
+- [Vision 1 map history and workspace](docs/dev/VISION_1_MAP_REVIEW.md): the Mac workspace is `/Users/tankaixi/Documents/ChatGPT/zombie game`; `vision-1` is the earlier map branch. The older `/Users/tankaixi/zombie_game` clone is preserved, not the current development copy.
 
 - [Tripo → Unity combat-animation workflow / 新动画路线](docs/dev/TRIPO_UNITY_ANIMATION_WORKFLOW.md): character binding in Tripo, approved weapon assembly and complex combat-animation prototyping in Unity; Blender remains the source-model and skinning-repair workspace.
 
@@ -65,7 +69,11 @@ Important current combat rules:
 
 ## 文档规则
 
-当前正式日常开发目录是 `/Users/tankaixi/Documents/ChatGPT/zombie game`，最新分支为 `vision-1`（用户称“Vision 1”）。旧 `/Users/tankaixi/zombie_game` 保留但不再作为当前入口。Unity 应打开前者；地图制作、打开方式与实际检查记录见[Vision 1 地图说明](docs/dev/VISION_1_MAP_REVIEW.md)，不覆盖已验收战斗场景。
+当前整合分支是 **`codex/v0.10`**；`vision-1` 是之前的地图分支。Mac正式目录仍是
+`/Users/tankaixi/Documents/ChatGPT/zombie game`，旧 `/Users/tankaixi/zombie_game` 保留但不作为当前入口。
+台式机不需要这个Mac绝对路径，拉取到自己的目录后，Unity Hub打开仓库根目录即可。
+完整步骤见[台式机开发说明](docs/dev/DESKTOP_DEVELOPMENT.md)，当前试玩与冻结记录见
+[V0.10](docs/versions/V0.10/README.md)。不覆盖已验收战斗场景或移动旧标签。
 
 最新步兵方案：天朝、拜占庭各4种，共8种步兵，每种分民兵／老兵／精英。民兵与老兵携弹上限均为30发；精英为**总计50发，不是额外50发**，同兵种基础射程增加1格。老兵、精英伤害递增方向已记录，具体加成待定，当前伤害不擅改。数值唯一来源为 `balance/unit_balance.json`；本轮不自动实现经验晋升或启用尚未完成的阵营单位。
 

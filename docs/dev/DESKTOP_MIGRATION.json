@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "local_date": "2026-10-21",
+  "status": "source_and_dependency_verification_passed",
+  "repository": "https://github.com/tanmike380-cpu/zombie_game",
+  "branch": "codex/v0.10",
+  "asset_packaging_commit": "39ab02683c1e70406a7244d390ada8d76a714d76",
+  "remote_asset_delivery": {
+    "status": "normal_branch_push_and_lfs_upload_succeeded",
+    "remote_branch": "refs/heads/codex/v0.10",
+    "commit": "39ab02683c1e70406a7244d390ada8d76a714d76",
+    "lfs_upload_objects": 46,
+    "lfs_upload_reported_complete": true,
+    "not_a_windows_runtime_test": true
+  },
+  "snapshot_tag": "v0.10.0-desktop-sync.1",
+  "unity_version": "6000.6.1f1",
+  "blender_verified_version": "5.2.2 LTS",
+  "documentation": "docs/dev/DESKTOP_DEVELOPMENT.md",
+  "unity_audit": "docs/dev/DESKTOP_MIGRATION_UNITY_AUDIT.json",
+  "environment_portability_handoff": "art/environment/portable_handoff.json",
+  "formal_blender_masters": [
+    {
+      "path": "art/Blender主文件/ZombieGame.blend",
+      "bytes": 87736680,
+      "sha256": "34ce14d5150a0ae7a9e232775f6f7863180052feea29be4fabc8faf1ad097ef9",
+      "git_lfs": true
+    },
+    {
+      "path": "art/Blender主文件/ZombieGame_Environment.blend",
+      "bytes": 113006653,
+      "sha256": "b9c2a8bc82ab53e99e64f2a99072c77c372ba13a835e8ce2a87d0f7a9d7c55b7",
+      "git_lfs": true
+    },
+    {
+      "path": "art/Blender主文件/ZombieGame_Resources.blend",
+      "bytes": 10102605,
+      "sha256": "37fcad0d37b78aea743399c0fc144c4c3d6038ede7c01c35474d051f651bee03",
+      "git_lfs": true
+    },
+    {
+      "path": "art/Blender主文件/ZombieGame_with_ani_human.blend",
+      "bytes": 95990,
+      "sha256": "5f273a9ed8d034ad2a5c08cad91a973976d433fcd64508d4e074ca4c07da0ab3",
+      "git_lfs": true
+    },
+    {
+      "path": "art/Blender主文件/ZombieGame_with_ani_zombie.blend",
+      "bytes": 6353068,
+      "sha256": "1946fb5219f609a07cb145a70c97ea6ca0933d9507d267387a13eee1ae2d4584",
+      "git_lfs": true
+    }
+  ],
+  "current_lfs_files": 46,
+  "current_lfs_checkout_bytes": 1627875839,
+  "runtime_transfer": {
+    "files_including_meta": 102,
+    "bytes": 1416353848,
+    "selection": "Exact pre-existing runtime data and original GUIDs. No animation rebake or source model replacement.",
+    "balance_snapshot_matches_source_sha256": "4ac06d0483015a916a3440a19ee82fc5979ccae72831ceede74e83a5e0c9c38c"
+  },
+  "preserved": {
+    "frozen_tags_not_moved": true,
+    "main_not_modified": true,
+    "gameplay_and_unit_balance_not_modified": true,
+    "live_blender_document_not_saved_or_switched": true,
+    "unrelated_concept_drafts_and_recovery_preserved": true
+  },
+  "unsaved_zombie": {
+    "included": false,
+    "reason": "User explicitly chose saved content only.",
+    "disk_snapshot": "art/Blender主文件/ZombieGame_with_ani_zombie.blend"
+  },
+  "boundaries": [
+    "No Windows Editor or player run, GPU performance or cold-import certification",
+    "Human category master is an empty shell; actual editable sources are listed in the desktop guide",
+    "Library, Temp, Logs, Builds, Mac players and old recovery copies are not transfer sources",
+    "Old art/gameplay known issues remain; packaging is not visual acceptance",
+    "The public repository retains existing asset-specific licenses and attribution"
+  ]
+}
