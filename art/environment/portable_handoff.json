@@ -1,0 +1,144 @@
+{
+  "schema_version": 1,
+  "status": "portable source storage repair verified",
+  "verified_at_utc": "2026-10-21T10:26:23.749655+00:00",
+  "master_file": "art/Blender主文件/ZombieGame_Environment.blend",
+  "source_before_sha256": "cf8310ae2f8d643653fd8cf9e96ef7dea0570f586a76e2d0f62911c7d3803301",
+  "master_sha256": "b9c2a8bc82ab53e99e64f2a99072c77c372ba13a835e8ce2a87d0f7a9d7c55b7",
+  "file_bytes": 113006653,
+  "recovery_snapshot": "Builds/Recovery/EnvironmentPortable-20261021-182555/ZombieGame_Environment-before-pack.blend",
+  "images_packed": [
+    {
+      "image_name": "grass_medium_02_alpha.png",
+      "original_file": "Builds/EnvironmentCandidateDownloads/blender-20261015-vE1sPP/grass_medium_02/textures/grass_medium_02_alpha_1k.png",
+      "original_file_bytes": 110617,
+      "original_file_sha256": "15976877b3dbd22cd496a9549f1eb7d86710846a3631fb87eedbf046519e339f",
+      "decoded_float32_pixels_sha256": "61cd24189f7bf5025843a5eefd79175268c72e530501754b358ea2af20e071e6",
+      "size": [
+        1024,
+        1024
+      ],
+      "colorspace": "Non-Color",
+      "source_format": "PNG"
+    },
+    {
+      "image_name": "grass_medium_02_diff.png",
+      "original_file": "Builds/EnvironmentCandidateDownloads/blender-20261015-vE1sPP/grass_medium_02/textures/grass_medium_02_diff_1k.jpg",
+      "original_file_bytes": 161235,
+      "original_file_sha256": "91ae99005b449011aceb207a68a937258fd9bfd66ff367d344c50398b1df389c",
+      "decoded_float32_pixels_sha256": "ff2abf99ec12d7cb574da3c00d940013440a0731b4ddb0c598a01f91f9ae4af1",
+      "size": [
+        1024,
+        1024
+      ],
+      "colorspace": "sRGB",
+      "source_format": "JPEG"
+    },
+    {
+      "image_name": "grass_medium_02_nor_gl.png",
+      "original_file": "Builds/EnvironmentCandidateDownloads/blender-20261015-vE1sPP/grass_medium_02/textures/grass_medium_02_nor_gl_1k.exr",
+      "original_file_bytes": 241121,
+      "original_file_sha256": "f87429d46ca64672000fe1780d223431c974889ef7d68259914fb4d8862bf631",
+      "decoded_float32_pixels_sha256": "ea5a221d6375c3b4d5371ddda418fbe4f299a8318ff1a1a4658bd17e714a3233",
+      "size": [
+        1024,
+        1024
+      ],
+      "colorspace": "Non-Color",
+      "source_format": "OPEN_EXR"
+    },
+    {
+      "image_name": "grass_medium_02_rough.png",
+      "original_file": "Builds/EnvironmentCandidateDownloads/blender-20261015-vE1sPP/grass_medium_02/textures/grass_medium_02_rough_1k.exr",
+      "original_file_bytes": 374549,
+      "original_file_sha256": "4a3f1911c5dd08c423dbc46a230565ddfd19bae99e68b1e8fb9c999c93517db5",
+      "decoded_float32_pixels_sha256": "af640879a8264980ed01fbe180e9fa01676eeb6112f466f4433cc4f0bcb65c9f",
+      "size": [
+        1024,
+        1024
+      ],
+      "colorspace": "Non-Color",
+      "source_format": "OPEN_EXR"
+    }
+  ],
+  "authorized_storage_flag_changes": [
+    {
+      "material": "M_Quercus",
+      "property": "use_fake_user",
+      "before": false,
+      "after": true,
+      "reason": "Preserve the original unused material; ordinary Blender save would otherwise discard it.",
+      "nodes_links_inputs_unchanged": true
+    },
+    {
+      "material": "M_Quercus_LOD1",
+      "property": "use_fake_user",
+      "before": false,
+      "after": true,
+      "reason": "Preserve the original unused material; ordinary Blender save would otherwise discard it.",
+      "nodes_links_inputs_unchanged": true
+    }
+  ],
+  "source_url": "https://polyhaven.com/a/grass_medium_02",
+  "license": "CC0-1.0",
+  "license_url": "https://polyhaven.com/license",
+  "license_record": "art/environment/vision-vegetation-handoff.json",
+  "verification_file": "art/environment/portable_verification.json",
+  "validation": {
+    "passed": true,
+    "protected_counts": {
+      "objects": 91,
+      "meshes": 29,
+      "materials": 31,
+      "images": 81,
+      "actions": 0,
+      "collections": 20,
+      "lights": 0,
+      "cameras": 0,
+      "worlds": 1,
+      "armatures": 0,
+      "scenes": 1
+    },
+    "original_encoded_bytes_unchanged": true,
+    "decoded_float32_pixels_unchanged": true,
+    "dependencies": {
+      "passed": true,
+      "used_dependencies_checked": 79,
+      "nonportable": [],
+      "packed_image_count": 79,
+      "image_datablocks": 81,
+      "linked_libraries": 0
+    }
+  },
+  "change_scope": "Four original image byte buffers embedded, plus use_fake_user=True on two original unused materials solely to retain them. Geometry, topology, UV, object transforms, all material nodes/links/inputs, image pixel values, colorspaces, layout, lights, cameras, actions and all other packed images unchanged.",
+  "historical_handoffs_untouched": true,
+  "live_unsaved_zombie_untouched": true,
+  "fbx_exported": false,
+  "fresh_process_verification": {
+    "passed": true,
+    "source_sha256": "b9c2a8bc82ab53e99e64f2a99072c77c372ba13a835e8ce2a87d0f7a9d7c55b7",
+    "protected_counts": {
+      "objects": 91,
+      "meshes": 29,
+      "materials": 31,
+      "images": 81,
+      "actions": 0,
+      "collections": 20,
+      "lights": 0,
+      "cameras": 0,
+      "worlds": 1,
+      "armatures": 0,
+      "scenes": 1
+    },
+    "dependencies": {
+      "passed": true,
+      "used_dependencies_checked": 79,
+      "nonportable": [],
+      "packed_image_count": 79,
+      "image_datablocks": 81,
+      "linked_libraries": 0
+    },
+    "blend_saved": false,
+    "original_encoded_bytes_and_decoded_float32_pixels_unchanged": true
+  }
+}

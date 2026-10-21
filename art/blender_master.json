@@ -69,6 +69,7 @@
     "resources": "art/Blender主文件/ZombieGame_Resources.blend"
   },
   "category_source_confirmation": "2026-10-11: User confirmed the live ZombieGame_with_ani_zombie.blend as the formal zombie source and separate ZombieGame_Environment.blend as the formal environment source. Preserve unsaved live zombie edits; environment integration is limited to the isolated showcase pending visual approval.",
+  "environment_portability_handoff": "art/environment/portable_handoff.json",
   "resources_source_confirmation": "2026-10-12: User requested a separate Resources category aligned with Human/Zombie, then explicitly replaced both original ores with the latest iron+rock+3d+model.zip and gold+rock+3d+model.zip PBR exports. Only IronOreRock/GoldOreRock are active, with original geometry/UV/custom normals and eight packed maps. art/resources/handoff.json records the source, exports, unverified normal convention/license. Old Downloads ZIPs and old Unity exports were moved to Trash; prior Blender source is recovery-only. Preview decoration only; no mining gameplay or public upload approval.",
   "wall_review_source": "art/models/modular-stone-wall/ModularStoneWall.blend",
   "wall_review_page": "Builds/ArtReview/ModularStoneWall/review.html"

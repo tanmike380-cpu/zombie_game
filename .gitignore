@@ -95,3 +95,30 @@ sysinfo.txt
 # FBX roundtrip extraction cache; the authored texture files live beside each export.
 /art/models/grid-footprints/*/*.fbm/
 /art/models/grounding-review/*/*.fbm/
+
+# Portable V0.10 runtime snapshots: preserve saved GUIDs for desktop checkout.
+# These remain derived/read-only, never a new art or editable balance source.
+!/Assets/_Game/Resources/CoastalUnits/
+!/Assets/_Game/Resources/CoastalUnits.meta
+!/Assets/_Game/Resources/CharacterGenerated/
+!/Assets/_Game/Resources/CharacterGenerated.meta
+/Assets/_Game/Resources/CharacterGenerated/ApprovedHuman.meta
+!/Assets/_Game/Resources/TripoCrossbow/
+/Assets/_Game/Resources/TripoCrossbow/*
+!/Assets/_Game/Resources/TripoCrossbow/Frames.asset
+!/Assets/_Game/Resources/TripoCrossbow/Frames.asset.meta
+!/Assets/_Game/Resources/TripoCrossbow.meta
+!/Assets/_Game/Resources/CoastalBuildings/
+/Assets/_Game/Resources/CoastalBuildings/*
+!/Assets/_Game/Resources/CoastalBuildings/GreekFire.prefab
+!/Assets/_Game/Resources/CoastalBuildings/GreekFire.prefab.meta
+!/Assets/_Game/Resources/CoastalBuildings/GreekFire-0.mat
+!/Assets/_Game/Resources/CoastalBuildings/GreekFire-0.mat.meta
+!/Assets/_Game/Resources/CoastalBuildings.meta
+!/Assets/_Game/Resources/BalanceGenerated/
+/Assets/_Game/Resources/BalanceGenerated/*
+!/Assets/_Game/Resources/BalanceGenerated/unit_balance.json
+!/Assets/_Game/Resources/BalanceGenerated/unit_balance.json.meta
+!/Assets/_Game/Resources/BalanceGenerated.meta
+!/Assets/_Game/Art/TripoCrossbow/UnityMetallicSmoothness.png
+!/Assets/_Game/Art/TripoCrossbow/UnityMetallicSmoothness.png.meta
